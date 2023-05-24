@@ -81,22 +81,10 @@ namespace project1
             //ChangeIntensityCommand command = new ChangeIntensityCommand();
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
             //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = 484;
-            command.Contrast = 394;
-            command.Intensity = 118;
+            command.Brightness = value_trackBar1;
+            command.Contrast = value_trackBar2;
+            command.Intensity = value_trackBar3;
             command.Run(image);
-
-            /*AdaptiveContrastCommand command2 = new AdaptiveContrastCommand();
-            command2.Amount = 200;
-            command2.Dimension = 9;
-            command2.Run(image);*/
-
-           MaximumCommand command4 = new MaximumCommand();
-            command4.Dimension = 3;
-            command4.Dimension = 3;
-            command4.Dimension = 3;
-            //command4.Run(image);
-
 
             UnsharpMaskCommand command2 = new UnsharpMaskCommand();
             command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
@@ -105,15 +93,22 @@ namespace project1
             command2.ColorType = UnsharpMaskCommandColorType.Rgb;
             command2.Run(image);
 
-            
+            /*AdaptiveContrastCommand command3 = new AdaptiveContrastCommand();
+            command3.Amount = 200;
+            command3.Dimension = 9;
+            command3.Run(image);*/
+
+            /*MaximumCommand command4 = new MaximumCommand();
+            command4.Dimension = 3;
+            command4.Dimension = 3;
+            command4.Dimension = 3;
+            command4.Run(image);*/
             
             //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
             // Prepare the command 
             // BinaryFilterCommand command3 = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationOmniDirectional);
             //Dilate black objects. 
             // command3.Run(image);
-
-
 
             return image;
         }
@@ -136,7 +131,6 @@ namespace project1
         {  
            // Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
             saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf|All files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
