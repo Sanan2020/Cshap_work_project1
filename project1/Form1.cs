@@ -29,6 +29,7 @@ namespace project1
         RasterCodecs codecs = new RasterCodecs();
         public int value_trackBar1;
         public int value_trackBar2;
+        public int value_trackBar3;
 
         public Form1()
         {
@@ -77,6 +78,7 @@ namespace project1
             //Increase the brightness by 25 percent  of the possible range. 
             command.Brightness = value_trackBar1;
             command.Contrast = value_trackBar2;
+            command.Intensity = value_trackBar3;
             command.Run(image);
             
             return image;
@@ -128,6 +130,12 @@ namespace project1
         {
             value_trackBar2 = trackBar2.Value;
             label5.Text = value_trackBar2.ToString();
+        }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar3 = trackBar3.Value;
+            label8.Text = value_trackBar3.ToString();
         }
     }
 }
