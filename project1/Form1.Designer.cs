@@ -36,8 +36,10 @@
             this.picOutput = new System.Windows.Forms.PictureBox();
             this.BrowseSave = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // Browse
@@ -80,7 +82,7 @@
             // 
             // Result
             // 
-            this.Result.Location = new System.Drawing.Point(757, 470);
+            this.Result.Location = new System.Drawing.Point(735, 547);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(108, 38);
             this.Result.TabIndex = 4;
@@ -98,7 +100,7 @@
             // 
             // BrowseSave
             // 
-            this.BrowseSave.Location = new System.Drawing.Point(1124, 470);
+            this.BrowseSave.Location = new System.Drawing.Point(1121, 470);
             this.BrowseSave.Name = "BrowseSave";
             this.BrowseSave.Size = new System.Drawing.Size(115, 38);
             this.BrowseSave.TabIndex = 6;
@@ -106,11 +108,19 @@
             this.BrowseSave.UseVisualStyleBackColor = true;
             this.BrowseSave.Click += new System.EventHandler(this.BrowseSave_Click);
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(617, 476);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1341, 520);
+            this.ClientSize = new System.Drawing.Size(1450, 701);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.BrowseSave);
             this.Controls.Add(this.picOutput);
             this.Controls.Add(this.Result);
@@ -123,6 +133,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,6 +149,7 @@
         private System.Windows.Forms.PictureBox picOutput;
         private System.Windows.Forms.Button BrowseSave;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 
