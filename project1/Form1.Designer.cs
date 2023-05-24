@@ -37,6 +37,8 @@
             this.BrowseSave = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -82,7 +84,7 @@
             // 
             // Result
             // 
-            this.Result.Location = new System.Drawing.Point(735, 547);
+            this.Result.Location = new System.Drawing.Point(770, 609);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(108, 38);
             this.Result.TabIndex = 4;
@@ -110,16 +112,39 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(617, 476);
+            this.trackBar1.Location = new System.Drawing.Point(682, 508);
+            this.trackBar1.Maximum = 1000;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.Size = new System.Drawing.Size(386, 45);
             this.trackBar1.TabIndex = 7;
+            this.trackBar1.TickFrequency = 100;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(614, 517);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(793, 486);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Brightness";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1450, 701);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.BrowseSave);
             this.Controls.Add(this.picOutput);
@@ -150,6 +175,8 @@
         private System.Windows.Forms.Button BrowseSave;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
