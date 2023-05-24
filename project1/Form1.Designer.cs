@@ -39,14 +39,18 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // Browse
             // 
-            this.Browse.Location = new System.Drawing.Point(225, 476);
+            this.Browse.Location = new System.Drawing.Point(171, 609);
             this.Browse.Name = "Browse";
             this.Browse.Size = new System.Drawing.Size(101, 32);
             this.Browse.TabIndex = 0;
@@ -56,9 +60,9 @@
             // 
             // picInput
             // 
-            this.picInput.Location = new System.Drawing.Point(58, 12);
+            this.picInput.Location = new System.Drawing.Point(16, 32);
             this.picInput.Name = "picInput";
-            this.picInput.Size = new System.Drawing.Size(451, 451);
+            this.picInput.Size = new System.Drawing.Size(450, 546);
             this.picInput.TabIndex = 1;
             this.picInput.TabStop = false;
             // 
@@ -66,7 +70,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(6, 12);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 2;
@@ -76,7 +80,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(553, 12);
+            this.label2.Location = new System.Drawing.Point(491, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 20);
             this.label2.TabIndex = 3;
@@ -84,7 +88,7 @@
             // 
             // Result
             // 
-            this.Result.Location = new System.Drawing.Point(770, 609);
+            this.Result.Location = new System.Drawing.Point(979, 540);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(108, 38);
             this.Result.TabIndex = 4;
@@ -94,15 +98,15 @@
             // 
             // picOutput
             // 
-            this.picOutput.Location = new System.Drawing.Point(617, 12);
+            this.picOutput.Location = new System.Drawing.Point(495, 32);
             this.picOutput.Name = "picOutput";
-            this.picOutput.Size = new System.Drawing.Size(451, 451);
+            this.picOutput.Size = new System.Drawing.Size(450, 546);
             this.picOutput.TabIndex = 5;
             this.picOutput.TabStop = false;
             // 
             // BrowseSave
             // 
-            this.BrowseSave.Location = new System.Drawing.Point(1121, 470);
+            this.BrowseSave.Location = new System.Drawing.Point(1170, 540);
             this.BrowseSave.Name = "BrowseSave";
             this.BrowseSave.Size = new System.Drawing.Size(115, 38);
             this.BrowseSave.TabIndex = 6;
@@ -112,10 +116,10 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(682, 508);
+            this.trackBar1.Location = new System.Drawing.Point(1022, 55);
             this.trackBar1.Maximum = 1000;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(386, 45);
+            this.trackBar1.Size = new System.Drawing.Size(306, 45);
             this.trackBar1.TabIndex = 7;
             this.trackBar1.TickFrequency = 100;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -123,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(614, 517);
+            this.label3.Location = new System.Drawing.Point(976, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 13);
             this.label3.TabIndex = 8;
@@ -132,17 +136,48 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(793, 486);
+            this.label4.Location = new System.Drawing.Point(1153, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Brightness";
             // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(1022, 147);
+            this.trackBar2.Maximum = 1000;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(306, 45);
+            this.trackBar2.TabIndex = 10;
+            this.trackBar2.TickFrequency = 100;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(976, 156);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1153, 131);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Contrast";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1450, 701);
+            this.ClientSize = new System.Drawing.Size(1367, 672);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.trackBar1);
@@ -155,10 +190,12 @@
             this.Controls.Add(this.Browse);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,6 +214,9 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
