@@ -121,6 +121,7 @@
             this.picOutput.Location = new System.Drawing.Point(495, 32);
             this.picOutput.Name = "picOutput";
             this.picOutput.Size = new System.Drawing.Size(450, 546);
+            this.picOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOutput.TabIndex = 5;
             this.picOutput.TabStop = false;
             // 

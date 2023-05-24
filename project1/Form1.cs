@@ -20,6 +20,7 @@ using System.Drawing.Imaging;
 using Leadtools.ImageProcessing;
 using Image = System.Drawing.Image;
 using Leadtools.ImageProcessing.Effects;
+using Leadtools.ImageProcessing.Core;
 
 namespace project1
 {
@@ -89,12 +90,27 @@ namespace project1
             command2.Amount = 200;
             command2.Dimension = 9;
             command2.Run(image);*/
+
+          /* MaximumCommand command4 = new MaximumCommand();
+            
+            command4.Dimension = 3;
+            command4.Run(image);*/
+
+
             UnsharpMaskCommand command2 = new UnsharpMaskCommand();
             command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
             command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
             command2.Threshold = value_trackBar6;  //rate 0 - 255
             command2.ColorType = UnsharpMaskCommandColorType.Rgb;
             command2.Run(image);
+
+            //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
+            // Prepare the command 
+            // BinaryFilterCommand command3 = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationOmniDirectional);
+            //Dilate black objects. 
+            // command3.Run(image);
+
+
 
             return image;
         }
