@@ -19,6 +19,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Drawing.Imaging;
 using Leadtools.ImageProcessing;
 using Image = System.Drawing.Image;
+using Leadtools.ImageProcessing.Effects;
 
 namespace project1
 {
@@ -30,6 +31,9 @@ namespace project1
         public int value_trackBar1;
         public int value_trackBar2;
         public int value_trackBar3;
+        public int value_trackBar4 = 1;
+        public int value_trackBar5 = 1;
+        public int value_trackBar6 = 1;
 
         public Form1()
         {
@@ -60,10 +64,10 @@ namespace project1
             this.picOutput.BorderStyle = BorderStyle.FixedSingle;
       }
 
-        public void fcBrightness() { 
+        public void fcUnsharpMask() { 
             
         }
-        public void fcContrast()
+        public void fcConBrightsInten()
         {
 
         }
@@ -80,7 +84,18 @@ namespace project1
             command.Contrast = value_trackBar2;
             command.Intensity = value_trackBar3;
             command.Run(image);
-            
+
+            /*AdaptiveContrastCommand command2 = new AdaptiveContrastCommand();
+            command2.Amount = 200;
+            command2.Dimension = 9;
+            command2.Run(image);*/
+            UnsharpMaskCommand command2 = new UnsharpMaskCommand();
+            command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
+            command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
+            command2.Threshold = value_trackBar6;  //rate 0 - 255
+            command2.ColorType = UnsharpMaskCommandColorType.Rgb;
+            command2.Run(image);
+
             return image;
         }
 
@@ -136,6 +151,24 @@ namespace project1
         {
             value_trackBar3 = trackBar3.Value;
             label8.Text = value_trackBar3.ToString();
+        }
+
+        private void trackBar4_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar4 = trackBar4.Value;
+            l_amount.Text = value_trackBar4.ToString();
+        }
+
+        private void trackBar5_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar5 = trackBar5.Value;
+            l_radius.Text = value_trackBar5.ToString();
+        }
+
+        private void trackBar6_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar6 = trackBar6.Value;
+            l_threshold.Text = value_trackBar6.ToString();
         }
     }
 }
