@@ -63,7 +63,7 @@ namespace project1
             this.picInput.BorderStyle = BorderStyle.FixedSingle;
             this.picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
             this.picOutput.BorderStyle = BorderStyle.FixedSingle;
-      }
+        }
 
         public void fcUnsharpMask() { 
             
@@ -81,9 +81,9 @@ namespace project1
             //ChangeIntensityCommand command = new ChangeIntensityCommand();
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
             //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = value_trackBar1;
-            command.Contrast = value_trackBar2;
-            command.Intensity = value_trackBar3;
+            command.Brightness = 484;
+            command.Contrast = 394;
+            command.Intensity = 118;
             command.Run(image);
 
             /*AdaptiveContrastCommand command2 = new AdaptiveContrastCommand();
@@ -91,10 +91,11 @@ namespace project1
             command2.Dimension = 9;
             command2.Run(image);*/
 
-          /* MaximumCommand command4 = new MaximumCommand();
-            
+           MaximumCommand command4 = new MaximumCommand();
             command4.Dimension = 3;
-            command4.Run(image);*/
+            command4.Dimension = 3;
+            command4.Dimension = 3;
+            //command4.Run(image);
 
 
             UnsharpMaskCommand command2 = new UnsharpMaskCommand();
@@ -104,6 +105,8 @@ namespace project1
             command2.ColorType = UnsharpMaskCommandColorType.Rgb;
             command2.Run(image);
 
+            
+            
             //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
             // Prepare the command 
             // BinaryFilterCommand command3 = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationOmniDirectional);
@@ -185,6 +188,42 @@ namespace project1
         {
             value_trackBar6 = trackBar6.Value;
             l_threshold.Text = value_trackBar6.ToString();
+        }
+
+        /* test DiscreteFourierTransformCommand Class */
+        public void DiscreteFourierTransformCommandExample()
+        {
+            // Load an image 
+            RasterCodecs codecs = new RasterCodecs();
+            codecs.ThrowExceptionsOnInvalidImages = true;
+
+            RasterImage image2 = codecs.Load(Path.Combine(LEAD_VARS.ImagesDir, "Result000"));
+
+            // Prepare the command 
+            FourierTransformInformation FTArray = new FourierTransformInformation(image2);
+            LeadRect rcRange = new LeadRect(0, 0, image2.Width - 1, image2.Height - 1);
+            DiscreteFourierTransformCommand command = new DiscreteFourierTransformCommand();
+
+            command.FourierTransformInformation = FTArray;
+            command.Range = rcRange;
+            command.Flags = DiscreteFourierTransformCommandFlags.DiscreteFourierTransform |
+               DiscreteFourierTransformCommandFlags.Gray |
+               DiscreteFourierTransformCommandFlags.Range |
+               DiscreteFourierTransformCommandFlags.InsideX |
+               DiscreteFourierTransformCommandFlags.InsideY;
+            //Apply DFT. 
+
+            FourierTransformDisplayCommand disCommand = new FourierTransformDisplayCommand();
+            disCommand.Flags = FourierTransformDisplayCommandFlags.Log | FourierTransformDisplayCommandFlags.Magnitude;
+            disCommand.FourierTransformInformation = command.FourierTransformInformation;
+            // plot frequency magnitude 
+            disCommand.Run(image2);
+            codecs.Save(image2, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
+        }
+
+        static class LEAD_VARS
+        {
+            public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
         }
     }
 }
