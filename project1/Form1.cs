@@ -81,17 +81,17 @@ namespace project1
             //ChangeIntensityCommand command = new ChangeIntensityCommand();
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
             //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = 420;
-            command.Contrast = 400;
-            command.Intensity = 90;
-            //command.Run(image);
+            command.Brightness = value_trackBar1;
+            command.Contrast = value_trackBar2;
+            command.Intensity = value_trackBar3;
+            command.Run(image);
 
             UnsharpMaskCommand command2 = new UnsharpMaskCommand();
-            command2.Amount = 1500;     //rate 0 - เกิน 1000
-            command2.Radius = 150;     //rate 1 - เกิน 1000
-            command2.Threshold = 40;  //rate 0 - 255
+            command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
+            command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
+            command2.Threshold = value_trackBar6;  //rate 0 - 255
             command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-            //command2.Run(image);
+            command2.Run(image);
 
 
             /*SharpenCommand command3 = new SharpenCommand();
@@ -112,11 +112,11 @@ namespace project1
             command3.Run(image);*/
 
 
-            AutoColorLevelCommand command3 = new AutoColorLevelCommand();
+           /* AutoColorLevelCommand command3 = new AutoColorLevelCommand();
             // Apply "Auto Leveling" to the image. 
-           // command3.Run(image);
+            command3.Run(image);*/
 
-            int[] LowerAverage = new int[3];
+           /* int[] LowerAverage = new int[3];
             int[] Average = new int[3];
             int[] UpperAverage = new int[3];
             LowerAverage[0] = 100;  //for blue, gray or yuv 
@@ -130,27 +130,29 @@ namespace project1
             UpperAverage[2] = 255;  //for red  
             LightControlCommand command4 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
             // change the lightness of the image. 
-           // command4.Run(image);
+            command4.Run(image);*/
 
-            HighPassCommand command5 = new HighPassCommand();
+           /* HighPassCommand command5 = new HighPassCommand();
             command5.Radius = 20;
             command5.Opacity = 100;
-           // command5.Run(image);
+            command5.Run(image);*/
 
-           /*  UnsharpMaskCommand command6 = new UnsharpMaskCommand();
-             command6.Amount = 1500;     //rate 0 - เกิน 1000
-             command6.Radius = 150;     //rate 1 - เกิน 1000
-             command6.Threshold = 40;  //rate 0 - 255
-             command6.ColorType = UnsharpMaskCommandColorType.Rgb;
-             command6.Run(image);*/
+            
+
+            /*  UnsharpMaskCommand command6 = new UnsharpMaskCommand();
+              command6.Amount = 1500;     //rate 0 - เกิน 1000
+              command6.Radius = 150;     //rate 1 - เกิน 1000
+              command6.Threshold = 40;  //rate 0 - 255
+              command6.ColorType = UnsharpMaskCommandColorType.Rgb;
+              command6.Run(image);*/
 
             /*MaximumCommand command5 = new MaximumCommand();
             command5.Dimension = 2;
             command5.Run(image);*/
 
-            AutoBinaryCommand command7 = new AutoBinaryCommand();
-          //Apply Auto Binary Segment. 
-           command7.Run(image);
+            /*  AutoBinaryCommand command7 = new AutoBinaryCommand();
+            //Apply Auto Binary Segment. 
+             command7.Run(image);*/
 
 
 
