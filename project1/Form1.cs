@@ -81,50 +81,88 @@ namespace project1
             //ChangeIntensityCommand command = new ChangeIntensityCommand();
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
             //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = 484;
-            command.Contrast = 394;
-            command.Intensity = 118;
-            command.Run(image);
+            command.Brightness = 420;
+            command.Contrast = 400;
+            command.Intensity = 90;
+            //command.Run(image);
 
             UnsharpMaskCommand command2 = new UnsharpMaskCommand();
             command2.Amount = 1500;     //rate 0 - เกิน 1000
-            command2.Radius = 133;     //rate 1 - เกิน 1000
-            command2.Threshold = 33;  //rate 0 - 255
+            command2.Radius = 150;     //rate 1 - เกิน 1000
+            command2.Threshold = 40;  //rate 0 - 255
             command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-            command2.Run(image);
+            //command2.Run(image);
+
 
             /*SharpenCommand command3 = new SharpenCommand();
             //Increase the sharpness by 25 percent  of the possible range. 
             command3.Sharpness = 950;*/
 
-           // command3.Run(image);
-            /*GrayScaleExtendedCommand command3 = new GrayScaleExtendedCommand();
-            command3.RedFactor = 500;
-            command3.GreenFactor = 250;
-            command3.BlueFactor = 250;
+            // command3.Run(image);
+            /*   GrayScaleExtendedCommand command3 = new GrayScaleExtendedCommand();
+               command3.RedFactor = 500;
+               command3.GreenFactor = 250;
+               command3.BlueFactor = 250;
+               command3.Run(image);*/
+
+            // Prepare the command 
+          /*  MinimumCommand command3 = new MinimumCommand();
+            //Apply the Minimum filter. 
+            command3.Dimension = 3;
             command3.Run(image);*/
-            /* AutoBinaryCommand command3 = new AutoBinaryCommand();
-             //Apply Auto Binary Segment. 
-             command3.Run(image);*/
 
 
-            /*MaximumCommand command4 = new MaximumCommand();
-            command4.Dimension = 3;
-            command4.Run(image);*/
-
-            // AutoColorLevelCommand command3 = new AutoColorLevelCommand();
+            AutoColorLevelCommand command3 = new AutoColorLevelCommand();
             // Apply "Auto Leveling" to the image. 
-            //command3.Run(image);
+           // command3.Run(image);
 
-            /*DespeckleCommand command5 = new DespeckleCommand();
-            //Remove speckles from the image. 
+            int[] LowerAverage = new int[3];
+            int[] Average = new int[3];
+            int[] UpperAverage = new int[3];
+            LowerAverage[0] = 100;  //for blue, gray or yuv 
+            LowerAverage[1] = 120;  //for green 
+            LowerAverage[2] = 80;   //for red 
+            Average[0] = 210;       //for blue, gray or yuv 
+            Average[1] = 210;       //for green 
+            Average[2] = 210;       //for red 
+            UpperAverage[0] = 255;  //for blue, gray or yuv 
+            UpperAverage[1] = 255;  //for green 
+            UpperAverage[2] = 255;  //for red  
+            LightControlCommand command4 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
+            // change the lightness of the image. 
+           // command4.Run(image);
+
+            HighPassCommand command5 = new HighPassCommand();
+            command5.Radius = 20;
+            command5.Opacity = 100;
+           // command5.Run(image);
+
+           /*  UnsharpMaskCommand command6 = new UnsharpMaskCommand();
+             command6.Amount = 1500;     //rate 0 - เกิน 1000
+             command6.Radius = 150;     //rate 1 - เกิน 1000
+             command6.Threshold = 40;  //rate 0 - 255
+             command6.ColorType = UnsharpMaskCommandColorType.Rgb;
+             command6.Run(image);*/
+
+            /*MaximumCommand command5 = new MaximumCommand();
+            command5.Dimension = 2;
             command5.Run(image);*/
 
+            AutoBinaryCommand command7 = new AutoBinaryCommand();
+          //Apply Auto Binary Segment. 
+           command7.Run(image);
 
-            /*AdaptiveContrastCommand command3 = new AdaptiveContrastCommand();
-            command3.Amount = 200;
-            command3.Dimension = 9;
-            command3.Run(image);*/
+
+
+            /* DespeckleCommand command5 = new DespeckleCommand();
+             //Remove speckles from the image. 
+             command5.Run(image);*/
+
+
+            /*AdaptiveContrastCommand command7 = new AdaptiveContrastCommand();
+            command7.Amount = 200;
+            command7.Dimension = 9;
+            command7.Run(image);*/
 
             //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
             // Prepare the command 
