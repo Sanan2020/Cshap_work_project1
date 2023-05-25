@@ -81,29 +81,51 @@ namespace project1
             //ChangeIntensityCommand command = new ChangeIntensityCommand();
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
             //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = value_trackBar1;
-            command.Contrast = value_trackBar2;
-            command.Intensity = value_trackBar3;
+            command.Brightness = 484;
+            command.Contrast = 394;
+            command.Intensity = 118;
             command.Run(image);
 
             UnsharpMaskCommand command2 = new UnsharpMaskCommand();
-            command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
-            command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
-            command2.Threshold = value_trackBar6;  //rate 0 - 255
+            command2.Amount = 1500;     //rate 0 - เกิน 1000
+            command2.Radius = 133;     //rate 1 - เกิน 1000
+            command2.Threshold = 33;  //rate 0 - 255
             command2.ColorType = UnsharpMaskCommandColorType.Rgb;
             command2.Run(image);
+
+            /*SharpenCommand command3 = new SharpenCommand();
+            //Increase the sharpness by 25 percent  of the possible range. 
+            command3.Sharpness = 950;*/
+
+           // command3.Run(image);
+            /*GrayScaleExtendedCommand command3 = new GrayScaleExtendedCommand();
+            command3.RedFactor = 500;
+            command3.GreenFactor = 250;
+            command3.BlueFactor = 250;
+            command3.Run(image);*/
+            /* AutoBinaryCommand command3 = new AutoBinaryCommand();
+             //Apply Auto Binary Segment. 
+             command3.Run(image);*/
+
+
+            /*MaximumCommand command4 = new MaximumCommand();
+            command4.Dimension = 3;
+            command4.Run(image);*/
+
+            // AutoColorLevelCommand command3 = new AutoColorLevelCommand();
+            // Apply "Auto Leveling" to the image. 
+            //command3.Run(image);
+
+            /*DespeckleCommand command5 = new DespeckleCommand();
+            //Remove speckles from the image. 
+            command5.Run(image);*/
+
 
             /*AdaptiveContrastCommand command3 = new AdaptiveContrastCommand();
             command3.Amount = 200;
             command3.Dimension = 9;
             command3.Run(image);*/
 
-            /*MaximumCommand command4 = new MaximumCommand();
-            command4.Dimension = 3;
-            command4.Dimension = 3;
-            command4.Dimension = 3;
-            command4.Run(image);*/
-            
             //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
             // Prepare the command 
             // BinaryFilterCommand command3 = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationOmniDirectional);
@@ -112,11 +134,11 @@ namespace project1
 
             return image;
         }
-
-       /* static class LEAD_VARS2
-        {
-            public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
-        }*/
+       
+        /* static class LEAD_VARS2
+         {
+             public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
+         }*/
 
         private void Result_Click(object sender, EventArgs e)
         {
