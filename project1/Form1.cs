@@ -29,7 +29,6 @@ namespace project1
     {
         public String folderPath;
         RasterCodecs codecs = new RasterCodecs();
-       
         public int value_trackBar1;
         public int value_trackBar2;
         public int value_trackBar3;
@@ -85,7 +84,6 @@ namespace project1
             codecs.ThrowExceptionsOnInvalidImages = true;
             RasterImage image = codecs.Load(Path.Combine(folderPath));
             // Prepare the command 
-            //ChangeIntensityCommand command = new ChangeIntensityCommand();
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
             //Increase the brightness by 25 percent  of the possible range. 
             command.Brightness = value_trackBar1;
@@ -118,7 +116,6 @@ namespace project1
               command3.Dimension = 3;
               command3.Run(image);*/
 
-
             /* AutoColorLevelCommand command3 = new AutoColorLevelCommand();
              // Apply "Auto Leveling" to the image. 
              command3.Run(image);*/
@@ -144,8 +141,6 @@ namespace project1
              command5.Opacity = 100;
              command5.Run(image);*/
 
-
-
             /*  UnsharpMaskCommand command6 = new UnsharpMaskCommand();
               command6.Amount = 1500;     //rate 0 - เกิน 1000
               command6.Radius = 150;     //rate 1 - เกิน 1000
@@ -157,16 +152,13 @@ namespace project1
             command5.Dimension = 2;
             command5.Run(image);*/
 
-            /*  AutoBinaryCommand command7 = new AutoBinaryCommand();
+            /*AutoBinaryCommand command7 = new AutoBinaryCommand();
             //Apply Auto Binary Segment. 
              command7.Run(image);*/
-
-
 
             /* DespeckleCommand command5 = new DespeckleCommand();
              //Remove speckles from the image. 
              command5.Run(image);*/
-
 
             /*AdaptiveContrastCommand command7 = new AdaptiveContrastCommand();
             command7.Amount = 200;
@@ -179,15 +171,8 @@ namespace project1
             //Dilate black objects. 
             // command3.Run(image);
 
-
-           
             return image;
         }
-       
-        /* static class LEAD_VARS2
-         {
-             public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
-         }*/
        
         private void BrowseSave_Click(object sender, EventArgs e)
         {  
@@ -201,11 +186,11 @@ namespace project1
             {
                // if ((myStream = saveFileDialog1.OpenFile()) != null)
                // {
-                    // Code to write the stream goes here.
-                String savePath = saveFileDialog1.FileName;
-                //MessageBox.Show(saveFileDialog1.);
+               // Code to write the stream goes here.
+               String savePath = saveFileDialog1.FileName;
+               //MessageBox.Show(saveFileDialog1.);
                codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName+".pdf"), RasterImageFormat.RasPdf, 24);
-                //    myStream.Close();
+               //    myStream.Close();
                // }
             }
         }
@@ -250,6 +235,19 @@ namespace project1
             value_trackBar6 = trackBar6.Value;
             l_threshold.Text = value_trackBar6.ToString();
             Display();
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+          /*  if (trackBar1.Capture)
+            {
+                //  MessageBox.Show("000");
+               
+            }
+            else {
+                MessageBox.Show("111");
+            }*/
+            
         }
     }
 }
