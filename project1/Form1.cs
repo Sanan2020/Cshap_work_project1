@@ -51,7 +51,7 @@ namespace project1
                 folderPath = ofile.FileName;
                 //MessageBox.Show(folderPath);
                 this.picInput.Image = new Bitmap(ofile.FileName);
-                
+                Display();
             }
         }
 
@@ -188,16 +188,6 @@ namespace project1
          {
              public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
          }*/
-
-        private void Result_Click(object sender, EventArgs e)
-        {
-            // ChangeIntensityCommandExample();
-           
-            using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
-            {
-                picOutput.Image = new Bitmap(destImage1);
-            }
-        }
        
         private void BrowseSave_Click(object sender, EventArgs e)
         {  
