@@ -29,6 +29,7 @@ namespace project1
     {
         public String folderPath;
         RasterCodecs codecs = new RasterCodecs();
+       
         public int value_trackBar1;
         public int value_trackBar2;
         public int value_trackBar3;
@@ -72,7 +73,13 @@ namespace project1
         {
 
         }
-        public RasterImage ChangeIntensityCommandExample()
+        public void Display() {
+            using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
+            {
+                picOutput.Image = new Bitmap(destImage1);
+            }
+        }
+        public RasterImage ChangeCommand()
         {
             // Load an image 
             codecs.ThrowExceptionsOnInvalidImages = true;
@@ -106,38 +113,38 @@ namespace project1
                command3.Run(image);*/
 
             // Prepare the command 
-          /*  MinimumCommand command3 = new MinimumCommand();
-            //Apply the Minimum filter. 
-            command3.Dimension = 3;
-            command3.Run(image);*/
+            /*  MinimumCommand command3 = new MinimumCommand();
+              //Apply the Minimum filter. 
+              command3.Dimension = 3;
+              command3.Run(image);*/
 
 
-           /* AutoColorLevelCommand command3 = new AutoColorLevelCommand();
-            // Apply "Auto Leveling" to the image. 
-            command3.Run(image);*/
+            /* AutoColorLevelCommand command3 = new AutoColorLevelCommand();
+             // Apply "Auto Leveling" to the image. 
+             command3.Run(image);*/
 
-           /* int[] LowerAverage = new int[3];
-            int[] Average = new int[3];
-            int[] UpperAverage = new int[3];
-            LowerAverage[0] = 100;  //for blue, gray or yuv 
-            LowerAverage[1] = 120;  //for green 
-            LowerAverage[2] = 80;   //for red 
-            Average[0] = 210;       //for blue, gray or yuv 
-            Average[1] = 210;       //for green 
-            Average[2] = 210;       //for red 
-            UpperAverage[0] = 255;  //for blue, gray or yuv 
-            UpperAverage[1] = 255;  //for green 
-            UpperAverage[2] = 255;  //for red  
-            LightControlCommand command4 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
-            // change the lightness of the image. 
-            command4.Run(image);*/
+            /* int[] LowerAverage = new int[3];
+             int[] Average = new int[3];
+             int[] UpperAverage = new int[3];
+             LowerAverage[0] = 100;  //for blue, gray or yuv 
+             LowerAverage[1] = 120;  //for green 
+             LowerAverage[2] = 80;   //for red 
+             Average[0] = 210;       //for blue, gray or yuv 
+             Average[1] = 210;       //for green 
+             Average[2] = 210;       //for red 
+             UpperAverage[0] = 255;  //for blue, gray or yuv 
+             UpperAverage[1] = 255;  //for green 
+             UpperAverage[2] = 255;  //for red  
+             LightControlCommand command4 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
+             // change the lightness of the image. 
+             command4.Run(image);*/
 
-           /* HighPassCommand command5 = new HighPassCommand();
-            command5.Radius = 20;
-            command5.Opacity = 100;
-            command5.Run(image);*/
+            /* HighPassCommand command5 = new HighPassCommand();
+             command5.Radius = 20;
+             command5.Opacity = 100;
+             command5.Run(image);*/
 
-            
+
 
             /*  UnsharpMaskCommand command6 = new UnsharpMaskCommand();
               command6.Amount = 1500;     //rate 0 - เกิน 1000
@@ -172,6 +179,8 @@ namespace project1
             //Dilate black objects. 
             // command3.Run(image);
 
+
+           
             return image;
         }
        
@@ -182,8 +191,9 @@ namespace project1
 
         private void Result_Click(object sender, EventArgs e)
         {
-           // ChangeIntensityCommandExample();
-            using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeIntensityCommandExample(), ConvertToImageOptions.None))
+            // ChangeIntensityCommandExample();
+           
+            using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
             {
                 picOutput.Image = new Bitmap(destImage1);
             }
@@ -204,82 +214,52 @@ namespace project1
                     // Code to write the stream goes here.
                 String savePath = saveFileDialog1.FileName;
                 //MessageBox.Show(saveFileDialog1.);
-                codecs.Save(ChangeIntensityCommandExample(), Path.Combine(saveFileDialog1.FileName+".pdf"), RasterImageFormat.RasPdf, 24);
+               codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName+".pdf"), RasterImageFormat.RasPdf, 24);
                 //    myStream.Close();
                // }
             }
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
             value_trackBar1 = trackBar1.Value;
             label3.Text = value_trackBar1.ToString();
+            Display();
         }
 
-        private void trackBar2_Scroll(object sender, EventArgs e)
+        private void trackBar2_MouseCaptureChanged(object sender, EventArgs e)
         {
             value_trackBar2 = trackBar2.Value;
             label5.Text = value_trackBar2.ToString();
+            Display();
         }
 
-        private void trackBar3_Scroll(object sender, EventArgs e)
+        private void trackBar3_MouseCaptureChanged(object sender, EventArgs e)
         {
             value_trackBar3 = trackBar3.Value;
             label8.Text = value_trackBar3.ToString();
+            Display();
         }
 
-        private void trackBar4_Scroll(object sender, EventArgs e)
+        private void trackBar4_MouseCaptureChanged(object sender, EventArgs e)
         {
             value_trackBar4 = trackBar4.Value;
             l_amount.Text = value_trackBar4.ToString();
+            Display();
         }
 
-        private void trackBar5_Scroll(object sender, EventArgs e)
+        private void trackBar5_MouseCaptureChanged(object sender, EventArgs e)
         {
             value_trackBar5 = trackBar5.Value;
             l_radius.Text = value_trackBar5.ToString();
+            Display();
         }
 
-        private void trackBar6_Scroll(object sender, EventArgs e)
+        private void trackBar6_MouseCaptureChanged(object sender, EventArgs e)
         {
             value_trackBar6 = trackBar6.Value;
             l_threshold.Text = value_trackBar6.ToString();
-        }
-
-        /* test DiscreteFourierTransformCommand Class */
-        public void DiscreteFourierTransformCommandExample()
-        {
-            // Load an image 
-            RasterCodecs codecs = new RasterCodecs();
-            codecs.ThrowExceptionsOnInvalidImages = true;
-
-            RasterImage image2 = codecs.Load(Path.Combine(LEAD_VARS.ImagesDir, "Result000"));
-
-            // Prepare the command 
-            FourierTransformInformation FTArray = new FourierTransformInformation(image2);
-            LeadRect rcRange = new LeadRect(0, 0, image2.Width - 1, image2.Height - 1);
-            DiscreteFourierTransformCommand command = new DiscreteFourierTransformCommand();
-
-            command.FourierTransformInformation = FTArray;
-            command.Range = rcRange;
-            command.Flags = DiscreteFourierTransformCommandFlags.DiscreteFourierTransform |
-               DiscreteFourierTransformCommandFlags.Gray |
-               DiscreteFourierTransformCommandFlags.Range |
-               DiscreteFourierTransformCommandFlags.InsideX |
-               DiscreteFourierTransformCommandFlags.InsideY;
-            //Apply DFT. 
-
-            FourierTransformDisplayCommand disCommand = new FourierTransformDisplayCommand();
-            disCommand.Flags = FourierTransformDisplayCommandFlags.Log | FourierTransformDisplayCommandFlags.Magnitude;
-            disCommand.FourierTransformInformation = command.FourierTransformInformation;
-            // plot frequency magnitude 
-            disCommand.Run(image2);
-            codecs.Save(image2, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
-        }
-
-        static class LEAD_VARS
-        {
-            public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
+            Display();
         }
     }
 }
