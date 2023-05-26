@@ -35,7 +35,8 @@ namespace project1
         public int value_trackBar4 = 1;
         public int value_trackBar5 = 1;
         public int value_trackBar6 = 1;
-
+        public int selectCombobox;
+        
         public Form1()
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace project1
         private void Browse_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofile = new OpenFileDialog();
-            ofile.Filter = "Image File (*.jpg)|*.jpg;";
+            ofile.Filter = "Image File (*.jpg, *.png)|*.jpg;*.png";
             if (DialogResult.OK == ofile.ShowDialog())
             {
                 folderPath = ofile.FileName;
@@ -63,6 +64,25 @@ namespace project1
             this.picInput.BorderStyle = BorderStyle.FixedSingle;
             this.picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
             this.picOutput.BorderStyle = BorderStyle.FixedSingle;
+           
+
+            comboBox1.Items.Add("Original");
+            comboBox1.Items.Add("ErosionOmniDirectional");
+            comboBox1.Items.Add("ErosionHorizontal");
+            comboBox1.Items.Add("ErosionVertical");
+            comboBox1.Items.Add("ErosionDiagonal");
+            comboBox1.Items.Add("DilationOmniDirectional");
+            comboBox1.Items.Add("DilationHorizontal");
+            comboBox1.Items.Add("DilationVertical");
+            comboBox1.Items.Add("DilationDiagonal");
+
+            // BinaryFilterConstructorExample_S1();/*test ErosionOmniDirection */
+            // BinaryFilterCommandExample(); /* test DilationOmniDirectional */
+            //comboBox1.Select();
+            /*comboBox1.SelectedIndex = 0;
+            string a  = comboBox1.SelectedIndex.ToString();
+            MessageBox.Show(a);
+            comboBox1.Text = "Ori";*/
         }
 
         public void fcUnsharpMask() { 
@@ -98,7 +118,17 @@ namespace project1
             command2.ColorType = UnsharpMaskCommandColorType.Rgb;
             command2.Run(image);
 
-
+            // Prepare the command 
+            //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
+            if (selectCombobox == 0){}
+            else {
+                selectCombobox = selectCombobox - 1;
+                //MessageBox.Show(selectCombobox.ToString());
+                BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
+                //Dilate black objects. 
+                command3.Run(image);
+            }
+            
             /*SharpenCommand command3 = new SharpenCommand();
             //Increase the sharpness by 25 percent  of the possible range. 
             command3.Sharpness = 950;*/
@@ -167,9 +197,6 @@ namespace project1
 
             //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
             // Prepare the command 
-            // BinaryFilterCommand command3 = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationOmniDirectional);
-            //Dilate black objects. 
-            // command3.Run(image);
 
             return image;
         }
@@ -248,6 +275,74 @@ namespace project1
                 MessageBox.Show("111");
             }*/
             
+        }
+
+
+        /*TEST*/
+        static class LEAD_VARS
+        {
+            public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
+        }
+        /*test ErosionOmniDirection */
+        public void BinaryFilterConstructorExample_S1()
+        {
+            // Load an image 
+            RasterCodecs codecs = new RasterCodecs();
+            codecs.ThrowExceptionsOnInvalidImages = true;
+
+            RasterImage image = codecs.Load(Path.Combine(LEAD_VARS.ImagesDir, "download.png"));
+
+            // Prepare the command 
+            int[] nMatrix = new int[9];
+            nMatrix[0] = 0;
+            nMatrix[1] = 0;
+            nMatrix[2] = 0;
+            nMatrix[3] = 0;
+            nMatrix[4] = 0;
+            nMatrix[5] = 0;
+            nMatrix[6] = 0;
+            nMatrix[7] = 0;
+            nMatrix[8] = 0;
+
+            BinaryFilterCommand command = new BinaryFilterCommand();
+            command.Matrix = nMatrix;
+            command.Maximum = true;
+            // Dilate black objects. 
+            command.Run(image);
+            codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "Result.jpg"), RasterImageFormat.Jpeg, 24);
+
+        }
+        
+        
+        /* test DilationOmniDirectional */
+      /*  public void BinaryFilterCommandExample()
+        {
+            // Load an image 
+            RasterCodecs codecs = new RasterCodecs();
+            codecs.ThrowExceptionsOnInvalidImages = true;
+
+            RasterImage image = codecs.Load(Path.Combine(LEAD_VARS.ImagesDir, "download.png"));
+            
+            // Prepare the command 
+            //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
+            BinaryFilterCommand command = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
+            //Dilate black objects. 
+            command.Run(image);
+            codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "DilationDiagonal.jpg"), RasterImageFormat.Jpeg, 24);
+
+
+           
+        }*/
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex > 0) {
+               // 
+                
+            }
+            selectCombobox = comboBox1.SelectedIndex;
+            Display();
+            // MessageBox.Show(comboBox1.SelectedItem.ToString());
         }
     }
 }
