@@ -21,6 +21,7 @@ using Leadtools.ImageProcessing;
 using Image = System.Drawing.Image;
 using Leadtools.ImageProcessing.Effects;
 using Leadtools.ImageProcessing.Core;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace project1
 {
@@ -75,12 +76,13 @@ namespace project1
             comboBox1.Items.Add("DilationHorizontal");
             comboBox1.Items.Add("DilationVertical");
             comboBox1.Items.Add("DilationDiagonal");
+            comboBox1.SelectedIndex = 0;
 
             // BinaryFilterConstructorExample_S1();/*test ErosionOmniDirection */
             // BinaryFilterCommandExample(); /* test DilationOmniDirectional */
             //comboBox1.Select();
-            /*comboBox1.SelectedIndex = 0;
-            string a  = comboBox1.SelectedIndex.ToString();
+
+            /*string a  = comboBox1.SelectedIndex.ToString();
             MessageBox.Show(a);
             comboBox1.Text = "Ori";*/
         }
@@ -100,6 +102,7 @@ namespace project1
         }
         public RasterImage ChangeCommand()
         {
+            
             // Load an image 
             codecs.ThrowExceptionsOnInvalidImages = true;
             RasterImage image = codecs.Load(Path.Combine(folderPath));
@@ -117,7 +120,7 @@ namespace project1
             command2.Threshold = value_trackBar6;  //rate 0 - 255
             command2.ColorType = UnsharpMaskCommandColorType.Rgb;
             command2.Run(image);
-
+            
             // Prepare the command 
             //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
             if (selectCombobox == 0){}
@@ -224,59 +227,81 @@ namespace project1
 
         private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
-            value_trackBar1 = trackBar1.Value;
-            label3.Text = value_trackBar1.ToString();
             Display();
         }
 
         private void trackBar2_MouseCaptureChanged(object sender, EventArgs e)
         {
-            value_trackBar2 = trackBar2.Value;
-            label5.Text = value_trackBar2.ToString();
             Display();
         }
 
         private void trackBar3_MouseCaptureChanged(object sender, EventArgs e)
         {
-            value_trackBar3 = trackBar3.Value;
-            label8.Text = value_trackBar3.ToString();
             Display();
         }
 
         private void trackBar4_MouseCaptureChanged(object sender, EventArgs e)
         {
-            value_trackBar4 = trackBar4.Value;
-            l_amount.Text = value_trackBar4.ToString();
             Display();
         }
 
         private void trackBar5_MouseCaptureChanged(object sender, EventArgs e)
         {
-            value_trackBar5 = trackBar5.Value;
-            l_radius.Text = value_trackBar5.ToString();
+            
             Display();
         }
 
         private void trackBar6_MouseCaptureChanged(object sender, EventArgs e)
         {
-            value_trackBar6 = trackBar6.Value;
-            l_threshold.Text = value_trackBar6.ToString();
             Display();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (folderPath == null) { }
+            else
+            {
+                selectCombobox = comboBox1.SelectedIndex;
+                Display();
+                //MessageBox.Show(folderPath);
+            }
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-          /*  if (trackBar1.Capture)
-            {
-                //  MessageBox.Show("000");
-               
-            }
-            else {
-                MessageBox.Show("111");
-            }*/
-            
+            value_trackBar1 = trackBar1.Value;
+            l_brightness.Text = value_trackBar1.ToString();
         }
 
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar2 = trackBar2.Value;
+            l_contrast.Text = value_trackBar2.ToString();
+        }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar3 = trackBar3.Value;
+            l_intensity.Text = value_trackBar3.ToString();
+        }
+
+        private void trackBar4_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar4 = trackBar4.Value;
+            l_amount.Text = value_trackBar4.ToString();
+        }
+
+        private void trackBar5_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar5 = trackBar5.Value;
+            l_radius.Text = value_trackBar5.ToString();
+        }
+
+        private void trackBar6_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar6 = trackBar6.Value;
+            l_threshold.Text = value_trackBar6.ToString();
+        }
 
         /*TEST*/
         static class LEAD_VARS
@@ -312,37 +337,95 @@ namespace project1
             codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "Result.jpg"), RasterImageFormat.Jpeg, 24);
 
         }
-        
-        
-        /* test DilationOmniDirectional */
-      /*  public void BinaryFilterCommandExample()
+
+        private void Reset_Click(object sender, EventArgs e)
         {
-            // Load an image 
-            RasterCodecs codecs = new RasterCodecs();
-            codecs.ThrowExceptionsOnInvalidImages = true;
+            value_trackBar1  = 0;
+            trackBar1.Value = value_trackBar1;
+            l_brightness.Text = value_trackBar1.ToString();
 
-            RasterImage image = codecs.Load(Path.Combine(LEAD_VARS.ImagesDir, "download.png"));
-            
-            // Prepare the command 
-            //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
-            BinaryFilterCommand command = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
-            //Dilate black objects. 
-            command.Run(image);
-            codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "DilationDiagonal.jpg"), RasterImageFormat.Jpeg, 24);
+            value_trackBar2 = 0;
+            trackBar2.Value = value_trackBar2;
+            l_contrast.Text = value_trackBar2.ToString();
 
+            value_trackBar3 = 0;
+            trackBar3.Value = value_trackBar3;
+            l_intensity.Text = value_trackBar3.ToString();
 
-           
-        }*/
+            value_trackBar4 = 1;
+            trackBar4.Value = value_trackBar4;
+            l_amount.Text = value_trackBar4.ToString();
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedIndex > 0) {
-               // 
-                
-            }
-            selectCombobox = comboBox1.SelectedIndex;
+            value_trackBar5 = 1;
+            trackBar5.Value = value_trackBar5;
+            l_radius.Text = value_trackBar5.ToString();
+
+            value_trackBar6 = 1;
+            trackBar6.Value = value_trackBar6;
+            l_threshold.Text = value_trackBar6.ToString();
+
+            selectCombobox = 0;
+            comboBox1.SelectedIndex = selectCombobox;
             Display();
-            // MessageBox.Show(comboBox1.SelectedItem.ToString());
         }
+
+        private void SaveProfile_Click(object sender, EventArgs e)
+        {
+            /*if (value_profilename.Text == "") { 
+                MessageBox.Show("กรุณาตั้งชื่อ Profile!!"); 
+            } else {
+                StreamWriter streamwri = new StreamWriter(System.Windows.Forms.Application.StartupPath + "test.txt");
+                streamwri.WriteLine(l_profilename.Name + "," + value_profilename.Text);
+                streamwri.WriteLine(l_brightness.Name + "," + value_trackBar1.ToString());
+                streamwri.WriteLine(l_contrast.Name + "," + value_trackBar2.ToString());
+                streamwri.WriteLine(l_intensity.Name + "," + value_trackBar3.ToString());
+                streamwri.WriteLine(l_amount.Name + "," + value_trackBar4.ToString());
+                streamwri.WriteLine(l_radius.Name + "," + value_trackBar5.ToString());
+                streamwri.WriteLine(l_threshold.Name + "," + value_trackBar6.ToString());
+
+                streamwri.WriteLine(l_binaryfilter.Name + "," + selectCombobox.ToString());
+
+                streamwri.Close();
+                l_saveprofile.Text = "Save Success...";
+            }*/
+
+            String rfile;
+            List<String> list = new List<String>();
+            
+            StreamReader streamread = new StreamReader(System.Windows.Forms.Application.StartupPath + "test.txt");
+            while ((rfile = streamread.ReadLine()) != null) { 
+                textBox1.Text += rfile+"\r\n";
+                list.Add(rfile);
+            }
+            String str1 = "a,b,c";
+            string[] str2 = str1.Split(",".ToCharArray());
+            foreach (String s in str2)
+            {
+               // textBox2.Text += s+"\r\n";
+            
+            textBox2.Text += s.ToString()+"\r\n";
+            }
+
+        }
+
+        /* test DilationOmniDirectional */
+        /*  public void BinaryFilterCommandExample()
+          {
+              // Load an image 
+              RasterCodecs codecs = new RasterCodecs();
+              codecs.ThrowExceptionsOnInvalidImages = true;
+
+              RasterImage image = codecs.Load(Path.Combine(LEAD_VARS.ImagesDir, "download.png"));
+
+              // Prepare the command 
+              //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
+              BinaryFilterCommand command = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
+              //Dilate black objects. 
+              command.Run(image);
+              codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "DilationDiagonal.jpg"), RasterImageFormat.Jpeg, 24);
+
+
+
+          }*/
     }
 }
