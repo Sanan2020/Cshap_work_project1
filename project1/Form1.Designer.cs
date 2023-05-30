@@ -64,7 +64,7 @@
             this.value_profilename = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.AutoColorLevel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -433,20 +433,22 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Use Profile";
             // 
-            // textBox1
+            // AutoColorLevel
             // 
-            this.textBox1.Location = new System.Drawing.Point(1729, 167);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 119);
-            this.textBox1.TabIndex = 27;
+            this.AutoColorLevel.Location = new System.Drawing.Point(1743, 167);
+            this.AutoColorLevel.Name = "AutoColorLevel";
+            this.AutoColorLevel.Size = new System.Drawing.Size(111, 34);
+            this.AutoColorLevel.TabIndex = 28;
+            this.AutoColorLevel.Text = "AutoColor";
+            this.AutoColorLevel.UseVisualStyleBackColor = true;
+            this.AutoColorLevel.Click += new System.EventHandler(this.AutoColorLevel_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.AutoColorLevel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.value_profilename);
@@ -523,7 +525,7 @@
         private System.Windows.Forms.TextBox value_profilename;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button AutoColorLevel;
     }
 }
 

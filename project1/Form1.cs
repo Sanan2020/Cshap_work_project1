@@ -37,6 +37,7 @@ namespace project1
         public int value_trackBar6 = 1;
         public int selectCombobox;
         public String selectCombobox2;
+        public int state=0;
         
         public Form1()
         {
@@ -90,6 +91,7 @@ namespace project1
 
             // BinaryFilterConstructorExample_S1();/*test ErosionOmniDirection */
             // BinaryFilterCommandExample(); /* test DilationOmniDirectional */
+           
         }
 
         public void fcUnsharpMask() { 
@@ -111,19 +113,28 @@ namespace project1
             codecs.ThrowExceptionsOnInvalidImages = true;
             RasterImage image = codecs.Load(Path.Combine(folderPath));
             // Prepare the command 
-            ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-            //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = value_trackBar1;
-            command.Contrast = value_trackBar2;
-            command.Intensity = value_trackBar3;
-            command.Run(image);
 
-            UnsharpMaskCommand command2 = new UnsharpMaskCommand();
-            command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
-            command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
-            command2.Threshold = value_trackBar6;  //rate 0 - 255
-            command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-            command2.Run(image);
+           // if (state==1)
+           // {
+                ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+                //Increase the brightness by 25 percent  of the possible range. 
+                command.Brightness = 484;
+                command.Contrast = 394;
+                command.Intensity = 118;
+                command.Run(image);
+               // state = 0;
+          //  }
+           
+
+            //if (state==2) {
+                UnsharpMaskCommand command2 = new UnsharpMaskCommand();
+                command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
+                command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
+                command2.Threshold = value_trackBar6;  //rate 0 - 255
+                command2.ColorType = UnsharpMaskCommandColorType.Rgb;
+                command2.Run(image);
+               // state = 0;
+           // }
             
             // Prepare the command 
             //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
@@ -135,13 +146,12 @@ namespace project1
                 //Dilate black objects. 
                 command3.Run(image);
             }
-            
-            /*SharpenCommand command3 = new SharpenCommand();
-            //Increase the sharpness by 25 percent  of the possible range. 
-            command3.Sharpness = 950;*/
 
-            // command3.Run(image);
-            /*   GrayScaleExtendedCommand command3 = new GrayScaleExtendedCommand();
+            /* SharpenCommand command4 = new SharpenCommand();
+             //Increase the sharpness by 25 percent  of the possible range. 
+             command4.Sharpness = 1200;*/
+
+            /* GrayScaleExtendedCommand command3 = new GrayScaleExtendedCommand();
                command3.RedFactor = 500;
                command3.GreenFactor = 250;
                command3.BlueFactor = 250;
@@ -152,10 +162,15 @@ namespace project1
               //Apply the Minimum filter. 
               command3.Dimension = 3;
               command3.Run(image);*/
-
-            /* AutoColorLevelCommand command3 = new AutoColorLevelCommand();
-             // Apply "Auto Leveling" to the image. 
-             command3.Run(image);*/
+            if (state==1)
+            {
+                AutoColorLevelCommand command4 = new AutoColorLevelCommand();
+                // Apply "Auto Leveling" to the image. 
+                command4.Run(image);
+               
+            }
+           
+            
 
             /* int[] LowerAverage = new int[3];
              int[] Average = new int[3];
@@ -372,6 +387,7 @@ namespace project1
 
             value_profilename.Text = "";
             comboBox2.SelectedIndex = 0;
+            state = 0;
             Display();
         }
 
@@ -415,6 +431,7 @@ namespace project1
                     streamwri2.WriteLine(value_trackBar5.ToString());
                     streamwri2.WriteLine(value_trackBar6.ToString());
                     streamwri2.WriteLine(selectCombobox.ToString());
+                    //streamwri2.WriteLine(state.ToString());
 
                     streamwri2.Close();
                     l_saveprofile.Text = "Save Success...";
@@ -491,11 +508,20 @@ namespace project1
 
                     selectCombobox = int.Parse(list[6]);
                     comboBox1.SelectedIndex = (selectCombobox + 1);
+
+                    //state = int.Parse(list[7]);
                     Display();
                     l_saveprofile.Text = "usepf Success...";
                 }
                 list.Clear();
             }
+        }
+
+        private void AutoColorLevel_Click(object sender, EventArgs e)
+        {
+            
+            state = 1;
+            Display();
         }
 
         /* test DilationOmniDirectional */
