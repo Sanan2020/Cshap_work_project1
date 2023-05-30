@@ -38,7 +38,10 @@ namespace project1
         public int selectCombobox;
         public String selectCombobox2;
         public int state=0;
-        
+        //public RasterImage Image { get; private set; }
+
+        //public RasterImage image;
+        Person person = new Person();
         public Form1()
         {
             InitializeComponent();
@@ -101,19 +104,33 @@ namespace project1
         {
 
         }
+        class Person { 
+            private RasterImage img;
+            public RasterImage IMG
+            {
+                get { return img; }
+                set { img = value; }
+            }
+        }
+
         public void Display() {
             using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
             {
                 picOutput.Image = new Bitmap(destImage1);
+                //MessageBox.Show(destImage1.ToString());
             }
+            
         }
         public RasterImage ChangeCommand()
         {
+           
             // Load an image 
             codecs.ThrowExceptionsOnInvalidImages = true;
+           // person.IMG = codecs.Load(Path.Combine(folderPath));
             RasterImage image = codecs.Load(Path.Combine(folderPath));
+            //MessageBox.Show(image.ToString());
             // Prepare the command 
-           
+
             // if (state==1)
             // {
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
