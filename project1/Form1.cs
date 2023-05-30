@@ -369,7 +369,6 @@ namespace project1
             // Dilate black objects. 
             command.Run(image);
             codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "Result.jpg"), RasterImageFormat.Jpeg, 24);
-
         }
 
         private void Reset_Click(object sender, EventArgs e)
