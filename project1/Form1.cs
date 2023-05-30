@@ -24,8 +24,7 @@ using Leadtools.ImageProcessing.Core;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace project1
-{
-    
+{ 
     public partial class Form1 : Form
     {
         public String folderPath;
@@ -88,17 +87,9 @@ namespace project1
                
             }
             comboBox2.SelectedItem = "Default";
-            /*value_trackBar1 = ;
-            trackBar1.Value = value_trackBar1;
-            l_brightness.Text = value_trackBar1.ToString();*/
 
             // BinaryFilterConstructorExample_S1();/*test ErosionOmniDirection */
             // BinaryFilterCommandExample(); /* test DilationOmniDirectional */
-            //comboBox1.Select();
-
-            /*string a  = comboBox1.SelectedIndex.ToString();
-            MessageBox.Show(a);
-            comboBox1.Text = "Ori";*/
         }
 
         public void fcUnsharpMask() { 
@@ -414,7 +405,6 @@ namespace project1
                     streamwri1.Close();
                 }
                 //l_saveprofile.Text = "Save Success...";
-                // comboBox2.Items.Add("sa");
                
                 using (StreamWriter streamwri2 = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\"+pfname+".txt")) {
                     // StreamWriter streamwri2 = new StreamWriter(System.Windows.Forms.Application.StartupPath + @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\C.txt");
@@ -428,19 +418,13 @@ namespace project1
 
                     streamwri2.Close();
                     l_saveprofile.Text = "Save Success...";
-                }
-                  
+                }  
             }
-
-           
-
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             selectCombobox2 = comboBox2.SelectedItem.ToString();
-
             if (selectCombobox2 == "Default" && folderPath != null)
             {
                 value_trackBar1 = 0;
@@ -478,7 +462,7 @@ namespace project1
                     StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + selectCombobox2 + ".txt");
                     while ((rfile = streamread.ReadLine()) != null)
                     {
-                        textBox1.Text += rfile + "\r\n";
+                       // textBox1.Text += rfile + "\r\n";
                         list.Add(rfile);
                     }
                     value_trackBar1 = int.Parse(list[0]);
@@ -507,9 +491,10 @@ namespace project1
 
                     selectCombobox = int.Parse(list[6]);
                     comboBox1.SelectedIndex = (selectCombobox + 1);
+                    Display();
                     l_saveprofile.Text = "usepf Success...";
                 }
-                
+                list.Clear();
             }
         }
 
