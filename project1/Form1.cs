@@ -113,14 +113,14 @@ namespace project1
             codecs.ThrowExceptionsOnInvalidImages = true;
             RasterImage image = codecs.Load(Path.Combine(folderPath));
             // Prepare the command 
-
-           // if (state==1)
-           // {
-                ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+           
+            // if (state==1)
+            // {
+            ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
-                command.Brightness = 484;
-                command.Contrast = 394;
-                command.Intensity = 118;
+                command.Brightness = value_trackBar1;   //484
+                command.Contrast = value_trackBar2;     //394
+                command.Intensity = value_trackBar3;    //118
                 command.Run(image);
                // state = 0;
           //  }
@@ -147,6 +147,13 @@ namespace project1
                 command3.Run(image);
             }
 
+            if (state == 1)
+            {
+                AutoColorLevelCommand command4 = new AutoColorLevelCommand();
+                // Apply "Auto Leveling" to the image. 
+                command4.Run(image);
+
+            }
             /* SharpenCommand command4 = new SharpenCommand();
              //Increase the sharpness by 25 percent  of the possible range. 
              command4.Sharpness = 1200;*/
@@ -162,15 +169,7 @@ namespace project1
               //Apply the Minimum filter. 
               command3.Dimension = 3;
               command3.Run(image);*/
-            if (state==1)
-            {
-                AutoColorLevelCommand command4 = new AutoColorLevelCommand();
-                // Apply "Auto Leveling" to the image. 
-                command4.Run(image);
-               
-            }
-           
-            
+
 
             /* int[] LowerAverage = new int[3];
              int[] Average = new int[3];
@@ -431,7 +430,7 @@ namespace project1
                     streamwri2.WriteLine(value_trackBar5.ToString());
                     streamwri2.WriteLine(value_trackBar6.ToString());
                     streamwri2.WriteLine(selectCombobox.ToString());
-                    //streamwri2.WriteLine(state.ToString());
+                    streamwri2.WriteLine(state.ToString());
 
                     streamwri2.Close();
                     l_saveprofile.Text = "Save Success...";
@@ -509,7 +508,7 @@ namespace project1
                     selectCombobox = int.Parse(list[6]);
                     comboBox1.SelectedIndex = (selectCombobox + 1);
 
-                    //state = int.Parse(list[7]);
+                    state = int.Parse(list[7]);
                     Display();
                     l_saveprofile.Text = "usepf Success...";
                 }
@@ -519,7 +518,6 @@ namespace project1
 
         private void AutoColorLevel_Click(object sender, EventArgs e)
         {
-            
             state = 1;
             Display();
         }
