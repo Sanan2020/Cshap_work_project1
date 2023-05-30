@@ -37,6 +37,7 @@ namespace project1
         public int value_trackBar5 = 1;
         public int value_trackBar6 = 1;
         public int selectCombobox;
+        public String selectCombobox2;
         
         public Form1()
         {
@@ -65,9 +66,8 @@ namespace project1
             this.picInput.BorderStyle = BorderStyle.FixedSingle;
             this.picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
             this.picOutput.BorderStyle = BorderStyle.FixedSingle;
-           
 
-            comboBox1.Items.Add("Original");
+            comboBox1.Items.Add("Default");
             comboBox1.Items.Add("ErosionOmniDirectional");
             comboBox1.Items.Add("ErosionHorizontal");
             comboBox1.Items.Add("ErosionVertical");
@@ -77,6 +77,20 @@ namespace project1
             comboBox1.Items.Add("DilationVertical");
             comboBox1.Items.Add("DilationDiagonal");
             comboBox1.SelectedIndex = 0;
+
+            comboBox2.Items.Add("Default");
+            String rfile;
+            StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+            while ((rfile = streamread.ReadLine()) != null)
+            {
+               // textBox1.Text += rfile + "\r\n";
+                comboBox2.Items.Add(rfile);
+               
+            }
+            comboBox2.SelectedItem = "Default";
+            /*value_trackBar1 = ;
+            trackBar1.Value = value_trackBar1;
+            l_brightness.Text = value_trackBar1.ToString();*/
 
             // BinaryFilterConstructorExample_S1();/*test ErosionOmniDirection */
             // BinaryFilterCommandExample(); /* test DilationOmniDirectional */
@@ -102,7 +116,6 @@ namespace project1
         }
         public RasterImage ChangeCommand()
         {
-            
             // Load an image 
             codecs.ThrowExceptionsOnInvalidImages = true;
             RasterImage image = codecs.Load(Path.Combine(folderPath));
@@ -247,7 +260,6 @@ namespace project1
 
         private void trackBar5_MouseCaptureChanged(object sender, EventArgs e)
         {
-            
             Display();
         }
 
@@ -366,6 +378,9 @@ namespace project1
 
             selectCombobox = 0;
             comboBox1.SelectedIndex = selectCombobox;
+
+            value_profilename.Text = "";
+            comboBox2.SelectedIndex = 0;
             Display();
         }
 
@@ -375,7 +390,7 @@ namespace project1
                 MessageBox.Show("กรุณาตั้งชื่อ Profile!!"); 
             } else {
                 StreamWriter streamwri = new StreamWriter(System.Windows.Forms.Application.StartupPath + "test.txt");
-                streamwri.WriteLine(l_profilename.Name + "," + value_profilename.Text);
+                //streamwri.WriteLine(l_profilename.Name + "," + value_profilename.Text);
                 streamwri.WriteLine(l_brightness.Name + "," + value_trackBar1.ToString());
                 streamwri.WriteLine(l_contrast.Name + "," + value_trackBar2.ToString());
                 streamwri.WriteLine(l_intensity.Name + "," + value_trackBar3.ToString());
@@ -388,24 +403,114 @@ namespace project1
                 streamwri.Close();
                 l_saveprofile.Text = "Save Success...";
             }*/
-
-            String rfile;
-            List<String> list = new List<String>();
             
-            StreamReader streamread = new StreamReader(System.Windows.Forms.Application.StartupPath + "test.txt");
-            while ((rfile = streamread.ReadLine()) != null) { 
-                textBox1.Text += rfile+"\r\n";
-                list.Add(rfile);
+            String listname = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt";
+            String pfname = value_profilename.Text;
+            if (pfname == "") { 
+                MessageBox.Show("กรุณาตั้งชื่อ Profile!!"); 
+            }else {
+                using (StreamWriter streamwri1 = File.AppendText(listname)) {
+                    streamwri1.WriteLine(pfname);
+                    streamwri1.Close();
+                }
+                //l_saveprofile.Text = "Save Success...";
+                // comboBox2.Items.Add("sa");
+               
+                using (StreamWriter streamwri2 = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\"+pfname+".txt")) {
+                    // StreamWriter streamwri2 = new StreamWriter(System.Windows.Forms.Application.StartupPath + @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\C.txt");
+                    streamwri2.WriteLine(value_trackBar1.ToString());
+                    streamwri2.WriteLine(value_trackBar2.ToString());
+                    streamwri2.WriteLine(value_trackBar3.ToString());
+                    streamwri2.WriteLine(value_trackBar4.ToString());
+                    streamwri2.WriteLine(value_trackBar5.ToString());
+                    streamwri2.WriteLine(value_trackBar6.ToString());
+                    streamwri2.WriteLine(selectCombobox.ToString());
+
+                    streamwri2.Close();
+                    l_saveprofile.Text = "Save Success...";
+                }
+                  
             }
-            String str1 = "a,b,c";
-            string[] str2 = str1.Split(",".ToCharArray());
-            foreach (String s in str2)
+
+           
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            selectCombobox2 = comboBox2.SelectedItem.ToString();
+
+            if (selectCombobox2 == "Default" && folderPath != null)
             {
-               // textBox2.Text += s+"\r\n";
-            
-            textBox2.Text += s.ToString()+"\r\n";
-            }
+                value_trackBar1 = 0;
+                trackBar1.Value = value_trackBar1;
+                l_brightness.Text = value_trackBar1.ToString();
 
+                value_trackBar2 = 0;
+                trackBar2.Value = value_trackBar2;
+                l_contrast.Text = value_trackBar2.ToString();
+
+                value_trackBar3 = 0;
+                trackBar3.Value = value_trackBar3;
+                l_intensity.Text = value_trackBar3.ToString();
+
+                value_trackBar4 = 1;
+                trackBar4.Value = value_trackBar4;
+                l_amount.Text = value_trackBar4.ToString();
+
+                value_trackBar5 = 1;
+                trackBar5.Value = value_trackBar5;
+                l_radius.Text = value_trackBar5.ToString();
+
+                value_trackBar6 = 1;
+                trackBar6.Value = value_trackBar6;
+                l_threshold.Text = value_trackBar6.ToString();
+
+                selectCombobox = 0;
+                comboBox1.SelectedIndex = selectCombobox;
+                Display();
+            }
+            else {
+                String rfile;
+                List<String> list = new List<String>();
+                if (selectCombobox2 == "Default") { } else {
+                    StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + selectCombobox2 + ".txt");
+                    while ((rfile = streamread.ReadLine()) != null)
+                    {
+                        textBox1.Text += rfile + "\r\n";
+                        list.Add(rfile);
+                    }
+                    value_trackBar1 = int.Parse(list[0]);
+                    trackBar1.Value = value_trackBar1;
+                    l_brightness.Text = value_trackBar1.ToString();
+
+                    value_trackBar2 = int.Parse(list[1]);
+                    trackBar2.Value = value_trackBar2;
+                    l_contrast.Text = value_trackBar2.ToString();
+
+                    value_trackBar3 = int.Parse(list[2]);
+                    trackBar3.Value = value_trackBar3;
+                    l_intensity.Text = value_trackBar3.ToString();
+
+                    value_trackBar4 = int.Parse(list[3]);
+                    trackBar4.Value = value_trackBar4;
+                    l_amount.Text = value_trackBar4.ToString();
+
+                    value_trackBar5 = int.Parse(list[4]);
+                    trackBar5.Value = value_trackBar5;
+                    l_radius.Text = value_trackBar5.ToString();
+
+                    value_trackBar6 = int.Parse(list[5]);
+                    trackBar6.Value = value_trackBar6;
+                    l_threshold.Text = value_trackBar6.ToString();
+
+                    selectCombobox = int.Parse(list[6]);
+                    comboBox1.SelectedIndex = (selectCombobox + 1);
+                    l_saveprofile.Text = "usepf Success...";
+                }
+                
+            }
         }
 
         /* test DilationOmniDirectional */
