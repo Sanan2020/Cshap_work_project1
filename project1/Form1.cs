@@ -22,6 +22,7 @@ using Image = System.Drawing.Image;
 using Leadtools.ImageProcessing.Effects;
 using Leadtools.ImageProcessing.Core;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace project1
 { 
@@ -37,11 +38,23 @@ namespace project1
         public int value_trackBar6 = 1;
         public int selectCombobox;
         public String selectCombobox2;
-        public int state=0;
-        //public RasterImage Image { get; private set; }
+        public bool checkbox = false;
+        /*public RasterImage Image {
+            get {; } 
+            private set; 
+        }*/
+        public class Person
+        {
+            private RasterImage name;  // field
+            public RasterImage Name   // property
+            {
+                get { return name; }
+                set { name = value; }
+            }
+        }
 
         //public RasterImage image;
-        Person person = new Person();
+         Person myObj = new Person();
         public Form1()
         {
             InitializeComponent();
@@ -50,12 +63,17 @@ namespace project1
         private void Browse_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofile = new OpenFileDialog();
-            ofile.Filter = "Image File (*.jpg, *.png)|*.jpg;*.png";
+            ofile.Filter = "Image File (*.pdf,*.jpg, *.png)|*.pdf;*.jpg;*.png";
             if (DialogResult.OK == ofile.ShowDialog())
             {
                 folderPath = ofile.FileName;
                 //MessageBox.Show(folderPath);
-                this.picInput.Image = new Bitmap(ofile.FileName);
+                //this.picInput.Image = new Bitmap(ofile.FileName);
+                using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
+                {
+                    picInput.Image = new Bitmap(destImage1);
+                    //MessageBox.Show(destImage1.ToString());
+                }
                 Display();
             }
         }
@@ -97,29 +115,34 @@ namespace project1
            
         }
 
-        public void fcUnsharpMask() { 
-            
-        }
-        public void fcConBrightsInten()
+       
+       /* public void fcConBrightsInten()
         {
-
+            ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+            //Increase the brightness by 25 percent  of the possible range. 
+            command.Brightness = 484;   //484
+            command.Contrast = 394;     //394
+            command.Intensity = 118;    //118
+            command.Run(myObj.Name);
         }
-        class Person { 
-            private RasterImage img;
-            public RasterImage IMG
-            {
-                get { return img; }
-                set { img = value; }
-            }
-        }
+        public void fcUnsharpMask()
+        {
+            UnsharpMaskCommand command2 = new UnsharpMaskCommand();
+            command2.Amount = 1500;     //rate 0 - เกิน 1000
+            command2.Radius = 133;     //rate 1 - เกิน 1000
+            command2.Threshold = 33;  //rate 0 - 255
+            command2.ColorType = UnsharpMaskCommandColorType.Rgb;
+            command2.Run(myObj.Name);
+        }*/
 
         public void Display() {
+            
             using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
             {
                 picOutput.Image = new Bitmap(destImage1);
                 //MessageBox.Show(destImage1.ToString());
             }
-            
+            //MessageBox.Show(.ToString());
         }
         public RasterImage ChangeCommand()
         {
@@ -128,7 +151,8 @@ namespace project1
             codecs.ThrowExceptionsOnInvalidImages = true;
            // person.IMG = codecs.Load(Path.Combine(folderPath));
             RasterImage image = codecs.Load(Path.Combine(folderPath));
-            //MessageBox.Show(image.ToString());
+           // myObj.Name = codecs.Load(Path.Combine(folderPath));
+           // MessageBox.Show(myObj.Name.ToString());
             // Prepare the command 
 
             // if (state==1)
@@ -164,12 +188,13 @@ namespace project1
                 command3.Run(image);
             }
 
-            if (state == 1)
+            if (checkbox == true)
             {
                 AutoColorLevelCommand command4 = new AutoColorLevelCommand();
                 // Apply "Auto Leveling" to the image. 
                 command4.Run(image);
 
+                //AutoColorL = false;
             }
             /* SharpenCommand command4 = new SharpenCommand();
              //Increase the sharpness by 25 percent  of the possible range. 
@@ -402,7 +427,7 @@ namespace project1
 
             value_profilename.Text = "";
             comboBox2.SelectedIndex = 0;
-            state = 0;
+            checkbox = false;
             Display();
         }
 
@@ -446,7 +471,7 @@ namespace project1
                     streamwri2.WriteLine(value_trackBar5.ToString());
                     streamwri2.WriteLine(value_trackBar6.ToString());
                     streamwri2.WriteLine(selectCombobox.ToString());
-                    streamwri2.WriteLine(state.ToString());
+                    streamwri2.WriteLine(checkbox.ToString());
 
                     streamwri2.Close();
                     l_saveprofile.Text = "Save Success...";
@@ -524,7 +549,7 @@ namespace project1
                     selectCombobox = int.Parse(list[6]);
                     comboBox1.SelectedIndex = (selectCombobox + 1);
 
-                    state = int.Parse(list[7]);
+                    checkbox = bool.Parse(list[7]);
                     Display();
                     l_saveprofile.Text = "usepf Success...";
                 }
@@ -532,10 +557,18 @@ namespace project1
             }
         }
 
-        private void AutoColorLevel_Click(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            state = 1;
-            Display();
+            //MessageBox.Show(checkBox1.Checked.ToString());
+            if (checkBox1.Checked == true)
+            {
+                checkbox = true;
+                Display();
+            }
+            else { 
+                checkbox = false;
+                Display();
+            }
         }
 
         /* test DilationOmniDirectional */
@@ -553,9 +586,6 @@ namespace project1
               //Dilate black objects. 
               command.Run(image);
               codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "DilationDiagonal.jpg"), RasterImageFormat.Jpeg, 24);
-
-
-
           }*/
     }
 }

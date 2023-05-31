@@ -64,7 +64,8 @@
             this.value_profilename = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.AutoColorLevel = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -401,7 +402,7 @@
             // l_profilename
             // 
             this.l_profilename.AutoSize = true;
-            this.l_profilename.Location = new System.Drawing.Point(1628, 70);
+            this.l_profilename.Location = new System.Drawing.Point(1628, 109);
             this.l_profilename.Name = "l_profilename";
             this.l_profilename.Size = new System.Drawing.Size(70, 13);
             this.l_profilename.TabIndex = 23;
@@ -409,7 +410,7 @@
             // 
             // value_profilename
             // 
-            this.value_profilename.Location = new System.Drawing.Point(1721, 67);
+            this.value_profilename.Location = new System.Drawing.Point(1721, 106);
             this.value_profilename.Name = "value_profilename";
             this.value_profilename.Size = new System.Drawing.Size(133, 20);
             this.value_profilename.TabIndex = 24;
@@ -418,7 +419,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1721, 115);
+            this.comboBox2.Location = new System.Drawing.Point(1721, 132);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(133, 21);
             this.comboBox2.TabIndex = 25;
@@ -427,28 +428,39 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1628, 118);
+            this.label3.Location = new System.Drawing.Point(1628, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 26;
             this.label3.Text = "Use Profile";
             // 
-            // AutoColorLevel
+            // checkBox1
             // 
-            this.AutoColorLevel.Location = new System.Drawing.Point(1743, 167);
-            this.AutoColorLevel.Name = "AutoColorLevel";
-            this.AutoColorLevel.Size = new System.Drawing.Size(111, 34);
-            this.AutoColorLevel.TabIndex = 28;
-            this.AutoColorLevel.Text = "AutoColor";
-            this.AutoColorLevel.UseVisualStyleBackColor = true;
-            this.AutoColorLevel.Click += new System.EventHandler(this.AutoColorLevel_Click);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(1721, 73);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 29;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1628, 74);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "AutoColorLevel";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
-            this.Controls.Add(this.AutoColorLevel);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.value_profilename);
@@ -525,7 +537,8 @@
         private System.Windows.Forms.TextBox value_profilename;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button AutoColorLevel;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label5;
     }
 }
 
