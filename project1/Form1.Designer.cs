@@ -66,6 +66,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
+            this.trackBar7 = new System.Windows.Forms.TrackBar();
+            this.l_bluefactor = new System.Windows.Forms.Label();
+            this.l_redfactor = new System.Windows.Forms.Label();
+            this.trackBar8 = new System.Windows.Forms.TrackBar();
+            this.label15 = new System.Windows.Forms.Label();
+            this.trackBar9 = new System.Windows.Forms.TrackBar();
+            this.l_greenfactor = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -76,6 +87,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).BeginInit();
             this.SuspendLayout();
             // 
             // Browse
@@ -92,7 +107,7 @@
             // 
             this.picInput.Location = new System.Drawing.Point(860, 32);
             this.picInput.Name = "picInput";
-            this.picInput.Size = new System.Drawing.Size(450, 546);
+            this.picInput.Size = new System.Drawing.Size(412, 501);
             this.picInput.TabIndex = 1;
             this.picInput.TabStop = false;
             // 
@@ -232,7 +247,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.trackBar2);
             this.groupBox1.Controls.Add(this.l_contrast);
-            this.groupBox1.Location = new System.Drawing.Point(1316, 32);
+            this.groupBox1.Location = new System.Drawing.Point(1278, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(305, 202);
             this.groupBox1.TabIndex = 16;
@@ -250,7 +265,7 @@
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.trackBar6);
             this.groupBox2.Controls.Add(this.l_radius);
-            this.groupBox2.Location = new System.Drawing.Point(1316, 240);
+            this.groupBox2.Location = new System.Drawing.Point(1278, 240);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(305, 211);
             this.groupBox2.TabIndex = 17;
@@ -355,7 +370,7 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1721, 37);
+            this.comboBox1.Location = new System.Drawing.Point(1699, 283);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(133, 21);
             this.comboBox1.TabIndex = 18;
@@ -364,7 +379,7 @@
             // l_binaryfilter
             // 
             this.l_binaryfilter.AutoSize = true;
-            this.l_binaryfilter.Location = new System.Drawing.Point(1628, 40);
+            this.l_binaryfilter.Location = new System.Drawing.Point(1606, 286);
             this.l_binaryfilter.Name = "l_binaryfilter";
             this.l_binaryfilter.Size = new System.Drawing.Size(87, 13);
             this.l_binaryfilter.TabIndex = 19;
@@ -402,7 +417,7 @@
             // l_profilename
             // 
             this.l_profilename.AutoSize = true;
-            this.l_profilename.Location = new System.Drawing.Point(1628, 109);
+            this.l_profilename.Location = new System.Drawing.Point(1606, 355);
             this.l_profilename.Name = "l_profilename";
             this.l_profilename.Size = new System.Drawing.Size(70, 13);
             this.l_profilename.TabIndex = 23;
@@ -410,7 +425,7 @@
             // 
             // value_profilename
             // 
-            this.value_profilename.Location = new System.Drawing.Point(1721, 106);
+            this.value_profilename.Location = new System.Drawing.Point(1699, 352);
             this.value_profilename.Name = "value_profilename";
             this.value_profilename.Size = new System.Drawing.Size(133, 20);
             this.value_profilename.TabIndex = 24;
@@ -419,7 +434,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1721, 132);
+            this.comboBox2.Location = new System.Drawing.Point(1699, 378);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(133, 21);
             this.comboBox2.TabIndex = 25;
@@ -428,7 +443,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1628, 135);
+            this.label3.Location = new System.Drawing.Point(1606, 381);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 26;
@@ -437,7 +452,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1721, 73);
+            this.checkBox1.Location = new System.Drawing.Point(1699, 319);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(80, 17);
             this.checkBox1.TabIndex = 29;
@@ -448,17 +463,141 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1628, 74);
+            this.label5.Location = new System.Drawing.Point(1606, 320);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 30;
             this.label5.Text = "AutoColorLevel";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(1589, 243);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(97, 17);
+            this.checkBox2.TabIndex = 31;
+            this.checkBox2.Text = "Use GrayScale";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label);
+            this.groupBox3.Controls.Add(this.trackBar7);
+            this.groupBox3.Controls.Add(this.l_bluefactor);
+            this.groupBox3.Controls.Add(this.l_redfactor);
+            this.groupBox3.Controls.Add(this.trackBar8);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.trackBar9);
+            this.groupBox3.Controls.Add(this.l_greenfactor);
+            this.groupBox3.Location = new System.Drawing.Point(1589, 32);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(305, 211);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "GrayScale";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(153, 79);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "GreenFactor";
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(159, 144);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(58, 13);
+            this.label.TabIndex = 24;
+            this.label.Text = "BlueFactor";
+            // 
+            // trackBar7
+            // 
+            this.trackBar7.Location = new System.Drawing.Point(34, 30);
+            this.trackBar7.Maximum = 500;
+            this.trackBar7.Minimum = 1;
+            this.trackBar7.Name = "trackBar7";
+            this.trackBar7.Size = new System.Drawing.Size(270, 45);
+            this.trackBar7.TabIndex = 16;
+            this.trackBar7.TickFrequency = 100;
+            this.trackBar7.Value = 1;
+            this.trackBar7.Scroll += new System.EventHandler(this.trackBar7_Scroll);
+            this.trackBar7.MouseCaptureChanged += new System.EventHandler(this.trackBar7_MouseCaptureChanged);
+            // 
+            // l_bluefactor
+            // 
+            this.l_bluefactor.AutoSize = true;
+            this.l_bluefactor.Location = new System.Drawing.Point(5, 164);
+            this.l_bluefactor.Name = "l_bluefactor";
+            this.l_bluefactor.Size = new System.Drawing.Size(13, 13);
+            this.l_bluefactor.TabIndex = 23;
+            this.l_bluefactor.Text = "0";
+            // 
+            // l_redfactor
+            // 
+            this.l_redfactor.AutoSize = true;
+            this.l_redfactor.Location = new System.Drawing.Point(6, 33);
+            this.l_redfactor.Name = "l_redfactor";
+            this.l_redfactor.Size = new System.Drawing.Size(13, 13);
+            this.l_redfactor.TabIndex = 17;
+            this.l_redfactor.Text = "0";
+            // 
+            // trackBar8
+            // 
+            this.trackBar8.Location = new System.Drawing.Point(34, 95);
+            this.trackBar8.Maximum = 250;
+            this.trackBar8.Minimum = 1;
+            this.trackBar8.Name = "trackBar8";
+            this.trackBar8.Size = new System.Drawing.Size(270, 45);
+            this.trackBar8.TabIndex = 22;
+            this.trackBar8.TickFrequency = 100;
+            this.trackBar8.Value = 1;
+            this.trackBar8.Scroll += new System.EventHandler(this.trackBar8_Scroll);
+            this.trackBar8.MouseCaptureChanged += new System.EventHandler(this.trackBar8_MouseCaptureChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(162, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 13);
+            this.label15.TabIndex = 18;
+            this.label15.Text = "RedFactor";
+            // 
+            // trackBar9
+            // 
+            this.trackBar9.Location = new System.Drawing.Point(34, 160);
+            this.trackBar9.Maximum = 250;
+            this.trackBar9.Minimum = 1;
+            this.trackBar9.Name = "trackBar9";
+            this.trackBar9.Size = new System.Drawing.Size(270, 45);
+            this.trackBar9.TabIndex = 19;
+            this.trackBar9.TickFrequency = 20;
+            this.trackBar9.Value = 1;
+            this.trackBar9.Scroll += new System.EventHandler(this.trackBar9_Scroll);
+            this.trackBar9.MouseCaptureChanged += new System.EventHandler(this.trackBar9_MouseCaptureChanged);
+            // 
+            // l_greenfactor
+            // 
+            this.l_greenfactor.AutoSize = true;
+            this.l_greenfactor.Location = new System.Drawing.Point(6, 100);
+            this.l_greenfactor.Name = "l_greenfactor";
+            this.l_greenfactor.Size = new System.Drawing.Size(13, 13);
+            this.l_greenfactor.TabIndex = 20;
+            this.l_greenfactor.Text = "0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
@@ -494,6 +633,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -539,6 +683,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.TrackBar trackBar7;
+        private System.Windows.Forms.Label l_bluefactor;
+        private System.Windows.Forms.Label l_redfactor;
+        private System.Windows.Forms.TrackBar trackBar8;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TrackBar trackBar9;
+        private System.Windows.Forms.Label l_greenfactor;
     }
 }
 

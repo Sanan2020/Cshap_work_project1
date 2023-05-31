@@ -36,9 +36,13 @@ namespace project1
         public int value_trackBar4 = 1;
         public int value_trackBar5 = 1;
         public int value_trackBar6 = 1;
+        public int value_trackBar7 = 500;
+        public int value_trackBar8 = 250;
+        public int value_trackBar9 = 250;
         public int selectCombobox;
         public String selectCombobox2;
-        public bool checkbox = false;
+        public bool chckbox = false;
+        public bool chckbox2 = false;
         /*public RasterImage Image {
             get {; } 
             private set; 
@@ -67,7 +71,6 @@ namespace project1
             if (DialogResult.OK == ofile.ShowDialog())
             {
                 folderPath = ofile.FileName;
-                //MessageBox.Show(folderPath);
                 //this.picInput.Image = new Bitmap(ofile.FileName);
                 using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
                 {
@@ -110,9 +113,17 @@ namespace project1
             }
             comboBox2.SelectedItem = "Default";
 
+
+            groupBox3.Enabled = false;
+            trackBar7.Value = value_trackBar7;
+            l_redfactor.Text = value_trackBar7.ToString();
+            trackBar8.Value = value_trackBar8;
+            l_greenfactor.Text = value_trackBar8.ToString();
+            trackBar9.Value = value_trackBar9;
+            l_bluefactor.Text = value_trackBar9.ToString();
             // BinaryFilterConstructorExample_S1();/*test ErosionOmniDirection */
             // BinaryFilterCommandExample(); /* test DilationOmniDirectional */
-           
+
         }
 
        
@@ -188,7 +199,7 @@ namespace project1
                 command3.Run(image);
             }
 
-            if (checkbox == true)
+            if (chckbox == true)
             {
                 AutoColorLevelCommand command4 = new AutoColorLevelCommand();
                 // Apply "Auto Leveling" to the image. 
@@ -200,11 +211,14 @@ namespace project1
              //Increase the sharpness by 25 percent  of the possible range. 
              command4.Sharpness = 1200;*/
 
-            /* GrayScaleExtendedCommand command3 = new GrayScaleExtendedCommand();
-               command3.RedFactor = 500;
-               command3.GreenFactor = 250;
-               command3.BlueFactor = 250;
-               command3.Run(image);*/
+            if(chckbox2 == true) {
+                GrayScaleExtendedCommand command5 = new GrayScaleExtendedCommand();
+                command5.RedFactor = value_trackBar7;
+                command5.GreenFactor = value_trackBar8;
+                command5.BlueFactor = value_trackBar9;
+                command5.Run(image);
+            }
+            
 
             // Prepare the command 
             /*  MinimumCommand command3 = new MinimumCommand();
@@ -213,7 +227,7 @@ namespace project1
               command3.Run(image);*/
 
 
-            /* int[] LowerAverage = new int[3];
+           /* int[] LowerAverage = new int[3];
              int[] Average = new int[3];
              int[] UpperAverage = new int[3];
              LowerAverage[0] = 100;  //for blue, gray or yuv 
@@ -225,11 +239,11 @@ namespace project1
              UpperAverage[0] = 255;  //for blue, gray or yuv 
              UpperAverage[1] = 255;  //for green 
              UpperAverage[2] = 255;  //for red  
-             LightControlCommand command4 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
+             LightControlCommand command5 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
              // change the lightness of the image. 
-             command4.Run(image);*/
+             command5.Run(image);*/
 
-            /* HighPassCommand command5 = new HighPassCommand();
+             /*HighPassCommand command5 = new HighPassCommand();
              command5.Radius = 20;
              command5.Opacity = 100;
              command5.Run(image);*/
@@ -427,7 +441,7 @@ namespace project1
 
             value_profilename.Text = "";
             comboBox2.SelectedIndex = 0;
-            checkbox = false;
+            chckbox = false;
             Display();
         }
 
@@ -471,7 +485,7 @@ namespace project1
                     streamwri2.WriteLine(value_trackBar5.ToString());
                     streamwri2.WriteLine(value_trackBar6.ToString());
                     streamwri2.WriteLine(selectCombobox.ToString());
-                    streamwri2.WriteLine(checkbox.ToString());
+                    streamwri2.WriteLine(chckbox.ToString());
 
                     streamwri2.Close();
                     l_saveprofile.Text = "Save Success...";
@@ -549,7 +563,7 @@ namespace project1
                     selectCombobox = int.Parse(list[6]);
                     comboBox1.SelectedIndex = (selectCombobox + 1);
 
-                    checkbox = bool.Parse(list[7]);
+                    chckbox = bool.Parse(list[7]);
                     Display();
                     l_saveprofile.Text = "usepf Success...";
                 }
@@ -562,13 +576,62 @@ namespace project1
             //MessageBox.Show(checkBox1.Checked.ToString());
             if (checkBox1.Checked == true)
             {
-                checkbox = true;
+                chckbox = true;
                 Display();
             }
             else { 
-                checkbox = false;
+                chckbox = false;
                 Display();
             }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                chckbox2 = true;
+                Display();
+                groupBox3.Enabled = true;
+            }
+            else
+            {
+                chckbox2 = false;
+                Display();
+                groupBox3.Enabled = false;
+            }
+        }
+
+        private void trackBar7_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar7 = trackBar7.Value;
+            l_redfactor.Text = value_trackBar7.ToString();
+        }
+
+        private void trackBar8_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar8 = trackBar8.Value;
+            l_greenfactor.Text = value_trackBar8.ToString();
+        }
+
+        private void trackBar9_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar9 = trackBar9.Value;
+            l_bluefactor.Text = value_trackBar9.ToString();
+        }
+
+        private void trackBar7_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar8_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar9_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
         }
 
         /* test DilationOmniDirectional */
