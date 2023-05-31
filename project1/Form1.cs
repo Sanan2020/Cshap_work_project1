@@ -201,11 +201,23 @@ namespace project1
 
             if (chckbox == true)
             {
-                AutoColorLevelCommand command4 = new AutoColorLevelCommand();
-                // Apply "Auto Leveling" to the image. 
-                command4.Run(image);
+                  AutoColorLevelCommand command4 = new AutoColorLevelCommand();
+                  // Apply "Auto Leveling" to the image. 
+                  command4.Run(image);
 
-                //AutoColorL = false;
+                /*SharpenCommand command6 = new SharpenCommand();
+                //Increase the sharpness by 25 percent  of the possible range. 
+                command6.Sharpness = 950;
+                command6.Run(image);*/
+
+               /* IntensityDetectCommand command6 = new IntensityDetectCommand();
+                //Apply the filter. 
+                command6.LowThreshold = 128;
+                command6.HighThreshold = 255;
+                command6.InColor = new RasterColor(255, 255, 255);
+                command6.OutColor = new RasterColor(0, 0, 0);
+                command6.Channel = IntensityDetectCommandFlags.Master;
+                command6.Run(image);*/
             }
             /* SharpenCommand command4 = new SharpenCommand();
              //Increase the sharpness by 25 percent  of the possible range. 
@@ -218,8 +230,8 @@ namespace project1
                 command5.BlueFactor = value_trackBar9;
                 command5.Run(image);
             }
-            
 
+           
             // Prepare the command 
             /*  MinimumCommand command3 = new MinimumCommand();
               //Apply the Minimum filter. 
@@ -227,26 +239,26 @@ namespace project1
               command3.Run(image);*/
 
 
-           /* int[] LowerAverage = new int[3];
-             int[] Average = new int[3];
-             int[] UpperAverage = new int[3];
-             LowerAverage[0] = 100;  //for blue, gray or yuv 
-             LowerAverage[1] = 120;  //for green 
-             LowerAverage[2] = 80;   //for red 
-             Average[0] = 210;       //for blue, gray or yuv 
-             Average[1] = 210;       //for green 
-             Average[2] = 210;       //for red 
-             UpperAverage[0] = 255;  //for blue, gray or yuv 
-             UpperAverage[1] = 255;  //for green 
-             UpperAverage[2] = 255;  //for red  
-             LightControlCommand command5 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
-             // change the lightness of the image. 
-             command5.Run(image);*/
+            /* int[] LowerAverage = new int[3];
+              int[] Average = new int[3];
+              int[] UpperAverage = new int[3];
+              LowerAverage[0] = 100;  //for blue, gray or yuv 
+              LowerAverage[1] = 120;  //for green 
+              LowerAverage[2] = 80;   //for red 
+              Average[0] = 210;       //for blue, gray or yuv 
+              Average[1] = 210;       //for green 
+              Average[2] = 210;       //for red 
+              UpperAverage[0] = 255;  //for blue, gray or yuv 
+              UpperAverage[1] = 255;  //for green 
+              UpperAverage[2] = 255;  //for red  
+              LightControlCommand command5 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
+              // change the lightness of the image. 
+              command5.Run(image);*/
 
-             /*HighPassCommand command5 = new HighPassCommand();
-             command5.Radius = 20;
-             command5.Opacity = 100;
-             command5.Run(image);*/
+            /*HighPassCommand command5 = new HighPassCommand();
+            command5.Radius = 20;
+            command5.Opacity = 100;
+            command5.Run(image);*/
 
             /*  UnsharpMaskCommand command6 = new UnsharpMaskCommand();
               command6.Amount = 1500;     //rate 0 - เกิน 1000
@@ -255,9 +267,14 @@ namespace project1
               command6.ColorType = UnsharpMaskCommandColorType.Rgb;
               command6.Run(image);*/
 
-            /*MaximumCommand command5 = new MaximumCommand();
-            command5.Dimension = 2;
-            command5.Run(image);*/
+            /*MaximumCommand command6 = new MaximumCommand();
+            command6.Dimension = 2;
+            command6.Run(image);*/
+            /* DynamicBinaryCommand command6 = new DynamicBinaryCommand();
+             command6.Dimension = 8;
+             command6.LocalContrast = 16;
+             // convert it into a black and white image without changing its bits per pixel. 
+             command6.Run(image);*/
 
             /*AutoBinaryCommand command7 = new AutoBinaryCommand();
             //Apply Auto Binary Segment. 
@@ -442,6 +459,9 @@ namespace project1
             value_profilename.Text = "";
             comboBox2.SelectedIndex = 0;
             chckbox = false;
+            checkBox1.Checked = chckbox;
+            chckbox2 = false;
+            checkBox2.Checked = chckbox2;
             Display();
         }
 
@@ -486,6 +506,11 @@ namespace project1
                     streamwri2.WriteLine(value_trackBar6.ToString());
                     streamwri2.WriteLine(selectCombobox.ToString());
                     streamwri2.WriteLine(chckbox.ToString());
+                    
+                    streamwri2.WriteLine(chckbox2.ToString());
+                    streamwri2.WriteLine(value_trackBar7.ToString());
+                    streamwri2.WriteLine(value_trackBar8.ToString());
+                    streamwri2.WriteLine(value_trackBar9.ToString());
 
                     streamwri2.Close();
                     l_saveprofile.Text = "Save Success...";
@@ -524,6 +549,11 @@ namespace project1
 
                 selectCombobox = 0;
                 comboBox1.SelectedIndex = selectCombobox;
+
+                chckbox = false; 
+                checkBox1.Checked = chckbox;
+                chckbox2 = false;
+                checkBox2.Checked = chckbox2;
                 Display();
             }
             else {
@@ -564,6 +594,9 @@ namespace project1
                     comboBox1.SelectedIndex = (selectCombobox + 1);
 
                     chckbox = bool.Parse(list[7]);
+                    checkBox1.Checked = chckbox;
+                    chckbox2 = bool.Parse(list[8]);
+                    checkBox2.Checked = chckbox2;
                     Display();
                     l_saveprofile.Text = "usepf Success...";
                 }
@@ -573,7 +606,6 @@ namespace project1
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show(checkBox1.Checked.ToString());
             if (checkBox1.Checked == true)
             {
                 chckbox = true;
@@ -633,22 +665,5 @@ namespace project1
         {
             Display();
         }
-
-        /* test DilationOmniDirectional */
-        /*  public void BinaryFilterCommandExample()
-          {
-              // Load an image 
-              RasterCodecs codecs = new RasterCodecs();
-              codecs.ThrowExceptionsOnInvalidImages = true;
-
-              RasterImage image = codecs.Load(Path.Combine(LEAD_VARS.ImagesDir, "download.png"));
-
-              // Prepare the command 
-              //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
-              BinaryFilterCommand command = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
-              //Dilate black objects. 
-              command.Run(image);
-              codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "DilationDiagonal.jpg"), RasterImageFormat.Jpeg, 24);
-          }*/
     }
 }

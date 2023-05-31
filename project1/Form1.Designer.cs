@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Browse = new System.Windows.Forms.Button();
             this.picInput = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -77,6 +78,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.trackBar9 = new System.Windows.Forms.TrackBar();
             this.l_greenfactor = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -293,7 +295,7 @@
             // trackBar4
             // 
             this.trackBar4.Location = new System.Drawing.Point(34, 30);
-            this.trackBar4.Maximum = 1500;
+            this.trackBar4.Maximum = 2000;
             this.trackBar4.Minimum = 1;
             this.trackBar4.Name = "trackBar4";
             this.trackBar4.Size = new System.Drawing.Size(270, 45);
@@ -591,6 +593,11 @@
             this.l_greenfactor.TabIndex = 20;
             this.l_greenfactor.Text = "0";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 26);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -694,6 +701,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TrackBar trackBar9;
         private System.Windows.Forms.Label l_greenfactor;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
