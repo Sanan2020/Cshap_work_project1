@@ -114,7 +114,7 @@ namespace project1
             comboBox2.SelectedItem = "Default";
 
 
-            groupBox3.Enabled = false;
+            //groupBox3.Enabled = false;
             trackBar7.Value = value_trackBar7;
             l_redfactor.Text = value_trackBar7.ToString();
             trackBar8.Value = value_trackBar8;
@@ -467,25 +467,31 @@ namespace project1
 
         private void SaveProfile_Click(object sender, EventArgs e)
         {
-            /*if (value_profilename.Text == "") { 
+            if (value_profilename.Text == "") { 
                 MessageBox.Show("กรุณาตั้งชื่อ Profile!!"); 
             } else {
-                StreamWriter streamwri = new StreamWriter(System.Windows.Forms.Application.StartupPath + "test.txt");
-                //streamwri.WriteLine(l_profilename.Name + "," + value_profilename.Text);
-                streamwri.WriteLine(l_brightness.Name + "," + value_trackBar1.ToString());
-                streamwri.WriteLine(l_contrast.Name + "," + value_trackBar2.ToString());
-                streamwri.WriteLine(l_intensity.Name + "," + value_trackBar3.ToString());
-                streamwri.WriteLine(l_amount.Name + "," + value_trackBar4.ToString());
-                streamwri.WriteLine(l_radius.Name + "," + value_trackBar5.ToString());
-                streamwri.WriteLine(l_threshold.Name + "," + value_trackBar6.ToString());
+                String pfname = value_profilename.Text;
+                StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + pfname + ".txt");
+                //streamwri.WriteLine(l_profilename.Name + "=" + value_profilename.Text);
+                streamwri.WriteLine(l_brightness.Name + "=" + value_trackBar1.ToString());
+                streamwri.WriteLine(l_contrast.Name + "=" + value_trackBar2.ToString());
+                streamwri.WriteLine(l_intensity.Name + "=" + value_trackBar3.ToString());
+                streamwri.WriteLine(l_amount.Name + "=" + value_trackBar4.ToString());
+                streamwri.WriteLine(l_radius.Name + "=" + value_trackBar5.ToString());
+                streamwri.WriteLine(l_threshold.Name + "=" + value_trackBar6.ToString());
+                streamwri.WriteLine(l_binaryfilter.Name + "=" + selectCombobox.ToString());
 
-                streamwri.WriteLine(l_binaryfilter.Name + "," + selectCombobox.ToString());
+                streamwri.WriteLine(l_autocolorlevel.Name+ "=" +chckbox.ToString());
+                streamwri.WriteLine(checkBox2.Text+ "=" +chckbox2.ToString());
+                streamwri.WriteLine(l_redfactor.Name+ "=" +value_trackBar7.ToString());
+                streamwri.WriteLine(l_greenfactor.Name+ "=" +value_trackBar8.ToString());
+                streamwri.WriteLine(l_bluefactor.Name+ "=" +value_trackBar9.ToString());
 
                 streamwri.Close();
                 l_saveprofile.Text = "Save Success...";
-            }*/
-            
-            String listname = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt";
+            }
+
+           /* String listname = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt";
             String pfname = value_profilename.Text;
             if (pfname == "") { 
                 MessageBox.Show("กรุณาตั้งชื่อ Profile!!"); 
@@ -515,7 +521,7 @@ namespace project1
                     streamwri2.Close();
                     l_saveprofile.Text = "Save Success...";
                 }  
-            }
+            }*/
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -623,13 +629,13 @@ namespace project1
             {
                 chckbox2 = true;
                 Display();
-                groupBox3.Enabled = true;
+               // groupBox3.Enabled = true;
             }
             else
             {
                 chckbox2 = false;
                 Display();
-                groupBox3.Enabled = false;
+               // groupBox3.Enabled = false;
             }
         }
 
@@ -664,6 +670,51 @@ namespace project1
         private void trackBar9_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
+        }
+        private bool Expanded = false;
+        private void btnConBrigtIntens_Click(object sender, EventArgs e)
+        {
+            if (Expanded)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;
+                panConBrigtIntens.Height = 32;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow;
+                panConBrigtIntens.Height = 230;
+            }
+            Expanded = !Expanded;
+        }
+        private bool Expanded2 = false;
+        private void btnUnsharpMask_Click(object sender, EventArgs e)
+        {
+            if (Expanded2)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panUnsharpMask.Height = 32;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panUnsharpMask.Height = 230;
+            }
+            Expanded2 = !Expanded2;
+        }
+        private bool Expanded3 = false;
+        private void btnGrayScale_Click(object sender, EventArgs e)
+        {
+            if (Expanded3)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panGrayScale.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panGrayScale.Height = 277;
+            }
+            Expanded3 = !Expanded3;
         }
     }
 }

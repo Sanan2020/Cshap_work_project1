@@ -45,8 +45,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.l_intensity = new System.Windows.Forms.Label();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
@@ -66,9 +64,8 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.l_autocolorlevel = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.trackBar7 = new System.Windows.Forms.TrackBar();
@@ -79,20 +76,28 @@
             this.trackBar9 = new System.Windows.Forms.TrackBar();
             this.l_greenfactor = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.panConBrigtIntens = new System.Windows.Forms.Panel();
+            this.btnConBrigtIntens = new System.Windows.Forms.Button();
+            this.panUnsharpMask = new System.Windows.Forms.Panel();
+            this.btnUnsharpMask = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnGrayScale = new System.Windows.Forms.Button();
+            this.panGrayScale = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).BeginInit();
+            this.panConBrigtIntens.SuspendLayout();
+            this.panUnsharpMask.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panGrayScale.SuspendLayout();
             this.SuspendLayout();
             // 
             // Browse
@@ -153,7 +158,7 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(34, 26);
+            this.trackBar1.Location = new System.Drawing.Point(35, 55);
             this.trackBar1.Maximum = 1000;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(270, 45);
@@ -165,7 +170,7 @@
             // l_brightness
             // 
             this.l_brightness.AutoSize = true;
-            this.l_brightness.Location = new System.Drawing.Point(6, 29);
+            this.l_brightness.Location = new System.Drawing.Point(9, 58);
             this.l_brightness.Name = "l_brightness";
             this.l_brightness.Size = new System.Drawing.Size(13, 13);
             this.l_brightness.TabIndex = 8;
@@ -174,7 +179,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(159, 10);
+            this.label4.Location = new System.Drawing.Point(152, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 9;
@@ -182,7 +187,7 @@
             // 
             // trackBar2
             // 
-            this.trackBar2.Location = new System.Drawing.Point(34, 87);
+            this.trackBar2.Location = new System.Drawing.Point(35, 116);
             this.trackBar2.Maximum = 1000;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(270, 45);
@@ -194,7 +199,7 @@
             // l_contrast
             // 
             this.l_contrast.AutoSize = true;
-            this.l_contrast.Location = new System.Drawing.Point(6, 91);
+            this.l_contrast.Location = new System.Drawing.Point(9, 120);
             this.l_contrast.Name = "l_contrast";
             this.l_contrast.Size = new System.Drawing.Size(13, 13);
             this.l_contrast.TabIndex = 11;
@@ -203,7 +208,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(159, 74);
+            this.label6.Location = new System.Drawing.Point(156, 103);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 12;
@@ -212,7 +217,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(159, 135);
+            this.label7.Location = new System.Drawing.Point(159, 164);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 15;
@@ -221,7 +226,7 @@
             // l_intensity
             // 
             this.l_intensity.AutoSize = true;
-            this.l_intensity.Location = new System.Drawing.Point(6, 156);
+            this.l_intensity.Location = new System.Drawing.Point(9, 185);
             this.l_intensity.Name = "l_intensity";
             this.l_intensity.Size = new System.Drawing.Size(13, 13);
             this.l_intensity.TabIndex = 14;
@@ -229,7 +234,7 @@
             // 
             // trackBar3
             // 
-            this.trackBar3.Location = new System.Drawing.Point(34, 151);
+            this.trackBar3.Location = new System.Drawing.Point(35, 180);
             this.trackBar3.Maximum = 1000;
             this.trackBar3.Name = "trackBar3";
             this.trackBar3.Size = new System.Drawing.Size(270, 45);
@@ -238,46 +243,10 @@
             this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
             this.trackBar3.MouseCaptureChanged += new System.EventHandler(this.trackBar3_MouseCaptureChanged);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.trackBar1);
-            this.groupBox1.Controls.Add(this.l_intensity);
-            this.groupBox1.Controls.Add(this.l_brightness);
-            this.groupBox1.Controls.Add(this.trackBar3);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.trackBar2);
-            this.groupBox1.Controls.Add(this.l_contrast);
-            this.groupBox1.Location = new System.Drawing.Point(1278, 32);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(305, 202);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ConBrightsInten";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.trackBar4);
-            this.groupBox2.Controls.Add(this.l_threshold);
-            this.groupBox2.Controls.Add(this.l_amount);
-            this.groupBox2.Controls.Add(this.trackBar5);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.trackBar6);
-            this.groupBox2.Controls.Add(this.l_radius);
-            this.groupBox2.Location = new System.Drawing.Point(1278, 240);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(305, 211);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "UnsharpMask";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(162, 79);
+            this.label9.Location = new System.Drawing.Point(138, 103);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 21;
@@ -286,7 +255,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(159, 144);
+            this.label10.Location = new System.Drawing.Point(136, 168);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(54, 13);
             this.label10.TabIndex = 24;
@@ -294,7 +263,7 @@
             // 
             // trackBar4
             // 
-            this.trackBar4.Location = new System.Drawing.Point(34, 30);
+            this.trackBar4.Location = new System.Drawing.Point(34, 55);
             this.trackBar4.Maximum = 2000;
             this.trackBar4.Minimum = 1;
             this.trackBar4.Name = "trackBar4";
@@ -308,7 +277,7 @@
             // l_threshold
             // 
             this.l_threshold.AutoSize = true;
-            this.l_threshold.Location = new System.Drawing.Point(5, 164);
+            this.l_threshold.Location = new System.Drawing.Point(5, 189);
             this.l_threshold.Name = "l_threshold";
             this.l_threshold.Size = new System.Drawing.Size(13, 13);
             this.l_threshold.TabIndex = 23;
@@ -317,7 +286,7 @@
             // l_amount
             // 
             this.l_amount.AutoSize = true;
-            this.l_amount.Location = new System.Drawing.Point(6, 33);
+            this.l_amount.Location = new System.Drawing.Point(6, 58);
             this.l_amount.Name = "l_amount";
             this.l_amount.Size = new System.Drawing.Size(13, 13);
             this.l_amount.TabIndex = 17;
@@ -325,7 +294,7 @@
             // 
             // trackBar5
             // 
-            this.trackBar5.Location = new System.Drawing.Point(34, 95);
+            this.trackBar5.Location = new System.Drawing.Point(34, 120);
             this.trackBar5.Maximum = 1000;
             this.trackBar5.Minimum = 1;
             this.trackBar5.Name = "trackBar5";
@@ -339,7 +308,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(162, 14);
+            this.label13.Location = new System.Drawing.Point(135, 36);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(43, 13);
             this.label13.TabIndex = 18;
@@ -347,7 +316,7 @@
             // 
             // trackBar6
             // 
-            this.trackBar6.Location = new System.Drawing.Point(34, 160);
+            this.trackBar6.Location = new System.Drawing.Point(34, 185);
             this.trackBar6.Maximum = 255;
             this.trackBar6.Minimum = 1;
             this.trackBar6.Name = "trackBar6";
@@ -361,7 +330,7 @@
             // l_radius
             // 
             this.l_radius.AutoSize = true;
-            this.l_radius.Location = new System.Drawing.Point(6, 100);
+            this.l_radius.Location = new System.Drawing.Point(6, 125);
             this.l_radius.Name = "l_radius";
             this.l_radius.Size = new System.Drawing.Size(13, 13);
             this.l_radius.TabIndex = 20;
@@ -462,19 +431,19 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // label5
+            // l_autocolorlevel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1606, 320);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 13);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "AutoColorLevel";
+            this.l_autocolorlevel.AutoSize = true;
+            this.l_autocolorlevel.Location = new System.Drawing.Point(1606, 320);
+            this.l_autocolorlevel.Name = "l_autocolorlevel";
+            this.l_autocolorlevel.Size = new System.Drawing.Size(79, 13);
+            this.l_autocolorlevel.TabIndex = 30;
+            this.l_autocolorlevel.Text = "AutoColorLevel";
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(1589, 243);
+            this.checkBox2.Location = new System.Drawing.Point(6, 38);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(97, 17);
             this.checkBox2.TabIndex = 31;
@@ -482,28 +451,10 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label);
-            this.groupBox3.Controls.Add(this.trackBar7);
-            this.groupBox3.Controls.Add(this.l_bluefactor);
-            this.groupBox3.Controls.Add(this.l_redfactor);
-            this.groupBox3.Controls.Add(this.trackBar8);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.trackBar9);
-            this.groupBox3.Controls.Add(this.l_greenfactor);
-            this.groupBox3.Location = new System.Drawing.Point(1589, 32);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(305, 211);
-            this.groupBox3.TabIndex = 25;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "GrayScale";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(153, 79);
+            this.label8.Location = new System.Drawing.Point(126, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(66, 13);
             this.label8.TabIndex = 21;
@@ -512,7 +463,7 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(159, 144);
+            this.label.Location = new System.Drawing.Point(134, 206);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(58, 13);
             this.label.TabIndex = 24;
@@ -520,7 +471,7 @@
             // 
             // trackBar7
             // 
-            this.trackBar7.Location = new System.Drawing.Point(34, 30);
+            this.trackBar7.Location = new System.Drawing.Point(31, 93);
             this.trackBar7.Maximum = 500;
             this.trackBar7.Minimum = 1;
             this.trackBar7.Name = "trackBar7";
@@ -534,7 +485,7 @@
             // l_bluefactor
             // 
             this.l_bluefactor.AutoSize = true;
-            this.l_bluefactor.Location = new System.Drawing.Point(5, 164);
+            this.l_bluefactor.Location = new System.Drawing.Point(2, 227);
             this.l_bluefactor.Name = "l_bluefactor";
             this.l_bluefactor.Size = new System.Drawing.Size(13, 13);
             this.l_bluefactor.TabIndex = 23;
@@ -543,7 +494,7 @@
             // l_redfactor
             // 
             this.l_redfactor.AutoSize = true;
-            this.l_redfactor.Location = new System.Drawing.Point(6, 33);
+            this.l_redfactor.Location = new System.Drawing.Point(3, 96);
             this.l_redfactor.Name = "l_redfactor";
             this.l_redfactor.Size = new System.Drawing.Size(13, 13);
             this.l_redfactor.TabIndex = 17;
@@ -551,7 +502,7 @@
             // 
             // trackBar8
             // 
-            this.trackBar8.Location = new System.Drawing.Point(34, 95);
+            this.trackBar8.Location = new System.Drawing.Point(31, 158);
             this.trackBar8.Maximum = 250;
             this.trackBar8.Minimum = 1;
             this.trackBar8.Name = "trackBar8";
@@ -565,7 +516,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(162, 14);
+            this.label15.Location = new System.Drawing.Point(126, 77);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(57, 13);
             this.label15.TabIndex = 18;
@@ -573,7 +524,7 @@
             // 
             // trackBar9
             // 
-            this.trackBar9.Location = new System.Drawing.Point(34, 160);
+            this.trackBar9.Location = new System.Drawing.Point(31, 223);
             this.trackBar9.Maximum = 250;
             this.trackBar9.Minimum = 1;
             this.trackBar9.Name = "trackBar9";
@@ -587,7 +538,7 @@
             // l_greenfactor
             // 
             this.l_greenfactor.AutoSize = true;
-            this.l_greenfactor.Location = new System.Drawing.Point(6, 100);
+            this.l_greenfactor.Location = new System.Drawing.Point(3, 163);
             this.l_greenfactor.Name = "l_greenfactor";
             this.l_greenfactor.Size = new System.Drawing.Size(13, 13);
             this.l_greenfactor.TabIndex = 20;
@@ -596,16 +547,113 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // panConBrigtIntens
+            // 
+            this.panConBrigtIntens.Controls.Add(this.btnConBrigtIntens);
+            this.panConBrigtIntens.Controls.Add(this.label6);
+            this.panConBrigtIntens.Controls.Add(this.label7);
+            this.panConBrigtIntens.Controls.Add(this.label4);
+            this.panConBrigtIntens.Controls.Add(this.trackBar1);
+            this.panConBrigtIntens.Controls.Add(this.l_contrast);
+            this.panConBrigtIntens.Controls.Add(this.l_intensity);
+            this.panConBrigtIntens.Controls.Add(this.trackBar2);
+            this.panConBrigtIntens.Controls.Add(this.l_brightness);
+            this.panConBrigtIntens.Controls.Add(this.trackBar3);
+            this.panConBrigtIntens.Location = new System.Drawing.Point(3, 3);
+            this.panConBrigtIntens.Name = "panConBrigtIntens";
+            this.panConBrigtIntens.Size = new System.Drawing.Size(309, 32);
+            this.panConBrigtIntens.TabIndex = 33;
+            // 
+            // btnConBrigtIntens
+            // 
+            this.btnConBrigtIntens.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConBrigtIntens.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConBrigtIntens.Location = new System.Drawing.Point(0, 0);
+            this.btnConBrigtIntens.Name = "btnConBrigtIntens";
+            this.btnConBrigtIntens.Size = new System.Drawing.Size(309, 27);
+            this.btnConBrigtIntens.TabIndex = 25;
+            this.btnConBrigtIntens.Text = "ContrastBrightnessIntensity";
+            this.btnConBrigtIntens.UseVisualStyleBackColor = true;
+            this.btnConBrigtIntens.Click += new System.EventHandler(this.btnConBrigtIntens_Click);
+            // 
+            // panUnsharpMask
+            // 
+            this.panUnsharpMask.Controls.Add(this.label9);
+            this.panUnsharpMask.Controls.Add(this.label13);
+            this.panUnsharpMask.Controls.Add(this.btnUnsharpMask);
+            this.panUnsharpMask.Controls.Add(this.trackBar5);
+            this.panUnsharpMask.Controls.Add(this.l_amount);
+            this.panUnsharpMask.Controls.Add(this.label10);
+            this.panUnsharpMask.Controls.Add(this.trackBar6);
+            this.panUnsharpMask.Controls.Add(this.l_threshold);
+            this.panUnsharpMask.Controls.Add(this.l_radius);
+            this.panUnsharpMask.Controls.Add(this.trackBar4);
+            this.panUnsharpMask.Location = new System.Drawing.Point(3, 41);
+            this.panUnsharpMask.Name = "panUnsharpMask";
+            this.panUnsharpMask.Size = new System.Drawing.Size(309, 29);
+            this.panUnsharpMask.TabIndex = 34;
+            // 
+            // btnUnsharpMask
+            // 
+            this.btnUnsharpMask.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUnsharpMask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUnsharpMask.Location = new System.Drawing.Point(0, 0);
+            this.btnUnsharpMask.Name = "btnUnsharpMask";
+            this.btnUnsharpMask.Size = new System.Drawing.Size(309, 27);
+            this.btnUnsharpMask.TabIndex = 35;
+            this.btnUnsharpMask.Text = "UnsharpMask";
+            this.btnUnsharpMask.UseVisualStyleBackColor = true;
+            this.btnUnsharpMask.Click += new System.EventHandler(this.btnUnsharpMask_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.panConBrigtIntens);
+            this.flowLayoutPanel1.Controls.Add(this.panUnsharpMask);
+            this.flowLayoutPanel1.Controls.Add(this.panGrayScale);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1278, 32);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(316, 501);
+            this.flowLayoutPanel1.TabIndex = 36;
+            // 
+            // btnGrayScale
+            // 
+            this.btnGrayScale.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGrayScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGrayScale.Location = new System.Drawing.Point(0, 0);
+            this.btnGrayScale.Name = "btnGrayScale";
+            this.btnGrayScale.Size = new System.Drawing.Size(309, 27);
+            this.btnGrayScale.TabIndex = 35;
+            this.btnGrayScale.Text = "GrayScale";
+            this.btnGrayScale.UseVisualStyleBackColor = true;
+            this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
+            // 
+            // panGrayScale
+            // 
+            this.panGrayScale.Controls.Add(this.label8);
+            this.panGrayScale.Controls.Add(this.label15);
+            this.panGrayScale.Controls.Add(this.l_greenfactor);
+            this.panGrayScale.Controls.Add(this.checkBox2);
+            this.panGrayScale.Controls.Add(this.label);
+            this.panGrayScale.Controls.Add(this.btnGrayScale);
+            this.panGrayScale.Controls.Add(this.trackBar9);
+            this.panGrayScale.Controls.Add(this.trackBar7);
+            this.panGrayScale.Controls.Add(this.trackBar8);
+            this.panGrayScale.Controls.Add(this.l_redfactor);
+            this.panGrayScale.Controls.Add(this.l_bluefactor);
+            this.panGrayScale.Location = new System.Drawing.Point(3, 76);
+            this.panGrayScale.Name = "panGrayScale";
+            this.panGrayScale.Size = new System.Drawing.Size(309, 29);
+            this.panGrayScale.TabIndex = 36;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.l_autocolorlevel);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
@@ -616,8 +664,6 @@
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.l_binaryfilter);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BrowseSave);
             this.Controls.Add(this.picOutput);
             this.Controls.Add(this.label2);
@@ -633,18 +679,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).EndInit();
+            this.panConBrigtIntens.ResumeLayout(false);
+            this.panConBrigtIntens.PerformLayout();
+            this.panUnsharpMask.ResumeLayout(false);
+            this.panUnsharpMask.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panGrayScale.ResumeLayout(false);
+            this.panGrayScale.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -668,8 +715,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label l_intensity;
         private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TrackBar trackBar4;
@@ -689,9 +734,8 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label l_autocolorlevel;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.TrackBar trackBar7;
@@ -702,6 +746,13 @@
         private System.Windows.Forms.TrackBar trackBar9;
         private System.Windows.Forms.Label l_greenfactor;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button btnConBrigtIntens;
+        private System.Windows.Forms.Panel panConBrigtIntens;
+        private System.Windows.Forms.Panel panUnsharpMask;
+        private System.Windows.Forms.Button btnUnsharpMask;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnGrayScale;
+        private System.Windows.Forms.Panel panGrayScale;
     }
 }
 
