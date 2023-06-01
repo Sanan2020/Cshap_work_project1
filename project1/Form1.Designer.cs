@@ -83,6 +83,10 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnGrayScale = new System.Windows.Forms.Button();
             this.panGrayScale = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -102,7 +106,7 @@
             // 
             // Browse
             // 
-            this.Browse.Location = new System.Drawing.Point(1362, 586);
+            this.Browse.Location = new System.Drawing.Point(864, 549);
             this.Browse.Name = "Browse";
             this.Browse.Size = new System.Drawing.Size(76, 32);
             this.Browse.TabIndex = 0;
@@ -148,7 +152,7 @@
             // 
             // BrowseSave
             // 
-            this.BrowseSave.Location = new System.Drawing.Point(1667, 586);
+            this.BrowseSave.Location = new System.Drawing.Point(1169, 549);
             this.BrowseSave.Name = "BrowseSave";
             this.BrowseSave.Size = new System.Drawing.Size(93, 32);
             this.BrowseSave.TabIndex = 6;
@@ -341,7 +345,7 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1699, 283);
+            this.comboBox1.Location = new System.Drawing.Point(1705, 29);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(133, 21);
             this.comboBox1.TabIndex = 18;
@@ -350,7 +354,7 @@
             // l_binaryfilter
             // 
             this.l_binaryfilter.AutoSize = true;
-            this.l_binaryfilter.Location = new System.Drawing.Point(1606, 286);
+            this.l_binaryfilter.Location = new System.Drawing.Point(1612, 32);
             this.l_binaryfilter.Name = "l_binaryfilter";
             this.l_binaryfilter.Size = new System.Drawing.Size(87, 13);
             this.l_binaryfilter.TabIndex = 19;
@@ -358,7 +362,7 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(1463, 586);
+            this.Reset.Location = new System.Drawing.Point(965, 549);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(74, 32);
             this.Reset.TabIndex = 20;
@@ -368,7 +372,7 @@
             // 
             // SaveProfile
             // 
-            this.SaveProfile.Location = new System.Drawing.Point(1559, 586);
+            this.SaveProfile.Location = new System.Drawing.Point(1061, 549);
             this.SaveProfile.Name = "SaveProfile";
             this.SaveProfile.Size = new System.Drawing.Size(90, 32);
             this.SaveProfile.TabIndex = 21;
@@ -380,7 +384,7 @@
             // 
             this.l_saveprofile.AutoSize = true;
             this.l_saveprofile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.l_saveprofile.Location = new System.Drawing.Point(1573, 636);
+            this.l_saveprofile.Location = new System.Drawing.Point(1061, 592);
             this.l_saveprofile.Name = "l_saveprofile";
             this.l_saveprofile.Size = new System.Drawing.Size(0, 15);
             this.l_saveprofile.TabIndex = 22;
@@ -388,7 +392,7 @@
             // l_profilename
             // 
             this.l_profilename.AutoSize = true;
-            this.l_profilename.Location = new System.Drawing.Point(1606, 355);
+            this.l_profilename.Location = new System.Drawing.Point(1612, 146);
             this.l_profilename.Name = "l_profilename";
             this.l_profilename.Size = new System.Drawing.Size(70, 13);
             this.l_profilename.TabIndex = 23;
@@ -396,7 +400,7 @@
             // 
             // value_profilename
             // 
-            this.value_profilename.Location = new System.Drawing.Point(1699, 352);
+            this.value_profilename.Location = new System.Drawing.Point(1705, 143);
             this.value_profilename.Name = "value_profilename";
             this.value_profilename.Size = new System.Drawing.Size(133, 20);
             this.value_profilename.TabIndex = 24;
@@ -405,7 +409,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1699, 378);
+            this.comboBox2.Location = new System.Drawing.Point(1705, 169);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(133, 21);
             this.comboBox2.TabIndex = 25;
@@ -414,7 +418,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1606, 381);
+            this.label3.Location = new System.Drawing.Point(1612, 172);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 26;
@@ -423,18 +427,18 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1699, 319);
+            this.checkBox1.Location = new System.Drawing.Point(1705, 65);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(98, 17);
             this.checkBox1.TabIndex = 29;
-            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.Text = "AutoColorLevel";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // l_autocolorlevel
             // 
             this.l_autocolorlevel.AutoSize = true;
-            this.l_autocolorlevel.Location = new System.Drawing.Point(1606, 320);
+            this.l_autocolorlevel.Location = new System.Drawing.Point(1612, 69);
             this.l_autocolorlevel.Name = "l_autocolorlevel";
             this.l_autocolorlevel.Size = new System.Drawing.Size(79, 13);
             this.l_autocolorlevel.TabIndex = 30;
@@ -612,9 +616,9 @@
             this.flowLayoutPanel1.Controls.Add(this.panConBrigtIntens);
             this.flowLayoutPanel1.Controls.Add(this.panUnsharpMask);
             this.flowLayoutPanel1.Controls.Add(this.panGrayScale);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1278, 32);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1279, 32);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(316, 501);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(316, 730);
             this.flowLayoutPanel1.TabIndex = 36;
             // 
             // btnGrayScale
@@ -634,9 +638,9 @@
             this.panGrayScale.Controls.Add(this.label8);
             this.panGrayScale.Controls.Add(this.label15);
             this.panGrayScale.Controls.Add(this.l_greenfactor);
+            this.panGrayScale.Controls.Add(this.btnGrayScale);
             this.panGrayScale.Controls.Add(this.checkBox2);
             this.panGrayScale.Controls.Add(this.label);
-            this.panGrayScale.Controls.Add(this.btnGrayScale);
             this.panGrayScale.Controls.Add(this.trackBar9);
             this.panGrayScale.Controls.Add(this.trackBar7);
             this.panGrayScale.Controls.Add(this.trackBar8);
@@ -647,14 +651,57 @@
             this.panGrayScale.Size = new System.Drawing.Size(309, 29);
             this.panGrayScale.TabIndex = 36;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(876, 977);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(309, 33);
+            this.panel1.TabIndex = 38;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(876, 944);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(309, 27);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Bi";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(1705, 93);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(77, 17);
+            this.checkBox3.TabIndex = 39;
+            this.checkBox3.Text = "Despeckle";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(1705, 118);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(77, 17);
+            this.checkBox4.TabIndex = 40;
+            this.checkBox4.Text = "AutoBinary";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
+            this.Controls.Add(this.checkBox4);
+            this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.l_autocolorlevel);
             this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.value_profilename);
@@ -753,6 +800,10 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnGrayScale;
         private System.Windows.Forms.Panel panGrayScale;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox4;
     }
 }
 

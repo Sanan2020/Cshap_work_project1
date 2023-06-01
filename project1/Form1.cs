@@ -43,6 +43,8 @@ namespace project1
         public String selectCombobox2;
         public bool chckbox = false;
         public bool chckbox2 = false;
+        public bool chckbox3 = false;
+        public bool chckbox4 = false;
         /*public RasterImage Image {
             get {; } 
             private set; 
@@ -166,27 +168,19 @@ namespace project1
            // MessageBox.Show(myObj.Name.ToString());
             // Prepare the command 
 
-            // if (state==1)
-            // {
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
                 command.Brightness = value_trackBar1;   //484
                 command.Contrast = value_trackBar2;     //394
                 command.Intensity = value_trackBar3;    //118
                 command.Run(image);
-               // state = 0;
-          //  }
            
-
-            //if (state==2) {
-                UnsharpMaskCommand command2 = new UnsharpMaskCommand();
+            UnsharpMaskCommand command2 = new UnsharpMaskCommand();
                 command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
                 command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
                 command2.Threshold = value_trackBar6;  //rate 0 - 255
                 command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                 command2.Run(image);
-               // state = 0;
-           // }
             
             // Prepare the command 
             //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
@@ -194,35 +188,16 @@ namespace project1
             else {
                 selectCombobox = selectCombobox - 1;
                 //MessageBox.Show(selectCombobox.ToString());
-                BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
-                //Dilate black objects. 
+                BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);       
                 command3.Run(image);
             }
 
             if (chckbox == true)
             {
-                  AutoColorLevelCommand command4 = new AutoColorLevelCommand();
-                  // Apply "Auto Leveling" to the image. 
-                  command4.Run(image);
-
-                /*SharpenCommand command6 = new SharpenCommand();
-                //Increase the sharpness by 25 percent  of the possible range. 
-                command6.Sharpness = 950;
-                command6.Run(image);*/
-
-               /* IntensityDetectCommand command6 = new IntensityDetectCommand();
-                //Apply the filter. 
-                command6.LowThreshold = 128;
-                command6.HighThreshold = 255;
-                command6.InColor = new RasterColor(255, 255, 255);
-                command6.OutColor = new RasterColor(0, 0, 0);
-                command6.Channel = IntensityDetectCommandFlags.Master;
-                command6.Run(image);*/
+                AutoColorLevelCommand command4 = new AutoColorLevelCommand();
+                command4.Run(image);
             }
-            /* SharpenCommand command4 = new SharpenCommand();
-             //Increase the sharpness by 25 percent  of the possible range. 
-             command4.Sharpness = 1200;*/
-
+            
             if(chckbox2 == true) {
                 GrayScaleExtendedCommand command5 = new GrayScaleExtendedCommand();
                 command5.RedFactor = value_trackBar7;
@@ -231,13 +206,28 @@ namespace project1
                 command5.Run(image);
             }
 
-           
+            if (chckbox3 == true) {
+                DespeckleCommand command6 = new DespeckleCommand();
+                //Remove speckles from the image. 
+                command6.Run(image);
+            }
+
+            if (chckbox4 == true)
+            {
+                AutoBinaryCommand command7 = new AutoBinaryCommand();
+                //Apply Auto Binary Segment. 
+                command7.Run(image);
+            }
+
             // Prepare the command 
             /*  MinimumCommand command3 = new MinimumCommand();
               //Apply the Minimum filter. 
               command3.Dimension = 3;
               command3.Run(image);*/
 
+            /* SharpenCommand command4 = new SharpenCommand();
+             //Increase the sharpness by 25 percent  of the possible range. 
+             command4.Sharpness = 1200;*/
 
             /* int[] LowerAverage = new int[3];
               int[] Average = new int[3];
@@ -260,29 +250,30 @@ namespace project1
             command5.Opacity = 100;
             command5.Run(image);*/
 
-            /*  UnsharpMaskCommand command6 = new UnsharpMaskCommand();
-              command6.Amount = 1500;     //rate 0 - เกิน 1000
-              command6.Radius = 150;     //rate 1 - เกิน 1000
-              command6.Threshold = 40;  //rate 0 - 255
-              command6.ColorType = UnsharpMaskCommandColorType.Rgb;
-              command6.Run(image);*/
-
             /*MaximumCommand command6 = new MaximumCommand();
             command6.Dimension = 2;
             command6.Run(image);*/
+
             /* DynamicBinaryCommand command6 = new DynamicBinaryCommand();
              command6.Dimension = 8;
              command6.LocalContrast = 16;
              // convert it into a black and white image without changing its bits per pixel. 
              command6.Run(image);*/
 
-            /*AutoBinaryCommand command7 = new AutoBinaryCommand();
-            //Apply Auto Binary Segment. 
-             command7.Run(image);*/
+            /*SharpenCommand command6 = new SharpenCommand();
+              //Increase the sharpness by 25 percent  of the possible range. 
+              command6.Sharpness = 950;
+              command6.Run(image);*/
 
-            /* DespeckleCommand command5 = new DespeckleCommand();
-             //Remove speckles from the image. 
-             command5.Run(image);*/
+            /* IntensityDetectCommand command6 = new IntensityDetectCommand();
+             //Apply the filter. 
+             command6.LowThreshold = 128;
+             command6.HighThreshold = 255;
+             command6.InColor = new RasterColor(255, 255, 255);
+             command6.OutColor = new RasterColor(0, 0, 0);
+             command6.Channel = IntensityDetectCommandFlags.Master;
+             command6.Run(image);*/
+
 
             /*AdaptiveContrastCommand command7 = new AdaptiveContrastCommand();
             command7.Amount = 200;
@@ -432,11 +423,9 @@ namespace project1
             value_trackBar1  = 0;
             trackBar1.Value = value_trackBar1;
             l_brightness.Text = value_trackBar1.ToString();
-
             value_trackBar2 = 0;
             trackBar2.Value = value_trackBar2;
             l_contrast.Text = value_trackBar2.ToString();
-
             value_trackBar3 = 0;
             trackBar3.Value = value_trackBar3;
             l_intensity.Text = value_trackBar3.ToString();
@@ -444,24 +433,35 @@ namespace project1
             value_trackBar4 = 1;
             trackBar4.Value = value_trackBar4;
             l_amount.Text = value_trackBar4.ToString();
-
             value_trackBar5 = 1;
             trackBar5.Value = value_trackBar5;
             l_radius.Text = value_trackBar5.ToString();
-
             value_trackBar6 = 1;
             trackBar6.Value = value_trackBar6;
             l_threshold.Text = value_trackBar6.ToString();
 
+            chckbox2 = false;
+            checkBox2.Checked = chckbox2;
+            value_trackBar7 = 500;
+            trackBar7.Value = value_trackBar7;
+            l_redfactor.Text = value_trackBar7.ToString();
+            value_trackBar8 = 250;
+            trackBar8.Value = value_trackBar8;
+            l_greenfactor.Text = value_trackBar8.ToString();
+            value_trackBar9 = 250;
+            trackBar9.Value = value_trackBar9;
+            l_bluefactor.Text = value_trackBar9.ToString();
+
             selectCombobox = 0;
             comboBox1.SelectedIndex = selectCombobox;
 
-            value_profilename.Text = "";
-            comboBox2.SelectedIndex = 0;
             chckbox = false;
             checkBox1.Checked = chckbox;
-            chckbox2 = false;
-            checkBox2.Checked = chckbox2;
+            chckbox3 = false;
+            checkBox3.Checked = chckbox3;
+
+            value_profilename.Text = "";
+            comboBox2.SelectedIndex = 0;
             Display();
         }
 
@@ -479,13 +479,15 @@ namespace project1
                 streamwri.WriteLine(l_amount.Name + "=" + value_trackBar4.ToString());
                 streamwri.WriteLine(l_radius.Name + "=" + value_trackBar5.ToString());
                 streamwri.WriteLine(l_threshold.Name + "=" + value_trackBar6.ToString());
+                streamwri.WriteLine(checkBox2.Text + "=" + chckbox2.ToString());
+                streamwri.WriteLine(l_redfactor.Name + "=" + value_trackBar7.ToString());
+                streamwri.WriteLine(l_greenfactor.Name + "=" + value_trackBar8.ToString());
+                streamwri.WriteLine(l_bluefactor.Name + "=" + value_trackBar9.ToString());
+
                 streamwri.WriteLine(l_binaryfilter.Name + "=" + selectCombobox.ToString());
 
-                streamwri.WriteLine(l_autocolorlevel.Name+ "=" +chckbox.ToString());
-                streamwri.WriteLine(checkBox2.Text+ "=" +chckbox2.ToString());
-                streamwri.WriteLine(l_redfactor.Name+ "=" +value_trackBar7.ToString());
-                streamwri.WriteLine(l_greenfactor.Name+ "=" +value_trackBar8.ToString());
-                streamwri.WriteLine(l_bluefactor.Name+ "=" +value_trackBar9.ToString());
+                streamwri.WriteLine(l_autocolorlevel.Name+ "=" +chckbox.ToString());            
+                streamwri.WriteLine(checkBox3.Text + "=" + chckbox3.ToString());
 
                 streamwri.Close();
                 l_saveprofile.Text = "Save Success...";
@@ -532,11 +534,9 @@ namespace project1
                 value_trackBar1 = 0;
                 trackBar1.Value = value_trackBar1;
                 l_brightness.Text = value_trackBar1.ToString();
-
                 value_trackBar2 = 0;
                 trackBar2.Value = value_trackBar2;
                 l_contrast.Text = value_trackBar2.ToString();
-
                 value_trackBar3 = 0;
                 trackBar3.Value = value_trackBar3;
                 l_intensity.Text = value_trackBar3.ToString();
@@ -544,42 +544,68 @@ namespace project1
                 value_trackBar4 = 1;
                 trackBar4.Value = value_trackBar4;
                 l_amount.Text = value_trackBar4.ToString();
-
                 value_trackBar5 = 1;
                 trackBar5.Value = value_trackBar5;
                 l_radius.Text = value_trackBar5.ToString();
-
                 value_trackBar6 = 1;
                 trackBar6.Value = value_trackBar6;
                 l_threshold.Text = value_trackBar6.ToString();
+               
+                chckbox2 = false;
+                checkBox2.Checked = chckbox2;
+                value_trackBar7 = 500;
+                trackBar7.Value = value_trackBar7;
+                l_redfactor.Text = value_trackBar7.ToString();
+                value_trackBar8 = 250;
+                trackBar8.Value = value_trackBar8;
+                l_greenfactor.Text = value_trackBar8.ToString();
+                value_trackBar9 = 250;
+                trackBar9.Value = value_trackBar9;
+                l_bluefactor.Text = value_trackBar9.ToString();
 
                 selectCombobox = 0;
                 comboBox1.SelectedIndex = selectCombobox;
 
                 chckbox = false; 
                 checkBox1.Checked = chckbox;
-                chckbox2 = false;
-                checkBox2.Checked = chckbox2;
+                chckbox3 = false;
+                checkBox3.Checked = chckbox3;
                 Display();
             }
             else {
+                String[] ls;
+                String rf;
                 String rfile;
                 List<String> list = new List<String>();
                 if (selectCombobox2 == "Default") { } else {
                     StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + selectCombobox2 + ".txt");
                     while ((rfile = streamread.ReadLine()) != null)
                     {
-                       // textBox1.Text += rfile + "\r\n";
+                        //text = อ่านข้อความ 1 บรรทัด
+                        rf = rfile;
+                        //split ตัดข้อความ ตัดที่ = 
+                        //textBox1.Text += rf + "\r\n";
+                       // textBox1.Text += "----------\r\n";
+                        ls = rf.Split("=".ToCharArray());
+                        //Console.WriteLine(ls.ToString());
+                        //textBox1.Text += ls+ "\r\n";
+                        //list = split[1] เก็บค่าที่ตัดแล้ว เอาค่าที่อยู่หลัง =
+                        //text = ""; เคลียร์
                         list.Add(rfile);
+                        //textBox1.Text += rfile + "\r\n";
+                        foreach (string x in ls)
+                        {
+                           // textBox1.Text += x + "\r\n";
+                        }
                     }
-                    value_trackBar1 = int.Parse(list[0]);
+                    
+                    //เซตค่า
+                   /* value_trackBar1 = int.Parse(list[0]);
                     trackBar1.Value = value_trackBar1;
                     l_brightness.Text = value_trackBar1.ToString();
-
                     value_trackBar2 = int.Parse(list[1]);
                     trackBar2.Value = value_trackBar2;
                     l_contrast.Text = value_trackBar2.ToString();
-
                     value_trackBar3 = int.Parse(list[2]);
                     trackBar3.Value = value_trackBar3;
                     l_intensity.Text = value_trackBar3.ToString();
@@ -587,26 +613,38 @@ namespace project1
                     value_trackBar4 = int.Parse(list[3]);
                     trackBar4.Value = value_trackBar4;
                     l_amount.Text = value_trackBar4.ToString();
-
                     value_trackBar5 = int.Parse(list[4]);
                     trackBar5.Value = value_trackBar5;
                     l_radius.Text = value_trackBar5.ToString();
-
                     value_trackBar6 = int.Parse(list[5]);
                     trackBar6.Value = value_trackBar6;
                     l_threshold.Text = value_trackBar6.ToString();
 
-                    selectCombobox = int.Parse(list[6]);
+                    chckbox2 = bool.Parse(list[6]);
+                    checkBox2.Checked = chckbox2;
+                    value_trackBar7 = int.Parse(list[7]);
+                    trackBar7.Value = value_trackBar7;
+                    l_redfactor.Text = value_trackBar7.ToString();
+                    value_trackBar8 = int.Parse(list[8]);
+                    trackBar8.Value = value_trackBar8;
+                    l_greenfactor.Text = value_trackBar8.ToString();
+                    value_trackBar9 = int.Parse(list[9]);
+                    trackBar9.Value = value_trackBar9;
+                    l_bluefactor.Text = value_trackBar9.ToString();
+
+                    selectCombobox = int.Parse(list[10]);
                     comboBox1.SelectedIndex = (selectCombobox + 1);
 
-                    chckbox = bool.Parse(list[7]);
+                    chckbox = bool.Parse(list[11]);
                     checkBox1.Checked = chckbox;
-                    chckbox2 = bool.Parse(list[8]);
-                    checkBox2.Checked = chckbox2;
+                    chckbox3 = bool.Parse(list[12]);
+                    checkBox3.Checked = chckbox3;
                     Display();
-                    l_saveprofile.Text = "usepf Success...";
+                    l_saveprofile.Text = "usepf Success...";*/
                 }
                 list.Clear();
+                //เคลียร์ list
+                rf = "";
             }
         }
 
@@ -715,6 +753,34 @@ namespace project1
                 panGrayScale.Height = 277;
             }
             Expanded3 = !Expanded3;
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked == true)
+            {
+                chckbox3 = true;
+                Display();
+            }
+            else
+            {
+                chckbox3 = false;
+                Display();
+            }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox4.Checked == true)
+            {
+                chckbox4 = true;
+                Display();
+            }
+            else
+            {
+                chckbox4 = false;
+                Display();
+            }
         }
     }
 }
