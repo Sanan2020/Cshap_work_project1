@@ -52,6 +52,9 @@ namespace project1
         public bool chckbox9 = false;
         public int value_trbDynBin1 = 8;
         public int value_trbDynBin2 = 16;
+        public int value_trbMaximum;
+        public int value_trbMinimum;
+        public int value_trbGamma;
         /*public RasterImage Image {
             get {; } 
             private set; 
@@ -136,25 +139,6 @@ namespace project1
             l_bluefactor.Text = value_trackBar9.ToString();
         }
 
-       /* public void fcConBrightsInten()
-        {
-            ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-            //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = 484;   //484
-            command.Contrast = 394;     //394
-            command.Intensity = 118;    //118
-            command.Run(myObj.Name);
-        }
-        public void fcUnsharpMask()
-        {
-            UnsharpMaskCommand command2 = new UnsharpMaskCommand();
-            command2.Amount = 1500;     //rate 0 - เกิน 1000
-            command2.Radius = 133;     //rate 1 - เกิน 1000
-            command2.Threshold = 33;  //rate 0 - 255
-            command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-            command2.Run(myObj.Name);
-        }*/
-
         public void Display() {
             
             using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
@@ -234,7 +218,6 @@ namespace project1
                 command8.Run(image);
             }
 
-
             if (chckbox6 == true)
             {
                MinimumCommand command9 = new MinimumCommand();
@@ -264,6 +247,18 @@ namespace project1
                 // convert it into a black and white image without changing its bits per pixel. 
                 command12.Run(image);
             }
+
+           /* LineRemoveCommand command13 = new LineRemoveCommand();
+            command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+            command13.Type = LineRemoveCommandType.Horizontal;
+            command13.Flags = LineRemoveCommandFlags.UseGap;
+            command13.GapLength = 2;
+            command13.MaximumLineWidth = 5;
+            command13.MinimumLineLength = 200;
+            command13.MaximumWallPercent = 10;
+            command13.Wall = 7;
+            command13.Run(image);*/
+
             /*HistogramEqualizeCommand command11 = new HistogramEqualizeCommand();
             //Histogram equalize the image. 
             command11.Type = HistogramqualizeType.Yuv;
@@ -334,7 +329,12 @@ namespace project1
 
             return image;
         }
-      
+        private void LineRemoveEvent_S1(object sender, LineRemoveCommandEventArgs e)
+        {
+            MessageBox.Show("Row Col " + "( " + e.StartRow.ToString() + ", " + e.StartColumn + " )" +
+               "\n Length " + e.Length.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
         private void BrowseSave_Click(object sender, EventArgs e)
         {  
            // Stream myStream;
@@ -853,6 +853,54 @@ namespace project1
         private void trbDynBin2_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
+        }
+
+        private void trbMaximum_Scroll(object sender, EventArgs e)
+        {
+            value_trbMaximum = trbMaximum.Value;    
+            l_maximum.Text = value_trbMaximum.ToString();
+        }
+
+        private void trbMinimum_Scroll(object sender, EventArgs e)
+        {
+            value_trbMinimum = trbMinimum.Value;
+            l_minimum.Text = value_trbMinimum.ToString();
+        }
+
+        private void trbGamma_Scroll(object sender, EventArgs e)
+        {
+            value_trbGamma = trbGamma.Value;
+            l_gamma.Text = value_trbGamma.ToString();
+        }
+
+        private void trbMaximum_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trbMinimum_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trbGamma_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+        private bool Expanded4 = false;
+        private void btnDocImgClupFnct_Click(object sender, EventArgs e)
+        {
+            if (Expanded4)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panDocImgClupFnct.Height = 28;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panDocImgClupFnct.Height = 240;
+            }
+            Expanded4 = !Expanded4;
         }
     }
 }
