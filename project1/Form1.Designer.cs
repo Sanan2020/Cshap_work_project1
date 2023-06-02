@@ -83,11 +83,17 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panGrayScale = new System.Windows.Forms.Panel();
             this.btnGrayScale = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.trbDynBin1 = new System.Windows.Forms.TrackBar();
+            this.trbDynBin2 = new System.Windows.Forms.TrackBar();
+            this.l_dimension = new System.Windows.Forms.Label();
+            this.l_localcontrast = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -103,6 +109,8 @@
             this.panUnsharpMask.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panGrayScale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trbDynBin1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbDynBin2)).BeginInit();
             this.SuspendLayout();
             // 
             // Browse
@@ -652,23 +660,6 @@
             this.btnGrayScale.UseVisualStyleBackColor = true;
             this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(876, 977);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 33);
-            this.panel1.TabIndex = 38;
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(876, 944);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(309, 27);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Bi";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
@@ -691,27 +682,122 @@
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
-            // textBox1
+            // checkBox5
             // 
-            this.textBox1.Location = new System.Drawing.Point(876, 607);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(374, 280);
-            this.textBox1.TabIndex = 41;
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(1705, 246);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(70, 17);
+            this.checkBox5.TabIndex = 41;
+            this.checkBox5.Text = "Maximum";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(1705, 269);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(67, 17);
+            this.checkBox6.TabIndex = 42;
+            this.checkBox6.Text = "Minimum";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(1705, 294);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(85, 17);
+            this.checkBox7.TabIndex = 43;
+            this.checkBox7.Text = "AutoBinarize";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(1705, 317);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(62, 17);
+            this.checkBox8.TabIndex = 44;
+            this.checkBox8.Text = "Gamma";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(1705, 340);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(96, 17);
+            this.checkBox9.TabIndex = 45;
+            this.checkBox9.Text = "DynamicBinary";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            // 
+            // trbDynBin1
+            // 
+            this.trbDynBin1.Location = new System.Drawing.Point(1705, 363);
+            this.trbDynBin1.Maximum = 100;
+            this.trbDynBin1.Minimum = 1;
+            this.trbDynBin1.Name = "trbDynBin1";
+            this.trbDynBin1.Size = new System.Drawing.Size(164, 45);
+            this.trbDynBin1.TabIndex = 46;
+            this.trbDynBin1.Value = 1;
+            this.trbDynBin1.Scroll += new System.EventHandler(this.trbDynBin1_Scroll);
+            this.trbDynBin1.MouseCaptureChanged += new System.EventHandler(this.trbDynBin1_MouseCaptureChanged);
+            // 
+            // trbDynBin2
+            // 
+            this.trbDynBin2.Location = new System.Drawing.Point(1705, 414);
+            this.trbDynBin2.Maximum = 100;
+            this.trbDynBin2.Minimum = 1;
+            this.trbDynBin2.Name = "trbDynBin2";
+            this.trbDynBin2.Size = new System.Drawing.Size(164, 45);
+            this.trbDynBin2.TabIndex = 47;
+            this.trbDynBin2.Value = 1;
+            this.trbDynBin2.Scroll += new System.EventHandler(this.trbDynBin2_Scroll);
+            this.trbDynBin2.MouseCaptureChanged += new System.EventHandler(this.trbDynBin2_MouseCaptureChanged);
+            // 
+            // l_dimension
+            // 
+            this.l_dimension.AutoSize = true;
+            this.l_dimension.Location = new System.Drawing.Point(1669, 375);
+            this.l_dimension.Name = "l_dimension";
+            this.l_dimension.Size = new System.Drawing.Size(13, 13);
+            this.l_dimension.TabIndex = 48;
+            this.l_dimension.Text = "0";
+            // 
+            // l_localcontrast
+            // 
+            this.l_localcontrast.AutoSize = true;
+            this.l_localcontrast.Location = new System.Drawing.Point(1669, 425);
+            this.l_localcontrast.Name = "l_localcontrast";
+            this.l_localcontrast.Size = new System.Drawing.Size(13, 13);
+            this.l_localcontrast.TabIndex = 49;
+            this.l_localcontrast.Text = "0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.l_localcontrast);
+            this.Controls.Add(this.l_dimension);
+            this.Controls.Add(this.trbDynBin2);
+            this.Controls.Add(this.trbDynBin1);
+            this.Controls.Add(this.checkBox9);
+            this.Controls.Add(this.checkBox8);
+            this.Controls.Add(this.checkBox7);
+            this.Controls.Add(this.checkBox6);
+            this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.l_autocolorlevel);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.value_profilename);
@@ -749,6 +835,8 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panGrayScale.ResumeLayout(false);
             this.panGrayScale.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trbDynBin1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbDynBin2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -810,11 +898,17 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnGrayScale;
         private System.Windows.Forms.Panel panGrayScale;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.TrackBar trbDynBin1;
+        private System.Windows.Forms.TrackBar trbDynBin2;
+        private System.Windows.Forms.Label l_dimension;
+        private System.Windows.Forms.Label l_localcontrast;
     }
 }
 

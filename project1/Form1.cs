@@ -45,6 +45,13 @@ namespace project1
         public bool chckbox2 = false;
         public bool chckbox3 = false;
         public bool chckbox4 = false;
+        public bool chckbox5 = false;
+        public bool chckbox6 = false;
+        public bool chckbox7 = false;
+        public bool chckbox8 = false;
+        public bool chckbox9 = false;
+        public int value_trbDynBin1 = 8;
+        public int value_trbDynBin2 = 16;
         /*public RasterImage Image {
             get {; } 
             private set; 
@@ -64,17 +71,21 @@ namespace project1
         public Form1()
         {
             InitializeComponent();
+
         }
        
         private void Browse_Click(object sender, EventArgs e)
         {
+            codecs.ThrowExceptionsOnInvalidImages = true;
+            
             OpenFileDialog ofile = new OpenFileDialog();
-            ofile.Filter = "Image File (*.pdf,*.jpg, *.png)|*.pdf;*.jpg;*.png";
+            ofile.Filter = "Image File (*.tif,*.pdf,*.jpg, *.png)|*.tif;*.pdf;*.jpg;*.png";
             if (DialogResult.OK == ofile.ShowDialog())
             {
                 folderPath = ofile.FileName;
+                RasterImage image1 = codecs.Load(Path.Combine(folderPath));
                 //this.picInput.Image = new Bitmap(ofile.FileName);
-                using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
+                using (Image destImage1 = RasterImageConverter.ConvertToImage(image1, ConvertToImageOptions.None))
                 {
                     picInput.Image = new Bitmap(destImage1);
                     //MessageBox.Show(destImage1.ToString());
@@ -123,12 +134,8 @@ namespace project1
             l_greenfactor.Text = value_trackBar8.ToString();
             trackBar9.Value = value_trackBar9;
             l_bluefactor.Text = value_trackBar9.ToString();
-            // BinaryFilterConstructorExample_S1();/*test ErosionOmniDirection */
-            // BinaryFilterCommandExample(); /* test DilationOmniDirectional */
-
         }
 
-       
        /* public void fcConBrightsInten()
         {
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
@@ -159,10 +166,10 @@ namespace project1
         }
         public RasterImage ChangeCommand()
         {
-           
+
             // Load an image 
             codecs.ThrowExceptionsOnInvalidImages = true;
-           // person.IMG = codecs.Load(Path.Combine(folderPath));
+            // person.IMG = codecs.Load(Path.Combine(folderPath));
             RasterImage image = codecs.Load(Path.Combine(folderPath));
            // myObj.Name = codecs.Load(Path.Combine(folderPath));
            // MessageBox.Show(myObj.Name.ToString());
@@ -219,15 +226,58 @@ namespace project1
                 command7.Run(image);
             }
 
-            // Prepare the command 
-            /*  MinimumCommand command3 = new MinimumCommand();
-              //Apply the Minimum filter. 
-              command3.Dimension = 3;
-              command3.Run(image);*/
+            if (chckbox5 == true)
+            {
+                MaximumCommand command8 = new MaximumCommand();
+                //Apply Maximum filter. 
+                command8.Dimension = 3;
+                command8.Run(image);
+            }
 
-            /* SharpenCommand command4 = new SharpenCommand();
+
+            if (chckbox6 == true)
+            {
+               MinimumCommand command9 = new MinimumCommand();
+                //Apply the Minimum filter. 
+              command9.Dimension = 3;
+              command9.Run(image);
+            }
+
+            if (chckbox7 == true)
+            {
+                AutoBinarizeCommand command10 = new AutoBinarizeCommand();
+                command10.Run(image);
+            }
+
+            if (chckbox8 == true)
+            {
+                GammaCorrectCommand command11 = new GammaCorrectCommand();
+                //Set a gamma value of 2.5. 
+                command11.Gamma = 310;
+                command11.Run(image);
+            }
+            if (chckbox9 == true)
+            {
+                DynamicBinaryCommand command12 = new DynamicBinaryCommand();
+                command12.Dimension = value_trbDynBin1;
+                command12.LocalContrast = value_trbDynBin2;
+                // convert it into a black and white image without changing its bits per pixel. 
+                command12.Run(image);
+            }
+            /*HistogramEqualizeCommand command11 = new HistogramEqualizeCommand();
+            //Histogram equalize the image. 
+            command11.Type = HistogramqualizeType.Yuv;
+            command11.Run(image);*/
+
+            /* HighPassCommand command11 = new HighPassCommand();
+             command11.Radius = 20;
+             command11.Opacity = 30;
+             command11.Run(image);*/
+
+            /* SharpenCommand command11 = new SharpenCommand();
              //Increase the sharpness by 25 percent  of the possible range. 
-             command4.Sharpness = 1200;*/
+             command11.Sharpness = 1000;
+             command11.Run(image);*/
 
             /* int[] LowerAverage = new int[3];
               int[] Average = new int[3];
@@ -245,14 +295,7 @@ namespace project1
               // change the lightness of the image. 
               command5.Run(image);*/
 
-            /*HighPassCommand command5 = new HighPassCommand();
-            command5.Radius = 20;
-            command5.Opacity = 100;
-            command5.Run(image);*/
 
-            /*MaximumCommand command6 = new MaximumCommand();
-            command6.Dimension = 2;
-            command6.Run(image);*/
 
             /* DynamicBinaryCommand command6 = new DynamicBinaryCommand();
              command6.Dimension = 8;
@@ -283,9 +326,15 @@ namespace project1
             //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
             // Prepare the command 
 
+            // Prepare the command 
+
+            /* GaussianCommand command11 = new GaussianCommand();
+             command11.Radius = 5;
+             command11.Run(image);*/
+
             return image;
         }
-       
+      
         private void BrowseSave_Click(object sender, EventArgs e)
         {  
            // Stream myStream;
@@ -302,8 +351,9 @@ namespace project1
                String savePath = saveFileDialog1.FileName;
                //MessageBox.Show(saveFileDialog1.);
                codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName+".pdf"), RasterImageFormat.RasPdf, 24);
-               //    myStream.Close();
-               // }
+               //codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName + ".jpg"), RasterImageFormat.Jpeg, 24);
+                //    myStream.Close();
+                // }
             }
         }
 
@@ -418,9 +468,8 @@ namespace project1
             codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "Result.jpg"), RasterImageFormat.Jpeg, 24);
         }
 
-        private void Reset_Click(object sender, EventArgs e)
-        {
-            value_trackBar1  = 0;
+        public void ResetValue() {
+            value_trackBar1 = 0;
             trackBar1.Value = value_trackBar1;
             l_brightness.Text = value_trackBar1.ToString();
             value_trackBar2 = 0;
@@ -466,6 +515,10 @@ namespace project1
             comboBox2.SelectedIndex = 0;
             Display();
         }
+        private void Reset_Click(object sender, EventArgs e)
+        {
+           ResetValue();
+        }
         
         private void SaveProfile_Click(object sender, EventArgs e)
         {
@@ -480,7 +533,6 @@ namespace project1
                     streamwri1.Close();
                 }
 
-                
                 StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + pfname + ".txt");
                 //streamwri.WriteLine(l_profilename.Name + "=" + value_profilename.Text);
                 streamwri.WriteLine(l_brightness.Name + "=" + value_trackBar1.ToString());
@@ -502,87 +554,14 @@ namespace project1
                 streamwri.Close();
                 l_saveprofile.Text = "Save Success...";
             }
-
-           /* String listname = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt";
-            String pfname = value_profilename.Text;
-            if (pfname == "") { 
-                MessageBox.Show("กรุณาตั้งชื่อ Profile!!"); 
-            }else {
-                using (StreamWriter streamwri1 = File.AppendText(listname)) {
-                    streamwri1.WriteLine(pfname);
-                    streamwri1.Close();
-                }
-                //l_saveprofile.Text = "Save Success...";
-               
-                using (StreamWriter streamwri2 = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\"+pfname+".txt")) {
-                    // StreamWriter streamwri2 = new StreamWriter(System.Windows.Forms.Application.StartupPath + @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\C.txt");
-                    streamwri2.WriteLine(value_trackBar1.ToString());
-                    streamwri2.WriteLine(value_trackBar2.ToString());
-                    streamwri2.WriteLine(value_trackBar3.ToString());
-                    streamwri2.WriteLine(value_trackBar4.ToString());
-                    streamwri2.WriteLine(value_trackBar5.ToString());
-                    streamwri2.WriteLine(value_trackBar6.ToString());
-                    streamwri2.WriteLine(selectCombobox.ToString());
-                    streamwri2.WriteLine(chckbox.ToString());
-                    
-                    streamwri2.WriteLine(chckbox2.ToString());
-                    streamwri2.WriteLine(value_trackBar7.ToString());
-                    streamwri2.WriteLine(value_trackBar8.ToString());
-                    streamwri2.WriteLine(value_trackBar9.ToString());
-
-                    streamwri2.Close();
-                    l_saveprofile.Text = "Save Success...";
-                }  
-            }*/
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectCombobox2 = comboBox2.SelectedItem.ToString();
             if (selectCombobox2 == "Default" && folderPath != null)
-            {
-                value_trackBar1 = 0;
-                trackBar1.Value = value_trackBar1;
-                l_brightness.Text = value_trackBar1.ToString();
-                value_trackBar2 = 0;
-                trackBar2.Value = value_trackBar2;
-                l_contrast.Text = value_trackBar2.ToString();
-                value_trackBar3 = 0;
-                trackBar3.Value = value_trackBar3;
-                l_intensity.Text = value_trackBar3.ToString();
-
-                value_trackBar4 = 1;
-                trackBar4.Value = value_trackBar4;
-                l_amount.Text = value_trackBar4.ToString();
-                value_trackBar5 = 1;
-                trackBar5.Value = value_trackBar5;
-                l_radius.Text = value_trackBar5.ToString();
-                value_trackBar6 = 1;
-                trackBar6.Value = value_trackBar6;
-                l_threshold.Text = value_trackBar6.ToString();
-               
-                chckbox2 = false;
-                checkBox2.Checked = chckbox2;
-                value_trackBar7 = 500;
-                trackBar7.Value = value_trackBar7;
-                l_redfactor.Text = value_trackBar7.ToString();
-                value_trackBar8 = 250;
-                trackBar8.Value = value_trackBar8;
-                l_greenfactor.Text = value_trackBar8.ToString();
-                value_trackBar9 = 250;
-                trackBar9.Value = value_trackBar9;
-                l_bluefactor.Text = value_trackBar9.ToString();
-
-                selectCombobox = 0;
-                comboBox1.SelectedIndex = selectCombobox;
-
-                chckbox = false; 
-                checkBox1.Checked = chckbox;
-                chckbox3 = false;
-                checkBox3.Checked = chckbox3;
-                chckbox4 = false;
-                checkBox4.Checked = chckbox4;
-                Display();
+            { 
+                ResetValue();
             }
             else {
                 String[] ls;
@@ -594,23 +573,10 @@ namespace project1
                     StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + selectCombobox2 + ".txt");
                     while ((rfile = streamread.ReadLine()) != null)
                     {
-                        //text = อ่านข้อความ 1 บรรทัด
-                        rf = rfile;
-                        //split ตัดข้อความ ตัดที่ = 
-                       // textBox1.Text += rf + "\r\n";
-                       // textBox1.Text += "----------\r\n";
-                        ls = rf.Split("=".ToCharArray());
-                        lscol = ls[1];
-                       //Console.WriteLine(ls.ToString());
-                      // textBox1.Text += lscol+ "\r\n";
-                       //list = split[1] เก็บค่าที่ตัดแล้ว เอาค่าที่อยู่หลัง =
-                       //text = ""; เคลียร์
-                       list.Add(lscol);
-                        //textBox1.Text += list[0] + "\r\n";
-                        foreach (string x in ls)
-                        {
-                           //textBox1.Text += x[0] + "\r\n";
-                        }
+                        rf = rfile;                         //text = อ่านข้อความทีละบรรทัด
+                        ls = rf.Split("=".ToCharArray());   //split ตัดข้อความ ตัดที่ = 
+                        lscol = ls[1];                      //เก็บค่าที่ตัดแล้ว เอาค่าที่อยู่หลัง =
+                        list.Add(lscol);   
                     }
                     
                     //เซตค่า
@@ -683,13 +649,11 @@ namespace project1
             {
                 chckbox2 = true;
                 Display();
-               // groupBox3.Enabled = true;
             }
             else
             {
                 chckbox2 = false;
-                Display();
-               // groupBox3.Enabled = false;
+                Display(); 
             }
         }
 
@@ -797,6 +761,98 @@ namespace project1
                 chckbox4 = false;
                 Display();
             }
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox5.Checked == true)
+            {
+                chckbox5 = true;
+                Display();
+            }
+            else
+            {
+                chckbox5 = false;
+                Display();
+            }
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox6.Checked == true)
+            {
+                chckbox6 = true;
+                Display();
+            }
+            else
+            {
+                chckbox6 = false;
+                Display();
+            }
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox7.Checked == true)
+            {
+                chckbox7 = true;
+                Display();
+            }
+            else
+            {
+                chckbox7 = false;
+                Display();
+            }
+        }
+
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox8.Checked == true)
+            {
+                chckbox8 = true;
+                Display();
+            }
+            else
+            {
+                chckbox8 = false;
+                Display();
+            }
+        }
+
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox9.Checked == true)
+            {
+                chckbox9 = true;
+                Display();
+            }
+            else
+            {
+                chckbox9 = false;
+                Display();
+            }
+        }
+
+        private void trbDynBin1_Scroll(object sender, EventArgs e)
+        {
+            value_trbDynBin1 = trbDynBin1.Value;
+            l_redfactor.Text = value_trbDynBin1.ToString();
+        }
+
+        private void trbDynBin2_Scroll(object sender, EventArgs e)
+        {
+            value_trbDynBin2 = trbDynBin2.Value;
+            l_redfactor.Text = value_trbDynBin2.ToString();
+        }
+
+        private void trbDynBin1_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trbDynBin2_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
         }
     }
 }
