@@ -81,12 +81,13 @@
             this.panUnsharpMask = new System.Windows.Forms.Panel();
             this.btnUnsharpMask = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnGrayScale = new System.Windows.Forms.Button();
             this.panGrayScale = new System.Windows.Forms.Panel();
+            this.btnGrayScale = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -621,18 +622,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(316, 730);
             this.flowLayoutPanel1.TabIndex = 36;
             // 
-            // btnGrayScale
-            // 
-            this.btnGrayScale.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGrayScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGrayScale.Location = new System.Drawing.Point(0, 0);
-            this.btnGrayScale.Name = "btnGrayScale";
-            this.btnGrayScale.Size = new System.Drawing.Size(309, 27);
-            this.btnGrayScale.TabIndex = 35;
-            this.btnGrayScale.Text = "GrayScale";
-            this.btnGrayScale.UseVisualStyleBackColor = true;
-            this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
-            // 
             // panGrayScale
             // 
             this.panGrayScale.Controls.Add(this.label8);
@@ -650,6 +639,18 @@
             this.panGrayScale.Name = "panGrayScale";
             this.panGrayScale.Size = new System.Drawing.Size(309, 29);
             this.panGrayScale.TabIndex = 36;
+            // 
+            // btnGrayScale
+            // 
+            this.btnGrayScale.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGrayScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGrayScale.Location = new System.Drawing.Point(0, 0);
+            this.btnGrayScale.Name = "btnGrayScale";
+            this.btnGrayScale.Size = new System.Drawing.Size(309, 27);
+            this.btnGrayScale.TabIndex = 35;
+            this.btnGrayScale.Text = "GrayScale";
+            this.btnGrayScale.UseVisualStyleBackColor = true;
+            this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
             // 
             // panel1
             // 
@@ -690,11 +691,20 @@
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(876, 607);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(374, 280);
+            this.textBox1.TabIndex = 41;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -804,6 +814,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

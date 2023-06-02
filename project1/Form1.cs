@@ -459,18 +459,28 @@ namespace project1
             checkBox1.Checked = chckbox;
             chckbox3 = false;
             checkBox3.Checked = chckbox3;
+            chckbox4 = false;
+            checkBox4.Checked = chckbox4;
 
             value_profilename.Text = "";
             comboBox2.SelectedIndex = 0;
             Display();
         }
-
+        
         private void SaveProfile_Click(object sender, EventArgs e)
         {
+            String pfname = value_profilename.Text; 
+            String listname = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt";
             if (value_profilename.Text == "") { 
                 MessageBox.Show("กรุณาตั้งชื่อ Profile!!"); 
             } else {
-                String pfname = value_profilename.Text;
+                using (StreamWriter streamwri1 = File.AppendText(listname))
+                {
+                    streamwri1.WriteLine(pfname);
+                    streamwri1.Close();
+                }
+
+                
                 StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + pfname + ".txt");
                 //streamwri.WriteLine(l_profilename.Name + "=" + value_profilename.Text);
                 streamwri.WriteLine(l_brightness.Name + "=" + value_trackBar1.ToString());
@@ -485,9 +495,9 @@ namespace project1
                 streamwri.WriteLine(l_bluefactor.Name + "=" + value_trackBar9.ToString());
 
                 streamwri.WriteLine(l_binaryfilter.Name + "=" + selectCombobox.ToString());
-
                 streamwri.WriteLine(l_autocolorlevel.Name+ "=" +chckbox.ToString());            
                 streamwri.WriteLine(checkBox3.Text + "=" + chckbox3.ToString());
+                streamwri.WriteLine(checkBox4.Text + "=" + chckbox4.ToString());
 
                 streamwri.Close();
                 l_saveprofile.Text = "Save Success...";
@@ -570,10 +580,13 @@ namespace project1
                 checkBox1.Checked = chckbox;
                 chckbox3 = false;
                 checkBox3.Checked = chckbox3;
+                chckbox4 = false;
+                checkBox4.Checked = chckbox4;
                 Display();
             }
             else {
                 String[] ls;
+                String lscol;
                 String rf;
                 String rfile;
                 List<String> list = new List<String>();
@@ -584,23 +597,24 @@ namespace project1
                         //text = อ่านข้อความ 1 บรรทัด
                         rf = rfile;
                         //split ตัดข้อความ ตัดที่ = 
-                        //textBox1.Text += rf + "\r\n";
+                       // textBox1.Text += rf + "\r\n";
                        // textBox1.Text += "----------\r\n";
                         ls = rf.Split("=".ToCharArray());
-                        //Console.WriteLine(ls.ToString());
-                        //textBox1.Text += ls+ "\r\n";
-                        //list = split[1] เก็บค่าที่ตัดแล้ว เอาค่าที่อยู่หลัง =
-                        //text = ""; เคลียร์
-                        list.Add(rfile);
-                        //textBox1.Text += rfile + "\r\n";
+                        lscol = ls[1];
+                       //Console.WriteLine(ls.ToString());
+                      // textBox1.Text += lscol+ "\r\n";
+                       //list = split[1] เก็บค่าที่ตัดแล้ว เอาค่าที่อยู่หลัง =
+                       //text = ""; เคลียร์
+                       list.Add(lscol);
+                        //textBox1.Text += list[0] + "\r\n";
                         foreach (string x in ls)
                         {
-                           // textBox1.Text += x + "\r\n";
+                           //textBox1.Text += x[0] + "\r\n";
                         }
                     }
                     
                     //เซตค่า
-                   /* value_trackBar1 = int.Parse(list[0]);
+                    value_trackBar1 = int.Parse(list[0]);
                     trackBar1.Value = value_trackBar1;
                     l_brightness.Text = value_trackBar1.ToString();
                     value_trackBar2 = int.Parse(list[1]);
@@ -639,8 +653,10 @@ namespace project1
                     checkBox1.Checked = chckbox;
                     chckbox3 = bool.Parse(list[12]);
                     checkBox3.Checked = chckbox3;
+                    chckbox4 = bool.Parse(list[13]);
+                    checkBox4.Checked = chckbox4;
                     Display();
-                    l_saveprofile.Text = "usepf Success...";*/
+                    l_saveprofile.Text = "usepf Success...";
                 }
                 list.Clear();
                 //เคลียร์ list
