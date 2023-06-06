@@ -75,33 +75,75 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.l_greenfactor = new System.Windows.Forms.Label();
-            this.btnGrayScale = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.btnGrayScale = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
             this.trackBar9 = new System.Windows.Forms.TrackBar();
             this.trackBar7 = new System.Windows.Forms.TrackBar();
             this.trackBar8 = new System.Windows.Forms.TrackBar();
             this.l_redfactor = new System.Windows.Forms.Label();
             this.l_bluefactor = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.panDocImgClupFnct = new System.Windows.Forms.Panel();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.btnDocImgClupFnct = new System.Windows.Forms.Button();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.trbDynBin1 = new System.Windows.Forms.TrackBar();
             this.trbDynBin2 = new System.Windows.Forms.TrackBar();
-            this.l_dimension = new System.Windows.Forms.Label();
             this.l_localcontrast = new System.Windows.Forms.Label();
+            this.l_dimension = new System.Windows.Forms.Label();
+            this.panDotRemove = new System.Windows.Forms.Panel();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.trackBar10 = new System.Windows.Forms.TrackBar();
+            this.btnDotRemove = new System.Windows.Forms.Button();
+            this.trackBar11 = new System.Windows.Forms.TrackBar();
+            this.trackBar12 = new System.Windows.Forms.TrackBar();
+            this.trackBar13 = new System.Windows.Forms.TrackBar();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.trbMaximum = new System.Windows.Forms.TrackBar();
             this.trbMinimum = new System.Windows.Forms.TrackBar();
             this.trbGamma = new System.Windows.Forms.TrackBar();
             this.l_maximum = new System.Windows.Forms.Label();
             this.l_minimum = new System.Windows.Forms.Label();
             this.l_gamma = new System.Windows.Forms.Label();
-            this.panDocImgClupFnct = new System.Windows.Forms.Panel();
-            this.btnDocImgClupFnct = new System.Windows.Forms.Button();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.checkBox15 = new System.Windows.Forms.CheckBox();
+            this.checkBox16 = new System.Windows.Forms.CheckBox();
+            this.checkBox17 = new System.Windows.Forms.CheckBox();
+            this.btnLineRemove = new System.Windows.Forms.Button();
+            this.panLineRemove = new System.Windows.Forms.Panel();
+            this.trackBar22 = new System.Windows.Forms.TrackBar();
+            this.trackBar14 = new System.Windows.Forms.TrackBar();
+            this.trackBar15 = new System.Windows.Forms.TrackBar();
+            this.trackBar16 = new System.Windows.Forms.TrackBar();
+            this.trackBar17 = new System.Windows.Forms.TrackBar();
+            this.panHolePunchRemove = new System.Windows.Forms.Panel();
+            this.btnHolePunchRemove = new System.Windows.Forms.Button();
+            this.trackBar18 = new System.Windows.Forms.TrackBar();
+            this.trackBar21 = new System.Windows.Forms.TrackBar();
+            this.panInvertedText = new System.Windows.Forms.Panel();
+            this.trackBar24 = new System.Windows.Forms.TrackBar();
+            this.trackBar23 = new System.Windows.Forms.TrackBar();
+            this.trackBar19 = new System.Windows.Forms.TrackBar();
+            this.btnInvertedText = new System.Windows.Forms.Button();
+            this.trackBar20 = new System.Windows.Forms.TrackBar();
+            this.panAutoCrop = new System.Windows.Forms.Panel();
+            this.btnAutoCrop = new System.Windows.Forms.Button();
+            this.trackBar27 = new System.Windows.Forms.TrackBar();
+            this.panBorderRemove = new System.Windows.Forms.Panel();
+            this.trackBar28 = new System.Windows.Forms.TrackBar();
+            this.trackBar26 = new System.Windows.Forms.TrackBar();
+            this.trackBar25 = new System.Windows.Forms.TrackBar();
+            this.btnBorderRemove = new System.Windows.Forms.Button();
+            this.panSmooth = new System.Windows.Forms.Panel();
+            this.btnSmooth = new System.Windows.Forms.Button();
+            this.trackBar31 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -117,12 +159,39 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).BeginInit();
+            this.panDocImgClupFnct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbDynBin1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbDynBin2)).BeginInit();
+            this.panDotRemove.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).BeginInit();
-            this.panDocImgClupFnct.SuspendLayout();
+            this.panLineRemove.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar17)).BeginInit();
+            this.panHolePunchRemove.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar21)).BeginInit();
+            this.panInvertedText.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar20)).BeginInit();
+            this.panAutoCrop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar27)).BeginInit();
+            this.panBorderRemove.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar25)).BeginInit();
+            this.panSmooth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar31)).BeginInit();
             this.SuspendLayout();
             // 
             // Browse
@@ -204,7 +273,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(152, 39);
+            this.label4.Location = new System.Drawing.Point(127, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 9;
@@ -233,7 +302,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(156, 103);
+            this.label6.Location = new System.Drawing.Point(127, 106);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 12;
@@ -242,7 +311,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(159, 164);
+            this.label7.Location = new System.Drawing.Point(127, 165);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 15;
@@ -271,7 +340,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(138, 103);
+            this.label9.Location = new System.Drawing.Point(135, 104);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 21;
@@ -280,7 +349,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(136, 168);
+            this.label10.Location = new System.Drawing.Point(124, 168);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(54, 13);
             this.label10.TabIndex = 24;
@@ -413,7 +482,7 @@
             // l_profilename
             // 
             this.l_profilename.AutoSize = true;
-            this.l_profilename.Location = new System.Drawing.Point(1608, 320);
+            this.l_profilename.Location = new System.Drawing.Point(1608, 374);
             this.l_profilename.Name = "l_profilename";
             this.l_profilename.Size = new System.Drawing.Size(70, 13);
             this.l_profilename.TabIndex = 23;
@@ -421,7 +490,7 @@
             // 
             // value_profilename
             // 
-            this.value_profilename.Location = new System.Drawing.Point(1701, 317);
+            this.value_profilename.Location = new System.Drawing.Point(1701, 371);
             this.value_profilename.Name = "value_profilename";
             this.value_profilename.Size = new System.Drawing.Size(133, 20);
             this.value_profilename.TabIndex = 24;
@@ -430,7 +499,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1701, 343);
+            this.comboBox2.Location = new System.Drawing.Point(1701, 397);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(133, 21);
             this.comboBox2.TabIndex = 25;
@@ -439,7 +508,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1608, 346);
+            this.label3.Location = new System.Drawing.Point(1608, 400);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 26;
@@ -473,8 +542,8 @@
             // panConBrigtIntens
             // 
             this.panConBrigtIntens.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panConBrigtIntens.Controls.Add(this.btnConBrigtIntens);
             this.panConBrigtIntens.Controls.Add(this.label6);
+            this.panConBrigtIntens.Controls.Add(this.btnConBrigtIntens);
             this.panConBrigtIntens.Controls.Add(this.label7);
             this.panConBrigtIntens.Controls.Add(this.label4);
             this.panConBrigtIntens.Controls.Add(this.trackBar1);
@@ -485,7 +554,7 @@
             this.panConBrigtIntens.Controls.Add(this.trackBar3);
             this.panConBrigtIntens.Location = new System.Drawing.Point(3, 3);
             this.panConBrigtIntens.Name = "panConBrigtIntens";
-            this.panConBrigtIntens.Size = new System.Drawing.Size(309, 32);
+            this.panConBrigtIntens.Size = new System.Drawing.Size(309, 29);
             this.panConBrigtIntens.TabIndex = 33;
             // 
             // btnConBrigtIntens
@@ -505,15 +574,15 @@
             this.panUnsharpMask.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panUnsharpMask.Controls.Add(this.label9);
             this.panUnsharpMask.Controls.Add(this.label13);
-            this.panUnsharpMask.Controls.Add(this.btnUnsharpMask);
             this.panUnsharpMask.Controls.Add(this.trackBar5);
+            this.panUnsharpMask.Controls.Add(this.btnUnsharpMask);
             this.panUnsharpMask.Controls.Add(this.l_amount);
             this.panUnsharpMask.Controls.Add(this.label10);
             this.panUnsharpMask.Controls.Add(this.trackBar6);
             this.panUnsharpMask.Controls.Add(this.l_threshold);
             this.panUnsharpMask.Controls.Add(this.l_radius);
             this.panUnsharpMask.Controls.Add(this.trackBar4);
-            this.panUnsharpMask.Location = new System.Drawing.Point(3, 41);
+            this.panUnsharpMask.Location = new System.Drawing.Point(3, 38);
             this.panUnsharpMask.Name = "panUnsharpMask";
             this.panUnsharpMask.Size = new System.Drawing.Size(309, 29);
             this.panUnsharpMask.TabIndex = 34;
@@ -536,6 +605,13 @@
             this.flowLayoutPanel1.Controls.Add(this.panUnsharpMask);
             this.flowLayoutPanel1.Controls.Add(this.panGrayScale);
             this.flowLayoutPanel1.Controls.Add(this.panDocImgClupFnct);
+            this.flowLayoutPanel1.Controls.Add(this.panDotRemove);
+            this.flowLayoutPanel1.Controls.Add(this.panLineRemove);
+            this.flowLayoutPanel1.Controls.Add(this.panHolePunchRemove);
+            this.flowLayoutPanel1.Controls.Add(this.panInvertedText);
+            this.flowLayoutPanel1.Controls.Add(this.panAutoCrop);
+            this.flowLayoutPanel1.Controls.Add(this.panBorderRemove);
+            this.flowLayoutPanel1.Controls.Add(this.panSmooth);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(1279, 32);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(316, 730);
@@ -547,15 +623,15 @@
             this.panGrayScale.Controls.Add(this.label8);
             this.panGrayScale.Controls.Add(this.label15);
             this.panGrayScale.Controls.Add(this.l_greenfactor);
-            this.panGrayScale.Controls.Add(this.btnGrayScale);
             this.panGrayScale.Controls.Add(this.checkBox2);
+            this.panGrayScale.Controls.Add(this.btnGrayScale);
             this.panGrayScale.Controls.Add(this.label);
             this.panGrayScale.Controls.Add(this.trackBar9);
             this.panGrayScale.Controls.Add(this.trackBar7);
             this.panGrayScale.Controls.Add(this.trackBar8);
             this.panGrayScale.Controls.Add(this.l_redfactor);
             this.panGrayScale.Controls.Add(this.l_bluefactor);
-            this.panGrayScale.Location = new System.Drawing.Point(3, 76);
+            this.panGrayScale.Location = new System.Drawing.Point(3, 73);
             this.panGrayScale.Name = "panGrayScale";
             this.panGrayScale.Size = new System.Drawing.Size(309, 29);
             this.panGrayScale.TabIndex = 36;
@@ -587,6 +663,17 @@
             this.l_greenfactor.TabIndex = 20;
             this.l_greenfactor.Text = "0";
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 38);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(97, 17);
+            this.checkBox2.TabIndex = 31;
+            this.checkBox2.Text = "Use GrayScale";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // btnGrayScale
             // 
             this.btnGrayScale.Dock = System.Windows.Forms.DockStyle.Top;
@@ -598,17 +685,6 @@
             this.btnGrayScale.Text = "GrayScale";
             this.btnGrayScale.UseVisualStyleBackColor = true;
             this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 38);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(97, 17);
-            this.checkBox2.TabIndex = 31;
-            this.checkBox2.Text = "Use GrayScale";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // label
             // 
@@ -676,49 +752,23 @@
             this.l_bluefactor.TabIndex = 23;
             this.l_bluefactor.Text = "0";
             // 
-            // checkBox3
+            // panDocImgClupFnct
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(3, 78);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(77, 17);
-            this.checkBox3.TabIndex = 39;
-            this.checkBox3.Text = "Despeckle";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(1702, 88);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(77, 17);
-            this.checkBox4.TabIndex = 40;
-            this.checkBox4.Text = "AutoBinary";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(1702, 114);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(70, 17);
-            this.checkBox5.TabIndex = 41;
-            this.checkBox5.Text = "Maximum";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(1702, 175);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(67, 17);
-            this.checkBox6.TabIndex = 42;
-            this.checkBox6.Text = "Minimum";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.panDocImgClupFnct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panDocImgClupFnct.Controls.Add(this.checkBox7);
+            this.panDocImgClupFnct.Controls.Add(this.comboBox1);
+            this.panDocImgClupFnct.Controls.Add(this.btnDocImgClupFnct);
+            this.panDocImgClupFnct.Controls.Add(this.l_binaryfilter);
+            this.panDocImgClupFnct.Controls.Add(this.checkBox3);
+            this.panDocImgClupFnct.Controls.Add(this.checkBox9);
+            this.panDocImgClupFnct.Controls.Add(this.trbDynBin1);
+            this.panDocImgClupFnct.Controls.Add(this.trbDynBin2);
+            this.panDocImgClupFnct.Controls.Add(this.l_localcontrast);
+            this.panDocImgClupFnct.Controls.Add(this.l_dimension);
+            this.panDocImgClupFnct.Location = new System.Drawing.Point(3, 108);
+            this.panDocImgClupFnct.Name = "panDocImgClupFnct";
+            this.panDocImgClupFnct.Size = new System.Drawing.Size(309, 29);
+            this.panDocImgClupFnct.TabIndex = 57;
             // 
             // checkBox7
             // 
@@ -731,16 +781,28 @@
             this.checkBox7.UseVisualStyleBackColor = true;
             this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
-            // checkBox8
+            // btnDocImgClupFnct
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(1701, 240);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(62, 17);
-            this.checkBox8.TabIndex = 44;
-            this.checkBox8.Text = "Gamma";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
+            this.btnDocImgClupFnct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDocImgClupFnct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDocImgClupFnct.Location = new System.Drawing.Point(0, 0);
+            this.btnDocImgClupFnct.Name = "btnDocImgClupFnct";
+            this.btnDocImgClupFnct.Size = new System.Drawing.Size(307, 27);
+            this.btnDocImgClupFnct.TabIndex = 56;
+            this.btnDocImgClupFnct.Text = "Document Image Cleanup Functions";
+            this.btnDocImgClupFnct.UseVisualStyleBackColor = true;
+            this.btnDocImgClupFnct.Click += new System.EventHandler(this.btnDocImgClupFnct_Click);
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(3, 78);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(77, 17);
+            this.checkBox3.TabIndex = 39;
+            this.checkBox3.Text = "Despeckle";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox9
             // 
@@ -777,15 +839,6 @@
             this.trbDynBin2.Scroll += new System.EventHandler(this.trbDynBin2_Scroll);
             this.trbDynBin2.MouseCaptureChanged += new System.EventHandler(this.trbDynBin2_MouseCaptureChanged);
             // 
-            // l_dimension
-            // 
-            this.l_dimension.AutoSize = true;
-            this.l_dimension.Location = new System.Drawing.Point(16, 140);
-            this.l_dimension.Name = "l_dimension";
-            this.l_dimension.Size = new System.Drawing.Size(13, 13);
-            this.l_dimension.TabIndex = 48;
-            this.l_dimension.Text = "0";
-            // 
             // l_localcontrast
             // 
             this.l_localcontrast.AutoSize = true;
@@ -795,30 +848,163 @@
             this.l_localcontrast.TabIndex = 49;
             this.l_localcontrast.Text = "0";
             // 
+            // l_dimension
+            // 
+            this.l_dimension.AutoSize = true;
+            this.l_dimension.Location = new System.Drawing.Point(16, 140);
+            this.l_dimension.Name = "l_dimension";
+            this.l_dimension.Size = new System.Drawing.Size(13, 13);
+            this.l_dimension.TabIndex = 48;
+            this.l_dimension.Text = "0";
+            // 
+            // panDotRemove
+            // 
+            this.panDotRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panDotRemove.Controls.Add(this.checkBox10);
+            this.panDotRemove.Controls.Add(this.trackBar10);
+            this.panDotRemove.Controls.Add(this.btnDotRemove);
+            this.panDotRemove.Controls.Add(this.trackBar11);
+            this.panDotRemove.Controls.Add(this.trackBar12);
+            this.panDotRemove.Controls.Add(this.trackBar13);
+            this.panDotRemove.Location = new System.Drawing.Point(3, 143);
+            this.panDotRemove.Name = "panDotRemove";
+            this.panDotRemove.Size = new System.Drawing.Size(309, 29);
+            this.panDotRemove.TabIndex = 58;
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(3, 41);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(83, 17);
+            this.checkBox10.TabIndex = 58;
+            this.checkBox10.Text = "DotRemove";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
+            // 
+            // trackBar10
+            // 
+            this.trackBar10.Location = new System.Drawing.Point(29, 64);
+            this.trackBar10.Name = "trackBar10";
+            this.trackBar10.Size = new System.Drawing.Size(149, 45);
+            this.trackBar10.TabIndex = 66;
+            this.trackBar10.Scroll += new System.EventHandler(this.trackBar10_Scroll);
+            this.trackBar10.MouseCaptureChanged += new System.EventHandler(this.trackBar10_MouseCaptureChanged);
+            // 
+            // btnDotRemove
+            // 
+            this.btnDotRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDotRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDotRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnDotRemove.Name = "btnDotRemove";
+            this.btnDotRemove.Size = new System.Drawing.Size(307, 27);
+            this.btnDotRemove.TabIndex = 70;
+            this.btnDotRemove.Text = "DotRemove";
+            this.btnDotRemove.UseVisualStyleBackColor = true;
+            this.btnDotRemove.Click += new System.EventHandler(this.btnDotRemove_Click);
+            // 
+            // trackBar11
+            // 
+            this.trackBar11.Location = new System.Drawing.Point(29, 115);
+            this.trackBar11.Name = "trackBar11";
+            this.trackBar11.Size = new System.Drawing.Size(149, 45);
+            this.trackBar11.TabIndex = 67;
+            this.trackBar11.Scroll += new System.EventHandler(this.trackBar11_Scroll);
+            this.trackBar11.MouseCaptureChanged += new System.EventHandler(this.trackBar11_MouseCaptureChanged);
+            // 
+            // trackBar12
+            // 
+            this.trackBar12.Location = new System.Drawing.Point(29, 166);
+            this.trackBar12.Name = "trackBar12";
+            this.trackBar12.Size = new System.Drawing.Size(149, 45);
+            this.trackBar12.TabIndex = 68;
+            this.trackBar12.Scroll += new System.EventHandler(this.trackBar12_Scroll);
+            this.trackBar12.MouseCaptureChanged += new System.EventHandler(this.trackBar12_MouseCaptureChanged);
+            // 
+            // trackBar13
+            // 
+            this.trackBar13.Location = new System.Drawing.Point(29, 210);
+            this.trackBar13.Name = "trackBar13";
+            this.trackBar13.Size = new System.Drawing.Size(149, 45);
+            this.trackBar13.TabIndex = 69;
+            this.trackBar13.Scroll += new System.EventHandler(this.trackBar13_Scroll);
+            this.trackBar13.MouseCaptureChanged += new System.EventHandler(this.trackBar13_MouseCaptureChanged);
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(1702, 88);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(77, 17);
+            this.checkBox4.TabIndex = 40;
+            this.checkBox4.Text = "AutoBinary";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(1702, 114);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(70, 17);
+            this.checkBox5.TabIndex = 41;
+            this.checkBox5.Text = "Maximum";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(1702, 175);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(67, 17);
+            this.checkBox6.TabIndex = 42;
+            this.checkBox6.Text = "Minimum";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(1701, 240);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(62, 17);
+            this.checkBox8.TabIndex = 44;
+            this.checkBox8.Text = "Gamma";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
+            // 
             // trbMaximum
             // 
             this.trbMaximum.Location = new System.Drawing.Point(1728, 131);
+            this.trbMaximum.Minimum = 1;
             this.trbMaximum.Name = "trbMaximum";
             this.trbMaximum.Size = new System.Drawing.Size(164, 45);
             this.trbMaximum.TabIndex = 50;
+            this.trbMaximum.Value = 1;
             this.trbMaximum.Scroll += new System.EventHandler(this.trbMaximum_Scroll);
             this.trbMaximum.MouseCaptureChanged += new System.EventHandler(this.trbMaximum_MouseCaptureChanged);
             // 
             // trbMinimum
             // 
             this.trbMinimum.Location = new System.Drawing.Point(1728, 198);
+            this.trbMinimum.Minimum = 1;
             this.trbMinimum.Name = "trbMinimum";
             this.trbMinimum.Size = new System.Drawing.Size(164, 45);
             this.trbMinimum.TabIndex = 51;
+            this.trbMinimum.Value = 1;
             this.trbMinimum.Scroll += new System.EventHandler(this.trbMinimum_Scroll);
             this.trbMinimum.MouseCaptureChanged += new System.EventHandler(this.trbMinimum_MouseCaptureChanged);
             // 
             // trbGamma
             // 
             this.trbGamma.Location = new System.Drawing.Point(1728, 266);
+            this.trbGamma.Maximum = 400;
+            this.trbGamma.Minimum = 1;
             this.trbGamma.Name = "trbGamma";
             this.trbGamma.Size = new System.Drawing.Size(171, 45);
             this.trbGamma.TabIndex = 52;
+            this.trbGamma.Value = 1;
             this.trbGamma.Scroll += new System.EventHandler(this.trbGamma_Scroll);
             this.trbGamma.MouseCaptureChanged += new System.EventHandler(this.trbGamma_MouseCaptureChanged);
             // 
@@ -849,41 +1035,349 @@
             this.l_gamma.TabIndex = 55;
             this.l_gamma.Text = "0";
             // 
-            // panDocImgClupFnct
+            // checkBox11
             // 
-            this.panDocImgClupFnct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panDocImgClupFnct.Controls.Add(this.btnDocImgClupFnct);
-            this.panDocImgClupFnct.Controls.Add(this.checkBox7);
-            this.panDocImgClupFnct.Controls.Add(this.comboBox1);
-            this.panDocImgClupFnct.Controls.Add(this.l_binaryfilter);
-            this.panDocImgClupFnct.Controls.Add(this.checkBox3);
-            this.panDocImgClupFnct.Controls.Add(this.checkBox9);
-            this.panDocImgClupFnct.Controls.Add(this.trbDynBin1);
-            this.panDocImgClupFnct.Controls.Add(this.trbDynBin2);
-            this.panDocImgClupFnct.Controls.Add(this.l_localcontrast);
-            this.panDocImgClupFnct.Controls.Add(this.l_dimension);
-            this.panDocImgClupFnct.Location = new System.Drawing.Point(3, 111);
-            this.panDocImgClupFnct.Name = "panDocImgClupFnct";
-            this.panDocImgClupFnct.Size = new System.Drawing.Size(309, 28);
-            this.panDocImgClupFnct.TabIndex = 57;
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(3, 33);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(86, 17);
+            this.checkBox11.TabIndex = 59;
+            this.checkBox11.Text = "LineRemove";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            this.checkBox11.CheckedChanged += new System.EventHandler(this.checkBox11_CheckedChanged);
             // 
-            // btnDocImgClupFnct
+            // checkBox12
             // 
-            this.btnDocImgClupFnct.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDocImgClupFnct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDocImgClupFnct.Location = new System.Drawing.Point(0, 0);
-            this.btnDocImgClupFnct.Name = "btnDocImgClupFnct";
-            this.btnDocImgClupFnct.Size = new System.Drawing.Size(307, 27);
-            this.btnDocImgClupFnct.TabIndex = 56;
-            this.btnDocImgClupFnct.Text = "Document Image Cleanup Functions";
-            this.btnDocImgClupFnct.UseVisualStyleBackColor = true;
-            this.btnDocImgClupFnct.Click += new System.EventHandler(this.btnDocImgClupFnct_Click);
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(3, 33);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(119, 17);
+            this.checkBox12.TabIndex = 60;
+            this.checkBox12.Text = "HolePunchRemove";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            this.checkBox12.CheckedChanged += new System.EventHandler(this.checkBox12_CheckedChanged);
+            // 
+            // checkBox13
+            // 
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.Location = new System.Drawing.Point(3, 33);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(86, 17);
+            this.checkBox13.TabIndex = 61;
+            this.checkBox13.Text = "InvertedText";
+            this.checkBox13.UseVisualStyleBackColor = true;
+            this.checkBox13.CheckedChanged += new System.EventHandler(this.checkBox13_CheckedChanged);
+            // 
+            // checkBox14
+            // 
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.Location = new System.Drawing.Point(1701, 311);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(87, 17);
+            this.checkBox14.TabIndex = 62;
+            this.checkBox14.Text = "AutoDeskew";
+            this.checkBox14.UseVisualStyleBackColor = true;
+            this.checkBox14.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
+            // 
+            // checkBox15
+            // 
+            this.checkBox15.AutoSize = true;
+            this.checkBox15.Location = new System.Drawing.Point(6, 37);
+            this.checkBox15.Name = "checkBox15";
+            this.checkBox15.Size = new System.Drawing.Size(70, 17);
+            this.checkBox15.TabIndex = 63;
+            this.checkBox15.Text = "AutoCrop";
+            this.checkBox15.UseVisualStyleBackColor = true;
+            this.checkBox15.CheckedChanged += new System.EventHandler(this.checkBox15_CheckedChanged);
+            // 
+            // checkBox16
+            // 
+            this.checkBox16.AutoSize = true;
+            this.checkBox16.Location = new System.Drawing.Point(3, 35);
+            this.checkBox16.Name = "checkBox16";
+            this.checkBox16.Size = new System.Drawing.Size(97, 17);
+            this.checkBox16.TabIndex = 64;
+            this.checkBox16.Text = "BorderRemove";
+            this.checkBox16.UseVisualStyleBackColor = true;
+            this.checkBox16.CheckedChanged += new System.EventHandler(this.checkBox16_CheckedChanged);
+            // 
+            // checkBox17
+            // 
+            this.checkBox17.AutoSize = true;
+            this.checkBox17.Location = new System.Drawing.Point(3, 33);
+            this.checkBox17.Name = "checkBox17";
+            this.checkBox17.Size = new System.Drawing.Size(62, 17);
+            this.checkBox17.TabIndex = 65;
+            this.checkBox17.Text = "Smooth";
+            this.checkBox17.UseVisualStyleBackColor = true;
+            this.checkBox17.CheckedChanged += new System.EventHandler(this.checkBox17_CheckedChanged);
+            // 
+            // btnLineRemove
+            // 
+            this.btnLineRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLineRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLineRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnLineRemove.Name = "btnLineRemove";
+            this.btnLineRemove.Size = new System.Drawing.Size(307, 29);
+            this.btnLineRemove.TabIndex = 70;
+            this.btnLineRemove.Text = "LineRemove";
+            this.btnLineRemove.UseVisualStyleBackColor = true;
+            this.btnLineRemove.Click += new System.EventHandler(this.btnLineRemove_Click);
+            // 
+            // panLineRemove
+            // 
+            this.panLineRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panLineRemove.Controls.Add(this.trackBar22);
+            this.panLineRemove.Controls.Add(this.trackBar14);
+            this.panLineRemove.Controls.Add(this.btnLineRemove);
+            this.panLineRemove.Controls.Add(this.trackBar15);
+            this.panLineRemove.Controls.Add(this.trackBar16);
+            this.panLineRemove.Controls.Add(this.trackBar17);
+            this.panLineRemove.Controls.Add(this.checkBox11);
+            this.panLineRemove.Location = new System.Drawing.Point(3, 178);
+            this.panLineRemove.Name = "panLineRemove";
+            this.panLineRemove.Size = new System.Drawing.Size(309, 29);
+            this.panLineRemove.TabIndex = 71;
+            // 
+            // trackBar22
+            // 
+            this.trackBar22.Location = new System.Drawing.Point(29, 278);
+            this.trackBar22.Name = "trackBar22";
+            this.trackBar22.Size = new System.Drawing.Size(149, 45);
+            this.trackBar22.TabIndex = 71;
+            // 
+            // trackBar14
+            // 
+            this.trackBar14.Location = new System.Drawing.Point(29, 68);
+            this.trackBar14.Name = "trackBar14";
+            this.trackBar14.Size = new System.Drawing.Size(149, 45);
+            this.trackBar14.TabIndex = 66;
+            // 
+            // trackBar15
+            // 
+            this.trackBar15.Location = new System.Drawing.Point(29, 123);
+            this.trackBar15.Name = "trackBar15";
+            this.trackBar15.Size = new System.Drawing.Size(149, 45);
+            this.trackBar15.TabIndex = 67;
+            // 
+            // trackBar16
+            // 
+            this.trackBar16.Location = new System.Drawing.Point(29, 176);
+            this.trackBar16.Name = "trackBar16";
+            this.trackBar16.Size = new System.Drawing.Size(149, 45);
+            this.trackBar16.TabIndex = 68;
+            // 
+            // trackBar17
+            // 
+            this.trackBar17.Location = new System.Drawing.Point(29, 228);
+            this.trackBar17.Name = "trackBar17";
+            this.trackBar17.Size = new System.Drawing.Size(149, 45);
+            this.trackBar17.TabIndex = 69;
+            // 
+            // panHolePunchRemove
+            // 
+            this.panHolePunchRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panHolePunchRemove.Controls.Add(this.btnHolePunchRemove);
+            this.panHolePunchRemove.Controls.Add(this.trackBar18);
+            this.panHolePunchRemove.Controls.Add(this.trackBar21);
+            this.panHolePunchRemove.Controls.Add(this.checkBox12);
+            this.panHolePunchRemove.Location = new System.Drawing.Point(3, 213);
+            this.panHolePunchRemove.Name = "panHolePunchRemove";
+            this.panHolePunchRemove.Size = new System.Drawing.Size(309, 29);
+            this.panHolePunchRemove.TabIndex = 72;
+            // 
+            // btnHolePunchRemove
+            // 
+            this.btnHolePunchRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHolePunchRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHolePunchRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnHolePunchRemove.Name = "btnHolePunchRemove";
+            this.btnHolePunchRemove.Size = new System.Drawing.Size(307, 27);
+            this.btnHolePunchRemove.TabIndex = 70;
+            this.btnHolePunchRemove.Text = "HolePunchRemove";
+            this.btnHolePunchRemove.UseVisualStyleBackColor = true;
+            this.btnHolePunchRemove.Click += new System.EventHandler(this.btnHolePunchRemove_Click);
+            // 
+            // trackBar18
+            // 
+            this.trackBar18.Location = new System.Drawing.Point(29, 56);
+            this.trackBar18.Name = "trackBar18";
+            this.trackBar18.Size = new System.Drawing.Size(149, 45);
+            this.trackBar18.TabIndex = 66;
+            // 
+            // trackBar21
+            // 
+            this.trackBar21.Location = new System.Drawing.Point(29, 107);
+            this.trackBar21.Name = "trackBar21";
+            this.trackBar21.Size = new System.Drawing.Size(149, 45);
+            this.trackBar21.TabIndex = 69;
+            // 
+            // panInvertedText
+            // 
+            this.panInvertedText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panInvertedText.Controls.Add(this.trackBar24);
+            this.panInvertedText.Controls.Add(this.trackBar23);
+            this.panInvertedText.Controls.Add(this.trackBar19);
+            this.panInvertedText.Controls.Add(this.btnInvertedText);
+            this.panInvertedText.Controls.Add(this.trackBar20);
+            this.panInvertedText.Controls.Add(this.checkBox13);
+            this.panInvertedText.Location = new System.Drawing.Point(3, 248);
+            this.panInvertedText.Name = "panInvertedText";
+            this.panInvertedText.Size = new System.Drawing.Size(309, 29);
+            this.panInvertedText.TabIndex = 73;
+            // 
+            // trackBar24
+            // 
+            this.trackBar24.Location = new System.Drawing.Point(29, 209);
+            this.trackBar24.Name = "trackBar24";
+            this.trackBar24.Size = new System.Drawing.Size(149, 45);
+            this.trackBar24.TabIndex = 72;
+            // 
+            // trackBar23
+            // 
+            this.trackBar23.Location = new System.Drawing.Point(29, 158);
+            this.trackBar23.Name = "trackBar23";
+            this.trackBar23.Size = new System.Drawing.Size(149, 45);
+            this.trackBar23.TabIndex = 71;
+            // 
+            // trackBar19
+            // 
+            this.trackBar19.Location = new System.Drawing.Point(29, 56);
+            this.trackBar19.Name = "trackBar19";
+            this.trackBar19.Size = new System.Drawing.Size(149, 45);
+            this.trackBar19.TabIndex = 66;
+            // 
+            // btnInvertedText
+            // 
+            this.btnInvertedText.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInvertedText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInvertedText.Location = new System.Drawing.Point(0, 0);
+            this.btnInvertedText.Name = "btnInvertedText";
+            this.btnInvertedText.Size = new System.Drawing.Size(307, 27);
+            this.btnInvertedText.TabIndex = 70;
+            this.btnInvertedText.Text = "InvertedText";
+            this.btnInvertedText.UseVisualStyleBackColor = true;
+            this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
+            // 
+            // trackBar20
+            // 
+            this.trackBar20.Location = new System.Drawing.Point(29, 107);
+            this.trackBar20.Name = "trackBar20";
+            this.trackBar20.Size = new System.Drawing.Size(149, 45);
+            this.trackBar20.TabIndex = 69;
+            // 
+            // panAutoCrop
+            // 
+            this.panAutoCrop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panAutoCrop.Controls.Add(this.btnAutoCrop);
+            this.panAutoCrop.Controls.Add(this.trackBar27);
+            this.panAutoCrop.Controls.Add(this.checkBox15);
+            this.panAutoCrop.Location = new System.Drawing.Point(3, 283);
+            this.panAutoCrop.Name = "panAutoCrop";
+            this.panAutoCrop.Size = new System.Drawing.Size(309, 29);
+            this.panAutoCrop.TabIndex = 74;
+            // 
+            // btnAutoCrop
+            // 
+            this.btnAutoCrop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAutoCrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoCrop.Location = new System.Drawing.Point(0, 0);
+            this.btnAutoCrop.Name = "btnAutoCrop";
+            this.btnAutoCrop.Size = new System.Drawing.Size(307, 27);
+            this.btnAutoCrop.TabIndex = 70;
+            this.btnAutoCrop.Text = "AutoCrop";
+            this.btnAutoCrop.UseVisualStyleBackColor = true;
+            this.btnAutoCrop.Click += new System.EventHandler(this.btnAutoCrop_Click);
+            // 
+            // trackBar27
+            // 
+            this.trackBar27.Location = new System.Drawing.Point(27, 60);
+            this.trackBar27.Name = "trackBar27";
+            this.trackBar27.Size = new System.Drawing.Size(149, 45);
+            this.trackBar27.TabIndex = 66;
+            // 
+            // panBorderRemove
+            // 
+            this.panBorderRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panBorderRemove.Controls.Add(this.trackBar28);
+            this.panBorderRemove.Controls.Add(this.trackBar26);
+            this.panBorderRemove.Controls.Add(this.trackBar25);
+            this.panBorderRemove.Controls.Add(this.btnBorderRemove);
+            this.panBorderRemove.Controls.Add(this.checkBox16);
+            this.panBorderRemove.Location = new System.Drawing.Point(3, 318);
+            this.panBorderRemove.Name = "panBorderRemove";
+            this.panBorderRemove.Size = new System.Drawing.Size(309, 29);
+            this.panBorderRemove.TabIndex = 75;
+            // 
+            // trackBar28
+            // 
+            this.trackBar28.Location = new System.Drawing.Point(29, 160);
+            this.trackBar28.Name = "trackBar28";
+            this.trackBar28.Size = new System.Drawing.Size(149, 45);
+            this.trackBar28.TabIndex = 72;
+            // 
+            // trackBar26
+            // 
+            this.trackBar26.Location = new System.Drawing.Point(29, 109);
+            this.trackBar26.Name = "trackBar26";
+            this.trackBar26.Size = new System.Drawing.Size(149, 45);
+            this.trackBar26.TabIndex = 71;
+            // 
+            // trackBar25
+            // 
+            this.trackBar25.Location = new System.Drawing.Point(27, 58);
+            this.trackBar25.Name = "trackBar25";
+            this.trackBar25.Size = new System.Drawing.Size(149, 45);
+            this.trackBar25.TabIndex = 66;
+            // 
+            // btnBorderRemove
+            // 
+            this.btnBorderRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBorderRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorderRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnBorderRemove.Name = "btnBorderRemove";
+            this.btnBorderRemove.Size = new System.Drawing.Size(307, 27);
+            this.btnBorderRemove.TabIndex = 70;
+            this.btnBorderRemove.Text = "BorderRemove";
+            this.btnBorderRemove.UseVisualStyleBackColor = true;
+            this.btnBorderRemove.Click += new System.EventHandler(this.btnBorderRemove_Click);
+            // 
+            // panSmooth
+            // 
+            this.panSmooth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panSmooth.Controls.Add(this.btnSmooth);
+            this.panSmooth.Controls.Add(this.trackBar31);
+            this.panSmooth.Controls.Add(this.checkBox17);
+            this.panSmooth.Location = new System.Drawing.Point(3, 353);
+            this.panSmooth.Name = "panSmooth";
+            this.panSmooth.Size = new System.Drawing.Size(309, 29);
+            this.panSmooth.TabIndex = 76;
+            // 
+            // btnSmooth
+            // 
+            this.btnSmooth.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSmooth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSmooth.Location = new System.Drawing.Point(0, 0);
+            this.btnSmooth.Name = "btnSmooth";
+            this.btnSmooth.Size = new System.Drawing.Size(307, 27);
+            this.btnSmooth.TabIndex = 70;
+            this.btnSmooth.Text = "Smooth";
+            this.btnSmooth.UseVisualStyleBackColor = true;
+            this.btnSmooth.Click += new System.EventHandler(this.btnSmooth_Click);
+            // 
+            // trackBar31
+            // 
+            this.trackBar31.Location = new System.Drawing.Point(28, 56);
+            this.trackBar31.Name = "trackBar31";
+            this.trackBar31.Size = new System.Drawing.Size(149, 45);
+            this.trackBar31.TabIndex = 66;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
+            this.Controls.Add(this.checkBox14);
             this.Controls.Add(this.l_gamma);
             this.Controls.Add(this.l_minimum);
             this.Controls.Add(this.l_maximum);
@@ -932,13 +1426,47 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).EndInit();
+            this.panDocImgClupFnct.ResumeLayout(false);
+            this.panDocImgClupFnct.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbDynBin1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbDynBin2)).EndInit();
+            this.panDotRemove.ResumeLayout(false);
+            this.panDotRemove.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).EndInit();
-            this.panDocImgClupFnct.ResumeLayout(false);
-            this.panDocImgClupFnct.PerformLayout();
+            this.panLineRemove.ResumeLayout(false);
+            this.panLineRemove.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar17)).EndInit();
+            this.panHolePunchRemove.ResumeLayout(false);
+            this.panHolePunchRemove.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar21)).EndInit();
+            this.panInvertedText.ResumeLayout(false);
+            this.panInvertedText.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar20)).EndInit();
+            this.panAutoCrop.ResumeLayout(false);
+            this.panAutoCrop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar27)).EndInit();
+            this.panBorderRemove.ResumeLayout(false);
+            this.panBorderRemove.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar25)).EndInit();
+            this.panSmooth.ResumeLayout(false);
+            this.panSmooth.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar31)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1019,6 +1547,48 @@
         private System.Windows.Forms.Button btnGrayScale;
         private System.Windows.Forms.Panel panDocImgClupFnct;
         private System.Windows.Forms.Button btnDocImgClupFnct;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.CheckBox checkBox13;
+        private System.Windows.Forms.CheckBox checkBox14;
+        private System.Windows.Forms.CheckBox checkBox15;
+        private System.Windows.Forms.CheckBox checkBox16;
+        private System.Windows.Forms.CheckBox checkBox17;
+        private System.Windows.Forms.TrackBar trackBar10;
+        private System.Windows.Forms.TrackBar trackBar11;
+        private System.Windows.Forms.TrackBar trackBar12;
+        private System.Windows.Forms.TrackBar trackBar13;
+        private System.Windows.Forms.Button btnDotRemove;
+        private System.Windows.Forms.Panel panDotRemove;
+        private System.Windows.Forms.Button btnLineRemove;
+        private System.Windows.Forms.Panel panLineRemove;
+        private System.Windows.Forms.TrackBar trackBar14;
+        private System.Windows.Forms.TrackBar trackBar15;
+        private System.Windows.Forms.TrackBar trackBar16;
+        private System.Windows.Forms.TrackBar trackBar17;
+        private System.Windows.Forms.Panel panHolePunchRemove;
+        private System.Windows.Forms.TrackBar trackBar18;
+        private System.Windows.Forms.Button btnHolePunchRemove;
+        private System.Windows.Forms.TrackBar trackBar21;
+        private System.Windows.Forms.TrackBar trackBar22;
+        private System.Windows.Forms.Panel panInvertedText;
+        private System.Windows.Forms.TrackBar trackBar23;
+        private System.Windows.Forms.TrackBar trackBar19;
+        private System.Windows.Forms.Button btnInvertedText;
+        private System.Windows.Forms.TrackBar trackBar20;
+        private System.Windows.Forms.TrackBar trackBar24;
+        private System.Windows.Forms.Panel panAutoCrop;
+        private System.Windows.Forms.TrackBar trackBar27;
+        private System.Windows.Forms.Button btnAutoCrop;
+        private System.Windows.Forms.Panel panBorderRemove;
+        private System.Windows.Forms.TrackBar trackBar28;
+        private System.Windows.Forms.TrackBar trackBar26;
+        private System.Windows.Forms.TrackBar trackBar25;
+        private System.Windows.Forms.Button btnBorderRemove;
+        private System.Windows.Forms.Panel panSmooth;
+        private System.Windows.Forms.TrackBar trackBar31;
+        private System.Windows.Forms.Button btnSmooth;
     }
 }
 

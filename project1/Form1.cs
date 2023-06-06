@@ -52,25 +52,18 @@ namespace project1
         public bool chckbox9 = false;
         public int value_trbDynBin1 = 8;
         public int value_trbDynBin2 = 16;
-        public int value_trbMaximum;
-        public int value_trbMinimum;
-        public int value_trbGamma;
-        /*public RasterImage Image {
-            get {; } 
-            private set; 
-        }*/
-        public class Person
-        {
-            private RasterImage name;  // field
-            public RasterImage Name   // property
-            {
-                get { return name; }
-                set { name = value; }
-            }
-        }
+        public int value_trbMaximum = 3;
+        public int value_trbMinimum = 3;
+        public int value_trbGamma =310;
+        public bool chckbox10 = false;
+        public bool chckbox11 = false;
+        public bool chckbox12 = false;
+        public bool chckbox13 = false;
+        public bool chckbox14 = false;
+        public bool chckbox15 = false;
+        public bool chckbox16 = false;
+        public bool chckbox17 = false;
 
-        //public RasterImage image;
-         Person myObj = new Person();
         public Form1()
         {
             InitializeComponent();
@@ -82,7 +75,7 @@ namespace project1
             codecs.ThrowExceptionsOnInvalidImages = true;
             
             OpenFileDialog ofile = new OpenFileDialog();
-            ofile.Filter = "Image File (*.tif,*.pdf,*.jpg, *.png)|*.tif;*.pdf;*.jpg;*.png";
+            ofile.Filter = "Image File (*.bmp,*.tif,*.pdf,*.jpg, *.png)|*.bmp;*.tif;*.pdf;*.jpg;*.png";
             if (DialogResult.OK == ofile.ShowDialog())
             {
                 folderPath = ofile.FileName;
@@ -129,8 +122,6 @@ namespace project1
             }
             comboBox2.SelectedItem = "Default";
 
-
-            //groupBox3.Enabled = false;
             trackBar7.Value = value_trackBar7;
             l_redfactor.Text = value_trackBar7.ToString();
             trackBar8.Value = value_trackBar8;
@@ -214,7 +205,7 @@ namespace project1
             {
                 MaximumCommand command8 = new MaximumCommand();
                 //Apply Maximum filter. 
-                command8.Dimension = 3;
+                command8.Dimension = value_trbMaximum;
                 command8.Run(image);
             }
 
@@ -222,7 +213,7 @@ namespace project1
             {
                MinimumCommand command9 = new MinimumCommand();
                 //Apply the Minimum filter. 
-              command9.Dimension = 3;
+              command9.Dimension = value_trbMinimum;
               command9.Run(image);
             }
 
@@ -236,7 +227,7 @@ namespace project1
             {
                 GammaCorrectCommand command11 = new GammaCorrectCommand();
                 //Set a gamma value of 2.5. 
-                command11.Gamma = 310;
+                command11.Gamma = value_trbGamma;
                 command11.Run(image);
             }
             if (chckbox9 == true)
@@ -248,91 +239,188 @@ namespace project1
                 command12.Run(image);
             }
 
-           /* LineRemoveCommand command13 = new LineRemoveCommand();
-            command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
-            command13.Type = LineRemoveCommandType.Horizontal;
-            command13.Flags = LineRemoveCommandFlags.UseGap;
-            command13.GapLength = 2;
-            command13.MaximumLineWidth = 5;
-            command13.MinimumLineLength = 200;
-            command13.MaximumWallPercent = 10;
-            command13.Wall = 7;
-            command13.Run(image);*/
+            /* using (Image destImage1 = RasterImageConverter.ConvertToImage(image, ConvertToImageOptions.None))
+             {
+                 picInput.Image = new Bitmap(destImage1);
+                 //MessageBox.Show(destImage1.ToString());
+             }*/
 
-            /*HistogramEqualizeCommand command11 = new HistogramEqualizeCommand();
-            //Histogram equalize the image. 
-            command11.Type = HistogramqualizeType.Yuv;
-            command11.Run(image);*/
+            if (chckbox11 == true)
+            {
+                LineRemoveCommand command13 = new LineRemoveCommand();
+                command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+                command13.Type = LineRemoveCommandType.Horizontal;
+                command13.Flags = LineRemoveCommandFlags.UseGap;
+                command13.GapLength = 2;
+                command13.MaximumLineWidth = 5;
+                command13.MinimumLineLength = 200;
+                command13.MaximumWallPercent = 10;
+                command13.Wall = 7;
+                command13.Run(image);
+            }
 
-            /* HighPassCommand command11 = new HighPassCommand();
-             command11.Radius = 20;
-             command11.Opacity = 30;
-             command11.Run(image);*/
+            if (chckbox10 == true)
+            {
+                DotRemoveCommand command13 = new DotRemoveCommand();
+                command13.DotRemove += new EventHandler<DotRemoveCommandEventArgs>(DotRemoveEvent_S1);
+                command13.Flags = DotRemoveCommandFlags.UseSize;
+                command13.MaximumDotHeight = 10;
+                command13.MaximumDotWidth = 10;
+                command13.MinimumDotHeight = 1;
+                command13.MinimumDotWidth = 1;
 
-            /* SharpenCommand command11 = new SharpenCommand();
-             //Increase the sharpness by 25 percent  of the possible range. 
-             command11.Sharpness = 1000;
-             command11.Run(image);*/
+                command13.Run(image);
+            }
 
-            /* int[] LowerAverage = new int[3];
-              int[] Average = new int[3];
-              int[] UpperAverage = new int[3];
-              LowerAverage[0] = 100;  //for blue, gray or yuv 
-              LowerAverage[1] = 120;  //for green 
-              LowerAverage[2] = 80;   //for red 
-              Average[0] = 210;       //for blue, gray or yuv 
-              Average[1] = 210;       //for green 
-              Average[2] = 210;       //for red 
-              UpperAverage[0] = 255;  //for blue, gray or yuv 
-              UpperAverage[1] = 255;  //for green 
-              UpperAverage[2] = 255;  //for red  
-              LightControlCommand command5 = new LightControlCommand(LowerAverage, Average, UpperAverage, LightControlCommandType.Yuv);
-              // change the lightness of the image. 
-              command5.Run(image);*/
+            if (chckbox12 == true)
+            {
+                HolePunchRemoveCommand command14 = new HolePunchRemoveCommand();
+                command14.HolePunchRemove += new EventHandler<HolePunchRemoveCommandEventArgs>(HolePunchRemoveEvent_S1);
+                command14.Flags = HolePunchRemoveCommandFlags.UseDpi | HolePunchRemoveCommandFlags.UseCount | HolePunchRemoveCommandFlags.UseLocation;
+                command14.Location = HolePunchRemoveCommandLocation.Left;
+                command14.MaximumHoleCount = 4;
+                command14.MinimumHoleCount = 2;
 
+                command14.Run(image);
+            }
 
+            if (chckbox13 == true)
+            {
+                InvertedTextCommand command15 = new InvertedTextCommand();
+                command15.InvertedText += new EventHandler<InvertedTextCommandEventArgs>(InvertedTextEvent_S1);
+                command15.Flags = InvertedTextCommandFlags.UseDpi;
+                command15.MaximumBlackPercent = 95;
+                command15.MinimumBlackPercent = 70;
+                command15.MinimumInvertHeight = 500;
+                command15.MinimumInvertWidth = 5000;
+                command15.Run(image);
+            }
 
-            /* DynamicBinaryCommand command6 = new DynamicBinaryCommand();
-             command6.Dimension = 8;
-             command6.LocalContrast = 16;
-             // convert it into a black and white image without changing its bits per pixel. 
-             command6.Run(image);*/
+            if (chckbox14 == true)
+            {
+                DeskewCommand command16 = new DeskewCommand();
+                //Deskew the image. 
+                command16.Flags = DeskewCommandFlags.DeskewImage | DeskewCommandFlags.DoNotFillExposedArea;
+                command16.Run(image);
+            }
 
-            /*SharpenCommand command6 = new SharpenCommand();
-              //Increase the sharpness by 25 percent  of the possible range. 
-              command6.Sharpness = 950;
-              command6.Run(image);*/
+            if (chckbox15 == true)
+            {
+                AutoCropCommand command17 = new AutoCropCommand();
+                //AutoCrop the image with 20 tolerance. 
+                command17.Threshold = 20;
+                command17.Run(image);
+            }
 
-            /* IntensityDetectCommand command6 = new IntensityDetectCommand();
-             //Apply the filter. 
-             command6.LowThreshold = 128;
-             command6.HighThreshold = 255;
-             command6.InColor = new RasterColor(255, 255, 255);
-             command6.OutColor = new RasterColor(0, 0, 0);
-             command6.Channel = IntensityDetectCommandFlags.Master;
-             command6.Run(image);*/
+            if (chckbox16 == true)
+            {
+                BorderRemoveCommand command18 = new BorderRemoveCommand();
+                command18.BorderRemove += new EventHandler<BorderRemoveCommandEventArgs>(command_BorderRemove_S1);
+                command18.Border = BorderRemoveBorderFlags.All;
+                command18.Flags = BorderRemoveCommandFlags.UseVariance;
+                command18.Percent = 20;
+                command18.Variance = 3;
+                command18.WhiteNoiseLength = 9;
+                command18.Run(image);
+            }
 
-
-            /*AdaptiveContrastCommand command7 = new AdaptiveContrastCommand();
-            command7.Amount = 200;
-            command7.Dimension = 9;
-            command7.Run(image);*/
-
+            if (chckbox17 == true)
+            {
+                SmoothCommand command19 = new SmoothCommand();
+                command19.Smooth += new EventHandler<SmoothCommandEventArgs>(SmoothEventExample_S1);
+                command19.Flags = SmoothCommandFlags.FavorLong;
+                command19.Length = 2;
+                command19.Run(image);
+            }
             //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
             // Prepare the command 
 
-            // Prepare the command 
-
-            /* GaussianCommand command11 = new GaussianCommand();
-             command11.Radius = 5;
-             command11.Run(image);*/
-
             return image;
+        }
+        private void DotRemoveEvent_S1(object sender, DotRemoveCommandEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Size   " + e.BoundingRectangle.Width + e.BoundingRectangle.Height + "Bounds"
+               + e.BoundingRectangle.Left + "," + e.BoundingRectangle.Top + "," + e.BoundingRectangle.Right + "," + e.BoundingRectangle.Bottom + ","
+               + "     WhiteCount" + e.WhiteCount + "    BlackCount" + e.BlackCount, "DotRemove Event");
+
+            //Do not remove the speck if it contains any white pixels 
+            if (e.WhiteCount > 0)
+            {
+                e.Status = RemoveStatus.NoRemove;
+            }
+            else
+            {
+                e.Status = RemoveStatus.Remove;
+            }
         }
         private void LineRemoveEvent_S1(object sender, LineRemoveCommandEventArgs e)
         {
-            MessageBox.Show("Row Col " + "( " + e.StartRow.ToString() + ", " + e.StartColumn + " )" +
+            System.Diagnostics.Debug.WriteLine("Row Col " + "( " + e.StartRow.ToString() + ", " + e.StartColumn + " )" +
                "\n Length " + e.Length.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
+        private void HolePunchRemoveEvent_S1(object sender, HolePunchRemoveCommandEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Size " + "( " + e.BoundingRectangle.Left + ", " + e.BoundingRectangle.Top + ") - " + "( " + e.BoundingRectangle.Right + ", " + e.BoundingRectangle.Bottom + ")" +
+               "\n Hole Index " + e.HoleIndex.ToString() +
+               "\n Holes Total Count " + e.HoleTotalCount.ToString() +
+               "\n Black Count " + e.BlackCount.ToString() +
+               "\n White Count " + e.WhiteCount.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
+        private void InvertedTextEvent_S1(object sender, InvertedTextCommandEventArgs e)
+        {
+
+            System.Diagnostics.Debug.WriteLine("Size " + "( " + e.BoundingRectangle.Left + ", " + e.BoundingRectangle.Top + ") - " + "( " + e.BoundingRectangle.Right + ", " + e.BoundingRectangle.Bottom + ")" +
+               "\n Black Count " + e.BlackCount.ToString() +
+               "\n White Count " + e.WhiteCount.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
+        private void command_BorderRemove_S1(object sender, BorderRemoveCommandEventArgs e)
+        {
+            string Border;
+
+            switch (e.Border)
+            {
+                case BorderRemoveBorderFlags.Top:
+                    Border = "Top";
+                    break;
+                case BorderRemoveBorderFlags.Left:
+                    Border = "Left";
+                    break;
+                case BorderRemoveBorderFlags.Right:
+                    Border = "Right";
+                    break;
+                case BorderRemoveBorderFlags.Bottom:
+                    Border = "Bottom";
+                    break;
+                default:
+                    Border = "";
+                    break;
+            }
+            System.Diagnostics.Debug.WriteLine("Bounds " + "( " + e.BoundingRectangle.Left + ", " + e.BoundingRectangle.Top + ") - " + "( " + e.BoundingRectangle.Right + ", " + e.BoundingRectangle.Bottom + ")" + "\n Border " + Border.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
+        private void SmoothEventExample_S1(object sender, SmoothCommandEventArgs e)
+        {
+            string BumpOrNeck;
+            string Direction;
+
+            if (e.BumpNick == SmoothCommandBumpNickType.Bump)
+                BumpOrNeck = "Bump";
+            else
+                BumpOrNeck = "Neck";
+
+            if (e.Direction == SmoothCommandDirectionType.Horizontal)
+                Direction = "Horizontal";
+            else
+                Direction = "Vertical";
+
+            System.Diagnostics.Debug.WriteLine("Type " + BumpOrNeck +
+               "\n Row Column " + e.StartRow.ToString() + e.StartColumn.ToString() +
+               "\n Length " + e.Length +
+               "\n Direction " + Direction);
+
             e.Status = RemoveStatus.Remove;
         }
         private void BrowseSave_Click(object sender, EventArgs e)
@@ -510,6 +598,32 @@ namespace project1
             checkBox3.Checked = chckbox3;
             chckbox4 = false;
             checkBox4.Checked = chckbox4;
+            chckbox5 = false;
+            checkBox5.Checked = chckbox5;
+            chckbox6 = false;
+            checkBox6.Checked = chckbox6;
+            chckbox7 = false;
+            checkBox7.Checked = chckbox6;
+            chckbox8 = false;
+            checkBox8.Checked = chckbox6;
+            chckbox9 = false;
+            checkBox9.Checked = chckbox6;
+            chckbox10 = false;
+            checkBox10.Checked = chckbox6;
+            chckbox11 = false;
+            checkBox11.Checked = chckbox6;
+            chckbox12 = false;
+            checkBox12.Checked = chckbox6;
+            chckbox13 = false;
+            checkBox13.Checked = chckbox6;
+            chckbox14 = false;
+            checkBox14.Checked = chckbox6;
+            chckbox15 = false;
+            checkBox15.Checked = chckbox6;
+            chckbox16 = false;
+            checkBox16.Checked = chckbox6;
+            chckbox17 = false;
+            checkBox17.Checked = chckbox6;
 
             value_profilename.Text = "";
             comboBox2.SelectedIndex = 0;
@@ -550,6 +664,20 @@ namespace project1
                 streamwri.WriteLine(l_autocolorlevel.Name+ "=" +chckbox.ToString());            
                 streamwri.WriteLine(checkBox3.Text + "=" + chckbox3.ToString());
                 streamwri.WriteLine(checkBox4.Text + "=" + chckbox4.ToString());
+
+                streamwri.WriteLine(checkBox5.Text + "=" + chckbox5.ToString());
+                streamwri.WriteLine(checkBox6.Text + "=" + chckbox6.ToString());
+                streamwri.WriteLine(checkBox7.Text + "=" + chckbox7.ToString());
+                streamwri.WriteLine(checkBox8.Text + "=" + chckbox8.ToString());
+                streamwri.WriteLine(checkBox9.Text + "=" + chckbox9.ToString());
+                streamwri.WriteLine(checkBox10.Text + "=" + chckbox10.ToString());
+                streamwri.WriteLine(checkBox11.Text + "=" + chckbox11.ToString());
+                streamwri.WriteLine(checkBox12.Text + "=" + chckbox12.ToString());
+                streamwri.WriteLine(checkBox13.Text + "=" + chckbox13.ToString());
+                streamwri.WriteLine(checkBox14.Text + "=" + chckbox14.ToString());
+                streamwri.WriteLine(checkBox15.Text + "=" + chckbox15.ToString());
+                streamwri.WriteLine(checkBox16.Text + "=" + chckbox16.ToString());
+                streamwri.WriteLine(checkBox17.Text + "=" + chckbox17.ToString());
 
                 streamwri.Close();
                 l_saveprofile.Text = "Save Success...";
@@ -901,6 +1029,264 @@ namespace project1
                 panDocImgClupFnct.Height = 240;
             }
             Expanded4 = !Expanded4;
+        }
+
+        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox10.Checked == true)
+            {
+                chckbox10 = true;
+                Display();
+            }
+            else
+            {
+                chckbox10 = false;
+                Display();
+            }
+        }
+
+        private void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox11.Checked == true)
+            {
+                chckbox11 = true;
+                Display();
+            }
+            else
+            {
+                chckbox11 = false;
+                Display();
+            }
+        }
+
+        private void checkBox12_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox12.Checked == true)
+            {
+                chckbox12 = true;
+                Display();
+            }
+            else
+            {
+                chckbox12 = false;
+                Display();
+            }
+        }
+
+        private void checkBox13_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox13.Checked == true)
+            {
+                chckbox13 = true;
+                Display();
+            }
+            else
+            {
+                chckbox13 = false;
+                Display();
+            }
+        }
+
+        private void checkBox14_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox14.Checked == true)
+            {
+                chckbox14 = true;
+                Display();
+            }
+            else
+            {
+                chckbox14 = false;
+                Display();
+            }
+        }
+
+        private void checkBox15_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox15.Checked == true)
+            {
+                chckbox15 = true;
+                Display();
+            }
+            else
+            {
+                chckbox15 = false;
+                Display();
+            }
+        }
+
+        private void checkBox16_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox16.Checked == true)
+            {
+                chckbox16 = true;
+                Display();
+            }
+            else
+            {
+                chckbox16 = false;
+                Display();
+            }
+        }
+
+        private void checkBox17_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox17.Checked == true)
+            {
+                chckbox17 = true;
+                Display();
+            }
+            else
+            {
+                chckbox17 = false;
+                Display();
+            }
+        }
+        private bool Expanded5 = false;
+        private void btnDotRemove_Click(object sender, EventArgs e)
+        {
+            if (Expanded5)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panDotRemove.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panDotRemove.Height = 267;
+            }
+            Expanded5 = !Expanded5;
+        }
+        private bool Expanded6 = false;
+        private void btnLineRemove_Click(object sender, EventArgs e)
+        {
+            if (Expanded6)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panLineRemove.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panLineRemove.Height = 333;
+            }
+            Expanded6 = !Expanded6;
+        }
+        private bool Expanded7 = false;
+        private void btnHolePunchRemove_Click(object sender, EventArgs e)
+        {
+            if (Expanded7)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panHolePunchRemove.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panHolePunchRemove.Height = 192;
+            }
+            Expanded7 = !Expanded7;
+        }
+        private bool Expanded8 = false;
+        private void btnInvertedText_Click(object sender, EventArgs e)
+        {
+            if (Expanded8)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panInvertedText.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panInvertedText.Height = 309;
+            }
+            Expanded8 = !Expanded8;
+        }
+        private bool Expanded9 = false;
+        private void btnAutoCrop_Click(object sender, EventArgs e)
+        {
+            if (Expanded9)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panAutoCrop.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panAutoCrop.Height = 117;
+            }
+            Expanded9 = !Expanded9;
+        }
+        private bool Expanded10 = false;
+        private void btnBorderRemove_Click(object sender, EventArgs e)
+        {
+            if (Expanded10)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panBorderRemove.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panBorderRemove.Height = 225;
+            }
+            Expanded10 = !Expanded10;
+        }
+        private bool Expanded11 = false;
+        private void btnSmooth_Click(object sender, EventArgs e)
+        {
+            if (Expanded11)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panSmooth.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panSmooth.Height = 114;
+            }
+            Expanded11 = !Expanded11;
+        }
+
+        //dotRemove
+        private void trackBar10_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar11_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar12_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar13_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar10_MouseCaptureChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar11_MouseCaptureChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar12_MouseCaptureChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar13_MouseCaptureChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
