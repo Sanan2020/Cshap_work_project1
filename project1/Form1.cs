@@ -54,7 +54,7 @@ namespace project1
         public int value_trbDynBin2 = 16;
         public int value_trbMaximum = 3;
         public int value_trbMinimum = 3;
-        public int value_trbGamma =310;
+        public int value_trbGamma = 310;
         public bool chckbox10 = false;
         public bool chckbox11 = false;
         public bool chckbox12 = false;
@@ -137,18 +137,13 @@ namespace project1
                 picOutput.Image = new Bitmap(destImage1);
                 //MessageBox.Show(destImage1.ToString());
             }
-            //MessageBox.Show(.ToString());
         }
         public RasterImage ChangeCommand()
         {
 
             // Load an image 
             codecs.ThrowExceptionsOnInvalidImages = true;
-            // person.IMG = codecs.Load(Path.Combine(folderPath));
             RasterImage image = codecs.Load(Path.Combine(folderPath));
-           // myObj.Name = codecs.Load(Path.Combine(folderPath));
-           // MessageBox.Show(myObj.Name.ToString());
-            // Prepare the command 
 
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
@@ -186,12 +181,6 @@ namespace project1
                 command5.GreenFactor = value_trackBar8;
                 command5.BlueFactor = value_trackBar9;
                 command5.Run(image);
-            }
-
-            if (chckbox3 == true) {
-                DespeckleCommand command6 = new DespeckleCommand();
-                //Remove speckles from the image. 
-                command6.Run(image);
             }
 
             if (chckbox4 == true)
@@ -238,12 +227,6 @@ namespace project1
                 // convert it into a black and white image without changing its bits per pixel. 
                 command12.Run(image);
             }
-
-            /* using (Image destImage1 = RasterImageConverter.ConvertToImage(image, ConvertToImageOptions.None))
-             {
-                 picInput.Image = new Bitmap(destImage1);
-                 //MessageBox.Show(destImage1.ToString());
-             }*/
 
             if (chckbox11 == true)
             {
@@ -332,10 +315,36 @@ namespace project1
                 command19.Length = 2;
                 command19.Run(image);
             }
-            //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result000.jpg"), RasterImageFormat.Jpeg, 24);
+            //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.jpg"), RasterImageFormat.Bmp, 8);
             // Prepare the command 
+            if (chckbox3 == true)
+            {
+                DespeckleCommand command6 = new DespeckleCommand();
+                //Remove speckles from the image. 
+                command6.Run(image);
+            }
+
+            /*RakeRemoveCommand command20 = new RakeRemoveCommand();
+            command20.RakeRemove += new EventHandler<RakeRemoveCommandEventArgs>(RakeRemoveEvent_S1);
+            command20.MinLength = 50;
+            command20.MinWallHeight = 10;
+            command20.MaxWidth = 3;
+            command20.MaxWallPercent = 25;
+            command20.MaxSideteethLength = 60;
+            command20.MaxMidteethLength = 50;
+            command20.Gaps = 1;
+            command20.Variance = 1;
+            command20.TeethSpacing = 5;
+            command20.AutoFilter = false;
+
+            command20.Run(image);*/
 
             return image;
+        }
+        private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
+        {
+            MessageBox.Show("Rake length is " + "( " + e.Length.ToString() + " )");
+            e.Status = RemoveStatus.Remove;
         }
         private void DotRemoveEvent_S1(object sender, DotRemoveCommandEventArgs e)
         {
@@ -603,27 +612,27 @@ namespace project1
             chckbox6 = false;
             checkBox6.Checked = chckbox6;
             chckbox7 = false;
-            checkBox7.Checked = chckbox6;
+            checkBox7.Checked = chckbox7;
             chckbox8 = false;
-            checkBox8.Checked = chckbox6;
+            checkBox8.Checked = chckbox8;
             chckbox9 = false;
-            checkBox9.Checked = chckbox6;
+            checkBox9.Checked = chckbox9;
             chckbox10 = false;
-            checkBox10.Checked = chckbox6;
+            checkBox10.Checked = chckbox10;
             chckbox11 = false;
-            checkBox11.Checked = chckbox6;
+            checkBox11.Checked = chckbox11;
             chckbox12 = false;
-            checkBox12.Checked = chckbox6;
+            checkBox12.Checked = chckbox12;
             chckbox13 = false;
-            checkBox13.Checked = chckbox6;
+            checkBox13.Checked = chckbox13;
             chckbox14 = false;
-            checkBox14.Checked = chckbox6;
+            checkBox14.Checked = chckbox14;
             chckbox15 = false;
-            checkBox15.Checked = chckbox6;
+            checkBox15.Checked = chckbox15;
             chckbox16 = false;
-            checkBox16.Checked = chckbox6;
+            checkBox16.Checked = chckbox16;
             chckbox17 = false;
-            checkBox17.Checked = chckbox6;
+            checkBox17.Checked = chckbox17;
 
             value_profilename.Text = "";
             comboBox2.SelectedIndex = 0;
@@ -664,7 +673,6 @@ namespace project1
                 streamwri.WriteLine(l_autocolorlevel.Name+ "=" +chckbox.ToString());            
                 streamwri.WriteLine(checkBox3.Text + "=" + chckbox3.ToString());
                 streamwri.WriteLine(checkBox4.Text + "=" + chckbox4.ToString());
-
                 streamwri.WriteLine(checkBox5.Text + "=" + chckbox5.ToString());
                 streamwri.WriteLine(checkBox6.Text + "=" + chckbox6.ToString());
                 streamwri.WriteLine(checkBox7.Text + "=" + chckbox7.ToString());
@@ -749,6 +757,32 @@ namespace project1
                     checkBox3.Checked = chckbox3;
                     chckbox4 = bool.Parse(list[13]);
                     checkBox4.Checked = chckbox4;
+                    chckbox5 = bool.Parse(list[14]);
+                    checkBox5.Checked = chckbox5;
+                    chckbox6 = bool.Parse(list[15]);
+                    checkBox6.Checked = chckbox6;
+                    chckbox7 = bool.Parse(list[16]);
+                    checkBox7.Checked = chckbox7;
+                    chckbox8 = bool.Parse(list[17]);
+                    checkBox8.Checked = chckbox8;
+                    chckbox9 = bool.Parse(list[18]);
+                    checkBox9.Checked = chckbox9;
+                    chckbox10 = bool.Parse(list[19]);
+                    checkBox10.Checked = chckbox10;
+                    chckbox11 = bool.Parse(list[20]);
+                    checkBox11.Checked = chckbox11;
+                    chckbox12 = bool.Parse(list[21]);
+                    checkBox12.Checked = chckbox12;
+                    chckbox13 = bool.Parse(list[22]);
+                    checkBox13.Checked = chckbox13;
+                    chckbox14 = bool.Parse(list[23]);
+                    checkBox14.Checked = chckbox14;
+                    chckbox15 = bool.Parse(list[24]);
+                    checkBox15.Checked = chckbox15;
+                    chckbox16 = bool.Parse(list[25]);
+                    checkBox16.Checked = chckbox16;
+                    chckbox17 = bool.Parse(list[26]);
+                    checkBox17.Checked = chckbox17;
                     Display();
                     l_saveprofile.Text = "usepf Success...";
                 }
