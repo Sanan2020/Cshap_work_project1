@@ -68,11 +68,13 @@ namespace project1
         public int value_trackBar11 = 10;
         public int value_trackBar12 = 1;
         public int value_trackBar13 = 1;
-        public int value_trackBar14 = 10;
-        public int value_trackBar15 = 10;
-        public int value_trackBar16 = 1;
-        public int value_trackBar17 = 1;
-        public int value_trackBar18 = 1;
+        public int value_trackBar14 = 2;
+        public int value_trackBar15 = 5;
+        public int value_trackBar16 = 200;
+        public int value_trackBar17 = 10;
+        public int value_trackBar22 = 7;
+        public int value_trackBar18 = 4;
+        public int value_trackBar21 = 2;
         public Form1()
         {
             InitializeComponent();
@@ -146,6 +148,21 @@ namespace project1
             l_minimumdotH.Text = value_trackBar12.ToString();
             trackBar13.Value = value_trackBar13;
             l_minimumdotW.Text = value_trackBar13.ToString();
+
+            trackBar14.Value = value_trackBar14;
+            l_gaplength.Text = value_trackBar14.ToString();
+            trackBar15.Value = value_trackBar15;
+            l_maximumlineW.Text = value_trackBar15.ToString();
+            trackBar16.Value = value_trackBar16;
+            l_minimumlineL.Text = value_trackBar16.ToString();
+            trackBar17.Value = value_trackBar17;
+            l_maximumwall.Text = value_trackBar17.ToString();
+            trackBar22.Value = value_trackBar22;
+            l_wall.Text = value_trackBar22.ToString();
+            trackBar18.Value = value_trackBar18;
+            l_maximumhole.Text = value_trackBar18.ToString();
+            trackBar21.Value = value_trackBar21;
+            l_minimumhole.Text = value_trackBar21.ToString();
         }
 
         public void Display() {
@@ -252,11 +269,11 @@ namespace project1
                 command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
                 command13.Type = LineRemoveCommandType.Horizontal;
                 command13.Flags = LineRemoveCommandFlags.UseGap;
-                command13.GapLength = 2;
-                command13.MaximumLineWidth = 5;
-                command13.MinimumLineLength = 200;
-                command13.MaximumWallPercent = 10;
-                command13.Wall = 7;
+                command13.GapLength = value_trackBar14;
+                command13.MaximumLineWidth = value_trackBar15;
+                command13.MinimumLineLength = value_trackBar16;
+                command13.MaximumWallPercent = value_trackBar17;
+                command13.Wall = value_trackBar22;
                 command13.Run(image);
             }
 
@@ -279,9 +296,8 @@ namespace project1
                 command14.HolePunchRemove += new EventHandler<HolePunchRemoveCommandEventArgs>(HolePunchRemoveEvent_S1);
                 command14.Flags = HolePunchRemoveCommandFlags.UseDpi | HolePunchRemoveCommandFlags.UseCount | HolePunchRemoveCommandFlags.UseLocation;
                 command14.Location = HolePunchRemoveCommandLocation.Left;
-                command14.MaximumHoleCount = 4;
-                command14.MinimumHoleCount = 2;
-
+                command14.MaximumHoleCount = value_trackBar18;
+                command14.MinimumHoleCount = value_trackBar21;
                 command14.Run(image);
             }
 
@@ -1389,27 +1405,32 @@ namespace project1
 
         private void trackBar14_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar14 = trackBar14.Value;
+            l_gaplength.Text = value_trackBar14.ToString();
         }
 
         private void trackBar15_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar15 = trackBar15.Value;
+            l_maximumlineW.Text = value_trackBar15.ToString();
         }
 
         private void trackBar16_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar16 = trackBar16.Value;
+            l_minimumlineL.Text = value_trackBar16.ToString();
         }
 
         private void trackBar17_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar17 = trackBar17.Value;
+            l_maximumwall.Text = value_trackBar17.ToString();
         }
 
         private void trackBar22_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar22 = trackBar22.Value;
+            l_wall.Text = value_trackBar22.ToString();
         }
 
         private void trackBar14_MouseCaptureChanged(object sender, EventArgs e)
@@ -1433,6 +1454,28 @@ namespace project1
         }
 
         private void trackBar22_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar18_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar18 = trackBar18.Value;
+            l_maximumhole.Text = value_trackBar18.ToString();
+        }
+
+        private void trackBar21_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar21 = trackBar21.Value;
+            l_minimumhole.Text = value_trackBar21.ToString();
+        }
+
+        private void trackBar18_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar21_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
         }
