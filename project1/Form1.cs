@@ -75,6 +75,15 @@ namespace project1
         public int value_trackBar22 = 7;
         public int value_trackBar18 = 4;
         public int value_trackBar21 = 2;
+        public int value_trackBar19 = 95;
+        public int value_trackBar20 = 70;
+        public int value_trackBar23 = 500;
+        public int value_trackBar24 = 5000;
+        public int value_trackBar27 = 20;
+        public int value_trackBar25 = 20;
+        public int value_trackBar26 = 3;
+        public int value_trackBar28 = 9;
+        public int value_trackBar31 = 2;
         public Form1()
         {
             InitializeComponent();
@@ -163,6 +172,25 @@ namespace project1
             l_maximumhole.Text = value_trackBar18.ToString();
             trackBar21.Value = value_trackBar21;
             l_minimumhole.Text = value_trackBar21.ToString();
+
+            trackBar19.Value = value_trackBar19;
+            l_maximumblack.Text = value_trackBar19.ToString();
+            trackBar20.Value = value_trackBar20;
+            l_minimumBlack.Text = value_trackBar20.ToString();
+            trackBar23.Value = value_trackBar23;
+            l_minimuminverH.Text = value_trackBar23.ToString();
+            trackBar24.Value = value_trackBar24;
+            l_minimuminvertW.Text = value_trackBar24.ToString();
+            trackBar27.Value = value_trackBar27;
+            l_cropThreshold.Text = value_trackBar27.ToString();
+            trackBar25.Value = value_trackBar25;
+            l_percent.Text = value_trackBar25.ToString();
+            trackBar26.Value = value_trackBar26;
+            l_variance.Text = value_trackBar26.ToString();
+            trackBar28.Value = value_trackBar28;
+            l_whitenoiseL.Text = value_trackBar28.ToString();
+            trackBar31.Value = value_trackBar31;
+            l_length.Text = value_trackBar31.ToString();
         }
 
         public void Display() {
@@ -306,10 +334,10 @@ namespace project1
                 InvertedTextCommand command15 = new InvertedTextCommand();
                 command15.InvertedText += new EventHandler<InvertedTextCommandEventArgs>(InvertedTextEvent_S1);
                 command15.Flags = InvertedTextCommandFlags.UseDpi;
-                command15.MaximumBlackPercent = 95;
-                command15.MinimumBlackPercent = 70;
-                command15.MinimumInvertHeight = 500;
-                command15.MinimumInvertWidth = 5000;
+                command15.MaximumBlackPercent = value_trackBar19;
+                command15.MinimumBlackPercent = value_trackBar20;
+                command15.MinimumInvertHeight = value_trackBar23;
+                command15.MinimumInvertWidth = value_trackBar24;
                 command15.Run(image);
             }
 
@@ -325,7 +353,7 @@ namespace project1
             {
                 AutoCropCommand command17 = new AutoCropCommand();
                 //AutoCrop the image with 20 tolerance. 
-                command17.Threshold = 20;
+                command17.Threshold = value_trackBar27;
                 command17.Run(image);
             }
 
@@ -335,9 +363,9 @@ namespace project1
                 command18.BorderRemove += new EventHandler<BorderRemoveCommandEventArgs>(command_BorderRemove_S1);
                 command18.Border = BorderRemoveBorderFlags.All;
                 command18.Flags = BorderRemoveCommandFlags.UseVariance;
-                command18.Percent = 20;
-                command18.Variance = 3;
-                command18.WhiteNoiseLength = 9;
+                command18.Percent = value_trackBar25;
+                command18.Variance = value_trackBar26;
+                command18.WhiteNoiseLength = value_trackBar28;
                 command18.Run(image);
             }
 
@@ -346,14 +374,14 @@ namespace project1
                 SmoothCommand command19 = new SmoothCommand();
                 command19.Smooth += new EventHandler<SmoothCommandEventArgs>(SmoothEventExample_S1);
                 command19.Flags = SmoothCommandFlags.FavorLong;
-                command19.Length = 2;
+                command19.Length = value_trackBar31;
                 command19.Run(image);
             }
            
             
             //test 
               // Preprocessing steps
-            ResizeCommand rcommand = new ResizeCommand();
+           /* ResizeCommand rcommand = new ResizeCommand();
             rcommand.DestinationImage = image;
             rcommand.Flags = RasterSizeFlags.Bicubic;
             
@@ -361,7 +389,7 @@ namespace project1
             DeskewCommand deskewCommand = new DeskewCommand();
             SharpenCommand sharpenCommand = new SharpenCommand();
             //CleanUpCommand cleanUpCommand = new CleanUpCommand();
-            AutoBinarizeCommand autoBinarizeCommand = new AutoBinarizeCommand();
+            AutoBinarizeCommand autoBinarizeCommand = new AutoBinarizeCommand();*/
 
             //rcommand.Run(image);
            // deskewCommand.Run(image);
@@ -685,12 +713,21 @@ namespace project1
             checkBox4.Checked = chckbox4;
             chckbox5 = false;
             checkBox5.Checked = chckbox5;
+            value_trbMaximum = 3;
+            trbMaximum.Value = value_trbMaximum;
+            l_maximum.Text = value_trbMaximum.ToString();
             chckbox6 = false;
             checkBox6.Checked = chckbox6;
+            value_trbMinimum = 3;
+            trbMinimum.Value = value_trbMinimum;
+            l_minimum.Text = value_trbMinimum.ToString();
             chckbox7 = false;
             checkBox7.Checked = chckbox7;
             chckbox8 = false;
             checkBox8.Checked = chckbox8;
+            value_trbGamma = 310;
+            trbGamma.Value = value_trbGamma;
+            l_gamma.Text = value_trbGamma.ToString();
             chckbox9 = false;
             checkBox9.Checked = chckbox9;
             chckbox10 = false;
@@ -712,6 +749,67 @@ namespace project1
 
             value_profilename.Text = "";
             comboBox2.SelectedIndex = 0;
+
+            value_trackBar10 = 10;
+            trackBar10.Value = value_trackBar10;
+            l_maximumdotH.Text = value_trackBar10.ToString();
+            value_trackBar11 = 10;
+            trackBar11.Value = value_trackBar11;
+            l_maximumdotW.Text = value_trackBar11.ToString();
+            value_trackBar12 = 1;
+            trackBar12.Value = value_trackBar12;
+            l_minimumdotH.Text = value_trackBar12.ToString();
+            value_trackBar13 = 1;
+            trackBar13.Value = value_trackBar13;
+            l_minimumdotW.Text = value_trackBar13.ToString();
+            value_trackBar14 = 2;
+            trackBar14.Value = value_trackBar14;
+            l_gaplength.Text = value_trackBar14.ToString();
+            value_trackBar15 = 5;
+            trackBar15.Value = value_trackBar15;
+            l_maximumlineW.Text = value_trackBar15.ToString();
+            value_trackBar16 = 200;
+            trackBar16.Value = value_trackBar16;
+            l_minimumlineL.Text = value_trackBar16.ToString();
+            value_trackBar17 = 10;
+            trackBar17.Value = value_trackBar17;
+            l_maximumwall.Text = value_trackBar17.ToString();
+            value_trackBar22 = 7;
+            trackBar22.Value = value_trackBar22;
+            l_wall.Text = value_trackBar22.ToString();
+            value_trackBar18 = 4;
+            trackBar18.Value = value_trackBar18;
+            l_maximumhole.Text = value_trackBar18.ToString();
+            value_trackBar21 = 2;
+            trackBar21.Value = value_trackBar21;
+            l_minimumhole.Text = value_trackBar21.ToString();
+            value_trackBar19 = 95;
+            trackBar19.Value = value_trackBar19;
+            l_maximumblack.Text = value_trackBar19.ToString();
+            value_trackBar20 = 70;
+            trackBar20.Value = value_trackBar20;
+            l_minimumBlack.Text = value_trackBar20.ToString();
+            value_trackBar23 = 500;
+            trackBar23.Value = value_trackBar23;
+            l_minimuminverH.Text = value_trackBar23.ToString();
+            value_trackBar24 = 5000;
+            trackBar24.Value = value_trackBar24;
+            l_minimuminvertW.Text = value_trackBar24.ToString();
+            value_trackBar27 = 20;
+            trackBar27.Value = value_trackBar27;
+            l_cropThreshold.Text = value_trackBar27.ToString();
+            value_trackBar25 = 20;
+            trackBar25.Value = value_trackBar25;
+            l_percent.Text = value_trackBar25.ToString();
+            value_trackBar26 = 3;
+            trackBar26.Value = value_trackBar26;
+            l_variance.Text = value_trackBar26.ToString();
+            value_trackBar28 = 9;
+            trackBar28.Value = value_trackBar28;
+            l_whitenoiseL.Text = value_trackBar28.ToString();
+            value_trackBar31 = 2;
+            trackBar31.Value = value_trackBar31;
+            l_length.Text = value_trackBar31.ToString();
             Display();
         }
         private void Reset_Click(object sender, EventArgs e)
@@ -1476,6 +1574,105 @@ namespace project1
         }
 
         private void trackBar21_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar19_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar19 = trackBar19.Value;
+            l_maximumblack.Text = value_trackBar19.ToString();
+        }
+
+        private void trackBar20_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar20 = trackBar20.Value;
+            l_minimumBlack.Text = value_trackBar20.ToString();
+        }
+
+        private void trackBar23_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar23 = trackBar23.Value;
+            l_minimuminverH.Text = value_trackBar23.ToString();
+        }
+
+        private void trackBar24_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar24 = trackBar24.Value;
+            l_minimuminvertW.Text = value_trackBar24.ToString();
+        }
+
+        private void trackBar19_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar20_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar23_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar24_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar27_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar27 = trackBar27.Value;
+            l_cropThreshold.Text = value_trackBar27.ToString();
+        }
+
+        private void trackBar27_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar25_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar25 = trackBar25.Value;
+            l_percent.Text = value_trackBar25.ToString();
+        }
+
+        private void trackBar26_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar26 = trackBar26.Value;
+            l_variance.Text = value_trackBar26.ToString();
+        }
+
+        private void trackBar28_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar28 = trackBar28.Value;
+            l_whitenoiseL.Text = value_trackBar28.ToString();
+        }
+
+        private void trackBar25_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar26_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar28_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar31_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar31 = trackBar31.Value;
+            l_length.Text = value_trackBar31.ToString();
+        }
+
+        private void trackBar31_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
         }
