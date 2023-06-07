@@ -118,30 +118,41 @@
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.panHolePunchRemove = new System.Windows.Forms.Panel();
             this.btnHolePunchRemove = new System.Windows.Forms.Button();
+            this.l_maximumhole = new System.Windows.Forms.Label();
+            this.l_minimumhole = new System.Windows.Forms.Label();
             this.trackBar18 = new System.Windows.Forms.TrackBar();
             this.trackBar21 = new System.Windows.Forms.TrackBar();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.panInvertedText = new System.Windows.Forms.Panel();
+            this.l_minimuminvertW = new System.Windows.Forms.Label();
+            this.l_minimuminverH = new System.Windows.Forms.Label();
+            this.l_minimumBlack = new System.Windows.Forms.Label();
+            this.l_maximumblack = new System.Windows.Forms.Label();
             this.trackBar24 = new System.Windows.Forms.TrackBar();
             this.trackBar23 = new System.Windows.Forms.TrackBar();
             this.trackBar19 = new System.Windows.Forms.TrackBar();
-            this.btnInvertedText = new System.Windows.Forms.Button();
             this.trackBar20 = new System.Windows.Forms.TrackBar();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.panAutoCrop = new System.Windows.Forms.Panel();
+            this.l_cropThreshold = new System.Windows.Forms.Label();
             this.btnAutoCrop = new System.Windows.Forms.Button();
             this.trackBar27 = new System.Windows.Forms.TrackBar();
             this.checkBox15 = new System.Windows.Forms.CheckBox();
             this.panBorderRemove = new System.Windows.Forms.Panel();
+            this.l_whitenoiseL = new System.Windows.Forms.Label();
+            this.l_variance = new System.Windows.Forms.Label();
+            this.l_percent = new System.Windows.Forms.Label();
+            this.btnBorderRemove = new System.Windows.Forms.Button();
             this.trackBar28 = new System.Windows.Forms.TrackBar();
             this.trackBar26 = new System.Windows.Forms.TrackBar();
             this.trackBar25 = new System.Windows.Forms.TrackBar();
-            this.btnBorderRemove = new System.Windows.Forms.Button();
             this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.panSmooth = new System.Windows.Forms.Panel();
+            this.l_length = new System.Windows.Forms.Label();
             this.btnSmooth = new System.Windows.Forms.Button();
             this.trackBar31 = new System.Windows.Forms.TrackBar();
             this.checkBox17 = new System.Windows.Forms.CheckBox();
+            this.btnInvertedText = new System.Windows.Forms.Button();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -153,17 +164,6 @@
             this.l_minimum = new System.Windows.Forms.Label();
             this.l_gamma = new System.Windows.Forms.Label();
             this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.l_maximumhole = new System.Windows.Forms.Label();
-            this.l_minimumhole = new System.Windows.Forms.Label();
-            this.l_maximumblack = new System.Windows.Forms.Label();
-            this.l_minimumBlack = new System.Windows.Forms.Label();
-            this.l_minimuminverH = new System.Windows.Forms.Label();
-            this.l_minimuminvertW = new System.Windows.Forms.Label();
-            this.l_cropThreshold = new System.Windows.Forms.Label();
-            this.l_percent = new System.Windows.Forms.Label();
-            this.l_variance = new System.Windows.Forms.Label();
-            this.l_whitenoiseL = new System.Windows.Forms.Label();
-            this.l_length = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -785,6 +785,7 @@
             this.panDocImgClupFnct.Controls.Add(this.trbDynBin2);
             this.panDocImgClupFnct.Controls.Add(this.l_localcontrast);
             this.panDocImgClupFnct.Controls.Add(this.l_dimension);
+            this.panDocImgClupFnct.Dock = System.Windows.Forms.DockStyle.Top;
             this.panDocImgClupFnct.Location = new System.Drawing.Point(3, 108);
             this.panDocImgClupFnct.Name = "panDocImgClupFnct";
             this.panDocImgClupFnct.Size = new System.Drawing.Size(309, 29);
@@ -803,7 +804,6 @@
             // 
             // btnDocImgClupFnct
             // 
-            this.btnDocImgClupFnct.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDocImgClupFnct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDocImgClupFnct.Location = new System.Drawing.Point(0, 0);
             this.btnDocImgClupFnct.Name = "btnDocImgClupFnct";
@@ -1005,6 +1005,7 @@
             this.panLineRemove.Controls.Add(this.trackBar16);
             this.panLineRemove.Controls.Add(this.trackBar17);
             this.panLineRemove.Controls.Add(this.checkBox11);
+            this.panLineRemove.Dock = System.Windows.Forms.DockStyle.Top;
             this.panLineRemove.Location = new System.Drawing.Point(3, 178);
             this.panLineRemove.Name = "panLineRemove";
             this.panLineRemove.Size = new System.Drawing.Size(309, 31);
@@ -1030,7 +1031,6 @@
             // 
             // btnLineRemove
             // 
-            this.btnLineRemove.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLineRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLineRemove.Location = new System.Drawing.Point(0, 0);
             this.btnLineRemove.Name = "btnLineRemove";
@@ -1133,6 +1133,7 @@
             this.panHolePunchRemove.Controls.Add(this.trackBar18);
             this.panHolePunchRemove.Controls.Add(this.trackBar21);
             this.panHolePunchRemove.Controls.Add(this.checkBox12);
+            this.panHolePunchRemove.Dock = System.Windows.Forms.DockStyle.Top;
             this.panHolePunchRemove.Location = new System.Drawing.Point(3, 215);
             this.panHolePunchRemove.Name = "panHolePunchRemove";
             this.panHolePunchRemove.Size = new System.Drawing.Size(309, 29);
@@ -1140,7 +1141,6 @@
             // 
             // btnHolePunchRemove
             // 
-            this.btnHolePunchRemove.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHolePunchRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHolePunchRemove.Location = new System.Drawing.Point(0, 0);
             this.btnHolePunchRemove.Name = "btnHolePunchRemove";
@@ -1149,6 +1149,24 @@
             this.btnHolePunchRemove.Text = "HolePunchRemove";
             this.btnHolePunchRemove.UseVisualStyleBackColor = true;
             this.btnHolePunchRemove.Click += new System.EventHandler(this.btnHolePunchRemove_Click);
+            // 
+            // l_maximumhole
+            // 
+            this.l_maximumhole.AutoSize = true;
+            this.l_maximumhole.Location = new System.Drawing.Point(5, 60);
+            this.l_maximumhole.Name = "l_maximumhole";
+            this.l_maximumhole.Size = new System.Drawing.Size(13, 13);
+            this.l_maximumhole.TabIndex = 77;
+            this.l_maximumhole.Text = "0";
+            // 
+            // l_minimumhole
+            // 
+            this.l_minimumhole.AutoSize = true;
+            this.l_minimumhole.Location = new System.Drawing.Point(5, 111);
+            this.l_minimumhole.Name = "l_minimumhole";
+            this.l_minimumhole.Size = new System.Drawing.Size(13, 13);
+            this.l_minimumhole.TabIndex = 78;
+            this.l_minimumhole.Text = "0";
             // 
             // trackBar18
             // 
@@ -1197,6 +1215,42 @@
             this.panInvertedText.Size = new System.Drawing.Size(309, 29);
             this.panInvertedText.TabIndex = 73;
             // 
+            // l_minimuminvertW
+            // 
+            this.l_minimuminvertW.AutoSize = true;
+            this.l_minimuminvertW.Location = new System.Drawing.Point(7, 213);
+            this.l_minimuminvertW.Name = "l_minimuminvertW";
+            this.l_minimuminvertW.Size = new System.Drawing.Size(13, 13);
+            this.l_minimuminvertW.TabIndex = 80;
+            this.l_minimuminvertW.Text = "0";
+            // 
+            // l_minimuminverH
+            // 
+            this.l_minimuminverH.AutoSize = true;
+            this.l_minimuminverH.Location = new System.Drawing.Point(7, 163);
+            this.l_minimuminverH.Name = "l_minimuminverH";
+            this.l_minimuminverH.Size = new System.Drawing.Size(13, 13);
+            this.l_minimuminverH.TabIndex = 79;
+            this.l_minimuminverH.Text = "0";
+            // 
+            // l_minimumBlack
+            // 
+            this.l_minimumBlack.AutoSize = true;
+            this.l_minimumBlack.Location = new System.Drawing.Point(7, 111);
+            this.l_minimumBlack.Name = "l_minimumBlack";
+            this.l_minimumBlack.Size = new System.Drawing.Size(13, 13);
+            this.l_minimumBlack.TabIndex = 78;
+            this.l_minimumBlack.Text = "0";
+            // 
+            // l_maximumblack
+            // 
+            this.l_maximumblack.AutoSize = true;
+            this.l_maximumblack.Location = new System.Drawing.Point(7, 61);
+            this.l_maximumblack.Name = "l_maximumblack";
+            this.l_maximumblack.Size = new System.Drawing.Size(13, 13);
+            this.l_maximumblack.TabIndex = 77;
+            this.l_maximumblack.Text = "0";
+            // 
             // trackBar24
             // 
             this.trackBar24.Location = new System.Drawing.Point(29, 209);
@@ -1227,18 +1281,6 @@
             this.trackBar19.Scroll += new System.EventHandler(this.trackBar19_Scroll);
             this.trackBar19.MouseCaptureChanged += new System.EventHandler(this.trackBar19_MouseCaptureChanged);
             // 
-            // btnInvertedText
-            // 
-            this.btnInvertedText.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInvertedText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInvertedText.Location = new System.Drawing.Point(0, 0);
-            this.btnInvertedText.Name = "btnInvertedText";
-            this.btnInvertedText.Size = new System.Drawing.Size(307, 27);
-            this.btnInvertedText.TabIndex = 70;
-            this.btnInvertedText.Text = "InvertedText";
-            this.btnInvertedText.UseVisualStyleBackColor = true;
-            this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
-            // 
             // trackBar20
             // 
             this.trackBar20.Location = new System.Drawing.Point(29, 107);
@@ -1263,18 +1305,27 @@
             // panAutoCrop
             // 
             this.panAutoCrop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panAutoCrop.Controls.Add(this.l_cropThreshold);
             this.panAutoCrop.Controls.Add(this.btnAutoCrop);
+            this.panAutoCrop.Controls.Add(this.l_cropThreshold);
             this.panAutoCrop.Controls.Add(this.trackBar27);
             this.panAutoCrop.Controls.Add(this.checkBox15);
+            this.panAutoCrop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panAutoCrop.Location = new System.Drawing.Point(3, 285);
             this.panAutoCrop.Name = "panAutoCrop";
             this.panAutoCrop.Size = new System.Drawing.Size(309, 29);
             this.panAutoCrop.TabIndex = 74;
             // 
+            // l_cropThreshold
+            // 
+            this.l_cropThreshold.AutoSize = true;
+            this.l_cropThreshold.Location = new System.Drawing.Point(7, 67);
+            this.l_cropThreshold.Name = "l_cropThreshold";
+            this.l_cropThreshold.Size = new System.Drawing.Size(13, 13);
+            this.l_cropThreshold.TabIndex = 77;
+            this.l_cropThreshold.Text = "0";
+            // 
             // btnAutoCrop
             // 
-            this.btnAutoCrop.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAutoCrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAutoCrop.Location = new System.Drawing.Point(0, 0);
             this.btnAutoCrop.Name = "btnAutoCrop";
@@ -1321,6 +1372,45 @@
             this.panBorderRemove.Size = new System.Drawing.Size(309, 29);
             this.panBorderRemove.TabIndex = 75;
             // 
+            // l_whitenoiseL
+            // 
+            this.l_whitenoiseL.AutoSize = true;
+            this.l_whitenoiseL.Location = new System.Drawing.Point(7, 166);
+            this.l_whitenoiseL.Name = "l_whitenoiseL";
+            this.l_whitenoiseL.Size = new System.Drawing.Size(13, 13);
+            this.l_whitenoiseL.TabIndex = 75;
+            this.l_whitenoiseL.Text = "0";
+            // 
+            // l_variance
+            // 
+            this.l_variance.AutoSize = true;
+            this.l_variance.Location = new System.Drawing.Point(7, 115);
+            this.l_variance.Name = "l_variance";
+            this.l_variance.Size = new System.Drawing.Size(13, 13);
+            this.l_variance.TabIndex = 74;
+            this.l_variance.Text = "0";
+            // 
+            // l_percent
+            // 
+            this.l_percent.AutoSize = true;
+            this.l_percent.Location = new System.Drawing.Point(7, 63);
+            this.l_percent.Name = "l_percent";
+            this.l_percent.Size = new System.Drawing.Size(13, 13);
+            this.l_percent.TabIndex = 73;
+            this.l_percent.Text = "0";
+            // 
+            // btnBorderRemove
+            // 
+            this.btnBorderRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBorderRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorderRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnBorderRemove.Name = "btnBorderRemove";
+            this.btnBorderRemove.Size = new System.Drawing.Size(307, 27);
+            this.btnBorderRemove.TabIndex = 70;
+            this.btnBorderRemove.Text = "BorderRemove";
+            this.btnBorderRemove.UseVisualStyleBackColor = true;
+            this.btnBorderRemove.Click += new System.EventHandler(this.btnBorderRemove_Click);
+            // 
             // trackBar28
             // 
             this.trackBar28.Location = new System.Drawing.Point(29, 160);
@@ -1349,18 +1439,6 @@
             this.trackBar25.Scroll += new System.EventHandler(this.trackBar25_Scroll);
             this.trackBar25.MouseCaptureChanged += new System.EventHandler(this.trackBar25_MouseCaptureChanged);
             // 
-            // btnBorderRemove
-            // 
-            this.btnBorderRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBorderRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBorderRemove.Location = new System.Drawing.Point(0, 0);
-            this.btnBorderRemove.Name = "btnBorderRemove";
-            this.btnBorderRemove.Size = new System.Drawing.Size(307, 27);
-            this.btnBorderRemove.TabIndex = 70;
-            this.btnBorderRemove.Text = "BorderRemove";
-            this.btnBorderRemove.UseVisualStyleBackColor = true;
-            this.btnBorderRemove.Click += new System.EventHandler(this.btnBorderRemove_Click);
-            // 
             // checkBox16
             // 
             this.checkBox16.AutoSize = true;
@@ -1375,14 +1453,23 @@
             // panSmooth
             // 
             this.panSmooth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panSmooth.Controls.Add(this.l_length);
             this.panSmooth.Controls.Add(this.btnSmooth);
+            this.panSmooth.Controls.Add(this.l_length);
             this.panSmooth.Controls.Add(this.trackBar31);
             this.panSmooth.Controls.Add(this.checkBox17);
             this.panSmooth.Location = new System.Drawing.Point(3, 355);
             this.panSmooth.Name = "panSmooth";
             this.panSmooth.Size = new System.Drawing.Size(309, 29);
             this.panSmooth.TabIndex = 76;
+            // 
+            // l_length
+            // 
+            this.l_length.AutoSize = true;
+            this.l_length.Location = new System.Drawing.Point(7, 60);
+            this.l_length.Name = "l_length";
+            this.l_length.Size = new System.Drawing.Size(13, 13);
+            this.l_length.TabIndex = 71;
+            this.l_length.Text = "0";
             // 
             // btnSmooth
             // 
@@ -1415,6 +1502,18 @@
             this.checkBox17.Text = "Smooth";
             this.checkBox17.UseVisualStyleBackColor = true;
             this.checkBox17.CheckedChanged += new System.EventHandler(this.checkBox17_CheckedChanged);
+            // 
+            // btnInvertedText
+            // 
+            this.btnInvertedText.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInvertedText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInvertedText.Location = new System.Drawing.Point(0, 0);
+            this.btnInvertedText.Name = "btnInvertedText";
+            this.btnInvertedText.Size = new System.Drawing.Size(307, 27);
+            this.btnInvertedText.TabIndex = 70;
+            this.btnInvertedText.Text = "InvertedText";
+            this.btnInvertedText.UseVisualStyleBackColor = true;
+            this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
             // 
             // checkBox4
             // 
@@ -1531,105 +1630,6 @@
             this.checkBox14.Text = "AutoDeskew";
             this.checkBox14.UseVisualStyleBackColor = true;
             this.checkBox14.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
-            // 
-            // l_maximumhole
-            // 
-            this.l_maximumhole.AutoSize = true;
-            this.l_maximumhole.Location = new System.Drawing.Point(5, 60);
-            this.l_maximumhole.Name = "l_maximumhole";
-            this.l_maximumhole.Size = new System.Drawing.Size(13, 13);
-            this.l_maximumhole.TabIndex = 77;
-            this.l_maximumhole.Text = "0";
-            // 
-            // l_minimumhole
-            // 
-            this.l_minimumhole.AutoSize = true;
-            this.l_minimumhole.Location = new System.Drawing.Point(5, 111);
-            this.l_minimumhole.Name = "l_minimumhole";
-            this.l_minimumhole.Size = new System.Drawing.Size(13, 13);
-            this.l_minimumhole.TabIndex = 78;
-            this.l_minimumhole.Text = "0";
-            // 
-            // l_maximumblack
-            // 
-            this.l_maximumblack.AutoSize = true;
-            this.l_maximumblack.Location = new System.Drawing.Point(7, 61);
-            this.l_maximumblack.Name = "l_maximumblack";
-            this.l_maximumblack.Size = new System.Drawing.Size(13, 13);
-            this.l_maximumblack.TabIndex = 77;
-            this.l_maximumblack.Text = "0";
-            // 
-            // l_minimumBlack
-            // 
-            this.l_minimumBlack.AutoSize = true;
-            this.l_minimumBlack.Location = new System.Drawing.Point(7, 111);
-            this.l_minimumBlack.Name = "l_minimumBlack";
-            this.l_minimumBlack.Size = new System.Drawing.Size(13, 13);
-            this.l_minimumBlack.TabIndex = 78;
-            this.l_minimumBlack.Text = "0";
-            // 
-            // l_minimuminverH
-            // 
-            this.l_minimuminverH.AutoSize = true;
-            this.l_minimuminverH.Location = new System.Drawing.Point(7, 163);
-            this.l_minimuminverH.Name = "l_minimuminverH";
-            this.l_minimuminverH.Size = new System.Drawing.Size(13, 13);
-            this.l_minimuminverH.TabIndex = 79;
-            this.l_minimuminverH.Text = "0";
-            // 
-            // l_minimuminvertW
-            // 
-            this.l_minimuminvertW.AutoSize = true;
-            this.l_minimuminvertW.Location = new System.Drawing.Point(7, 213);
-            this.l_minimuminvertW.Name = "l_minimuminvertW";
-            this.l_minimuminvertW.Size = new System.Drawing.Size(13, 13);
-            this.l_minimuminvertW.TabIndex = 80;
-            this.l_minimuminvertW.Text = "0";
-            // 
-            // l_cropThreshold
-            // 
-            this.l_cropThreshold.AutoSize = true;
-            this.l_cropThreshold.Location = new System.Drawing.Point(7, 67);
-            this.l_cropThreshold.Name = "l_cropThreshold";
-            this.l_cropThreshold.Size = new System.Drawing.Size(13, 13);
-            this.l_cropThreshold.TabIndex = 77;
-            this.l_cropThreshold.Text = "0";
-            // 
-            // l_percent
-            // 
-            this.l_percent.AutoSize = true;
-            this.l_percent.Location = new System.Drawing.Point(7, 63);
-            this.l_percent.Name = "l_percent";
-            this.l_percent.Size = new System.Drawing.Size(13, 13);
-            this.l_percent.TabIndex = 73;
-            this.l_percent.Text = "0";
-            // 
-            // l_variance
-            // 
-            this.l_variance.AutoSize = true;
-            this.l_variance.Location = new System.Drawing.Point(7, 115);
-            this.l_variance.Name = "l_variance";
-            this.l_variance.Size = new System.Drawing.Size(13, 13);
-            this.l_variance.TabIndex = 74;
-            this.l_variance.Text = "0";
-            // 
-            // l_whitenoiseL
-            // 
-            this.l_whitenoiseL.AutoSize = true;
-            this.l_whitenoiseL.Location = new System.Drawing.Point(7, 166);
-            this.l_whitenoiseL.Name = "l_whitenoiseL";
-            this.l_whitenoiseL.Size = new System.Drawing.Size(13, 13);
-            this.l_whitenoiseL.TabIndex = 75;
-            this.l_whitenoiseL.Text = "0";
-            // 
-            // l_length
-            // 
-            this.l_length.AutoSize = true;
-            this.l_length.Location = new System.Drawing.Point(7, 60);
-            this.l_length.Name = "l_length";
-            this.l_length.Size = new System.Drawing.Size(13, 13);
-            this.l_length.TabIndex = 71;
-            this.l_length.Text = "0";
             // 
             // Form1
             // 
