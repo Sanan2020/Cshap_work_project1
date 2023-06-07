@@ -23,6 +23,7 @@ using Leadtools.ImageProcessing.Effects;
 using Leadtools.ImageProcessing.Core;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
+using Leadtools.Ocr;
 
 namespace project1
 { 
@@ -315,7 +316,49 @@ namespace project1
                 command19.Length = 2;
                 command19.Run(image);
             }
-            //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.jpg"), RasterImageFormat.Bmp, 8);
+           
+            
+            //test 
+              // Preprocessing steps
+            ResizeCommand rcommand = new ResizeCommand();
+            rcommand.DestinationImage = image;
+            rcommand.Flags = RasterSizeFlags.Bicubic;
+            
+
+            DeskewCommand deskewCommand = new DeskewCommand();
+            SharpenCommand sharpenCommand = new SharpenCommand();
+            //CleanUpCommand cleanUpCommand = new CleanUpCommand();
+            AutoBinarizeCommand autoBinarizeCommand = new AutoBinarizeCommand();
+
+            //rcommand.Run(image);
+           // deskewCommand.Run(image);
+           // sharpenCommand.Run(image);
+            // cleanUpCommand.Run(image);
+           
+           // autoBinarizeCommand.Run(image);
+
+            // Perform OCR on the preprocessed image
+           /* using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD))
+            {
+                ocrEngine.Startup(null, null, null, null);
+                //ocrEngine.LanguageManager.EnableLanguages(new[] { "tha" }, null, null, null);
+                using (IOcrPage ocrPage = ocrEngine.CreatePage(image, OcrImageSharingMode.AutoDispose))
+                {
+                    ocrPage.AutoZone(null);
+                    ocrPage.Recognize(null);
+                    string extractedText = ocrPage.GetText(-1);
+                    System.Console.WriteLine("***************Start****************\r\n"+extractedText+ "\r\n***************Start****************");
+                }
+                ocrEngine.Shutdown();
+            }
+
+            // Clean up
+            image.Dispose();
+            codecs.Dispose();
+
+            System.Console.ReadLine();*/
+
+           //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
             // Prepare the command 
             if (chckbox3 == true)
             {
@@ -324,7 +367,7 @@ namespace project1
                 command6.Run(image);
             }
 
-            /*RakeRemoveCommand command20 = new RakeRemoveCommand();
+           /* RakeRemoveCommand command20 = new RakeRemoveCommand();
             command20.RakeRemove += new EventHandler<RakeRemoveCommandEventArgs>(RakeRemoveEvent_S1);
             command20.MinLength = 50;
             command20.MinWallHeight = 10;
