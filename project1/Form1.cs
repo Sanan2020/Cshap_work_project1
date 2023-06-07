@@ -810,6 +810,13 @@ namespace project1
             value_trackBar31 = 2;
             trackBar31.Value = value_trackBar31;
             l_length.Text = value_trackBar31.ToString();
+
+            value_trbDynBin1 = 8;
+            trbDynBin1.Value = value_trbDynBin1;
+            l_dimension.Text = value_trbDynBin1.ToString();
+            value_trbDynBin2 = 16;
+            trbDynBin2.Value = value_trbDynBin2;
+            l_localcontrast.Text = value_trbDynBin2.ToString();
             Display();
         }
         private void Reset_Click(object sender, EventArgs e)
@@ -832,68 +839,69 @@ namespace project1
 
                 StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + pfname + ".txt");
                 //streamwri.WriteLine(l_profilename.Name + "=" + value_profilename.Text);
+                //ContrastBrightnessIntensity
                 streamwri.WriteLine(l_brightness.Name + "=" + value_trackBar1.ToString());
                 streamwri.WriteLine(l_contrast.Name + "=" + value_trackBar2.ToString());
                 streamwri.WriteLine(l_intensity.Name + "=" + value_trackBar3.ToString());
-
+                //UnsharpMask
                 streamwri.WriteLine(l_amount.Name + "=" + value_trackBar4.ToString());
                 streamwri.WriteLine(l_radius.Name + "=" + value_trackBar5.ToString());
                 streamwri.WriteLine(l_threshold.Name + "=" + value_trackBar6.ToString());
-
+                //GrayScale
                 streamwri.WriteLine(checkBox2.Text + "=" + chckbox2.ToString());
                 streamwri.WriteLine(l_redfactor.Name + "=" + value_trackBar7.ToString());
                 streamwri.WriteLine(l_greenfactor.Name + "=" + value_trackBar8.ToString());
                 streamwri.WriteLine(l_bluefactor.Name + "=" + value_trackBar9.ToString());
-
+                //Document Image Cleanup Functions
                 streamwri.WriteLine(checkBox7.Text + "=" + chckbox7.ToString());    //Auto Binarize
                 streamwri.WriteLine(checkBox3.Text + "=" + chckbox3.ToString());    //Despeckle
                 streamwri.WriteLine(checkBox9.Text + "=" + chckbox9.ToString());    //Dynamic Binary
                 streamwri.WriteLine(l_dimension.Name + "=" + value_trbDynBin1.ToString());      //value_trbDynBin1
                 streamwri.WriteLine(l_localcontrast.Name + "=" + value_trbDynBin2.ToString());  //value_trbDynBin2
                 streamwri.WriteLine(l_binaryfilter.Name + "=" + selectCombobox.ToString());     //binaryfilter
-
-                streamwri.WriteLine(checkBox10.Text + "=" + chckbox10.ToString());  //Dot Remove
+                //Dot Remove
+                streamwri.WriteLine(checkBox10.Text + "=" + chckbox10.ToString());  
                 streamwri.WriteLine(l_maximumdotH.Name + "=" + value_trackBar10.ToString());
                 streamwri.WriteLine(l_maximumdotW.Name + "=" + value_trackBar11.ToString());
                 streamwri.WriteLine(l_minimumdotH.Name + "=" + value_trackBar12.ToString());
                 streamwri.WriteLine(l_minimumdotW.Name + "=" + value_trackBar13.ToString());
-
-                streamwri.WriteLine(checkBox11.Text + "=" + chckbox11.ToString());  //Line Remove
+                //Line Remove
+                streamwri.WriteLine(checkBox11.Text + "=" + chckbox11.ToString());  
                 streamwri.WriteLine(l_gaplength.Name + "=" + value_trackBar14.ToString());
                 streamwri.WriteLine(l_maximumlineW.Name + "=" + value_trackBar15.ToString());
                 streamwri.WriteLine(l_minimumlineL.Name + "=" + value_trackBar16.ToString());
                 streamwri.WriteLine(l_maximumwall.Name + "=" + value_trackBar17.ToString());
                 streamwri.WriteLine(l_wall.Name + "=" + value_trackBar22.ToString());
-
-                streamwri.WriteLine(checkBox12.Text + "=" + chckbox12.ToString());  //HolePunchRemove
+                //HolePunchRemove
+                streamwri.WriteLine(checkBox12.Text + "=" + chckbox12.ToString());  
                 streamwri.WriteLine(l_maximumhole.Name + "=" + value_trackBar18.ToString());
                 streamwri.WriteLine(l_minimumhole.Name + "=" + value_trackBar21.ToString());
-
-                streamwri.WriteLine(checkBox13.Text + "=" + chckbox13.ToString());  //InvertedText
+                //InvertedText
+                streamwri.WriteLine(checkBox13.Text + "=" + chckbox13.ToString());  
                 streamwri.WriteLine(l_maximumblack.Name + "=" + value_trackBar19.ToString());
                 streamwri.WriteLine(l_minimumBlack.Name + "=" + value_trackBar20.ToString());
                 streamwri.WriteLine(l_minimuminverH.Name + "=" + value_trackBar23.ToString());
                 streamwri.WriteLine(l_minimuminvertW.Name + "=" + value_trackBar24.ToString());
-
-                streamwri.WriteLine(checkBox15.Text + "=" + chckbox15.ToString());  //Auto Crop
+                //Auto Crop
+                streamwri.WriteLine(checkBox15.Text + "=" + chckbox15.ToString());  
                 streamwri.WriteLine(l_cropThreshold.Name + "=" + value_trackBar27.ToString());
-
-                streamwri.WriteLine(checkBox16.Text + "=" + chckbox16.ToString());  //Boder Remove
+                //Boder Remove
+                streamwri.WriteLine(checkBox16.Text + "=" + chckbox16.ToString());  
                 streamwri.WriteLine(l_percent.Name + "=" + value_trackBar25.ToString());
                 streamwri.WriteLine(l_variance.Name + "=" + value_trackBar26.ToString());
                 streamwri.WriteLine(l_whitenoiseL.Name + "=" + value_trackBar28.ToString());
-
-                streamwri.WriteLine(checkBox17.Text + "=" + chckbox17.ToString());  //Smooth
+                //Smooth
+                streamwri.WriteLine(checkBox17.Text + "=" + chckbox17.ToString());  
                 streamwri.WriteLine(l_length.Name + "=" + value_trackBar31.ToString());
 
                 streamwri.WriteLine(checkBox1.Text + "=" + chckbox.ToString());     //AutoColorLevel
                 streamwri.WriteLine(checkBox4.Text + "=" + chckbox4.ToString());    //AutoBinary
                 streamwri.WriteLine(checkBox5.Text + "=" + chckbox5.ToString());    //Maximum
-                streamwri.WriteLine(l_maximum.Name + "=" + trbMaximum.ToString());
+                streamwri.WriteLine(l_maximum.Name + "=" + value_trbMaximum.ToString());
                 streamwri.WriteLine(checkBox6.Text + "=" + chckbox6.ToString());    //Minimum
-                streamwri.WriteLine(l_minimum.Name + "=" + trbMinimum.ToString());
+                streamwri.WriteLine(l_minimum.Name + "=" + value_trbMinimum.ToString());
                 streamwri.WriteLine(checkBox8.Text + "=" + chckbox8.ToString());    //Gamma
-                streamwri.WriteLine(l_gamma.Name + "=" + trbGamma.ToString());
+                streamwri.WriteLine(l_gamma.Name + "=" + value_trbGamma.ToString());
                 streamwri.WriteLine(checkBox14.Text + "=" + chckbox14.ToString());  //AutoDeskew
  
                 streamwri.Close();
@@ -925,6 +933,7 @@ namespace project1
                     }
                     
                     //เซตค่า
+                    //ความสว่าง
                     value_trackBar1 = int.Parse(list[0]);
                     trackBar1.Value = value_trackBar1;
                     l_brightness.Text = value_trackBar1.ToString();
@@ -934,7 +943,7 @@ namespace project1
                     value_trackBar3 = int.Parse(list[2]);
                     trackBar3.Value = value_trackBar3;
                     l_intensity.Text = value_trackBar3.ToString();
-
+                    //ความคมชัด
                     value_trackBar4 = int.Parse(list[3]);
                     trackBar4.Value = value_trackBar4;
                     l_amount.Text = value_trackBar4.ToString();
@@ -944,7 +953,7 @@ namespace project1
                     value_trackBar6 = int.Parse(list[5]);
                     trackBar6.Value = value_trackBar6;
                     l_threshold.Text = value_trackBar6.ToString();
-
+                    //Gray scale
                     chckbox2 = bool.Parse(list[6]);
                     checkBox2.Checked = chckbox2;
                     value_trackBar7 = int.Parse(list[7]);
@@ -956,42 +965,129 @@ namespace project1
                     value_trackBar9 = int.Parse(list[9]);
                     trackBar9.Value = value_trackBar9;
                     l_bluefactor.Text = value_trackBar9.ToString();
-
-                    selectCombobox = int.Parse(list[10]);
-                    comboBox1.SelectedIndex = (selectCombobox + 1);
-
-                    chckbox = bool.Parse(list[11]);
-                    checkBox1.Checked = chckbox;
-                    chckbox3 = bool.Parse(list[12]);
-                    checkBox3.Checked = chckbox3;
-                    chckbox4 = bool.Parse(list[13]);
-                    checkBox4.Checked = chckbox4;
-                    chckbox5 = bool.Parse(list[14]);
-                    checkBox5.Checked = chckbox5;
-                    chckbox6 = bool.Parse(list[15]);
-                    checkBox6.Checked = chckbox6;
-                    chckbox7 = bool.Parse(list[16]);
+                    //Document Image Cleanup Functions
+                    chckbox7 = bool.Parse(list[10]);
                     checkBox7.Checked = chckbox7;
-                    chckbox8 = bool.Parse(list[17]);
-                    checkBox8.Checked = chckbox8;
-                    chckbox9 = bool.Parse(list[18]);
+                    chckbox3 = bool.Parse(list[11]);
+                    checkBox3.Checked = chckbox3;
+                    chckbox9 = bool.Parse(list[12]);
                     checkBox9.Checked = chckbox9;
-                    chckbox10 = bool.Parse(list[19]);
-                    checkBox10.Checked = chckbox10;
-                    chckbox11 = bool.Parse(list[20]);
+                    value_trbDynBin1 = int.Parse(list[13]);
+                    trbDynBin1.Value = value_trbDynBin1;
+                    l_dimension.Text = value_trbDynBin1.ToString();
+                    value_trbDynBin2 = int.Parse(list[14]);
+                    trbDynBin2.Value = value_trbDynBin2;
+                    l_localcontrast.Text = value_trbDynBin2.ToString();
+                    selectCombobox = int.Parse(list[15]);
+                    comboBox1.SelectedIndex = (selectCombobox + 1);
+                    //Dot Remove
+                    chckbox10 = bool.Parse(list[16]);
+                    checkBox10.Checked = chckbox10;  
+                    value_trackBar10 = int.Parse(list[17]);
+                    trackBar10.Value = value_trackBar10;
+                    l_maximumdotH.Text = value_trackBar10.ToString();
+                    value_trackBar11 = int.Parse(list[18]);
+                    trackBar11.Value = value_trackBar11;
+                    l_maximumdotW.Text = value_trackBar11.ToString();
+                    value_trackBar12 = int.Parse(list[19]);
+                    trackBar12.Value = value_trackBar12;
+                    l_minimumdotH.Text = value_trackBar12.ToString();
+                    value_trackBar13 = int.Parse(list[20]);
+                    trackBar13.Value = value_trackBar13;
+                    l_minimumdotW.Text = value_trackBar13.ToString();
+                    //Line Remove
+                    chckbox11 = bool.Parse(list[21]);
                     checkBox11.Checked = chckbox11;
-                    chckbox12 = bool.Parse(list[21]);
+                    value_trackBar14 = int.Parse(list[22]);
+                    trackBar14.Value = value_trackBar14;
+                    l_gaplength.Text = value_trackBar14.ToString();
+                    value_trackBar15 = int.Parse(list[23]);
+                    trackBar15.Value = value_trackBar15;
+                    l_maximumlineW.Text = value_trackBar15.ToString();
+                    value_trackBar16 = int.Parse(list[24]);
+                    trackBar16.Value = value_trackBar16;
+                    l_minimumlineL.Text = value_trackBar16.ToString();
+                    value_trackBar17 = int.Parse(list[25]);
+                    trackBar17.Value = value_trackBar17;
+                    l_maximumwall.Text = value_trackBar17.ToString();
+                    value_trackBar22 = int.Parse(list[26]);
+                    trackBar22.Value = value_trackBar22;
+                    l_wall.Text = value_trackBar22.ToString();
+                    //HolePunchRemove
+                    chckbox12 = bool.Parse(list[27]);
                     checkBox12.Checked = chckbox12;
-                    chckbox13 = bool.Parse(list[22]);
+                    value_trackBar18 = int.Parse(list[28]);
+                    trackBar18.Value = value_trackBar18;
+                    l_maximumhole.Text = value_trackBar18.ToString();
+                    value_trackBar21 = int.Parse(list[29]);
+                    trackBar21.Value = value_trackBar21;
+                    l_minimumhole.Text= value_trackBar21.ToString();
+                    //InvertedText
+                    chckbox13 = bool.Parse(list[30]);
                     checkBox13.Checked = chckbox13;
-                    chckbox14 = bool.Parse(list[23]);
-                    checkBox14.Checked = chckbox14;
-                    chckbox15 = bool.Parse(list[24]);
+                    value_trackBar19 = int.Parse(list[31]);
+                    trackBar19.Value = value_trackBar19;
+                    l_maximumblack.Text = value_trackBar19.ToString();
+                    value_trackBar20 = int.Parse(list[32]);
+                    trackBar20.Value = value_trackBar20;
+                    l_minimumBlack.Text = value_trackBar20.ToString(); 
+                    value_trackBar23 = int.Parse(list[33]);
+                    trackBar23.Value = value_trackBar23;
+                    l_minimuminverH.Text = value_trackBar23.ToString();
+                    value_trackBar24 = int.Parse(list[34]);
+                    trackBar24.Value = value_trackBar24;
+                    l_minimuminvertW.Text = value_trackBar24.ToString();
+                    //Auto Crop
+                    chckbox15 = bool.Parse(list[35]);
                     checkBox15.Checked = chckbox15;
-                    chckbox16 = bool.Parse(list[25]);
+                    value_trackBar27 = int.Parse(list[36]);
+                    trackBar27.Value = value_trackBar27;
+                    l_cropThreshold.Text = value_trackBar27.ToString();
+                    //Boder Remove
+                    chckbox16 = bool.Parse(list[37]);
                     checkBox16.Checked = chckbox16;
-                    chckbox17 = bool.Parse(list[26]);
+                    value_trackBar25 = int.Parse(list[38]);
+                    trackBar25.Value = value_trackBar25;
+                    l_percent.Text = value_trackBar25.ToString();
+                    value_trackBar26 = int.Parse(list[39]);
+                    trackBar26.Value = value_trackBar26;
+                    l_variance.Text = value_trackBar26.ToString();
+                    value_trackBar28 = int.Parse(list[40]);
+                    trackBar28.Value = value_trackBar28;
+                    l_whitenoiseL.Text = value_trackBar28.ToString();
+                    //Smooth
+                    chckbox17 = bool.Parse(list[41]);
                     checkBox17.Checked = chckbox17;
+                    value_trackBar31 = int.Parse(list[42]);
+                    trackBar31.Value = value_trackBar31;
+                    l_length.Text = value_trackBar31.ToString();
+                    //
+                    chckbox = bool.Parse(list[43]);
+                    checkBox1.Checked = chckbox;
+                    chckbox4 = bool.Parse(list[44]);
+                    checkBox4.Checked = chckbox4;
+                    //Maximum
+                    chckbox5 = bool.Parse(list[45]);
+                    checkBox5.Checked = chckbox5;
+                    value_trbMaximum = int.Parse(list[46]);
+                    trbMaximum.Value = value_trbMaximum;
+                    l_maximum.Text = value_trbMaximum.ToString();
+                    //Minimum
+                    chckbox6 = bool.Parse(list[47]);
+                    checkBox6.Checked = chckbox6;
+                    value_trbMinimum = int.Parse(list[48]);
+                    trbMinimum.Value = value_trbMinimum;
+                    l_minimum.Text = value_trbMinimum.ToString();
+                    //Gamma
+                    chckbox8 = bool.Parse(list[49]);
+                    checkBox8.Checked = chckbox8;  
+                    value_trbGamma = int.Parse(list[50]);
+                    trbGamma.Value = value_trbGamma;
+                    l_gamma.Text = value_trbGamma.ToString();
+
+                    chckbox14 = bool.Parse(list[51]);
+                    checkBox14.Checked = chckbox14;
+
                     Display();
                     l_saveprofile.Text = "usepf Success...";
                 }
