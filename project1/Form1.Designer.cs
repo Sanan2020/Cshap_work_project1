@@ -216,7 +216,7 @@
             // 
             // Browse
             // 
-            this.Browse.Location = new System.Drawing.Point(864, 549);
+            this.Browse.Location = new System.Drawing.Point(919, 549);
             this.Browse.Name = "Browse";
             this.Browse.Size = new System.Drawing.Size(76, 32);
             this.Browse.TabIndex = 0;
@@ -262,7 +262,7 @@
             // 
             // BrowseSave
             // 
-            this.BrowseSave.Location = new System.Drawing.Point(1169, 549);
+            this.BrowseSave.Location = new System.Drawing.Point(1153, 549);
             this.BrowseSave.Name = "BrowseSave";
             this.BrowseSave.Size = new System.Drawing.Size(93, 32);
             this.BrowseSave.TabIndex = 6;
@@ -472,7 +472,7 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(965, 549);
+            this.Reset.Location = new System.Drawing.Point(1035, 549);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(74, 32);
             this.Reset.TabIndex = 20;
@@ -482,7 +482,7 @@
             // 
             // SaveProfile
             // 
-            this.SaveProfile.Location = new System.Drawing.Point(1061, 549);
+            this.SaveProfile.Location = new System.Drawing.Point(1749, 433);
             this.SaveProfile.Name = "SaveProfile";
             this.SaveProfile.Size = new System.Drawing.Size(90, 32);
             this.SaveProfile.TabIndex = 21;
@@ -502,7 +502,7 @@
             // l_profilename
             // 
             this.l_profilename.AutoSize = true;
-            this.l_profilename.Location = new System.Drawing.Point(1608, 374);
+            this.l_profilename.Location = new System.Drawing.Point(1635, 370);
             this.l_profilename.Name = "l_profilename";
             this.l_profilename.Size = new System.Drawing.Size(70, 13);
             this.l_profilename.TabIndex = 23;
@@ -510,7 +510,7 @@
             // 
             // value_profilename
             // 
-            this.value_profilename.Location = new System.Drawing.Point(1701, 371);
+            this.value_profilename.Location = new System.Drawing.Point(1728, 367);
             this.value_profilename.Name = "value_profilename";
             this.value_profilename.Size = new System.Drawing.Size(133, 20);
             this.value_profilename.TabIndex = 24;
@@ -519,7 +519,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1701, 397);
+            this.comboBox2.Location = new System.Drawing.Point(1728, 393);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(133, 21);
             this.comboBox2.TabIndex = 25;
@@ -528,7 +528,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1608, 400);
+            this.label3.Location = new System.Drawing.Point(1635, 396);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 26;
