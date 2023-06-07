@@ -64,7 +64,15 @@ namespace project1
         public bool chckbox15 = false;
         public bool chckbox16 = false;
         public bool chckbox17 = false;
-
+        public int value_trackBar10 = 10;
+        public int value_trackBar11 = 10;
+        public int value_trackBar12 = 1;
+        public int value_trackBar13 = 1;
+        public int value_trackBar14 = 10;
+        public int value_trackBar15 = 10;
+        public int value_trackBar16 = 1;
+        public int value_trackBar17 = 1;
+        public int value_trackBar18 = 1;
         public Form1()
         {
             InitializeComponent();
@@ -129,6 +137,15 @@ namespace project1
             l_greenfactor.Text = value_trackBar8.ToString();
             trackBar9.Value = value_trackBar9;
             l_bluefactor.Text = value_trackBar9.ToString();
+
+            trackBar10.Value = value_trackBar10;
+            l_maximumdotH.Text = value_trackBar10.ToString();
+            trackBar11.Value = value_trackBar11;
+            l_maximumdotW.Text = value_trackBar11.ToString();
+            trackBar12.Value = value_trackBar12;
+            l_minimumdotH.Text = value_trackBar12.ToString();
+            trackBar13.Value = value_trackBar13;
+            l_minimumdotW.Text = value_trackBar13.ToString();
         }
 
         public void Display() {
@@ -248,10 +265,10 @@ namespace project1
                 DotRemoveCommand command13 = new DotRemoveCommand();
                 command13.DotRemove += new EventHandler<DotRemoveCommandEventArgs>(DotRemoveEvent_S1);
                 command13.Flags = DotRemoveCommandFlags.UseSize;
-                command13.MaximumDotHeight = 10;
-                command13.MaximumDotWidth = 10;
-                command13.MinimumDotHeight = 1;
-                command13.MinimumDotWidth = 1;
+                command13.MaximumDotHeight = value_trackBar10;
+                command13.MaximumDotWidth = value_trackBar11;
+                command13.MinimumDotHeight = value_trackBar12;
+                command13.MinimumDotWidth = value_trackBar13;
 
                 command13.Run(image);
             }
@@ -1328,42 +1345,96 @@ namespace project1
         //dotRemove
         private void trackBar10_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar10 = trackBar10.Value;
+            l_maximumdotH.Text = value_trackBar10.ToString();
         }
 
         private void trackBar11_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar11 = trackBar11.Value;
+            l_maximumdotW.Text = value_trackBar11.ToString();
         }
 
         private void trackBar12_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar12 = trackBar12.Value;
+            l_minimumdotH.Text = value_trackBar12.ToString();
         }
 
         private void trackBar13_Scroll(object sender, EventArgs e)
         {
-
+            value_trackBar13 = trackBar13.Value;
+            l_minimumdotW.Text = value_trackBar13.ToString();
         }
 
         private void trackBar10_MouseCaptureChanged(object sender, EventArgs e)
         {
-
+            Display();
         }
 
         private void trackBar11_MouseCaptureChanged(object sender, EventArgs e)
         {
-
+            Display();
         }
 
         private void trackBar12_MouseCaptureChanged(object sender, EventArgs e)
         {
-
+            Display();
         }
 
         private void trackBar13_MouseCaptureChanged(object sender, EventArgs e)
         {
+            Display();
+        }
 
+        private void trackBar14_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar15_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar16_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar17_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar22_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar14_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar15_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar16_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar17_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void trackBar22_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
         }
     }
 }
