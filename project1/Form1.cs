@@ -182,89 +182,94 @@ namespace project1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            RasterSupport.SetLicense(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC",
-                File.ReadAllText(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC.KEY"));
-
-            flowLayoutPanel1.AutoScroll = true;
-            this.picInput.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.picInput.BorderStyle = BorderStyle.FixedSingle;
-            this.picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.picOutput.BorderStyle = BorderStyle.FixedSingle;
-
-            comboBox1.Items.Add("Default");
-            comboBox1.Items.Add("ErosionOmniDirectional");
-            comboBox1.Items.Add("ErosionHorizontal");
-            comboBox1.Items.Add("ErosionVertical");
-            comboBox1.Items.Add("ErosionDiagonal");
-            comboBox1.Items.Add("DilationOmniDirectional");
-            comboBox1.Items.Add("DilationHorizontal");
-            comboBox1.Items.Add("DilationVertical");
-            comboBox1.Items.Add("DilationDiagonal");
-            comboBox1.SelectedIndex = 0;
-
-            comboBox2.Items.Add("Default");
-            String rfile;
-            StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-            while ((rfile = streamread.ReadLine()) != null)
+            try
             {
-               // textBox1.Text += rfile + "\r\n";
-                comboBox2.Items.Add(rfile);
-               
+                RasterSupport.SetLicense(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC",
+                    File.ReadAllText(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC.KEY"));
+
+                flowLayoutPanel1.AutoScroll = true;
+                this.picInput.SizeMode = PictureBoxSizeMode.StretchImage;
+                this.picInput.BorderStyle = BorderStyle.FixedSingle;
+                this.picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
+                this.picOutput.BorderStyle = BorderStyle.FixedSingle;
+
+                comboBox1.Items.Add("Default");
+                comboBox1.Items.Add("ErosionOmniDirectional");
+                comboBox1.Items.Add("ErosionHorizontal");
+                comboBox1.Items.Add("ErosionVertical");
+                comboBox1.Items.Add("ErosionDiagonal");
+                comboBox1.Items.Add("DilationOmniDirectional");
+                comboBox1.Items.Add("DilationHorizontal");
+                comboBox1.Items.Add("DilationVertical");
+                comboBox1.Items.Add("DilationDiagonal");
+                comboBox1.SelectedIndex = 0;
+
+                comboBox2.Items.Add("Default");
+                String rfile;
+                StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                while ((rfile = streamread.ReadLine()) != null)
+                {
+                    // textBox1.Text += rfile + "\r\n";
+                    comboBox2.Items.Add(rfile);
+
+                }
+                comboBox2.SelectedItem = "Default";
+
+                trackBar7.Value = value_trackBar7;
+                l_redfactor.Text = value_trackBar7.ToString();
+                trackBar8.Value = value_trackBar8;
+                l_greenfactor.Text = value_trackBar8.ToString();
+                trackBar9.Value = value_trackBar9;
+                l_bluefactor.Text = value_trackBar9.ToString();
+
+                trackBar10.Value = value_trackBar10;
+                l_maximumdotH.Text = value_trackBar10.ToString();
+                trackBar11.Value = value_trackBar11;
+                l_maximumdotW.Text = value_trackBar11.ToString();
+                trackBar12.Value = value_trackBar12;
+                l_minimumdotH.Text = value_trackBar12.ToString();
+                trackBar13.Value = value_trackBar13;
+                l_minimumdotW.Text = value_trackBar13.ToString();
+
+                trackBar14.Value = value_trackBar14;
+                l_gaplength.Text = value_trackBar14.ToString();
+                trackBar15.Value = value_trackBar15;
+                l_maximumlineW.Text = value_trackBar15.ToString();
+                trackBar16.Value = value_trackBar16;
+                l_minimumlineL.Text = value_trackBar16.ToString();
+                trackBar17.Value = value_trackBar17;
+                l_maximumwall.Text = value_trackBar17.ToString();
+                trackBar22.Value = value_trackBar22;
+                l_wall.Text = value_trackBar22.ToString();
+                trackBar18.Value = value_trackBar18;
+                l_maximumhole.Text = value_trackBar18.ToString();
+                trackBar21.Value = value_trackBar21;
+                l_minimumhole.Text = value_trackBar21.ToString();
+
+                trackBar19.Value = value_trackBar19;
+                l_maximumblack.Text = value_trackBar19.ToString();
+                trackBar20.Value = value_trackBar20;
+                l_minimumBlack.Text = value_trackBar20.ToString();
+                trackBar23.Value = value_trackBar23;
+                l_minimuminverH.Text = value_trackBar23.ToString();
+                trackBar24.Value = value_trackBar24;
+                l_minimuminvertW.Text = value_trackBar24.ToString();
+                trackBar27.Value = value_trackBar27;
+                l_cropThreshold.Text = value_trackBar27.ToString();
+                trackBar25.Value = value_trackBar25;
+                l_percent.Text = value_trackBar25.ToString();
+                trackBar26.Value = value_trackBar26;
+                l_variance.Text = value_trackBar26.ToString();
+                trackBar28.Value = value_trackBar28;
+                l_whitenoiseL.Text = value_trackBar28.ToString();
+                trackBar31.Value = value_trackBar31;
+                l_length.Text = value_trackBar31.ToString();
+
+                //RasterCommandExample();
             }
-            comboBox2.SelectedItem = "Default";
-
-            trackBar7.Value = value_trackBar7;
-            l_redfactor.Text = value_trackBar7.ToString();
-            trackBar8.Value = value_trackBar8;
-            l_greenfactor.Text = value_trackBar8.ToString();
-            trackBar9.Value = value_trackBar9;
-            l_bluefactor.Text = value_trackBar9.ToString();
-
-            trackBar10.Value = value_trackBar10;
-            l_maximumdotH.Text = value_trackBar10.ToString();
-            trackBar11.Value = value_trackBar11;
-            l_maximumdotW.Text = value_trackBar11.ToString();
-            trackBar12.Value = value_trackBar12;
-            l_minimumdotH.Text = value_trackBar12.ToString();
-            trackBar13.Value = value_trackBar13;
-            l_minimumdotW.Text = value_trackBar13.ToString();
-
-            trackBar14.Value = value_trackBar14;
-            l_gaplength.Text = value_trackBar14.ToString();
-            trackBar15.Value = value_trackBar15;
-            l_maximumlineW.Text = value_trackBar15.ToString();
-            trackBar16.Value = value_trackBar16;
-            l_minimumlineL.Text = value_trackBar16.ToString();
-            trackBar17.Value = value_trackBar17;
-            l_maximumwall.Text = value_trackBar17.ToString();
-            trackBar22.Value = value_trackBar22;
-            l_wall.Text = value_trackBar22.ToString();
-            trackBar18.Value = value_trackBar18;
-            l_maximumhole.Text = value_trackBar18.ToString();
-            trackBar21.Value = value_trackBar21;
-            l_minimumhole.Text = value_trackBar21.ToString();
-
-            trackBar19.Value = value_trackBar19;
-            l_maximumblack.Text = value_trackBar19.ToString();
-            trackBar20.Value = value_trackBar20;
-            l_minimumBlack.Text = value_trackBar20.ToString();
-            trackBar23.Value = value_trackBar23;
-            l_minimuminverH.Text = value_trackBar23.ToString();
-            trackBar24.Value = value_trackBar24;
-            l_minimuminvertW.Text = value_trackBar24.ToString();
-            trackBar27.Value = value_trackBar27;
-            l_cropThreshold.Text = value_trackBar27.ToString();
-            trackBar25.Value = value_trackBar25;
-            l_percent.Text = value_trackBar25.ToString();
-            trackBar26.Value = value_trackBar26;
-            l_variance.Text = value_trackBar26.ToString();
-            trackBar28.Value = value_trackBar28;
-            l_whitenoiseL.Text = value_trackBar28.ToString();
-            trackBar31.Value = value_trackBar31;
-            l_length.Text = value_trackBar31.ToString();
-
-            //RasterCommandExample();
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void Display() {
@@ -285,7 +290,8 @@ namespace project1
                 // Load an image 
                 codecs.ThrowExceptionsOnInvalidImages = true;
                 RasterImage image = codecs.Load(Path.Combine(folderPath));
-
+            try
+            {
                 ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
                 command.Brightness = value_trackBar1;   //484
@@ -535,6 +541,10 @@ namespace project1
                       }
                       ocrEngine.Shutdown();
                   }*/
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
                return image;
             
         }
@@ -630,24 +640,30 @@ namespace project1
             e.Status = RemoveStatus.Remove;
         }
         private void BrowseSave_Click(object sender, EventArgs e)
-        {  
-           // Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+        {
+            try
             {
-               // if ((myStream = saveFileDialog1.OpenFile()) != null)
-               // {
-               // Code to write the stream goes here.
-               String savePath = saveFileDialog1.FileName;
-               //MessageBox.Show(saveFileDialog1.);
-               codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName+".pdf"), RasterImageFormat.RasPdf, 24);
-               //codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName + ".jpg"), RasterImageFormat.Jpeg, 24);
-                //    myStream.Close();
-                // }
+                // Stream myStream;
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf|All files (*.*)|*.*";
+                saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    // if ((myStream = saveFileDialog1.OpenFile()) != null)
+                    // {
+                    // Code to write the stream goes here.
+                    String savePath = saveFileDialog1.FileName;
+                    //MessageBox.Show(saveFileDialog1.);
+                    codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName + ".pdf"), RasterImageFormat.RasPdf, 24);
+                    //codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName + ".jpg"), RasterImageFormat.Jpeg, 1);
+                    //    myStream.Close();
+                    // }
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 
