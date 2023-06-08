@@ -180,6 +180,7 @@ namespace project1
             RasterSupport.SetLicense(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC",
                 File.ReadAllText(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC.KEY"));
 
+            flowLayoutPanel1.AutoScroll = true;
             this.picInput.SizeMode = PictureBoxSizeMode.StretchImage;
             this.picInput.BorderStyle = BorderStyle.FixedSingle;
             this.picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -470,20 +471,7 @@ namespace project1
            
            // autoBinarizeCommand.Run(image);
 
-            // Perform OCR on the preprocessed image
-           /* using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD))
-            {
-                ocrEngine.Startup(null, null, null, null);
-                //ocrEngine.LanguageManager.EnableLanguages(new[] { "tha" }, null, null, null);
-                using (IOcrPage ocrPage = ocrEngine.CreatePage(image, OcrImageSharingMode.AutoDispose))
-                {
-                    ocrPage.AutoZone(null);
-                    ocrPage.Recognize(null);
-                    string extractedText = ocrPage.GetText(-1);
-                    System.Console.WriteLine("***************Start****************\r\n"+extractedText+ "\r\n***************Start****************");
-                }
-                ocrEngine.Shutdown();
-            }*/
+            
 
             // Clean up
            //image.Dispose();
@@ -529,6 +517,21 @@ namespace project1
                 command20.AutoFilter = false;
                 command20.Run(image);
             }
+
+            // Perform OCR on the preprocessed image
+            /* using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD))
+             {
+                 ocrEngine.Startup(null, null, null, null);
+                 //ocrEngine.LanguageManager.EnableLanguages(new[] { "tha" }, null, null, null);
+                 using (IOcrPage ocrPage = ocrEngine.CreatePage(image, OcrImageSharingMode.AutoDispose))
+                 {
+                     ocrPage.AutoZone(null);
+                     ocrPage.Recognize(null);
+                     string extractedText = ocrPage.GetText(-1);
+                     System.Console.WriteLine("***************Start****************\r\n"+extractedText+ "\r\n***************END****************");
+                 }
+                 ocrEngine.Shutdown();
+             }*/
 
             return image;
         }
