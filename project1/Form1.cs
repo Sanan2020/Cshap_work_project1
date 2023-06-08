@@ -529,7 +529,7 @@ namespace project1
                 }
 
                 // Perform OCR on the preprocessed image
-                 using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD))
+               /*  using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD))
                   {
                       ocrEngine.Startup(null, null, null, null);
                       //ocrEngine.LanguageManager.EnableLanguages(new[] { "Thai" });
@@ -543,28 +543,8 @@ namespace project1
                           System.Console.WriteLine("***************Start****************\r\n"+extractedText+ "\r\n***************END****************");
                       }
                       ocrEngine.Shutdown();
-                  }
+                  }*/
                
-                      /*  // สร้างตัวอักษรที่ใช้สำหรับการ OCR
-                        using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD, false))
-                        {
-                            ocrEngine.Startup(null, null, null, null);
-                            ocrEngine.LanguageManager.EnableLanguages(new[] { "Thai" }); // เปิดใช้งานภาษาไทย
-
-                            // สร้างตัวเลือกการ OCR
-                            OcrAutoRecognizeManager autoRecognizeManager = ocrEngine.AutoRecognizeManager;
-                            OcrAutoRecognizeJobData autoRecognizeJobData = new OcrAutoRecognizeJobData();
-                            autoRecognizeJobData.SourceDocument = image;
-                            autoRecognizeJobData.Language = "Thai";
-                            autoRecognizeJobData.JobName = "OCR Job";
-
-                            // เริ่มต้นการ OCR
-                            using (IOcrAutoRecognizeJob job = autoRecognizeManager.CreateJob(autoRecognizeJobData))
-                            {
-                                job.Recognize(null);
-                                job.SaveXml(@"ผลลัพธ์OCR.xml");
-                            }
-                        }*/
                     }
                 
             
