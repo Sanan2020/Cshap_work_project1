@@ -84,6 +84,9 @@ namespace project1
         public int value_trackBar26 = 3;
         public int value_trackBar28 = 9;
         public int value_trackBar31 = 2;
+        public bool chckbox18 = false;
+        public int value_trackBar29=1;
+        public bool chckbox19 = false;
         public Form1()
         {
             InitializeComponent();
@@ -109,7 +112,69 @@ namespace project1
                 Display();
             }
         }
+        public void RasterCommandExample()
+        {
+            RasterCodecs codecs = new RasterCodecs();
 
+            string srcFileName = Path.Combine(LEAD_VARS4.ImagesDir, "perspective-deskew-perspective-deskew-before.png");
+            string rotatedFileName = Path.Combine(LEAD_VARS4.ImagesDir, "Image1_rotated.bmp");
+            string flippedFileName = Path.Combine(LEAD_VARS4.ImagesDir, "Image1_flipped.bmp");
+
+            // Load the source image from disk 
+            RasterImage image = codecs.Load(srcFileName);
+
+            // flip the image 
+            FlipCommand flip = new FlipCommand(false);
+            RunCommand(image, flip);
+
+            // save the image 
+            codecs.Save(image, flippedFileName, RasterImageFormat.Bmp, 24);
+
+            // rotate the image by 45 degrees 
+            RotateCommand rotate = new RotateCommand();
+            rotate.Angle = 45 * 100;
+            rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
+            rotate.Flags = RotateCommandFlags.Resize;
+            RunCommand(image, rotate);
+
+            // save the image 
+            codecs.Save(image, rotatedFileName, RasterImageFormat.Bmp, 24);
+
+            // clean up 
+            image.Dispose();
+            codecs.Dispose();
+        }
+
+        bool cancelAt50;
+
+        void RunCommand(RasterImage image, RasterCommand command)
+        {
+            // subscribe to the progress event of the command 
+            command.Progress += new EventHandler<RasterCommandProgressEventArgs>(command_Progress);
+
+            // if this is a flip command, we want to stop at 50 percent 
+            cancelAt50 = command is FlipCommand;
+
+            // run the command 
+            command.Run(image);
+
+            command.Progress -= new EventHandler<RasterCommandProgressEventArgs>(command_Progress);
+        }
+
+        void command_Progress(object sender, RasterCommandProgressEventArgs e)
+        {
+            // show the percentage 
+            Console.WriteLine(e.Percent);
+
+            // check if we need to cancel the command at 50% 
+            if (e.Percent == 50 && cancelAt50)
+                e.Cancel = true;
+        }
+
+        static class LEAD_VARS4
+        {
+            public const string ImagesDir = @"C:\LEADTOOLS22\Resources\Images";
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             RasterSupport.SetLicense(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC",
@@ -191,14 +256,21 @@ namespace project1
             l_whitenoiseL.Text = value_trackBar28.ToString();
             trackBar31.Value = value_trackBar31;
             l_length.Text = value_trackBar31.ToString();
+
+            //RasterCommandExample();
         }
 
         public void Display() {
-            
-            using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
+            try {
+                using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
+                {
+                    picOutput.Image = new Bitmap(destImage1);
+                    //MessageBox.Show(destImage1.ToString());
+                }
+            }
+            catch (Exception ex)
             {
-                picOutput.Image = new Bitmap(destImage1);
-                //MessageBox.Show(destImage1.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
         public RasterImage ChangeCommand()
@@ -411,13 +483,13 @@ namespace project1
                     System.Console.WriteLine("***************Start****************\r\n"+extractedText+ "\r\n***************Start****************");
                 }
                 ocrEngine.Shutdown();
-            }
+            }*/
 
             // Clean up
-            image.Dispose();
-            codecs.Dispose();
+           //image.Dispose();
+        //    codecs.Dispose();
 
-            System.Console.ReadLine();*/
+           // System.Console.ReadLine();
 
            //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
             // Prepare the command 
@@ -428,20 +500,35 @@ namespace project1
                 command6.Run(image);
             }
 
-           /* RakeRemoveCommand command20 = new RakeRemoveCommand();
-            command20.RakeRemove += new EventHandler<RakeRemoveCommandEventArgs>(RakeRemoveEvent_S1);
-            command20.MinLength = 50;
-            command20.MinWallHeight = 10;
-            command20.MaxWidth = 3;
-            command20.MaxWallPercent = 25;
-            command20.MaxSideteethLength = 60;
-            command20.MaxMidteethLength = 50;
-            command20.Gaps = 1;
-            command20.Variance = 1;
-            command20.TeethSpacing = 5;
-            command20.AutoFilter = false;
 
-            command20.Run(image);*/
+            if (chckbox18 == true)
+            {
+                 FlipCommand flip = new FlipCommand(false);
+                 RunCommand(image, flip);
+                 // rotate the image by 45 degrees 
+                 RotateCommand rotate = new RotateCommand();
+                 rotate.Angle = (value_trackBar29 * 100);
+                 rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
+                 rotate.Flags = RotateCommandFlags.Resize;
+                 RunCommand(image, rotate);
+            }
+
+            if (chckbox19 == true)
+            {
+                RakeRemoveCommand command20 = new RakeRemoveCommand();
+                command20.RakeRemove += new EventHandler<RakeRemoveCommandEventArgs>(RakeRemoveEvent_S1);
+                command20.MinLength = 50;
+                command20.MinWallHeight = 10;
+                command20.MaxWidth = 3;
+                command20.MaxWallPercent = 25;
+                command20.MaxSideteethLength = 60;
+                command20.MaxMidteethLength = 50;
+                command20.Gaps = 1;
+                command20.Variance = 1;
+                command20.TeethSpacing = 5;
+                command20.AutoFilter = false;
+                command20.Run(image);
+            }
 
             return image;
         }
@@ -1806,6 +1893,45 @@ namespace project1
         private void trackBar31_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
+        }
+
+        private void checkBox18_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox18.Checked == true)
+            {
+                chckbox18 = true;
+                Display();
+            }
+            else
+            {
+                chckbox18 = false;
+                Display();
+            }
+        }
+
+        private void trackBar29_Scroll(object sender, EventArgs e)
+        {
+            value_trackBar29 = trackBar29.Value;
+            l_RotateImage.Text = value_trackBar29.ToString();
+        }
+
+        private void trackBar29_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void checkBox19_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox19.Checked == true)
+            {
+                chckbox19 = true;
+                Display();
+            }
+            else
+            {
+                chckbox19 = false;
+                Display();
+            }
         }
     }
 }

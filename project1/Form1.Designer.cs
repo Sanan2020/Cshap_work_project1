@@ -127,6 +127,7 @@
             this.l_minimuminvertW = new System.Windows.Forms.Label();
             this.l_minimuminverH = new System.Windows.Forms.Label();
             this.l_minimumBlack = new System.Windows.Forms.Label();
+            this.btnInvertedText = new System.Windows.Forms.Button();
             this.l_maximumblack = new System.Windows.Forms.Label();
             this.trackBar24 = new System.Windows.Forms.TrackBar();
             this.trackBar23 = new System.Windows.Forms.TrackBar();
@@ -134,8 +135,8 @@
             this.trackBar20 = new System.Windows.Forms.TrackBar();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.panAutoCrop = new System.Windows.Forms.Panel();
-            this.l_cropThreshold = new System.Windows.Forms.Label();
             this.btnAutoCrop = new System.Windows.Forms.Button();
+            this.l_cropThreshold = new System.Windows.Forms.Label();
             this.trackBar27 = new System.Windows.Forms.TrackBar();
             this.checkBox15 = new System.Windows.Forms.CheckBox();
             this.panBorderRemove = new System.Windows.Forms.Panel();
@@ -148,11 +149,10 @@
             this.trackBar25 = new System.Windows.Forms.TrackBar();
             this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.panSmooth = new System.Windows.Forms.Panel();
-            this.l_length = new System.Windows.Forms.Label();
             this.btnSmooth = new System.Windows.Forms.Button();
+            this.l_length = new System.Windows.Forms.Label();
             this.trackBar31 = new System.Windows.Forms.TrackBar();
             this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.btnInvertedText = new System.Windows.Forms.Button();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -164,6 +164,10 @@
             this.l_minimum = new System.Windows.Forms.Label();
             this.l_gamma = new System.Windows.Forms.Label();
             this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.checkBox18 = new System.Windows.Forms.CheckBox();
+            this.l_RotateImage = new System.Windows.Forms.Label();
+            this.trackBar29 = new System.Windows.Forms.TrackBar();
+            this.checkBox19 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -212,6 +216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar29)).BeginInit();
             this.SuspendLayout();
             // 
             // Browse
@@ -563,8 +568,8 @@
             // 
             this.panConBrigtIntens.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panConBrigtIntens.Controls.Add(this.label6);
-            this.panConBrigtIntens.Controls.Add(this.label7);
             this.panConBrigtIntens.Controls.Add(this.btnConBrigtIntens);
+            this.panConBrigtIntens.Controls.Add(this.label7);
             this.panConBrigtIntens.Controls.Add(this.label4);
             this.panConBrigtIntens.Controls.Add(this.trackBar1);
             this.panConBrigtIntens.Controls.Add(this.l_contrast);
@@ -621,6 +626,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Controls.Add(this.panConBrigtIntens);
             this.flowLayoutPanel1.Controls.Add(this.panUnsharpMask);
             this.flowLayoutPanel1.Controls.Add(this.panGrayScale);
@@ -634,7 +640,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panSmooth);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(1279, 32);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(316, 863);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 863);
             this.flowLayoutPanel1.TabIndex = 36;
             // 
             // panGrayScale
@@ -1242,6 +1248,18 @@
             this.l_minimumBlack.TabIndex = 78;
             this.l_minimumBlack.Text = "0";
             // 
+            // btnInvertedText
+            // 
+            this.btnInvertedText.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInvertedText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInvertedText.Location = new System.Drawing.Point(0, 0);
+            this.btnInvertedText.Name = "btnInvertedText";
+            this.btnInvertedText.Size = new System.Drawing.Size(307, 27);
+            this.btnInvertedText.TabIndex = 70;
+            this.btnInvertedText.Text = "InvertedText";
+            this.btnInvertedText.UseVisualStyleBackColor = true;
+            this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
+            // 
             // l_maximumblack
             // 
             this.l_maximumblack.AutoSize = true;
@@ -1315,15 +1333,6 @@
             this.panAutoCrop.Size = new System.Drawing.Size(309, 29);
             this.panAutoCrop.TabIndex = 74;
             // 
-            // l_cropThreshold
-            // 
-            this.l_cropThreshold.AutoSize = true;
-            this.l_cropThreshold.Location = new System.Drawing.Point(7, 67);
-            this.l_cropThreshold.Name = "l_cropThreshold";
-            this.l_cropThreshold.Size = new System.Drawing.Size(13, 13);
-            this.l_cropThreshold.TabIndex = 77;
-            this.l_cropThreshold.Text = "0";
-            // 
             // btnAutoCrop
             // 
             this.btnAutoCrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1334,6 +1343,15 @@
             this.btnAutoCrop.Text = "AutoCrop";
             this.btnAutoCrop.UseVisualStyleBackColor = true;
             this.btnAutoCrop.Click += new System.EventHandler(this.btnAutoCrop_Click);
+            // 
+            // l_cropThreshold
+            // 
+            this.l_cropThreshold.AutoSize = true;
+            this.l_cropThreshold.Location = new System.Drawing.Point(7, 67);
+            this.l_cropThreshold.Name = "l_cropThreshold";
+            this.l_cropThreshold.Size = new System.Drawing.Size(13, 13);
+            this.l_cropThreshold.TabIndex = 77;
+            this.l_cropThreshold.Text = "0";
             // 
             // trackBar27
             // 
@@ -1462,15 +1480,6 @@
             this.panSmooth.Size = new System.Drawing.Size(309, 29);
             this.panSmooth.TabIndex = 76;
             // 
-            // l_length
-            // 
-            this.l_length.AutoSize = true;
-            this.l_length.Location = new System.Drawing.Point(7, 60);
-            this.l_length.Name = "l_length";
-            this.l_length.Size = new System.Drawing.Size(13, 13);
-            this.l_length.TabIndex = 71;
-            this.l_length.Text = "0";
-            // 
             // btnSmooth
             // 
             this.btnSmooth.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1482,6 +1491,15 @@
             this.btnSmooth.Text = "Smooth";
             this.btnSmooth.UseVisualStyleBackColor = true;
             this.btnSmooth.Click += new System.EventHandler(this.btnSmooth_Click);
+            // 
+            // l_length
+            // 
+            this.l_length.AutoSize = true;
+            this.l_length.Location = new System.Drawing.Point(7, 60);
+            this.l_length.Name = "l_length";
+            this.l_length.Size = new System.Drawing.Size(13, 13);
+            this.l_length.TabIndex = 71;
+            this.l_length.Text = "0";
             // 
             // trackBar31
             // 
@@ -1502,18 +1520,6 @@
             this.checkBox17.Text = "Smooth";
             this.checkBox17.UseVisualStyleBackColor = true;
             this.checkBox17.CheckedChanged += new System.EventHandler(this.checkBox17_CheckedChanged);
-            // 
-            // btnInvertedText
-            // 
-            this.btnInvertedText.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInvertedText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInvertedText.Location = new System.Drawing.Point(0, 0);
-            this.btnInvertedText.Name = "btnInvertedText";
-            this.btnInvertedText.Size = new System.Drawing.Size(307, 27);
-            this.btnInvertedText.TabIndex = 70;
-            this.btnInvertedText.Text = "InvertedText";
-            this.btnInvertedText.UseVisualStyleBackColor = true;
-            this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
             // 
             // checkBox4
             // 
@@ -1631,11 +1637,57 @@
             this.checkBox14.UseVisualStyleBackColor = true;
             this.checkBox14.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
             // 
+            // checkBox18
+            // 
+            this.checkBox18.AutoSize = true;
+            this.checkBox18.Location = new System.Drawing.Point(1673, 495);
+            this.checkBox18.Name = "checkBox18";
+            this.checkBox18.Size = new System.Drawing.Size(90, 17);
+            this.checkBox18.TabIndex = 63;
+            this.checkBox18.Text = "Rotate Image";
+            this.checkBox18.UseVisualStyleBackColor = true;
+            this.checkBox18.CheckedChanged += new System.EventHandler(this.checkBox18_CheckedChanged);
+            // 
+            // l_RotateImage
+            // 
+            this.l_RotateImage.AutoSize = true;
+            this.l_RotateImage.Location = new System.Drawing.Point(1686, 533);
+            this.l_RotateImage.Name = "l_RotateImage";
+            this.l_RotateImage.Size = new System.Drawing.Size(13, 13);
+            this.l_RotateImage.TabIndex = 66;
+            this.l_RotateImage.Text = "0";
+            // 
+            // trackBar29
+            // 
+            this.trackBar29.Location = new System.Drawing.Point(1726, 518);
+            this.trackBar29.Maximum = 360;
+            this.trackBar29.Name = "trackBar29";
+            this.trackBar29.Size = new System.Drawing.Size(181, 45);
+            this.trackBar29.TabIndex = 67;
+            this.trackBar29.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBar29.Scroll += new System.EventHandler(this.trackBar29_Scroll);
+            this.trackBar29.MouseCaptureChanged += new System.EventHandler(this.trackBar29_MouseCaptureChanged);
+            // 
+            // checkBox19
+            // 
+            this.checkBox19.AutoSize = true;
+            this.checkBox19.Location = new System.Drawing.Point(1673, 569);
+            this.checkBox19.Name = "checkBox19";
+            this.checkBox19.Size = new System.Drawing.Size(92, 17);
+            this.checkBox19.TabIndex = 68;
+            this.checkBox19.Text = "RakeRemove";
+            this.checkBox19.UseVisualStyleBackColor = true;
+            this.checkBox19.CheckedChanged += new System.EventHandler(this.checkBox19_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
+            this.Controls.Add(this.checkBox19);
+            this.Controls.Add(this.trackBar29);
+            this.Controls.Add(this.l_RotateImage);
+            this.Controls.Add(this.checkBox18);
             this.Controls.Add(this.checkBox14);
             this.Controls.Add(this.l_gamma);
             this.Controls.Add(this.l_minimum);
@@ -1726,6 +1778,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar29)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1868,6 +1921,10 @@
         private System.Windows.Forms.Label l_variance;
         private System.Windows.Forms.Label l_percent;
         private System.Windows.Forms.Label l_length;
+        private System.Windows.Forms.CheckBox checkBox18;
+        private System.Windows.Forms.Label l_RotateImage;
+        private System.Windows.Forms.TrackBar trackBar29;
+        private System.Windows.Forms.CheckBox checkBox19;
     }
 }
 
