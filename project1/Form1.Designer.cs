@@ -534,7 +534,7 @@
             // 
             // SaveProfile
             // 
-            this.SaveProfile.Location = new System.Drawing.Point(1749, 433);
+            this.SaveProfile.Location = new System.Drawing.Point(1742, 380);
             this.SaveProfile.Name = "SaveProfile";
             this.SaveProfile.Size = new System.Drawing.Size(90, 32);
             this.SaveProfile.TabIndex = 21;
@@ -554,7 +554,7 @@
             // l_profilename
             // 
             this.l_profilename.AutoSize = true;
-            this.l_profilename.Location = new System.Drawing.Point(1635, 370);
+            this.l_profilename.Location = new System.Drawing.Point(1628, 317);
             this.l_profilename.Name = "l_profilename";
             this.l_profilename.Size = new System.Drawing.Size(70, 13);
             this.l_profilename.TabIndex = 23;
@@ -562,7 +562,7 @@
             // 
             // value_profilename
             // 
-            this.value_profilename.Location = new System.Drawing.Point(1728, 367);
+            this.value_profilename.Location = new System.Drawing.Point(1721, 314);
             this.value_profilename.Name = "value_profilename";
             this.value_profilename.Size = new System.Drawing.Size(133, 20);
             this.value_profilename.TabIndex = 24;
@@ -571,7 +571,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1728, 393);
+            this.comboBox2.Location = new System.Drawing.Point(1721, 340);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(133, 21);
             this.comboBox2.TabIndex = 25;
@@ -580,7 +580,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1635, 396);
+            this.label3.Location = new System.Drawing.Point(1628, 343);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 26;
@@ -589,7 +589,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1701, 65);
+            this.checkBox1.Location = new System.Drawing.Point(1673, 42);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(98, 17);
             this.checkBox1.TabIndex = 29;
@@ -616,7 +616,7 @@
             this.panConBrigtIntens.Controls.Add(this.trackBar2);
             this.panConBrigtIntens.Controls.Add(this.l_brightness);
             this.panConBrigtIntens.Controls.Add(this.trackBar3);
-            this.panConBrigtIntens.Location = new System.Drawing.Point(3, 3);
+            this.panConBrigtIntens.Location = new System.Drawing.Point(3, 355);
             this.panConBrigtIntens.Name = "panConBrigtIntens";
             this.panConBrigtIntens.Size = new System.Drawing.Size(309, 29);
             this.panConBrigtIntens.TabIndex = 33;
@@ -661,7 +661,7 @@
             this.panUnsharpMask.Controls.Add(this.l_threshold);
             this.panUnsharpMask.Controls.Add(this.l_radius);
             this.panUnsharpMask.Controls.Add(this.trackBar4);
-            this.panUnsharpMask.Location = new System.Drawing.Point(3, 38);
+            this.panUnsharpMask.Location = new System.Drawing.Point(3, 390);
             this.panUnsharpMask.Name = "panUnsharpMask";
             this.panUnsharpMask.Size = new System.Drawing.Size(309, 29);
             this.panUnsharpMask.TabIndex = 34;
@@ -677,6 +677,7 @@
             this.btnResetUnsharpMask.TabIndex = 70;
             this.btnResetUnsharpMask.Text = "Reset";
             this.btnResetUnsharpMask.UseVisualStyleBackColor = false;
+            this.btnResetUnsharpMask.Click += new System.EventHandler(this.btnResetUnsharpMask_Click);
             // 
             // btnUnsharpMask
             // 
@@ -693,9 +694,6 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.panConBrigtIntens);
-            this.flowLayoutPanel1.Controls.Add(this.panUnsharpMask);
-            this.flowLayoutPanel1.Controls.Add(this.panGrayScale);
             this.flowLayoutPanel1.Controls.Add(this.panDocImgClupFnct);
             this.flowLayoutPanel1.Controls.Add(this.panDotRemove);
             this.flowLayoutPanel1.Controls.Add(this.panLineRemove);
@@ -706,6 +704,9 @@
             this.flowLayoutPanel1.Controls.Add(this.panSmooth);
             this.flowLayoutPanel1.Controls.Add(this.panFlipRotate);
             this.flowLayoutPanel1.Controls.Add(this.panRakeRemove);
+            this.flowLayoutPanel1.Controls.Add(this.panConBrigtIntens);
+            this.flowLayoutPanel1.Controls.Add(this.panUnsharpMask);
+            this.flowLayoutPanel1.Controls.Add(this.panGrayScale);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(1279, 32);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 863);
@@ -726,7 +727,7 @@
             this.panGrayScale.Controls.Add(this.trackBar8);
             this.panGrayScale.Controls.Add(this.l_redfactor);
             this.panGrayScale.Controls.Add(this.l_bluefactor);
-            this.panGrayScale.Location = new System.Drawing.Point(3, 73);
+            this.panGrayScale.Location = new System.Drawing.Point(3, 425);
             this.panGrayScale.Name = "panGrayScale";
             this.panGrayScale.Size = new System.Drawing.Size(309, 29);
             this.panGrayScale.TabIndex = 36;
@@ -742,6 +743,7 @@
             this.btnResetGrayScale.TabIndex = 71;
             this.btnResetGrayScale.Text = "Reset";
             this.btnResetGrayScale.UseVisualStyleBackColor = false;
+            this.btnResetGrayScale.Click += new System.EventHandler(this.btnResetGrayScale_Click);
             // 
             // label8
             // 
@@ -866,6 +868,7 @@
             this.panDocImgClupFnct.Controls.Add(this.btnResetDocImgClupFnct);
             this.panDocImgClupFnct.Controls.Add(this.checkBox7);
             this.panDocImgClupFnct.Controls.Add(this.comboBox1);
+            this.panDocImgClupFnct.Controls.Add(this.checkBox14);
             this.panDocImgClupFnct.Controls.Add(this.btnDocImgClupFnct);
             this.panDocImgClupFnct.Controls.Add(this.l_binaryfilter);
             this.panDocImgClupFnct.Controls.Add(this.checkBox3);
@@ -875,7 +878,7 @@
             this.panDocImgClupFnct.Controls.Add(this.l_localcontrast);
             this.panDocImgClupFnct.Controls.Add(this.l_dimension);
             this.panDocImgClupFnct.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panDocImgClupFnct.Location = new System.Drawing.Point(3, 108);
+            this.panDocImgClupFnct.Location = new System.Drawing.Point(3, 3);
             this.panDocImgClupFnct.Name = "panDocImgClupFnct";
             this.panDocImgClupFnct.Size = new System.Drawing.Size(309, 29);
             this.panDocImgClupFnct.TabIndex = 57;
@@ -891,6 +894,7 @@
             this.btnResetDocImgClupFnct.TabIndex = 72;
             this.btnResetDocImgClupFnct.Text = "Reset";
             this.btnResetDocImgClupFnct.UseVisualStyleBackColor = false;
+            this.btnResetDocImgClupFnct.Click += new System.EventHandler(this.btnResetDocImgClupFnct_Click);
             // 
             // checkBox7
             // 
@@ -905,6 +909,7 @@
             // 
             // btnDocImgClupFnct
             // 
+            this.btnDocImgClupFnct.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDocImgClupFnct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDocImgClupFnct.Location = new System.Drawing.Point(0, 0);
             this.btnDocImgClupFnct.Name = "btnDocImgClupFnct";
@@ -993,7 +998,7 @@
             this.panDotRemove.Controls.Add(this.trackBar11);
             this.panDotRemove.Controls.Add(this.trackBar12);
             this.panDotRemove.Controls.Add(this.trackBar13);
-            this.panDotRemove.Location = new System.Drawing.Point(3, 143);
+            this.panDotRemove.Location = new System.Drawing.Point(3, 38);
             this.panDotRemove.Name = "panDotRemove";
             this.panDotRemove.Size = new System.Drawing.Size(309, 29);
             this.panDotRemove.TabIndex = 58;
@@ -1009,6 +1014,7 @@
             this.btnResetDotRemove.TabIndex = 73;
             this.btnResetDotRemove.Text = "Reset";
             this.btnResetDotRemove.UseVisualStyleBackColor = false;
+            this.btnResetDotRemove.Click += new System.EventHandler(this.btnResetDotRemove_Click);
             // 
             // l_minimumdotW
             // 
@@ -1123,7 +1129,7 @@
             this.panLineRemove.Controls.Add(this.trackBar17);
             this.panLineRemove.Controls.Add(this.checkBox11);
             this.panLineRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panLineRemove.Location = new System.Drawing.Point(3, 178);
+            this.panLineRemove.Location = new System.Drawing.Point(3, 73);
             this.panLineRemove.Name = "panLineRemove";
             this.panLineRemove.Size = new System.Drawing.Size(309, 31);
             this.panLineRemove.TabIndex = 71;
@@ -1139,6 +1145,7 @@
             this.btnResetLineRemove.TabIndex = 70;
             this.btnResetLineRemove.Text = "Reset";
             this.btnResetLineRemove.UseVisualStyleBackColor = false;
+            this.btnResetLineRemove.Click += new System.EventHandler(this.btnResetLineRemove_Click);
             // 
             // l_wall
             // 
@@ -1160,6 +1167,7 @@
             // 
             // btnLineRemove
             // 
+            this.btnLineRemove.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLineRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLineRemove.Location = new System.Drawing.Point(0, 0);
             this.btnLineRemove.Name = "btnLineRemove";
@@ -1265,7 +1273,7 @@
             this.panHolePunchRemove.Controls.Add(this.trackBar21);
             this.panHolePunchRemove.Controls.Add(this.checkBox12);
             this.panHolePunchRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panHolePunchRemove.Location = new System.Drawing.Point(3, 215);
+            this.panHolePunchRemove.Location = new System.Drawing.Point(3, 110);
             this.panHolePunchRemove.Name = "panHolePunchRemove";
             this.panHolePunchRemove.Size = new System.Drawing.Size(309, 29);
             this.panHolePunchRemove.TabIndex = 72;
@@ -1281,9 +1289,11 @@
             this.btnResetHolePunchRemove.TabIndex = 77;
             this.btnResetHolePunchRemove.Text = "Reset";
             this.btnResetHolePunchRemove.UseVisualStyleBackColor = false;
+            this.btnResetHolePunchRemove.Click += new System.EventHandler(this.btnResetHolePunchRemove_Click);
             // 
             // btnHolePunchRemove
             // 
+            this.btnHolePunchRemove.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHolePunchRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHolePunchRemove.Location = new System.Drawing.Point(0, 0);
             this.btnHolePunchRemove.Name = "btnHolePunchRemove";
@@ -1355,7 +1365,7 @@
             this.panInvertedText.Controls.Add(this.trackBar19);
             this.panInvertedText.Controls.Add(this.trackBar20);
             this.panInvertedText.Controls.Add(this.checkBox13);
-            this.panInvertedText.Location = new System.Drawing.Point(3, 250);
+            this.panInvertedText.Location = new System.Drawing.Point(3, 145);
             this.panInvertedText.Name = "panInvertedText";
             this.panInvertedText.Size = new System.Drawing.Size(309, 29);
             this.panInvertedText.TabIndex = 73;
@@ -1371,6 +1381,7 @@
             this.btnResetInvertedText.TabIndex = 79;
             this.btnResetInvertedText.Text = "Reset";
             this.btnResetInvertedText.UseVisualStyleBackColor = false;
+            this.btnResetInvertedText.Click += new System.EventHandler(this.btnResetInvertedText_Click);
             // 
             // l_minimuminvertW
             // 
@@ -1481,7 +1492,7 @@
             this.panAutoCrop.Controls.Add(this.trackBar27);
             this.panAutoCrop.Controls.Add(this.checkBox15);
             this.panAutoCrop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panAutoCrop.Location = new System.Drawing.Point(3, 285);
+            this.panAutoCrop.Location = new System.Drawing.Point(3, 180);
             this.panAutoCrop.Name = "panAutoCrop";
             this.panAutoCrop.Size = new System.Drawing.Size(309, 29);
             this.panAutoCrop.TabIndex = 74;
@@ -1497,9 +1508,11 @@
             this.btnResetAutoCrop.TabIndex = 81;
             this.btnResetAutoCrop.Text = "Reset";
             this.btnResetAutoCrop.UseVisualStyleBackColor = false;
+            this.btnResetAutoCrop.Click += new System.EventHandler(this.btnResetAutoCrop_Click);
             // 
             // btnAutoCrop
             // 
+            this.btnAutoCrop.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAutoCrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAutoCrop.Location = new System.Drawing.Point(0, 0);
             this.btnAutoCrop.Name = "btnAutoCrop";
@@ -1552,7 +1565,7 @@
             this.panBorderRemove.Controls.Add(this.trackBar26);
             this.panBorderRemove.Controls.Add(this.trackBar25);
             this.panBorderRemove.Controls.Add(this.checkBox16);
-            this.panBorderRemove.Location = new System.Drawing.Point(3, 320);
+            this.panBorderRemove.Location = new System.Drawing.Point(3, 215);
             this.panBorderRemove.Name = "panBorderRemove";
             this.panBorderRemove.Size = new System.Drawing.Size(309, 29);
             this.panBorderRemove.TabIndex = 75;
@@ -1568,6 +1581,7 @@
             this.btnResetBorderRemove.TabIndex = 82;
             this.btnResetBorderRemove.Text = "Reset";
             this.btnResetBorderRemove.UseVisualStyleBackColor = false;
+            this.btnResetBorderRemove.Click += new System.EventHandler(this.btnResetBorderRemove_Click);
             // 
             // l_whitenoiseL
             // 
@@ -1656,7 +1670,7 @@
             this.panSmooth.Controls.Add(this.l_length);
             this.panSmooth.Controls.Add(this.trackBar31);
             this.panSmooth.Controls.Add(this.checkBox17);
-            this.panSmooth.Location = new System.Drawing.Point(3, 355);
+            this.panSmooth.Location = new System.Drawing.Point(3, 250);
             this.panSmooth.Name = "panSmooth";
             this.panSmooth.Size = new System.Drawing.Size(309, 29);
             this.panSmooth.TabIndex = 76;
@@ -1672,9 +1686,11 @@
             this.btnResetSmooth.TabIndex = 83;
             this.btnResetSmooth.Text = "Reset";
             this.btnResetSmooth.UseVisualStyleBackColor = false;
+            this.btnResetSmooth.Click += new System.EventHandler(this.btnResetSmooth_Click);
             // 
             // btnSmooth
             // 
+            this.btnSmooth.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSmooth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSmooth.Location = new System.Drawing.Point(0, 0);
             this.btnSmooth.Name = "btnSmooth";
@@ -1722,7 +1738,7 @@
             this.panFlipRotate.Controls.Add(this.checkBox18);
             this.panFlipRotate.Controls.Add(this.trackBar29);
             this.panFlipRotate.Controls.Add(this.l_RotateImage);
-            this.panFlipRotate.Location = new System.Drawing.Point(3, 390);
+            this.panFlipRotate.Location = new System.Drawing.Point(3, 285);
             this.panFlipRotate.Name = "panFlipRotate";
             this.panFlipRotate.Size = new System.Drawing.Size(309, 29);
             this.panFlipRotate.TabIndex = 90;
@@ -1738,6 +1754,7 @@
             this.btnResetFlipRotate.TabIndex = 83;
             this.btnResetFlipRotate.Text = "Reset";
             this.btnResetFlipRotate.UseVisualStyleBackColor = false;
+            this.btnResetFlipRotate.Click += new System.EventHandler(this.btnResetFlipRotate_Click);
             // 
             // btnFlipRotate
             // 
@@ -1810,7 +1827,7 @@
             this.panRakeRemove.Controls.Add(this.numUpDown3);
             this.panRakeRemove.Controls.Add(this.numUpDown4);
             this.panRakeRemove.Controls.Add(this.numUpDown5);
-            this.panRakeRemove.Location = new System.Drawing.Point(3, 425);
+            this.panRakeRemove.Location = new System.Drawing.Point(3, 320);
             this.panRakeRemove.Name = "panRakeRemove";
             this.panRakeRemove.Size = new System.Drawing.Size(309, 29);
             this.panRakeRemove.TabIndex = 89;
@@ -1836,6 +1853,7 @@
             this.btnResetRakeRemove.TabIndex = 83;
             this.btnResetRakeRemove.Text = "Reset";
             this.btnResetRakeRemove.UseVisualStyleBackColor = false;
+            this.btnResetRakeRemove.Click += new System.EventHandler(this.btnResetRakeRemove_Click);
             // 
             // l_numUpDown6
             // 
@@ -2071,7 +2089,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(1702, 88);
+            this.checkBox4.Location = new System.Drawing.Point(1674, 65);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(77, 17);
             this.checkBox4.TabIndex = 40;
@@ -2082,7 +2100,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(1702, 114);
+            this.checkBox5.Location = new System.Drawing.Point(1674, 91);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(70, 17);
             this.checkBox5.TabIndex = 41;
@@ -2093,7 +2111,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(1702, 175);
+            this.checkBox6.Location = new System.Drawing.Point(1674, 152);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(67, 17);
             this.checkBox6.TabIndex = 42;
@@ -2104,7 +2122,7 @@
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(1701, 240);
+            this.checkBox8.Location = new System.Drawing.Point(1673, 217);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(62, 17);
             this.checkBox8.TabIndex = 44;
@@ -2114,7 +2132,7 @@
             // 
             // trbMaximum
             // 
-            this.trbMaximum.Location = new System.Drawing.Point(1728, 131);
+            this.trbMaximum.Location = new System.Drawing.Point(1700, 108);
             this.trbMaximum.Minimum = 1;
             this.trbMaximum.Name = "trbMaximum";
             this.trbMaximum.Size = new System.Drawing.Size(164, 45);
@@ -2125,7 +2143,7 @@
             // 
             // trbMinimum
             // 
-            this.trbMinimum.Location = new System.Drawing.Point(1728, 198);
+            this.trbMinimum.Location = new System.Drawing.Point(1700, 175);
             this.trbMinimum.Minimum = 1;
             this.trbMinimum.Name = "trbMinimum";
             this.trbMinimum.Size = new System.Drawing.Size(164, 45);
@@ -2136,7 +2154,7 @@
             // 
             // trbGamma
             // 
-            this.trbGamma.Location = new System.Drawing.Point(1728, 266);
+            this.trbGamma.Location = new System.Drawing.Point(1700, 243);
             this.trbGamma.Maximum = 400;
             this.trbGamma.Minimum = 1;
             this.trbGamma.Name = "trbGamma";
@@ -2149,7 +2167,7 @@
             // l_maximum
             // 
             this.l_maximum.AutoSize = true;
-            this.l_maximum.Location = new System.Drawing.Point(1709, 136);
+            this.l_maximum.Location = new System.Drawing.Point(1681, 113);
             this.l_maximum.Name = "l_maximum";
             this.l_maximum.Size = new System.Drawing.Size(13, 13);
             this.l_maximum.TabIndex = 53;
@@ -2158,7 +2176,7 @@
             // l_minimum
             // 
             this.l_minimum.AutoSize = true;
-            this.l_minimum.Location = new System.Drawing.Point(1709, 201);
+            this.l_minimum.Location = new System.Drawing.Point(1681, 178);
             this.l_minimum.Name = "l_minimum";
             this.l_minimum.Size = new System.Drawing.Size(13, 13);
             this.l_minimum.TabIndex = 54;
@@ -2167,7 +2185,7 @@
             // l_gamma
             // 
             this.l_gamma.AutoSize = true;
-            this.l_gamma.Location = new System.Drawing.Point(1709, 271);
+            this.l_gamma.Location = new System.Drawing.Point(1681, 248);
             this.l_gamma.Name = "l_gamma";
             this.l_gamma.Size = new System.Drawing.Size(13, 13);
             this.l_gamma.TabIndex = 55;
@@ -2176,7 +2194,7 @@
             // checkBox14
             // 
             this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(1701, 311);
+            this.checkBox14.Location = new System.Drawing.Point(160, 110);
             this.checkBox14.Name = "checkBox14";
             this.checkBox14.Size = new System.Drawing.Size(87, 17);
             this.checkBox14.TabIndex = 62;
@@ -2189,7 +2207,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
-            this.Controls.Add(this.checkBox14);
             this.Controls.Add(this.l_gamma);
             this.Controls.Add(this.l_minimum);
             this.Controls.Add(this.l_maximum);

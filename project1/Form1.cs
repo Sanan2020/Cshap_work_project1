@@ -276,6 +276,10 @@ namespace project1
                 trackBar31.Value = value_trackBar31;
                 l_length.Text = value_trackBar31.ToString();
 
+                trbDynBin1.Value = value_trbDynBin1;
+                l_dimension.Text = value_trbDynBin1.ToString();
+                trbDynBin2.Value = value_trbDynBin2;
+                l_localcontrast.Text = value_trbDynBin2.ToString();
                 //RasterCommandExample();
             }
             catch (Exception ex) {
@@ -995,7 +999,7 @@ namespace project1
                     streamwri.WriteLine(l_dimension.Name + "=" + value_trbDynBin1.ToString());      //value_trbDynBin1
                     streamwri.WriteLine(l_localcontrast.Name + "=" + value_trbDynBin2.ToString());  //value_trbDynBin2
                     streamwri.WriteLine(l_binaryfilter.Name + "=" + selectCombobox.ToString());     //binaryfilter
-                                                                                                    //Dot Remove
+                    //Dot Remove                                                                              
                     streamwri.WriteLine(checkBox10.Text + "=" + chckbox10.ToString());
                     streamwri.WriteLine(l_maximumdotH.Name + "=" + value_trackBar10.ToString());
                     streamwri.WriteLine(l_maximumdotW.Name + "=" + value_trackBar11.ToString());
@@ -2149,6 +2153,206 @@ namespace project1
             value_trackBar3 = 0;
             trackBar3.Value = value_trackBar3;
             l_intensity.Text = value_trackBar3.ToString();
+            Display();
+        }
+
+        private void btnResetUnsharpMask_Click(object sender, EventArgs e)
+        {
+            value_trackBar4 = 1;
+            trackBar4.Value = value_trackBar4;
+            l_amount.Text = value_trackBar4.ToString();
+            value_trackBar5 = 1;
+            trackBar5.Value = value_trackBar5;
+            l_radius.Text = value_trackBar5.ToString();
+            value_trackBar6 = 1;
+            trackBar6.Value = value_trackBar6;
+            l_threshold.Text = value_trackBar6.ToString();
+            Display();
+        }
+
+        private void btnResetGrayScale_Click(object sender, EventArgs e)
+        {
+            chckbox2 = false;
+            checkBox2.Checked = false;
+            value_trackBar7 = 500;
+            trackBar7.Value = value_trackBar7;
+            l_redfactor.Text = value_trackBar7.ToString();
+            value_trackBar8 = 250;
+            trackBar8.Value = value_trackBar8;
+            l_greenfactor.Text = value_trackBar8.ToString();
+            value_trackBar9 = 250;
+            trackBar9.Value = value_trackBar9;
+            l_bluefactor.Text = value_trackBar9.ToString();
+            Display();
+        }
+
+        private void btnResetDocImgClupFnct_Click(object sender, EventArgs e)
+        {
+            chckbox7 = false;
+            checkBox7.Checked = chckbox7;
+            chckbox3 = false;
+            checkBox3.Checked = chckbox3;
+            chckbox9 = false;
+            checkBox9.Checked = chckbox9;
+            value_trbDynBin1 = 8;
+            trbDynBin1.Value = value_trbDynBin1;
+            l_dimension.Text = value_trbDynBin1.ToString();
+            value_trbDynBin2 = 16;
+            trbDynBin2.Value = value_trbDynBin2;
+            l_localcontrast.Text = value_trbDynBin2.ToString();
+            selectCombobox = 0;
+            comboBox1.SelectedIndex = selectCombobox;
+            chckbox14 = false;
+            checkBox14.Checked = chckbox14;
+        }
+
+        private void btnResetDotRemove_Click(object sender, EventArgs e)
+        {
+            chckbox10 = false;
+            checkBox10.Checked = chckbox10;
+            value_trackBar10 = 10;
+            trackBar10.Value = value_trackBar10;
+            l_maximumdotH.Text = value_trackBar10.ToString();
+            value_trackBar11 = 10;
+            trackBar11.Value = value_trackBar11;
+            l_maximumdotW.Text = value_trackBar11.ToString();
+            value_trackBar12 = 1;
+            trackBar12.Value = value_trackBar12;
+            l_minimumdotH.Text = value_trackBar12.ToString();
+            value_trackBar13 = 1;
+            trackBar13.Value = value_trackBar13;
+            l_minimumdotW.Text = value_trackBar13.ToString();
+            Display();
+        }
+
+        private void btnResetLineRemove_Click(object sender, EventArgs e)
+        {
+            //14 15 16 17 22
+            chckbox11 = false;
+            checkBox11.Checked = chckbox11;
+            value_trackBar14 = 2;
+            trackBar14.Value = value_trackBar14;
+            l_gaplength.Text = value_trackBar14.ToString();
+            value_trackBar15 = 5;
+            trackBar15.Value = value_trackBar15;
+            l_maximumlineW.Text = value_trackBar15.ToString();
+            value_trackBar16 = 200;
+            trackBar16.Value = value_trackBar16;
+            l_minimumlineL.Text = value_trackBar16.ToString();
+            value_trackBar17 = 10;
+            trackBar17.Value = value_trackBar17;
+            l_maximumwall.Text = value_trackBar17.ToString();
+            value_trackBar22 = 7;
+            trackBar22.Value = value_trackBar22;
+            l_wall.Text = value_trackBar22.ToString();
+        }
+
+        private void btnResetHolePunchRemove_Click(object sender, EventArgs e)
+        {
+            //12 18 21
+            chckbox12 = false;
+            checkBox12.Checked = chckbox12;
+            value_trackBar18 = 4;
+            trackBar18.Value = value_trackBar18;
+            l_maximumhole.Text = value_trackBar18.ToString();
+            value_trackBar21 = 2;
+            trackBar21.Value = value_trackBar21;
+            l_minimumhole.Text = value_trackBar21.ToString();
+            Display();
+        }
+
+        private void btnResetInvertedText_Click(object sender, EventArgs e)
+        {
+            //19 20 23 24
+            chckbox13 = false;
+            checkBox13.Checked = chckbox13;
+            value_trackBar19 = 95;
+            trackBar19.Value = value_trackBar19;
+            l_maximumblack.Text = value_trackBar19.ToString();
+            value_trackBar20 = 70;
+            trackBar20.Value = value_trackBar20;
+            l_minimumBlack.Text = value_trackBar20.ToString();
+            value_trackBar23 = 500;
+            trackBar23.Value = value_trackBar23;
+            l_minimuminverH.Text = value_trackBar23.ToString();
+            value_trackBar24 = 5000;
+            trackBar24.Value = value_trackBar24;
+            l_minimuminvertW.Text = value_trackBar24.ToString();
+            Display();
+        }
+
+        private void btnResetAutoCrop_Click(object sender, EventArgs e)
+        {
+            chckbox15 = false;
+            checkBox15.Checked = chckbox15;
+            value_trackBar27 = 20;
+            trackBar27.Value = value_trackBar27;
+            l_cropThreshold.Text = value_trackBar27.ToString();
+            Display();
+        }
+
+        private void btnResetBorderRemove_Click(object sender, EventArgs e)
+        {
+            //25 26 28
+            chckbox16 = false;
+            checkBox16.Checked = chckbox16;
+            value_trackBar25 = 20;
+            trackBar25.Value = value_trackBar25;
+            l_percent.Text  = value_trackBar25.ToString();
+            value_trackBar26 = 3;
+            trackBar26.Value = value_trackBar26;
+            l_variance.Text = value_trackBar26.ToString();
+            value_trackBar28 = 9;
+            trackBar28.Value = value_trackBar28;
+            l_whitenoiseL.Text = value_trackBar28.ToString();
+            Display();
+        }
+
+        private void btnResetSmooth_Click(object sender, EventArgs e)
+        {
+            //17 31
+            chckbox17 = false;
+            checkBox17.Checked = chckbox17;
+            value_trackBar31 = 2;
+            trackBar31.Value = value_trackBar31;
+            l_length.Text = value_trackBar31.ToString();
+            Display();
+        }
+
+        private void btnResetFlipRotate_Click(object sender, EventArgs e)
+        {
+            chckbox18 = false;
+            checkBox18.Checked = chckbox18;
+            value_trackBar29 = 0;
+            trackBar29.Value = value_trackBar29;
+            l_RotateImage.Text = value_trackBar29.ToString();
+            Display();
+        }
+
+        private void btnResetRakeRemove_Click(object sender, EventArgs e)
+        {
+            chckbox19 = false;
+            checkBox19.Checked = chckbox19;
+            value_numUpDown1 = 50;
+            numUpDown1.Value = value_numUpDown1;
+            value_numUpDown2 = 10;
+            numUpDown2.Value = value_numUpDown2;
+            value_numUpDown3 = 3;
+            numUpDown3.Value = value_numUpDown3;
+            value_numUpDown4 = 25;
+            numUpDown4.Value = value_numUpDown4;
+            value_numUpDown5 = 60;
+            numUpDown5.Value = value_numUpDown5;
+            value_numUpDown6 = 50;
+            numUpDown6.Value = value_numUpDown6;
+            value_numUpDown7 = 1;
+            numUpDown7.Value = value_numUpDown7;
+            value_numUpDown8 = 1;
+            numUpDown8.Value = value_numUpDown8;
+            value_numUpDown9 = 5;
+            numUpDown9.Value = value_numUpDown9;
+            chckbox20 = false;
+            checkBox20.Checked = chckbox20;
             Display();
         }
     }
