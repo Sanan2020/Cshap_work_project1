@@ -1053,7 +1053,7 @@ namespace project1
                     streamwri.WriteLine(l_numUpDown7.Name + "=" + value_numUpDown7.ToString());
                     streamwri.WriteLine(l_numUpDown8.Name + "=" + value_numUpDown8.ToString());
                     streamwri.WriteLine(l_numUpDown9.Name + "=" + value_numUpDown9.ToString());
-                    streamwri.WriteLine(checkBox20.Text + "=" + chckbox20.ToString());
+                    streamwri.WriteLine(l_autofilter.Text + "=" + chckbox20.ToString());
 
                     streamwri.Close();
                     l_saveprofile.Text = "Save Success...";
@@ -1247,6 +1247,35 @@ namespace project1
 
                         chckbox14 = bool.Parse(list[51]);
                         checkBox14.Checked = chckbox14;
+                        //Flip Rotate Image
+                        chckbox18 = bool.Parse(list[52]);
+                        checkBox18.Checked = chckbox18;
+                        value_trackBar29 = int.Parse(list[53]);
+                        trackBar29.Value = value_trackBar29;
+                        l_RotateImage.Text = value_trackBar29.ToString();
+                        //RakeRemove
+                        chckbox19 = bool.Parse(list[54]);
+                        checkBox19.Checked = chckbox19;
+                        value_numUpDown1 = int.Parse(list[55]);
+                        numUpDown1.Value = value_numUpDown1;
+                        value_numUpDown2 = int.Parse(list[56]);
+                        numUpDown2.Value = value_numUpDown2;
+                        value_numUpDown3 = int.Parse(list[57]);
+                        numUpDown3.Value = value_numUpDown3;
+                        value_numUpDown4 = int.Parse(list[58]);
+                        numUpDown4.Value = value_numUpDown4;
+                        value_numUpDown5 = int.Parse(list[59]);
+                        numUpDown5.Value = value_numUpDown5;
+                        value_numUpDown6 = int.Parse(list[60]);
+                        numUpDown6.Value = value_numUpDown6;
+                        value_numUpDown7 = int.Parse(list[61]);
+                        numUpDown7.Value = value_numUpDown7;
+                        value_numUpDown8 = int.Parse(list[62]);
+                        numUpDown8.Value = value_numUpDown8;
+                        value_numUpDown9 = int.Parse(list[63]);
+                        numUpDown9.Value = value_numUpDown9;
+                        chckbox20 = bool.Parse(list[64]);
+                        checkBox20.Checked = chckbox20;
 
                         Display();
                         l_saveprofile.Text = "usepf Success...";
@@ -2106,6 +2135,20 @@ namespace project1
         private void numUpDown9_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown9 = (int)numUpDown9.Value;
+            Display();
+        }
+
+        private void btnResetConBrigtIntens_Click(object sender, EventArgs e)
+        {
+            value_trackBar1 = 0;
+            trackBar1.Value = value_trackBar1;
+            l_brightness.Text = value_trackBar1.ToString();
+            value_trackBar2 = 0;
+            trackBar2.Value = value_trackBar2;
+            l_contrast.Text = value_trackBar2.ToString();
+            value_trackBar3 = 0;
+            trackBar3.Value = value_trackBar3;
+            l_intensity.Text = value_trackBar3.ToString();
             Display();
         }
     }
