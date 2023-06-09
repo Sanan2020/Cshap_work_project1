@@ -86,7 +86,7 @@ namespace project1
         public int value_trackBar28 = 9;
         public int value_trackBar31 = 2;
         public bool chckbox18 = false;
-        public int value_trackBar29=1;
+        public int value_trackBar29=45;
         public bool chckbox19 = false;
         public int value_numUpDown1 = 50;
         public int value_numUpDown2 = 10;
@@ -957,6 +957,35 @@ namespace project1
                 value_trbDynBin2 = 16;
                 trbDynBin2.Value = value_trbDynBin2;
                 l_localcontrast.Text = value_trbDynBin2.ToString();
+
+                chckbox18 = false;
+                checkBox18.Checked = chckbox18;
+                value_trackBar29 = 0;
+                trackBar29.Value = value_trackBar29;
+                l_RotateImage.Text = value_trackBar29.ToString();
+
+                chckbox19 = false;
+                checkBox19.Checked = chckbox19;
+                value_numUpDown1 = 50;
+                numUpDown1.Value = value_numUpDown1;
+                value_numUpDown2 = 10;
+                numUpDown2.Value = value_numUpDown2;
+                value_numUpDown3 = 3;
+                numUpDown3.Value = value_numUpDown3;
+                value_numUpDown4 = 25;
+                numUpDown4.Value = value_numUpDown4;
+                value_numUpDown5 = 60;
+                numUpDown5.Value = value_numUpDown5;
+                value_numUpDown6 = 50;
+                numUpDown6.Value = value_numUpDown6;
+                value_numUpDown7 = 1;
+                numUpDown7.Value = value_numUpDown7;
+                value_numUpDown8 = 1;
+                numUpDown8.Value = value_numUpDown8;
+                value_numUpDown9 = 5;
+                numUpDown9.Value = value_numUpDown9;
+                chckbox20 = false;
+                checkBox20.Checked = chckbox20;
                 Display();
             }
             catch (Exception ex) {
@@ -1080,8 +1109,8 @@ namespace project1
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
+           /* try
+            {*/
                 selectCombobox2 = comboBox2.SelectedItem.ToString();
                 if (selectCombobox2 == "Default" && folderPath != null)
                 {
@@ -1298,10 +1327,10 @@ namespace project1
                     //เคลียร์ list
                     rf = "";
                 }
-            }
+          /*  }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
-            }
+            }*/
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -2237,7 +2266,6 @@ namespace project1
 
         private void btnResetLineRemove_Click(object sender, EventArgs e)
         {
-            //14 15 16 17 22
             chckbox11 = false;
             checkBox11.Checked = chckbox11;
             value_trackBar14 = 2;
@@ -2259,7 +2287,6 @@ namespace project1
 
         private void btnResetHolePunchRemove_Click(object sender, EventArgs e)
         {
-            //12 18 21
             chckbox12 = false;
             checkBox12.Checked = chckbox12;
             value_trackBar18 = 4;
@@ -2273,7 +2300,6 @@ namespace project1
 
         private void btnResetInvertedText_Click(object sender, EventArgs e)
         {
-            //19 20 23 24
             chckbox13 = false;
             checkBox13.Checked = chckbox13;
             value_trackBar19 = 95;
@@ -2303,7 +2329,6 @@ namespace project1
 
         private void btnResetBorderRemove_Click(object sender, EventArgs e)
         {
-            //25 26 28
             chckbox16 = false;
             checkBox16.Checked = chckbox16;
             value_trackBar25 = 20;
@@ -2320,7 +2345,6 @@ namespace project1
 
         private void btnResetSmooth_Click(object sender, EventArgs e)
         {
-            //17 31
             chckbox17 = false;
             checkBox17.Checked = chckbox17;
             value_trackBar31 = 2;
@@ -2383,7 +2407,6 @@ namespace project1
 
         private void btnResetMaxiMini_Click(object sender, EventArgs e)
         {
-            //ck1 4 5 mx 6 mn 8 gm
             chckbox = false;
             checkBox1.Checked = chckbox;
             chckbox4 = false;
