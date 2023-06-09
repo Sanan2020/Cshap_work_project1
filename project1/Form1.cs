@@ -1301,7 +1301,7 @@ namespace project1
             if (Expanded)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;
-                panConBrigtIntens.Height = 32;
+                panConBrigtIntens.Height = 28;
             }
             else
             {
@@ -1316,7 +1316,7 @@ namespace project1
             if (Expanded2)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
-                panUnsharpMask.Height = 32;
+                panUnsharpMask.Height = 28;
             }
             else
             {
@@ -1641,7 +1641,7 @@ namespace project1
             if (Expanded6)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
-                panLineRemove.Height = 29;
+                panLineRemove.Height = 30;
             }
             else
             {

@@ -168,6 +168,17 @@
             this.l_RotateImage = new System.Windows.Forms.Label();
             this.trackBar29 = new System.Windows.Forms.TrackBar();
             this.checkBox19 = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -568,6 +579,7 @@
             // 
             this.panConBrigtIntens.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panConBrigtIntens.Controls.Add(this.label6);
+            this.panConBrigtIntens.Controls.Add(this.button1);
             this.panConBrigtIntens.Controls.Add(this.btnConBrigtIntens);
             this.panConBrigtIntens.Controls.Add(this.label7);
             this.panConBrigtIntens.Controls.Add(this.label4);
@@ -591,12 +603,14 @@
             this.btnConBrigtIntens.Size = new System.Drawing.Size(307, 27);
             this.btnConBrigtIntens.TabIndex = 25;
             this.btnConBrigtIntens.Text = "ContrastBrightnessIntensity";
+            this.btnConBrigtIntens.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConBrigtIntens.UseVisualStyleBackColor = true;
             this.btnConBrigtIntens.Click += new System.EventHandler(this.btnConBrigtIntens_Click);
             // 
             // panUnsharpMask
             // 
             this.panUnsharpMask.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panUnsharpMask.Controls.Add(this.button2);
             this.panUnsharpMask.Controls.Add(this.label9);
             this.panUnsharpMask.Controls.Add(this.label13);
             this.panUnsharpMask.Controls.Add(this.trackBar5);
@@ -621,6 +635,7 @@
             this.btnUnsharpMask.Size = new System.Drawing.Size(307, 27);
             this.btnUnsharpMask.TabIndex = 35;
             this.btnUnsharpMask.Text = "UnsharpMask";
+            this.btnUnsharpMask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUnsharpMask.UseVisualStyleBackColor = true;
             this.btnUnsharpMask.Click += new System.EventHandler(this.btnUnsharpMask_Click);
             // 
@@ -645,6 +660,7 @@
             // panGrayScale
             // 
             this.panGrayScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panGrayScale.Controls.Add(this.button3);
             this.panGrayScale.Controls.Add(this.label8);
             this.panGrayScale.Controls.Add(this.label15);
             this.panGrayScale.Controls.Add(this.l_greenfactor);
@@ -717,6 +733,7 @@
             this.btnGrayScale.Size = new System.Drawing.Size(307, 27);
             this.btnGrayScale.TabIndex = 35;
             this.btnGrayScale.Text = "GrayScale";
+            this.btnGrayScale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGrayScale.UseVisualStyleBackColor = true;
             this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
             // 
@@ -780,6 +797,7 @@
             // panDocImgClupFnct
             // 
             this.panDocImgClupFnct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panDocImgClupFnct.Controls.Add(this.button4);
             this.panDocImgClupFnct.Controls.Add(this.checkBox7);
             this.panDocImgClupFnct.Controls.Add(this.comboBox1);
             this.panDocImgClupFnct.Controls.Add(this.btnDocImgClupFnct);
@@ -815,6 +833,7 @@
             this.btnDocImgClupFnct.Size = new System.Drawing.Size(307, 27);
             this.btnDocImgClupFnct.TabIndex = 56;
             this.btnDocImgClupFnct.Text = "Document Image Cleanup Functions";
+            this.btnDocImgClupFnct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDocImgClupFnct.UseVisualStyleBackColor = true;
             this.btnDocImgClupFnct.Click += new System.EventHandler(this.btnDocImgClupFnct_Click);
             // 
@@ -885,6 +904,7 @@
             // panDotRemove
             // 
             this.panDotRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panDotRemove.Controls.Add(this.button5);
             this.panDotRemove.Controls.Add(this.l_minimumdotW);
             this.panDotRemove.Controls.Add(this.l_minimumdotH);
             this.panDotRemove.Controls.Add(this.btnDotRemove);
@@ -927,6 +947,7 @@
             this.btnDotRemove.Size = new System.Drawing.Size(307, 27);
             this.btnDotRemove.TabIndex = 70;
             this.btnDotRemove.Text = "DotRemove";
+            this.btnDotRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDotRemove.UseVisualStyleBackColor = true;
             this.btnDotRemove.Click += new System.EventHandler(this.btnDotRemove_Click);
             // 
@@ -998,6 +1019,7 @@
             // panLineRemove
             // 
             this.panLineRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panLineRemove.Controls.Add(this.button6);
             this.panLineRemove.Controls.Add(this.l_wall);
             this.panLineRemove.Controls.Add(this.l_maximumwall);
             this.panLineRemove.Controls.Add(this.btnLineRemove);
@@ -1042,6 +1064,7 @@
             this.btnLineRemove.Size = new System.Drawing.Size(307, 29);
             this.btnLineRemove.TabIndex = 70;
             this.btnLineRemove.Text = "LineRemove";
+            this.btnLineRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLineRemove.UseVisualStyleBackColor = true;
             this.btnLineRemove.Click += new System.EventHandler(this.btnLineRemove_Click);
             // 
@@ -1132,6 +1155,7 @@
             // panHolePunchRemove
             // 
             this.panHolePunchRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panHolePunchRemove.Controls.Add(this.button7);
             this.panHolePunchRemove.Controls.Add(this.btnHolePunchRemove);
             this.panHolePunchRemove.Controls.Add(this.l_maximumhole);
             this.panHolePunchRemove.Controls.Add(this.l_minimumhole);
@@ -1152,6 +1176,7 @@
             this.btnHolePunchRemove.Size = new System.Drawing.Size(307, 27);
             this.btnHolePunchRemove.TabIndex = 70;
             this.btnHolePunchRemove.Text = "HolePunchRemove";
+            this.btnHolePunchRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHolePunchRemove.UseVisualStyleBackColor = true;
             this.btnHolePunchRemove.Click += new System.EventHandler(this.btnHolePunchRemove_Click);
             // 
@@ -1205,6 +1230,7 @@
             // panInvertedText
             // 
             this.panInvertedText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panInvertedText.Controls.Add(this.button8);
             this.panInvertedText.Controls.Add(this.l_minimuminvertW);
             this.panInvertedText.Controls.Add(this.l_minimuminverH);
             this.panInvertedText.Controls.Add(this.l_minimumBlack);
@@ -1256,6 +1282,7 @@
             this.btnInvertedText.Size = new System.Drawing.Size(307, 27);
             this.btnInvertedText.TabIndex = 70;
             this.btnInvertedText.Text = "InvertedText";
+            this.btnInvertedText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInvertedText.UseVisualStyleBackColor = true;
             this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
             // 
@@ -1322,6 +1349,7 @@
             // panAutoCrop
             // 
             this.panAutoCrop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panAutoCrop.Controls.Add(this.button9);
             this.panAutoCrop.Controls.Add(this.btnAutoCrop);
             this.panAutoCrop.Controls.Add(this.l_cropThreshold);
             this.panAutoCrop.Controls.Add(this.trackBar27);
@@ -1340,6 +1368,7 @@
             this.btnAutoCrop.Size = new System.Drawing.Size(307, 27);
             this.btnAutoCrop.TabIndex = 70;
             this.btnAutoCrop.Text = "AutoCrop";
+            this.btnAutoCrop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAutoCrop.UseVisualStyleBackColor = true;
             this.btnAutoCrop.Click += new System.EventHandler(this.btnAutoCrop_Click);
             // 
@@ -1376,6 +1405,7 @@
             // panBorderRemove
             // 
             this.panBorderRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panBorderRemove.Controls.Add(this.button10);
             this.panBorderRemove.Controls.Add(this.l_whitenoiseL);
             this.panBorderRemove.Controls.Add(this.l_variance);
             this.panBorderRemove.Controls.Add(this.l_percent);
@@ -1425,6 +1455,7 @@
             this.btnBorderRemove.Size = new System.Drawing.Size(307, 27);
             this.btnBorderRemove.TabIndex = 70;
             this.btnBorderRemove.Text = "BorderRemove";
+            this.btnBorderRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBorderRemove.UseVisualStyleBackColor = true;
             this.btnBorderRemove.Click += new System.EventHandler(this.btnBorderRemove_Click);
             // 
@@ -1470,6 +1501,7 @@
             // panSmooth
             // 
             this.panSmooth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panSmooth.Controls.Add(this.button11);
             this.panSmooth.Controls.Add(this.btnSmooth);
             this.panSmooth.Controls.Add(this.l_length);
             this.panSmooth.Controls.Add(this.trackBar31);
@@ -1488,6 +1520,7 @@
             this.btnSmooth.Size = new System.Drawing.Size(307, 27);
             this.btnSmooth.TabIndex = 70;
             this.btnSmooth.Text = "Smooth";
+            this.btnSmooth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSmooth.UseVisualStyleBackColor = true;
             this.btnSmooth.Click += new System.EventHandler(this.btnSmooth_Click);
             // 
@@ -1677,6 +1710,138 @@
             this.checkBox19.Text = "RakeRemove";
             this.checkBox19.UseVisualStyleBackColor = true;
             this.checkBox19.CheckedChanged += new System.EventHandler(this.checkBox19_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(240, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 23);
+            this.button1.TabIndex = 69;
+            this.button1.Text = "Reset";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(240, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(65, 23);
+            this.button2.TabIndex = 70;
+            this.button2.Text = "Reset";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.Location = new System.Drawing.Point(240, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(65, 23);
+            this.button3.TabIndex = 71;
+            this.button3.Text = "Reset";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button4.Location = new System.Drawing.Point(239, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(65, 23);
+            this.button4.TabIndex = 72;
+            this.button4.Text = "Reset";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button5.Location = new System.Drawing.Point(240, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(65, 23);
+            this.button5.TabIndex = 73;
+            this.button5.Text = "Reset";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button6.Location = new System.Drawing.Point(240, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(65, 23);
+            this.button6.TabIndex = 70;
+            this.button6.Text = "Reset";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button7.Location = new System.Drawing.Point(240, 2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(65, 23);
+            this.button7.TabIndex = 77;
+            this.button7.Text = "Reset";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button8.Location = new System.Drawing.Point(240, 2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(65, 23);
+            this.button8.TabIndex = 79;
+            this.button8.Text = "Reset";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button9.Location = new System.Drawing.Point(240, 2);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(65, 23);
+            this.button9.TabIndex = 81;
+            this.button9.Text = "Reset";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button10.Location = new System.Drawing.Point(240, 2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(65, 23);
+            this.button10.TabIndex = 82;
+            this.button10.Text = "Reset";
+            this.button10.UseVisualStyleBackColor = false;
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button11.Location = new System.Drawing.Point(240, 2);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(65, 23);
+            this.button11.TabIndex = 83;
+            this.button11.Text = "Reset";
+            this.button11.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -1924,6 +2089,17 @@
         private System.Windows.Forms.Label l_RotateImage;
         private System.Windows.Forms.TrackBar trackBar29;
         private System.Windows.Forms.CheckBox checkBox19;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
 
