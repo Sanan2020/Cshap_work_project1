@@ -281,6 +281,15 @@ namespace project1
                 trbDynBin2.Value = value_trbDynBin2;
                 l_localcontrast.Text = value_trbDynBin2.ToString();
                 //RasterCommandExample();
+                value_trbMaximum = 3;
+                trbMaximum.Value = value_trbMaximum;
+                l_maximum.Text = value_trbMaximum.ToString();
+                value_trbMinimum = 3;
+                trbMinimum.Value = value_trbMinimum;
+                l_minimum.Text = value_trbMinimum.ToString();
+                value_trbGamma = 310;
+                trbGamma.Value = value_trbGamma;
+                l_gamma.Text = value_trbGamma.ToString();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -1042,6 +1051,7 @@ namespace project1
                     streamwri.WriteLine(l_minimum.Name + "=" + value_trbMinimum.ToString());
                     streamwri.WriteLine(checkBox8.Text + "=" + chckbox8.ToString());    //Gamma
                     streamwri.WriteLine(l_gamma.Name + "=" + value_trbGamma.ToString());
+
                     streamwri.WriteLine(checkBox14.Text + "=" + chckbox14.ToString());  //AutoDeskew
                     //Flip Rotate Image
                     streamwri.WriteLine(checkBox18.Text + "=" + chckbox18.ToString());
@@ -2353,6 +2363,46 @@ namespace project1
             numUpDown9.Value = value_numUpDown9;
             chckbox20 = false;
             checkBox20.Checked = chckbox20;
+            Display();
+        }
+        private bool Expanded14;
+        private void btnMaxiMini_Click(object sender, EventArgs e)
+        {
+            if (Expanded14)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panMaxiMini.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panMaxiMini.Height = 323;
+            }
+            Expanded14 = !Expanded14;
+        }
+
+        private void btnResetMaxiMini_Click(object sender, EventArgs e)
+        {
+            //ck1 4 5 mx 6 mn 8 gm
+            chckbox = false;
+            checkBox1.Checked = chckbox;
+            chckbox4 = false;
+            checkBox4.Checked = chckbox4;
+            chckbox5 = false;
+            checkBox5.Checked = chckbox5;
+            value_trbMaximum = 3;
+            trbMaximum.Value = value_trbMaximum;
+            l_maximum.Text = value_trbMaximum.ToString();
+            chckbox6 = false;
+            checkBox6.Checked = chckbox6;
+            value_trbMinimum = 3;
+            trbMinimum.Value = value_trbMinimum;
+            l_minimum.Text = value_trbMinimum.ToString();
+            chckbox8 = false;
+            checkBox8.Checked = chckbox8;
+            value_trbGamma = 310;
+            trbGamma.Value = value_trbGamma;
+            l_gamma.Text = value_trbGamma.ToString();
             Display();
         }
     }

@@ -204,6 +204,9 @@
             this.l_minimum = new System.Windows.Forms.Label();
             this.l_gamma = new System.Windows.Forms.Label();
             this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.panMaxiMini = new System.Windows.Forms.Panel();
+            this.btnResetMaxiMini = new System.Windows.Forms.Button();
+            this.btnMaxiMini = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -264,6 +267,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).BeginInit();
+            this.panMaxiMini.SuspendLayout();
             this.SuspendLayout();
             // 
             // Browse
@@ -534,9 +538,9 @@
             // 
             // SaveProfile
             // 
-            this.SaveProfile.Location = new System.Drawing.Point(1742, 380);
+            this.SaveProfile.Location = new System.Drawing.Point(1795, 91);
             this.SaveProfile.Name = "SaveProfile";
-            this.SaveProfile.Size = new System.Drawing.Size(90, 32);
+            this.SaveProfile.Size = new System.Drawing.Size(90, 28);
             this.SaveProfile.TabIndex = 21;
             this.SaveProfile.Text = "Save Profile";
             this.SaveProfile.UseVisualStyleBackColor = true;
@@ -554,7 +558,7 @@
             // l_profilename
             // 
             this.l_profilename.AutoSize = true;
-            this.l_profilename.Location = new System.Drawing.Point(1628, 317);
+            this.l_profilename.Location = new System.Drawing.Point(1622, 35);
             this.l_profilename.Name = "l_profilename";
             this.l_profilename.Size = new System.Drawing.Size(70, 13);
             this.l_profilename.TabIndex = 23;
@@ -562,25 +566,25 @@
             // 
             // value_profilename
             // 
-            this.value_profilename.Location = new System.Drawing.Point(1721, 314);
+            this.value_profilename.Location = new System.Drawing.Point(1715, 32);
             this.value_profilename.Name = "value_profilename";
-            this.value_profilename.Size = new System.Drawing.Size(133, 20);
+            this.value_profilename.Size = new System.Drawing.Size(170, 20);
             this.value_profilename.TabIndex = 24;
             // 
             // comboBox2
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1721, 340);
+            this.comboBox2.Location = new System.Drawing.Point(1715, 58);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(133, 21);
+            this.comboBox2.Size = new System.Drawing.Size(170, 21);
             this.comboBox2.TabIndex = 25;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1628, 343);
+            this.label3.Location = new System.Drawing.Point(1622, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 26;
@@ -589,7 +593,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1673, 42);
+            this.checkBox1.Location = new System.Drawing.Point(13, 36);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(98, 17);
             this.checkBox1.TabIndex = 29;
@@ -707,6 +711,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panConBrigtIntens);
             this.flowLayoutPanel1.Controls.Add(this.panUnsharpMask);
             this.flowLayoutPanel1.Controls.Add(this.panGrayScale);
+            this.flowLayoutPanel1.Controls.Add(this.panMaxiMini);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(1279, 32);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 863);
@@ -2089,7 +2094,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(1674, 65);
+            this.checkBox4.Location = new System.Drawing.Point(12, 59);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(77, 17);
             this.checkBox4.TabIndex = 40;
@@ -2100,7 +2105,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(1674, 91);
+            this.checkBox5.Location = new System.Drawing.Point(14, 111);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(70, 17);
             this.checkBox5.TabIndex = 41;
@@ -2111,7 +2116,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(1674, 152);
+            this.checkBox6.Location = new System.Drawing.Point(14, 172);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(67, 17);
             this.checkBox6.TabIndex = 42;
@@ -2122,7 +2127,7 @@
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(1673, 217);
+            this.checkBox8.Location = new System.Drawing.Point(13, 237);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(62, 17);
             this.checkBox8.TabIndex = 44;
@@ -2132,10 +2137,10 @@
             // 
             // trbMaximum
             // 
-            this.trbMaximum.Location = new System.Drawing.Point(1700, 108);
+            this.trbMaximum.Location = new System.Drawing.Point(40, 128);
             this.trbMaximum.Minimum = 1;
             this.trbMaximum.Name = "trbMaximum";
-            this.trbMaximum.Size = new System.Drawing.Size(164, 45);
+            this.trbMaximum.Size = new System.Drawing.Size(237, 45);
             this.trbMaximum.TabIndex = 50;
             this.trbMaximum.Value = 1;
             this.trbMaximum.Scroll += new System.EventHandler(this.trbMaximum_Scroll);
@@ -2143,10 +2148,10 @@
             // 
             // trbMinimum
             // 
-            this.trbMinimum.Location = new System.Drawing.Point(1700, 175);
+            this.trbMinimum.Location = new System.Drawing.Point(40, 195);
             this.trbMinimum.Minimum = 1;
             this.trbMinimum.Name = "trbMinimum";
-            this.trbMinimum.Size = new System.Drawing.Size(164, 45);
+            this.trbMinimum.Size = new System.Drawing.Size(237, 45);
             this.trbMinimum.TabIndex = 51;
             this.trbMinimum.Value = 1;
             this.trbMinimum.Scroll += new System.EventHandler(this.trbMinimum_Scroll);
@@ -2154,12 +2159,13 @@
             // 
             // trbGamma
             // 
-            this.trbGamma.Location = new System.Drawing.Point(1700, 243);
+            this.trbGamma.Location = new System.Drawing.Point(40, 263);
             this.trbGamma.Maximum = 400;
             this.trbGamma.Minimum = 1;
             this.trbGamma.Name = "trbGamma";
-            this.trbGamma.Size = new System.Drawing.Size(171, 45);
+            this.trbGamma.Size = new System.Drawing.Size(237, 45);
             this.trbGamma.TabIndex = 52;
+            this.trbGamma.TickFrequency = 20;
             this.trbGamma.Value = 1;
             this.trbGamma.Scroll += new System.EventHandler(this.trbGamma_Scroll);
             this.trbGamma.MouseCaptureChanged += new System.EventHandler(this.trbGamma_MouseCaptureChanged);
@@ -2167,7 +2173,7 @@
             // l_maximum
             // 
             this.l_maximum.AutoSize = true;
-            this.l_maximum.Location = new System.Drawing.Point(1681, 113);
+            this.l_maximum.Location = new System.Drawing.Point(21, 133);
             this.l_maximum.Name = "l_maximum";
             this.l_maximum.Size = new System.Drawing.Size(13, 13);
             this.l_maximum.TabIndex = 53;
@@ -2176,7 +2182,7 @@
             // l_minimum
             // 
             this.l_minimum.AutoSize = true;
-            this.l_minimum.Location = new System.Drawing.Point(1681, 178);
+            this.l_minimum.Location = new System.Drawing.Point(21, 198);
             this.l_minimum.Name = "l_minimum";
             this.l_minimum.Size = new System.Drawing.Size(13, 13);
             this.l_minimum.TabIndex = 54;
@@ -2185,7 +2191,7 @@
             // l_gamma
             // 
             this.l_gamma.AutoSize = true;
-            this.l_gamma.Location = new System.Drawing.Point(1681, 248);
+            this.l_gamma.Location = new System.Drawing.Point(21, 268);
             this.l_gamma.Name = "l_gamma";
             this.l_gamma.Size = new System.Drawing.Size(13, 13);
             this.l_gamma.TabIndex = 55;
@@ -2202,23 +2208,59 @@
             this.checkBox14.UseVisualStyleBackColor = true;
             this.checkBox14.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
             // 
+            // panMaxiMini
+            // 
+            this.panMaxiMini.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panMaxiMini.Controls.Add(this.btnResetMaxiMini);
+            this.panMaxiMini.Controls.Add(this.btnMaxiMini);
+            this.panMaxiMini.Controls.Add(this.l_gamma);
+            this.panMaxiMini.Controls.Add(this.checkBox1);
+            this.panMaxiMini.Controls.Add(this.l_minimum);
+            this.panMaxiMini.Controls.Add(this.checkBox4);
+            this.panMaxiMini.Controls.Add(this.l_maximum);
+            this.panMaxiMini.Controls.Add(this.checkBox5);
+            this.panMaxiMini.Controls.Add(this.trbGamma);
+            this.panMaxiMini.Controls.Add(this.checkBox6);
+            this.panMaxiMini.Controls.Add(this.trbMinimum);
+            this.panMaxiMini.Controls.Add(this.checkBox8);
+            this.panMaxiMini.Controls.Add(this.trbMaximum);
+            this.panMaxiMini.Location = new System.Drawing.Point(3, 460);
+            this.panMaxiMini.Name = "panMaxiMini";
+            this.panMaxiMini.Size = new System.Drawing.Size(309, 29);
+            this.panMaxiMini.TabIndex = 56;
+            // 
+            // btnResetMaxiMini
+            // 
+            this.btnResetMaxiMini.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnResetMaxiMini.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetMaxiMini.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnResetMaxiMini.Location = new System.Drawing.Point(240, 2);
+            this.btnResetMaxiMini.Name = "btnResetMaxiMini";
+            this.btnResetMaxiMini.Size = new System.Drawing.Size(65, 23);
+            this.btnResetMaxiMini.TabIndex = 71;
+            this.btnResetMaxiMini.Text = "Reset";
+            this.btnResetMaxiMini.UseVisualStyleBackColor = false;
+            this.btnResetMaxiMini.Click += new System.EventHandler(this.btnResetMaxiMini_Click);
+            // 
+            // btnMaxiMini
+            // 
+            this.btnMaxiMini.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMaxiMini.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaxiMini.Location = new System.Drawing.Point(0, 0);
+            this.btnMaxiMini.Name = "btnMaxiMini";
+            this.btnMaxiMini.Size = new System.Drawing.Size(307, 27);
+            this.btnMaxiMini.TabIndex = 35;
+            this.btnMaxiMini.Text = "Maximum Minimum";
+            this.btnMaxiMini.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMaxiMini.UseVisualStyleBackColor = true;
+            this.btnMaxiMini.Click += new System.EventHandler(this.btnMaxiMini_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
-            this.Controls.Add(this.l_gamma);
-            this.Controls.Add(this.l_minimum);
-            this.Controls.Add(this.l_maximum);
-            this.Controls.Add(this.trbGamma);
-            this.Controls.Add(this.trbMinimum);
-            this.Controls.Add(this.trbMaximum);
-            this.Controls.Add(this.checkBox8);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.value_profilename);
@@ -2309,6 +2351,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).EndInit();
+            this.panMaxiMini.ResumeLayout(false);
+            this.panMaxiMini.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2491,6 +2535,9 @@
         private System.Windows.Forms.Panel panFlipRotate;
         private System.Windows.Forms.Button btnResetFlipRotate;
         private System.Windows.Forms.Button btnFlipRotate;
+        private System.Windows.Forms.Panel panMaxiMini;
+        private System.Windows.Forms.Button btnResetMaxiMini;
+        private System.Windows.Forms.Button btnMaxiMini;
     }
 }
 
