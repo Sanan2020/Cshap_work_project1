@@ -1109,8 +1109,8 @@ namespace project1
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           /* try
-            {*/
+            try
+            {
                 selectCombobox2 = comboBox2.SelectedItem.ToString();
                 if (selectCombobox2 == "Default" && folderPath != null)
                 {
@@ -1327,10 +1327,10 @@ namespace project1
                     //เคลียร์ list
                     rf = "";
                 }
-          /*  }
+            }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
-            }*/
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
