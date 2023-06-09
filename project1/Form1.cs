@@ -1029,6 +1029,12 @@ namespace project1
                     streamwri.WriteLine(checkBox8.Text + "=" + chckbox8.ToString());    //Gamma
                     streamwri.WriteLine(l_gamma.Name + "=" + value_trbGamma.ToString());
                     streamwri.WriteLine(checkBox14.Text + "=" + chckbox14.ToString());  //AutoDeskew
+                    //Flip Rotate Image
+                    streamwri.WriteLine(checkBox18.Text + "=" + chckbox18.ToString());
+                    streamwri.WriteLine(l_RotateImage.Name + "=" + value_trackBar29.ToString());
+                    //RakeRemove
+                    streamwri.WriteLine(checkBox19.Text + "=" + chckbox19.ToString());
+
 
                     streamwri.Close();
                     l_saveprofile.Text = "Save Success...";
@@ -1984,6 +1990,36 @@ namespace project1
                 chckbox19 = false;
                 Display();
             }
+        }
+        private bool Expanded12;
+        private void btnFlipRotate_Click(object sender, EventArgs e)
+        {
+            if (Expanded12)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panFlipRotate.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panFlipRotate.Height = 122;
+            }
+            Expanded12 = !Expanded12;
+        }
+        private bool Expanded13;
+        private void btnRakeRemove_Click(object sender, EventArgs e)
+        {
+            if (Expanded13)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panRakeRemove.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panRakeRemove.Height = 347;
+            }
+            Expanded13 = !Expanded13;
         }
     }
 }

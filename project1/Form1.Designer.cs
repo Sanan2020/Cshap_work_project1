@@ -64,14 +64,16 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.l_autocolorlevel = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panConBrigtIntens = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnConBrigtIntens = new System.Windows.Forms.Button();
             this.panUnsharpMask = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnUnsharpMask = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panGrayScale = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.l_greenfactor = new System.Windows.Forms.Label();
@@ -84,6 +86,7 @@
             this.l_redfactor = new System.Windows.Forms.Label();
             this.l_bluefactor = new System.Windows.Forms.Label();
             this.panDocImgClupFnct = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.btnDocImgClupFnct = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -93,6 +96,7 @@
             this.l_localcontrast = new System.Windows.Forms.Label();
             this.l_dimension = new System.Windows.Forms.Label();
             this.panDotRemove = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.l_minimumdotW = new System.Windows.Forms.Label();
             this.l_minimumdotH = new System.Windows.Forms.Label();
             this.btnDotRemove = new System.Windows.Forms.Button();
@@ -104,6 +108,7 @@
             this.trackBar12 = new System.Windows.Forms.TrackBar();
             this.trackBar13 = new System.Windows.Forms.TrackBar();
             this.panLineRemove = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.l_wall = new System.Windows.Forms.Label();
             this.l_maximumwall = new System.Windows.Forms.Label();
             this.btnLineRemove = new System.Windows.Forms.Button();
@@ -117,6 +122,7 @@
             this.trackBar17 = new System.Windows.Forms.TrackBar();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.panHolePunchRemove = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.btnHolePunchRemove = new System.Windows.Forms.Button();
             this.l_maximumhole = new System.Windows.Forms.Label();
             this.l_minimumhole = new System.Windows.Forms.Label();
@@ -124,6 +130,7 @@
             this.trackBar21 = new System.Windows.Forms.TrackBar();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.panInvertedText = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.l_minimuminvertW = new System.Windows.Forms.Label();
             this.l_minimuminverH = new System.Windows.Forms.Label();
             this.l_minimumBlack = new System.Windows.Forms.Label();
@@ -135,11 +142,13 @@
             this.trackBar20 = new System.Windows.Forms.TrackBar();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.panAutoCrop = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.btnAutoCrop = new System.Windows.Forms.Button();
             this.l_cropThreshold = new System.Windows.Forms.Label();
             this.trackBar27 = new System.Windows.Forms.TrackBar();
             this.checkBox15 = new System.Windows.Forms.CheckBox();
             this.panBorderRemove = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
             this.l_whitenoiseL = new System.Windows.Forms.Label();
             this.l_variance = new System.Windows.Forms.Label();
             this.l_percent = new System.Windows.Forms.Label();
@@ -149,6 +158,7 @@
             this.trackBar25 = new System.Windows.Forms.TrackBar();
             this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.panSmooth = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
             this.btnSmooth = new System.Windows.Forms.Button();
             this.l_length = new System.Windows.Forms.Label();
             this.trackBar31 = new System.Windows.Forms.TrackBar();
@@ -168,17 +178,32 @@
             this.l_RotateImage = new System.Windows.Forms.Label();
             this.trackBar29 = new System.Windows.Forms.TrackBar();
             this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.numUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.l_autofilter = new System.Windows.Forms.Label();
+            this.l_numUpDown9 = new System.Windows.Forms.Label();
+            this.l_numUpDown8 = new System.Windows.Forms.Label();
+            this.l_numUpDown7 = new System.Windows.Forms.Label();
+            this.l_numUpDown6 = new System.Windows.Forms.Label();
+            this.l_numUpDown1 = new System.Windows.Forms.Label();
+            this.l_numUpDown2 = new System.Windows.Forms.Label();
+            this.l_numUpDown3 = new System.Windows.Forms.Label();
+            this.l_numUpDown4 = new System.Windows.Forms.Label();
+            this.l_numUpDown5 = new System.Windows.Forms.Label();
+            this.panRakeRemove = new System.Windows.Forms.Panel();
+            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.btnRakeRemove = new System.Windows.Forms.Button();
+            this.panFlipRotate = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.btnFlipRotate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -228,6 +253,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown9)).BeginInit();
+            this.panRakeRemove.SuspendLayout();
+            this.panFlipRotate.SuspendLayout();
             this.SuspendLayout();
             // 
             // Browse
@@ -561,15 +597,6 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // l_autocolorlevel
-            // 
-            this.l_autocolorlevel.AutoSize = true;
-            this.l_autocolorlevel.Location = new System.Drawing.Point(1612, 67);
-            this.l_autocolorlevel.Name = "l_autocolorlevel";
-            this.l_autocolorlevel.Size = new System.Drawing.Size(79, 13);
-            this.l_autocolorlevel.TabIndex = 30;
-            this.l_autocolorlevel.Text = "AutoColorLevel";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -593,6 +620,18 @@
             this.panConBrigtIntens.Name = "panConBrigtIntens";
             this.panConBrigtIntens.Size = new System.Drawing.Size(309, 29);
             this.panConBrigtIntens.TabIndex = 33;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(240, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 23);
+            this.button1.TabIndex = 69;
+            this.button1.Text = "Reset";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // btnConBrigtIntens
             // 
@@ -626,6 +665,18 @@
             this.panUnsharpMask.Size = new System.Drawing.Size(309, 29);
             this.panUnsharpMask.TabIndex = 34;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(240, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(65, 23);
+            this.button2.TabIndex = 70;
+            this.button2.Text = "Reset";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // btnUnsharpMask
             // 
             this.btnUnsharpMask.Dock = System.Windows.Forms.DockStyle.Top;
@@ -652,6 +703,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panAutoCrop);
             this.flowLayoutPanel1.Controls.Add(this.panBorderRemove);
             this.flowLayoutPanel1.Controls.Add(this.panSmooth);
+            this.flowLayoutPanel1.Controls.Add(this.panFlipRotate);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(1279, 32);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 863);
@@ -676,6 +728,18 @@
             this.panGrayScale.Name = "panGrayScale";
             this.panGrayScale.Size = new System.Drawing.Size(309, 29);
             this.panGrayScale.TabIndex = 36;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.Location = new System.Drawing.Point(240, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(65, 23);
+            this.button3.TabIndex = 71;
+            this.button3.Text = "Reset";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -814,6 +878,18 @@
             this.panDocImgClupFnct.Size = new System.Drawing.Size(309, 29);
             this.panDocImgClupFnct.TabIndex = 57;
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button4.Location = new System.Drawing.Point(240, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(65, 23);
+            this.button4.TabIndex = 72;
+            this.button4.Text = "Reset";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
@@ -919,6 +995,18 @@
             this.panDotRemove.Name = "panDotRemove";
             this.panDotRemove.Size = new System.Drawing.Size(309, 29);
             this.panDotRemove.TabIndex = 58;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button5.Location = new System.Drawing.Point(240, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(65, 23);
+            this.button5.TabIndex = 73;
+            this.button5.Text = "Reset";
+            this.button5.UseVisualStyleBackColor = false;
             // 
             // l_minimumdotW
             // 
@@ -1037,6 +1125,18 @@
             this.panLineRemove.Name = "panLineRemove";
             this.panLineRemove.Size = new System.Drawing.Size(309, 31);
             this.panLineRemove.TabIndex = 71;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button6.Location = new System.Drawing.Point(240, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(65, 23);
+            this.button6.TabIndex = 70;
+            this.button6.Text = "Reset";
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // l_wall
             // 
@@ -1168,6 +1268,18 @@
             this.panHolePunchRemove.Size = new System.Drawing.Size(309, 29);
             this.panHolePunchRemove.TabIndex = 72;
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button7.Location = new System.Drawing.Point(240, 2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(65, 23);
+            this.button7.TabIndex = 77;
+            this.button7.Text = "Reset";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
             // btnHolePunchRemove
             // 
             this.btnHolePunchRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1245,6 +1357,18 @@
             this.panInvertedText.Name = "panInvertedText";
             this.panInvertedText.Size = new System.Drawing.Size(309, 29);
             this.panInvertedText.TabIndex = 73;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button8.Location = new System.Drawing.Point(240, 2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(65, 23);
+            this.button8.TabIndex = 79;
+            this.button8.Text = "Reset";
+            this.button8.UseVisualStyleBackColor = false;
             // 
             // l_minimuminvertW
             // 
@@ -1360,6 +1484,18 @@
             this.panAutoCrop.Size = new System.Drawing.Size(309, 29);
             this.panAutoCrop.TabIndex = 74;
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button9.Location = new System.Drawing.Point(240, 2);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(65, 23);
+            this.button9.TabIndex = 81;
+            this.button9.Text = "Reset";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
             // btnAutoCrop
             // 
             this.btnAutoCrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1418,6 +1554,18 @@
             this.panBorderRemove.Name = "panBorderRemove";
             this.panBorderRemove.Size = new System.Drawing.Size(309, 29);
             this.panBorderRemove.TabIndex = 75;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button10.Location = new System.Drawing.Point(240, 2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(65, 23);
+            this.button10.TabIndex = 82;
+            this.button10.Text = "Reset";
+            this.button10.UseVisualStyleBackColor = false;
             // 
             // l_whitenoiseL
             // 
@@ -1511,9 +1659,20 @@
             this.panSmooth.Size = new System.Drawing.Size(309, 29);
             this.panSmooth.TabIndex = 76;
             // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button11.Location = new System.Drawing.Point(240, 2);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(65, 23);
+            this.button11.TabIndex = 83;
+            this.button11.Text = "Reset";
+            this.button11.UseVisualStyleBackColor = false;
+            // 
             // btnSmooth
             // 
-            this.btnSmooth.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSmooth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSmooth.Location = new System.Drawing.Point(0, 0);
             this.btnSmooth.Name = "btnSmooth";
@@ -1672,18 +1831,18 @@
             // checkBox18
             // 
             this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(1673, 495);
+            this.checkBox18.Location = new System.Drawing.Point(6, 36);
             this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(90, 17);
+            this.checkBox18.Size = new System.Drawing.Size(122, 17);
             this.checkBox18.TabIndex = 63;
-            this.checkBox18.Text = "Rotate Image";
+            this.checkBox18.Text = "UseFlipRotateImage";
             this.checkBox18.UseVisualStyleBackColor = true;
             this.checkBox18.CheckedChanged += new System.EventHandler(this.checkBox18_CheckedChanged);
             // 
             // l_RotateImage
             // 
             this.l_RotateImage.AutoSize = true;
-            this.l_RotateImage.Location = new System.Drawing.Point(1686, 533);
+            this.l_RotateImage.Location = new System.Drawing.Point(19, 74);
             this.l_RotateImage.Name = "l_RotateImage";
             this.l_RotateImage.Size = new System.Drawing.Size(13, 13);
             this.l_RotateImage.TabIndex = 66;
@@ -1691,11 +1850,12 @@
             // 
             // trackBar29
             // 
-            this.trackBar29.Location = new System.Drawing.Point(1726, 518);
+            this.trackBar29.Location = new System.Drawing.Point(42, 59);
             this.trackBar29.Maximum = 360;
             this.trackBar29.Name = "trackBar29";
-            this.trackBar29.Size = new System.Drawing.Size(181, 45);
+            this.trackBar29.Size = new System.Drawing.Size(241, 45);
             this.trackBar29.TabIndex = 67;
+            this.trackBar29.TickFrequency = 45;
             this.trackBar29.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBar29.Scroll += new System.EventHandler(this.trackBar29_Scroll);
             this.trackBar29.MouseCaptureChanged += new System.EventHandler(this.trackBar29_MouseCaptureChanged);
@@ -1703,155 +1863,320 @@
             // checkBox19
             // 
             this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(1673, 569);
+            this.checkBox19.Location = new System.Drawing.Point(5, 40);
             this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(92, 17);
+            this.checkBox19.Size = new System.Drawing.Size(111, 17);
             this.checkBox19.TabIndex = 68;
-            this.checkBox19.Text = "RakeRemove";
+            this.checkBox19.Text = "UseRakeRemove";
             this.checkBox19.UseVisualStyleBackColor = true;
             this.checkBox19.CheckedChanged += new System.EventHandler(this.checkBox19_CheckedChanged);
             // 
-            // button1
+            // numUpDown1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(240, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 23);
-            this.button1.TabIndex = 69;
-            this.button1.Text = "Reset";
-            this.button1.UseVisualStyleBackColor = false;
+            this.numUpDown1.Location = new System.Drawing.Point(130, 67);
+            this.numUpDown1.Name = "numUpDown1";
+            this.numUpDown1.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown1.TabIndex = 69;
+            this.numUpDown1.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
-            // button2
+            // numUpDown2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(240, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 23);
-            this.button2.TabIndex = 70;
-            this.button2.Text = "Reset";
-            this.button2.UseVisualStyleBackColor = false;
+            this.numUpDown2.Location = new System.Drawing.Point(130, 93);
+            this.numUpDown2.Name = "numUpDown2";
+            this.numUpDown2.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown2.TabIndex = 70;
+            this.numUpDown2.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
-            // button3
+            // numUpDown3
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(240, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 23);
-            this.button3.TabIndex = 71;
-            this.button3.Text = "Reset";
-            this.button3.UseVisualStyleBackColor = false;
+            this.numUpDown3.Location = new System.Drawing.Point(130, 119);
+            this.numUpDown3.Name = "numUpDown3";
+            this.numUpDown3.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown3.TabIndex = 71;
+            this.numUpDown3.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
-            // button4
+            // numUpDown4
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(239, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(65, 23);
-            this.button4.TabIndex = 72;
-            this.button4.Text = "Reset";
-            this.button4.UseVisualStyleBackColor = false;
+            this.numUpDown4.Location = new System.Drawing.Point(130, 146);
+            this.numUpDown4.Name = "numUpDown4";
+            this.numUpDown4.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown4.TabIndex = 72;
+            this.numUpDown4.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
             // 
-            // button5
+            // numUpDown5
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(240, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(65, 23);
-            this.button5.TabIndex = 73;
-            this.button5.Text = "Reset";
-            this.button5.UseVisualStyleBackColor = false;
+            this.numUpDown5.Location = new System.Drawing.Point(130, 174);
+            this.numUpDown5.Name = "numUpDown5";
+            this.numUpDown5.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown5.TabIndex = 73;
+            this.numUpDown5.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             // 
-            // button6
+            // numUpDown6
             // 
-            this.button6.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Location = new System.Drawing.Point(240, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(65, 23);
-            this.button6.TabIndex = 70;
-            this.button6.Text = "Reset";
-            this.button6.UseVisualStyleBackColor = false;
+            this.numUpDown6.Location = new System.Drawing.Point(130, 204);
+            this.numUpDown6.Name = "numUpDown6";
+            this.numUpDown6.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown6.TabIndex = 74;
+            this.numUpDown6.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
-            // button7
+            // numUpDown7
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(240, 2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(65, 23);
-            this.button7.TabIndex = 77;
-            this.button7.Text = "Reset";
-            this.button7.UseVisualStyleBackColor = false;
+            this.numUpDown7.Location = new System.Drawing.Point(130, 231);
+            this.numUpDown7.Name = "numUpDown7";
+            this.numUpDown7.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown7.TabIndex = 75;
+            this.numUpDown7.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // button8
+            // numUpDown8
             // 
-            this.button8.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Location = new System.Drawing.Point(240, 2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(65, 23);
-            this.button8.TabIndex = 79;
-            this.button8.Text = "Reset";
-            this.button8.UseVisualStyleBackColor = false;
+            this.numUpDown8.Location = new System.Drawing.Point(130, 257);
+            this.numUpDown8.Name = "numUpDown8";
+            this.numUpDown8.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown8.TabIndex = 76;
+            this.numUpDown8.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // button9
+            // numUpDown9
             // 
-            this.button9.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(240, 2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(65, 23);
-            this.button9.TabIndex = 81;
-            this.button9.Text = "Reset";
-            this.button9.UseVisualStyleBackColor = false;
+            this.numUpDown9.Location = new System.Drawing.Point(130, 284);
+            this.numUpDown9.Name = "numUpDown9";
+            this.numUpDown9.Size = new System.Drawing.Size(80, 20);
+            this.numUpDown9.TabIndex = 77;
+            this.numUpDown9.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
-            // button10
+            // l_autofilter
             // 
-            this.button10.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button10.Location = new System.Drawing.Point(240, 2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(65, 23);
-            this.button10.TabIndex = 82;
-            this.button10.Text = "Reset";
-            this.button10.UseVisualStyleBackColor = false;
+            this.l_autofilter.AutoSize = true;
+            this.l_autofilter.Location = new System.Drawing.Point(20, 314);
+            this.l_autofilter.Name = "l_autofilter";
+            this.l_autofilter.Size = new System.Drawing.Size(51, 13);
+            this.l_autofilter.TabIndex = 78;
+            this.l_autofilter.Text = "AutoFilter";
             // 
-            // button11
+            // l_numUpDown9
             // 
-            this.button11.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button11.Location = new System.Drawing.Point(240, 2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(65, 23);
-            this.button11.TabIndex = 83;
-            this.button11.Text = "Reset";
-            this.button11.UseVisualStyleBackColor = false;
+            this.l_numUpDown9.AutoSize = true;
+            this.l_numUpDown9.Location = new System.Drawing.Point(20, 286);
+            this.l_numUpDown9.Name = "l_numUpDown9";
+            this.l_numUpDown9.Size = new System.Drawing.Size(74, 13);
+            this.l_numUpDown9.TabIndex = 80;
+            this.l_numUpDown9.Text = "TeethSpacing";
+            // 
+            // l_numUpDown8
+            // 
+            this.l_numUpDown8.AutoSize = true;
+            this.l_numUpDown8.Location = new System.Drawing.Point(20, 259);
+            this.l_numUpDown8.Name = "l_numUpDown8";
+            this.l_numUpDown8.Size = new System.Drawing.Size(49, 13);
+            this.l_numUpDown8.TabIndex = 81;
+            this.l_numUpDown8.Text = "Variance";
+            // 
+            // l_numUpDown7
+            // 
+            this.l_numUpDown7.AutoSize = true;
+            this.l_numUpDown7.Location = new System.Drawing.Point(20, 233);
+            this.l_numUpDown7.Name = "l_numUpDown7";
+            this.l_numUpDown7.Size = new System.Drawing.Size(32, 13);
+            this.l_numUpDown7.TabIndex = 82;
+            this.l_numUpDown7.Text = "Gaps";
+            // 
+            // l_numUpDown6
+            // 
+            this.l_numUpDown6.AutoSize = true;
+            this.l_numUpDown6.Location = new System.Drawing.Point(20, 207);
+            this.l_numUpDown6.Name = "l_numUpDown6";
+            this.l_numUpDown6.Size = new System.Drawing.Size(101, 13);
+            this.l_numUpDown6.TabIndex = 83;
+            this.l_numUpDown6.Text = "MaxMidteethLength";
+            // 
+            // l_numUpDown1
+            // 
+            this.l_numUpDown1.AutoSize = true;
+            this.l_numUpDown1.Location = new System.Drawing.Point(20, 69);
+            this.l_numUpDown1.Name = "l_numUpDown1";
+            this.l_numUpDown1.Size = new System.Drawing.Size(57, 13);
+            this.l_numUpDown1.TabIndex = 84;
+            this.l_numUpDown1.Text = "MinLength";
+            // 
+            // l_numUpDown2
+            // 
+            this.l_numUpDown2.AutoSize = true;
+            this.l_numUpDown2.Location = new System.Drawing.Point(20, 96);
+            this.l_numUpDown2.Name = "l_numUpDown2";
+            this.l_numUpDown2.Size = new System.Drawing.Size(76, 13);
+            this.l_numUpDown2.TabIndex = 85;
+            this.l_numUpDown2.Text = "MinWallHeight";
+            // 
+            // l_numUpDown3
+            // 
+            this.l_numUpDown3.AutoSize = true;
+            this.l_numUpDown3.Location = new System.Drawing.Point(20, 121);
+            this.l_numUpDown3.Name = "l_numUpDown3";
+            this.l_numUpDown3.Size = new System.Drawing.Size(55, 13);
+            this.l_numUpDown3.TabIndex = 86;
+            this.l_numUpDown3.Text = "MaxWidth";
+            // 
+            // l_numUpDown4
+            // 
+            this.l_numUpDown4.AutoSize = true;
+            this.l_numUpDown4.Location = new System.Drawing.Point(20, 148);
+            this.l_numUpDown4.Name = "l_numUpDown4";
+            this.l_numUpDown4.Size = new System.Drawing.Size(85, 13);
+            this.l_numUpDown4.TabIndex = 87;
+            this.l_numUpDown4.Text = "MaxWallPercent";
+            // 
+            // l_numUpDown5
+            // 
+            this.l_numUpDown5.AutoSize = true;
+            this.l_numUpDown5.Location = new System.Drawing.Point(20, 176);
+            this.l_numUpDown5.Name = "l_numUpDown5";
+            this.l_numUpDown5.Size = new System.Drawing.Size(105, 13);
+            this.l_numUpDown5.TabIndex = 88;
+            this.l_numUpDown5.Text = "MaxSideteethLength";
+            // 
+            // panRakeRemove
+            // 
+            this.panRakeRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panRakeRemove.Controls.Add(this.checkBox20);
+            this.panRakeRemove.Controls.Add(this.button12);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown6);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown7);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown5);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown8);
+            this.panRakeRemove.Controls.Add(this.btnRakeRemove);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown9);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown4);
+            this.panRakeRemove.Controls.Add(this.checkBox19);
+            this.panRakeRemove.Controls.Add(this.l_autofilter);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown3);
+            this.panRakeRemove.Controls.Add(this.numUpDown9);
+            this.panRakeRemove.Controls.Add(this.numUpDown1);
+            this.panRakeRemove.Controls.Add(this.numUpDown8);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown2);
+            this.panRakeRemove.Controls.Add(this.numUpDown7);
+            this.panRakeRemove.Controls.Add(this.numUpDown2);
+            this.panRakeRemove.Controls.Add(this.numUpDown6);
+            this.panRakeRemove.Controls.Add(this.l_numUpDown1);
+            this.panRakeRemove.Controls.Add(this.numUpDown3);
+            this.panRakeRemove.Controls.Add(this.numUpDown4);
+            this.panRakeRemove.Controls.Add(this.numUpDown5);
+            this.panRakeRemove.Location = new System.Drawing.Point(889, 610);
+            this.panRakeRemove.Name = "panRakeRemove";
+            this.panRakeRemove.Size = new System.Drawing.Size(309, 349);
+            this.panRakeRemove.TabIndex = 89;
+            // 
+            // checkBox20
+            // 
+            this.checkBox20.AutoSize = true;
+            this.checkBox20.Location = new System.Drawing.Point(130, 313);
+            this.checkBox20.Name = "checkBox20";
+            this.checkBox20.Size = new System.Drawing.Size(15, 14);
+            this.checkBox20.TabIndex = 89;
+            this.checkBox20.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button12.Location = new System.Drawing.Point(240, 2);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(65, 23);
+            this.button12.TabIndex = 83;
+            this.button12.Text = "Reset";
+            this.button12.UseVisualStyleBackColor = false;
+            // 
+            // btnRakeRemove
+            // 
+            this.btnRakeRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRakeRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnRakeRemove.Name = "btnRakeRemove";
+            this.btnRakeRemove.Size = new System.Drawing.Size(307, 27);
+            this.btnRakeRemove.TabIndex = 70;
+            this.btnRakeRemove.Text = "RakeRemove";
+            this.btnRakeRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRakeRemove.UseVisualStyleBackColor = true;
+            this.btnRakeRemove.Click += new System.EventHandler(this.btnRakeRemove_Click);
+            // 
+            // panFlipRotate
+            // 
+            this.panFlipRotate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panFlipRotate.Controls.Add(this.button14);
+            this.panFlipRotate.Controls.Add(this.btnFlipRotate);
+            this.panFlipRotate.Controls.Add(this.checkBox18);
+            this.panFlipRotate.Controls.Add(this.trackBar29);
+            this.panFlipRotate.Controls.Add(this.l_RotateImage);
+            this.panFlipRotate.Location = new System.Drawing.Point(3, 390);
+            this.panFlipRotate.Name = "panFlipRotate";
+            this.panFlipRotate.Size = new System.Drawing.Size(309, 29);
+            this.panFlipRotate.TabIndex = 90;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button14.Location = new System.Drawing.Point(240, 2);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(65, 23);
+            this.button14.TabIndex = 83;
+            this.button14.Text = "Reset";
+            this.button14.UseVisualStyleBackColor = false;
+            // 
+            // btnFlipRotate
+            // 
+            this.btnFlipRotate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFlipRotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFlipRotate.Location = new System.Drawing.Point(0, 0);
+            this.btnFlipRotate.Name = "btnFlipRotate";
+            this.btnFlipRotate.Size = new System.Drawing.Size(307, 27);
+            this.btnFlipRotate.TabIndex = 70;
+            this.btnFlipRotate.Text = "Flip Rotate Image";
+            this.btnFlipRotate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFlipRotate.UseVisualStyleBackColor = true;
+            this.btnFlipRotate.Click += new System.EventHandler(this.btnFlipRotate_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
-            this.Controls.Add(this.checkBox19);
-            this.Controls.Add(this.trackBar29);
-            this.Controls.Add(this.l_RotateImage);
-            this.Controls.Add(this.checkBox18);
+            this.Controls.Add(this.panRakeRemove);
             this.Controls.Add(this.checkBox14);
             this.Controls.Add(this.l_gamma);
             this.Controls.Add(this.l_minimum);
@@ -1864,7 +2189,6 @@
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.l_autocolorlevel);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
@@ -1943,6 +2267,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDown9)).EndInit();
+            this.panRakeRemove.ResumeLayout(false);
+            this.panRakeRemove.PerformLayout();
+            this.panFlipRotate.ResumeLayout(false);
+            this.panFlipRotate.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1985,7 +2322,6 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label l_autocolorlevel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnConBrigtIntens;
         private System.Windows.Forms.Panel panConBrigtIntens;
@@ -2100,6 +2436,32 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.NumericUpDown numUpDown1;
+        private System.Windows.Forms.NumericUpDown numUpDown2;
+        private System.Windows.Forms.NumericUpDown numUpDown3;
+        private System.Windows.Forms.NumericUpDown numUpDown4;
+        private System.Windows.Forms.NumericUpDown numUpDown5;
+        private System.Windows.Forms.NumericUpDown numUpDown6;
+        private System.Windows.Forms.NumericUpDown numUpDown7;
+        private System.Windows.Forms.NumericUpDown numUpDown8;
+        private System.Windows.Forms.NumericUpDown numUpDown9;
+        private System.Windows.Forms.Label l_autofilter;
+        private System.Windows.Forms.Label l_numUpDown9;
+        private System.Windows.Forms.Label l_numUpDown8;
+        private System.Windows.Forms.Label l_numUpDown7;
+        private System.Windows.Forms.Label l_numUpDown6;
+        private System.Windows.Forms.Label l_numUpDown1;
+        private System.Windows.Forms.Label l_numUpDown2;
+        private System.Windows.Forms.Label l_numUpDown3;
+        private System.Windows.Forms.Label l_numUpDown4;
+        private System.Windows.Forms.Label l_numUpDown5;
+        private System.Windows.Forms.Panel panRakeRemove;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnRakeRemove;
+        private System.Windows.Forms.CheckBox checkBox20;
+        private System.Windows.Forms.Panel panFlipRotate;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button btnFlipRotate;
     }
 }
 
