@@ -88,6 +88,16 @@ namespace project1
         public bool chckbox18 = false;
         public int value_trackBar29=1;
         public bool chckbox19 = false;
+        public int value_numUpDown1 = 50;
+        public int value_numUpDown2 = 10;
+        public int value_numUpDown3 = 3;
+        public int value_numUpDown4 = 25;
+        public int value_numUpDown5 = 60;
+        public int value_numUpDown6 = 50;
+        public int value_numUpDown7 = 1;
+        public int value_numUpDown8 = 1;
+        public int value_numUpDown9 = 5;
+        public bool chckbox20 = false;
         public Form1()
         {
             InitializeComponent();
@@ -515,16 +525,16 @@ namespace project1
                 {
                     RakeRemoveCommand command20 = new RakeRemoveCommand();
                     command20.RakeRemove += new EventHandler<RakeRemoveCommandEventArgs>(RakeRemoveEvent_S1);
-                    command20.MinLength = 50;           //ความยาวขั้นต่ำ
-                    command20.MinWallHeight = 10;       //ความสูงของกำแพงขั้นต่ำ
-                    command20.MaxWidth = 3;             //ความกว้างสูงสุด
-                    command20.MaxWallPercent = 25;      //เปอร์เซ็นต์กำแพงสูงสุด
-                    command20.MaxSideteethLength = 60;  //ความยาวฟันข้างสูงสุด
-                    command20.MaxMidteethLength = 50;   //ความยาวฟันกลางสูงสุด
-                    command20.Gaps = 1;                 //ช่องว่าง
-                    command20.Variance = 1;             //ความแปรปรวน
-                    command20.TeethSpacing = 5;         //ระยะห่างระหว่างฟัน
-                    command20.AutoFilter = false;       //ตัวกรองอัตโนมัติ
+                    command20.MinLength = value_numUpDown1;           //ความยาวขั้นต่ำ
+                    command20.MinWallHeight = value_numUpDown2;       //ความสูงของกำแพงขั้นต่ำ
+                    command20.MaxWidth = value_numUpDown3;             //ความกว้างสูงสุด
+                    command20.MaxWallPercent = value_numUpDown4;      //เปอร์เซ็นต์กำแพงสูงสุด
+                    command20.MaxSideteethLength = value_numUpDown5;  //ความยาวฟันข้างสูงสุด
+                    command20.MaxMidteethLength = value_numUpDown6;   //ความยาวฟันกลางสูงสุด
+                    command20.Gaps = value_numUpDown7;                 //ช่องว่าง
+                    command20.Variance = value_numUpDown8;             //ความแปรปรวน
+                    command20.TeethSpacing = value_numUpDown9;         //ระยะห่างระหว่างฟัน
+                    command20.AutoFilter = chckbox20;       //ตัวกรองอัตโนมัติ
                     command20.Run(image);
                 }
 
@@ -556,7 +566,7 @@ namespace project1
         }
         private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
         {
-            MessageBox.Show("Rake length is " + "( " + e.Length.ToString() + " )");
+            System.Diagnostics.Debug.WriteLine("Rake length is " + "( " + e.Length.ToString() + " )");
             e.Status = RemoveStatus.Remove;
         }
         private void DotRemoveEvent_S1(object sender, DotRemoveCommandEventArgs e)
@@ -1034,7 +1044,16 @@ namespace project1
                     streamwri.WriteLine(l_RotateImage.Name + "=" + value_trackBar29.ToString());
                     //RakeRemove
                     streamwri.WriteLine(checkBox19.Text + "=" + chckbox19.ToString());
-
+                    streamwri.WriteLine(l_numUpDown1.Name + "=" + value_numUpDown1.ToString());
+                    streamwri.WriteLine(l_numUpDown2.Name + "=" + value_numUpDown2.ToString());
+                    streamwri.WriteLine(l_numUpDown3.Name + "=" + value_numUpDown3.ToString());
+                    streamwri.WriteLine(l_numUpDown4.Name + "=" + value_numUpDown4.ToString());
+                    streamwri.WriteLine(l_numUpDown5.Name + "=" + value_numUpDown5.ToString());
+                    streamwri.WriteLine(l_numUpDown6.Name + "=" + value_numUpDown6.ToString());
+                    streamwri.WriteLine(l_numUpDown7.Name + "=" + value_numUpDown7.ToString());
+                    streamwri.WriteLine(l_numUpDown8.Name + "=" + value_numUpDown8.ToString());
+                    streamwri.WriteLine(l_numUpDown9.Name + "=" + value_numUpDown9.ToString());
+                    streamwri.WriteLine(checkBox20.Text + "=" + chckbox20.ToString());
 
                     streamwri.Close();
                     l_saveprofile.Text = "Save Success...";
@@ -2020,6 +2039,74 @@ namespace project1
                 panRakeRemove.Height = 347;
             }
             Expanded13 = !Expanded13;
+        }
+
+        private void checkBox20_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox20.Checked == true)
+            {
+                chckbox20 = true;
+                Display();
+            }
+            else
+            {
+                chckbox20 = false;
+                Display();
+            } 
+        }
+
+        private void numUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown1 = (int)numUpDown1.Value;
+            Display();
+        }
+
+        private void numUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown2 = (int)numUpDown2.Value;
+            Display();
+        }
+
+        private void numUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown3 = (int)numUpDown3.Value;
+            Display();
+        }
+
+        private void numUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown4 = (int)numUpDown4.Value;
+            Display();
+        }
+
+        private void numUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown5 = (int)numUpDown5.Value;
+            Display();
+        }
+
+        private void numUpDown6_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown6 = (int)numUpDown6.Value;
+            Display();
+        }
+
+        private void numUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown7 = (int)numUpDown7.Value;
+            Display();
+        }
+
+        private void numUpDown8_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown8 = (int)numUpDown8.Value;
+            Display();
+        }
+
+        private void numUpDown9_ValueChanged(object sender, EventArgs e)
+        {
+            value_numUpDown9 = (int)numUpDown9.Value;
+            Display();
         }
     }
 }

@@ -1882,6 +1882,7 @@
             0,
             0,
             0});
+            this.numUpDown1.ValueChanged += new System.EventHandler(this.numUpDown1_ValueChanged);
             // 
             // numUpDown2
             // 
@@ -1894,6 +1895,7 @@
             0,
             0,
             0});
+            this.numUpDown2.ValueChanged += new System.EventHandler(this.numUpDown2_ValueChanged);
             // 
             // numUpDown3
             // 
@@ -1906,6 +1908,7 @@
             0,
             0,
             0});
+            this.numUpDown3.ValueChanged += new System.EventHandler(this.numUpDown3_ValueChanged);
             // 
             // numUpDown4
             // 
@@ -1918,6 +1921,7 @@
             0,
             0,
             0});
+            this.numUpDown4.ValueChanged += new System.EventHandler(this.numUpDown4_ValueChanged);
             // 
             // numUpDown5
             // 
@@ -1930,6 +1934,7 @@
             0,
             0,
             0});
+            this.numUpDown5.ValueChanged += new System.EventHandler(this.numUpDown5_ValueChanged);
             // 
             // numUpDown6
             // 
@@ -1942,6 +1947,7 @@
             0,
             0,
             0});
+            this.numUpDown6.ValueChanged += new System.EventHandler(this.numUpDown6_ValueChanged);
             // 
             // numUpDown7
             // 
@@ -1954,6 +1960,7 @@
             0,
             0,
             0});
+            this.numUpDown7.ValueChanged += new System.EventHandler(this.numUpDown7_ValueChanged);
             // 
             // numUpDown8
             // 
@@ -1966,6 +1973,7 @@
             0,
             0,
             0});
+            this.numUpDown8.ValueChanged += new System.EventHandler(this.numUpDown8_ValueChanged);
             // 
             // numUpDown9
             // 
@@ -1978,6 +1986,7 @@
             0,
             0,
             0});
+            this.numUpDown9.ValueChanged += new System.EventHandler(this.numUpDown9_ValueChanged);
             // 
             // l_autofilter
             // 
@@ -2108,6 +2117,7 @@
             this.checkBox20.Size = new System.Drawing.Size(15, 14);
             this.checkBox20.TabIndex = 89;
             this.checkBox20.UseVisualStyleBackColor = true;
+            this.checkBox20.CheckedChanged += new System.EventHandler(this.checkBox20_CheckedChanged);
             // 
             // button12
             // 
