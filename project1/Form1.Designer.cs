@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.Browse = new System.Windows.Forms.Button();
             this.picInput = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,7 +63,6 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panConBrigtIntens = new System.Windows.Forms.Panel();
             this.btnResetConBrigtIntens = new System.Windows.Forms.Button();
             this.btnConBrigtIntens = new System.Windows.Forms.Button();
@@ -601,11 +599,6 @@
             this.checkBox1.Text = "AutoColorLevel";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // panConBrigtIntens
             // 
@@ -2270,7 +2263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1958, 1005);
+            this.ClientSize = new System.Drawing.Size(1540, 845);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label3);
@@ -2407,7 +2400,6 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnConBrigtIntens;
         private System.Windows.Forms.Panel panConBrigtIntens;
         private System.Windows.Forms.Panel panUnsharpMask;
