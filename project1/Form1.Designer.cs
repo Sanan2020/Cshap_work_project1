@@ -72,22 +72,10 @@
             this.btnResetUnsharpMask = new System.Windows.Forms.Button();
             this.btnUnsharpMask = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panGrayScale = new System.Windows.Forms.Panel();
-            this.btnResetGrayScale = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.l_greenfactor = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label = new System.Windows.Forms.Label();
-            this.btnGrayScale = new System.Windows.Forms.Button();
-            this.trackBar9 = new System.Windows.Forms.TrackBar();
-            this.trackBar7 = new System.Windows.Forms.TrackBar();
-            this.trackBar8 = new System.Windows.Forms.TrackBar();
-            this.l_redfactor = new System.Windows.Forms.Label();
-            this.l_bluefactor = new System.Windows.Forms.Label();
             this.panDocImgClupFnct = new System.Windows.Forms.Panel();
             this.btnResetDocImgClupFnct = new System.Windows.Forms.Button();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
             this.btnDocImgClupFnct = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
@@ -193,20 +181,33 @@
             this.numUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.numUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.trbMaximum = new System.Windows.Forms.TrackBar();
-            this.trbMinimum = new System.Windows.Forms.TrackBar();
-            this.trbGamma = new System.Windows.Forms.TrackBar();
-            this.l_maximum = new System.Windows.Forms.Label();
-            this.l_minimum = new System.Windows.Forms.Label();
-            this.l_gamma = new System.Windows.Forms.Label();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.panGrayScale = new System.Windows.Forms.Panel();
+            this.btnResetGrayScale = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.l_greenfactor = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label = new System.Windows.Forms.Label();
+            this.btnGrayScale = new System.Windows.Forms.Button();
+            this.trackBar9 = new System.Windows.Forms.TrackBar();
+            this.trackBar7 = new System.Windows.Forms.TrackBar();
+            this.trackBar8 = new System.Windows.Forms.TrackBar();
+            this.l_redfactor = new System.Windows.Forms.Label();
+            this.l_bluefactor = new System.Windows.Forms.Label();
             this.panMaxiMini = new System.Windows.Forms.Panel();
             this.btnResetMaxiMini = new System.Windows.Forms.Button();
             this.btnMaxiMini = new System.Windows.Forms.Button();
+            this.l_gamma = new System.Windows.Forms.Label();
+            this.l_minimum = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.l_maximum = new System.Windows.Forms.Label();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.trbGamma = new System.Windows.Forms.TrackBar();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.trbMinimum = new System.Windows.Forms.TrackBar();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.trbMaximum = new System.Windows.Forms.TrackBar();
+            this.Remove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -218,10 +219,6 @@
             this.panConBrigtIntens.SuspendLayout();
             this.panUnsharpMask.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panGrayScale.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).BeginInit();
             this.panDocImgClupFnct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbDynBin1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbDynBin2)).BeginInit();
@@ -264,10 +261,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).BeginInit();
+            this.panGrayScale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).BeginInit();
             this.panMaxiMini.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).BeginInit();
             this.SuspendLayout();
             // 
             // Browse
@@ -538,9 +539,9 @@
             // 
             // SaveProfile
             // 
-            this.SaveProfile.Location = new System.Drawing.Point(1773, 85);
+            this.SaveProfile.Location = new System.Drawing.Point(1784, 85);
             this.SaveProfile.Name = "SaveProfile";
-            this.SaveProfile.Size = new System.Drawing.Size(84, 25);
+            this.SaveProfile.Size = new System.Drawing.Size(73, 25);
             this.SaveProfile.TabIndex = 21;
             this.SaveProfile.Text = "Save Profile";
             this.SaveProfile.UseVisualStyleBackColor = true;
@@ -646,7 +647,7 @@
             this.btnConBrigtIntens.Name = "btnConBrigtIntens";
             this.btnConBrigtIntens.Size = new System.Drawing.Size(307, 27);
             this.btnConBrigtIntens.TabIndex = 25;
-            this.btnConBrigtIntens.Text = "ContrastBrightnessIntensity";
+            this.btnConBrigtIntens.Text = "Contrast Brightness Intensity";
             this.btnConBrigtIntens.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConBrigtIntens.UseVisualStyleBackColor = true;
             this.btnConBrigtIntens.Click += new System.EventHandler(this.btnConBrigtIntens_Click);
@@ -717,156 +718,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 863);
             this.flowLayoutPanel1.TabIndex = 36;
             // 
-            // panGrayScale
-            // 
-            this.panGrayScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panGrayScale.Controls.Add(this.btnResetGrayScale);
-            this.panGrayScale.Controls.Add(this.label8);
-            this.panGrayScale.Controls.Add(this.label15);
-            this.panGrayScale.Controls.Add(this.l_greenfactor);
-            this.panGrayScale.Controls.Add(this.checkBox2);
-            this.panGrayScale.Controls.Add(this.label);
-            this.panGrayScale.Controls.Add(this.btnGrayScale);
-            this.panGrayScale.Controls.Add(this.trackBar9);
-            this.panGrayScale.Controls.Add(this.trackBar7);
-            this.panGrayScale.Controls.Add(this.trackBar8);
-            this.panGrayScale.Controls.Add(this.l_redfactor);
-            this.panGrayScale.Controls.Add(this.l_bluefactor);
-            this.panGrayScale.Location = new System.Drawing.Point(3, 425);
-            this.panGrayScale.Name = "panGrayScale";
-            this.panGrayScale.Size = new System.Drawing.Size(309, 29);
-            this.panGrayScale.TabIndex = 36;
-            // 
-            // btnResetGrayScale
-            // 
-            this.btnResetGrayScale.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnResetGrayScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetGrayScale.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnResetGrayScale.Location = new System.Drawing.Point(240, 2);
-            this.btnResetGrayScale.Name = "btnResetGrayScale";
-            this.btnResetGrayScale.Size = new System.Drawing.Size(65, 23);
-            this.btnResetGrayScale.TabIndex = 71;
-            this.btnResetGrayScale.Text = "Reset";
-            this.btnResetGrayScale.UseVisualStyleBackColor = false;
-            this.btnResetGrayScale.Click += new System.EventHandler(this.btnResetGrayScale_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(126, 142);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 13);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "GreenFactor";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(126, 77);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 13);
-            this.label15.TabIndex = 18;
-            this.label15.Text = "RedFactor";
-            // 
-            // l_greenfactor
-            // 
-            this.l_greenfactor.AutoSize = true;
-            this.l_greenfactor.Location = new System.Drawing.Point(3, 163);
-            this.l_greenfactor.Name = "l_greenfactor";
-            this.l_greenfactor.Size = new System.Drawing.Size(13, 13);
-            this.l_greenfactor.TabIndex = 20;
-            this.l_greenfactor.Text = "0";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 38);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(97, 17);
-            this.checkBox2.TabIndex = 31;
-            this.checkBox2.Text = "Use GrayScale";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // label
-            // 
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(134, 206);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(58, 13);
-            this.label.TabIndex = 24;
-            this.label.Text = "BlueFactor";
-            // 
-            // btnGrayScale
-            // 
-            this.btnGrayScale.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGrayScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGrayScale.Location = new System.Drawing.Point(0, 0);
-            this.btnGrayScale.Name = "btnGrayScale";
-            this.btnGrayScale.Size = new System.Drawing.Size(307, 27);
-            this.btnGrayScale.TabIndex = 35;
-            this.btnGrayScale.Text = "GrayScale";
-            this.btnGrayScale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGrayScale.UseVisualStyleBackColor = true;
-            this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
-            // 
-            // trackBar9
-            // 
-            this.trackBar9.Location = new System.Drawing.Point(31, 223);
-            this.trackBar9.Maximum = 250;
-            this.trackBar9.Minimum = 1;
-            this.trackBar9.Name = "trackBar9";
-            this.trackBar9.Size = new System.Drawing.Size(270, 45);
-            this.trackBar9.TabIndex = 19;
-            this.trackBar9.TickFrequency = 20;
-            this.trackBar9.Value = 1;
-            this.trackBar9.Scroll += new System.EventHandler(this.trackBar9_Scroll);
-            this.trackBar9.MouseCaptureChanged += new System.EventHandler(this.trackBar9_MouseCaptureChanged);
-            // 
-            // trackBar7
-            // 
-            this.trackBar7.Location = new System.Drawing.Point(31, 93);
-            this.trackBar7.Maximum = 500;
-            this.trackBar7.Minimum = 1;
-            this.trackBar7.Name = "trackBar7";
-            this.trackBar7.Size = new System.Drawing.Size(270, 45);
-            this.trackBar7.TabIndex = 16;
-            this.trackBar7.TickFrequency = 100;
-            this.trackBar7.Value = 1;
-            this.trackBar7.Scroll += new System.EventHandler(this.trackBar7_Scroll);
-            this.trackBar7.MouseCaptureChanged += new System.EventHandler(this.trackBar7_MouseCaptureChanged);
-            // 
-            // trackBar8
-            // 
-            this.trackBar8.Location = new System.Drawing.Point(31, 158);
-            this.trackBar8.Maximum = 250;
-            this.trackBar8.Minimum = 1;
-            this.trackBar8.Name = "trackBar8";
-            this.trackBar8.Size = new System.Drawing.Size(270, 45);
-            this.trackBar8.TabIndex = 22;
-            this.trackBar8.TickFrequency = 100;
-            this.trackBar8.Value = 1;
-            this.trackBar8.Scroll += new System.EventHandler(this.trackBar8_Scroll);
-            this.trackBar8.MouseCaptureChanged += new System.EventHandler(this.trackBar8_MouseCaptureChanged);
-            // 
-            // l_redfactor
-            // 
-            this.l_redfactor.AutoSize = true;
-            this.l_redfactor.Location = new System.Drawing.Point(3, 96);
-            this.l_redfactor.Name = "l_redfactor";
-            this.l_redfactor.Size = new System.Drawing.Size(13, 13);
-            this.l_redfactor.TabIndex = 17;
-            this.l_redfactor.Text = "0";
-            // 
-            // l_bluefactor
-            // 
-            this.l_bluefactor.AutoSize = true;
-            this.l_bluefactor.Location = new System.Drawing.Point(2, 227);
-            this.l_bluefactor.Name = "l_bluefactor";
-            this.l_bluefactor.Size = new System.Drawing.Size(13, 13);
-            this.l_bluefactor.TabIndex = 23;
-            this.l_bluefactor.Text = "0";
-            // 
             // panDocImgClupFnct
             // 
             this.panDocImgClupFnct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -911,6 +762,17 @@
             this.checkBox7.Text = "AutoBinarize";
             this.checkBox7.UseVisualStyleBackColor = true;
             this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
+            // checkBox14
+            // 
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.Location = new System.Drawing.Point(160, 110);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(87, 17);
+            this.checkBox14.TabIndex = 62;
+            this.checkBox14.Text = "AutoDeskew";
+            this.checkBox14.UseVisualStyleBackColor = true;
+            this.checkBox14.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
             // 
             // btnDocImgClupFnct
             // 
@@ -2091,122 +1953,155 @@
             0});
             this.numUpDown5.ValueChanged += new System.EventHandler(this.numUpDown5_ValueChanged);
             // 
-            // checkBox4
+            // panGrayScale
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(12, 59);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(77, 17);
-            this.checkBox4.TabIndex = 40;
-            this.checkBox4.Text = "AutoBinary";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.panGrayScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panGrayScale.Controls.Add(this.btnResetGrayScale);
+            this.panGrayScale.Controls.Add(this.label8);
+            this.panGrayScale.Controls.Add(this.label15);
+            this.panGrayScale.Controls.Add(this.l_greenfactor);
+            this.panGrayScale.Controls.Add(this.checkBox2);
+            this.panGrayScale.Controls.Add(this.label);
+            this.panGrayScale.Controls.Add(this.btnGrayScale);
+            this.panGrayScale.Controls.Add(this.trackBar9);
+            this.panGrayScale.Controls.Add(this.trackBar7);
+            this.panGrayScale.Controls.Add(this.trackBar8);
+            this.panGrayScale.Controls.Add(this.l_redfactor);
+            this.panGrayScale.Controls.Add(this.l_bluefactor);
+            this.panGrayScale.Location = new System.Drawing.Point(3, 425);
+            this.panGrayScale.Name = "panGrayScale";
+            this.panGrayScale.Size = new System.Drawing.Size(309, 29);
+            this.panGrayScale.TabIndex = 36;
             // 
-            // checkBox5
+            // btnResetGrayScale
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(14, 111);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(70, 17);
-            this.checkBox5.TabIndex = 41;
-            this.checkBox5.Text = "Maximum";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            this.btnResetGrayScale.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnResetGrayScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetGrayScale.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnResetGrayScale.Location = new System.Drawing.Point(240, 2);
+            this.btnResetGrayScale.Name = "btnResetGrayScale";
+            this.btnResetGrayScale.Size = new System.Drawing.Size(65, 23);
+            this.btnResetGrayScale.TabIndex = 71;
+            this.btnResetGrayScale.Text = "Reset";
+            this.btnResetGrayScale.UseVisualStyleBackColor = false;
+            this.btnResetGrayScale.Click += new System.EventHandler(this.btnResetGrayScale_Click);
             // 
-            // checkBox6
+            // label8
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(14, 172);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(67, 17);
-            this.checkBox6.TabIndex = 42;
-            this.checkBox6.Text = "Minimum";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(126, 142);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "GreenFactor";
             // 
-            // checkBox8
+            // label15
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(13, 237);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(62, 17);
-            this.checkBox8.TabIndex = 44;
-            this.checkBox8.Text = "Gamma";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(126, 77);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 13);
+            this.label15.TabIndex = 18;
+            this.label15.Text = "RedFactor";
             // 
-            // trbMaximum
+            // l_greenfactor
             // 
-            this.trbMaximum.Location = new System.Drawing.Point(40, 128);
-            this.trbMaximum.Minimum = 1;
-            this.trbMaximum.Name = "trbMaximum";
-            this.trbMaximum.Size = new System.Drawing.Size(237, 45);
-            this.trbMaximum.TabIndex = 50;
-            this.trbMaximum.Value = 1;
-            this.trbMaximum.Scroll += new System.EventHandler(this.trbMaximum_Scroll);
-            this.trbMaximum.MouseCaptureChanged += new System.EventHandler(this.trbMaximum_MouseCaptureChanged);
+            this.l_greenfactor.AutoSize = true;
+            this.l_greenfactor.Location = new System.Drawing.Point(3, 163);
+            this.l_greenfactor.Name = "l_greenfactor";
+            this.l_greenfactor.Size = new System.Drawing.Size(13, 13);
+            this.l_greenfactor.TabIndex = 20;
+            this.l_greenfactor.Text = "0";
             // 
-            // trbMinimum
+            // checkBox2
             // 
-            this.trbMinimum.Location = new System.Drawing.Point(40, 195);
-            this.trbMinimum.Minimum = 1;
-            this.trbMinimum.Name = "trbMinimum";
-            this.trbMinimum.Size = new System.Drawing.Size(237, 45);
-            this.trbMinimum.TabIndex = 51;
-            this.trbMinimum.Value = 1;
-            this.trbMinimum.Scroll += new System.EventHandler(this.trbMinimum_Scroll);
-            this.trbMinimum.MouseCaptureChanged += new System.EventHandler(this.trbMinimum_MouseCaptureChanged);
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 38);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(97, 17);
+            this.checkBox2.TabIndex = 31;
+            this.checkBox2.Text = "Use GrayScale";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // trbGamma
+            // label
             // 
-            this.trbGamma.Location = new System.Drawing.Point(40, 263);
-            this.trbGamma.Maximum = 400;
-            this.trbGamma.Minimum = 1;
-            this.trbGamma.Name = "trbGamma";
-            this.trbGamma.Size = new System.Drawing.Size(237, 45);
-            this.trbGamma.TabIndex = 52;
-            this.trbGamma.TickFrequency = 20;
-            this.trbGamma.Value = 1;
-            this.trbGamma.Scroll += new System.EventHandler(this.trbGamma_Scroll);
-            this.trbGamma.MouseCaptureChanged += new System.EventHandler(this.trbGamma_MouseCaptureChanged);
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(134, 206);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(58, 13);
+            this.label.TabIndex = 24;
+            this.label.Text = "BlueFactor";
             // 
-            // l_maximum
+            // btnGrayScale
             // 
-            this.l_maximum.AutoSize = true;
-            this.l_maximum.Location = new System.Drawing.Point(21, 133);
-            this.l_maximum.Name = "l_maximum";
-            this.l_maximum.Size = new System.Drawing.Size(13, 13);
-            this.l_maximum.TabIndex = 53;
-            this.l_maximum.Text = "0";
+            this.btnGrayScale.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGrayScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGrayScale.Location = new System.Drawing.Point(0, 0);
+            this.btnGrayScale.Name = "btnGrayScale";
+            this.btnGrayScale.Size = new System.Drawing.Size(307, 27);
+            this.btnGrayScale.TabIndex = 35;
+            this.btnGrayScale.Text = "GrayScale";
+            this.btnGrayScale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGrayScale.UseVisualStyleBackColor = true;
+            this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
             // 
-            // l_minimum
+            // trackBar9
             // 
-            this.l_minimum.AutoSize = true;
-            this.l_minimum.Location = new System.Drawing.Point(21, 198);
-            this.l_minimum.Name = "l_minimum";
-            this.l_minimum.Size = new System.Drawing.Size(13, 13);
-            this.l_minimum.TabIndex = 54;
-            this.l_minimum.Text = "0";
+            this.trackBar9.Location = new System.Drawing.Point(31, 223);
+            this.trackBar9.Maximum = 250;
+            this.trackBar9.Minimum = 1;
+            this.trackBar9.Name = "trackBar9";
+            this.trackBar9.Size = new System.Drawing.Size(270, 45);
+            this.trackBar9.TabIndex = 19;
+            this.trackBar9.TickFrequency = 20;
+            this.trackBar9.Value = 1;
+            this.trackBar9.Scroll += new System.EventHandler(this.trackBar9_Scroll);
+            this.trackBar9.MouseCaptureChanged += new System.EventHandler(this.trackBar9_MouseCaptureChanged);
             // 
-            // l_gamma
+            // trackBar7
             // 
-            this.l_gamma.AutoSize = true;
-            this.l_gamma.Location = new System.Drawing.Point(21, 268);
-            this.l_gamma.Name = "l_gamma";
-            this.l_gamma.Size = new System.Drawing.Size(13, 13);
-            this.l_gamma.TabIndex = 55;
-            this.l_gamma.Text = "0";
+            this.trackBar7.Location = new System.Drawing.Point(31, 93);
+            this.trackBar7.Maximum = 500;
+            this.trackBar7.Minimum = 1;
+            this.trackBar7.Name = "trackBar7";
+            this.trackBar7.Size = new System.Drawing.Size(270, 45);
+            this.trackBar7.TabIndex = 16;
+            this.trackBar7.TickFrequency = 100;
+            this.trackBar7.Value = 1;
+            this.trackBar7.Scroll += new System.EventHandler(this.trackBar7_Scroll);
+            this.trackBar7.MouseCaptureChanged += new System.EventHandler(this.trackBar7_MouseCaptureChanged);
             // 
-            // checkBox14
+            // trackBar8
             // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(160, 110);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(87, 17);
-            this.checkBox14.TabIndex = 62;
-            this.checkBox14.Text = "AutoDeskew";
-            this.checkBox14.UseVisualStyleBackColor = true;
-            this.checkBox14.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
+            this.trackBar8.Location = new System.Drawing.Point(31, 158);
+            this.trackBar8.Maximum = 250;
+            this.trackBar8.Minimum = 1;
+            this.trackBar8.Name = "trackBar8";
+            this.trackBar8.Size = new System.Drawing.Size(270, 45);
+            this.trackBar8.TabIndex = 22;
+            this.trackBar8.TickFrequency = 100;
+            this.trackBar8.Value = 1;
+            this.trackBar8.Scroll += new System.EventHandler(this.trackBar8_Scroll);
+            this.trackBar8.MouseCaptureChanged += new System.EventHandler(this.trackBar8_MouseCaptureChanged);
+            // 
+            // l_redfactor
+            // 
+            this.l_redfactor.AutoSize = true;
+            this.l_redfactor.Location = new System.Drawing.Point(3, 96);
+            this.l_redfactor.Name = "l_redfactor";
+            this.l_redfactor.Size = new System.Drawing.Size(13, 13);
+            this.l_redfactor.TabIndex = 17;
+            this.l_redfactor.Text = "0";
+            // 
+            // l_bluefactor
+            // 
+            this.l_bluefactor.AutoSize = true;
+            this.l_bluefactor.Location = new System.Drawing.Point(2, 227);
+            this.l_bluefactor.Name = "l_bluefactor";
+            this.l_bluefactor.Size = new System.Drawing.Size(13, 13);
+            this.l_bluefactor.TabIndex = 23;
+            this.l_bluefactor.Text = "0";
             // 
             // panMaxiMini
             // 
@@ -2255,11 +2150,128 @@
             this.btnMaxiMini.UseVisualStyleBackColor = true;
             this.btnMaxiMini.Click += new System.EventHandler(this.btnMaxiMini_Click);
             // 
+            // l_gamma
+            // 
+            this.l_gamma.AutoSize = true;
+            this.l_gamma.Location = new System.Drawing.Point(21, 268);
+            this.l_gamma.Name = "l_gamma";
+            this.l_gamma.Size = new System.Drawing.Size(13, 13);
+            this.l_gamma.TabIndex = 55;
+            this.l_gamma.Text = "0";
+            // 
+            // l_minimum
+            // 
+            this.l_minimum.AutoSize = true;
+            this.l_minimum.Location = new System.Drawing.Point(21, 198);
+            this.l_minimum.Name = "l_minimum";
+            this.l_minimum.Size = new System.Drawing.Size(13, 13);
+            this.l_minimum.TabIndex = 54;
+            this.l_minimum.Text = "0";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(12, 59);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(77, 17);
+            this.checkBox4.TabIndex = 40;
+            this.checkBox4.Text = "AutoBinary";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
+            // l_maximum
+            // 
+            this.l_maximum.AutoSize = true;
+            this.l_maximum.Location = new System.Drawing.Point(21, 133);
+            this.l_maximum.Name = "l_maximum";
+            this.l_maximum.Size = new System.Drawing.Size(13, 13);
+            this.l_maximum.TabIndex = 53;
+            this.l_maximum.Text = "0";
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(14, 111);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(70, 17);
+            this.checkBox5.TabIndex = 41;
+            this.checkBox5.Text = "Maximum";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // trbGamma
+            // 
+            this.trbGamma.Location = new System.Drawing.Point(40, 263);
+            this.trbGamma.Maximum = 400;
+            this.trbGamma.Minimum = 1;
+            this.trbGamma.Name = "trbGamma";
+            this.trbGamma.Size = new System.Drawing.Size(237, 45);
+            this.trbGamma.TabIndex = 52;
+            this.trbGamma.TickFrequency = 20;
+            this.trbGamma.Value = 1;
+            this.trbGamma.Scroll += new System.EventHandler(this.trbGamma_Scroll);
+            this.trbGamma.MouseCaptureChanged += new System.EventHandler(this.trbGamma_MouseCaptureChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(14, 172);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(67, 17);
+            this.checkBox6.TabIndex = 42;
+            this.checkBox6.Text = "Minimum";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // trbMinimum
+            // 
+            this.trbMinimum.Location = new System.Drawing.Point(40, 195);
+            this.trbMinimum.Minimum = 1;
+            this.trbMinimum.Name = "trbMinimum";
+            this.trbMinimum.Size = new System.Drawing.Size(237, 45);
+            this.trbMinimum.TabIndex = 51;
+            this.trbMinimum.Value = 1;
+            this.trbMinimum.Scroll += new System.EventHandler(this.trbMinimum_Scroll);
+            this.trbMinimum.MouseCaptureChanged += new System.EventHandler(this.trbMinimum_MouseCaptureChanged);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(13, 237);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(62, 17);
+            this.checkBox8.TabIndex = 44;
+            this.checkBox8.Text = "Gamma";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
+            // 
+            // trbMaximum
+            // 
+            this.trbMaximum.Location = new System.Drawing.Point(40, 128);
+            this.trbMaximum.Minimum = 1;
+            this.trbMaximum.Name = "trbMaximum";
+            this.trbMaximum.Size = new System.Drawing.Size(237, 45);
+            this.trbMaximum.TabIndex = 50;
+            this.trbMaximum.Value = 1;
+            this.trbMaximum.Scroll += new System.EventHandler(this.trbMaximum_Scroll);
+            this.trbMaximum.MouseCaptureChanged += new System.EventHandler(this.trbMaximum_MouseCaptureChanged);
+            // 
+            // Remove
+            // 
+            this.Remove.Location = new System.Drawing.Point(1715, 85);
+            this.Remove.Name = "Remove";
+            this.Remove.Size = new System.Drawing.Size(63, 25);
+            this.Remove.TabIndex = 38;
+            this.Remove.Text = "Remove";
+            this.Remove.UseVisualStyleBackColor = true;
+            this.Remove.Click += new System.EventHandler(this.Remove_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1958, 1005);
+            this.Controls.Add(this.Remove);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
@@ -2291,11 +2303,6 @@
             this.panUnsharpMask.ResumeLayout(false);
             this.panUnsharpMask.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.panGrayScale.ResumeLayout(false);
-            this.panGrayScale.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).EndInit();
             this.panDocImgClupFnct.ResumeLayout(false);
             this.panDocImgClupFnct.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbDynBin1)).EndInit();
@@ -2348,11 +2355,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).EndInit();
+            this.panGrayScale.ResumeLayout(false);
+            this.panGrayScale.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).EndInit();
             this.panMaxiMini.ResumeLayout(false);
             this.panMaxiMini.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2538,6 +2550,7 @@
         private System.Windows.Forms.Panel panMaxiMini;
         private System.Windows.Forms.Button btnResetMaxiMini;
         private System.Windows.Forms.Button btnMaxiMini;
+        private System.Windows.Forms.Button Remove;
     }
 }
 

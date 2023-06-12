@@ -224,6 +224,7 @@ namespace project1
                     comboBox2.Items.Add(rfile);
 
                 }
+                streamread.Close();
                 comboBox2.SelectedItem = "Default";
 
                 trackBar7.Value = value_trackBar7;
@@ -2427,6 +2428,16 @@ namespace project1
             trbGamma.Value = value_trbGamma;
             l_gamma.Text = value_trbGamma.ToString();
             Display();
+        }
+
+        private void Remove_Click(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2();
+            int x = Remove.Location.X - 200;
+            int y = Remove.Location.Y;
+            frm2.Location = new Point(x, y);
+            frm2.Show();
+            //MessageBox.Show(Remove.Location.ToString());
         }
     }
 }
