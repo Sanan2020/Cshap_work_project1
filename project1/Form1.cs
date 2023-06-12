@@ -195,8 +195,15 @@ namespace project1
         {
             try
             {
-                RasterSupport.SetLicense(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC",
-                    File.ReadAllText(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC.KEY"));
+                /*RasterSupport.SetLicense(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC",
+                    File.ReadAllText(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC.KEY"));*/
+                bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
+                if (isLocked)
+                    Console.WriteLine("Document support is locked");
+                else
+                {
+                    Console.WriteLine("Document support is unlocked");
+                }
 
                 flowLayoutPanel1.AutoScroll = true;
                 this.picInput.SizeMode = PictureBoxSizeMode.StretchImage;
