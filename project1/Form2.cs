@@ -28,63 +28,72 @@ namespace project1
         List<String> item = new List<String>();
         private void Remove2_Click(object sender, EventArgs e)
         {
-            // StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-            for (int i = listBox1.SelectedItems.Count - 1; i >= 0; i--)
+            try
             {
-                //Console.WriteLine(listBox1.SelectedItems[i]);
-                itemre.Add(listBox1.SelectedItems[i].ToString());
-                //listBox1.Items.Remove(listBox1.SelectedItems[i]);
-                //Console.WriteLine(item[i].ToString());
-            }
+                for (int i = listBox1.SelectedItems.Count - 1; i >= 0; i--)
+                {
+                    //Console.WriteLine(listBox1.SelectedItems[i]);
+                    itemre.Add(listBox1.SelectedItems[i].ToString());
+                    //listBox1.Items.Remove(listBox1.SelectedItems[i]);
+                    //Console.WriteLine(item[i].ToString());
+                }
+                DialogResult dialogResult = MessageBox.Show("Your Sure", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    foreach (string z in itemre)
+                    {
+                        Console.WriteLine("itemre " + z);
+                        item.Remove(z);
+                    }
+                    StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                    foreach (string y in item)
+                    {
+                        Console.WriteLine("item " + y);
+                        streamwri.WriteLine(y);
+                    }
+                    streamwri.Close();
 
-            DialogResult dialogResult = MessageBox.Show("Your Sure", "Some Title", MessageBoxButtons.YesNo);
-             if (dialogResult == DialogResult.Yes){
-                foreach (string z in itemre)
+                    foreach (string n in itemre)
+                    {
+                        //Console.WriteLine(n);
+                        String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + n + ".txt";
+                        File.Delete(path);
+                        listBox1.Items.Remove(itemre);
+                        //listBox1.Refresh();
+                    }
+                }
+                listBox1.Items.Clear();
+
+                String rfile;
+                StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                while ((rfile = streamread.ReadLine()) != null)
                 {
-                    Console.WriteLine("itemre " + z);
-                    item.Remove(z);
+                    listBox1.Items.Add(rfile);
                 }
-                StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                foreach (string y in item)
-                {
-                    Console.WriteLine("item " + y);
-                    streamwri.WriteLine(y);
-                }
-                streamwri.Close();
-               
-                foreach (string n in itemre)
-                 {
-                     //Console.WriteLine(n);
-                     String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + n + ".txt";
-                     File.Delete(path);
-                     listBox1.Items.Remove(itemre);
-                     //listBox1.Refresh();
-                }
+                streamread.Close();
+            }catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
-            
-            listBox1.Items.Clear();
-            String rfile;
-             StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-             while ((rfile = streamread.ReadLine()) != null)
-             {
-                 listBox1.Items.Add(rfile);
-             }
-            streamread.Close();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            listBox1.SelectionMode = SelectionMode.MultiSimple;
+            try
+            {
+                listBox1.SelectionMode = SelectionMode.MultiSimple;
 
-              String rfile;
-              StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-              while ((rfile = streamread.ReadLine()) != null)
-              {
-                  listBox1.Items.Add(rfile);
-                  item.Add(rfile);
-              }
-              streamread.Close();
-
+                String rfile;
+                StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                while ((rfile = streamread.ReadLine()) != null)
+                {
+                    listBox1.Items.Add(rfile);
+                    item.Add(rfile);
+                }
+                streamread.Close();
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
            /* String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile";
             foreach (string file in Directory.EnumerateFiles(path, "*.txt"))
