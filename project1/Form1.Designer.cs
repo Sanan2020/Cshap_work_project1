@@ -206,6 +206,7 @@
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.trbMaximum = new System.Windows.Forms.TrackBar();
             this.Remove = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -267,6 +268,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Browse
@@ -309,11 +311,14 @@
             // 
             // picOutput
             // 
-            this.picOutput.Location = new System.Drawing.Point(12, 32);
+            this.picOutput.Location = new System.Drawing.Point(5, 6);
             this.picOutput.Name = "picOutput";
-            this.picOutput.Size = new System.Drawing.Size(822, 939);
+            this.picOutput.Size = new System.Drawing.Size(779, 782);
             this.picOutput.TabIndex = 5;
             this.picOutput.TabStop = false;
+            this.picOutput.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picOutput_MouseDown);
+            this.picOutput.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picOutput_MouseMove);
+            this.picOutput.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picOutput_MouseUp);
             // 
             // BrowseSave
             // 
@@ -2259,11 +2264,21 @@
             this.Remove.UseVisualStyleBackColor = true;
             this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.picOutput);
+            this.panel1.Location = new System.Drawing.Point(12, 32);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(802, 801);
+            this.panel1.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1915, 845);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label3);
@@ -2274,7 +2289,6 @@
             this.Controls.Add(this.SaveProfile);
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.BrowseSave);
-            this.Controls.Add(this.picOutput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.picInput);
@@ -2358,6 +2372,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbGamma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMinimum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbMaximum)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2543,6 +2558,7 @@
         private System.Windows.Forms.Button btnResetMaxiMini;
         private System.Windows.Forms.Button btnMaxiMini;
         private System.Windows.Forms.Button Remove;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

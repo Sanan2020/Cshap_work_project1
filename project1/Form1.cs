@@ -27,9 +27,11 @@ using Leadtools.Ocr;
 using Leadtools.Ocr.LEADEngine;
 
 namespace project1
-{ 
+{
+    
     public partial class Form1 : Form
     {
+       // public static Form1 _form1 = new Form1();
         public String folderPath;
         RasterCodecs codecs = new RasterCodecs();
         public int value_trackBar1;
@@ -86,7 +88,7 @@ namespace project1
         public int value_trackBar28 = 9;
         public int value_trackBar31 = 2;
         public bool chckbox18 = false;
-        public int value_trackBar29=45;
+        public int value_trackBar29 = 45;
         public bool chckbox19 = false;
         public int value_numUpDown1 = 50;
         public int value_numUpDown2 = 10;
@@ -106,24 +108,26 @@ namespace project1
 
         private void Browse_Click(object sender, EventArgs e)
         {
-            try {
-            codecs.ThrowExceptionsOnInvalidImages = true;
-
-            OpenFileDialog ofile = new OpenFileDialog();
-            ofile.Filter = "Image File (*.bmp,*.tif,*.pdf,*.jpg, *.png)|*.bmp;*.tif;*.pdf;*.jpg;*.png";
-            if (DialogResult.OK == ofile.ShowDialog())
+            try
             {
-                folderPath = ofile.FileName;
-                RasterImage image1 = codecs.Load(Path.Combine(folderPath));
-                //this.picInput.Image = new Bitmap(ofile.FileName);
-                using (Image destImage1 = RasterImageConverter.ConvertToImage(image1, ConvertToImageOptions.None))
+                codecs.ThrowExceptionsOnInvalidImages = true;
+
+                OpenFileDialog ofile = new OpenFileDialog();
+                ofile.Filter = "Image File (*.bmp,*.tif,*.pdf,*.jpg, *.png)|*.bmp;*.tif;*.pdf;*.jpg;*.png";
+                if (DialogResult.OK == ofile.ShowDialog())
                 {
-                    picInput.Image = new Bitmap(destImage1);
-                    //MessageBox.Show(destImage1.ToString());
+                    folderPath = ofile.FileName;
+                    RasterImage image1 = codecs.Load(Path.Combine(folderPath));
+                    //this.picInput.Image = new Bitmap(ofile.FileName);
+                    using (Image destImage1 = RasterImageConverter.ConvertToImage(image1, ConvertToImageOptions.None))
+                    {
+                        picInput.Image = new Bitmap(destImage1);
+                        //MessageBox.Show(destImage1.ToString());
+                    }
+                    Display();
                 }
-                Display();
             }
-            }catch (Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -299,18 +303,26 @@ namespace project1
                 trbGamma.Value = value_trbGamma;
                 l_gamma.Text = value_trbGamma.ToString();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        public void Display() {
-            try {
-                  using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
-                  {
-                      picOutput.Image = new Bitmap(destImage1);
-                      //MessageBox.Show(destImage1.ToString());
-                  }
+        private FormClosedEventHandler FormClosedEventHandler(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Display()
+        {
+            try
+            {
+                using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
+                {
+                    picOutput.Image = new Bitmap(destImage1);
+                    //MessageBox.Show(destImage1.ToString());
+                }
             }
             catch (Exception ex)
             {
@@ -319,9 +331,9 @@ namespace project1
         }
         public RasterImage ChangeCommand()
         {
-                // Load an image 
-                codecs.ThrowExceptionsOnInvalidImages = true;
-                RasterImage image = codecs.Load(Path.Combine(folderPath));
+            // Load an image 
+            codecs.ThrowExceptionsOnInvalidImages = true;
+            RasterImage image = codecs.Load(Path.Combine(folderPath));
             try
             {
                 ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
@@ -560,30 +572,31 @@ namespace project1
                 }
 
                 // Perform OCR on the preprocessed image
-               /*  using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD))
-                  {
-                      ocrEngine.Startup(null, null, null, null);
-                      //ocrEngine.LanguageManager.EnableLanguages(new[] { "Thai" });
-               
-                      using (IOcrPage ocrPage = ocrEngine.CreatePage(image, OcrImageSharingMode.AutoDispose))
-                      {
-                          ocrPage.AutoZone(null);
-                          ocrPage.Recognize(null);
-                       
-                          string extractedText = ocrPage.GetText(-1);
-                          System.Console.WriteLine("***************Start****************\r\n"+extractedText+ "\r\n***************END****************");
-                      }
-                      ocrEngine.Shutdown();
-                  }*/
-               
-                    }
-                
-            
-            catch (Exception ex) {
+                /*  using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD))
+                   {
+                       ocrEngine.Startup(null, null, null, null);
+                       //ocrEngine.LanguageManager.EnableLanguages(new[] { "Thai" });
+
+                       using (IOcrPage ocrPage = ocrEngine.CreatePage(image, OcrImageSharingMode.AutoDispose))
+                       {
+                           ocrPage.AutoZone(null);
+                           ocrPage.Recognize(null);
+
+                           string extractedText = ocrPage.GetText(-1);
+                           System.Console.WriteLine("***************Start****************\r\n"+extractedText+ "\r\n***************END****************");
+                       }
+                       ocrEngine.Shutdown();
+                   }*/
+
+            }
+
+
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
-               return image;
-            
+            return image;
+
         }
         private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
         {
@@ -699,7 +712,8 @@ namespace project1
                     // }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -815,7 +829,8 @@ namespace project1
             codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "Result.jpg"), RasterImageFormat.Jpeg, 24);
         }
 
-        public void ResetValue() {
+        public void ResetValue()
+        {
             try
             {
                 value_trackBar1 = 0;
@@ -996,15 +1011,16 @@ namespace project1
                 checkBox20.Checked = chckbox20;
                 Display();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
         private void Reset_Click(object sender, EventArgs e)
         {
-           ResetValue();
+            ResetValue();
         }
-        
+
         private void SaveProfile_Click(object sender, EventArgs e)
         {
             try
@@ -1026,7 +1042,9 @@ namespace project1
                             save();
                         }
                     }
-                    else { save();
+                    else
+                    {
+                        save();
                         using (StreamWriter streamwri1 = File.AppendText(listname))
                         {
                             streamwri1.WriteLine(pfname);
@@ -1034,9 +1052,8 @@ namespace project1
                         }
                     }
 
-                    void save() {
-                        
-
+                    void save()
+                    {
                         StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + pfname + ".txt");
                         //streamwri.WriteLine(l_profilename.Name + "=" + value_profilename.Text);
                         //ContrastBrightnessIntensity
@@ -1122,11 +1139,13 @@ namespace project1
 
                         streamwri.Close();
                         l_saveprofile.Text = "Save Success...";
+                        value_profilename.Text = "";
                     }
-                    
+                    cbBox2re();
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -1352,7 +1371,8 @@ namespace project1
                     rf = "";
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -1364,7 +1384,8 @@ namespace project1
                 chckbox = true;
                 Display();
             }
-            else { 
+            else
+            {
                 chckbox = false;
                 Display();
             }
@@ -1380,7 +1401,7 @@ namespace project1
             else
             {
                 chckbox2 = false;
-                Display(); 
+                Display();
             }
         }
 
@@ -1584,7 +1605,7 @@ namespace project1
 
         private void trbMaximum_Scroll(object sender, EventArgs e)
         {
-            value_trbMaximum = trbMaximum.Value;    
+            value_trbMaximum = trbMaximum.Value;
             l_maximum.Text = value_trbMaximum.ToString();
         }
 
@@ -2148,7 +2169,7 @@ namespace project1
             {
                 chckbox20 = false;
                 Display();
-            } 
+            }
         }
 
         private void numUpDown1_ValueChanged(object sender, EventArgs e)
@@ -2357,7 +2378,7 @@ namespace project1
             checkBox16.Checked = chckbox16;
             value_trackBar25 = 20;
             trackBar25.Value = value_trackBar25;
-            l_percent.Text  = value_trackBar25.ToString();
+            l_percent.Text = value_trackBar25.ToString();
             value_trackBar26 = 3;
             trackBar26.Value = value_trackBar26;
             l_variance.Text = value_trackBar26.ToString();
@@ -2460,7 +2481,76 @@ namespace project1
             int y = Remove.Location.Y;
             frm2.Location = new Point(x, y);
             frm2.Show();
-            //MessageBox.Show(Remove.Location.ToString());
+           // MessageBox.Show("..");
+        }
+
+        public void cbBox2re() {
+             //MessageBox.Show("test");
+            comboBox2.Items.Clear();
+            comboBox2.Items.Add("Default");
+            String rfile;
+            StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+            while ((rfile = streamread.ReadLine()) != null)
+            {
+                // textBox1.Text += rfile + "\r\n";
+                comboBox2.Items.Add(rfile);
+
+            }
+            streamread.Close();
+            comboBox2.SelectedItem = "Default";
+        }
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            //MessageBox.Show("m");
+
+            //pictureBox1.Image = ZoomP
+
+            if (e.Delta > 0)
+            {
+                //pictureBox1.Image = null;
+                // ซูมอิน (เพิ่มขนาดภาพ)
+                picOutput.Width += (int)(picOutput.Width * 0.1);
+                picOutput.Height += (int)(picOutput.Height * 0.1);
+            }
+            else if (e.Delta < 0)
+            {
+                //pictureBox1.Image = null;
+                // ซูมเอาท์ (ลดขนาดภาพ)
+                picOutput.Width -= (int)(picOutput.Width * 0.1);
+                picOutput.Height -= (int)(picOutput.Height * 0.1);
+            }
+            //l_zoom.Text = "w " + pictureBox1.Width.ToString() + " h" + pictureBox1.Height.ToString();
+        }
+        int xPos;
+        int yPos;
+        bool Dragging;
+        private void picOutput_MouseUp(object sender, MouseEventArgs e)
+        {
+            Dragging = false;
+        }
+
+        private void picOutput_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Dragging = true;
+                xPos = e.X;
+                yPos = e.Y;
+            }
+        }
+
+        private void picOutput_MouseMove(object sender, MouseEventArgs e)
+        {
+            Control c = sender as Control;
+            if (Dragging && c != null)
+            {
+                c.Top = e.Y + c.Top - yPos;
+                c.Left = e.X + c.Left - xPos;
+
+                Console.WriteLine("c.Top " + c.Top.ToString());
+                Console.WriteLine("c.Left " + c.Left.ToString());
+            }
         }
     }
 }

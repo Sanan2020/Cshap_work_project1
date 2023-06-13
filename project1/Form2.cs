@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace project1
 {
+    
     public partial class Form2 : Form
     {
         public Form2()
@@ -61,6 +62,8 @@ namespace project1
                         listBox1.Items.Remove(itemre);
                         //listBox1.Refresh();
                     }
+                    //Form1 _form1 = new Form1();
+                   //_form1.cbBox2re();
                 }
                 listBox1.Items.Clear();
 
@@ -101,6 +104,13 @@ namespace project1
                 string contents = File.ReadAllText(file);
                 Console.WriteLine(contents);
             }*/
+        }
+        
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            //form1.Refresh();
+            //form1.ShowDialog();
         }
     }
 }
