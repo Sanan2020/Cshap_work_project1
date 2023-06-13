@@ -426,6 +426,7 @@ namespace project1
                     LineRemoveCommand command13 = new LineRemoveCommand();
                     command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
                     command13.Type = LineRemoveCommandType.Horizontal;
+                    //command13.Type = LineRemoveCommandType.Vertical;
                     command13.Flags = LineRemoveCommandFlags.UseGap;
                     command13.GapLength = value_trackBar14;
                     command13.MaximumLineWidth = value_trackBar15;
