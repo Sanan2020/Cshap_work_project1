@@ -2263,7 +2263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1540, 845);
+            this.ClientSize = new System.Drawing.Size(1915, 845);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label3);
