@@ -902,7 +902,7 @@
             this.btnDotRemove.Name = "btnDotRemove";
             this.btnDotRemove.Size = new System.Drawing.Size(307, 27);
             this.btnDotRemove.TabIndex = 70;
-            this.btnDotRemove.Text = "DotRemove";
+            this.btnDotRemove.Text = "DotRemove (only 1-bit black and white)";
             this.btnDotRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDotRemove.UseVisualStyleBackColor = true;
             this.btnDotRemove.Click += new System.EventHandler(this.btnDotRemove_Click);
@@ -1033,7 +1033,7 @@
             this.btnLineRemove.Name = "btnLineRemove";
             this.btnLineRemove.Size = new System.Drawing.Size(307, 29);
             this.btnLineRemove.TabIndex = 70;
-            this.btnLineRemove.Text = "LineRemove";
+            this.btnLineRemove.Text = "LineRemove (only 1-bit black and white)";
             this.btnLineRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLineRemove.UseVisualStyleBackColor = true;
             this.btnLineRemove.Click += new System.EventHandler(this.btnLineRemove_Click);
@@ -1159,7 +1159,7 @@
             this.btnHolePunchRemove.Name = "btnHolePunchRemove";
             this.btnHolePunchRemove.Size = new System.Drawing.Size(307, 27);
             this.btnHolePunchRemove.TabIndex = 70;
-            this.btnHolePunchRemove.Text = "HolePunchRemove";
+            this.btnHolePunchRemove.Text = "HolePunchRemove (only 1-bit black and white)";
             this.btnHolePunchRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHolePunchRemove.UseVisualStyleBackColor = true;
             this.btnHolePunchRemove.Click += new System.EventHandler(this.btnHolePunchRemove_Click);
@@ -1278,7 +1278,7 @@
             this.btnInvertedText.Name = "btnInvertedText";
             this.btnInvertedText.Size = new System.Drawing.Size(307, 27);
             this.btnInvertedText.TabIndex = 70;
-            this.btnInvertedText.Text = "InvertedText";
+            this.btnInvertedText.Text = "InvertedText (only 1-bit black and white)";
             this.btnInvertedText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInvertedText.UseVisualStyleBackColor = true;
             this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
@@ -1478,7 +1478,7 @@
             this.btnBorderRemove.Name = "btnBorderRemove";
             this.btnBorderRemove.Size = new System.Drawing.Size(307, 27);
             this.btnBorderRemove.TabIndex = 70;
-            this.btnBorderRemove.Text = "BorderRemove";
+            this.btnBorderRemove.Text = "BorderRemove (only 1-bit black and white)";
             this.btnBorderRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBorderRemove.UseVisualStyleBackColor = true;
             this.btnBorderRemove.Click += new System.EventHandler(this.btnBorderRemove_Click);
@@ -1556,7 +1556,7 @@
             this.btnSmooth.Name = "btnSmooth";
             this.btnSmooth.Size = new System.Drawing.Size(307, 27);
             this.btnSmooth.TabIndex = 70;
-            this.btnSmooth.Text = "Smooth";
+            this.btnSmooth.Text = "Smooth (only 1-bit black and white)";
             this.btnSmooth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSmooth.UseVisualStyleBackColor = true;
             this.btnSmooth.Click += new System.EventHandler(this.btnSmooth_Click);
@@ -1759,7 +1759,7 @@
             this.btnRakeRemove.Name = "btnRakeRemove";
             this.btnRakeRemove.Size = new System.Drawing.Size(307, 27);
             this.btnRakeRemove.TabIndex = 70;
-            this.btnRakeRemove.Text = "RakeRemove";
+            this.btnRakeRemove.Text = "RakeRemove (only 1-bit black and white)";
             this.btnRakeRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRakeRemove.UseVisualStyleBackColor = true;
             this.btnRakeRemove.Click += new System.EventHandler(this.btnRakeRemove_Click);
