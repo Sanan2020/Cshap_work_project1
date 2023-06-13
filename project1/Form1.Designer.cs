@@ -311,9 +311,9 @@
             // 
             // picOutput
             // 
-            this.picOutput.Location = new System.Drawing.Point(5, 6);
+            this.picOutput.Location = new System.Drawing.Point(-1, -1);
             this.picOutput.Name = "picOutput";
-            this.picOutput.Size = new System.Drawing.Size(779, 782);
+            this.picOutput.Size = new System.Drawing.Size(802, 829);
             this.picOutput.TabIndex = 5;
             this.picOutput.TabStop = false;
             this.picOutput.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picOutput_MouseDown);
@@ -2270,14 +2270,14 @@
             this.panel1.Controls.Add(this.picOutput);
             this.panel1.Location = new System.Drawing.Point(12, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(802, 801);
+            this.panel1.Size = new System.Drawing.Size(802, 829);
             this.panel1.TabIndex = 30;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1915, 845);
+            this.ClientSize = new System.Drawing.Size(1915, 873);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.flowLayoutPanel1);

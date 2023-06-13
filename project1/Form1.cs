@@ -2510,15 +2510,21 @@ namespace project1
             {
                 //pictureBox1.Image = null;
                 // ซูมอิน (เพิ่มขนาดภาพ)
-                picOutput.Width += (int)(picOutput.Width * 0.1);
-                picOutput.Height += (int)(picOutput.Height * 0.1);
+                if (picOutput.Width < 4500 || picOutput.Width < 4500)
+                { //กำหนดขอบเขตการขยายภาพ
+                    picOutput.Width += (int)(picOutput.Width * 0.1);
+                    picOutput.Height += (int)(picOutput.Height * 0.1);
+                }
             }
             else if (e.Delta < 0)
             {
                 //pictureBox1.Image = null;
                 // ซูมเอาท์ (ลดขนาดภาพ)
-                picOutput.Width -= (int)(picOutput.Width * 0.1);
-                picOutput.Height -= (int)(picOutput.Height * 0.1);
+                if (picOutput.Width > 400 || picOutput.Width > 400)
+                { //กำหนดขอบเขตการลดภาพ
+                    picOutput.Width -= (int)(picOutput.Width * 0.1);
+                    picOutput.Height -= (int)(picOutput.Height * 0.1);
+                }
             }
             //l_zoom.Text = "w " + pictureBox1.Width.ToString() + " h" + pictureBox1.Height.ToString();
         }
