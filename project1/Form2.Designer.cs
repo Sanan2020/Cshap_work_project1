@@ -57,10 +57,12 @@
             this.ClientSize = new System.Drawing.Size(315, 191);
             this.Controls.Add(this.Remove2);
             this.Controls.Add(this.listBox1);
+            this.DoubleBuffered = true;
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
 

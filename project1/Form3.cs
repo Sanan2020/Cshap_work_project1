@@ -114,7 +114,11 @@ namespace project1
 
         private void Form3_Shown(object sender, EventArgs e)
         {
-            btnok.PerformClick();
+
+            if (System.IO.File.Exists("pathLicense.txt"))//ถ้าเจอไฟล์
+            {
+                btnok.PerformClick();
+            }
         }
     }
 }

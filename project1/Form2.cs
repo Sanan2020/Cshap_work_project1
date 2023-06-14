@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevComponents.DotNetBar;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +16,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace project1
 {
     
-    public partial class Form2 : Form
+    public partial class Form2 : Office2007Form
     {
         public Form2()
         {
@@ -38,32 +40,35 @@ namespace project1
                     //listBox1.Items.Remove(listBox1.SelectedItems[i]);
                     //Console.WriteLine(item[i].ToString());
                 }
-                DialogResult dialogResult = MessageBox.Show("Your Sure", "Some Title", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    foreach (string z in itemre)
-                    {
-                        Console.WriteLine("itemre " + z);
-                        item.Remove(z);
-                    }
-                    StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                    foreach (string y in item)
-                    {
-                        Console.WriteLine("item " + y);
-                        streamwri.WriteLine(y);
-                    }
-                    streamwri.Close();
 
-                    foreach (string n in itemre)
+                if (itemre.Count > 0)
+                {
+                    //MessageBox.Show("0");
+                    DialogResult dialogResult = MessageBox.Show("Your Sure", "Some Title", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        //Console.WriteLine(n);
-                        String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + n + ".txt";
-                        File.Delete(path);
-                        listBox1.Items.Remove(itemre);
-                        //listBox1.Refresh();
+                        foreach (string z in itemre)
+                        {
+                            Console.WriteLine("itemre " + z);
+                            item.Remove(z);
+                        }
+                        StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                        foreach (string y in item)
+                        {
+                            Console.WriteLine("item " + y);
+                            streamwri.WriteLine(y);
+                        }
+                        streamwri.Close();
+
+                        foreach (string n in itemre)
+                        {
+                            //Console.WriteLine(n);
+                            String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + n + ".txt";
+                            File.Delete(path);
+                            listBox1.Items.Remove(itemre);
+                            //listBox1.Refresh();
+                        }
                     }
-                    //Form1 _form1 = new Form1();
-                   //_form1.cbBox2re();
                 }
                 listBox1.Items.Clear();
 
@@ -108,9 +113,11 @@ namespace project1
         
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
-            //form1.Refresh();
-            //form1.ShowDialog();
+          
+        }
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form1.form1.cbBox2re();
         }
     }
 }

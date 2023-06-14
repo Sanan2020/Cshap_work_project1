@@ -31,7 +31,9 @@ namespace project1
     
     public partial class Form1 : Form
     {
-       // public static Form1 _form1 = new Form1();
+        internal static Form2 form2;
+        internal static Form1 form1;
+
         public String folderPath;
         RasterCodecs codecs = new RasterCodecs();
         public int value_trackBar1;
@@ -100,10 +102,11 @@ namespace project1
         public int value_numUpDown8 = 1;
         public int value_numUpDown9 = 5;
         public bool chckbox20 = false;
+
         public Form1()
         {
             InitializeComponent();
-
+            form1 = this;
         }
 
         private void Browse_Click(object sender, EventArgs e)
@@ -227,15 +230,19 @@ namespace project1
                 comboBox1.SelectedIndex = 0;
 
                 comboBox2.Items.Add("Default");
-                String rfile;
-                StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                while ((rfile = streamread.ReadLine()) != null)
-                {
-                    // textBox1.Text += rfile + "\r\n";
-                    comboBox2.Items.Add(rfile);
 
+                if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))//ถ้าเจอไฟล์
+                {
+                    String rfile;
+                    StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                    while ((rfile = streamread.ReadLine()) != null)
+                    {
+                        // textBox1.Text += rfile + "\r\n";
+                        comboBox2.Items.Add(rfile);
+
+                    }
+                    streamread.Close();
                 }
-                streamread.Close();
                 comboBox2.SelectedItem = "Default";
 
                 trackBar7.Value = value_trackBar7;
@@ -2482,11 +2489,10 @@ namespace project1
             int y = Remove.Location.Y;
             frm2.Location = new Point(x, y);
             frm2.Show();
-           // MessageBox.Show("..");
         }
 
         public void cbBox2re() {
-             //MessageBox.Show("test");
+            //MessageBox.Show("test");
             comboBox2.Items.Clear();
             comboBox2.Items.Add("Default");
             String rfile;
