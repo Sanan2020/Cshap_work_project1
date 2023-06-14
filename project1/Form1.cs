@@ -135,41 +135,8 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
         }
-        public void RasterCommandExample()
-        {
-            RasterCodecs codecs = new RasterCodecs();
-
-            string srcFileName = Path.Combine(LEAD_VARS4.ImagesDir, "perspective-deskew-perspective-deskew-before.png");
-            string rotatedFileName = Path.Combine(LEAD_VARS4.ImagesDir, "Image1_rotated.bmp");
-            string flippedFileName = Path.Combine(LEAD_VARS4.ImagesDir, "Image1_flipped.bmp");
-
-            // Load the source image from disk 
-            RasterImage image = codecs.Load(srcFileName);
-
-            // flip the image 
-            FlipCommand flip = new FlipCommand(false);
-            RunCommand(image, flip);
-
-            // save the image 
-            codecs.Save(image, flippedFileName, RasterImageFormat.Bmp, 24);
-
-            // rotate the image by 45 degrees 
-            RotateCommand rotate = new RotateCommand();
-            rotate.Angle = 45 * 100;
-            rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
-            rotate.Flags = RotateCommandFlags.Resize;
-            RunCommand(image, rotate);
-
-            // save the image 
-            codecs.Save(image, rotatedFileName, RasterImageFormat.Bmp, 24);
-
-            // clean up 
-            image.Dispose();
-            codecs.Dispose();
-        }
 
         bool cancelAt50;
-
         void RunCommand(RasterImage image, RasterCommand command)
         {
             // subscribe to the progress event of the command 
@@ -194,10 +161,6 @@ namespace project1
                 e.Cancel = true;
         }
 
-        static class LEAD_VARS4
-        {
-            public const string ImagesDir = @"C:\LEADTOOLS22\Resources\Images";
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -314,11 +277,6 @@ namespace project1
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private FormClosedEventHandler FormClosedEventHandler(string v)
-        {
-            throw new NotImplementedException();
         }
 
         public void Display()
@@ -452,7 +410,6 @@ namespace project1
                     command13.MaximumDotWidth = value_trackBar11;
                     command13.MinimumDotHeight = value_trackBar12;
                     command13.MinimumDotWidth = value_trackBar13;
-
                     command13.Run(image);
                 }
 
@@ -516,30 +473,6 @@ namespace project1
                     command19.Run(image);
                 }
 
-                //test 
-                // Preprocessing steps
-                /* ResizeCommand rcommand = new ResizeCommand();
-                 rcommand.DestinationImage = image;
-                 rcommand.Flags = RasterSizeFlags.Bicubic;
-
-                 DeskewCommand deskewCommand = new DeskewCommand();
-                 SharpenCommand sharpenCommand = new SharpenCommand();
-                 //CleanUpCommand cleanUpCommand = new CleanUpCommand();
-                 AutoBinarizeCommand autoBinarizeCommand = new AutoBinarizeCommand();*/
-
-                //rcommand.Run(image);
-                // deskewCommand.Run(image);
-                // sharpenCommand.Run(image);
-                // cleanUpCommand.Run(image);
-
-                // autoBinarizeCommand.Run(image);
-
-                // Clean up
-                //image.Dispose();
-                //    codecs.Dispose();
-
-                // System.Console.ReadLine();
-
                 //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
                 // Prepare the command 
                 if (chckbox3 == true)
@@ -548,7 +481,6 @@ namespace project1
                     //Remove speckles from the image. 
                     command6.Run(image);
                 }
-
 
                 if (chckbox18 == true)
                 {
@@ -578,33 +510,12 @@ namespace project1
                     command20.AutoFilter = chckbox20;       //ตัวกรองอัตโนมัติ
                     command20.Run(image);
                 }
-
-                // Perform OCR on the preprocessed image
-                /*  using (IOcrEngine ocrEngine = OcrEngineManager.CreateEngine(OcrEngineType.LEAD))
-                   {
-                       ocrEngine.Startup(null, null, null, null);
-                       //ocrEngine.LanguageManager.EnableLanguages(new[] { "Thai" });
-
-                       using (IOcrPage ocrPage = ocrEngine.CreatePage(image, OcrImageSharingMode.AutoDispose))
-                       {
-                           ocrPage.AutoZone(null);
-                           ocrPage.Recognize(null);
-
-                           string extractedText = ocrPage.GetText(-1);
-                           System.Console.WriteLine("***************Start****************\r\n"+extractedText+ "\r\n***************END****************");
-                       }
-                       ocrEngine.Shutdown();
-                   }*/
-
             }
-
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             return image;
-
         }
         private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
         {
@@ -1700,7 +1611,6 @@ namespace project1
                 Display();
             }
         }
-
         private void checkBox13_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox13.Checked == true)
@@ -2165,7 +2075,6 @@ namespace project1
             }
             Expanded13 = !Expanded13;
         }
-
         private void checkBox20_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox20.Checked == true)

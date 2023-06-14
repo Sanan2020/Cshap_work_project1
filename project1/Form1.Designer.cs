@@ -273,7 +273,7 @@
             // 
             // Browse
             // 
-            this.Browse.Location = new System.Drawing.Point(904, 549);
+            this.Browse.Location = new System.Drawing.Point(882, 549);
             this.Browse.Name = "Browse";
             this.Browse.Size = new System.Drawing.Size(76, 32);
             this.Browse.TabIndex = 0;
@@ -283,7 +283,7 @@
             // 
             // picInput
             // 
-            this.picInput.Location = new System.Drawing.Point(845, 32);
+            this.picInput.Location = new System.Drawing.Point(823, 32);
             this.picInput.Name = "picInput";
             this.picInput.Size = new System.Drawing.Size(412, 501);
             this.picInput.TabIndex = 1;
@@ -293,7 +293,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(841, 9);
+            this.label1.Location = new System.Drawing.Point(819, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 2;
@@ -322,7 +322,7 @@
             // 
             // BrowseSave
             // 
-            this.BrowseSave.Location = new System.Drawing.Point(1138, 549);
+            this.BrowseSave.Location = new System.Drawing.Point(1116, 549);
             this.BrowseSave.Name = "BrowseSave";
             this.BrowseSave.Size = new System.Drawing.Size(93, 32);
             this.BrowseSave.TabIndex = 6;
@@ -532,7 +532,7 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(1020, 549);
+            this.Reset.Location = new System.Drawing.Point(998, 549);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(74, 32);
             this.Reset.TabIndex = 20;
@@ -542,7 +542,7 @@
             // 
             // SaveProfile
             // 
-            this.SaveProfile.Location = new System.Drawing.Point(1784, 85);
+            this.SaveProfile.Location = new System.Drawing.Point(1715, 82);
             this.SaveProfile.Name = "SaveProfile";
             this.SaveProfile.Size = new System.Drawing.Size(73, 25);
             this.SaveProfile.TabIndex = 21;
@@ -562,7 +562,7 @@
             // l_profilename
             // 
             this.l_profilename.AutoSize = true;
-            this.l_profilename.Location = new System.Drawing.Point(1607, 35);
+            this.l_profilename.Location = new System.Drawing.Point(1578, 35);
             this.l_profilename.Name = "l_profilename";
             this.l_profilename.Size = new System.Drawing.Size(70, 13);
             this.l_profilename.TabIndex = 23;
@@ -570,7 +570,7 @@
             // 
             // value_profilename
             // 
-            this.value_profilename.Location = new System.Drawing.Point(1687, 32);
+            this.value_profilename.Location = new System.Drawing.Point(1645, 32);
             this.value_profilename.Name = "value_profilename";
             this.value_profilename.Size = new System.Drawing.Size(170, 20);
             this.value_profilename.TabIndex = 24;
@@ -579,7 +579,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1687, 58);
+            this.comboBox2.Location = new System.Drawing.Point(1645, 58);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(170, 21);
             this.comboBox2.TabIndex = 25;
@@ -588,7 +588,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1607, 61);
+            this.label3.Location = new System.Drawing.Point(1578, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 26;
@@ -711,7 +711,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panUnsharpMask);
             this.flowLayoutPanel1.Controls.Add(this.panGrayScale);
             this.flowLayoutPanel1.Controls.Add(this.panMaxiMini);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1263, 32);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1241, 32);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 863);
             this.flowLayoutPanel1.TabIndex = 36;
@@ -2256,7 +2256,7 @@
             // 
             // Remove
             // 
-            this.Remove.Location = new System.Drawing.Point(1715, 85);
+            this.Remove.Location = new System.Drawing.Point(1646, 82);
             this.Remove.Name = "Remove";
             this.Remove.Size = new System.Drawing.Size(63, 25);
             this.Remove.TabIndex = 38;
