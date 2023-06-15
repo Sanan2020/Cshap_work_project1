@@ -2418,10 +2418,6 @@ namespace project1
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            //MessageBox.Show("m");
-
-            //pictureBox1.Image = ZoomP
-
             if (e.Delta > 0)
             {
                 //pictureBox1.Image = null;
