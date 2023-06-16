@@ -25,6 +25,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Leadtools.Ocr;
 using Leadtools.Ocr.LEADEngine;
+using System.Runtime.InteropServices;
 
 namespace project1
 {
@@ -298,7 +299,60 @@ namespace project1
         {
             // Load an image 
             codecs.ThrowExceptionsOnInvalidImages = true;
-            RasterImage image = codecs.Load(Path.Combine(folderPath));
+            RasterImage image = codecs.Load(Path.Combine(folderPath), 24, CodecsLoadByteOrder.Bgr, 1, 1);
+
+            /*TEST*/
+             AutoBinarizeCommand Binarize = new AutoBinarizeCommand();
+             Binarize.Run(image);
+           /* AutoColorLevelCommand ColorLevel = new AutoColorLevelCommand();
+            ColorLevel.Run(image);*/
+            RasterImage destImage = new RasterImage(
+                   RasterMemoryFlags.Conventional,
+                   image.Width,
+                   image.Height,
+                   1,
+                   image.Order,
+                   image.ViewPerspective,
+                   image.GetPalette(),
+                   IntPtr.Zero,
+                   0);
+            int bufferSize = RasterBufferConverter.CalculateConvertSize(
+               image.Width,
+               image.BitsPerPixel,
+               destImage.Width,
+               destImage.BitsPerPixel);
+
+            // Allocate the buffer in unmanaged memory 
+            IntPtr buffer = Marshal.AllocHGlobal(bufferSize);
+            //Assert.IsFalse(buffer == IntPtr.Zero);
+
+            // Process each row from srcImage to destImage. 
+            image.Access();
+            destImage.Access();
+            for (int i = 0; i < image.Height; i++)
+            {
+                image.GetRow(i, buffer, image.BytesPerLine);
+                RasterBufferConverter.Convert(
+                   buffer,
+                   image.Width,
+                   image.BitsPerPixel,
+                   destImage.BitsPerPixel,
+                   image.Order,
+                   destImage.Order,
+                   null,
+                   null,
+                   0,
+                   8,
+                   0,
+                   RasterConvertBufferFlags.None);
+                destImage.SetRow(i, buffer, destImage.BytesPerLine);
+            }
+
+            destImage.Release();
+            image.Release();
+            // Clean up 
+            Marshal.FreeHGlobal(buffer);
+            /*TEST*/
             try
             {
                 ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
@@ -306,14 +360,14 @@ namespace project1
                 command.Brightness = value_trackBar1;   //484
                 command.Contrast = value_trackBar2;     //394
                 command.Intensity = value_trackBar3;    //118
-                command.Run(image);
+                command.Run(destImage);
 
                 UnsharpMaskCommand command2 = new UnsharpMaskCommand();
                 command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
                 command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
                 command2.Threshold = value_trackBar6;  //rate 0 - 255
                 command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-                command2.Run(image);
+                command2.Run(destImage);
 
                 // Prepare the command 
                 //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
@@ -323,13 +377,13 @@ namespace project1
                     selectCombobox = selectCombobox - 1;
                     //MessageBox.Show(selectCombobox.ToString());
                     BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
-                    command3.Run(image);
+                    command3.Run(destImage);
                 }
 
                 if (chckbox == true)
                 {
                     AutoColorLevelCommand command4 = new AutoColorLevelCommand();
-                    command4.Run(image);
+                    command4.Run(destImage);
                 }
 
                 if (chckbox2 == true)
@@ -338,14 +392,14 @@ namespace project1
                     command5.RedFactor = value_trackBar7;
                     command5.GreenFactor = value_trackBar8;
                     command5.BlueFactor = value_trackBar9;
-                    command5.Run(image);
+                    command5.Run(destImage);
                 }
 
                 if (chckbox4 == true)
                 {
                     AutoBinaryCommand command7 = new AutoBinaryCommand();
                     //Apply Auto Binary Segment. 
-                    command7.Run(image);
+                    command7.Run(destImage);
                 }
 
                 if (chckbox5 == true)
@@ -353,7 +407,7 @@ namespace project1
                     MaximumCommand command8 = new MaximumCommand();
                     //Apply Maximum filter. 
                     command8.Dimension = value_trbMaximum;
-                    command8.Run(image);
+                    command8.Run(destImage);
                 }
 
                 if (chckbox6 == true)
@@ -361,13 +415,13 @@ namespace project1
                     MinimumCommand command9 = new MinimumCommand();
                     //Apply the Minimum filter. 
                     command9.Dimension = value_trbMinimum;
-                    command9.Run(image);
+                    command9.Run(destImage);
                 }
 
                 if (chckbox7 == true)
                 {
                     AutoBinarizeCommand command10 = new AutoBinarizeCommand();
-                    command10.Run(image);
+                    command10.Run(destImage);
                 }
 
                 if (chckbox8 == true)
@@ -375,7 +429,7 @@ namespace project1
                     GammaCorrectCommand command11 = new GammaCorrectCommand();
                     //Set a gamma value of 2.5. 
                     command11.Gamma = value_trbGamma;
-                    command11.Run(image);
+                    command11.Run(destImage);
                 }
                 if (chckbox9 == true)
                 {
@@ -383,7 +437,7 @@ namespace project1
                     command12.Dimension = value_trbDynBin1;
                     command12.LocalContrast = value_trbDynBin2;
                     // convert it into a black and white image without changing its bits per pixel. 
-                    command12.Run(image);
+                    command12.Run(destImage);
                 }
 
                 if (chckbox11 == true)
@@ -398,7 +452,7 @@ namespace project1
                     command13.MinimumLineLength = value_trackBar16;
                     command13.MaximumWallPercent = value_trackBar17;
                     command13.Wall = value_trackBar22;
-                    command13.Run(image);
+                    command13.Run(destImage);
                 }
 
                 if (chckbox10 == true)
@@ -410,7 +464,7 @@ namespace project1
                     command13.MaximumDotWidth = value_trackBar11;
                     command13.MinimumDotHeight = value_trackBar12;
                     command13.MinimumDotWidth = value_trackBar13;
-                    command13.Run(image);
+                    command13.Run(destImage);
                 }
 
                 if (chckbox12 == true)
@@ -421,7 +475,7 @@ namespace project1
                     command14.Location = HolePunchRemoveCommandLocation.Left;
                     command14.MaximumHoleCount = value_trackBar18;
                     command14.MinimumHoleCount = value_trackBar21;
-                    command14.Run(image);
+                    command14.Run(destImage);
                 }
 
                 if (chckbox13 == true)
@@ -433,7 +487,7 @@ namespace project1
                     command15.MinimumBlackPercent = value_trackBar20;
                     command15.MinimumInvertHeight = value_trackBar23;
                     command15.MinimumInvertWidth = value_trackBar24;
-                    command15.Run(image);
+                    command15.Run(destImage);
                 }
 
                 if (chckbox14 == true)
@@ -441,7 +495,7 @@ namespace project1
                     DeskewCommand command16 = new DeskewCommand();
                     //Deskew the image. 
                     command16.Flags = DeskewCommandFlags.DeskewImage | DeskewCommandFlags.DoNotFillExposedArea;
-                    command16.Run(image);
+                    command16.Run(destImage);
                 }
 
                 if (chckbox15 == true)
@@ -449,7 +503,7 @@ namespace project1
                     AutoCropCommand command17 = new AutoCropCommand();
                     //AutoCrop the image with 20 tolerance. 
                     command17.Threshold = value_trackBar27;
-                    command17.Run(image);
+                    command17.Run(destImage);
                 }
 
                 if (chckbox16 == true)
@@ -461,7 +515,7 @@ namespace project1
                     command18.Percent = value_trackBar25;
                     command18.Variance = value_trackBar26;
                     command18.WhiteNoiseLength = value_trackBar28;
-                    command18.Run(image);
+                    command18.Run(destImage);
                 }
 
                 if (chckbox17 == true)
@@ -470,7 +524,7 @@ namespace project1
                     command19.Smooth += new EventHandler<SmoothCommandEventArgs>(SmoothEventExample_S1);
                     command19.Flags = SmoothCommandFlags.FavorLong;
                     command19.Length = value_trackBar31;
-                    command19.Run(image);
+                    command19.Run(destImage);
                 }
 
                 //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
@@ -479,19 +533,19 @@ namespace project1
                 {
                     DespeckleCommand command6 = new DespeckleCommand();
                     //Remove speckles from the image. 
-                    command6.Run(image);
+                    command6.Run(destImage);
                 }
 
                 if (chckbox18 == true)
                 {
                     FlipCommand flip = new FlipCommand(false);
-                    RunCommand(image, flip);
+                    RunCommand(destImage, flip);
                     // rotate the image by 45 degrees 
                     RotateCommand rotate = new RotateCommand();
                     rotate.Angle = (value_trackBar29 * 100);
                     rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
                     rotate.Flags = RotateCommandFlags.Resize;
-                    RunCommand(image, rotate);
+                    RunCommand(destImage, rotate);
                 }
 
                 if (chckbox19 == true)
@@ -508,14 +562,14 @@ namespace project1
                     command20.Variance = value_numUpDown8;             //ความแปรปรวน
                     command20.TeethSpacing = value_numUpDown9;         //ระยะห่างระหว่างฟัน
                     command20.AutoFilter = chckbox20;       //ตัวกรองอัตโนมัติ
-                    command20.Run(image);
+                    command20.Run(destImage);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            return image;
+            return destImage;
         }
         private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
         {
