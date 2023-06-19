@@ -207,6 +207,8 @@
             this.trbMaximum = new System.Windows.Forms.TrackBar();
             this.Remove = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -542,9 +544,9 @@
             // 
             // SaveProfile
             // 
-            this.SaveProfile.Location = new System.Drawing.Point(1715, 82);
+            this.SaveProfile.Location = new System.Drawing.Point(1821, 32);
             this.SaveProfile.Name = "SaveProfile";
-            this.SaveProfile.Size = new System.Drawing.Size(73, 25);
+            this.SaveProfile.Size = new System.Drawing.Size(73, 20);
             this.SaveProfile.TabIndex = 21;
             this.SaveProfile.Text = "Save Profile";
             this.SaveProfile.UseVisualStyleBackColor = true;
@@ -2256,9 +2258,9 @@
             // 
             // Remove
             // 
-            this.Remove.Location = new System.Drawing.Point(1646, 82);
+            this.Remove.Location = new System.Drawing.Point(1821, 58);
             this.Remove.Name = "Remove";
-            this.Remove.Size = new System.Drawing.Size(63, 25);
+            this.Remove.Size = new System.Drawing.Size(73, 21);
             this.Remove.TabIndex = 38;
             this.Remove.Text = "Remove";
             this.Remove.UseVisualStyleBackColor = true;
@@ -2273,11 +2275,31 @@
             this.panel1.Size = new System.Drawing.Size(802, 829);
             this.panel1.TabIndex = 30;
             // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(1645, 85);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.TabIndex = 39;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = true;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(1740, 85);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 40;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1915, 873);
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -2559,6 +2581,8 @@
         private System.Windows.Forms.Button btnMaxiMini;
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 
