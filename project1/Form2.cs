@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -52,13 +53,13 @@ namespace project1
                             Console.WriteLine("itemre " + z);
                             item.Remove(z);
                         }
-                        StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                        /*StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
                         foreach (string y in item)
                         {
                             Console.WriteLine("item " + y);
                             streamwri.WriteLine(y);
                         }
-                        streamwri.Close();
+                        streamwri.Close();*/
 
                         foreach (string n in itemre)
                         {
@@ -72,14 +73,24 @@ namespace project1
                 }
                 listBox1.Items.Clear();
 
-                String rfile;
+                /*String rfile;
                 StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
                 while ((rfile = streamread.ReadLine()) != null)
                 {
                     listBox1.Items.Add(rfile);
                 }
-                streamread.Close();
-            }catch (Exception ex) {
+                streamread.Close();*/
+                DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
+                foreach (var fi in di.GetFiles("*.txt"))
+                {
+                    //Console.WriteLine(fi.Name);
+                    string[] nm = fi.Name.Split('.');
+                    Console.WriteLine(nm[0]);
+                    listBox1.Items.Add(nm[0]);
+                    item.Add(nm[0]);
+                }
+            }
+            catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -90,15 +101,27 @@ namespace project1
             {
                 listBox1.SelectionMode = SelectionMode.MultiSimple;
 
-                String rfile;
+               /* String rfile;
                 StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
                 while ((rfile = streamread.ReadLine()) != null)
                 {
                     listBox1.Items.Add(rfile);
                     item.Add(rfile);
                 }
-                streamread.Close();
-            }catch (Exception ex)
+                streamread.Close();*/
+
+
+                DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
+                foreach (var fi in di.GetFiles("*.txt"))
+                {
+                    //Console.WriteLine(fi.Name);
+                    string[] nm = fi.Name.Split('.');
+                    Console.WriteLine(nm[0]);
+                    listBox1.Items.Add(nm[0]);
+                    item.Add(nm[0]);
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

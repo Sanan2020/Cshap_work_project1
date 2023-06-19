@@ -195,19 +195,20 @@ namespace project1
 
                 comboBox2.Items.Add("Default");
 
-                if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))//ถ้าเจอไฟล์
-                {
-                    String rfile;
-                    StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                    while ((rfile = streamread.ReadLine()) != null)
-                    {
-                        // textBox1.Text += rfile + "\r\n";
-                        comboBox2.Items.Add(rfile);
+                /* if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))//ถ้าเจอไฟล์
+                 {
+                     String rfile;
+                     StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                     while ((rfile = streamread.ReadLine()) != null)
+                     {
+                         // textBox1.Text += rfile + "\r\n";
+                         comboBox2.Items.Add(rfile);
 
-                    }
-                    streamread.Close();
-                }
-                comboBox2.SelectedItem = "Default";
+                     }
+                     streamread.Close();
+                 }
+                 comboBox2.SelectedItem = "Default";*/
+                cbBox2re();
 
                 trackBar7.Value = value_trackBar7;
                 l_redfactor.Text = value_trackBar7.ToString();
@@ -453,6 +454,18 @@ namespace project1
                     command13.MaximumWallPercent = value_trackBar17;
                     command13.Wall = value_trackBar22;
                     command13.Run(destImage);
+
+                    /*LineRemoveCommand commandc = new LineRemoveCommand();
+                    commandc.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+                    commandc.Type = LineRemoveCommandType.Vertical;
+                    //command13.Type = LineRemoveCommandType.Vertical;
+                    commandc.Flags = LineRemoveCommandFlags.UseGap;
+                    commandc.GapLength = value_trackBar14;
+                    commandc.MaximumLineWidth = value_trackBar15;
+                    commandc.MinimumLineLength = value_trackBar16;
+                    commandc.MaximumWallPercent = value_trackBar17;
+                    commandc.Wall = value_trackBar22;
+                    commandc.Run(destImage);*/
                 }
 
                 if (chckbox10 == true)
@@ -1018,11 +1031,11 @@ namespace project1
                     else
                     {
                         save();
-                        using (StreamWriter streamwri1 = File.AppendText(listname))
+                       /* using (StreamWriter streamwri1 = File.AppendText(listname))
                         {
                             streamwri1.WriteLine(pfname);
                             streamwri1.Close();
-                        }
+                        }*/
                     }
 
                     void save()
@@ -2455,8 +2468,7 @@ namespace project1
         }
 
         public void cbBox2re() {
-            //MessageBox.Show("test");
-            comboBox2.Items.Clear();
+            /*comboBox2.Items.Clear();
             comboBox2.Items.Add("Default");
             String rfile;
             StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
@@ -2467,6 +2479,17 @@ namespace project1
 
             }
             streamread.Close();
+            comboBox2.SelectedItem = "Default";*/
+            comboBox2.Items.Clear();
+            comboBox2.Items.Add("Default");
+            DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
+            foreach (var fi in di.GetFiles("*.txt"))
+            {
+                //Console.WriteLine(fi.Name);
+                string[] nm = fi.Name.Split('.');
+                Console.WriteLine(nm[0]);
+                comboBox2.Items.Add(nm[0]);
+            }
             comboBox2.SelectedItem = "Default";
         }
 
