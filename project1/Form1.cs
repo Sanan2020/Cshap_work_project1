@@ -2547,5 +2547,11 @@ namespace project1
                 Console.WriteLine("c.Left " + c.Left.ToString());
             }
         }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1Export f1ex = new Form1Export();
+            f1ex.ShowDialog();
+        }
     }
 }
