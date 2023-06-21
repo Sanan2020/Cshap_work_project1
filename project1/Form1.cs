@@ -124,6 +124,7 @@ namespace project1
                     folderPath = ofile.FileName;
                     RasterImage image1 = codecs.Load(Path.Combine(folderPath));
                     //this.picInput.Image = new Bitmap(ofile.FileName);
+                    l_stateInput.Text = "Image "+image1.BitsPerPixel.ToString()+ " BitsPerPixel";
                     using (Image destImage1 = RasterImageConverter.ConvertToImage(image1, ConvertToImageOptions.None))
                     {
                         picInput.Image = new Bitmap(destImage1);
@@ -196,20 +197,28 @@ namespace project1
 
                 comboBox2.Items.Add("Default");
 
-                /* if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))//ถ้าเจอไฟล์
-                 {
-                     String rfile;
-                     StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                     while ((rfile = streamread.ReadLine()) != null)
-                     {
-                         // textBox1.Text += rfile + "\r\n";
-                         comboBox2.Items.Add(rfile);
+                /*if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))//ถ้าเจอไฟล์
+                {
+                    String rfile;
+                    StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                    while ((rfile = streamread.ReadLine()) != null)
+                    {
+                        // textBox1.Text += rfile + "\r\n";
+                        comboBox2.Items.Add(rfile);
 
-                     }
-                     streamread.Close();
-                 }
-                 comboBox2.SelectedItem = "Default";*/
-                cbBox2re();
+                    }
+                    streamread.Close();
+                }
+                comboBox2.SelectedItem = "Default";*/
+                //cbBox2re();
+                DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
+                foreach (var fi in di.GetFiles("*.txt"))
+                {
+                    //Console.WriteLine(fi.Name);
+                    string[] nm = fi.Name.Split('.');
+                    Console.WriteLine(nm[0]);
+                    comboBox2.Items.Add(nm[0]);
+                }
 
                 trackBar7.Value = value_trackBar7;
                 l_redfactor.Text = value_trackBar7.ToString();
@@ -585,8 +594,10 @@ namespace project1
             }*/
             if (chckbox21 == true)
             {
+                l_stateOutput.Text = "Image "+destImage.BitsPerPixel.ToString()+ " BitsPerPixel";
                 return destImage;
             } else{
+                l_stateOutput.Text = "Image "+image.BitsPerPixel.ToString()+ " BitsPerPixel";
                 return image;
             }
         }
@@ -1001,6 +1012,9 @@ namespace project1
                 numUpDown9.Value = value_numUpDown9;
                 chckbox20 = false;
                 checkBox20.Checked = chckbox20;
+
+                chckbox21 = false;
+                checkBox21.Checked = chckbox21;
                 Display();
             }
             catch (Exception ex)
@@ -1128,7 +1142,8 @@ namespace project1
                         streamwri.WriteLine(l_numUpDown8.Name + "=" + value_numUpDown8.ToString());
                         streamwri.WriteLine(l_numUpDown9.Name + "=" + value_numUpDown9.ToString());
                         streamwri.WriteLine(l_autofilter.Text + "=" + chckbox20.ToString());
-
+                        //convert to 1 bit
+                        streamwri.WriteLine(checkBox21.Text + "=" + chckbox21.ToString());
                         streamwri.Close();
                         l_saveprofile.Text = "Save Success...";
                         value_profilename.Text = "";
@@ -1354,7 +1369,9 @@ namespace project1
                         numUpDown9.Value = value_numUpDown9;
                         chckbox20 = bool.Parse(list[64]);
                         checkBox20.Checked = chckbox20;
-
+                        //convetrt to 1 bit
+                        chckbox21 = bool.Parse(list[65]);
+                        checkBox21.Checked = chckbox21;
                         Display();
                         l_saveprofile.Text = "usepf Success...";
                     }
@@ -2486,8 +2503,8 @@ namespace project1
             }
             streamread.Close();
             comboBox2.SelectedItem = "Default";*/
-            if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))//ถ้าเจอไฟล์
-            {
+          /*  if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\*.txt"))//ถ้าเจอไฟล์
+            {*/
                 comboBox2.Items.Clear();
                 comboBox2.Items.Add("Default");
                 DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
@@ -2499,7 +2516,7 @@ namespace project1
                     comboBox2.Items.Add(nm[0]);
                 }
                 comboBox2.SelectedItem = "Default";
-            }
+            //}
         }
 
         protected override void OnMouseWheel(MouseEventArgs e)
