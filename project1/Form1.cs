@@ -210,14 +210,17 @@ namespace project1
                     streamread.Close();
                 }
                 comboBox2.SelectedItem = "Default";*/
-                //cbBox2re();
-                DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
-                foreach (var fi in di.GetFiles("*.txt"))
+                cbBox2re();
+                if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))
                 {
-                    //Console.WriteLine(fi.Name);
-                    string[] nm = fi.Name.Split('.');
-                    Console.WriteLine(nm[0]);
-                    comboBox2.Items.Add(nm[0]);
+                    DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
+                    foreach (var fi in di.GetFiles("*.txt"))
+                    {
+                        //Console.WriteLine(fi.Name);
+                        string[] nm = fi.Name.Split('.');
+                        Console.WriteLine(nm[0]);
+                        comboBox2.Items.Add(nm[0]);
+                    }
                 }
 
                 trackBar7.Value = value_trackBar7;
@@ -2518,7 +2521,8 @@ namespace project1
               {*/
             comboBox2.Items.Clear();
             comboBox2.Items.Add("Default");
-            DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
+            if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt")) { 
+                DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
             foreach (var fi in di.GetFiles("*.txt"))
             {
                 //Console.WriteLine(fi.Name);
@@ -2528,6 +2532,7 @@ namespace project1
             }
             comboBox2.SelectedItem = "Default";
             //}
+            }
         }
 
         protected override void OnMouseWheel(MouseEventArgs e)
