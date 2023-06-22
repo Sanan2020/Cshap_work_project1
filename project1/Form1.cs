@@ -60,7 +60,7 @@ namespace project1
         public int value_trbDynBin1 = 8;
         public int value_trbDynBin2 = 16;
         public int value_trbMaximum = 3;
-        public int value_trbMinimum = 3;
+        public int value_trbMinimum =  3;
         public int value_trbGamma = 310;
         public bool chckbox10 = false;
         public bool chckbox11 = false;

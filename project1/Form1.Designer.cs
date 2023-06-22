@@ -207,8 +207,6 @@
             this.numUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.Remove = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -216,6 +214,9 @@
             this.checkBox21 = new System.Windows.Forms.CheckBox();
             this.l_stateInput = new System.Windows.Forms.Label();
             this.l_stateOutput = new System.Windows.Forms.Label();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -2281,24 +2282,6 @@
             this.panel1.Size = new System.Drawing.Size(802, 803);
             this.panel1.TabIndex = 30;
             // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(1648, 108);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(75, 23);
-            this.btnImport.TabIndex = 39;
-            this.btnImport.Text = "Import";
-            this.btnImport.UseVisualStyleBackColor = true;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(1743, 108);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 40;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = true;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -2314,8 +2297,11 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
             this.importToolStripMenuItem,
-            this.exportToolStripMenuItem});
+            this.exportToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -2323,14 +2309,14 @@
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.importToolStripMenuItem.Text = "Import";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Text = "Import Profile";
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Text = "Export Profile";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // checkBox21
@@ -2338,7 +2324,7 @@
             this.checkBox21.AutoSize = true;
             this.checkBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox21.Location = new System.Drawing.Point(1120, 554);
-            this.checkBox21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox21.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox21.Name = "checkBox21";
             this.checkBox21.Size = new System.Drawing.Size(107, 19);
             this.checkBox21.TabIndex = 42;
@@ -2362,6 +2348,24 @@
             this.l_stateOutput.Size = new System.Drawing.Size(0, 13);
             this.l_stateOutput.TabIndex = 44;
             // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save AS";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2370,8 +2374,6 @@
             this.Controls.Add(this.l_stateOutput);
             this.Controls.Add(this.l_stateInput);
             this.Controls.Add(this.checkBox21);
-            this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -2657,8 +2659,6 @@
         private System.Windows.Forms.Button btnMaxiMini;
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
@@ -2666,6 +2666,9 @@
         private System.Windows.Forms.CheckBox checkBox21;
         private System.Windows.Forms.Label l_stateInput;
         private System.Windows.Forms.Label l_stateOutput;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 
