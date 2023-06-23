@@ -2699,7 +2699,7 @@ namespace project1
                         {
                             pic2.Image = new Bitmap(destImage1);
                         }
-                        imagescol.Add(rasterImage);
+                        imagescol.Add(rasterImage);//////
                         
                         pic2.Height = 240;
                         pic2.Width = 200;
