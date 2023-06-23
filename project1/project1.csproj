@@ -70,6 +70,8 @@
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
@@ -108,6 +110,8 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageViewerItem.cs" />
+    <Compile Include="Leadtools\Documents.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -198,10 +202,24 @@
     <Error Condition="!Exists('..\packages\Leadtools.Ocr.Languages.Main.NET.22.0.0.8\build\net40\Leadtools.Ocr.Languages.Main.NET.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Ocr.Languages.Main.NET.22.0.0.8\build\net40\Leadtools.Ocr.Languages.Main.NET.targets'))" />
     <Error Condition="!Exists('..\packages\Leadtools.Ocr.22.0.0.8\build\net40\Leadtools.Ocr.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Ocr.22.0.0.8\build\net40\Leadtools.Ocr.targets'))" />
     <Error Condition="!Exists('..\packages\Leadtools.Pdf.22.0.0.8\build\net40\Leadtools.Pdf.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Pdf.22.0.0.8\build\net40\Leadtools.Pdf.targets'))" />
+    <Error Condition="!Exists('..\packages\Leadtools.Formats.Vector.22.0.0.8\build\net40\Leadtools.Formats.Vector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Formats.Vector.22.0.0.8\build\net40\Leadtools.Formats.Vector.targets'))" />
+    <Error Condition="!Exists('..\packages\Leadtools.Barcode.22.0.0.8\build\net40\Leadtools.Barcode.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Barcode.22.0.0.8\build\net40\Leadtools.Barcode.targets'))" />
+    <Error Condition="!Exists('..\packages\Leadtools.Annotations.22.0.0.8\build\net40\Leadtools.Annotations.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Annotations.22.0.0.8\build\net40\Leadtools.Annotations.targets'))" />
+    <Error Condition="!Exists('..\packages\Leadtools.Formats.Document.22.0.0.8\build\net40\Leadtools.Formats.Document.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Formats.Document.22.0.0.8\build\net40\Leadtools.Formats.Document.targets'))" />
+    <Error Condition="!Exists('..\packages\Leadtools.Document.22.0.0.8\build\net40\Leadtools.Document.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Document.22.0.0.8\build\net40\Leadtools.Document.targets'))" />
+    <Error Condition="!Exists('..\packages\Leadtools.Document.Analytics.22.0.0.8\build\net40\Leadtools.Document.Analytics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Document.Analytics.22.0.0.8\build\net40\Leadtools.Document.Analytics.targets'))" />
+    <Error Condition="!Exists('..\packages\Leadtools.Forms.22.0.0.8\build\net40\Leadtools.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Leadtools.Forms.22.0.0.8\build\net40\Leadtools.Forms.targets'))" />
   </Target>
   <Import Project="..\packages\Leadtools.Formats.Raster.Common.22.0.0.8\build\net40\Leadtools.Formats.Raster.Common.targets" Condition="Exists('..\packages\Leadtools.Formats.Raster.Common.22.0.0.8\build\net40\Leadtools.Formats.Raster.Common.targets')" />
   <Import Project="..\packages\Leadtools.Image.Processing.22.0.0.8\build\net40\Leadtools.Image.Processing.targets" Condition="Exists('..\packages\Leadtools.Image.Processing.22.0.0.8\build\net40\Leadtools.Image.Processing.targets')" />
   <Import Project="..\packages\Leadtools.Ocr.Languages.Main.NET.22.0.0.8\build\net40\Leadtools.Ocr.Languages.Main.NET.targets" Condition="Exists('..\packages\Leadtools.Ocr.Languages.Main.NET.22.0.0.8\build\net40\Leadtools.Ocr.Languages.Main.NET.targets')" />
   <Import Project="..\packages\Leadtools.Ocr.22.0.0.8\build\net40\Leadtools.Ocr.targets" Condition="Exists('..\packages\Leadtools.Ocr.22.0.0.8\build\net40\Leadtools.Ocr.targets')" />
   <Import Project="..\packages\Leadtools.Pdf.22.0.0.8\build\net40\Leadtools.Pdf.targets" Condition="Exists('..\packages\Leadtools.Pdf.22.0.0.8\build\net40\Leadtools.Pdf.targets')" />
+  <Import Project="..\packages\Leadtools.Formats.Vector.22.0.0.8\build\net40\Leadtools.Formats.Vector.targets" Condition="Exists('..\packages\Leadtools.Formats.Vector.22.0.0.8\build\net40\Leadtools.Formats.Vector.targets')" />
+  <Import Project="..\packages\Leadtools.Barcode.22.0.0.8\build\net40\Leadtools.Barcode.targets" Condition="Exists('..\packages\Leadtools.Barcode.22.0.0.8\build\net40\Leadtools.Barcode.targets')" />
+  <Import Project="..\packages\Leadtools.Annotations.22.0.0.8\build\net40\Leadtools.Annotations.targets" Condition="Exists('..\packages\Leadtools.Annotations.22.0.0.8\build\net40\Leadtools.Annotations.targets')" />
+  <Import Project="..\packages\Leadtools.Formats.Document.22.0.0.8\build\net40\Leadtools.Formats.Document.targets" Condition="Exists('..\packages\Leadtools.Formats.Document.22.0.0.8\build\net40\Leadtools.Formats.Document.targets')" />
+  <Import Project="..\packages\Leadtools.Document.22.0.0.8\build\net40\Leadtools.Document.targets" Condition="Exists('..\packages\Leadtools.Document.22.0.0.8\build\net40\Leadtools.Document.targets')" />
+  <Import Project="..\packages\Leadtools.Document.Analytics.22.0.0.8\build\net40\Leadtools.Document.Analytics.targets" Condition="Exists('..\packages\Leadtools.Document.Analytics.22.0.0.8\build\net40\Leadtools.Document.Analytics.targets')" />
+  <Import Project="..\packages\Leadtools.Forms.22.0.0.8\build\net40\Leadtools.Forms.targets" Condition="Exists('..\packages\Leadtools.Forms.22.0.0.8\build\net40\Leadtools.Forms.targets')" />
 </Project>

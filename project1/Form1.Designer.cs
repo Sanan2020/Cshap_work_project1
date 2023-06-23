@@ -288,7 +288,7 @@
             // 
             // Browse
             // 
-            this.Browse.Location = new System.Drawing.Point(1595, 510);
+            this.Browse.Location = new System.Drawing.Point(1638, 160);
             this.Browse.Name = "Browse";
             this.Browse.Size = new System.Drawing.Size(76, 32);
             this.Browse.TabIndex = 0;
@@ -298,7 +298,7 @@
             // 
             // picInput
             // 
-            this.picInput.Location = new System.Drawing.Point(1584, 122);
+            this.picInput.Location = new System.Drawing.Point(1609, 225);
             this.picInput.Name = "picInput";
             this.picInput.Size = new System.Drawing.Size(293, 164);
             this.picInput.TabIndex = 1;
@@ -337,7 +337,7 @@
             // 
             // BrowseSave
             // 
-            this.BrowseSave.Location = new System.Drawing.Point(1677, 510);
+            this.BrowseSave.Location = new System.Drawing.Point(1720, 160);
             this.BrowseSave.Name = "BrowseSave";
             this.BrowseSave.Size = new System.Drawing.Size(93, 32);
             this.BrowseSave.TabIndex = 6;
@@ -547,7 +547,7 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(1785, 510);
+            this.Reset.Location = new System.Drawing.Point(1828, 160);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(74, 32);
             this.Reset.TabIndex = 20;
@@ -2279,9 +2279,8 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.picOutput);
-            this.panel1.Location = new System.Drawing.Point(1584, 299);
+            this.panel1.Location = new System.Drawing.Point(1609, 402);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(293, 165);
             this.panel1.TabIndex = 30;
@@ -2313,26 +2312,27 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save AS";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importToolStripMenuItem.Text = "Import Profile";
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = "Export Profile";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
@@ -2347,7 +2347,7 @@
             // 
             this.checkBox21.AutoSize = true;
             this.checkBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox21.Location = new System.Drawing.Point(1677, 480);
+            this.checkBox21.Location = new System.Drawing.Point(1648, 124);
             this.checkBox21.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox21.Name = "checkBox21";
             this.checkBox21.Size = new System.Drawing.Size(107, 19);

@@ -26,6 +26,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Leadtools.Ocr;
 using Leadtools.Ocr.LEADEngine;
 using System.Runtime.InteropServices;
+using Leadtools.Document;
 
 namespace project1
 {
@@ -180,9 +181,9 @@ namespace project1
 
                 flowLayoutPanel1.AutoScroll = true;
                 this.picInput.SizeMode = PictureBoxSizeMode.StretchImage;
-                this.picInput.BorderStyle = BorderStyle.FixedSingle;
+               // this.picInput.BorderStyle = BorderStyle.FixedSingle;
                 this.picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
-                this.picOutput.BorderStyle = BorderStyle.FixedSingle;
+              //  this.picOutput.BorderStyle = BorderStyle.FixedSingle;
 
                 comboBox1.Items.Add("Default");
                 comboBox1.Items.Add("ErosionOmniDirectional");
@@ -2611,10 +2612,10 @@ namespace project1
         }
         List<RasterImage> imagescol = new List<RasterImage>();
         int pageCount;
+        String[] file;
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             imagescol.Clear();
-
 
             RasterCodecs codecs = new RasterCodecs();
             codecs.ThrowExceptionsOnInvalidImages = true;
@@ -2624,13 +2625,31 @@ namespace project1
             ofd.Filter = "All File |*.*";
             DialogResult dr = ofd.ShowDialog();
             int page = 0;
-            String[] file;
+            
 
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
                 splitContainer1.Panel1.Controls.Clear();
 
                 file = ofd.FileNames;
+
+               /* // Create the UI of the application
+                var splitContainer = new SplitContainer { Dock = DockStyle.Fill };
+                this.Controls.Add(splitContainer);
+                // Create the document viewer using panels of a System.Windows.Forms.SplitterPanel
+                var createOptions = new Leadtools.Documents.UI.DocumentViewerCreateOptions();
+                createOptions.ViewContainer = splitContainer.Panel2;
+                createOptions.ThumbnailsContainer = splitContainer.Panel1;
+                var documentViewer = DocumentViewerFactory.CreateDocumentViewer(createOptions);
+                // Load a PDF document
+                var document = DocumentFactory.LoadFromUri(new Uri("http://demo.leadtools.com/images/pdf/leadtools.pdf"),
+                  new Leadtools.Documents.LoadDocumentOptions { UseCache = false });
+                // Ready, set in the viewer
+                documentViewer.SetDocument(document);
+                // Now set some options, not required
+                documentViewer.View.PreferredItemType = DocumentViewerItemType.Svg;
+                documentViewer.Commands.Run(DocumentViewerCommands.InteractivePanZoom);*/
+
                 /* int x = 20;//ระวหว่าง panel
                  int y = 20;//ระวหว่าง panel
                  int maxWidth = -1;*/
@@ -2653,7 +2672,6 @@ namespace project1
                 foreach (string img in file)
                 {
                     /**/
-
                     using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
                     {
                         pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
@@ -2666,15 +2684,23 @@ namespace project1
                         // Load it as a raster image and add it
                         var rasterImage = _rasterCodecs.Load(img, pageNumber);
                         l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                        /*ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+                        //Increase the brightness by 25 percent  of the possible range. 
+                        command.Brightness = 484;   //484
+                        command.Contrast = 394;     //394
+                        command.Intensity = 118;    //118
+                        command.Run(rasterImage);*/
+
                         // this._imageViewer.Items.AddFromImage(rasterImage, 1);
                         //imagescol.Add(rasterImage);
                         PictureBox pic2 = new PictureBox();
-                        Label la = new Label();
+                        //Label la = new Label();
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                         {
                             pic2.Image = new Bitmap(destImage1);
                         }
                         imagescol.Add(rasterImage);
+                        
                         pic2.Height = 240;
                         pic2.Width = 200;
                         //selectImage = pageNumber.ToString();
@@ -2691,21 +2717,24 @@ namespace project1
                         }
                         //this.panelImage.Controls.Add(pic2);
                         this.splitContainer1.Panel1.Controls.Add(pic2);
-                        la.Width = 20;
+                       /* la.Width = 20;
                         la.Location = new Point(x2-10,y2);
-                        la.Text = pageNumber.ToString();
+                        la.Text = pageNumber.ToString();*/
                         //this.splitContainer1.Panel1.Controls.Add(la);
                         //Console.WriteLine(pic2.Location.X.ToString() + pic2.Location.Y.ToString());
                         Console.WriteLine(pic2.Name);
+
                         //pic2.MouseClick += new MouseEventHandler(pic1_MouseClick);
+                        
                     }
-                    chang();
+                    
+                     chang();
                 }
             }
         }
         void chang(){
-            splitContainer1.Panel2.Controls.Clear();
-            int w3 = 420 / 2;
+          /*  splitContainer1.Panel2.Controls.Clear();
+            int w3 = 550 / 2;
             int x3 = (splitContainer1.Panel2.Width / 2) - w3;
 
             //int x3 = 40;//ระวหว่าง panel
@@ -2716,10 +2745,10 @@ namespace project1
             //Console.WriteLine("munberImagescol: " + munberImagescol);
             for (int i = 1; i <= pageCount; i++)
             {
-                /*MinimumCommand command9 = new MinimumCommand();
+                MinimumCommand command9 = new MinimumCommand();
                 //Apply the Minimum filter. 
                 command9.Dimension = 8;
-                command9.Run(imagescol[i-1]);*/
+                command9.Run(imagescol[i-1]);
                 ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
                 command.Brightness = value_trackBar1;   //484
@@ -2727,21 +2756,21 @@ namespace project1
                 command.Intensity = value_trackBar3;    //118
                 command.Run(imagescol[i - 1]);
 
-               /* UnsharpMaskCommand command2 = new UnsharpMaskCommand();
-                command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
-                command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
-                command2.Threshold = value_trackBar6;  //rate 0 - 255
-                command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-                command2.Run(imagescol[i - 1]);*/
 
+                 UnsharpMaskCommand command2 = new UnsharpMaskCommand();
+                 command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
+                 command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
+                 command2.Threshold = value_trackBar6;  //rate 0 - 255
+                 command2.ColorType = UnsharpMaskCommandColorType.Rgb;
+                 command2.Run(imagescol[i - 1]);
                 PictureBox pic3 = new PictureBox();
                 using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[i - 1], ConvertToImageOptions.None))
                 {
                     // piccenter.Image = new Bitmap(destImage1);
                     pic3.Image = new Bitmap(destImage1);
                 }
-                pic3.Height = 600; //ความกว้างหน้ากระดาษ
-                pic3.Width = 420;  //ความสูงหน้ากระดาษ
+                pic3.Height = 640; //ความสูงหน้ากระดาษ
+                pic3.Width = 550;  //ความกว้างหน้ากระดาษ
 
                 pic3.Location = new Point(x3, y3);
                 pic3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -2756,12 +2785,70 @@ namespace project1
                 }
                 //this.panelcenter.Controls.Add(pic3);
                 this.splitContainer1.Panel2.Controls.Add(pic3);
+            }*/
+            /**/
+            splitContainer1.Panel2.Controls.Clear();
+            int w3 = 550 / 2;
+            int x3 = (splitContainer1.Panel2.Width / 2) - w3;
+
+            //int x3 = 40;//ระวหว่าง panel
+            int y3 = 20;//ระวหว่าง panel
+            int maxWidth3 = -1;
+            RasterCodecs _rasterCodecs = new RasterCodecs();
+            //Load documents at 300 DPI for better viewing
+            _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+            int pageCount2;
+            foreach (string img in file){
+                using (var imageInfo = _rasterCodecs.GetInformation(img, true)){
+                    pageCount2 = imageInfo.TotalPages; //จำนวนเอกสาร
+                }
+                Console.WriteLine("Page " + pageCount2);
+                l_numberPages.Text = pageCount2.ToString() + " Page";
+                // Loads all the pages into the viewer
+                for (var pageNumber = 1; pageNumber <= pageCount2; pageNumber++){
+                    // Load it as a raster image and add it
+                    var rasterImage = _rasterCodecs.Load(img, pageNumber);
+                    PictureBox pic3 = new PictureBox();
+                    ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+                    //Increase the brightness by 25 percent  of the possible range. 
+                    command.Brightness = value_trackBar1;   //484
+                    command.Contrast = value_trackBar2;     //394
+                    command.Intensity = value_trackBar3;    //118
+                    command.Run(rasterImage);
+                    using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                    {
+                        // piccenter.Image = new Bitmap(destImage1);
+                        pic3.Image = new Bitmap(destImage1);
+                    }
+                    pic3.Height = 640; //ความสูงหน้ากระดาษ
+                    pic3.Width = 550;  //ความกว้างหน้ากระดาษ
+
+                    pic3.Location = new Point(x3, y3);
+                    pic3.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pic3.BorderStyle = BorderStyle.FixedSingle;
+
+                    y3 += pic3.Height + 10; //ระยะห่างระหว่างหน้า
+                    maxWidth3 = Math.Max(pic3.Height, maxWidth3);
+                    if (x3 > this.ClientSize.Width - 100)
+                    {
+                        y3 = 20;
+                        x3 += maxWidth3 + 100;
+                    }
+                    //this.panelcenter.Controls.Add(pic3);
+                    this.splitContainer1.Panel2.Controls.Add(pic3);
+                }
             }
+                    
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
