@@ -2690,7 +2690,7 @@ namespace project1
                         command.Contrast = 394;     //394
                         command.Intensity = 118;    //118
                         command.Run(rasterImage);*/
-
+                        /*test*/
                         // this._imageViewer.Items.AddFromImage(rasterImage, 1);
                         //imagescol.Add(rasterImage);
                         PictureBox pic2 = new PictureBox();
