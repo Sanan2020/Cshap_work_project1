@@ -291,8 +291,12 @@ namespace project1
                 /*layout*/
                 splitContainer1.Panel1.AutoScroll = true;
                 splitContainer1.Panel2.AutoScroll = true;
+                splitContainer1.Panel1.BackColor = Color.DarkGray;
+                splitContainer1.Panel2.BackColor = Color.DarkGray;
                 splitContainer1.SplitterWidth = 10; //ความกว้างของตัว split ค่าเดิม 4
                 splitContainer1.BorderStyle = BorderStyle.FixedSingle;
+
+
                 /**/
             }
             catch (Exception ex)
@@ -2611,11 +2615,10 @@ namespace project1
         }
         List<RasterImage> imagescol = new List<RasterImage>();
         int pageCount;
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        String[] file;
+        private async void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             imagescol.Clear();
-
-
             RasterCodecs codecs = new RasterCodecs();
             codecs.ThrowExceptionsOnInvalidImages = true;
             OpenFileDialog ofd = new OpenFileDialog();
@@ -2624,10 +2627,8 @@ namespace project1
             ofd.Filter = "All File |*.*";
             DialogResult dr = ofd.ShowDialog();
             int page = 0;
-            String[] file;
-
-            if (dr == System.Windows.Forms.DialogResult.OK)
-            {
+            
+            if (dr == System.Windows.Forms.DialogResult.OK){
                 splitContainer1.Panel1.Controls.Clear();
 
                 file = ofd.FileNames;
@@ -2638,7 +2639,7 @@ namespace project1
                 //int w = 170 / 2;
                 // int w = 420 / 2;
                 //int x3 = (splitContainer1.Panel2.Width / 2) - w;
-                int w2 = 240 / 2;
+                int w2 = 150 / 2;
                 int x2 = (splitContainer1.Panel1.Width / 2) - w2;
 
                 //int x3 = 40;//ระวหว่าง panel
@@ -2650,10 +2651,8 @@ namespace project1
                 _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
                 /**/
                 // int pageCount;
-                foreach (string img in file)
-                {
+                foreach (string img in file){
                     /**/
-
                     using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
                     {
                         pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
@@ -2668,17 +2667,14 @@ namespace project1
                         l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
                         // this._imageViewer.Items.AddFromImage(rasterImage, 1);
                         //imagescol.Add(rasterImage);
-                        PictureBox pic2 = new PictureBox();
                         Label la = new Label();
-                        using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                        {
-                            pic2.Image = new Bitmap(destImage1);
-                        }
-                        imagescol.Add(rasterImage);
-                        pic2.Height = 240;
-                        pic2.Width = 200;
+                        PictureBox pic2 = new PictureBox();
+                        pic2.Height = 180;
+                        pic2.Width = 160;
                         //selectImage = pageNumber.ToString();
-                        pic2.Location = new Point(x2, y2);
+                        //pic2.Location = new Point(x2, y2);
+                        pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
+
                         pic2.SizeMode = PictureBoxSizeMode.StretchImage;
                         pic2.BorderStyle = BorderStyle.FixedSingle;
                         pic2.Name = pageNumber.ToString();
@@ -2691,18 +2687,107 @@ namespace project1
                         }
                         //this.panelImage.Controls.Add(pic2);
                         this.splitContainer1.Panel1.Controls.Add(pic2);
-                        la.Width = 20;
-                        la.Location = new Point(x2-10,y2);
+                       
+                        using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None)){
+                            pic2.Image = new Bitmap(destImage1);    
+                        }
+                        imagescol.Add(rasterImage);
+                        
+                       /* la.Width = 10;
+                        la.Height = 15;
+                        la.BackColor = Color.White;
+                        la.Location = new Point((splitContainer1.Panel1.Width / 2) - la.Width, y2+splitContainer1.Panel1.AutoScrollPosition.Y);
                         la.Text = pageNumber.ToString();
-                        //this.splitContainer1.Panel1.Controls.Add(la);
+                        this.splitContainer1.Panel1.Controls.Add(la);*/
                         //Console.WriteLine(pic2.Location.X.ToString() + pic2.Location.Y.ToString());
                         Console.WriteLine(pic2.Name);
-                        //pic2.MouseClick += new MouseEventHandler(pic1_MouseClick);
+                        pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
+                        await Task.Delay(500);
                     }
-                    chang();
+                    //chang();
+                    /*using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[0], ConvertToImageOptions.None))
+                    {
+                        pic2.Image = new Bitmap(destImage1);
+                    }*/
                 }
             }
         }
+        private async void pic2_MouseClick(object sender, MouseEventArgs e)
+        {
+            /* this.splitContainer1.Panel2.Controls.Clear();
+             PictureBox picReview = new PictureBox();
+             picReview.Height = 600; //ความกว้างหน้ากระดาษ
+             picReview.Width = 420;  //ความสูงหน้ากระดาษ
+
+             picReview.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview.Width/2), 20);
+             picReview.SizeMode = PictureBoxSizeMode.StretchImage;
+             PictureBox pb = (PictureBox)sender;
+             //if (pb.Name == "1")
+            // {
+             //MessageBox.Show(pb.Name);
+             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+             //Increase the brightness by 25 percent  of the possible range. 
+             command.Brightness = 484;   //484
+             command.Contrast = 394;     //394
+             command.Intensity = 118;    //118
+             command.Run(imagescol[int.Parse(pb.Name) - 1]);
+             //PictureBox pic3 = new PictureBox();
+             this.splitContainer1.Panel2.Controls.Add(picReview);
+             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+             //Increase the brightness by 25 percent  of the possible range. 
+             command.Brightness = 484;   //484
+             command.Contrast = 394;     //394
+             command.Intensity = 118;    //118
+             command.Run(imagescol[int.Parse(pb.Name) - 1]);
+             using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[int.Parse(pb.Name) - 1], ConvertToImageOptions.None))
+             {
+                 picReview.Image = new Bitmap(destImage1);
+             }*/
+            // }
+            /******/
+            this.splitContainer1.Panel2.Controls.Clear();
+            PictureBox pb = (PictureBox)sender;
+            RasterCodecs _rasterCodecs = new RasterCodecs();
+            //Load documents at 300 DPI for better viewing
+            _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+            foreach (string img in file)
+            {
+                /**/
+                using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
+                {
+                    pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
+                }
+                Console.WriteLine("Page " + pageCount);
+                l_numberPages.Text = pageCount.ToString() + " Page";
+                // Loads all the pages into the viewer
+                PictureBox picReview2 = new PictureBox();
+                
+                    // Load it as a raster image and add it
+                    var rasterImage = _rasterCodecs.Load(img, int.Parse(pb.Name));
+                    l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                   
+                    picReview2.Height = 600; //ความกว้างหน้ากระดาษ
+                    picReview2.Width = 420;  //ความสูงหน้ากระดาษ
+
+                    picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
+                    picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
+                    this.splitContainer1.Panel2.Controls.Add(picReview2);
+                    ContrastBrightnessIntensityCommand command2 = new ContrastBrightnessIntensityCommand();
+                    //Increase the brightness by 25 percent  of the possible range. 
+                    command2.Brightness = 484;   //484
+                    command2.Contrast = 394;     //394
+                    command2.Intensity = 118;    //118
+                    command2.Run(rasterImage);
+                    using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                    {
+                        picReview2.Image = new Bitmap(destImage1);
+                    }
+                
+                
+            }
+            await Task.Delay(500);
+        }
+
         void chang(){
             splitContainer1.Panel2.Controls.Clear();
             int w3 = 420 / 2;
@@ -2756,6 +2841,7 @@ namespace project1
                 }
                 //this.panelcenter.Controls.Add(pic3);
                 this.splitContainer1.Panel2.Controls.Add(pic3);
+
             }
         }
 
