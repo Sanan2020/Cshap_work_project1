@@ -2729,10 +2729,10 @@ namespace project1
             picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
             picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
             this.splitContainer1.Panel2.Controls.Add(picReview2);
-            using (Image destImage1 = RasterImageConverter.ConvertToImage(Image(), ConvertToImageOptions.None))
+           /* using (Image destImage1 = RasterImageConverter.ConvertToImage(Image(), ConvertToImageOptions.None))
             {
                 picReview2.Image = new Bitmap(destImage1);
-            }
+            }*/
         }
         int pdname;
         RasterCodecs _rasterCodecs = new RasterCodecs();
@@ -2741,7 +2741,7 @@ namespace project1
             //รับไฟล์ที่กำลังแสดงผลลัพธ์การปรับแต่งในฟังก์ชัน Image();
             //ทำงานเมื่อมีการปรับแต่ง
         }
-        public RasterImage Image() { //***ส่งดึงไฟล์จากในนี้แล้วไปแสดงผลลัพธ์การปรับแต่ง (ไฟล์จะถูกเลือกในนี้ก่อน)
+        public async void Image() { //***ส่งดึงไฟล์จากในนี้แล้วไปแสดงผลลัพธ์การปรับแต่ง (ไฟล์จะถูกเลือกในนี้ก่อน)
             //ภาพเปลี่ยนเมื่อคลิก
             this.splitContainer1.Panel2.Controls.Clear();
             
@@ -2954,7 +2954,7 @@ namespace project1
                  }*/
                // _rasterCodecs.Save(rasterImage, Path.Combine(@"C:\Users\Administrator\Downloads\", "result1.pdf" + ".pdf"), RasterImageFormat.RasPdf, 24);
             }
-            //await Task.Delay(500);
+            await Task.Delay(1000);
             picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
             picReview2.MouseUp += new MouseEventHandler(picReview2_MouseUp);
             picReview2.MouseMove += new MouseEventHandler(picReview2_MouseMove);
@@ -2969,7 +2969,7 @@ namespace project1
            
             
             
-            return rasterImage;
+           // return rasterImage;
             //}
             //return rasterImage;
         }
