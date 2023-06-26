@@ -35,6 +35,7 @@ namespace project1
     {
         internal static Form2 form2;
         internal static Form1 form1;
+        internal static Preview pv;
 
         public String folderPath;
         RasterCodecs codecs = new RasterCodecs();
@@ -292,6 +293,8 @@ namespace project1
                 /*layout*/
                 splitContainer1.Panel1.AutoScroll = true;
                 splitContainer1.Panel2.AutoScroll = true;
+                splitContainer1.Panel1.BackColor = Color.DarkGray;
+                splitContainer1.Panel2.BackColor = Color.DarkGray;
                 splitContainer1.SplitterWidth = 10; //ความกว้างของตัว split ค่าเดิม 4
                 splitContainer1.BorderStyle = BorderStyle.FixedSingle;
                 /**/
@@ -737,32 +740,36 @@ namespace project1
         private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
-            chang();
+            Image();
         }
 
         private void trackBar2_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
+            Image();
         }
 
         private void trackBar3_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
+            Image();
         }
 
         private void trackBar4_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
+            Image();
         }
 
         private void trackBar5_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
+            Image();
         }
 
         private void trackBar6_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -771,7 +778,7 @@ namespace project1
             else
             {
                 selectCombobox = comboBox1.SelectedIndex;
-                Display();
+                Display(); Image();
                 //MessageBox.Show(folderPath);
             }
         }
@@ -1029,7 +1036,7 @@ namespace project1
 
                 chckbox21 = false;
                 checkBox21.Checked = chckbox21;
-                Display();
+                Display(); Image();
             }
             catch (Exception ex)
             {
@@ -1405,12 +1412,12 @@ namespace project1
             if (checkBox1.Checked == true)
             {
                 chckbox = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1419,12 +1426,12 @@ namespace project1
             if (checkBox2.Checked == true)
             {
                 chckbox2 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox2 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1448,17 +1455,17 @@ namespace project1
 
         private void trackBar7_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar8_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar9_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
         private bool Expanded = false;
         private void btnConBrigtIntens_Click(object sender, EventArgs e)
@@ -1511,12 +1518,12 @@ namespace project1
             if (checkBox3.Checked == true)
             {
                 chckbox3 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox3 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1525,12 +1532,12 @@ namespace project1
             if (checkBox4.Checked == true)
             {
                 chckbox4 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox4 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1539,12 +1546,12 @@ namespace project1
             if (checkBox5.Checked == true)
             {
                 chckbox5 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox5 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1553,12 +1560,12 @@ namespace project1
             if (checkBox6.Checked == true)
             {
                 chckbox6 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox6 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1567,12 +1574,12 @@ namespace project1
             if (checkBox7.Checked == true)
             {
                 chckbox7 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox7 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1581,12 +1588,12 @@ namespace project1
             if (checkBox8.Checked == true)
             {
                 chckbox8 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox8 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1595,12 +1602,12 @@ namespace project1
             if (checkBox9.Checked == true)
             {
                 chckbox9 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox9 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1618,12 +1625,12 @@ namespace project1
 
         private void trbDynBin1_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trbDynBin2_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trbMaximum_Scroll(object sender, EventArgs e)
@@ -1646,17 +1653,17 @@ namespace project1
 
         private void trbMaximum_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trbMinimum_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trbGamma_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
         private bool Expanded4 = false;
         private void btnDocImgClupFnct_Click(object sender, EventArgs e)
@@ -1679,12 +1686,12 @@ namespace project1
             if (checkBox10.Checked == true)
             {
                 chckbox10 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox10 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1693,12 +1700,12 @@ namespace project1
             if (checkBox11.Checked == true)
             {
                 chckbox11 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox11 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1707,12 +1714,12 @@ namespace project1
             if (checkBox12.Checked == true)
             {
                 chckbox12 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox12 = false;
-                Display();
+                Display(); Image();
             }
         }
         private void checkBox13_CheckedChanged(object sender, EventArgs e)
@@ -1720,12 +1727,12 @@ namespace project1
             if (checkBox13.Checked == true)
             {
                 chckbox13 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox13 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1734,12 +1741,12 @@ namespace project1
             if (checkBox14.Checked == true)
             {
                 chckbox14 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox14 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1748,12 +1755,12 @@ namespace project1
             if (checkBox15.Checked == true)
             {
                 chckbox15 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox15 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1762,12 +1769,12 @@ namespace project1
             if (checkBox16.Checked == true)
             {
                 chckbox16 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox16 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -1776,12 +1783,12 @@ namespace project1
             if (checkBox17.Checked == true)
             {
                 chckbox17 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox17 = false;
-                Display();
+                Display(); Image();
             }
         }
         private bool Expanded5 = false;
@@ -1917,22 +1924,22 @@ namespace project1
 
         private void trackBar10_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar11_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar12_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar13_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar14_Scroll(object sender, EventArgs e)
@@ -1967,27 +1974,27 @@ namespace project1
 
         private void trackBar14_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar15_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar16_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar17_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar22_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar18_Scroll(object sender, EventArgs e)
@@ -2004,12 +2011,12 @@ namespace project1
 
         private void trackBar18_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar21_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar19_Scroll(object sender, EventArgs e)
@@ -2038,22 +2045,22 @@ namespace project1
 
         private void trackBar19_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar20_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar23_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar24_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar27_Scroll(object sender, EventArgs e)
@@ -2064,7 +2071,7 @@ namespace project1
 
         private void trackBar27_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar25_Scroll(object sender, EventArgs e)
@@ -2087,17 +2094,17 @@ namespace project1
 
         private void trackBar25_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar26_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar28_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void trackBar31_Scroll(object sender, EventArgs e)
@@ -2108,7 +2115,7 @@ namespace project1
 
         private void trackBar31_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void checkBox18_CheckedChanged(object sender, EventArgs e)
@@ -2116,12 +2123,12 @@ namespace project1
             if (checkBox18.Checked == true)
             {
                 chckbox18 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox18 = false;
-                Display();
+                Display(); Image();
             }
         }
 
@@ -2133,7 +2140,7 @@ namespace project1
 
         private void trackBar29_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
+            Display(); Image();
         }
 
         private void checkBox19_CheckedChanged(object sender, EventArgs e)
@@ -2141,12 +2148,12 @@ namespace project1
             if (checkBox19.Checked == true)
             {
                 chckbox19 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox19 = false;
-                Display();
+                Display(); Image();
             }
         }
         private bool Expanded12;
@@ -2184,67 +2191,67 @@ namespace project1
             if (checkBox20.Checked == true)
             {
                 chckbox20 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox20 = false;
-                Display();
+                Display(); Image();
             }
         }
 
         private void numUpDown1_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown1 = (int)numUpDown1.Value;
-            Display();
+            Display(); Image();
         }
 
         private void numUpDown2_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown2 = (int)numUpDown2.Value;
-            Display();
+            Display(); Image();
         }
 
         private void numUpDown3_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown3 = (int)numUpDown3.Value;
-            Display();
+            Display(); Image();
         }
 
         private void numUpDown4_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown4 = (int)numUpDown4.Value;
-            Display();
+            Display(); Image();
         }
 
         private void numUpDown5_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown5 = (int)numUpDown5.Value;
-            Display();
+            Display(); Image();
         }
 
         private void numUpDown6_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown6 = (int)numUpDown6.Value;
-            Display();
+            Display(); Image();
         }
 
         private void numUpDown7_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown7 = (int)numUpDown7.Value;
-            Display();
+            Display(); Image();
         }
 
         private void numUpDown8_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown8 = (int)numUpDown8.Value;
-            Display();
+            Display(); Image();
         }
 
         private void numUpDown9_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown9 = (int)numUpDown9.Value;
-            Display();
+            Display(); Image();
         }
 
         private void btnResetConBrigtIntens_Click(object sender, EventArgs e)
@@ -2258,7 +2265,7 @@ namespace project1
             value_trackBar3 = 0;
             trackBar3.Value = value_trackBar3;
             l_intensity.Text = value_trackBar3.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetUnsharpMask_Click(object sender, EventArgs e)
@@ -2272,7 +2279,7 @@ namespace project1
             value_trackBar6 = 1;
             trackBar6.Value = value_trackBar6;
             l_threshold.Text = value_trackBar6.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetGrayScale_Click(object sender, EventArgs e)
@@ -2288,7 +2295,7 @@ namespace project1
             value_trackBar9 = 250;
             trackBar9.Value = value_trackBar9;
             l_bluefactor.Text = value_trackBar9.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetDocImgClupFnct_Click(object sender, EventArgs e)
@@ -2327,7 +2334,7 @@ namespace project1
             value_trackBar13 = 1;
             trackBar13.Value = value_trackBar13;
             l_minimumdotW.Text = value_trackBar13.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetLineRemove_Click(object sender, EventArgs e)
@@ -2361,7 +2368,7 @@ namespace project1
             value_trackBar21 = 2;
             trackBar21.Value = value_trackBar21;
             l_minimumhole.Text = value_trackBar21.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetInvertedText_Click(object sender, EventArgs e)
@@ -2380,7 +2387,7 @@ namespace project1
             value_trackBar24 = 5000;
             trackBar24.Value = value_trackBar24;
             l_minimuminvertW.Text = value_trackBar24.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetAutoCrop_Click(object sender, EventArgs e)
@@ -2390,7 +2397,7 @@ namespace project1
             value_trackBar27 = 20;
             trackBar27.Value = value_trackBar27;
             l_cropThreshold.Text = value_trackBar27.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetBorderRemove_Click(object sender, EventArgs e)
@@ -2406,7 +2413,7 @@ namespace project1
             value_trackBar28 = 9;
             trackBar28.Value = value_trackBar28;
             l_whitenoiseL.Text = value_trackBar28.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetSmooth_Click(object sender, EventArgs e)
@@ -2416,7 +2423,7 @@ namespace project1
             value_trackBar31 = 2;
             trackBar31.Value = value_trackBar31;
             l_length.Text = value_trackBar31.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetFlipRotate_Click(object sender, EventArgs e)
@@ -2426,7 +2433,7 @@ namespace project1
             value_trackBar29 = 0;
             trackBar29.Value = value_trackBar29;
             l_RotateImage.Text = value_trackBar29.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void btnResetRakeRemove_Click(object sender, EventArgs e)
@@ -2453,7 +2460,7 @@ namespace project1
             numUpDown9.Value = value_numUpDown9;
             chckbox20 = false;
             checkBox20.Checked = chckbox20;
-            Display();
+            Display(); Image();
         }
         private bool Expanded14;
         private void btnMaxiMini_Click(object sender, EventArgs e)
@@ -2492,7 +2499,7 @@ namespace project1
             value_trbGamma = 310;
             trbGamma.Value = value_trbGamma;
             l_gamma.Text = value_trbGamma.ToString();
-            Display();
+            Display(); Image();
         }
 
         private void Remove_Click(object sender, EventArgs e)
@@ -2536,7 +2543,7 @@ namespace project1
             }
         }
 
-        protected override void OnMouseWheel(MouseEventArgs e)
+       /* protected override void OnMouseWheel(MouseEventArgs e)
         {
             if (e.Delta > 0)
             {
@@ -2559,7 +2566,7 @@ namespace project1
                 }
             }
             //l_zoom.Text = "w " + pictureBox1.Width.ToString() + " h" + pictureBox1.Height.ToString();
-        }
+        }*/
         int xPos;
         int yPos;
         bool Dragging;
@@ -2602,54 +2609,34 @@ namespace project1
             if (checkBox21.Checked == true)
             {
                 chckbox21 = true;
-                Display();
+                Display(); Image();
             }
             else
             {
                 chckbox21 = false;
-                Display();
+                Display(); Image();
             }
         }
-        List<RasterImage> imagescol = new List<RasterImage>();
-        int pageCount;
+        public List<RasterImage> imagescol = new List<RasterImage>();
+        public int pageCount;
         String[] file;
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private RasterImage rasterImage;
+
+        private async void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             imagescol.Clear();
-
             RasterCodecs codecs = new RasterCodecs();
             codecs.ThrowExceptionsOnInvalidImages = true;
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "";
-            ofd.Multiselect = true;
             ofd.Filter = "All File |*.*";
             DialogResult dr = ofd.ShowDialog();
             int page = 0;
-            
 
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
+                progressBar1.Value = 0;
                 splitContainer1.Panel1.Controls.Clear();
-
                 file = ofd.FileNames;
-
-               /* // Create the UI of the application
-                var splitContainer = new SplitContainer { Dock = DockStyle.Fill };
-                this.Controls.Add(splitContainer);
-                // Create the document viewer using panels of a System.Windows.Forms.SplitterPanel
-                var createOptions = new Leadtools.Documents.UI.DocumentViewerCreateOptions();
-                createOptions.ViewContainer = splitContainer.Panel2;
-                createOptions.ThumbnailsContainer = splitContainer.Panel1;
-                var documentViewer = DocumentViewerFactory.CreateDocumentViewer(createOptions);
-                // Load a PDF document
-                var document = DocumentFactory.LoadFromUri(new Uri("http://demo.leadtools.com/images/pdf/leadtools.pdf"),
-                  new Leadtools.Documents.LoadDocumentOptions { UseCache = false });
-                // Ready, set in the viewer
-                documentViewer.SetDocument(document);
-                // Now set some options, not required
-                documentViewer.View.PreferredItemType = DocumentViewerItemType.Svg;
-                documentViewer.Commands.Run(DocumentViewerCommands.InteractivePanZoom);*/
-
                 /* int x = 20;//ระวหว่าง panel
                  int y = 20;//ระวหว่าง panel
                  int maxWidth = -1;*/
@@ -2657,13 +2644,11 @@ namespace project1
                 //int w = 170 / 2;
                 // int w = 420 / 2;
                 //int x3 = (splitContainer1.Panel2.Width / 2) - w;
-                int w2 = 240 / 2;
+                int w2 = 150 / 2;
                 int x2 = (splitContainer1.Panel1.Width / 2) - w2;
-
                 //int x3 = 40;//ระวหว่าง panel
                 int y2 = 20;//ระวหว่าง panel
                 int maxWidth2 = -1;
-
                 RasterCodecs _rasterCodecs = new RasterCodecs();
                 //Load documents at 300 DPI for better viewing
                 _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
@@ -2677,34 +2662,26 @@ namespace project1
                         pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
                     }
                     Console.WriteLine("Page " + pageCount);
-                    l_numberPages.Text = pageCount.ToString() + " Page";
+                    
                     // Loads all the pages into the viewer
                     for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
                     {
+                        progressBar1.Value += (pageCount * 100) / 100;
+                        //await Task.Delay(1000);
                         // Load it as a raster image and add it
                         var rasterImage = _rasterCodecs.Load(img, pageNumber);
+                        //l_numberPages.Text = pageCount.ToString() + " Page";
+                        l_numberPages.Text = "Page " + pageNumber + " / " + pageCount.ToString();
                         l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
-                        /*ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-                        //Increase the brightness by 25 percent  of the possible range. 
-                        command.Brightness = 484;   //484
-                        command.Contrast = 394;     //394
-                        command.Intensity = 118;    //118
-                        command.Run(rasterImage);*/
-                        /*test*/
                         // this._imageViewer.Items.AddFromImage(rasterImage, 1);
                         //imagescol.Add(rasterImage);
+                        Label la = new Label();
                         PictureBox pic2 = new PictureBox();
-                        //Label la = new Label();
-                        using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                        {
-                            pic2.Image = new Bitmap(destImage1);
-                        }
-                        imagescol.Add(rasterImage);//////
-                        
-                        pic2.Height = 240;
-                        pic2.Width = 200;
+                        pic2.Height = 180;
+                        pic2.Width = 160;
                         //selectImage = pageNumber.ToString();
-                        pic2.Location = new Point(x2, y2);
+                        //pic2.Location = new Point(x2, y2);
+                        pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
                         pic2.SizeMode = PictureBoxSizeMode.StretchImage;
                         pic2.BorderStyle = BorderStyle.FixedSingle;
                         pic2.Name = pageNumber.ToString();
@@ -2717,22 +2694,378 @@ namespace project1
                         }
                         //this.panelImage.Controls.Add(pic2);
                         this.splitContainer1.Panel1.Controls.Add(pic2);
-                       /* la.Width = 20;
-                        la.Location = new Point(x2-10,y2);
-                        la.Text = pageNumber.ToString();*/
-                        //this.splitContainer1.Panel1.Controls.Add(la);
+
+                        using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                        {
+                            pic2.Image = new Bitmap(destImage1);
+                        }
+                        imagescol.Add(rasterImage);
+
+                        /* la.Width = 10;
+                         la.Height = 15;
+                         la.BackColor = Color.White;
+                         la.Location = new Point((splitContainer1.Panel1.Width / 2) - la.Width, y2+splitContainer1.Panel1.AutoScrollPosition.Y);
+                         la.Text = pageNumber.ToString();
+                         this.splitContainer1.Panel1.Controls.Add(la);*/
                         //Console.WriteLine(pic2.Location.X.ToString() + pic2.Location.Y.ToString());
                         Console.WriteLine(pic2.Name);
-
-                        //pic2.MouseClick += new MouseEventHandler(pic1_MouseClick);
-                        
+                        pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
+                        await Task.Delay(1000);
                     }
-                    
-                     chang();
+                    progressBar1.Value = 0;
+                   // chang();
+                    /*using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[0], ConvertToImageOptions.None))
+                    {
+                        pic2.Image = new Bitmap(destImage1);
+                    }*/
                 }
             }
         }
-        void chang(){
+
+        public void disp() {
+            PictureBox picReview2 = new PictureBox();
+            picReview2.Height = 600; //ความกว้างหน้ากระดาษ
+            picReview2.Width = 420;  //ความสูงหน้ากระดาษ
+            picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
+            picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.splitContainer1.Panel2.Controls.Add(picReview2);
+            using (Image destImage1 = RasterImageConverter.ConvertToImage(Image(), ConvertToImageOptions.None))
+            {
+                picReview2.Image = new Bitmap(destImage1);
+            }
+        }
+        int pdname;
+        RasterCodecs _rasterCodecs = new RasterCodecs();
+        PictureBox picReview2 = new PictureBox();
+        public RasterImage Image() {
+            this.splitContainer1.Panel2.Controls.Clear();
+            
+            _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+            foreach (string img in file)
+            {
+                /**/
+               /* using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
+                {
+                    pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
+                }*/
+                Console.WriteLine("Page " + pageCount);
+                l_numberPages.Text = pageCount.ToString() + " Page";
+                // Loads all the pages into the viewer
+
+                // Load it as a raster image and add it
+                RasterImage rasterImage = _rasterCodecs.Load(img, pdname);
+                l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                picReview2.Height = 700; //ความกว้างหน้ากระดาษ
+                picReview2.Width = 520;  //ความสูงหน้ากระดาษ
+                picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
+                picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
+                this.splitContainer1.Panel2.Controls.Add(picReview2);
+
+                ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+                //Increase the brightness by 25 percent  of the possible range. 
+                command.Brightness = value_trackBar1;   //484
+                command.Contrast = value_trackBar2;     //394
+                command.Intensity = value_trackBar3;    //118
+                command.Run(rasterImage);
+
+                UnsharpMaskCommand command2 = new UnsharpMaskCommand();
+                command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
+                command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
+                command2.Threshold = value_trackBar6;  //rate 0 - 255
+                command2.ColorType = UnsharpMaskCommandColorType.Rgb;
+                command2.Run(rasterImage);
+
+                if (selectCombobox == 0) { }
+                else
+                {
+                    selectCombobox = selectCombobox - 1;
+                    //MessageBox.Show(selectCombobox.ToString());
+                    BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
+                    command3.Run(rasterImage);
+                }
+
+                if (chckbox == true)
+                {
+                    AutoColorLevelCommand command4 = new AutoColorLevelCommand();
+                    command4.Run(rasterImage);
+                }
+
+                if (chckbox2 == true)
+                {
+                    GrayScaleExtendedCommand command5 = new GrayScaleExtendedCommand();
+                    command5.RedFactor = value_trackBar7;
+                    command5.GreenFactor = value_trackBar8;
+                    command5.BlueFactor = value_trackBar9;
+                    command5.Run(rasterImage);
+                }
+
+                if (chckbox4 == true)
+                {
+                    AutoBinaryCommand command7 = new AutoBinaryCommand();
+                    //Apply Auto Binary Segment. 
+                    command7.Run(rasterImage);
+                }
+
+                if (chckbox5 == true)
+                {
+                    MaximumCommand command8 = new MaximumCommand();
+                    //Apply Maximum filter. 
+                    command8.Dimension = value_trbMaximum;
+                    command8.Run(rasterImage);
+                }
+
+                if (chckbox6 == true)
+                {
+                    MinimumCommand command9 = new MinimumCommand();
+                    //Apply the Minimum filter. 
+                    command9.Dimension = value_trbMinimum;
+                    command9.Run(rasterImage);
+                }
+
+                if (chckbox7 == true)
+                {
+                    AutoBinarizeCommand command10 = new AutoBinarizeCommand();
+                    command10.Run(rasterImage);
+                }
+
+                if (chckbox8 == true)
+                {
+                    GammaCorrectCommand command11 = new GammaCorrectCommand();
+                    //Set a gamma value of 2.5. 
+                    command11.Gamma = value_trbGamma;
+                    command11.Run(rasterImage);
+                }
+                if (chckbox9 == true)
+                {
+                    DynamicBinaryCommand command12 = new DynamicBinaryCommand();
+                    command12.Dimension = value_trbDynBin1;
+                    command12.LocalContrast = value_trbDynBin2;
+                    // convert it into a black and white image without changing its bits per pixel. 
+                    command12.Run(rasterImage);
+                }
+                if (chckbox14 == true)
+                {
+                    DeskewCommand command16 = new DeskewCommand();
+                    //Deskew the image. 
+                    command16.Flags = DeskewCommandFlags.DeskewImage | DeskewCommandFlags.DoNotFillExposedArea;
+                    command16.Run(rasterImage);
+                }
+                if (chckbox15 == true)
+                {
+                    AutoCropCommand command17 = new AutoCropCommand();
+                    //AutoCrop the image with 20 tolerance. 
+                    command17.Threshold = value_trackBar27;
+                    command17.Run(rasterImage);
+                }
+                if (chckbox3 == true)
+                {
+                    DespeckleCommand command6 = new DespeckleCommand();
+                    //Remove speckles from the image. 
+                    command6.Run(rasterImage);
+                }
+                if (chckbox18 == true)
+                {
+                    FlipCommand flip = new FlipCommand(false);
+                    RunCommand(rasterImage, flip);
+                    // rotate the image by 45 degrees 
+                    RotateCommand rotate = new RotateCommand();
+                    rotate.Angle = (value_trackBar29 * 100);
+                    rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
+                    rotate.Flags = RotateCommandFlags.Resize;
+                    RunCommand(rasterImage, rotate);
+                }
+
+                 if (chckbox21 == true)
+                 {
+                     l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                     using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
+                     {
+                        picReview2.Image = new Bitmap(destImage1);
+                     }
+                    //return destImage;
+                 }
+                 else
+                 {
+                     l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                     using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                     {
+                        picReview2.Image = new Bitmap(destImage1);
+                     }
+                   // return rasterImage;
+                 }
+
+                /* using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                 {
+                     picReview2.Image = new Bitmap(destImage1);
+                 }*/
+               // _rasterCodecs.Save(rasterImage, Path.Combine(@"C:\Users\Administrator\Downloads\", "result1.pdf" + ".pdf"), RasterImageFormat.RasPdf, 24);
+            }
+            //await Task.Delay(500);
+            picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
+            picReview2.MouseUp += new MouseEventHandler(picReview2_MouseUp);
+            picReview2.MouseMove += new MouseEventHandler(picReview2_MouseMove);
+            /* if (chckbox21 == true)
+             {
+                 return destImage;
+             }
+             else*/
+            //{
+            //RasterImage rasterImage3 = rasterImage;
+          //  _rasterCodecs.Save(destImage, Path.Combine(@"C:\Users\Administrator\Downloads\", "result1.pdf" + ".pdf"), RasterImageFormat.RasPdf, 24);
+           
+            
+            
+            return rasterImage;
+            //}
+            //return rasterImage;
+        }
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            //MessageBox.Show("m");
+
+            //pictureBox1.Image = ZoomP
+
+            if (e.Delta > 0)
+            {
+                //pictureBox1.Image = null;
+                // ซูมอิน (เพิ่มขนาดภาพ)
+                if (picReview2.Width < 4500 || picReview2.Width < 4500)
+                { //กำหนดขอบเขตการขยายภาพ
+                    picReview2.Width += (int)(picReview2.Width * 0.1);
+                    picReview2.Height += (int)(picReview2.Height * 0.1);
+                }
+            }
+            else if (e.Delta < 0)
+            {
+                //pictureBox1.Image = null;
+                // ซูมเอาท์ (ลดขนาดภาพ)
+                if (picReview2.Width > 400 || picReview2.Width > 400)
+                { //กำหนดขอบเขตการลดภาพ
+                    picReview2.Width -= (int)(picReview2.Width * 0.1);
+                    picReview2.Height -= (int)(picReview2.Height * 0.1);
+                }
+
+            }
+           // l_zoom.Text = "w " + picReview2.Width.ToString() + " h" + picReview2.Height.ToString();
+        }
+        int xPos2;
+        int yPos2;
+        bool Dragging2;
+        private RasterImage destImage;
+
+        private void picReview2_MouseUp(object sender, MouseEventArgs e)
+        {
+            Dragging2 = false;
+        }
+        private void picReview2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Dragging2 = true;
+                xPos2 = e.X;
+                yPos2 = e.Y;
+                // Console.WriteLine("xPos " + xPos);
+                // Console.WriteLine("yPos " + yPos);
+            }
+        }
+        private void picReview2_MouseMove(object sender, MouseEventArgs e)
+        {
+            Control c = sender as Control;
+            if (Dragging2 && c != null)
+            {
+                if (c.Top <= 300)
+                {
+                    c.Top = e.Y + c.Top - yPos2;
+                }
+                else
+                {
+
+                }
+                c.Left = e.X + c.Left - xPos2;
+
+                Console.WriteLine("c.Top " + c.Top.ToString());
+                Console.WriteLine("c.Left " + c.Left.ToString());
+            }
+            //l_xy.Text = pictureBox1.Location.ToString();
+        }
+        private async void pic2_MouseClick(object sender, MouseEventArgs e)
+        {
+            /* this.splitContainer1.Panel2.Controls.Clear();
+             PictureBox picReview = new PictureBox();
+             picReview.Height = 600; //ความกว้างหน้ากระดาษ
+             picReview.Width = 420;  //ความสูงหน้ากระดาษ
+             picReview.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview.Width/2), 20);
+             picReview.SizeMode = PictureBoxSizeMode.StretchImage;
+             PictureBox pb = (PictureBox)sender;
+             //if (pb.Name == "1")
+            // {
+             //MessageBox.Show(pb.Name);
+             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+             //Increase the brightness by 25 percent  of the possible range. 
+             command.Brightness = 484;   //484
+             command.Contrast = 394;     //394
+             command.Intensity = 118;    //118
+             command.Run(imagescol[int.Parse(pb.Name) - 1]);
+             //PictureBox pic3 = new PictureBox();
+             this.splitContainer1.Panel2.Controls.Add(picReview);
+             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+             //Increase the brightness by 25 percent  of the possible range. 
+             command.Brightness = 484;   //484
+             command.Contrast = 394;     //394
+             command.Intensity = 118;    //118
+             command.Run(imagescol[int.Parse(pb.Name) - 1]);
+             using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[int.Parse(pb.Name) - 1], ConvertToImageOptions.None))
+             {
+                 picReview.Image = new Bitmap(destImage1);
+             }*/
+            // }
+            /******/
+           /* this.splitContainer1.Panel2.Controls.Clear();
+            PictureBox pb = (PictureBox)sender;
+            RasterCodecs _rasterCodecs = new RasterCodecs();
+            //Load documents at 300 DPI for better viewing
+            _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+            foreach (string img in file)
+            {
+                
+                using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
+                {
+                    pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
+                }
+                Console.WriteLine("Page " + pageCount);
+                l_numberPages.Text = pageCount.ToString() + " Page";
+                // Loads all the pages into the viewer
+                PictureBox picReview2 = new PictureBox();
+
+                // Load it as a raster image and add it
+                var rasterImage = _rasterCodecs.Load(img, int.Parse(pb.Name));
+                l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+
+                picReview2.Height = 600; //ความกว้างหน้ากระดาษ
+                picReview2.Width = 420;  //ความสูงหน้ากระดาษ
+                picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
+                picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
+                this.splitContainer1.Panel2.Controls.Add(picReview2);
+                ContrastBrightnessIntensityCommand command2 = new ContrastBrightnessIntensityCommand();
+                //Increase the brightness by 25 percent  of the possible range. 
+                command2.Brightness = 484;   //484
+                command2.Contrast = 394;     //394
+                command2.Intensity = 118;    //118
+                command2.Run(rasterImage);
+                using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                {
+                    picReview2.Image = new Bitmap(destImage1);
+                }
+
+
+            }
+            await Task.Delay(500);*/
+           PictureBox pb = (PictureBox)sender;
+            pdname = int.Parse(pb.Name);
+            Image();
+           // disp();
+        }
+        public async void chang(){
           /*  splitContainer1.Panel2.Controls.Clear();
             int w3 = 550 / 2;
             int x3 = (splitContainer1.Panel2.Width / 2) - w3;
@@ -2794,7 +3127,7 @@ namespace project1
             //int x3 = 40;//ระวหว่าง panel
             int y3 = 20;//ระวหว่าง panel
             int maxWidth3 = -1;
-            RasterCodecs _rasterCodecs = new RasterCodecs();
+            
             //Load documents at 300 DPI for better viewing
             _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
             int pageCount2;
@@ -2822,8 +3155,8 @@ namespace project1
                     }
                     pic3.Height = 640; //ความสูงหน้ากระดาษ
                     pic3.Width = 550;  //ความกว้างหน้ากระดาษ
-
-                    pic3.Location = new Point(x3, y3);
+                    pic3.Location = new Point(x3, y3 + splitContainer1.Panel2.AutoScrollPosition.Y);
+                    //pic3.Location = new Point(x3, y3);
                     pic3.SizeMode = PictureBoxSizeMode.StretchImage;
                     pic3.BorderStyle = BorderStyle.FixedSingle;
 
@@ -2836,6 +3169,7 @@ namespace project1
                     }
                     //this.panelcenter.Controls.Add(pic3);
                     this.splitContainer1.Panel2.Controls.Add(pic3);
+                    await Task.Delay(1000);
                 }
             }
                     
@@ -2847,6 +3181,41 @@ namespace project1
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+            try
+            { 
+
+                Preview pv = new Preview();
+                pv.ShowDialog();
+                //codecs.ThrowExceptionsOnInvalidImages = true;
+                /* // Stream myStream;
+                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                 saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf|All files (*.*)|*.*";
+                 saveFileDialog1.FilterIndex = 2;
+                 saveFileDialog1.RestoreDirectory = true;
+
+                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                 {
+                     // if ((myStream = saveFileDialog1.OpenFile()) != null)
+                     // {
+                     // Code to write the stream goes here.
+                     String savePath = saveFileDialog1.FileName;
+                     MessageBox.Show(saveFileDialog1.FileName);
+                     _rasterCodecs.Save(Image(), Path.Combine(saveFileDialog1.FileName + ".pdf"), RasterImageFormat.RasPdf, 24);
+                   //  codecs.Save(ChangeCommand(), Path.Combine(@"C:\Users\Administrator\Downloads\out\", "result1.tif"), RasterImageFormat.RasPdf, 24);
+                     //codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName + ".jpg"), RasterImageFormat.Jpeg, 1);
+                     //    myStream.Close();
+                     // }
+                 }*/
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void previewToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
