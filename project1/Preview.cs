@@ -31,13 +31,14 @@ namespace project1
 
         private async void Preview_Load(object sender, EventArgs e)
         {
-            progressBar1.Value = 0;
+            btnSave.Enabled = false;
+            //progressBar1.Value = 0;
             panel1.AutoScroll = true;
             panel1.BackColor = Color.DarkGray;
             //Form1 f1 = new Form1();
             //MessageBox.Show(Form1.form1.value_trackBar1.ToString());
             panel1.Controls.Clear();
-            int w3 = 350 / 2;
+            int w3 = 550 / 2;
             int x3 = (panel1.Width / 2) - w3;
 
             //int x3 = 40;//ระวหว่าง panel
@@ -49,7 +50,7 @@ namespace project1
             for (int i = 1; i <= Form1.form1.pageCount; i++)
             {
                 label1.Text = "Page "+i+" / " + Form1.form1.pageCount.ToString();
-                progressBar1.Value += (Form1.form1.pageCount * 100) / 100;
+               // progressBar1.Value += (Form1.form1.pageCount * 100) / 100;
                 ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
                 command.Brightness = Form1.form1.value_trackBar1;   //484
@@ -64,9 +65,9 @@ namespace project1
                 command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                 command2.Run(Form1.form1.imagescol[i - 1]);
 
-                /* if (Form1.form1.chckbox21 == true)
-                 {*/
-                /* RasterImage destImage = new RasterImage(
+                 /*if (Form1.form1.chckbox21 == true)
+                 {
+                 RasterImage destImage = new RasterImage(
                 RasterMemoryFlags.Conventional,
                 Form1.form1.imagescol[i - 1].Width,
                 Form1.form1.imagescol[i - 1].Height,
@@ -110,9 +111,10 @@ namespace project1
 
                  destImage.Release();
                  Form1.form1.imagescol[i - 1].Release();
-                 // Clean up 
-                 Marshal.FreeHGlobal(buffer);*/
-                // }
+                 Form1.form1.imagescol[i - 1] = destImage;
+                    // Clean up 
+                    Marshal.FreeHGlobal(buffer);
+                 }*/
                 //Form1.form1.imagescol[i - 1] =;
                 if (Form1.form1.selectCombobox == 0) { }
                 else
@@ -238,7 +240,8 @@ namespace project1
                 this.panel1.Controls.Add(pic3);
                 await Task.Delay(2000);
             }
-            progressBar1.Value = 0;
+            //progressBar1.Value = 0;
+            btnSave.Enabled = true;
         }
         bool cancelAt50;
         void RunCommand(RasterImage image, RasterCommand command)

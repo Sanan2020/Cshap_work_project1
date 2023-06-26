@@ -218,7 +218,6 @@
             this.l_stateOutput = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.l_numberPages = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -2383,20 +2382,11 @@
             this.l_numberPages.TabIndex = 46;
             this.l_numberPages.Text = "label5";
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.progressBar1.Location = new System.Drawing.Point(84, 561);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(134, 23);
-            this.progressBar1.TabIndex = 47;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1827, 590);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.l_stateOutput);
             this.Controls.Add(this.l_stateInput);
             this.Controls.Add(this.l_numberPages);
@@ -2698,7 +2688,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label l_numberPages;
         private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
-        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

@@ -2634,7 +2634,7 @@ namespace project1
 
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                progressBar1.Value = 0;
+                //progressBar1.Value = 0;
                 splitContainer1.Panel1.Controls.Clear();
                 file = ofd.FileNames;
                 /* int x = 20;//ระวหว่าง panel
@@ -2666,7 +2666,7 @@ namespace project1
                     // Loads all the pages into the viewer
                     for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
                     {
-                        progressBar1.Value += (pageCount * 100) / 100;
+                        //progressBar1.Value += (pageCount * 100) / 1000;
                         //await Task.Delay(1000);
                         // Load it as a raster image and add it
                         var rasterImage = _rasterCodecs.Load(img, pageNumber);
@@ -2712,7 +2712,7 @@ namespace project1
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
                         await Task.Delay(1000);
                     }
-                    progressBar1.Value = 0;
+                   // progressBar1.Value = 0;
                    // chang();
                     /*using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[0], ConvertToImageOptions.None))
                     {
@@ -2737,7 +2737,12 @@ namespace project1
         int pdname;
         RasterCodecs _rasterCodecs = new RasterCodecs();
         PictureBox picReview2 = new PictureBox();
-        public RasterImage Image() {
+        public void ImageChang() {
+            //รับไฟล์ที่กำลังแสดงผลลัพธ์การปรับแต่งในฟังก์ชัน Image();
+            //ทำงานเมื่อมีการปรับแต่ง
+        }
+        public RasterImage Image() { //***ส่งดึงไฟล์จากในนี้แล้วไปแสดงผลลัพธ์การปรับแต่ง (ไฟล์จะถูกเลือกในนี้ก่อน)
+            //ภาพเปลี่ยนเมื่อคลิก
             this.splitContainer1.Panel2.Controls.Clear();
             
             _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
@@ -2874,14 +2879,63 @@ namespace project1
                     rotate.Flags = RotateCommandFlags.Resize;
                     RunCommand(rasterImage, rotate);
                 }
+              /*  if (chckbox21 == true)
+                {
+                    RasterImage destImage = new RasterImage(
+                   RasterMemoryFlags.Conventional,
+                   rasterImage.Width,
+                   rasterImage.Height,
+                    1,
+                   rasterImage.Order,
+                   rasterImage.ViewPerspective,
+                   rasterImage.GetPalette(),
+                   IntPtr.Zero,
+                   0);
+                    int bufferSize = RasterBufferConverter.CalculateConvertSize(
+                       rasterImage.Width,
+                       rasterImage.BitsPerPixel,
+                       destImage.Width,
+                       destImage.BitsPerPixel);
 
-                 if (chckbox21 == true)
+                    // Allocate the buffer in unmanaged memory 
+                    IntPtr buffer = Marshal.AllocHGlobal(bufferSize);
+                    //Assert.IsFalse(buffer == IntPtr.Zero);
+
+                    // Process each row from srcImage to destImage. 
+                    rasterImage.Access();
+                    destImage.Access();
+                    for (int ii = 0; ii < rasterImage.Height; ii++)
+                    {
+                        rasterImage.GetRow(ii, buffer, rasterImage.BytesPerLine);
+                        RasterBufferConverter.Convert(
+                        buffer,
+                           rasterImage.Width,
+                           rasterImage.BitsPerPixel,
+                           destImage.BitsPerPixel,
+                           rasterImage.Order,
+                           destImage.Order,
+                           null,
+                           null,
+                           0,
+                           8,
+                           0,
+                           RasterConvertBufferFlags.None);
+                        destImage.SetRow(ii, buffer, destImage.BytesPerLine);
+                    }
+
+                    destImage.Release();
+                    rasterImage.Release();
+                    
+                    // Clean up 
+                    Marshal.FreeHGlobal(buffer);
+                }*/
+                if (chckbox21 == true)
                  {
-                     l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " BitsPerPixel";
-                     using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
+                     //l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                   /*  using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
                      {
                         picReview2.Image = new Bitmap(destImage1);
-                     }
+                     }*/
                     //return destImage;
                  }
                  else
