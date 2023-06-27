@@ -27,11 +27,12 @@ using Leadtools.Ocr;
 using Leadtools.Ocr.LEADEngine;
 using System.Runtime.InteropServices;
 using Leadtools.Document;
+using DevComponents.DotNetBar;
 
 namespace project1
 {
 
-    public partial class Form1 : Form
+    public partial class Form1 : Office2007Form
     {
         internal static Form2 form2;
         internal static Form1 form1;
@@ -741,18 +742,21 @@ namespace project1
         {
             Display();
             Image();
+            ImageChange();
         }
 
         private void trackBar2_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
             Image();
+            ImageChange();
         }
 
         private void trackBar3_MouseCaptureChanged(object sender, EventArgs e)
         {
             Display();
             Image();
+            ImageChange();
         }
 
         private void trackBar4_MouseCaptureChanged(object sender, EventArgs e)
@@ -2620,8 +2624,6 @@ namespace project1
         public List<RasterImage> imagescol = new List<RasterImage>();
         public int pageCount;
         String[] file;
-        private RasterImage rasterImage;
-
         private async void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             imagescol.Clear();
@@ -2634,6 +2636,7 @@ namespace project1
 
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
+                crepic(); //สร้าง picReview
                 //progressBar1.Value = 0;
                 splitContainer1.Panel1.Controls.Clear();
                 file = ofd.FileNames;
@@ -2669,6 +2672,11 @@ namespace project1
                         //progressBar1.Value += (pageCount * 100) / 1000;
                         //await Task.Delay(1000);
                         // Load it as a raster image and add it
+                        _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
+                        _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
+                        _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
+                        _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
+                        _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
                         var rasterImage = _rasterCodecs.Load(img, pageNumber);
                         //l_numberPages.Text = pageCount.ToString() + " Page";
                         l_numberPages.Text = "Page " + pageNumber + " / " + pageCount.ToString();
@@ -2720,6 +2728,7 @@ namespace project1
                     }*/
                 }
             }
+            
         }
 
         public void disp() {
@@ -2737,15 +2746,45 @@ namespace project1
         int pdname;
         RasterCodecs _rasterCodecs = new RasterCodecs();
         PictureBox picReview2 = new PictureBox();
-        public void ImageChang() {
+        //RasterImage rasterImage;
+       // RasterImage destImage;
+        public void crepic() {
+            this.splitContainer1.Panel2.Controls.Clear();
+            picReview2.Height = 700; //ความกว้างหน้ากระดาษ
+            picReview2.Width = 520;  //ความสูงหน้ากระดาษ
+            picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
+            picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.splitContainer1.Panel2.Controls.Add(picReview2);
+            picReview2.ImageLocation = null;
+        }
+        public void ImageChange() {
             //รับไฟล์ที่กำลังแสดงผลลัพธ์การปรับแต่งในฟังก์ชัน Image();
             //ทำงานเมื่อมีการปรับแต่ง
+           // rasterImage = _rasterCodecs.Load(img, pdname);
+
+           /* ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
+            //Increase the brightness by 25 percent  of the possible range. 
+            command.Brightness = value_trackBar1;   //484
+            command.Contrast = value_trackBar2;     //394
+            command.Intensity = value_trackBar3;    //118
+            command.Run(rasterImage);
+
+            using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+            {
+                picReview2.Image = new Bitmap(destImage1);
+            }*/
         }
         public async void Image() { //***ส่งดึงไฟล์จากในนี้แล้วไปแสดงผลลัพธ์การปรับแต่ง (ไฟล์จะถูกเลือกในนี้ก่อน)
-            //ภาพเปลี่ยนเมื่อคลิก
-            this.splitContainer1.Panel2.Controls.Clear();
+                                    //ภาพเปลี่ยนเมื่อคลิก
+
             
             _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+            //l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+           /* picReview2.Height = 700; //ความกว้างหน้ากระดาษ
+            picReview2.Width = 520;  //ความสูงหน้ากระดาษ
+            picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
+            picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.splitContainer1.Panel2.Controls.Add(picReview2);*/
             foreach (string img in file)
             {
                 /**/
@@ -2758,13 +2797,19 @@ namespace project1
                 // Loads all the pages into the viewer
 
                 // Load it as a raster image and add it
+                // CodecsPdfOptions & CodecsPdfLoadOptions reference 
+                _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
+                _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
+                _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
+                _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
+                _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
                 RasterImage rasterImage = _rasterCodecs.Load(img, pdname);
-                l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
-                picReview2.Height = 700; //ความกว้างหน้ากระดาษ
-                picReview2.Width = 520;  //ความสูงหน้ากระดาษ
-                picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
-                picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
-                this.splitContainer1.Panel2.Controls.Add(picReview2);
+
+               // var rasterImage2 = _rasterCodecs.Load(img, 24, CodecsLoadByteOrder.Bgr, 1, 1);
+               // _rasterCodecs
+               // 
+               // RasterImage rasterImage2 = Codecs.Load(rasterImage);
+                //ImageChange();
 
                 ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
@@ -2879,9 +2924,8 @@ namespace project1
                     rotate.Flags = RotateCommandFlags.Resize;
                     RunCommand(rasterImage, rotate);
                 }
-              /*  if (chckbox21 == true)
-                {
-                    RasterImage destImage = new RasterImage(
+                if (chckbox21 == true){
+                   RasterImage destImage = new RasterImage(
                    RasterMemoryFlags.Conventional,
                    rasterImage.Width,
                    rasterImage.Height,
@@ -2925,34 +2969,125 @@ namespace project1
 
                     destImage.Release();
                     rasterImage.Release();
-                    
+
                     // Clean up 
                     Marshal.FreeHGlobal(buffer);
-                }*/
-                if (chckbox21 == true)
-                 {
-                     //l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " BitsPerPixel";
-                   /*  using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
-                     {
-                        picReview2.Image = new Bitmap(destImage1);
-                     }*/
-                    //return destImage;
-                 }
-                 else
-                 {
-                     l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
-                     using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                     {
-                        picReview2.Image = new Bitmap(destImage1);
-                     }
-                   // return rasterImage;
-                 }
 
-                /* using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                 {
-                     picReview2.Image = new Bitmap(destImage1);
-                 }*/
-               // _rasterCodecs.Save(rasterImage, Path.Combine(@"C:\Users\Administrator\Downloads\", "result1.pdf" + ".pdf"), RasterImageFormat.RasPdf, 24);
+                    if (chckbox11 == true)
+                    {
+                        LineRemoveCommand command13 = new LineRemoveCommand();
+                        command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+                        command13.Type = LineRemoveCommandType.Horizontal;
+                        //command13.Type = LineRemoveCommandType.Vertical;
+                        command13.Flags = LineRemoveCommandFlags.UseGap;
+                        command13.GapLength = value_trackBar14;
+                        command13.MaximumLineWidth = value_trackBar15;
+                        command13.MinimumLineLength = value_trackBar16;
+                        command13.MaximumWallPercent = value_trackBar17;
+                        command13.Wall = value_trackBar22;
+                        command13.Run(destImage);
+
+                        /*LineRemoveCommand commandc = new LineRemoveCommand();
+                        commandc.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+                        commandc.Type = LineRemoveCommandType.Vertical;
+                        //command13.Type = LineRemoveCommandType.Vertical;
+                        commandc.Flags = LineRemoveCommandFlags.UseGap;
+                        commandc.GapLength = value_trackBar14;
+                        commandc.MaximumLineWidth = value_trackBar15;
+                        commandc.MinimumLineLength = value_trackBar16;
+                        commandc.MaximumWallPercent = value_trackBar17;
+                        commandc.Wall = value_trackBar22;
+                        commandc.Run(destImage);*/
+                    }
+                    if (chckbox10 == true)
+                    {
+                        DotRemoveCommand command13 = new DotRemoveCommand();
+                        command13.DotRemove += new EventHandler<DotRemoveCommandEventArgs>(DotRemoveEvent_S1);
+                        command13.Flags = DotRemoveCommandFlags.UseSize;
+                        command13.MaximumDotHeight = value_trackBar10;
+                        command13.MaximumDotWidth = value_trackBar11;
+                        command13.MinimumDotHeight = value_trackBar12;
+                        command13.MinimumDotWidth = value_trackBar13;
+                        command13.Run(destImage);
+                    }
+
+                    if (chckbox12 == true)
+                    {
+                        HolePunchRemoveCommand command14 = new HolePunchRemoveCommand();
+                        command14.HolePunchRemove += new EventHandler<HolePunchRemoveCommandEventArgs>(HolePunchRemoveEvent_S1);
+                        command14.Flags = HolePunchRemoveCommandFlags.UseDpi | HolePunchRemoveCommandFlags.UseCount | HolePunchRemoveCommandFlags.UseLocation;
+                        command14.Location = HolePunchRemoveCommandLocation.Left;
+                        command14.MaximumHoleCount = value_trackBar18;
+                        command14.MinimumHoleCount = value_trackBar21;
+                        command14.Run(destImage);
+                    }
+
+                    if (chckbox13 == true)
+                    {
+                        InvertedTextCommand command15 = new InvertedTextCommand();
+                        command15.InvertedText += new EventHandler<InvertedTextCommandEventArgs>(InvertedTextEvent_S1);
+                        command15.Flags = InvertedTextCommandFlags.UseDpi;
+                        command15.MaximumBlackPercent = value_trackBar19;
+                        command15.MinimumBlackPercent = value_trackBar20;
+                        command15.MinimumInvertHeight = value_trackBar23;
+                        command15.MinimumInvertWidth = value_trackBar24;
+                        command15.Run(destImage);
+                    }
+
+                    if (chckbox16 == true)
+                    {
+                        BorderRemoveCommand command18 = new BorderRemoveCommand();
+                        command18.BorderRemove += new EventHandler<BorderRemoveCommandEventArgs>(command_BorderRemove_S1);
+                        command18.Border = BorderRemoveBorderFlags.All;
+                        command18.Flags = BorderRemoveCommandFlags.UseVariance;
+                        command18.Percent = value_trackBar25;
+                        command18.Variance = value_trackBar26;
+                        command18.WhiteNoiseLength = value_trackBar28;
+                        command18.Run(destImage);
+                    }
+
+                    if (chckbox17 == true)
+                    {
+                        SmoothCommand command19 = new SmoothCommand();
+                        command19.Smooth += new EventHandler<SmoothCommandEventArgs>(SmoothEventExample_S1);
+                        command19.Flags = SmoothCommandFlags.FavorLong;
+                        command19.Length = value_trackBar31;
+                        command19.Run(destImage);
+                    }
+                    //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
+                    // Prepare the command 
+                    if (chckbox19 == true)
+                    {
+                        RakeRemoveCommand command20 = new RakeRemoveCommand();
+                        command20.RakeRemove += new EventHandler<RakeRemoveCommandEventArgs>(RakeRemoveEvent_S1);
+                        command20.MinLength = value_numUpDown1;           //ความยาวขั้นต่ำ
+                        command20.MinWallHeight = value_numUpDown2;       //ความสูงของกำแพงขั้นต่ำ
+                        command20.MaxWidth = value_numUpDown3;             //ความกว้างสูงสุด
+                        command20.MaxWallPercent = value_numUpDown4;      //เปอร์เซ็นต์กำแพงสูงสุด
+                        command20.MaxSideteethLength = value_numUpDown5;  //ความยาวฟันข้างสูงสุด
+                        command20.MaxMidteethLength = value_numUpDown6;   //ความยาวฟันกลางสูงสุด
+                        command20.Gaps = value_numUpDown7;                 //ช่องว่าง
+                        command20.Variance = value_numUpDown8;             //ความแปรปรวน
+                        command20.TeethSpacing = value_numUpDown9;         //ระยะห่างระหว่างฟัน
+                        command20.AutoFilter = chckbox20;       //ตัวกรองอัตโนมัติ
+                        command20.Run(destImage);
+                    }
+                    l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                    using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
+                    {
+                        picReview2.Image = new Bitmap(destImage1);
+                    }
+                }
+                else {
+
+                    l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                    //picReview2.ImageLocation = null;
+                    using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                    {
+                        picReview2.Image = new Bitmap(destImage1);
+                    }
+                }
+              
             }
             await Task.Delay(1000);
             picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
@@ -3005,7 +3140,7 @@ namespace project1
         int xPos2;
         int yPos2;
         bool Dragging2;
-        private RasterImage destImage;
+        //private RasterImage destImage;
 
         private void picReview2_MouseUp(object sender, MouseEventArgs e)
         {

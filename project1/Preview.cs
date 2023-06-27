@@ -65,57 +65,6 @@ namespace project1
                 command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                 command2.Run(Form1.form1.imagescol[i - 1]);
 
-                 /*if (Form1.form1.chckbox21 == true)
-                 {
-                 RasterImage destImage = new RasterImage(
-                RasterMemoryFlags.Conventional,
-                Form1.form1.imagescol[i - 1].Width,
-                Form1.form1.imagescol[i - 1].Height,
-                 1,
-                Form1.form1.imagescol[i - 1].Order,
-                Form1.form1.imagescol[i - 1].ViewPerspective,
-                Form1.form1.imagescol[i - 1].GetPalette(),
-                IntPtr.Zero,
-                0);
-                 int bufferSize = RasterBufferConverter.CalculateConvertSize(
-                    Form1.form1.imagescol[i - 1].Width,
-                    Form1.form1.imagescol[i - 1].BitsPerPixel,
-                    destImage.Width,
-                    destImage.BitsPerPixel);
-
-                 // Allocate the buffer in unmanaged memory 
-                 IntPtr buffer = Marshal.AllocHGlobal(bufferSize);
-                 //Assert.IsFalse(buffer == IntPtr.Zero);
-
-                 // Process each row from srcImage to destImage. 
-                 Form1.form1.imagescol[i - 1].Access();
-                 destImage.Access();
-                 for (int ii = 0; ii < Form1.form1.imagescol[i - 1].Height; ii++)
-                 {
-                     Form1.form1.imagescol[i - 1].GetRow(ii, buffer, Form1.form1.imagescol[i - 1].BytesPerLine);
-                     RasterBufferConverter.Convert(
-                     buffer,
-                        Form1.form1.imagescol[i - 1].Width,
-                        Form1.form1.imagescol[i - 1].BitsPerPixel,
-                        destImage.BitsPerPixel,
-                        Form1.form1.imagescol[i - 1].Order,
-                        destImage.Order,
-                        null,
-                        null,
-                        0,
-                        8,
-                        0,
-                        RasterConvertBufferFlags.None);
-                     destImage.SetRow(ii, buffer, destImage.BytesPerLine);
-                 }
-
-                 destImage.Release();
-                 Form1.form1.imagescol[i - 1].Release();
-                 Form1.form1.imagescol[i - 1] = destImage;
-                    // Clean up 
-                    Marshal.FreeHGlobal(buffer);
-                 }*/
-                //Form1.form1.imagescol[i - 1] =;
                 if (Form1.form1.selectCombobox == 0) { }
                 else
                 {
@@ -215,7 +164,175 @@ namespace project1
                     rotate.Flags = RotateCommandFlags.Resize;
                     RunCommand(Form1.form1.imagescol[i - 1], rotate);
                 }
+                if (Form1.form1.chckbox21 == true)
+                {
+                    RasterImage destImage = new RasterImage(
+                    RasterMemoryFlags.Conventional,
+                    Form1.form1.imagescol[i - 1].Width,
+                    Form1.form1.imagescol[i - 1].Height,
+                     1,
+                    Form1.form1.imagescol[i - 1].Order,
+                    Form1.form1.imagescol[i - 1].ViewPerspective,
+                    Form1.form1.imagescol[i - 1].GetPalette(),
+                    IntPtr.Zero,
+                    0);
+                    int bufferSize = RasterBufferConverter.CalculateConvertSize(
+                       Form1.form1.imagescol[i - 1].Width,
+                       Form1.form1.imagescol[i - 1].BitsPerPixel,
+                       destImage.Width,
+                       destImage.BitsPerPixel);
 
+                    // Allocate the buffer in unmanaged memory 
+                    IntPtr buffer = Marshal.AllocHGlobal(bufferSize);
+                    //Assert.IsFalse(buffer == IntPtr.Zero);
+
+                    // Process each row from srcImage to destImage. 
+                    Form1.form1.imagescol[i - 1].Access();
+                    destImage.Access();
+                    for (int ii = 0; ii < Form1.form1.imagescol[i - 1].Height; ii++)
+                    {
+                        Form1.form1.imagescol[i - 1].GetRow(ii, buffer, Form1.form1.imagescol[i - 1].BytesPerLine);
+                        RasterBufferConverter.Convert(
+                        buffer,
+                           Form1.form1.imagescol[i - 1].Width,
+                           Form1.form1.imagescol[i - 1].BitsPerPixel,
+                           destImage.BitsPerPixel,
+                           Form1.form1.imagescol[i - 1].Order,
+                           destImage.Order,
+                           null,
+                           null,
+                           0,
+                           8,
+                           0,
+                           RasterConvertBufferFlags.None);
+                        destImage.SetRow(ii, buffer, destImage.BytesPerLine);
+                    }
+
+                    destImage.Release();
+                    Form1.form1.imagescol[i - 1].Release();
+                   
+                    // Clean up 
+                    Marshal.FreeHGlobal(buffer);
+                    /**/
+                    Form1.form1.imagescol[i - 1] = null;
+                    Form1.form1.imagescol[i - 1] = destImage;
+                    /**/
+                    if (Form1.form1.chckbox11 == true)
+                    {
+                        LineRemoveCommand command13 = new LineRemoveCommand();
+                        command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+                        command13.Type = LineRemoveCommandType.Horizontal;
+                        //command13.Type = LineRemoveCommandType.Vertical;
+                        command13.Flags = LineRemoveCommandFlags.UseGap;
+                        command13.GapLength = Form1.form1.value_trackBar14;
+                        command13.MaximumLineWidth = Form1.form1.value_trackBar15;
+                        command13.MinimumLineLength = Form1.form1.value_trackBar16;
+                        command13.MaximumWallPercent = Form1.form1.value_trackBar17;
+                        command13.Wall = Form1.form1.value_trackBar22;
+                        command13.Run(Form1.form1.imagescol[i - 1]);
+
+                        /*LineRemoveCommand commandc = new LineRemoveCommand();
+                        commandc.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+                        commandc.Type = LineRemoveCommandType.Vertical;
+                        //command13.Type = LineRemoveCommandType.Vertical;
+                        commandc.Flags = LineRemoveCommandFlags.UseGap;
+                        commandc.GapLength = value_trackBar14;
+                        commandc.MaximumLineWidth = value_trackBar15;
+                        commandc.MinimumLineLength = value_trackBar16;
+                        commandc.MaximumWallPercent = value_trackBar17;
+                        commandc.Wall = value_trackBar22;
+                        commandc.Run(destImage);*/
+                    }
+                    if (Form1.form1.chckbox10 == true)
+                    {
+                        DotRemoveCommand command13 = new DotRemoveCommand();
+                        command13.DotRemove += new EventHandler<DotRemoveCommandEventArgs>(DotRemoveEvent_S1);
+                        command13.Flags = DotRemoveCommandFlags.UseSize;
+                        command13.MaximumDotHeight = Form1.form1.value_trackBar10;
+                        command13.MaximumDotWidth = Form1.form1.value_trackBar11;
+                        command13.MinimumDotHeight = Form1.form1.value_trackBar12;
+                        command13.MinimumDotWidth = Form1.form1.value_trackBar13;
+                        command13.Run(Form1.form1.imagescol[i - 1]);
+                    }
+
+                    if (Form1.form1.chckbox12 == true)
+                    {
+                        HolePunchRemoveCommand command14 = new HolePunchRemoveCommand();
+                        command14.HolePunchRemove += new EventHandler<HolePunchRemoveCommandEventArgs>(HolePunchRemoveEvent_S1);
+                        command14.Flags = HolePunchRemoveCommandFlags.UseDpi | HolePunchRemoveCommandFlags.UseCount | HolePunchRemoveCommandFlags.UseLocation;
+                        command14.Location = HolePunchRemoveCommandLocation.Left;
+                        command14.MaximumHoleCount = Form1.form1.value_trackBar18;
+                        command14.MinimumHoleCount = Form1.form1.value_trackBar21;
+                        command14.Run(Form1.form1.imagescol[i - 1]);
+                    }
+
+                    if (Form1.form1.chckbox13 == true)
+                    {
+                        InvertedTextCommand command15 = new InvertedTextCommand();
+                        command15.InvertedText += new EventHandler<InvertedTextCommandEventArgs>(InvertedTextEvent_S1);
+                        command15.Flags = InvertedTextCommandFlags.UseDpi;
+                        command15.MaximumBlackPercent = Form1.form1.value_trackBar19;
+                        command15.MinimumBlackPercent = Form1.form1.value_trackBar20;
+                        command15.MinimumInvertHeight = Form1.form1.value_trackBar23;
+                        command15.MinimumInvertWidth = Form1.form1.value_trackBar24;
+                        command15.Run(Form1.form1.imagescol[i - 1]);
+                    }
+
+                    if (Form1.form1.chckbox16 == true)
+                    {
+                        BorderRemoveCommand command18 = new BorderRemoveCommand();
+                        command18.BorderRemove += new EventHandler<BorderRemoveCommandEventArgs>(command_BorderRemove_S1);
+                        command18.Border = BorderRemoveBorderFlags.All;
+                        command18.Flags = BorderRemoveCommandFlags.UseVariance;
+                        command18.Percent = Form1.form1.value_trackBar25;
+                        command18.Variance = Form1.form1.value_trackBar26;
+                        command18.WhiteNoiseLength = Form1.form1.value_trackBar28;
+                        command18.Run(Form1.form1.imagescol[i - 1]);
+                    }
+
+                    if (Form1.form1.chckbox17 == true)
+                    {
+                        SmoothCommand command19 = new SmoothCommand();
+                        command19.Smooth += new EventHandler<SmoothCommandEventArgs>(SmoothEventExample_S1);
+                        command19.Flags = SmoothCommandFlags.FavorLong;
+                        command19.Length = Form1.form1.value_trackBar31;
+                        command19.Run(Form1.form1.imagescol[i - 1]);
+                    }
+                    //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
+                    // Prepare the command 
+                    if (Form1.form1.chckbox19 == true)
+                    {
+                        RakeRemoveCommand command20 = new RakeRemoveCommand();
+                        command20.RakeRemove += new EventHandler<RakeRemoveCommandEventArgs>(RakeRemoveEvent_S1);
+                        command20.MinLength = Form1.form1.value_numUpDown1;           //ความยาวขั้นต่ำ
+                        command20.MinWallHeight = Form1.form1.value_numUpDown2;       //ความสูงของกำแพงขั้นต่ำ
+                        command20.MaxWidth = Form1.form1.value_numUpDown3;             //ความกว้างสูงสุด
+                        command20.MaxWallPercent = Form1.form1.value_numUpDown4;      //เปอร์เซ็นต์กำแพงสูงสุด
+                        command20.MaxSideteethLength = Form1.form1.value_numUpDown5;  //ความยาวฟันข้างสูงสุด
+                        command20.MaxMidteethLength = Form1.form1.value_numUpDown6;   //ความยาวฟันกลางสูงสุด
+                        command20.Gaps = Form1.form1.value_numUpDown7;                 //ช่องว่าง
+                        command20.Variance = Form1.form1.value_numUpDown8;             //ความแปรปรวน
+                        command20.TeethSpacing = Form1.form1.value_numUpDown9;         //ระยะห่างระหว่างฟัน
+                        command20.AutoFilter = Form1.form1.chckbox20;       //ตัวกรองอัตโนมัติ
+                        command20.Run(Form1.form1.imagescol[i - 1]);
+                    }
+                   
+                  /*  using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
+                    {
+                        picReview2.Image = new Bitmap(destImage1);
+                    }*/
+                }
+                else
+                {
+
+                   /* l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                    //picReview2.ImageLocation = null;
+                    using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                    {
+                        picReview2.Image = new Bitmap(destImage1);
+                    }*/
+                }
+                /**/
                 PictureBox pic3 = new PictureBox();
                 using (Image destImage1 = RasterImageConverter.ConvertToImage(Form1.form1.imagescol[i - 1], ConvertToImageOptions.None))
                 {
@@ -267,7 +384,97 @@ namespace project1
             if (e.Percent == 50 && cancelAt50)
                 e.Cancel = true;
         }
+        private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Rake length is " + "( " + e.Length.ToString() + " )");
+            e.Status = RemoveStatus.Remove;
+        }
+        private void DotRemoveEvent_S1(object sender, DotRemoveCommandEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Size   " + e.BoundingRectangle.Width + e.BoundingRectangle.Height + "Bounds"
+               + e.BoundingRectangle.Left + "," + e.BoundingRectangle.Top + "," + e.BoundingRectangle.Right + "," + e.BoundingRectangle.Bottom + ","
+               + "     WhiteCount" + e.WhiteCount + "    BlackCount" + e.BlackCount, "DotRemove Event");
 
+            //Do not remove the speck if it contains any white pixels 
+            if (e.WhiteCount > 0)
+            {
+                e.Status = RemoveStatus.NoRemove;
+            }
+            else
+            {
+                e.Status = RemoveStatus.Remove;
+            }
+        }
+        private void LineRemoveEvent_S1(object sender, LineRemoveCommandEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Row Col " + "( " + e.StartRow.ToString() + ", " + e.StartColumn + " )" +
+               "\n Length " + e.Length.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
+        private void HolePunchRemoveEvent_S1(object sender, HolePunchRemoveCommandEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Size " + "( " + e.BoundingRectangle.Left + ", " + e.BoundingRectangle.Top + ") - " + "( " + e.BoundingRectangle.Right + ", " + e.BoundingRectangle.Bottom + ")" +
+               "\n Hole Index " + e.HoleIndex.ToString() +
+               "\n Holes Total Count " + e.HoleTotalCount.ToString() +
+               "\n Black Count " + e.BlackCount.ToString() +
+               "\n White Count " + e.WhiteCount.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
+        private void InvertedTextEvent_S1(object sender, InvertedTextCommandEventArgs e)
+        {
+
+            System.Diagnostics.Debug.WriteLine("Size " + "( " + e.BoundingRectangle.Left + ", " + e.BoundingRectangle.Top + ") - " + "( " + e.BoundingRectangle.Right + ", " + e.BoundingRectangle.Bottom + ")" +
+               "\n Black Count " + e.BlackCount.ToString() +
+               "\n White Count " + e.WhiteCount.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
+        private void command_BorderRemove_S1(object sender, BorderRemoveCommandEventArgs e)
+        {
+            string Border;
+
+            switch (e.Border)
+            {
+                case BorderRemoveBorderFlags.Top:
+                    Border = "Top";
+                    break;
+                case BorderRemoveBorderFlags.Left:
+                    Border = "Left";
+                    break;
+                case BorderRemoveBorderFlags.Right:
+                    Border = "Right";
+                    break;
+                case BorderRemoveBorderFlags.Bottom:
+                    Border = "Bottom";
+                    break;
+                default:
+                    Border = "";
+                    break;
+            }
+            System.Diagnostics.Debug.WriteLine("Bounds " + "( " + e.BoundingRectangle.Left + ", " + e.BoundingRectangle.Top + ") - " + "( " + e.BoundingRectangle.Right + ", " + e.BoundingRectangle.Bottom + ")" + "\n Border " + Border.ToString());
+            e.Status = RemoveStatus.Remove;
+        }
+        private void SmoothEventExample_S1(object sender, SmoothCommandEventArgs e)
+        {
+            string BumpOrNeck;
+            string Direction;
+
+            if (e.BumpNick == SmoothCommandBumpNickType.Bump)
+                BumpOrNeck = "Bump";
+            else
+                BumpOrNeck = "Neck";
+
+            if (e.Direction == SmoothCommandDirectionType.Horizontal)
+                Direction = "Horizontal";
+            else
+                Direction = "Vertical";
+
+            System.Diagnostics.Debug.WriteLine("Type " + BumpOrNeck +
+               "\n Row Column " + e.StartRow.ToString() + e.StartColumn.ToString() +
+               "\n Length " + e.Length +
+               "\n Direction " + Direction);
+
+            e.Status = RemoveStatus.Remove;
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
