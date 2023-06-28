@@ -68,6 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\_File_NUT\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="N2N.Data.Serialization">
+      <HintPath>..\..\..\..\..\..\_File_NUT\N2N.Data.Serialization.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -119,6 +122,12 @@
     </Compile>
     <Compile Include="ImageViewerItem.cs" />
     <Compile Include="Leadtools\Documents.cs" />
+    <Compile Include="popProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="popProgress.Designer.cs">
+      <DependentUpon>popProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Preview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="popProgress.resx">
+      <DependentUpon>popProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preview.resx">
       <DependentUpon>Preview.cs</DependentUpon>

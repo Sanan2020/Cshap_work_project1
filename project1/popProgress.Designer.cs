@@ -1,6 +1,6 @@
 ﻿namespace project1
 {
-    partial class Form1Export
+    partial class popProgress
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnExport = new System.Windows.Forms.Button();
+            this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.SuspendLayout();
             // 
-            // btnExport
+            // progressBarX1
             // 
-            this.btnExport.Location = new System.Drawing.Point(498, 67);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 0;
-            this.btnExport.Text = "button1";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.progressBarX1.Location = new System.Drawing.Point(22, 26);
+            this.progressBarX1.Name = "progressBarX1";
+            this.progressBarX1.Size = new System.Drawing.Size(174, 24);
+            this.progressBarX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
+            this.progressBarX1.TabIndex = 0;
+            this.progressBarX1.Text = "progressBarX1";
             // 
-            // Form1Export
+            // popProgress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 304);
-            this.Controls.Add(this.btnExport);
-            this.Name = "Form1Export";
-            this.Text = "Form1Export";
-            this.Load += new System.EventHandler(this.Form1Export_Load);
+            this.ClientSize = new System.Drawing.Size(220, 75);
+            this.Controls.Add(this.progressBarX1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "popProgress";
+            this.Text = "popProgress";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnExport;
+        private DevComponents.DotNetBar.Controls.ProgressBarX progressBarX1;
     }
 }

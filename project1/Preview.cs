@@ -5,6 +5,7 @@ using Leadtools.ImageProcessing;
 using Leadtools.ImageProcessing.Color;
 using Leadtools.ImageProcessing.Core;
 using Leadtools.ImageProcessing.Effects;
+using Leadtools.Pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,7 @@ namespace project1
 
         private async void Preview_Load(object sender, EventArgs e)
         {
+            
             btnSave.Enabled = false;
             //progressBar1.Value = 0;
             panel1.AutoScroll = true;
@@ -490,13 +492,36 @@ namespace project1
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     String savePath = saveFileDialog1.FileName;
-                    codecs.Save(Form1.form1.imagescol[0], Path.Combine(saveFileDialog1.FileName + ".pdf"), RasterImageFormat.RasPdf, 24);
+                    // codecs.Save(Form1.form1.imagescol[0], Path.Combine(saveFileDialog1.FileName + ".pdf"), RasterImageFormat.RasPdf, 24);
+                    string sourceFileName1 = Path.Combine(LEAD_VARS.ImagesDir, @"1.pdf");
+                    string sourceFileName2 = Path.Combine(LEAD_VARS.ImagesDir, @"2.pdf");
+                    string sourceFileName3 = Path.Combine(LEAD_VARS.ImagesDir, @"3.pdf");
+                    string destinationFileName = Path.Combine(LEAD_VARS.ImagesDir, @"Merged1.pdf");
+                    PDFFile pdfFile = new PDFFile(sourceFileName1);
+                    pdfFile.MergeWith(new String[] { sourceFileName2, sourceFileName3 }, destinationFileName);
+                    //Image destImage2;
+                    // Merge 1 with (2, 3) and form destination 
+                    //codecs.Save(Form1.form1.imagescol[0], "", RasterImageFormat.RasPdf, 24);
+                    // codecs.Convert()
+                    /* using (var destImage1 = RasterImageConverter.ConvertFromImage(destImage2,ConvertFromImageOptions.None))
+                     {
+                         // piccenter.Image = new Bitmap(destImage1);
+                         // pic3.Image = new Bitmap(destImage1);
+                         //RasterCodecs codecsW = new RasterCodecs();
+                         //RasterImage ff = codecs.Load(destImage1);
+                         //pdfFile.MergeWith(new Image[] { destImage1, sourceFileName2 }, destinationFileName);
+                     }*/
+                    // pdfFile
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        static class LEAD_VARS
+        {
+            public const string ImagesDir = @"C:\Users\Administrator\Downloads\merged";
         }
     }
 }
