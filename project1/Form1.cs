@@ -1510,7 +1510,7 @@ namespace project1
                         streamwri.WriteLine(checkBox21.Text + "=" + chckbox21.ToString());
                         streamwri.Close();
                         l_saveprofile.Text = " Save Success...";
-                        N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(Lprofile, "Configs.xml");
+                       // N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(Lprofile, "Configs.xml");
                         int r = Lprofile.Count;
                         for (int i = 0; i < r; i++)
                         {
