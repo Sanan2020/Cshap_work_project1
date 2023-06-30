@@ -117,34 +117,6 @@ namespace project1
             form1 = this;
         }
 
-        private void Browse_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                codecs.ThrowExceptionsOnInvalidImages = true;
-
-                OpenFileDialog ofile = new OpenFileDialog();
-                ofile.Filter = "Image File (*.bmp,*.tif,*.pdf,*.jpg, *.png)|*.bmp;*.tif;*.pdf;*.jpg;*.png";
-                if (DialogResult.OK == ofile.ShowDialog())
-                {
-                    folderPath = ofile.FileName;
-                    RasterImage image1 = codecs.Load(Path.Combine(folderPath));
-                    //this.picInput.Image = new Bitmap(ofile.FileName);
-                    l_stateInput.Text = "Image " + image1.BitsPerPixel.ToString() + " BitsPerPixel";
-                    using (Image destImage1 = RasterImageConverter.ConvertToImage(image1, ConvertToImageOptions.None))
-                    {
-                        picInput.Image = new Bitmap(destImage1);
-                        //MessageBox.Show(destImage1.ToString());
-                    }
-                    Display();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         bool cancelAt50;
         void RunCommand(RasterImage image, RasterCommand command)
         {
@@ -185,10 +157,7 @@ namespace project1
                 }
 
                 flowLayoutPanel1.AutoScroll = true;
-                this.picInput.SizeMode = PictureBoxSizeMode.StretchImage;
-               // this.picInput.BorderStyle = BorderStyle.FixedSingle;
-                this.picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
-              //  this.picOutput.BorderStyle = BorderStyle.FixedSingle;
+              
 
                 comboBox1.Items.Add("Default");
                 comboBox1.Items.Add("ErosionOmniDirectional");
@@ -201,7 +170,7 @@ namespace project1
                 comboBox1.Items.Add("DilationDiagonal");
                 comboBox1.SelectedIndex = 0;
 
-                comboBox2.Items.Add("Default");
+                cbboxUseProfile.Items.Add("Default");
 
                 /*if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))//ถ้าเจอไฟล์
                 {
@@ -225,7 +194,7 @@ namespace project1
                         //Console.WriteLine(fi.Name);
                         string[] nm = fi.Name.Split('.');
                         Console.WriteLine(nm[0]);
-                        comboBox2.Items.Add(nm[0]);
+                        cbboxUseProfile.Items.Add(nm[0]);
                     }
                 }
 
@@ -315,7 +284,7 @@ namespace project1
             {
                 using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
                 {
-                    picOutput.Image = new Bitmap(destImage1);
+                    //picOutput.Image = new Bitmap(destImage1);
                     //MessageBox.Show(destImage1.ToString());
                 }
             }
@@ -712,34 +681,6 @@ namespace project1
 
             e.Status = RemoveStatus.Remove;
         }
-        private void BrowseSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Stream myStream;
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf|All files (*.*)|*.*";
-                saveFileDialog1.FilterIndex = 2;
-                saveFileDialog1.RestoreDirectory = true;
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    // if ((myStream = saveFileDialog1.OpenFile()) != null)
-                    // {
-                    // Code to write the stream goes here.
-                    String savePath = saveFileDialog1.FileName;
-                    //MessageBox.Show(saveFileDialog1.);
-                    codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName + ".pdf"), RasterImageFormat.RasPdf, 24);
-                    //codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName + ".jpg"), RasterImageFormat.Jpeg, 1);
-                    //    myStream.Close();
-                    // }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
@@ -941,8 +882,8 @@ namespace project1
                 chckbox17 = false;
                 checkBox17.Checked = chckbox17;
 
-                value_profilename.Text = "";
-                comboBox2.SelectedIndex = 0;
+                tb_profile.Text = "";
+                cbboxUseProfile.SelectedIndex = 0;
 
                 value_trackBar10 = 10;
                 trackBar10.Value = value_trackBar10;
@@ -1050,10 +991,6 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
         }
-        private void Reset_Click(object sender, EventArgs e)
-        {
-            ResetValue();
-        }
         public List<profile> Lprofile = new List<profile>();
         public class profile
         {
@@ -1069,690 +1006,6 @@ namespace project1
             {
                 get { return values; }
                 set { values = value; }
-            }
-        }
-        private void SaveProfile_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                String pfname = value_profilename.Text;
-                String listname = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt";
-                if (value_profilename.Text == "")
-                {
-                    MessageBox.Show("กรุณาตั้งชื่อ Profile!!");
-                }
-                else
-                {
-                    if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + pfname + ".txt"))//ถ้าเจอไฟล์
-                    {
-                        //MessageBox.Show("คุณมีไฟล์ชื่อนี้อยู่แล้ว!!!");
-                        DialogResult dialogResult = MessageBox.Show("คุณมีไฟล์ชื่อนี้อยู่แล้ว!!! ต้องการทับไฟล์เดิมไหม", "Some Title", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            save();
-                        }
-                    }
-                    else
-                    {
-                        save();
-                        /* using (StreamWriter streamwri1 = File.AppendText(listname))
-                         {
-                             streamwri1.WriteLine(pfname);
-                             streamwri1.Close();
-                         }*/
-                    }
-
-                    void save()
-                    {
-
-                        StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + pfname + ".txt");
-                        //streamwri.WriteLine(l_profilename.Name + "=" + value_profilename.Text);
-                        //ContrastBrightnessIntensity
-                        profile prof1 = new profile();
-                        prof1.Name = l_brightness.Name;
-                        prof1.Values = value_trackBar1.ToString();
-                        Lprofile.Add(prof1);
-
-                        profile prof2 = new profile();
-                        prof2.Name = l_contrast.Name;
-                        prof2.Values = value_trackBar2.ToString();
-                        Lprofile.Add(prof2);
-
-                        profile prof3 = new profile();
-                        prof3.Name = l_intensity.Name;
-                        prof3.Values = value_trackBar3.ToString();
-                        Lprofile.Add(prof3);
-
-                        /* streamwri.WriteLine(l_brightness.Name + "=" + value_trackBar1.ToString());
-                         streamwri.WriteLine(l_contrast.Name + "=" + value_trackBar2.ToString());
-                         streamwri.WriteLine(l_intensity.Name + "=" + value_trackBar3.ToString());*/
-                        //UnsharpMask
-                        profile prof4 = new profile();
-                        prof4.Name = l_amount.Name;
-                        prof4.Values = value_trackBar4.ToString();
-                        Lprofile.Add(prof4);
-
-                        profile prof5 = new profile();
-                        prof5.Name = l_radius.Name;
-                        prof5.Values = value_trackBar5.ToString();
-                        Lprofile.Add(prof5);
-
-                        profile prof6 = new profile();
-                        prof6.Name = l_threshold.Name;
-                        prof6.Values = value_trackBar6.ToString();
-                        Lprofile.Add(prof6);
-                        /*streamwri.WriteLine(l_amount.Name + "=" + value_trackBar4.ToString());
-                        streamwri.WriteLine(l_radius.Name + "=" + value_trackBar5.ToString());
-                        streamwri.WriteLine(l_threshold.Name + "=" + value_trackBar6.ToString());*/
-                        //GrayScale
-                        profile prof7 = new profile();
-                        prof7.Name = checkBox2.Text;
-                        prof7.Values = chckbox2.ToString();
-                        Lprofile.Add(prof7);
-
-                        profile prof8 = new profile();
-                        prof8.Name = l_redfactor.Name;
-                        prof8.Values = value_trackBar7.ToString();
-                        Lprofile.Add(prof8);
-
-                        profile prof9 = new profile();
-                        prof9.Name = l_greenfactor.Name;
-                        prof9.Values = value_trackBar8.ToString();
-                        Lprofile.Add(prof9);
-
-                        profile prof10 = new profile();
-                        prof10.Name = l_bluefactor.Name;
-                        prof10.Values = value_trackBar9.ToString();
-                        Lprofile.Add(prof10);
-
-                        /*streamwri.WriteLine(checkBox2.Text + "=" + chckbox2.ToString());
-                        streamwri.WriteLine(l_redfactor.Name + "=" + value_trackBar7.ToString());
-                        streamwri.WriteLine(l_greenfactor.Name + "=" + value_trackBar8.ToString());
-                        streamwri.WriteLine(l_bluefactor.Name + "=" + value_trackBar9.ToString());*/
-                        //Document Image Cleanup Functions
-                        profile prof11 = new profile();
-                        prof11.Name = checkBox7.Text;
-                        prof11.Values = chckbox7.ToString();
-                        Lprofile.Add(prof11);
-
-                        profile prof12 = new profile();
-                        prof12.Name = checkBox3.Text;
-                        prof12.Values = chckbox3.ToString();
-                        Lprofile.Add(prof12);
-
-                        profile prof13 = new profile();
-                        prof13.Name = checkBox9.Text;
-                        prof13.Values = chckbox9.ToString();
-                        Lprofile.Add(prof13);
-
-                        profile prof14 = new profile();
-                        prof14.Name = l_dimension.Name;
-                        prof14.Values = value_trbDynBin1.ToString();
-                        Lprofile.Add(prof14);
-
-                        profile prof15 = new profile();
-                        prof15.Name = l_localcontrast.Name;
-                        prof15.Values = value_trbDynBin2.ToString();
-                        Lprofile.Add(prof15);
-
-                        profile prof16 = new profile();
-                        prof16.Name = l_binaryfilter.Name;
-                        prof16.Values = selectCombobox.ToString();
-                        Lprofile.Add(prof16);
-
-                        /*streamwri.WriteLine(checkBox7.Text + "=" + chckbox7.ToString());    //Auto Binarize
-                        streamwri.WriteLine(checkBox3.Text + "=" + chckbox3.ToString());    //Despeckle
-                        streamwri.WriteLine(checkBox9.Text + "=" + chckbox9.ToString());    //Dynamic Binary
-                        streamwri.WriteLine(l_dimension.Name + "=" + value_trbDynBin1.ToString());      //value_trbDynBin1
-                        streamwri.WriteLine(l_localcontrast.Name + "=" + value_trbDynBin2.ToString());  //value_trbDynBin2
-                        streamwri.WriteLine(l_binaryfilter.Name + "=" + selectCombobox.ToString());     //binaryfilter*/
-                        //Dot Remove
-                        profile prof17 = new profile();
-                        prof17.Name = checkBox10.Text;
-                        prof17.Values = chckbox10.ToString();
-                        Lprofile.Add(prof17);
-
-                        profile prof18 = new profile();
-                        prof18.Name = l_maximumdotH.Name;
-                        prof18.Values = value_trackBar10.ToString();
-                        Lprofile.Add(prof18);
-
-                        profile prof19 = new profile();
-                        prof19.Name = l_maximumdotW.Name;
-                        prof19.Values = value_trackBar11.ToString();
-                        Lprofile.Add(prof19);
-
-                        profile prof20 = new profile();
-                        prof20.Name = l_minimumdotH.Name;
-                        prof20.Values = value_trackBar12.ToString();
-                        Lprofile.Add(prof20);
-
-                        profile prof21 = new profile();
-                        prof21.Name = l_minimumdotW.Name;
-                        prof21.Values = value_trackBar13.ToString();
-                        Lprofile.Add(prof21);
-                        /* streamwri.WriteLine(checkBox10.Text + "=" + chckbox10.ToString());
-                         streamwri.WriteLine(l_maximumdotH.Name + "=" + value_trackBar10.ToString());
-                         streamwri.WriteLine(l_maximumdotW.Name + "=" + value_trackBar11.ToString());
-                         streamwri.WriteLine(l_minimumdotH.Name + "=" + value_trackBar12.ToString());
-                         streamwri.WriteLine(l_minimumdotW.Name + "=" + value_trackBar13.ToString());*/
-                        //Line Remove
-                        profile prof22 = new profile();
-                        prof22.Name = checkBox11.Text;
-                        prof22.Values = chckbox11.ToString();
-                        Lprofile.Add(prof22);
-
-                        profile prof23 = new profile();
-                        prof23.Name = l_gaplength.Name;
-                        prof23.Values = value_trackBar14.ToString();
-                        Lprofile.Add(prof23);
-
-                        profile prof24 = new profile();
-                        prof24.Name = l_maximumlineW.Name;
-                        prof24.Values = value_trackBar15.ToString();
-                        Lprofile.Add(prof24);
-
-                        profile prof25 = new profile();
-                        prof25.Name = l_minimumlineL.Name;
-                        prof25.Values = value_trackBar16.ToString();
-                        Lprofile.Add(prof25);
-
-                        profile prof26 = new profile();
-                        prof26.Name = l_maximumwall.Name;
-                        prof26.Values = value_trackBar17.ToString();
-                        Lprofile.Add(prof26);
-
-                        profile prof27 = new profile();
-                        prof27.Name = l_wall.Name;
-                        prof27.Values = value_trackBar22.ToString();
-                        Lprofile.Add(prof27);
-                        /* streamwri.WriteLine(checkBox11.Text + "=" + chckbox11.ToString());
-                         streamwri.WriteLine(l_gaplength.Name + "=" + value_trackBar14.ToString());
-                         streamwri.WriteLine(l_maximumlineW.Name + "=" + value_trackBar15.ToString());
-                         streamwri.WriteLine(l_minimumlineL.Name + "=" + value_trackBar16.ToString());
-                         streamwri.WriteLine(l_maximumwall.Name + "=" + value_trackBar17.ToString());
-                         streamwri.WriteLine(l_wall.Name + "=" + value_trackBar22.ToString());*/
-                        //HolePunchRemove
-                        profile prof28 = new profile();
-                        prof28.Name = checkBox12.Text;
-                        prof28.Values = chckbox12.ToString();
-                        Lprofile.Add(prof28);
-
-                        profile prof29 = new profile();
-                        prof29.Name = l_maximumhole.Name;
-                        prof29.Values = value_trackBar18.ToString();
-                        Lprofile.Add(prof29);
-
-                        profile prof30 = new profile();
-                        prof30.Name = l_minimumhole.Name;
-                        prof30.Values = value_trackBar21.ToString();
-                        Lprofile.Add(prof30);
-                        /*streamwri.WriteLine(checkBox12.Text + "=" + chckbox12.ToString());
-                        streamwri.WriteLine(l_maximumhole.Name + "=" + value_trackBar18.ToString());
-                        streamwri.WriteLine(l_minimumhole.Name + "=" + value_trackBar21.ToString());*/
-                        //InvertedText
-                        profile prof31 = new profile();
-                        prof31.Name = checkBox13.Text;
-                        prof31.Values = chckbox13.ToString();
-                        Lprofile.Add(prof31);
-
-                        profile prof32 = new profile();
-                        prof32.Name = l_maximumblack.Name;
-                        prof32.Values = value_trackBar19.ToString();
-                        Lprofile.Add(prof32);
-
-                        profile prof33 = new profile();
-                        prof33.Name = l_minimumBlack.Name;
-                        prof33.Values = value_trackBar20.ToString();
-                        Lprofile.Add(prof33);
-
-                        profile prof34 = new profile();
-                        prof34.Name = l_minimuminverH.Name;
-                        prof34.Values = value_trackBar23.ToString();
-                        Lprofile.Add(prof34);
-
-                        profile prof35 = new profile();
-                        prof35.Name = l_minimuminvertW.Name;
-                        prof35.Values = value_trackBar24.ToString();
-                        Lprofile.Add(prof35);
-                        /*streamwri.WriteLine(checkBox13.Text + "=" + chckbox13.ToString());
-                        streamwri.WriteLine(l_maximumblack.Name + "=" + value_trackBar19.ToString());
-                        streamwri.WriteLine(l_minimumBlack.Name + "=" + value_trackBar20.ToString());
-                        streamwri.WriteLine(l_minimuminverH.Name + "=" + value_trackBar23.ToString());
-                        streamwri.WriteLine(l_minimuminvertW.Name + "=" + value_trackBar24.ToString());*/
-                        //Auto Crop
-                        profile prof36 = new profile();
-                        prof36.Name = checkBox15.Text;
-                        prof36.Values = chckbox15.ToString();
-                        Lprofile.Add(prof36);
-
-                        profile prof37 = new profile();
-                        prof37.Name = l_cropThreshold.Name;
-                        prof37.Values = value_trackBar27.ToString();
-                        Lprofile.Add(prof37);
-
-                        /*streamwri.WriteLine(checkBox15.Text + "=" + chckbox15.ToString());
-                        streamwri.WriteLine(l_cropThreshold.Name + "=" + value_trackBar27.ToString());*/
-                        //Boder Remove
-                        profile prof38 = new profile();
-                        prof38.Name = checkBox16.Text;
-                        prof38.Values = chckbox16.ToString();
-                        Lprofile.Add(prof38);
-
-                        profile prof39 = new profile();
-                        prof39.Name = l_percent.Name;
-                        prof39.Values = value_trackBar25.ToString();
-                        Lprofile.Add(prof39);
-
-                        profile prof40 = new profile();
-                        prof40.Name = l_variance.Name;
-                        prof40.Values = value_trackBar26.ToString();
-                        Lprofile.Add(prof40);
-
-                        profile prof41 = new profile();
-                        prof41.Name = l_whitenoiseL.Name;
-                        prof41.Values = value_trackBar28.ToString();
-                        Lprofile.Add(prof41);
-                        /*streamwri.WriteLine(checkBox16.Text + "=" + chckbox16.ToString());
-                        streamwri.WriteLine(l_percent.Name + "=" + value_trackBar25.ToString());
-                        streamwri.WriteLine(l_variance.Name + "=" + value_trackBar26.ToString());
-                        streamwri.WriteLine(l_whitenoiseL.Name + "=" + value_trackBar28.ToString());*/
-                        //Smooth
-                        profile prof42 = new profile();
-                        prof42.Name = checkBox17.Text;
-                        prof42.Values = chckbox17.ToString();
-                        Lprofile.Add(prof42);
-
-                        profile prof43 = new profile();
-                        prof43.Name = l_length.Name;
-                        prof43.Values = value_trackBar31.ToString();
-                        Lprofile.Add(prof43);
-                        /*streamwri.WriteLine(checkBox17.Text + "=" + chckbox17.ToString());
-                        streamwri.WriteLine(l_length.Name + "=" + value_trackBar31.ToString());*/
-
-                        profile prof44 = new profile();
-                        prof44.Name = checkBox1.Text;
-                        prof44.Values = chckbox.ToString();
-                        Lprofile.Add(prof44);
-
-                        profile prof45 = new profile();
-                        prof45.Name = checkBox4.Text;
-                        prof45.Values = chckbox4.ToString();
-                        Lprofile.Add(prof45);
-
-                        profile prof46 = new profile();
-                        prof46.Name = checkBox5.Text;
-                        prof46.Values = chckbox5.ToString();
-                        Lprofile.Add(prof46);
-
-                        profile prof47 = new profile();
-                        prof47.Name = l_maximum.Name;
-                        prof47.Values = value_trbMaximum.ToString();
-                        Lprofile.Add(prof47);
-
-                        profile prof48 = new profile();
-                        prof48.Name = checkBox6.Text;
-                        prof48.Values = chckbox6.ToString();
-                        Lprofile.Add(prof48);
-
-                        profile prof49 = new profile();
-                        prof49.Name = l_minimum.Name;
-                        prof49.Values = value_trbMinimum.ToString();
-                        Lprofile.Add(prof49);
-
-                        profile prof50 = new profile();
-                        prof50.Name = checkBox8.Text;
-                        prof50.Values = chckbox8.ToString();
-                        Lprofile.Add(prof50);
-
-                        profile prof51 = new profile();
-                        prof51.Name = l_gamma.Name;
-                        prof51.Values = value_trbGamma.ToString();
-                        Lprofile.Add(prof51);
-                        /*streamwri.WriteLine(checkBox1.Text + "=" + chckbox.ToString());     //AutoColorLevel
-                        streamwri.WriteLine(checkBox4.Text + "=" + chckbox4.ToString());    //AutoBinary
-                        streamwri.WriteLine(checkBox5.Text + "=" + chckbox5.ToString());    //Maximum
-                        streamwri.WriteLine(l_maximum.Name + "=" + value_trbMaximum.ToString());
-                        streamwri.WriteLine(checkBox6.Text + "=" + chckbox6.ToString());    //Minimum
-                        streamwri.WriteLine(l_minimum.Name + "=" + value_trbMinimum.ToString());
-                        streamwri.WriteLine(checkBox8.Text + "=" + chckbox8.ToString());    //Gamma
-                        streamwri.WriteLine(l_gamma.Name + "=" + value_trbGamma.ToString());*/
-
-                        profile prof52 = new profile();
-                        prof52.Name = checkBox14.Text;
-                        prof52.Values = chckbox14.ToString();
-                        Lprofile.Add(prof52);
-                        /*streamwri.WriteLine(checkBox14.Text + "=" + chckbox14.ToString());  //AutoDeskew*/
-                                                                                            //Flip Rotate Image
-                        profile prof53 = new profile();
-                        prof53.Name = checkBox18.Text;
-                        prof53.Values = chckbox18.ToString();
-                        Lprofile.Add(prof53);
-
-                        profile prof54 = new profile();
-                        prof54.Name = l_RotateImage.Name;
-                        prof54.Values = value_trackBar29.ToString();
-                        Lprofile.Add(prof54);
-                        /*streamwri.WriteLine(checkBox18.Text + "=" + chckbox18.ToString());
-                        streamwri.WriteLine(l_RotateImage.Name + "=" + value_trackBar29.ToString());*/
-                        //RakeRemove
-
-                        profile prof55 = new profile();
-                        prof55.Name = checkBox19.Text;
-                        prof55.Values = chckbox19.ToString();
-                        Lprofile.Add(prof55);
-
-                        profile prof56 = new profile();
-                        prof56.Name = l_numUpDown1.Name;
-                        prof56.Values = value_numUpDown1.ToString();
-                        Lprofile.Add(prof56);
-
-                        profile prof57 = new profile();
-                        prof57.Name = l_numUpDown2.Text;
-                        prof57.Values = value_numUpDown2.ToString();
-                        Lprofile.Add(prof57);
-
-                        profile prof58 = new profile();
-                        prof58.Name = l_numUpDown3.Name;
-                        prof58.Values = value_numUpDown3.ToString();
-                        Lprofile.Add(prof58);
-
-                        profile prof59 = new profile();
-                        prof59.Name = l_numUpDown4.Text;
-                        prof59.Values = value_numUpDown4.ToString();
-                        Lprofile.Add(prof59);
-
-                        profile prof60 = new profile();
-                        prof60.Name = l_numUpDown5.Name;
-                        prof60.Values = value_numUpDown5.ToString();
-                        Lprofile.Add(prof60);
-
-                        profile prof61 = new profile();
-                        prof61.Name = l_numUpDown6.Text;
-                        prof61.Values = value_numUpDown6.ToString();
-                        Lprofile.Add(prof61);
-
-                        profile prof62 = new profile();
-                        prof62.Name = l_numUpDown7.Name;
-                        prof62.Values = value_numUpDown7.ToString();
-                        Lprofile.Add(prof62);
-
-                        profile prof63 = new profile();
-                        prof63.Name = l_numUpDown8.Text;
-                        prof63.Values = value_numUpDown8.ToString();
-                        Lprofile.Add(prof63);
-
-                        profile prof64 = new profile();
-                        prof64.Name = l_numUpDown9.Name;
-                        prof64.Values = value_numUpDown9.ToString();
-                        Lprofile.Add(prof64);
-
-                        profile prof65 = new profile();
-                        prof65.Name = l_autofilter.Text;
-                        prof65.Values = chckbox20.ToString();
-                        Lprofile.Add(prof65);
-                        /*streamwri.WriteLine(checkBox19.Text + "=" + chckbox19.ToString());
-                        streamwri.WriteLine(l_numUpDown1.Name + "=" + value_numUpDown1.ToString());
-                        streamwri.WriteLine(l_numUpDown2.Name + "=" + value_numUpDown2.ToString());
-                        streamwri.WriteLine(l_numUpDown3.Name + "=" + value_numUpDown3.ToString());
-                        streamwri.WriteLine(l_numUpDown4.Name + "=" + value_numUpDown4.ToString());
-                        streamwri.WriteLine(l_numUpDown5.Name + "=" + value_numUpDown5.ToString());
-                        streamwri.WriteLine(l_numUpDown6.Name + "=" + value_numUpDown6.ToString());
-                        streamwri.WriteLine(l_numUpDown7.Name + "=" + value_numUpDown7.ToString());
-                        streamwri.WriteLine(l_numUpDown8.Name + "=" + value_numUpDown8.ToString());
-                        streamwri.WriteLine(l_numUpDown9.Name + "=" + value_numUpDown9.ToString());
-                        streamwri.WriteLine(l_autofilter.Text + "=" + chckbox20.ToString());*/
-                        //convert to 1 bit
-                        profile prof66 = new profile();
-                        prof66.Name = checkBox21.Text;
-                        prof66.Values = chckbox21.ToString();
-                        Lprofile.Add(prof66);
-                        streamwri.WriteLine(checkBox21.Text + "=" + chckbox21.ToString());
-                        streamwri.Close();
-                        l_saveprofile.Text = " Save Success...";
-                        N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(Lprofile, "Configs.xml");
-                        int r = Lprofile.Count;
-                        for (int i = 0; i < r; i++)
-                        {
-                            Console.WriteLine(i+"| "+Lprofile[i].Name+"=" + Lprofile[i].Values);
-                        }
-                        value_profilename.Text = "";
-                    }
-                    cbBox2re();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                selectCombobox2 = comboBox2.SelectedItem.ToString();
-                if (selectCombobox2 == "Default" && folderPath != null)
-                {
-                    ResetValue();
-                }
-                else
-                {
-                    String[] ls;
-                    String lscol;
-                    String rf;
-                    String rfile;
-                    List<String> list = new List<String>();
-                    if (selectCombobox2 == "Default") { }
-                    else
-                    {
-                        StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + selectCombobox2 + ".txt");
-                        while ((rfile = streamread.ReadLine()) != null)
-                        {
-                            rf = rfile;                         //text = อ่านข้อความทีละบรรทัด
-                            ls = rf.Split("=".ToCharArray());   //split ตัดข้อความ ตัดที่ = 
-                            lscol = ls[1];                      //เก็บค่าที่ตัดแล้ว เอาค่าที่อยู่หลัง =
-                            list.Add(lscol);
-                        }
-
-                        //เซตค่า
-                        //ความสว่าง
-                        value_trackBar1 = int.Parse(list[0]);
-                        trackBar1.Value = value_trackBar1;
-                        l_brightness.Text = value_trackBar1.ToString();
-                        value_trackBar2 = int.Parse(list[1]);
-                        trackBar2.Value = value_trackBar2;
-                        l_contrast.Text = value_trackBar2.ToString();
-                        value_trackBar3 = int.Parse(list[2]);
-                        trackBar3.Value = value_trackBar3;
-                        l_intensity.Text = value_trackBar3.ToString();
-                        //ความคมชัด
-                        value_trackBar4 = int.Parse(list[3]);
-                        trackBar4.Value = value_trackBar4;
-                        l_amount.Text = value_trackBar4.ToString();
-                        value_trackBar5 = int.Parse(list[4]);
-                        trackBar5.Value = value_trackBar5;
-                        l_radius.Text = value_trackBar5.ToString();
-                        value_trackBar6 = int.Parse(list[5]);
-                        trackBar6.Value = value_trackBar6;
-                        l_threshold.Text = value_trackBar6.ToString();
-                        //Gray scale
-                        chckbox2 = bool.Parse(list[6]);
-                        checkBox2.Checked = chckbox2;
-                        value_trackBar7 = int.Parse(list[7]);
-                        trackBar7.Value = value_trackBar7;
-                        l_redfactor.Text = value_trackBar7.ToString();
-                        value_trackBar8 = int.Parse(list[8]);
-                        trackBar8.Value = value_trackBar8;
-                        l_greenfactor.Text = value_trackBar8.ToString();
-                        value_trackBar9 = int.Parse(list[9]);
-                        trackBar9.Value = value_trackBar9;
-                        l_bluefactor.Text = value_trackBar9.ToString();
-                        //Document Image Cleanup Functions
-                        chckbox7 = bool.Parse(list[10]);
-                        checkBox7.Checked = chckbox7;
-                        chckbox3 = bool.Parse(list[11]);
-                        checkBox3.Checked = chckbox3;
-                        chckbox9 = bool.Parse(list[12]);
-                        checkBox9.Checked = chckbox9;
-                        value_trbDynBin1 = int.Parse(list[13]);
-                        trbDynBin1.Value = value_trbDynBin1;
-                        l_dimension.Text = value_trbDynBin1.ToString();
-                        value_trbDynBin2 = int.Parse(list[14]);
-                        trbDynBin2.Value = value_trbDynBin2;
-                        l_localcontrast.Text = value_trbDynBin2.ToString();
-                        selectCombobox = int.Parse(list[15]);
-                        comboBox1.SelectedIndex = (selectCombobox + 1);
-                        //Dot Remove
-                        chckbox10 = bool.Parse(list[16]);
-                        checkBox10.Checked = chckbox10;
-                        value_trackBar10 = int.Parse(list[17]);
-                        trackBar10.Value = value_trackBar10;
-                        l_maximumdotH.Text = value_trackBar10.ToString();
-                        value_trackBar11 = int.Parse(list[18]);
-                        trackBar11.Value = value_trackBar11;
-                        l_maximumdotW.Text = value_trackBar11.ToString();
-                        value_trackBar12 = int.Parse(list[19]);
-                        trackBar12.Value = value_trackBar12;
-                        l_minimumdotH.Text = value_trackBar12.ToString();
-                        value_trackBar13 = int.Parse(list[20]);
-                        trackBar13.Value = value_trackBar13;
-                        l_minimumdotW.Text = value_trackBar13.ToString();
-                        //Line Remove
-                        chckbox11 = bool.Parse(list[21]);
-                        checkBox11.Checked = chckbox11;
-                        value_trackBar14 = int.Parse(list[22]);
-                        trackBar14.Value = value_trackBar14;
-                        l_gaplength.Text = value_trackBar14.ToString();
-                        value_trackBar15 = int.Parse(list[23]);
-                        trackBar15.Value = value_trackBar15;
-                        l_maximumlineW.Text = value_trackBar15.ToString();
-                        value_trackBar16 = int.Parse(list[24]);
-                        trackBar16.Value = value_trackBar16;
-                        l_minimumlineL.Text = value_trackBar16.ToString();
-                        value_trackBar17 = int.Parse(list[25]);
-                        trackBar17.Value = value_trackBar17;
-                        l_maximumwall.Text = value_trackBar17.ToString();
-                        value_trackBar22 = int.Parse(list[26]);
-                        trackBar22.Value = value_trackBar22;
-                        l_wall.Text = value_trackBar22.ToString();
-                        //HolePunchRemove
-                        chckbox12 = bool.Parse(list[27]);
-                        checkBox12.Checked = chckbox12;
-                        value_trackBar18 = int.Parse(list[28]);
-                        trackBar18.Value = value_trackBar18;
-                        l_maximumhole.Text = value_trackBar18.ToString();
-                        value_trackBar21 = int.Parse(list[29]);
-                        trackBar21.Value = value_trackBar21;
-                        l_minimumhole.Text = value_trackBar21.ToString();
-                        //InvertedText
-                        chckbox13 = bool.Parse(list[30]);
-                        checkBox13.Checked = chckbox13;
-                        value_trackBar19 = int.Parse(list[31]);
-                        trackBar19.Value = value_trackBar19;
-                        l_maximumblack.Text = value_trackBar19.ToString();
-                        value_trackBar20 = int.Parse(list[32]);
-                        trackBar20.Value = value_trackBar20;
-                        l_minimumBlack.Text = value_trackBar20.ToString();
-                        value_trackBar23 = int.Parse(list[33]);
-                        trackBar23.Value = value_trackBar23;
-                        l_minimuminverH.Text = value_trackBar23.ToString();
-                        value_trackBar24 = int.Parse(list[34]);
-                        trackBar24.Value = value_trackBar24;
-                        l_minimuminvertW.Text = value_trackBar24.ToString();
-                        //Auto Crop
-                        chckbox15 = bool.Parse(list[35]);
-                        checkBox15.Checked = chckbox15;
-                        value_trackBar27 = int.Parse(list[36]);
-                        trackBar27.Value = value_trackBar27;
-                        l_cropThreshold.Text = value_trackBar27.ToString();
-                        //Boder Remove
-                        chckbox16 = bool.Parse(list[37]);
-                        checkBox16.Checked = chckbox16;
-                        value_trackBar25 = int.Parse(list[38]);
-                        trackBar25.Value = value_trackBar25;
-                        l_percent.Text = value_trackBar25.ToString();
-                        value_trackBar26 = int.Parse(list[39]);
-                        trackBar26.Value = value_trackBar26;
-                        l_variance.Text = value_trackBar26.ToString();
-                        value_trackBar28 = int.Parse(list[40]);
-                        trackBar28.Value = value_trackBar28;
-                        l_whitenoiseL.Text = value_trackBar28.ToString();
-                        //Smooth
-                        chckbox17 = bool.Parse(list[41]);
-                        checkBox17.Checked = chckbox17;
-                        value_trackBar31 = int.Parse(list[42]);
-                        trackBar31.Value = value_trackBar31;
-                        l_length.Text = value_trackBar31.ToString();
-                        //
-                        chckbox = bool.Parse(list[43]);
-                        checkBox1.Checked = chckbox;
-                        chckbox4 = bool.Parse(list[44]);
-                        checkBox4.Checked = chckbox4;
-                        //Maximum
-                        chckbox5 = bool.Parse(list[45]);
-                        checkBox5.Checked = chckbox5;
-                        value_trbMaximum = int.Parse(list[46]);
-                        trbMaximum.Value = value_trbMaximum;
-                        l_maximum.Text = value_trbMaximum.ToString();
-                        //Minimum
-                        chckbox6 = bool.Parse(list[47]);
-                        checkBox6.Checked = chckbox6;
-                        value_trbMinimum = int.Parse(list[48]);
-                        trbMinimum.Value = value_trbMinimum;
-                        l_minimum.Text = value_trbMinimum.ToString();
-                        //Gamma
-                        chckbox8 = bool.Parse(list[49]);
-                        checkBox8.Checked = chckbox8;
-                        value_trbGamma = int.Parse(list[50]);
-                        trbGamma.Value = value_trbGamma;
-                        l_gamma.Text = value_trbGamma.ToString();
-
-                        chckbox14 = bool.Parse(list[51]);
-                        checkBox14.Checked = chckbox14;
-                        //Flip Rotate Image
-                        chckbox18 = bool.Parse(list[52]);
-                        checkBox18.Checked = chckbox18;
-                        value_trackBar29 = int.Parse(list[53]);
-                        trackBar29.Value = value_trackBar29;
-                        l_RotateImage.Text = value_trackBar29.ToString();
-                        //RakeRemove
-                        chckbox19 = bool.Parse(list[54]);
-                        checkBox19.Checked = chckbox19;
-                        value_numUpDown1 = int.Parse(list[55]);
-                        numUpDown1.Value = value_numUpDown1;
-                        value_numUpDown2 = int.Parse(list[56]);
-                        numUpDown2.Value = value_numUpDown2;
-                        value_numUpDown3 = int.Parse(list[57]);
-                        numUpDown3.Value = value_numUpDown3;
-                        value_numUpDown4 = int.Parse(list[58]);
-                        numUpDown4.Value = value_numUpDown4;
-                        value_numUpDown5 = int.Parse(list[59]);
-                        numUpDown5.Value = value_numUpDown5;
-                        value_numUpDown6 = int.Parse(list[60]);
-                        numUpDown6.Value = value_numUpDown6;
-                        value_numUpDown7 = int.Parse(list[61]);
-                        numUpDown7.Value = value_numUpDown7;
-                        value_numUpDown8 = int.Parse(list[62]);
-                        numUpDown8.Value = value_numUpDown8;
-                        value_numUpDown9 = int.Parse(list[63]);
-                        numUpDown9.Value = value_numUpDown9;
-                        chckbox20 = bool.Parse(list[64]);
-                        checkBox20.Checked = chckbox20;
-                        //convetrt to 1 bit
-                        chckbox21 = bool.Parse(list[65]);
-                        checkBox21.Checked = chckbox21;
-                        Display();
-                        l_saveprofile.Text = "usepf Success...";
-                    }
-                    list.Clear();
-                    //เคลียร์ list
-                    rf = "";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
@@ -2851,15 +2104,6 @@ namespace project1
             Display(); Image();
         }
 
-        private void Remove_Click(object sender, EventArgs e)
-        {
-            Form2 frm2 = new Form2();
-            int x = Remove.Location.X - 200;
-            int y = Remove.Location.Y;
-            frm2.Location = new Point(x, y);
-            frm2.Show();
-        }
-
         public void cbBox2re()
         {
             /*comboBox2.Items.Clear();
@@ -2876,8 +2120,8 @@ namespace project1
             comboBox2.SelectedItem = "Default";*/
             /*  if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\*.txt"))//ถ้าเจอไฟล์
               {*/
-            comboBox2.Items.Clear();
-            comboBox2.Items.Add("Default");
+            cbboxUseProfile.Items.Clear();
+            cbboxUseProfile.Items.Add("Default");
             if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt")) { 
                 DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
             foreach (var fi in di.GetFiles("*.txt"))
@@ -2885,9 +2129,9 @@ namespace project1
                 //Console.WriteLine(fi.Name);
                 string[] nm = fi.Name.Split('.');
                 Console.WriteLine(nm[0]);
-                comboBox2.Items.Add(nm[0]);
+                    cbboxUseProfile.Items.Add(nm[0]);
             }
-            comboBox2.SelectedItem = "Default";
+                cbboxUseProfile.SelectedItem = "Default";
             //}
             }
         }
@@ -2947,25 +2191,6 @@ namespace project1
             }
         }
 
-        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form1Export f1ex = new Form1Export();
-            f1ex.ShowDialog();
-        }
-
-        private void checkBox21_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox21.Checked == true)
-            {
-                chckbox21 = true;
-                Display(); Image();
-            }
-            else
-            {
-                chckbox21 = false;
-                Display(); Image();
-            }
-        }
         public List<RasterImage> imagescol = new List<RasterImage>();
         public int pageCount;
         String[] file;
@@ -3127,13 +2352,7 @@ namespace project1
             picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
             picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
             this.splitContainer1.Panel2.Controls.Add(picReview2);*/
-            foreach (string img in file)
-            {
-                /**/
-               /* using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
-                {
-                    pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
-                }*/
+            foreach (string img in file){
                 Console.WriteLine("Page " + pageCount);
                 l_numberPages.Text = pageCount.ToString() + " Page";
                 // Loads all the pages into the viewer
@@ -3146,12 +2365,6 @@ namespace project1
                 _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
                 _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
                 RasterImage rasterImage = _rasterCodecs.Load(img, pdname);
-
-               // var rasterImage2 = _rasterCodecs.Load(img, 24, CodecsLoadByteOrder.Bgr, 1, 1);
-               // _rasterCodecs
-               // 
-               // RasterImage rasterImage2 = Codecs.Load(rasterImage);
-                //ImageChange();
 
                 ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
@@ -3704,8 +2917,7 @@ namespace project1
                     this.splitContainer1.Panel2.Controls.Add(pic3);
                     await Task.Delay(1000);
                 }
-            }
-                    
+            }        
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3715,32 +2927,10 @@ namespace project1
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
             try
             { 
-
                 Preview pv = new Preview();
                 pv.ShowDialog();
-                //codecs.ThrowExceptionsOnInvalidImages = true;
-                /* // Stream myStream;
-                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                 saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf|All files (*.*)|*.*";
-                 saveFileDialog1.FilterIndex = 2;
-                 saveFileDialog1.RestoreDirectory = true;
-
-                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                 {
-                     // if ((myStream = saveFileDialog1.OpenFile()) != null)
-                     // {
-                     // Code to write the stream goes here.
-                     String savePath = saveFileDialog1.FileName;
-                     MessageBox.Show(saveFileDialog1.FileName);
-                     _rasterCodecs.Save(Image(), Path.Combine(saveFileDialog1.FileName + ".pdf"), RasterImageFormat.RasPdf, 24);
-                   //  codecs.Save(ChangeCommand(), Path.Combine(@"C:\Users\Administrator\Downloads\out\", "result1.tif"), RasterImageFormat.RasPdf, 24);
-                     //codecs.Save(ChangeCommand(), Path.Combine(saveFileDialog1.FileName + ".jpg"), RasterImageFormat.Jpeg, 1);
-                     //    myStream.Close();
-                     // }
-                 }*/
             }
             catch (Exception ex)
             {
@@ -3751,6 +2941,776 @@ namespace project1
         private void previewToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void btnOpen_Click(object sender, EventArgs e)
+        {
+            RasterCodecs codecs = new RasterCodecs();
+            codecs.ThrowExceptionsOnInvalidImages = true;
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "All File |*.*";
+            DialogResult dr = ofd.ShowDialog();
+            int page = 0;
+
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                imagescol.Clear();
+                crepic(); //สร้าง picReview
+                //progressBar1.Value = 0;
+                splitContainer1.Panel1.Controls.Clear();
+                file = ofd.FileNames;
+                /* int x = 20;//ระวหว่าง panel
+                 int y = 20;//ระวหว่าง panel
+                 int maxWidth = -1;*/
+                /**/
+                //int w = 170 / 2;
+                // int w = 420 / 2;
+                //int x3 = (splitContainer1.Panel2.Width / 2) - w;
+                int w2 = 150 / 2;
+                int x2 = (splitContainer1.Panel1.Width / 2) - w2;
+                //int x3 = 40;//ระวหว่าง panel
+                int y2 = 20;//ระวหว่าง panel
+                int maxWidth2 = -1;
+                RasterCodecs _rasterCodecs = new RasterCodecs();
+                //Load documents at 300 DPI for better viewing
+                _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+                /**/
+                // int pageCount;
+                foreach (string img in file)
+                {
+                    /**/
+                    using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
+                    {
+                        pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
+                    }
+                    Console.WriteLine("Page " + pageCount);
+
+                    // Loads all the pages into the viewer
+                    for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
+                    {
+                        //progressBar1.Value += (pageCount * 100) / 1000;
+                        //await Task.Delay(1000);
+                        // Load it as a raster image and add it
+                        _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
+                        _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
+                        _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
+                        _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
+                        _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
+                        var rasterImage = _rasterCodecs.Load(img, pageNumber);
+                        l_numberPages.Text = "Page " + pageNumber + " / " + pageCount.ToString();
+                        l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                        //this._imageViewer.Items.AddFromImage(rasterImage, 1);
+                        //Label la = new Label();
+                        PictureBox pic2 = new PictureBox();
+                        pic2.Height = 180;
+                        pic2.Width = 160;
+                        //selectImage = pageNumber.ToString();
+                        //pic2.Location = new Point(x2, y2);
+                        pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
+                        pic2.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pic2.BorderStyle = BorderStyle.FixedSingle;
+                        pic2.Name = pageNumber.ToString();
+                        y2 += pic2.Height + 10;
+                        maxWidth2 = Math.Max(pic2.Height, maxWidth2);
+                        if (x2 > this.ClientSize.Width - 100)
+                        {
+                            y2 = 20;
+                            x2 += maxWidth2 + 100;
+                        }
+                        //this.panelImage.Controls.Add(pic2);
+                        this.splitContainer1.Panel1.Controls.Add(pic2);
+
+                        using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                        {
+                            pic2.Image = new Bitmap(destImage1);
+                        }
+                        imagescol.Add(rasterImage);
+
+                        /* la.Width = 10;
+                         la.Height = 15;
+                         la.BackColor = Color.White;
+                         la.Location = new Point((splitContainer1.Panel1.Width / 2) - la.Width, y2+splitContainer1.Panel1.AutoScrollPosition.Y);
+                         la.Text = pageNumber.ToString();
+                         this.splitContainer1.Panel1.Controls.Add(la);*/
+                        //Console.WriteLine(pic2.Location.X.ToString() + pic2.Location.Y.ToString());
+                        Console.WriteLine(pic2.Name);
+                        pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
+                        await Task.Delay(1000);
+                    }
+                    // progressBar1.Value = 0;
+                    // chang();
+                    /*using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[0], ConvertToImageOptions.None))
+                    {
+                        pic2.Image = new Bitmap(destImage1);
+                    }*/
+                }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Preview pv = new Preview();
+                pv.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetValue();
+        }
+
+        private void checkBox21_CheckedChanged(object sender, CheckBoxChangeEventArgs e)
+        {
+            if (checkBox21.Checked == true)
+            {
+                chckbox21 = true;
+                Display(); Image();
+            }
+            else
+            {
+                chckbox21 = false;
+                Display(); Image();
+            }
+        }
+        String value_tb_profile;
+        private void btnSaveProfile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(tb_profile.GlobalName);
+                String pfname = "";
+                String listname = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt";
+                if (tb_profile.Text == "")
+                {
+                    MessageBox.Show("กรุณาตั้งชื่อ Profile!!");
+                }
+                else
+                {
+                    if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + pfname + ".txt"))//ถ้าเจอไฟล์
+                    {
+                        //MessageBox.Show("คุณมีไฟล์ชื่อนี้อยู่แล้ว!!!");
+                        DialogResult dialogResult = MessageBox.Show("คุณมีไฟล์ชื่อนี้อยู่แล้ว!!! ต้องการทับไฟล์เดิมไหม", "Some Title", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            save();
+                        }
+                    }
+                    else
+                    {
+                        save();
+                        /* using (StreamWriter streamwri1 = File.AppendText(listname))
+                         {
+                             streamwri1.WriteLine(pfname);
+                             streamwri1.Close();
+                         }*/
+                    }
+
+                    void save()
+                    {
+                        //ContrastBrightnessIntensity
+                        profile prof1 = new profile();
+                        prof1.Name = l_brightness.Name;
+                        prof1.Values = value_trackBar1.ToString();
+                        Lprofile.Add(prof1);
+
+                        profile prof2 = new profile();
+                        prof2.Name = l_contrast.Name;
+                        prof2.Values = value_trackBar2.ToString();
+                        Lprofile.Add(prof2);
+
+                        profile prof3 = new profile();
+                        prof3.Name = l_intensity.Name;
+                        prof3.Values = value_trackBar3.ToString();
+                        Lprofile.Add(prof3);
+
+                        //UnsharpMask
+                        profile prof4 = new profile();
+                        prof4.Name = l_amount.Name;
+                        prof4.Values = value_trackBar4.ToString();
+                        Lprofile.Add(prof4);
+
+                        profile prof5 = new profile();
+                        prof5.Name = l_radius.Name;
+                        prof5.Values = value_trackBar5.ToString();
+                        Lprofile.Add(prof5);
+
+                        profile prof6 = new profile();
+                        prof6.Name = l_threshold.Name;
+                        prof6.Values = value_trackBar6.ToString();
+                        Lprofile.Add(prof6);
+                        
+                        //GrayScale
+                        profile prof7 = new profile();
+                        prof7.Name = checkBox2.Text;
+                        prof7.Values = chckbox2.ToString();
+                        Lprofile.Add(prof7);
+
+                        profile prof8 = new profile();
+                        prof8.Name = l_redfactor.Name;
+                        prof8.Values = value_trackBar7.ToString();
+                        Lprofile.Add(prof8);
+
+                        profile prof9 = new profile();
+                        prof9.Name = l_greenfactor.Name;
+                        prof9.Values = value_trackBar8.ToString();
+                        Lprofile.Add(prof9);
+
+                        profile prof10 = new profile();
+                        prof10.Name = l_bluefactor.Name;
+                        prof10.Values = value_trackBar9.ToString();
+                        Lprofile.Add(prof10);
+
+                        //Document Image Cleanup Functions
+                        profile prof11 = new profile();
+                        prof11.Name = checkBox7.Text;
+                        prof11.Values = chckbox7.ToString();
+                        Lprofile.Add(prof11);
+
+                        profile prof12 = new profile();
+                        prof12.Name = checkBox3.Text;
+                        prof12.Values = chckbox3.ToString();
+                        Lprofile.Add(prof12);
+
+                        profile prof13 = new profile();
+                        prof13.Name = checkBox9.Text;
+                        prof13.Values = chckbox9.ToString();
+                        Lprofile.Add(prof13);
+
+                        profile prof14 = new profile();
+                        prof14.Name = l_dimension.Name;
+                        prof14.Values = value_trbDynBin1.ToString();
+                        Lprofile.Add(prof14);
+
+                        profile prof15 = new profile();
+                        prof15.Name = l_localcontrast.Name;
+                        prof15.Values = value_trbDynBin2.ToString();
+                        Lprofile.Add(prof15);
+
+                        profile prof16 = new profile();
+                        prof16.Name = l_binaryfilter.Name;
+                        prof16.Values = selectCombobox.ToString();
+                        Lprofile.Add(prof16);
+
+                        //Dot Remove
+                        profile prof17 = new profile();
+                        prof17.Name = checkBox10.Text;
+                        prof17.Values = chckbox10.ToString();
+                        Lprofile.Add(prof17);
+
+                        profile prof18 = new profile();
+                        prof18.Name = l_maximumdotH.Name;
+                        prof18.Values = value_trackBar10.ToString();
+                        Lprofile.Add(prof18);
+
+                        profile prof19 = new profile();
+                        prof19.Name = l_maximumdotW.Name;
+                        prof19.Values = value_trackBar11.ToString();
+                        Lprofile.Add(prof19);
+
+                        profile prof20 = new profile();
+                        prof20.Name = l_minimumdotH.Name;
+                        prof20.Values = value_trackBar12.ToString();
+                        Lprofile.Add(prof20);
+
+                        profile prof21 = new profile();
+                        prof21.Name = l_minimumdotW.Name;
+                        prof21.Values = value_trackBar13.ToString();
+                        Lprofile.Add(prof21);
+                        
+                        //Line Remove
+                        profile prof22 = new profile();
+                        prof22.Name = checkBox11.Text;
+                        prof22.Values = chckbox11.ToString();
+                        Lprofile.Add(prof22);
+
+                        profile prof23 = new profile();
+                        prof23.Name = l_gaplength.Name;
+                        prof23.Values = value_trackBar14.ToString();
+                        Lprofile.Add(prof23);
+
+                        profile prof24 = new profile();
+                        prof24.Name = l_maximumlineW.Name;
+                        prof24.Values = value_trackBar15.ToString();
+                        Lprofile.Add(prof24);
+
+                        profile prof25 = new profile();
+                        prof25.Name = l_minimumlineL.Name;
+                        prof25.Values = value_trackBar16.ToString();
+                        Lprofile.Add(prof25);
+
+                        profile prof26 = new profile();
+                        prof26.Name = l_maximumwall.Name;
+                        prof26.Values = value_trackBar17.ToString();
+                        Lprofile.Add(prof26);
+
+                        profile prof27 = new profile();
+                        prof27.Name = l_wall.Name;
+                        prof27.Values = value_trackBar22.ToString();
+                        Lprofile.Add(prof27);
+                        
+                        //HolePunchRemove
+                        profile prof28 = new profile();
+                        prof28.Name = checkBox12.Text;
+                        prof28.Values = chckbox12.ToString();
+                        Lprofile.Add(prof28);
+
+                        profile prof29 = new profile();
+                        prof29.Name = l_maximumhole.Name;
+                        prof29.Values = value_trackBar18.ToString();
+                        Lprofile.Add(prof29);
+
+                        profile prof30 = new profile();
+                        prof30.Name = l_minimumhole.Name;
+                        prof30.Values = value_trackBar21.ToString();
+                        Lprofile.Add(prof30);
+                        
+                        //InvertedText
+                        profile prof31 = new profile();
+                        prof31.Name = checkBox13.Text;
+                        prof31.Values = chckbox13.ToString();
+                        Lprofile.Add(prof31);
+
+                        profile prof32 = new profile();
+                        prof32.Name = l_maximumblack.Name;
+                        prof32.Values = value_trackBar19.ToString();
+                        Lprofile.Add(prof32);
+
+                        profile prof33 = new profile();
+                        prof33.Name = l_minimumBlack.Name;
+                        prof33.Values = value_trackBar20.ToString();
+                        Lprofile.Add(prof33);
+
+                        profile prof34 = new profile();
+                        prof34.Name = l_minimuminverH.Name;
+                        prof34.Values = value_trackBar23.ToString();
+                        Lprofile.Add(prof34);
+
+                        profile prof35 = new profile();
+                        prof35.Name = l_minimuminvertW.Name;
+                        prof35.Values = value_trackBar24.ToString();
+                        Lprofile.Add(prof35);
+                        
+                        //Auto Crop
+                        profile prof36 = new profile();
+                        prof36.Name = checkBox15.Text;
+                        prof36.Values = chckbox15.ToString();
+                        Lprofile.Add(prof36);
+
+                        profile prof37 = new profile();
+                        prof37.Name = l_cropThreshold.Name;
+                        prof37.Values = value_trackBar27.ToString();
+                        Lprofile.Add(prof37);
+
+                        //Boder Remove
+                        profile prof38 = new profile();
+                        prof38.Name = checkBox16.Text;
+                        prof38.Values = chckbox16.ToString();
+                        Lprofile.Add(prof38);
+
+                        profile prof39 = new profile();
+                        prof39.Name = l_percent.Name;
+                        prof39.Values = value_trackBar25.ToString();
+                        Lprofile.Add(prof39);
+
+                        profile prof40 = new profile();
+                        prof40.Name = l_variance.Name;
+                        prof40.Values = value_trackBar26.ToString();
+                        Lprofile.Add(prof40);
+
+                        profile prof41 = new profile();
+                        prof41.Name = l_whitenoiseL.Name;
+                        prof41.Values = value_trackBar28.ToString();
+                        Lprofile.Add(prof41);
+                        
+                        //Smooth
+                        profile prof42 = new profile();
+                        prof42.Name = checkBox17.Text;
+                        prof42.Values = chckbox17.ToString();
+                        Lprofile.Add(prof42);
+
+                        profile prof43 = new profile();
+                        prof43.Name = l_length.Name;
+                        prof43.Values = value_trackBar31.ToString();
+                        Lprofile.Add(prof43);
+
+                        profile prof44 = new profile();
+                        prof44.Name = checkBox1.Text;
+                        prof44.Values = chckbox.ToString();
+                        Lprofile.Add(prof44);
+
+                        profile prof45 = new profile();
+                        prof45.Name = checkBox4.Text;
+                        prof45.Values = chckbox4.ToString();
+                        Lprofile.Add(prof45);
+
+                        profile prof46 = new profile();
+                        prof46.Name = checkBox5.Text;
+                        prof46.Values = chckbox5.ToString();
+                        Lprofile.Add(prof46);
+
+                        profile prof47 = new profile();
+                        prof47.Name = l_maximum.Name;
+                        prof47.Values = value_trbMaximum.ToString();
+                        Lprofile.Add(prof47);
+
+                        profile prof48 = new profile();
+                        prof48.Name = checkBox6.Text;
+                        prof48.Values = chckbox6.ToString();
+                        Lprofile.Add(prof48);
+
+                        profile prof49 = new profile();
+                        prof49.Name = l_minimum.Name;
+                        prof49.Values = value_trbMinimum.ToString();
+                        Lprofile.Add(prof49);
+
+                        profile prof50 = new profile();
+                        prof50.Name = checkBox8.Text;
+                        prof50.Values = chckbox8.ToString();
+                        Lprofile.Add(prof50);
+
+                        profile prof51 = new profile();
+                        prof51.Name = l_gamma.Name;
+                        prof51.Values = value_trbGamma.ToString();
+                        Lprofile.Add(prof51);
+
+                        profile prof52 = new profile();
+                        prof52.Name = checkBox14.Text;
+                        prof52.Values = chckbox14.ToString();
+                        Lprofile.Add(prof52);
+                        
+                        //Flip Rotate Image
+                        profile prof53 = new profile();
+                        prof53.Name = checkBox18.Text;
+                        prof53.Values = chckbox18.ToString();
+                        Lprofile.Add(prof53);
+
+                        profile prof54 = new profile();
+                        prof54.Name = l_RotateImage.Name;
+                        prof54.Values = value_trackBar29.ToString();
+                        Lprofile.Add(prof54);
+                       
+                        //RakeRemove
+                        profile prof55 = new profile();
+                        prof55.Name = checkBox19.Text;
+                        prof55.Values = chckbox19.ToString();
+                        Lprofile.Add(prof55);
+
+                        profile prof56 = new profile();
+                        prof56.Name = l_numUpDown1.Name;
+                        prof56.Values = value_numUpDown1.ToString();
+                        Lprofile.Add(prof56);
+
+                        profile prof57 = new profile();
+                        prof57.Name = l_numUpDown2.Text;
+                        prof57.Values = value_numUpDown2.ToString();
+                        Lprofile.Add(prof57);
+
+                        profile prof58 = new profile();
+                        prof58.Name = l_numUpDown3.Name;
+                        prof58.Values = value_numUpDown3.ToString();
+                        Lprofile.Add(prof58);
+
+                        profile prof59 = new profile();
+                        prof59.Name = l_numUpDown4.Text;
+                        prof59.Values = value_numUpDown4.ToString();
+                        Lprofile.Add(prof59);
+
+                        profile prof60 = new profile();
+                        prof60.Name = l_numUpDown5.Name;
+                        prof60.Values = value_numUpDown5.ToString();
+                        Lprofile.Add(prof60);
+
+                        profile prof61 = new profile();
+                        prof61.Name = l_numUpDown6.Text;
+                        prof61.Values = value_numUpDown6.ToString();
+                        Lprofile.Add(prof61);
+
+                        profile prof62 = new profile();
+                        prof62.Name = l_numUpDown7.Name;
+                        prof62.Values = value_numUpDown7.ToString();
+                        Lprofile.Add(prof62);
+
+                        profile prof63 = new profile();
+                        prof63.Name = l_numUpDown8.Text;
+                        prof63.Values = value_numUpDown8.ToString();
+                        Lprofile.Add(prof63);
+
+                        profile prof64 = new profile();
+                        prof64.Name = l_numUpDown9.Name;
+                        prof64.Values = value_numUpDown9.ToString();
+                        Lprofile.Add(prof64);
+
+                        profile prof65 = new profile();
+                        prof65.Name = l_autofilter.Text;
+                        prof65.Values = chckbox20.ToString();
+                        Lprofile.Add(prof65);
+                        
+                        //convert to 1 bit
+                        profile prof66 = new profile();
+                        prof66.Name = checkBox21.Text;
+                        prof66.Values = chckbox21.ToString();
+                        Lprofile.Add(prof66);
+                       
+                        l_saveprofile.Text = " Save Success...";
+                        N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(Lprofile, tb_profile+ ".xml");
+                        int r = Lprofile.Count;
+                        for (int i = 0; i < r; i++)
+                        {
+                            Console.WriteLine(i + "| " + Lprofile[i].Name + "=" + Lprofile[i].Values);
+                        }
+                        tb_profile.Text = "";
+                    }
+                    cbBox2re();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnRemoveProfile_Click(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2();
+           // int x = Remove.Location.X - 200;
+          //  int y = Remove.Location.Y;
+           // frm2.Location = new Point(x, y);
+            frm2.Show();
+        }
+
+        private void cbboxUseProfile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                selectCombobox2 = cbboxUseProfile.SelectedItem.ToString();
+                if (selectCombobox2 == "Default" && folderPath != null)
+                {
+                    ResetValue();
+                }
+                else
+                {
+                    String[] ls;
+                    String lscol;
+                    String rf;
+                    String rfile;
+                    List<String> list = new List<String>();
+                    if (selectCombobox2 == "Default") { }
+                    else
+                    {
+                        StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + selectCombobox2 + ".txt");
+                        while ((rfile = streamread.ReadLine()) != null)
+                        {
+                            rf = rfile;                         //text = อ่านข้อความทีละบรรทัด
+                            ls = rf.Split("=".ToCharArray());   //split ตัดข้อความ ตัดที่ = 
+                            lscol = ls[1];                      //เก็บค่าที่ตัดแล้ว เอาค่าที่อยู่หลัง =
+                            list.Add(lscol);
+                        }
+
+                        //เซตค่า
+                        //ความสว่าง
+                        value_trackBar1 = int.Parse(list[0]);
+                        trackBar1.Value = value_trackBar1;
+                        l_brightness.Text = value_trackBar1.ToString();
+                        value_trackBar2 = int.Parse(list[1]);
+                        trackBar2.Value = value_trackBar2;
+                        l_contrast.Text = value_trackBar2.ToString();
+                        value_trackBar3 = int.Parse(list[2]);
+                        trackBar3.Value = value_trackBar3;
+                        l_intensity.Text = value_trackBar3.ToString();
+                        //ความคมชัด
+                        value_trackBar4 = int.Parse(list[3]);
+                        trackBar4.Value = value_trackBar4;
+                        l_amount.Text = value_trackBar4.ToString();
+                        value_trackBar5 = int.Parse(list[4]);
+                        trackBar5.Value = value_trackBar5;
+                        l_radius.Text = value_trackBar5.ToString();
+                        value_trackBar6 = int.Parse(list[5]);
+                        trackBar6.Value = value_trackBar6;
+                        l_threshold.Text = value_trackBar6.ToString();
+                        //Gray scale
+                        chckbox2 = bool.Parse(list[6]);
+                        checkBox2.Checked = chckbox2;
+                        value_trackBar7 = int.Parse(list[7]);
+                        trackBar7.Value = value_trackBar7;
+                        l_redfactor.Text = value_trackBar7.ToString();
+                        value_trackBar8 = int.Parse(list[8]);
+                        trackBar8.Value = value_trackBar8;
+                        l_greenfactor.Text = value_trackBar8.ToString();
+                        value_trackBar9 = int.Parse(list[9]);
+                        trackBar9.Value = value_trackBar9;
+                        l_bluefactor.Text = value_trackBar9.ToString();
+                        //Document Image Cleanup Functions
+                        chckbox7 = bool.Parse(list[10]);
+                        checkBox7.Checked = chckbox7;
+                        chckbox3 = bool.Parse(list[11]);
+                        checkBox3.Checked = chckbox3;
+                        chckbox9 = bool.Parse(list[12]);
+                        checkBox9.Checked = chckbox9;
+                        value_trbDynBin1 = int.Parse(list[13]);
+                        trbDynBin1.Value = value_trbDynBin1;
+                        l_dimension.Text = value_trbDynBin1.ToString();
+                        value_trbDynBin2 = int.Parse(list[14]);
+                        trbDynBin2.Value = value_trbDynBin2;
+                        l_localcontrast.Text = value_trbDynBin2.ToString();
+                        selectCombobox = int.Parse(list[15]);
+                        comboBox1.SelectedIndex = (selectCombobox + 1);
+                        //Dot Remove
+                        chckbox10 = bool.Parse(list[16]);
+                        checkBox10.Checked = chckbox10;
+                        value_trackBar10 = int.Parse(list[17]);
+                        trackBar10.Value = value_trackBar10;
+                        l_maximumdotH.Text = value_trackBar10.ToString();
+                        value_trackBar11 = int.Parse(list[18]);
+                        trackBar11.Value = value_trackBar11;
+                        l_maximumdotW.Text = value_trackBar11.ToString();
+                        value_trackBar12 = int.Parse(list[19]);
+                        trackBar12.Value = value_trackBar12;
+                        l_minimumdotH.Text = value_trackBar12.ToString();
+                        value_trackBar13 = int.Parse(list[20]);
+                        trackBar13.Value = value_trackBar13;
+                        l_minimumdotW.Text = value_trackBar13.ToString();
+                        //Line Remove
+                        chckbox11 = bool.Parse(list[21]);
+                        checkBox11.Checked = chckbox11;
+                        value_trackBar14 = int.Parse(list[22]);
+                        trackBar14.Value = value_trackBar14;
+                        l_gaplength.Text = value_trackBar14.ToString();
+                        value_trackBar15 = int.Parse(list[23]);
+                        trackBar15.Value = value_trackBar15;
+                        l_maximumlineW.Text = value_trackBar15.ToString();
+                        value_trackBar16 = int.Parse(list[24]);
+                        trackBar16.Value = value_trackBar16;
+                        l_minimumlineL.Text = value_trackBar16.ToString();
+                        value_trackBar17 = int.Parse(list[25]);
+                        trackBar17.Value = value_trackBar17;
+                        l_maximumwall.Text = value_trackBar17.ToString();
+                        value_trackBar22 = int.Parse(list[26]);
+                        trackBar22.Value = value_trackBar22;
+                        l_wall.Text = value_trackBar22.ToString();
+                        //HolePunchRemove
+                        chckbox12 = bool.Parse(list[27]);
+                        checkBox12.Checked = chckbox12;
+                        value_trackBar18 = int.Parse(list[28]);
+                        trackBar18.Value = value_trackBar18;
+                        l_maximumhole.Text = value_trackBar18.ToString();
+                        value_trackBar21 = int.Parse(list[29]);
+                        trackBar21.Value = value_trackBar21;
+                        l_minimumhole.Text = value_trackBar21.ToString();
+                        //InvertedText
+                        chckbox13 = bool.Parse(list[30]);
+                        checkBox13.Checked = chckbox13;
+                        value_trackBar19 = int.Parse(list[31]);
+                        trackBar19.Value = value_trackBar19;
+                        l_maximumblack.Text = value_trackBar19.ToString();
+                        value_trackBar20 = int.Parse(list[32]);
+                        trackBar20.Value = value_trackBar20;
+                        l_minimumBlack.Text = value_trackBar20.ToString();
+                        value_trackBar23 = int.Parse(list[33]);
+                        trackBar23.Value = value_trackBar23;
+                        l_minimuminverH.Text = value_trackBar23.ToString();
+                        value_trackBar24 = int.Parse(list[34]);
+                        trackBar24.Value = value_trackBar24;
+                        l_minimuminvertW.Text = value_trackBar24.ToString();
+                        //Auto Crop
+                        chckbox15 = bool.Parse(list[35]);
+                        checkBox15.Checked = chckbox15;
+                        value_trackBar27 = int.Parse(list[36]);
+                        trackBar27.Value = value_trackBar27;
+                        l_cropThreshold.Text = value_trackBar27.ToString();
+                        //Boder Remove
+                        chckbox16 = bool.Parse(list[37]);
+                        checkBox16.Checked = chckbox16;
+                        value_trackBar25 = int.Parse(list[38]);
+                        trackBar25.Value = value_trackBar25;
+                        l_percent.Text = value_trackBar25.ToString();
+                        value_trackBar26 = int.Parse(list[39]);
+                        trackBar26.Value = value_trackBar26;
+                        l_variance.Text = value_trackBar26.ToString();
+                        value_trackBar28 = int.Parse(list[40]);
+                        trackBar28.Value = value_trackBar28;
+                        l_whitenoiseL.Text = value_trackBar28.ToString();
+                        //Smooth
+                        chckbox17 = bool.Parse(list[41]);
+                        checkBox17.Checked = chckbox17;
+                        value_trackBar31 = int.Parse(list[42]);
+                        trackBar31.Value = value_trackBar31;
+                        l_length.Text = value_trackBar31.ToString();
+                        //
+                        chckbox = bool.Parse(list[43]);
+                        checkBox1.Checked = chckbox;
+                        chckbox4 = bool.Parse(list[44]);
+                        checkBox4.Checked = chckbox4;
+                        //Maximum
+                        chckbox5 = bool.Parse(list[45]);
+                        checkBox5.Checked = chckbox5;
+                        value_trbMaximum = int.Parse(list[46]);
+                        trbMaximum.Value = value_trbMaximum;
+                        l_maximum.Text = value_trbMaximum.ToString();
+                        //Minimum
+                        chckbox6 = bool.Parse(list[47]);
+                        checkBox6.Checked = chckbox6;
+                        value_trbMinimum = int.Parse(list[48]);
+                        trbMinimum.Value = value_trbMinimum;
+                        l_minimum.Text = value_trbMinimum.ToString();
+                        //Gamma
+                        chckbox8 = bool.Parse(list[49]);
+                        checkBox8.Checked = chckbox8;
+                        value_trbGamma = int.Parse(list[50]);
+                        trbGamma.Value = value_trbGamma;
+                        l_gamma.Text = value_trbGamma.ToString();
+
+                        chckbox14 = bool.Parse(list[51]);
+                        checkBox14.Checked = chckbox14;
+                        //Flip Rotate Image
+                        chckbox18 = bool.Parse(list[52]);
+                        checkBox18.Checked = chckbox18;
+                        value_trackBar29 = int.Parse(list[53]);
+                        trackBar29.Value = value_trackBar29;
+                        l_RotateImage.Text = value_trackBar29.ToString();
+                        //RakeRemove
+                        chckbox19 = bool.Parse(list[54]);
+                        checkBox19.Checked = chckbox19;
+                        value_numUpDown1 = int.Parse(list[55]);
+                        numUpDown1.Value = value_numUpDown1;
+                        value_numUpDown2 = int.Parse(list[56]);
+                        numUpDown2.Value = value_numUpDown2;
+                        value_numUpDown3 = int.Parse(list[57]);
+                        numUpDown3.Value = value_numUpDown3;
+                        value_numUpDown4 = int.Parse(list[58]);
+                        numUpDown4.Value = value_numUpDown4;
+                        value_numUpDown5 = int.Parse(list[59]);
+                        numUpDown5.Value = value_numUpDown5;
+                        value_numUpDown6 = int.Parse(list[60]);
+                        numUpDown6.Value = value_numUpDown6;
+                        value_numUpDown7 = int.Parse(list[61]);
+                        numUpDown7.Value = value_numUpDown7;
+                        value_numUpDown8 = int.Parse(list[62]);
+                        numUpDown8.Value = value_numUpDown8;
+                        value_numUpDown9 = int.Parse(list[63]);
+                        numUpDown9.Value = value_numUpDown9;
+                        chckbox20 = bool.Parse(list[64]);
+                        checkBox20.Checked = chckbox20;
+                        //convetrt to 1 bit
+                        chckbox21 = bool.Parse(list[65]);
+                        checkBox21.Checked = chckbox21;
+                        Display();
+                        l_saveprofile.Text = "usepf Success...";
+                    }
+                    list.Clear();
+                    //เคลียร์ list
+                    rf = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

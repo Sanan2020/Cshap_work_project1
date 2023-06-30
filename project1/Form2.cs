@@ -101,14 +101,14 @@ namespace project1
             {
                 listBox1.SelectionMode = SelectionMode.MultiSimple;
 
-               /* String rfile;
-                StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                while ((rfile = streamread.ReadLine()) != null)
-                {
-                    listBox1.Items.Add(rfile);
-                    item.Add(rfile);
-                }
-                streamread.Close();*/
+                /* String rfile;
+                 StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
+                 while ((rfile = streamread.ReadLine()) != null)
+                 {
+                     listBox1.Items.Add(rfile);
+                     item.Add(rfile);
+                 }
+                 streamread.Close();*/
 
 
                 DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
@@ -126,12 +126,12 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
 
-           /* String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile";
-            foreach (string file in Directory.EnumerateFiles(path, "*.txt"))
-            {
-                string contents = File.ReadAllText(file);
-                Console.WriteLine(contents);
-            }*/
+            /* String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile";
+             foreach (string file in Directory.EnumerateFiles(path, "*.txt"))
+             {
+                 string contents = File.ReadAllText(file);
+                 Console.WriteLine(contents);
+             }*/
         }
         
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
