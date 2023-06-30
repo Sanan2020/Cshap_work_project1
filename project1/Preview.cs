@@ -1,5 +1,6 @@
 ﻿using Leadtools;
 using Leadtools.Codecs;
+using Leadtools.Document.Writer;
 using Leadtools.Drawing;
 using Leadtools.ImageProcessing;
 using Leadtools.ImageProcessing.Color;
@@ -18,6 +19,8 @@ using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Leadtools.Document.Writer;
+
 
 namespace project1
 {
@@ -485,7 +488,7 @@ namespace project1
                 codecs.ThrowExceptionsOnInvalidImages = true;
                 // Stream myStream;
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf|All files (*.*)|*.*";
+                saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf";
                 saveFileDialog1.FilterIndex = 2;
                 saveFileDialog1.RestoreDirectory = true;
 
@@ -493,12 +496,13 @@ namespace project1
                 {
                     String savePath = saveFileDialog1.FileName;
                     // codecs.Save(Form1.form1.imagescol[0], Path.Combine(saveFileDialog1.FileName + ".pdf"), RasterImageFormat.RasPdf, 24);
-                    string sourceFileName1 = Path.Combine(LEAD_VARS.ImagesDir, @"1.pdf");
-                    string sourceFileName2 = Path.Combine(LEAD_VARS.ImagesDir, @"2.pdf");
-                    string sourceFileName3 = Path.Combine(LEAD_VARS.ImagesDir, @"3.pdf");
-                    string destinationFileName = Path.Combine(LEAD_VARS.ImagesDir, @"Merged1.pdf");
-                    PDFFile pdfFile = new PDFFile(sourceFileName1);
-                    pdfFile.MergeWith(new String[] { sourceFileName2, sourceFileName3 }, destinationFileName);
+
+                    /*  string sourceFileName1 = Path.Combine(LEAD_VARS.ImagesDir, @"1.pdf");
+                      string sourceFileName2 = Path.Combine(LEAD_VARS.ImagesDir, @"2.pdf");
+                      string sourceFileName3 = Path.Combine(LEAD_VARS.ImagesDir, @"3.pdf");
+                      string destinationFileName = Path.Combine(LEAD_VARS.ImagesDir, @"Merged1.pdf");
+                      PDFFile pdfFile = new PDFFile(sourceFileName1);
+                      pdfFile.MergeWith(new String[] { sourceFileName2, sourceFileName3 }, destinationFileName);*/
                     //Image destImage2;
                     // Merge 1 with (2, 3) and form destination 
                     //codecs.Save(Form1.form1.imagescol[0], "", RasterImageFormat.RasPdf, 24);
@@ -511,7 +515,24 @@ namespace project1
                          //RasterImage ff = codecs.Load(destImage1);
                          //pdfFile.MergeWith(new Image[] { destImage1, sourceFileName2 }, destinationFileName);
                      }*/
-                    // pdfFile
+
+                    var docWriter = new DocumentWriter();
+                    // Begin the document 
+                    var outputFileName = Path.Combine(saveFileDialog1.FileName,".pdf");
+                    docWriter.BeginDocument(saveFileDialog1.FileName, DocumentFormat.Pdf);
+                    // Finally, add a third page as an image 
+                    var rasterPage = new DocumentWriterRasterPage();
+                    // เพิ่มหน้าในเอกสาร PDF
+                    foreach (RasterImage image in Form1.form1.imagescol)
+                    {
+                        using (rasterPage.Image = image)
+                        {
+                            // Add it 
+                            docWriter.AddPage(rasterPage);
+                        }
+                    }
+                    // Finally finish writing the HTML file on disk 
+                    docWriter.EndDocument();
                 }
             }
             catch (Exception ex)
@@ -523,5 +544,6 @@ namespace project1
         {
             public const string ImagesDir = @"C:\Users\Administrator\Downloads\merged";
         }
+        
     }
 }
