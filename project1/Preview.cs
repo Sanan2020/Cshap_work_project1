@@ -33,15 +33,11 @@ namespace project1
             InitializeComponent();
         }
 
-        private async void Preview_Load(object sender, EventArgs e)
-        {
-            
+        private async void Preview_Load(object sender, EventArgs e){
             btnSave.Enabled = false;
             //progressBar1.Value = 0;
             panel1.AutoScroll = true;
             panel1.BackColor = Color.DarkGray;
-            //Form1 f1 = new Form1();
-            //MessageBox.Show(Form1.form1.value_trackBar1.ToString());
             panel1.Controls.Clear();
             int w3 = 550 / 2;
             int x3 = (panel1.Width / 2) - w3;
@@ -50,8 +46,6 @@ namespace project1
             int y3 = 20;//ระวหว่าง panel
             int maxWidth3 = -1;
 
-            //int munberImagescol = Convert.ToInt32(imagescol);
-            //Console.WriteLine("munberImagescol: " + munberImagescol);
             for (int i = 1; i <= Form1.form1.pageCount; i++)
             {
                 label1.Text = "Page "+i+" / " + Form1.form1.pageCount.ToString();
@@ -303,7 +297,6 @@ namespace project1
                         command19.Length = Form1.form1.value_trackBar31;
                         command19.Run(Form1.form1.imagescol[i - 1]);
                     }
-                    //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
                     // Prepare the command 
                     if (Form1.form1.chckbox19 == true)
                     {
@@ -366,25 +359,19 @@ namespace project1
             btnSave.Enabled = true;
         }
         bool cancelAt50;
-        void RunCommand(RasterImage image, RasterCommand command)
-        {
+        void RunCommand(RasterImage image, RasterCommand command){
             // subscribe to the progress event of the command 
             command.Progress += new EventHandler<RasterCommandProgressEventArgs>(command_Progress);
-
             // if this is a flip command, we want to stop at 50 percent 
             cancelAt50 = command is FlipCommand;
-
             // run the command 
             command.Run(image);
-
             command.Progress -= new EventHandler<RasterCommandProgressEventArgs>(command_Progress);
         }
 
-        void command_Progress(object sender, RasterCommandProgressEventArgs e)
-        {
+        void command_Progress(object sender, RasterCommandProgressEventArgs e){
             // show the percentage 
             Console.WriteLine(e.Percent);
-
             // check if we need to cancel the command at 50% 
             if (e.Percent == 50 && cancelAt50)
                 e.Cancel = true;
@@ -427,7 +414,6 @@ namespace project1
         }
         private void InvertedTextEvent_S1(object sender, InvertedTextCommandEventArgs e)
         {
-
             System.Diagnostics.Debug.WriteLine("Size " + "( " + e.BoundingRectangle.Left + ", " + e.BoundingRectangle.Top + ") - " + "( " + e.BoundingRectangle.Right + ", " + e.BoundingRectangle.Bottom + ")" +
                "\n Black Count " + e.BlackCount.ToString() +
                "\n White Count " + e.WhiteCount.ToString());
@@ -492,30 +478,8 @@ namespace project1
                 saveFileDialog1.FilterIndex = 2;
                 saveFileDialog1.RestoreDirectory = true;
 
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK){
                     String savePath = saveFileDialog1.FileName;
-                    // codecs.Save(Form1.form1.imagescol[0], Path.Combine(saveFileDialog1.FileName + ".pdf"), RasterImageFormat.RasPdf, 24);
-
-                    /*  string sourceFileName1 = Path.Combine(LEAD_VARS.ImagesDir, @"1.pdf");
-                      string sourceFileName2 = Path.Combine(LEAD_VARS.ImagesDir, @"2.pdf");
-                      string sourceFileName3 = Path.Combine(LEAD_VARS.ImagesDir, @"3.pdf");
-                      string destinationFileName = Path.Combine(LEAD_VARS.ImagesDir, @"Merged1.pdf");
-                      PDFFile pdfFile = new PDFFile(sourceFileName1);
-                      pdfFile.MergeWith(new String[] { sourceFileName2, sourceFileName3 }, destinationFileName);*/
-                    //Image destImage2;
-                    // Merge 1 with (2, 3) and form destination 
-                    //codecs.Save(Form1.form1.imagescol[0], "", RasterImageFormat.RasPdf, 24);
-                    // codecs.Convert()
-                    /* using (var destImage1 = RasterImageConverter.ConvertFromImage(destImage2,ConvertFromImageOptions.None))
-                     {
-                         // piccenter.Image = new Bitmap(destImage1);
-                         // pic3.Image = new Bitmap(destImage1);
-                         //RasterCodecs codecsW = new RasterCodecs();
-                         //RasterImage ff = codecs.Load(destImage1);
-                         //pdfFile.MergeWith(new Image[] { destImage1, sourceFileName2 }, destinationFileName);
-                     }*/
-
                     var docWriter = new DocumentWriter();
                     // Begin the document 
                     var outputFileName = Path.Combine(saveFileDialog1.FileName,".pdf");
@@ -544,6 +508,5 @@ namespace project1
         {
             public const string ImagesDir = @"C:\Users\Administrator\Downloads\merged";
         }
-        
     }
 }

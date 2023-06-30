@@ -35,7 +35,7 @@ using static project1.Form1;
 namespace project1
 {
 
-    public partial class Form1 : Office2007Form
+    public partial class Form1 : Form
     {
         internal static Form2 form2;
         internal static Form1 form1;
@@ -158,7 +158,6 @@ namespace project1
 
                 flowLayoutPanel1.AutoScroll = true;
               
-
                 comboBox1.Items.Add("Default");
                 comboBox1.Items.Add("ErosionOmniDirectional");
                 comboBox1.Items.Add("ErosionHorizontal");
@@ -186,17 +185,17 @@ namespace project1
                 }
                 comboBox2.SelectedItem = "Default";*/
                 cbBox2re();
-                if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt"))
-                {
-                    DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
-                    foreach (var fi in di.GetFiles("*.txt"))
+               /* if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\Debug\*.xml"))
+                {*/
+                    DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\Debug");
+                    foreach (var fi in di.GetFiles("*.xml"))
                     {
                         //Console.WriteLine(fi.Name);
                         string[] nm = fi.Name.Split('.');
                         Console.WriteLine(nm[0]);
                         cbboxUseProfile.Items.Add(nm[0]);
                     }
-                }
+               // }
 
                 trackBar7.Value = value_trackBar7;
                 l_redfactor.Text = value_trackBar7.ToString();
@@ -299,14 +298,6 @@ namespace project1
             codecs.ThrowExceptionsOnInvalidImages = true;
             //RasterImage image = codecs.Load(Path.Combine(folderPath));
             RasterImage image = codecs.Load(Path.Combine(folderPath), 24, CodecsLoadByteOrder.Bgr, 1, 1);
-
-            /*TEST*/
-            /* AutoBinarizeCommand Binarize = new AutoBinarizeCommand();
-             Binarize.Run(image);
-           // AutoColorLevelCommand ColorLevel = new AutoColorLevelCommand();
-           // ColorLevel.Run(image);
-            */
-            /*TEST*/
             /*try
             {*/
             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
@@ -772,34 +763,6 @@ namespace project1
         {
             public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
         }
-        /*test ErosionOmniDirection */
-        public void BinaryFilterConstructorExample_S1()
-        {
-            // Load an image 
-            RasterCodecs codecs = new RasterCodecs();
-            codecs.ThrowExceptionsOnInvalidImages = true;
-
-            RasterImage image = codecs.Load(Path.Combine(LEAD_VARS.ImagesDir, "download.png"));
-
-            // Prepare the command 
-            int[] nMatrix = new int[9];
-            nMatrix[0] = 0;
-            nMatrix[1] = 0;
-            nMatrix[2] = 0;
-            nMatrix[3] = 0;
-            nMatrix[4] = 0;
-            nMatrix[5] = 0;
-            nMatrix[6] = 0;
-            nMatrix[7] = 0;
-            nMatrix[8] = 0;
-
-            BinaryFilterCommand command = new BinaryFilterCommand();
-            command.Matrix = nMatrix;
-            command.Maximum = true;
-            // Dilate black objects. 
-            command.Run(image);
-            codecs.Save(image, Path.Combine(LEAD_VARS.ImagesDir, "Result.jpg"), RasterImageFormat.Jpeg, 24);
-        }
 
         public void ResetValue()
         {
@@ -984,7 +947,7 @@ namespace project1
 
                 chckbox21 = false;
                 checkBox21.Checked = chckbox21;
-                Display(); Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -3504,6 +3467,7 @@ namespace project1
                     else
                     {
                         StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + selectCombobox2 + ".txt");
+                        //List<profile> dataConfigsLoad = N2N.Data.Serialization.Serialize<List<profile>>.DeserializeFromXmlFile("Configs.xml");
                         while ((rfile = streamread.ReadLine()) != null)
                         {
                             rf = rfile;                         //text = อ่านข้อความทีละบรรทัด
