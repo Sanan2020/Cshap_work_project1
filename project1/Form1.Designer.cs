@@ -404,7 +404,7 @@
             this.ribbonBar5.Location = new System.Drawing.Point(735, 0);
             this.ribbonBar5.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonBar5.Name = "ribbonBar5";
-            this.ribbonBar5.Size = new System.Drawing.Size(268, 95);
+            this.ribbonBar5.Size = new System.Drawing.Size(126, 95);
             this.ribbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ribbonBar5.TabIndex = 4;
             this.ribbonBar5.Text = "Import/Export Profile";
