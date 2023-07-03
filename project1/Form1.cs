@@ -122,13 +122,10 @@ namespace project1
         {
             // subscribe to the progress event of the command 
             command.Progress += new EventHandler<RasterCommandProgressEventArgs>(command_Progress);
-
             // if this is a flip command, we want to stop at 50 percent 
             cancelAt50 = command is FlipCommand;
-
             // run the command 
             command.Run(image);
-
             command.Progress -= new EventHandler<RasterCommandProgressEventArgs>(command_Progress);
         }
 
@@ -136,7 +133,6 @@ namespace project1
         {
             // show the percentage 
             Console.WriteLine(e.Percent);
-
             // check if we need to cancel the command at 50% 
             if (e.Percent == 50 && cancelAt50)
                 e.Cancel = true;
@@ -187,14 +183,14 @@ namespace project1
                 cbBox2re();
                /* if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\Debug\*.xml"))
                 {*/
-                    DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\Debug");
+                   /* DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\Debug");
                     foreach (var fi in di.GetFiles("*.xml"))
                     {
                         //Console.WriteLine(fi.Name);
                         string[] nm = fi.Name.Split('.');
                         Console.WriteLine(nm[0]);
                         cbboxUseProfile.Items.Add(nm[0]);
-                    }
+                    }*/
                // }
 
                 trackBar7.Value = value_trackBar7;
@@ -2181,7 +2177,7 @@ namespace project1
                 //int w = 170 / 2;
                 // int w = 420 / 2;
                 //int x3 = (splitContainer1.Panel2.Width / 2) - w;
-                int w2 = 150 / 2;
+                int w2 = 160 / 2;
                 int x2 = (splitContainer1.Panel1.Width / 2) - w2;
                 //int x3 = 40;//ระวหว่าง panel
                 int y2 = 20;//ระวหว่าง panel
@@ -2597,7 +2593,6 @@ namespace project1
                     }
                 }
                 else {
-
                     l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
                     //picReview2.ImageLocation = null;
                     using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
@@ -2605,129 +2600,15 @@ namespace project1
                         picReview2.Image = new Bitmap(destImage1);
                     }
                 }
-              
             }
-            
-
            // await Task.Delay(1000);
             picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
             picReview2.MouseUp += new MouseEventHandler(picReview2_MouseUp);
             picReview2.MouseMove += new MouseEventHandler(picReview2_MouseMove);
-            /* if (chckbox21 == true)
-             {
-                 return destImage;
-             }
-             else*/
-            //{
-            //RasterImage rasterImage3 = rasterImage;
-          //  _rasterCodecs.Save(destImage, Path.Combine(@"C:\Users\Administrator\Downloads\", "result1.pdf" + ".pdf"), RasterImageFormat.RasPdf, 24);
-           
-            
-            
-           // return rasterImage;
-            //}
-            //return rasterImage;
         }
-        protected override void OnMouseWheel(MouseEventArgs e)
-        {
-            //MessageBox.Show("m");
-
-            //pictureBox1.Image = ZoomP
-
-            if (e.Delta > 0)
-            {
-                //pictureBox1.Image = null;
-                // ซูมอิน (เพิ่มขนาดภาพ)
-                if (picReview2.Width < 4500 || picReview2.Width < 4500)
-                { //กำหนดขอบเขตการขยายภาพ
-                    picReview2.Width += (int)(picReview2.Width * 0.1);
-                    picReview2.Height += (int)(picReview2.Height * 0.1);
-                }
-            }
-            else if (e.Delta < 0)
-            {
-                //pictureBox1.Image = null;
-                // ซูมเอาท์ (ลดขนาดภาพ)
-                if (picReview2.Width > 400 || picReview2.Width > 400)
-                { //กำหนดขอบเขตการลดภาพ
-                    picReview2.Width -= (int)(picReview2.Width * 0.1);
-                    picReview2.Height -= (int)(picReview2.Height * 0.1);
-                }
-
-            }
-           // l_zoom.Text = "w " + picReview2.Width.ToString() + " h" + picReview2.Height.ToString();
-        }
-        int xPos2;
-        int yPos2;
-        bool Dragging2;
-        //private RasterImage destImage;
-
-        private void picReview2_MouseUp(object sender, MouseEventArgs e)
-        {
-            Dragging2 = false;
-        }
-        private void picReview2_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Dragging2 = true;
-                xPos2 = e.X;
-                yPos2 = e.Y;
-                // Console.WriteLine("xPos " + xPos);
-                // Console.WriteLine("yPos " + yPos);
-            }
-        }
-        private void picReview2_MouseMove(object sender, MouseEventArgs e)
-        {
-            Control c = sender as Control;
-            if (Dragging2 && c != null)
-            {
-                if (c.Top <= 300)
-                {
-                    c.Top = e.Y + c.Top - yPos2;
-                }
-                else
-                {
-
-                }
-                c.Left = e.X + c.Left - xPos2;
-
-                Console.WriteLine("c.Top " + c.Top.ToString());
-                Console.WriteLine("c.Left " + c.Left.ToString());
-            }
-            //l_xy.Text = pictureBox1.Location.ToString();
-        }
+       
         private async void pic2_MouseClick(object sender, MouseEventArgs e)
         {
-            /* this.splitContainer1.Panel2.Controls.Clear();
-             PictureBox picReview = new PictureBox();
-             picReview.Height = 600; //ความกว้างหน้ากระดาษ
-             picReview.Width = 420;  //ความสูงหน้ากระดาษ
-             picReview.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview.Width/2), 20);
-             picReview.SizeMode = PictureBoxSizeMode.StretchImage;
-             PictureBox pb = (PictureBox)sender;
-             //if (pb.Name == "1")
-            // {
-             //MessageBox.Show(pb.Name);
-             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-             //Increase the brightness by 25 percent  of the possible range. 
-             command.Brightness = 484;   //484
-             command.Contrast = 394;     //394
-             command.Intensity = 118;    //118
-             command.Run(imagescol[int.Parse(pb.Name) - 1]);
-             //PictureBox pic3 = new PictureBox();
-             this.splitContainer1.Panel2.Controls.Add(picReview);
-             ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-             //Increase the brightness by 25 percent  of the possible range. 
-             command.Brightness = 484;   //484
-             command.Contrast = 394;     //394
-             command.Intensity = 118;    //118
-             command.Run(imagescol[int.Parse(pb.Name) - 1]);
-             using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[int.Parse(pb.Name) - 1], ConvertToImageOptions.None))
-             {
-                 picReview.Image = new Bitmap(destImage1);
-             }*/
-            // }
             /******/
            /* this.splitContainer1.Panel2.Controls.Clear();
             PictureBox pb = (PictureBox)sender;
@@ -2736,7 +2617,6 @@ namespace project1
             _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
             foreach (string img in file)
             {
-                
                 using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
                 {
                     pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
@@ -2765,8 +2645,6 @@ namespace project1
                 {
                     picReview2.Image = new Bitmap(destImage1);
                 }
-
-
             }
             await Task.Delay(500);*/
            PictureBox pb = (PictureBox)sender;
@@ -2775,60 +2653,6 @@ namespace project1
            // disp();
         }
         public async void chang(){
-          /*  splitContainer1.Panel2.Controls.Clear();
-            int w3 = 550 / 2;
-            int x3 = (splitContainer1.Panel2.Width / 2) - w3;
-
-            //int x3 = 40;//ระวหว่าง panel
-            int y3 = 20;//ระวหว่าง panel
-            int maxWidth3 = -1;
-
-            //int munberImagescol = Convert.ToInt32(imagescol);
-            //Console.WriteLine("munberImagescol: " + munberImagescol);
-            for (int i = 1; i <= pageCount; i++)
-            {
-                MinimumCommand command9 = new MinimumCommand();
-                //Apply the Minimum filter. 
-                command9.Dimension = 8;
-                command9.Run(imagescol[i-1]);
-                ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-                //Increase the brightness by 25 percent  of the possible range. 
-                command.Brightness = value_trackBar1;   //484
-                command.Contrast = value_trackBar2;     //394
-                command.Intensity = value_trackBar3;    //118
-                command.Run(imagescol[i - 1]);
-
-
-                 UnsharpMaskCommand command2 = new UnsharpMaskCommand();
-                 command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
-                 command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
-                 command2.Threshold = value_trackBar6;  //rate 0 - 255
-                 command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-                 command2.Run(imagescol[i - 1]);
-                PictureBox pic3 = new PictureBox();
-                using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[i - 1], ConvertToImageOptions.None))
-                {
-                    // piccenter.Image = new Bitmap(destImage1);
-                    pic3.Image = new Bitmap(destImage1);
-                }
-                pic3.Height = 640; //ความสูงหน้ากระดาษ
-                pic3.Width = 550;  //ความกว้างหน้ากระดาษ
-
-                pic3.Location = new Point(x3, y3);
-                pic3.SizeMode = PictureBoxSizeMode.StretchImage;
-                pic3.BorderStyle = BorderStyle.FixedSingle;
-
-                y3 += pic3.Height + 10; //ระยะห่างระหว่างหน้า
-                maxWidth3 = Math.Max(pic3.Height, maxWidth3);
-                if (x3 > this.ClientSize.Width - 100)
-                {
-                    y3 = 20;
-                    x3 += maxWidth3 + 100;
-                }
-                //this.panelcenter.Controls.Add(pic3);
-                this.splitContainer1.Panel2.Controls.Add(pic3);
-            }*/
-            /**/
             splitContainer1.Panel2.Controls.Clear();
             int w3 = 550 / 2;
             int x3 = (splitContainer1.Panel2.Width / 2) - w3;
@@ -3046,7 +2870,7 @@ namespace project1
         {
             try
             {
-                MessageBox.Show(tb_profile.GlobalName);
+                //MessageBox.Show(tb_profile.GlobalName);
                 String pfname = "";
                 String listname = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt";
                 if (tb_profile.Text == "")
@@ -3421,7 +3245,7 @@ namespace project1
                         Lprofile.Add(prof66);
                        
                         l_saveprofile.Text = " Save Success...";
-                        N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(Lprofile, tb_profile+ ".xml");
+                        //N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(Lprofile, tb_profile+ ".xml");
                         int r = Lprofile.Count;
                         for (int i = 0; i < r; i++)
                         {
@@ -3675,6 +3499,72 @@ namespace project1
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                //pictureBox1.Image = null;
+                // ซูมอิน (เพิ่มขนาดภาพ)
+                if (picReview2.Width < 4500 || picReview2.Width < 4500)
+                { //กำหนดขอบเขตการขยายภาพ
+                    picReview2.Width += (int)(picReview2.Width * 0.1);
+                    picReview2.Height += (int)(picReview2.Height * 0.1);
+                }
+            }
+            else if (e.Delta < 0)
+            {
+                //pictureBox1.Image = null;
+                // ซูมเอาท์ (ลดขนาดภาพ)
+                if (picReview2.Width > 400 || picReview2.Width > 400)
+                { //กำหนดขอบเขตการลดภาพ
+                    picReview2.Width -= (int)(picReview2.Width * 0.1);
+                    picReview2.Height -= (int)(picReview2.Height * 0.1);
+                }
+
+            }
+            // l_zoom.Text = "w " + picReview2.Width.ToString() + " h" + picReview2.Height.ToString();
+        }
+        int xPos2;
+        int yPos2;
+        bool Dragging2;
+        //private RasterImage destImage;
+
+        private void picReview2_MouseUp(object sender, MouseEventArgs e)
+        {
+            Dragging2 = false;
+        }
+        private void picReview2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Dragging2 = true;
+                xPos2 = e.X;
+                yPos2 = e.Y;
+                // Console.WriteLine("xPos " + xPos);
+                // Console.WriteLine("yPos " + yPos);
+            }
+        }
+        private void picReview2_MouseMove(object sender, MouseEventArgs e)
+        {
+            Control c = sender as Control;
+            if (Dragging2 && c != null)
+            {
+                if (c.Top <= 300)
+                {
+                    c.Top = e.Y + c.Top - yPos2;
+                }
+                else
+                {
+
+                }
+                c.Left = e.X + c.Left - xPos2;
+
+                Console.WriteLine("c.Top " + c.Top.ToString());
+                Console.WriteLine("c.Left " + c.Left.ToString());
+            }
+            //l_xy.Text = pictureBox1.Location.ToString();
         }
     }
 }
