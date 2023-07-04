@@ -42,6 +42,7 @@ namespace project1
 
                     this.Hide();
                     Form1 frm = new Form1();
+                    frm.FormClosed += Frm_FormClosed;
                     frm.Show();
                 }
             }
@@ -52,6 +53,12 @@ namespace project1
 
             }
         }
+
+        private void Frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnlic_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofile = new OpenFileDialog();

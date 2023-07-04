@@ -28,7 +28,7 @@ namespace project1
         String rf;
         String rfile;
         List<String> list = new List<String>();
-        List<String> itemre = new List<String>();
+        List<String> itemre = new List<String>();//ที่จะลบ
         List<String> item = new List<String>();
         private void Remove2_Click(object sender, EventArgs e)
         {
@@ -53,26 +53,28 @@ namespace project1
                             Console.WriteLine("itemre " + z);
                             item.Remove(z);
                         }
-                        /*StreamWriter streamwri = new StreamWriter(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                        foreach (string y in item)
-                        {
-                            Console.WriteLine("item " + y);
-                            streamwri.WriteLine(y);
-                        }
-                        streamwri.Close();*/
+                        N2N.Data.Serialization.Serialize<List<String>>.SerializeToXmlFile(item, "Lpfname.xml");
 
                         foreach (string n in itemre)
                         {
                             //Console.WriteLine(n);
-                            String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + n + ".txt";
+                            String path = @"" + n + ".xml";
                             File.Delete(path);
                             listBox1.Items.Remove(itemre);
                             //listBox1.Refresh();
                         }
                     }
                 }
-                listBox1.Items.Clear();
 
+                //listBox1.Items.Clear();
+                item.Clear();
+                listBox1.Items.Clear();
+                List<String> LpfnameLoad = N2N.Data.Serialization.Serialize<List<String>>.DeserializeFromXmlFile("Lpfname.xml");
+                foreach (String list in LpfnameLoad)
+                {
+                    listBox1.Items.Add(list);
+                    item.Add(list);
+                }
                 /*String rfile;
                 StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
                 while ((rfile = streamread.ReadLine()) != null)
@@ -80,15 +82,15 @@ namespace project1
                     listBox1.Items.Add(rfile);
                 }
                 streamread.Close();*/
-                DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
-                foreach (var fi in di.GetFiles("*.txt"))
-                {
-                    //Console.WriteLine(fi.Name);
-                    string[] nm = fi.Name.Split('.');
-                    Console.WriteLine(nm[0]);
-                    listBox1.Items.Add(nm[0]);
-                    item.Add(nm[0]);
-                }
+                /* DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
+                 foreach (var fi in di.GetFiles("*.txt"))
+                 {
+                     //Console.WriteLine(fi.Name);
+                     string[] nm = fi.Name.Split('.');
+                     Console.WriteLine(nm[0]);
+                     listBox1.Items.Add(nm[0]);
+                     item.Add(nm[0]);
+                 }*/
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -100,38 +102,18 @@ namespace project1
             try
             {
                 listBox1.SelectionMode = SelectionMode.MultiSimple;
-
-                /* String rfile;
-                 StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                 while ((rfile = streamread.ReadLine()) != null)
-                 {
-                     listBox1.Items.Add(rfile);
-                     item.Add(rfile);
-                 }
-                 streamread.Close();*/
-
-
-                DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
-                foreach (var fi in di.GetFiles("*.txt"))
+                listBox1.Items.Clear();
+                List<String> LpfnameLoad = N2N.Data.Serialization.Serialize<List<String>>.DeserializeFromXmlFile("Lpfname.xml");
+                foreach (String list in LpfnameLoad)
                 {
-                    //Console.WriteLine(fi.Name);
-                    string[] nm = fi.Name.Split('.');
-                    Console.WriteLine(nm[0]);
-                    listBox1.Items.Add(nm[0]);
-                    item.Add(nm[0]);
+                    listBox1.Items.Add(list);
+                    item.Add(list);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-            /* String path = @"C:\Users\Administrator\source\repos\project1\project1\bin\profile";
-             foreach (string file in Directory.EnumerateFiles(path, "*.txt"))
-             {
-                 string contents = File.ReadAllText(file);
-                 Console.WriteLine(contents);
-             }*/
         }
         
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
