@@ -3637,7 +3637,7 @@ namespace project1
                         Lprofile.Add(prof66);*/
 
                         l_saveprofile.Text = " Save Success...";
-                        N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(Lprofile, tb_profile.Text+ ".xml");
+                       // N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(Lprofile, tb_profile.Text+ ".xml");
                         int r = Lprofile.Count;
                         for (int i = 0; i < r; i++)
                         {
@@ -3689,7 +3689,7 @@ namespace project1
                     else
                     {
                         //StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\" + selectCombobox2 + ".txt");
-                        List<profile> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile>>.DeserializeFromXmlFile("qq.xml");
+                       // List<profile> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile>>.DeserializeFromXmlFile("qq.xml");
                         /* while ((rfile = streamread.ReadLine()) != null)
                          {
                              rf = rfile;                         //text = อ่านข้อความทีละบรรทัด
@@ -3711,7 +3711,7 @@ namespace project1
                         Console.WriteLine("> " + ProfileLoad[0].Values_brightness);*/
                         //เซตค่า
                         //ความสว่าง
-                        value_trackBar1 = int.Parse(ProfileLoad[0].Values);
+                      /*  value_trackBar1 = int.Parse(ProfileLoad[0].Values);
                           trackBar1.Value = value_trackBar1;
                           l_brightness.Text = value_trackBar1.ToString();
                           value_trackBar2 = int.Parse(ProfileLoad[1].Values);
@@ -3895,7 +3895,7 @@ namespace project1
                           checkBox20.Checked = chckbox20;
                           //convetrt to 1 bit
                           chckbox21 = bool.Parse(ProfileLoad[65].Values);
-                          checkBox21.Checked = chckbox21;
+                          checkBox21.Checked = chckbox21;*/
                           //Display();
                         l_saveprofile.Text = "usepf Success...";
                     }

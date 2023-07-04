@@ -56,8 +56,8 @@ namespace project1
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 String savePath = saveFileDialog1.FileName;
-                List<profile> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile>>.DeserializeFromXmlFile("Configs.xml");
-                N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(ProfileLoad, savePath+ ".xml");
+               // List<profile> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile>>.DeserializeFromXmlFile("Configs.xml");
+               // N2N.Data.Serialization.Serialize<List<profile>>.SerializeToXmlFile(ProfileLoad, savePath+ ".xml");
             }
         }
 
