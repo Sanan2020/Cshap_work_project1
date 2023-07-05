@@ -231,6 +231,7 @@ namespace project1
                  Console.WriteLine(ProfileLoad[1].Profilename);
                  listBox2.Items.Add(ProfileLoad[0].Profilename);
                  listBox2.Items.Add(ProfileLoad[1].Profilename);*/
+                /**/
             }
         }
 
