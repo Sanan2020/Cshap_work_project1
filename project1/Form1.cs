@@ -2946,8 +2946,8 @@ namespace project1
                 else{
                     /*foreach (var n in itemEx)
                     {*/
-                        List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                        profile2 profile2 = ProfileLoad.Where(c => c.Profilename == tb_profile.ToString()).FirstOrDefault();
+                        /*List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+                        profile2 profile2 = ProfileLoad.Where(c => c.Profilename == tb_profile.ToString()).FirstOrDefault();*/
                     /*}*/
                         if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\Debug\" + pfname + ".txt"))//ถ้าเจอไฟล์
                     {
