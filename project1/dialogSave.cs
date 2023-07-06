@@ -1,44 +1,21 @@
-﻿using Leadtools.Document.Writer;
-using Leadtools;
+﻿using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static project1.Form1;
-using System.Xml;
-using Leadtools.Document.Unstructured.Highlevel;
-using static project1.Form1Export;
-using static project1.dialogSave;
-using DevComponents.DotNetBar;
 
 namespace project1
 {
-    public partial class Form1Export : Office2007Form
+    public partial class dialogSave : Office2007Form
     {
-        public Form1Export()
+        public dialogSave()
         {
             InitializeComponent();
-        }
-        private void Form1Export_Load(object sender, EventArgs e)
-        {
-           
-            listBox1.SelectionMode = SelectionMode.MultiSimple;
-            listBox1.Items.Clear();
-            List<profile2> LpfnameLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-            for (int i = 0; i < LpfnameLoad.Count; i++)
-            {
-                listBox1.Items.Add(LpfnameLoad[i].Profilename);
-            }
-        }
-        private void btnExport_Click(object sender, EventArgs e)
-        {
-            write2();
         }
         public class profile2
         {
@@ -177,90 +154,125 @@ namespace project1
             public bool AutoFilter { get { return autoFilter; } set { autoFilter = value; } }
             public bool Convert1bit { get { return convert1bit; } set { convert1bit = value; } }
         }
-        public List<profile2> lprofile3 = new List<profile2>();
-      //  List<int> itemEx = new List<int>();
-        List<String> itemEx = new List<String>();
-        void write2() {
-            itemEx.Clear(); 
-            for (int i = listBox1.SelectedItems.Count - 1; i >= 0; i--)
-            {
-                //Console.WriteLine(listBox1.SelectedItems[i]);
-               // itemEx.Add(listBox1.SelectedIndex);
-                itemEx.Add(listBox1.SelectedItems[i].ToString());
-                //listBox1.Items.Remove(listBox1.SelectedItems[i]);
-                Console.WriteLine(listBox1.SelectedItems);
-            }
-         
-            if (itemEx.Count > 0)
-            {
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.Filter = "xml (*.xml)|*.xml";
-                    saveFileDialog1.FilterIndex = 2;
-                    saveFileDialog1.RestoreDirectory = true;
-
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        String savePath = saveFileDialog1.FileName;
-                        foreach (var n in itemEx)
-                        {
-                            List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                            profile2 profile2 =  ProfileLoad.Where(c => c.Profilename == n.ToString()).FirstOrDefault();
-                            lprofile3.Add(profile2);
-                            N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofile3, savePath + ".xml");
-                        }
-                }
-                lprofile3.Clear();
-            } 
-        }
-        List<String> name = new List<String>();
-        String path;
-        public List<profile2> lprofileIm = new List<profile2>();
-        List<String> listIm = new List<String>();
-        private void btnImport_Click(object sender, EventArgs e)
+        public List<profile2> Lprofile2 = new List<profile2>();
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            lprofileIm.Clear();
-            //listBox2.SelectionMode = SelectionMode.MultiSimple;
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.RestoreDirectory = true;
-            openFileDialog1.Title = "Browse Text Files";
-            openFileDialog1.Filter = "xml (*.xml)|*.xml";
-            openFileDialog1.FilterIndex = 2;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (tb_pfname.Text == "")
             {
-                path = openFileDialog1.FileName;
-                
-                List<profile2> ImportLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile(path);
-
+                MessageBox.Show("กรุณาตั้งชื่อ Profile!!");
+            }
+            else {
                 List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                for (int r = 0; r < ImportLoad.Count; r++)
-                {
-                    profile2 profile3 = ProfileLoad.Where(c => c.Profilename == ImportLoad[r].Profilename).FirstOrDefault();
-
+                profile2 profile3 = ProfileLoad.Where(c => c.Profilename == tb_pfname.Text).FirstOrDefault();
+                Lprofile2.Clear();
                     if (profile3 != null)
                     { //ถ้าเจอ
                       //เก็บค่าที่เจอ
-                       // MessageBox.Show("f");
-                        DialogResult dialogResult = MessageBox.Show("มีไฟล์ชื่อ"+ ImportLoad[r].Profilename + "มีอยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
+                        //MessageBox.Show("f");
+                        DialogResult dialogResult = MessageBox.Show("มีไฟล์ชื่อนี้อยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            lprofileIm.Add(ImportLoad[r]);
+                        for (int r = 0; r < ProfileLoad.Count; r++)
+                        {
+                            if (ProfileLoad[r].Profilename != tb_pfname.Text)
+                            {
+                                Lprofile2.Add(ProfileLoad[r]);
+                            }
                         }
-                        lprofileIm.Add(ProfileLoad[r]);
-                        //lprofileIm.Add(ProfileLoad[r]);
-                        //save();
+                        save();
+                        }
+                       
+                    }else{
+                        //บันทึกทันที
+                        // Lprofile2.Add(profile2);
+                        //MessageBox.Show("n f");
+                        for (int r = 0; r < ProfileLoad.Count; r++){
+                            Lprofile2.Add(ProfileLoad[r]);
+                        }
+                        save();
                     }
-                    else//
-                    {
-                        lprofileIm.Add(ProfileLoad[r]);
-                        lprofileIm.Add(ImportLoad[r]);
-                    }
+               // }
+               void save()
+                {
+                    profile2 profile2 = new profile2();
+                    profile2.Profilename = tb_pfname.Text;
+                    profile2.Brightness = Form1.form1.value_trackBar1;
+                    profile2.Contrast = Form1.form1.value_trackBar2;
+                    profile2.Intensity = Form1.form1.value_trackBar3;
+                    profile2.Amount = Form1.form1.value_trackBar4;
+                    profile2.Radius = Form1.form1.value_trackBar5;
+                    profile2.Threshold = Form1.form1.value_trackBar6;
+                    profile2.UseGrayScale = Form1.form1.chckbox2;
+                    profile2.Redfactor = Form1.form1.value_trackBar7;
+                    profile2.Greenfactor = Form1.form1.value_trackBar8;
+                    profile2.Bluefactor = Form1.form1.value_trackBar9;
+                    profile2.AutoBinarize = Form1.form1.chckbox7;
+                    profile2.Despeckle = Form1.form1.chckbox3;
+                    profile2.DynamicBinary = Form1.form1.chckbox9;
+                    profile2.Dimension = Form1.form1.value_trbDynBin1;
+                    profile2.Localcontrast = Form1.form1.value_trbDynBin2;
+                    profile2.Binaryfilter = Form1.form1.selectCombobox;
+                    profile2.Dotremove = Form1.form1.chckbox10;
+                    profile2.MaximumdotH = Form1.form1.value_trackBar10;
+                    profile2.LmaximumdotW = Form1.form1.value_trackBar11;
+                    profile2.LminimumdotH = Form1.form1.value_trackBar12;
+                    profile2.MinimumdotW = Form1.form1.value_trackBar13;
+                    profile2.LineRemove = Form1.form1.chckbox11;
+                    profile2.Gaplength = Form1.form1.value_trackBar14;
+                    profile2.MaximumlineW = Form1.form1.value_trackBar15;
+                    profile2.MinimumlineL = Form1.form1.value_trackBar16;
+                    profile2.Maximumwall = Form1.form1.value_trackBar17;
+                    profile2.Wall = Form1.form1.value_trackBar22;
+                    profile2.HolePunchRemove = Form1.form1.chckbox12;
+                    profile2.Maximumhole = Form1.form1.value_trackBar18;
+                    profile2.Minimumhole = Form1.form1.value_trackBar21;
+                    profile2.InvertedText = Form1.form1.chckbox13;
+                    profile2.Maximumblack = Form1.form1.value_trackBar19;
+                    profile2.MinimuminverH = Form1.form1.value_trackBar23;
+                    profile2.MinimuminvertW = Form1.form1.value_trackBar24;
+                    profile2.AutoCrop = Form1.form1.chckbox15;
+                    profile2.CropThreshold = Form1.form1.value_trackBar27;
+                    profile2.BorderRemove = Form1.form1.chckbox16;
+                    profile2.Percent = Form1.form1.value_trackBar25;
+                    profile2.Variance = Form1.form1.value_trackBar26;
+                    profile2.WhitenoiseL = Form1.form1.value_trackBar28;
+                    profile2.Smooth = Form1.form1.chckbox17;
+                    profile2.Length = Form1.form1.value_trackBar31;
+                    profile2.AutoColorLevel = Form1.form1.chckbox;
+                    profile2.AutoBinary = Form1.form1.chckbox4;
+                    profile2.Maximum = Form1.form1.chckbox5;
+                    profile2.Lmaximum = Form1.form1.value_trbMaximum;
+                    profile2.Minimum = Form1.form1.chckbox6;
+                    profile2.Lminimum = Form1.form1.value_trbMinimum;
+                    profile2.Gamma = Form1.form1.chckbox8;
+                    profile2.Lgamma = Form1.form1.value_trbGamma;
+                    profile2.AutoDeskew = Form1.form1.chckbox14;
+                    profile2.UseFlipRotateImage = Form1.form1.chckbox18;
+                    profile2.RotateImage = Form1.form1.value_trackBar29;
+                    profile2.UseRakeRemove = Form1.form1.chckbox19;
+                    profile2.NumUpDown1 = Form1.form1.value_numUpDown1;
+                    profile2.NumUpDown2 = Form1.form1.value_numUpDown2;
+                    profile2.NumUpDown3 = Form1.form1.value_numUpDown3;
+                    profile2.NumUpDown4 = Form1.form1.value_numUpDown4;
+                    profile2.NumUpDown5 = Form1.form1.value_numUpDown5;
+                    profile2.NumUpDown6 = Form1.form1.value_numUpDown6;
+                    profile2.NumUpDown7 = Form1.form1.value_numUpDown7;
+                    profile2.NumUpDown8 = Form1.form1.value_numUpDown8;
+                    profile2.NumUpDown9 = Form1.form1.value_numUpDown9;
+                    profile2.AutoFilter = Form1.form1.chckbox20;
+                    profile2.Convert1bit = Form1.form1.chckbox21;
+                    Lprofile2.Add(profile2);
+                    //  Lprofile2.Remove(profile2[]);
+                    //LpfnameLoad2.Add(profile2);
+                    //  l_saveprofile.Text = " Save Success...";
+                    N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(Lprofile2, "testin.xml");
+                    tb_pfname.Text = "";
                 }
-                    N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofileIm, "testin.xml");
-                    Form1.form1.cbBox2re();
+                
+
+                
+                //profile2 profile2 = pfnameLoad.Where(c => c.Profilename == tb_pfname.Text).FirstOrDefault();
             }
         }
-
-        public List<profile2> Lprofile2 = new List<profile2>();
-      
     }
 }

@@ -539,7 +539,7 @@ namespace project1
                 chckbox17 = false;
                 checkBox17.Checked = chckbox17;
 
-                tb_profile.Text = "";
+                //tb_profile.Text = "";
                 cbboxUseProfile.SelectedIndex = 0;
 
                 value_trackBar10 = 10;
@@ -670,139 +670,139 @@ namespace project1
         public class profile2
         {
             String profilename;
-            int values_brightness;
-            int values_contrast;
-            int values_intensity;
-            int values_amount;
-            int values_radius;
-            int values_threshold;
-            bool values_UseGrayScale;
-            int values_redfactor;
-            int values_greenfactor;
-            int values_bluefactor;
-            bool values_AutoBinarize;
-            bool values_despeckle;
-            bool values_dynamicBinary;
-            int values_dimension;
-            int values_localcontrast;
-            int values_binaryfilter;
-            bool values_dotremove;
-            int values_maximumdotH;
-            int values_lmaximumdotW;
-            int values_minimumdotH;
-            int values_minimumdotW;
-            bool values_lineRemove;
-            int values_gaplength;
-            int values_maximumlineW;
-            int values_minimumlineL;
-            int values_maximumwall;
-            int values_wall;
-            bool values_holePunchRemove;
-            int values_maximumhole;
-            int values_minimumhole;
-            bool values_invertedText;
-            int values_maximumblack;
-            int values_minimumBlack;
-            int values_minimuminverH;
-            int values_minimuminvertW;
-            bool values_autoCrop;
-            int values_cropThreshold;
-            bool values_borderRemove;
-            int values_percent;
-            int values_variance;
-            int values_whitenoiseL;
-            bool values_smooth;
-            int values_length;
-            bool values_autoColorLevel;
-            bool values_autoBinary;
-            bool values_maximum;
-            int values_lmaximum;
-            bool values_minimum;
-            int values_lminimum;
-            bool values_gamma;
-            int values_lgamma;
-            bool values_autoDeskew;
-            bool values_useFlipRotateImage;
-            int values_RotateImage;
-            bool values_useRakeRemove;
-            int values_numUpDown1;
-            int values_numUpDown2;
-            int values_numUpDown3;
-            int values_numUpDown4;
-            int values_numUpDown5;
-            int values_numUpDown6;
-            int values_numUpDown7;
-            int values_numUpDown8;
-            int values_numUpDown9;
-            bool values_autoFilter;
-            bool values_convert1bit;
-            public string Profilename   {get { return profilename; }set { profilename = value; }}
-            public int Values_brightness{get { return values_brightness; }set { values_brightness = value; }}
-            public int Values_contrast {get { return values_contrast; }set { values_contrast = value; }}
-            public int Values_intensity { get { return values_intensity; } set { values_intensity = value; } }
-            public int Values_amount { get { return values_amount; } set { values_amount = value; } }
-            public int Values_radius { get { return values_radius; } set { values_radius = value; } }
-            public int Values_threshold { get { return values_threshold; } set { values_threshold = value; } }
-            public bool Values_UseGrayScale { get { return values_UseGrayScale; } set { values_UseGrayScale = value; } }
-            public int Values_redfactor { get { return values_redfactor; } set { values_redfactor = value; } }
-            public int Values_greenfactor { get { return values_greenfactor; } set { values_greenfactor = value; } }
-            public int Values_bluefactor { get { return values_bluefactor; } set { values_bluefactor = value; } }
-            public bool Values_AutoBinarize { get { return values_AutoBinarize; } set { values_AutoBinarize = value; } }
-            public bool Values_despeckle { get { return values_despeckle; } set { values_despeckle = value; } }
-            public bool Values_dynamicBinary { get { return values_dynamicBinary; } set { values_dynamicBinary = value; } }
-            public int Values_dimension { get { return values_dimension; } set { values_dimension = value; } }
-            public int Values_localcontrast { get { return values_localcontrast; } set { values_localcontrast = value; } }
-            public int Values_binaryfilter { get { return values_binaryfilter; } set { values_binaryfilter = value; } }
-            public bool Values_dotremove { get { return values_dotremove; } set { values_dotremove = value; } }
-            public int Values_maximumdotH { get { return values_maximumdotH; } set { values_maximumdotH = value; } }
-            public int Values_lmaximumdotW { get { return values_lmaximumdotW; } set { values_lmaximumdotW = value; } }
-            public int Values_lminimumdotH { get { return values_minimumdotH; } set { values_minimumdotH = value; } }
-            public int Values_minimumdotW { get { return values_minimumdotW; } set { values_minimumdotW = value; } }
-            public bool Values_lineRemove { get { return values_lineRemove; } set { values_lineRemove = value; } }
-            public int Values_gaplength { get { return values_gaplength; } set { values_gaplength = value; } }
-            public int Values_maximumlineW { get { return values_maximumlineW; } set { values_maximumlineW = value; } }
-            public int Values_minimumlineL { get { return values_minimumlineL; } set { values_minimumlineL = value; } }
-            public int Values_maximumwall { get { return values_maximumwall; } set { values_maximumwall = value; } }
-            public int Values_wall { get { return values_wall; } set { values_wall = value; } }
-            public bool Values_holePunchRemove { get { return values_holePunchRemove; } set { values_holePunchRemove = value; } }
-            public int Values_maximumhole { get { return values_maximumhole; } set { values_maximumhole = value; } }
-            public int Values_minimumhole { get { return values_minimumhole; } set { values_minimumhole = value; } }
-            public bool Values_invertedText { get { return values_invertedText; } set { values_invertedText = value; } }
-            public int Values_maximumblack { get { return values_maximumblack; } set { values_maximumblack = value; } }
-            public int Values_minimumBlack { get { return values_minimumBlack; } set { values_minimumBlack = value; } }
-            public int Values_minimuminverH { get { return values_minimuminverH; } set { values_minimuminverH = value; } }
-            public int Values_minimuminvertW { get { return values_minimuminvertW; } set { values_minimuminvertW = value; } }
-            public bool Values_autoCrop { get { return values_autoCrop; } set { values_autoCrop = value; } }
-            public int Values_cropThreshold { get { return values_cropThreshold; } set { values_cropThreshold = value; } }
-            public bool Values_borderRemove { get { return values_borderRemove; } set { values_borderRemove = value; } }
-            public int Values_percent { get { return values_percent; } set { values_percent = value; } }
-            public int Values_variance { get { return values_variance; } set { values_variance = value; } }
-            public int Values_whitenoiseL { get { return values_whitenoiseL; } set { values_whitenoiseL = value; } }
-            public bool Values_smooth { get { return values_smooth; } set { values_smooth = value; } }
-            public int Values_length { get { return values_length; } set { values_length = value; } }
-            public bool Values_autoColorLevel { get { return values_autoColorLevel; } set { values_autoColorLevel = value; } }
-            public bool Values_autoBinary { get { return values_autoBinary; } set { values_autoBinary = value; } }
-            public bool Values_maximum { get { return values_maximum; } set { values_maximum = value; } }
-            public int Values_lmaximum { get { return values_lmaximum; } set { values_lmaximum = value; } }
-            public bool Values_minimum { get { return values_minimum; } set { values_minimum = value; } }
-            public int Values_lminimum { get { return values_lminimum; } set { values_lminimum = value; } }
-            public bool Values_gamma { get { return values_gamma; } set { values_gamma = value; } }
-            public int Values_lgamma { get { return values_lgamma; } set { values_lgamma = value; } }
-            public bool Values_autoDeskew { get { return values_autoDeskew; } set { values_autoDeskew = value; } }
-            public bool Values_useFlipRotateImage { get { return values_useFlipRotateImage; } set { values_useFlipRotateImage = value; } }
-            public int Values_RotateImage { get { return values_RotateImage; } set { values_RotateImage = value; } }
-            public bool Values_useRakeRemove { get { return values_useRakeRemove; } set { values_useRakeRemove = value; } }
-            public int Values_numUpDown1 { get { return values_numUpDown1; } set { values_numUpDown1 = value; } }
-            public int Values_numUpDown2 { get { return values_numUpDown2; } set { values_numUpDown2 = value; } }
-            public int Values_numUpDown3 { get { return values_numUpDown3; } set { values_numUpDown3 = value; } }
-            public int Values_numUpDown4 { get { return values_numUpDown4; } set { values_numUpDown4 = value; } }
-            public int Values_numUpDown5 { get { return values_numUpDown5; } set { values_numUpDown5 = value; } }
-            public int Values_numUpDown6 { get { return values_numUpDown6; } set { values_numUpDown6 = value; } }
-            public int Values_numUpDown7 { get { return values_numUpDown7; } set { values_numUpDown7 = value; } }
-            public int Values_numUpDown8 { get { return values_numUpDown8; } set { values_numUpDown8 = value; } }
-            public int Values_numUpDown9 { get { return values_numUpDown9; } set { values_numUpDown9 = value; } }
-            public bool Values_autoFilter { get { return values_autoFilter; } set { values_autoFilter = value; } }
-            public bool Values_convert1bit { get { return values_convert1bit; } set { values_convert1bit = value; } }
+            int brightness;
+            int contrast;
+            int intensity;
+            int amount;
+            int radius;
+            int threshold;
+            bool useGrayScale;
+            int redfactor;
+            int greenfactor;
+            int bluefactor;
+            bool autoBinarize;
+            bool despeckle;
+            bool dynamicBinary;
+            int dimension;
+            int localcontrast;
+            int binaryfilter;
+            bool dotremove;
+            int maximumdotH;
+            int lmaximumdotW;
+            int minimumdotH;
+            int minimumdotW;
+            bool lineRemove;
+            int gaplength;
+            int maximumlineW;
+            int minimumlineL;
+            int maximumwall;
+            int wall;
+            bool holePunchRemove;
+            int maximumhole;
+            int minimumhole;
+            bool invertedText;
+            int maximumblack;
+            int minimumBlack;
+            int minimuminverH;
+            int minimuminvertW;
+            bool autoCrop;
+            int cropThreshold;
+            bool borderRemove;
+            int percent;
+            int variance;
+            int whitenoiseL;
+            bool smooth;
+            int length;
+            bool autoColorLevel;
+            bool autoBinary;
+            bool maximum;
+            int lmaximum;
+            bool minimum;
+            int lminimum;
+            bool gamma;
+            int lgamma;
+            bool autoDeskew;
+            bool useFlipRotateImage;
+            int rotateImage;
+            bool useRakeRemove;
+            int numUpDown1;
+            int numUpDown2;
+            int numUpDown3;
+            int numUpDown4;
+            int numUpDown5;
+            int numUpDown6;
+            int numUpDown7;
+            int numUpDown8;
+            int numUpDown9;
+            bool autoFilter;
+            bool convert1bit;
+            public string Profilename { get { return profilename; } set { profilename = value; } }
+            public int Brightness { get { return brightness; } set { brightness = value; } }
+            public int Contrast { get { return contrast; } set { contrast = value; } }
+            public int Intensity { get { return intensity; } set { intensity = value; } }
+            public int Amount { get { return amount; } set { amount = value; } }
+            public int Radius { get { return radius; } set { radius = value; } }
+            public int Threshold { get { return threshold; } set { threshold = value; } }
+            public bool UseGrayScale { get { return useGrayScale; } set { useGrayScale = value; } }
+            public int Redfactor { get { return redfactor; } set { redfactor = value; } }
+            public int Greenfactor { get { return greenfactor; } set { greenfactor = value; } }
+            public int Bluefactor { get { return bluefactor; } set { bluefactor = value; } }
+            public bool AutoBinarize { get { return autoBinarize; } set { autoBinarize = value; } }
+            public bool Despeckle { get { return despeckle; } set { despeckle = value; } }
+            public bool DynamicBinary { get { return dynamicBinary; } set { dynamicBinary = value; } }
+            public int Dimension { get { return dimension; } set { dimension = value; } }
+            public int Localcontrast { get { return localcontrast; } set { localcontrast = value; } }
+            public int Binaryfilter { get { return binaryfilter; } set { binaryfilter = value; } }
+            public bool Dotremove { get { return dotremove; } set { dotremove = value; } }
+            public int MaximumdotH { get { return maximumdotH; } set { maximumdotH = value; } }
+            public int LmaximumdotW { get { return lmaximumdotW; } set { lmaximumdotW = value; } }
+            public int LminimumdotH { get { return minimumdotH; } set { minimumdotH = value; } }
+            public int MinimumdotW { get { return minimumdotW; } set { minimumdotW = value; } }
+            public bool LineRemove { get { return lineRemove; } set { lineRemove = value; } }
+            public int Gaplength { get { return gaplength; } set { gaplength = value; } }
+            public int MaximumlineW { get { return maximumlineW; } set { maximumlineW = value; } }
+            public int MinimumlineL { get { return minimumlineL; } set { minimumlineL = value; } }
+            public int Maximumwall { get { return maximumwall; } set { maximumwall = value; } }
+            public int Wall { get { return wall; } set { wall = value; } }
+            public bool HolePunchRemove { get { return holePunchRemove; } set { holePunchRemove = value; } }
+            public int Maximumhole { get { return maximumhole; } set { maximumhole = value; } }
+            public int Minimumhole { get { return minimumhole; } set { minimumhole = value; } }
+            public bool InvertedText { get { return invertedText; } set { invertedText = value; } }
+            public int Maximumblack { get { return maximumblack; } set { maximumblack = value; } }
+            public int MinimumBlack { get { return minimumBlack; } set { minimumBlack = value; } }
+            public int MinimuminverH { get { return minimuminverH; } set { minimuminverH = value; } }
+            public int MinimuminvertW { get { return minimuminvertW; } set { minimuminvertW = value; } }
+            public bool AutoCrop { get { return autoCrop; } set { autoCrop = value; } }
+            public int CropThreshold { get { return cropThreshold; } set { cropThreshold = value; } }
+            public bool BorderRemove { get { return borderRemove; } set { borderRemove = value; } }
+            public int Percent { get { return percent; } set { percent = value; } }
+            public int Variance { get { return variance; } set { variance = value; } }
+            public int WhitenoiseL { get { return whitenoiseL; } set { whitenoiseL = value; } }
+            public bool Smooth { get { return smooth; } set { smooth = value; } }
+            public int Length { get { return length; } set { length = value; } }
+            public bool AutoColorLevel { get { return autoColorLevel; } set { autoColorLevel = value; } }
+            public bool AutoBinary { get { return autoBinary; } set { autoBinary = value; } }
+            public bool Maximum { get { return maximum; } set { maximum = value; } }
+            public int Lmaximum { get { return lmaximum; } set { lmaximum = value; } }
+            public bool Minimum { get { return minimum; } set { minimum = value; } }
+            public int Lminimum { get { return lminimum; } set { lminimum = value; } }
+            public bool Gamma { get { return gamma; } set { gamma = value; } }
+            public int Lgamma { get { return lgamma; } set { lgamma = value; } }
+            public bool AutoDeskew { get { return autoDeskew; } set { autoDeskew = value; } }
+            public bool UseFlipRotateImage { get { return useFlipRotateImage; } set { useFlipRotateImage = value; } }
+            public int RotateImage { get { return rotateImage; } set { rotateImage = value; } }
+            public bool UseRakeRemove { get { return useRakeRemove; } set { useRakeRemove = value; } }
+            public int NumUpDown1 { get { return numUpDown1; } set { numUpDown1 = value; } }
+            public int NumUpDown2 { get { return numUpDown2; } set { numUpDown2 = value; } }
+            public int NumUpDown3 { get { return numUpDown3; } set { numUpDown3 = value; } }
+            public int NumUpDown4 { get { return numUpDown4; } set { numUpDown4 = value; } }
+            public int NumUpDown5 { get { return numUpDown5; } set { numUpDown5 = value; } }
+            public int NumUpDown6 { get { return numUpDown6; } set { numUpDown6 = value; } }
+            public int NumUpDown7 { get { return numUpDown7; } set { numUpDown7 = value; } }
+            public int NumUpDown8 { get { return numUpDown8; } set { numUpDown8 = value; } }
+            public int NumUpDown9 { get { return numUpDown9; } set { numUpDown9 = value; } }
+            public bool AutoFilter { get { return autoFilter; } set { autoFilter = value; } }
+            public bool Convert1bit { get { return convert1bit; } set { convert1bit = value; } }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1905,11 +1905,11 @@ namespace project1
         public void cbBox2re()
         {
             cbboxUseProfile.Items.Clear();
-           
+            cbboxUseProfile.Items.Add("Default");
             List<profile2> LpfnameLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
             for (int i = 0; i < LpfnameLoad.Count; i++)
             {
-                cbboxUseProfile.Items.Add(LpfnameLoad[i].Profilename);
+               cbboxUseProfile.Items.Add(LpfnameLoad[i].Profilename);
             }
         }
         int xPos;
@@ -2663,112 +2663,9 @@ namespace project1
         List<String> Lpfname = new List<String>();
         private void btnSaveProfile_Click(object sender, EventArgs e){
             try{
-                //MessageBox.Show(tb_profile.GlobalName);
-                String pfname = "";
-                if (tb_profile.Text == ""){
-                    MessageBox.Show("กรุณาตั้งชื่อ Profile!!");}
-                else{
-                    /*foreach (var n in itemEx)
-                    {*/
-                        /*List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                        profile2 profile2 = ProfileLoad.Where(c => c.Profilename == tb_profile.ToString()).FirstOrDefault();*/
-                    /*}*/
-                        if (System.IO.File.Exists(@"C:\Users\Administrator\source\repos\project1\project1\bin\Debug\" + pfname + ".txt"))//ถ้าเจอไฟล์
-                    {
-                        //MessageBox.Show("คุณมีไฟล์ชื่อนี้อยู่แล้ว!!!");
-                        DialogResult dialogResult = MessageBox.Show("คุณมีไฟล์ชื่อนี้อยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            save();
-                        }
-                    }
-                    else
-                    {
-                        save();
-                    }
-
-                    void save()
-                    {
-                        Lprofile2.Clear();
-                        List<profile2> LpfnameLoad2 = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                        for (int i = 0; i < LpfnameLoad2.Count; i++) {
-                            Lprofile2.Add(LpfnameLoad2[i]);
-                        }
-                        profile2 profile2 = new profile2();
-                        profile2.Profilename = tb_profile.Text;
-                        profile2.Values_brightness = value_trackBar1;
-                        profile2.Values_contrast = value_trackBar2;
-                        profile2.Values_intensity = value_trackBar3;
-                        profile2.Values_amount = value_trackBar4;
-                        profile2.Values_radius = value_trackBar5;
-                        profile2.Values_threshold = value_trackBar6;
-                        profile2.Values_UseGrayScale = chckbox2;
-                        profile2.Values_redfactor = value_trackBar7;
-                        profile2.Values_greenfactor = value_trackBar8;
-                        profile2.Values_bluefactor = value_trackBar9;
-                        profile2.Values_AutoBinarize = chckbox7;
-                        profile2.Values_despeckle = chckbox3;
-                        profile2.Values_dynamicBinary = chckbox9;
-                        profile2.Values_dimension = value_trbDynBin1;
-                        profile2.Values_localcontrast = value_trbDynBin2;
-                        profile2.Values_binaryfilter = selectCombobox;
-                        profile2.Values_dotremove = chckbox10;
-                        profile2.Values_maximumdotH = value_trackBar10;
-                        profile2.Values_lmaximumdotW = value_trackBar11;
-                        profile2.Values_lminimumdotH = value_trackBar12;
-                        profile2.Values_minimumdotW = value_trackBar13;
-                        profile2.Values_lineRemove = chckbox11;
-                        profile2.Values_gaplength = value_trackBar14;
-                        profile2.Values_maximumlineW = value_trackBar15;
-                        profile2.Values_minimumlineL= value_trackBar16;
-                        profile2.Values_maximumwall = value_trackBar17;
-                        profile2.Values_wall = value_trackBar22;
-                        profile2.Values_holePunchRemove = chckbox12;
-                        profile2.Values_maximumhole = value_trackBar18;
-                        profile2.Values_minimumhole = value_trackBar21;
-                        profile2.Values_invertedText = chckbox13;
-                        profile2.Values_maximumblack = value_trackBar19;
-                        profile2.Values_minimuminverH = value_trackBar23;
-                        profile2.Values_minimuminvertW = value_trackBar24;
-                        profile2.Values_autoCrop = chckbox15;
-                        profile2.Values_cropThreshold = value_trackBar27;
-                        profile2.Values_borderRemove = chckbox16;
-                        profile2.Values_percent = value_trackBar25;
-                        profile2.Values_variance = value_trackBar26;
-                        profile2.Values_whitenoiseL = value_trackBar28;
-                        profile2.Values_smooth = chckbox17;
-                        profile2.Values_length = value_trackBar31;
-                        profile2.Values_autoColorLevel = chckbox;
-                        profile2.Values_autoBinary = chckbox4;
-                        profile2.Values_maximum = chckbox5;
-                        profile2.Values_lmaximum = value_trbMaximum;
-                        profile2.Values_minimum = chckbox6;
-                        profile2.Values_lminimum = value_trbMinimum;
-                        profile2.Values_gamma = chckbox8;
-                        profile2.Values_lgamma = value_trbGamma;
-                        profile2.Values_autoDeskew = chckbox14;
-                        profile2.Values_useFlipRotateImage = chckbox18;
-                        profile2.Values_RotateImage = value_trackBar29;
-                        profile2.Values_useRakeRemove = chckbox19;
-                        profile2.Values_numUpDown1 = value_numUpDown1;
-                        profile2.Values_numUpDown2 = value_numUpDown2;
-                        profile2.Values_numUpDown3 = value_numUpDown3;
-                        profile2.Values_numUpDown4 = value_numUpDown4;
-                        profile2.Values_numUpDown5 = value_numUpDown5;
-                        profile2.Values_numUpDown6 = value_numUpDown6;
-                        profile2.Values_numUpDown7 = value_numUpDown7;
-                        profile2.Values_numUpDown8 = value_numUpDown8;
-                        profile2.Values_numUpDown9 = value_numUpDown9;
-                        profile2.Values_autoFilter = chckbox20;
-                        profile2.Values_convert1bit = chckbox21;
-                        Lprofile2.Add(profile2);
-                        //LpfnameLoad2.Add(profile2);
-                        l_saveprofile.Text = " Save Success...";
-                        N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(Lprofile2, "testin.xml");
-                        tb_profile.Text = "";
-                    }
-                    cbBox2re();
-                }
+                 dialogSave dialogSave =new dialogSave();
+                 dialogSave.ShowDialog();
+                 cbBox2re();
             }
             catch (Exception ex)
             {
@@ -2776,231 +2673,220 @@ namespace project1
             }
         }
 
-        private void btnRemoveProfile_Click(object sender, EventArgs e)
-        {
-            Form2 frm2 = new Form2();
-           // int x = Remove.Location.X - 200;
-          //  int y = Remove.Location.Y;
-           // frm2.Location = new Point(x, y);
-            frm2.Show();
-        }
-
         private void cbboxUseProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
+           /* try
+            {*/
                 // selectCombobox2 = cbboxUseProfile.SelectedItem.ToString();
                 int numfp = cbboxUseProfile.SelectedIndex;
                // cbboxUseProfile.Items.Add("Configs");
-                if (selectCombobox2 == "Default" && folderPath != null)
-                {
-                    ResetValue();
-                }
-                else
-                {
+               
                     List<String> list = new List<String>();
-                    if (selectCombobox2 == "Default") { }
+                    if (cbboxUseProfile.SelectedItem.ToString() == "Default") {
+                        ResetValue();
+                    }
                     else
                     {
                         List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                        
-                        //ความสว่าง
-                         value_trackBar1 = ProfileLoad[numfp].Values_brightness;
+                        profile2 profile3 = ProfileLoad.Where(c => c.Profilename == cbboxUseProfile.SelectedItem.ToString()).FirstOrDefault();
+
+                    //ความสว่าง
+                    value_trackBar1 = profile3.Brightness;
                          trackBar1.Value = value_trackBar1;
                          l_brightness.Text = value_trackBar1.ToString();
-                         value_trackBar2 = ProfileLoad[numfp].Values_contrast;
+                         value_trackBar2 = profile3.Contrast;
                          trackBar2.Value = value_trackBar2;
                          l_contrast.Text = value_trackBar2.ToString();
-                         value_trackBar3 = ProfileLoad[numfp].Values_intensity;
+                         value_trackBar3 = profile3.Intensity;
                          trackBar3.Value = value_trackBar3;
                          l_intensity.Text = value_trackBar3.ToString();
                          //ความคมชัด
-                         value_trackBar4 = ProfileLoad[numfp].Values_amount;
+                         value_trackBar4 = profile3.Amount;
                          trackBar4.Value = value_trackBar4;
                          l_amount.Text = value_trackBar4.ToString();
-                         value_trackBar5 = ProfileLoad[numfp].Values_radius;
+                         value_trackBar5 = profile3.Radius;
                          trackBar5.Value = value_trackBar5;
                          l_radius.Text = value_trackBar5.ToString();
-                         value_trackBar6 = ProfileLoad[numfp].Values_threshold;
+                         value_trackBar6 = profile3.Threshold;
                          trackBar6.Value = value_trackBar6;
                          l_threshold.Text = value_trackBar6.ToString();
                          //Gray scale
-                         chckbox2 = ProfileLoad[numfp].Values_UseGrayScale;
+                         chckbox2 = profile3.UseGrayScale;
                          checkBox2.Checked = chckbox2;
-                         value_trackBar7 = ProfileLoad[numfp].Values_redfactor;
+                         value_trackBar7 = profile3.Redfactor;
                          trackBar7.Value = value_trackBar7;
                          l_redfactor.Text = value_trackBar7.ToString();
-                         value_trackBar8 = ProfileLoad[numfp].Values_greenfactor;
+                         value_trackBar8 = profile3.Greenfactor;
                          trackBar8.Value = value_trackBar8;
                          l_greenfactor.Text = value_trackBar8.ToString();
-                         value_trackBar9 = ProfileLoad[numfp].Values_bluefactor;
+                         value_trackBar9 = profile3.Bluefactor;
                          trackBar9.Value = value_trackBar9;
                          l_bluefactor.Text = value_trackBar9.ToString();
                          //Document Image Cleanup Functions
-                         chckbox7 = ProfileLoad[numfp].Values_AutoBinarize;
+                         chckbox7 = profile3.AutoBinarize;
                          checkBox7.Checked = chckbox7;
-                         chckbox3 = ProfileLoad[numfp].Values_despeckle;
+                         chckbox3 = profile3.Despeckle;
                          checkBox3.Checked = chckbox3;
-                         chckbox9 = ProfileLoad[numfp].Values_dynamicBinary;
+                         chckbox9 = profile3.DynamicBinary;
                          checkBox9.Checked = chckbox9;
-                         value_trbDynBin1 = ProfileLoad[numfp].Values_dimension;
+                         value_trbDynBin1 = profile3.Dimension;
                          trbDynBin1.Value = value_trbDynBin1;
                          l_dimension.Text = value_trbDynBin1.ToString();
-                         value_trbDynBin2 = ProfileLoad[numfp].Values_localcontrast;
+                         value_trbDynBin2 = profile3.Localcontrast;
                          trbDynBin2.Value = value_trbDynBin2;
                          l_localcontrast.Text = value_trbDynBin2.ToString();
-                         selectCombobox = ProfileLoad[numfp].Values_binaryfilter;
+                         selectCombobox = profile3.Binaryfilter;
                          comboBox1.SelectedIndex = (selectCombobox + 1);
                          //Dot Remove
-                         chckbox10 = ProfileLoad[numfp].Values_dotremove;
+                         chckbox10 = profile3.Dotremove;
                          checkBox10.Checked = chckbox10;
-                         value_trackBar10 = ProfileLoad[numfp].Values_maximumdotH;
+                         value_trackBar10 = profile3.MaximumdotH;
                          trackBar10.Value = value_trackBar10;
                          l_maximumdotH.Text = value_trackBar10.ToString();
-                         value_trackBar11 = ProfileLoad[numfp].Values_lmaximumdotW;
+                         value_trackBar11 = profile3.LmaximumdotW;
                          trackBar11.Value = value_trackBar11;
                          l_maximumdotW.Text = value_trackBar11.ToString();
-                         value_trackBar12 = ProfileLoad[numfp].Values_lminimumdotH;
+                         value_trackBar12 = profile3.LminimumdotH;
                          trackBar12.Value = value_trackBar12;
                          l_minimumdotH.Text = value_trackBar12.ToString();
-                         value_trackBar13 = ProfileLoad[numfp].Values_minimumdotW;
+                         value_trackBar13 = profile3.MinimumdotW;
                          trackBar13.Value = value_trackBar13;
                          l_minimumdotW.Text = value_trackBar13.ToString();
                          //Line Remove
-                         chckbox11 = ProfileLoad[numfp].Values_lineRemove;
+                         chckbox11 = profile3.LineRemove;
                          checkBox11.Checked = chckbox11;
-                         value_trackBar14 = ProfileLoad[numfp].Values_gaplength;
+                         value_trackBar14 = profile3.Gaplength;
                          trackBar14.Value = value_trackBar14;
                          l_gaplength.Text = value_trackBar14.ToString();
-                         value_trackBar15 = ProfileLoad[numfp].Values_maximumlineW;
+                         value_trackBar15 = profile3.MaximumlineW;
                          trackBar15.Value = value_trackBar15;
                          l_maximumlineW.Text = value_trackBar15.ToString();
-                         value_trackBar16 = ProfileLoad[numfp].Values_minimumlineL;
+                         value_trackBar16 = profile3.MinimumlineL;
                          trackBar16.Value = value_trackBar16;
                          l_minimumlineL.Text = value_trackBar16.ToString();
-                         value_trackBar17 = ProfileLoad[numfp].Values_maximumwall;
+                         value_trackBar17 = profile3.Maximumwall;
                          trackBar17.Value = value_trackBar17;
                          l_maximumwall.Text = value_trackBar17.ToString();
-                         value_trackBar22 = ProfileLoad[numfp].Values_wall;
+                         value_trackBar22 = profile3.Wall;
                          trackBar22.Value = value_trackBar22;
                          l_wall.Text = value_trackBar22.ToString();
                          //HolePunchRemove
-                         chckbox12 = ProfileLoad[numfp].Values_holePunchRemove;
+                         chckbox12 = profile3.HolePunchRemove;
                          checkBox12.Checked = chckbox12;
-                         value_trackBar18 = ProfileLoad[numfp].Values_maximumhole;
+                         value_trackBar18 = profile3.Maximumhole;
                          trackBar18.Value = value_trackBar18;
                          l_maximumhole.Text = value_trackBar18.ToString();
-                         value_trackBar21 = ProfileLoad[numfp].Values_minimumhole;
+                         value_trackBar21 = profile3.Minimumhole;
                          trackBar21.Value = value_trackBar21;
                          l_minimumhole.Text = value_trackBar21.ToString();
                          //InvertedText
-                         chckbox13 = ProfileLoad[numfp].Values_invertedText;
+                         chckbox13 = profile3.InvertedText;
                          checkBox13.Checked = chckbox13;
-                         value_trackBar19 = ProfileLoad[numfp].Values_maximumblack;
+                         value_trackBar19 = profile3.Maximumblack;
                          trackBar19.Value = value_trackBar19;
                          l_maximumblack.Text = value_trackBar19.ToString();
-                         value_trackBar20 = ProfileLoad[numfp].Values_minimumBlack;
+                         value_trackBar20 = profile3.MinimumBlack;
                          trackBar20.Value = value_trackBar20;
                          l_minimumBlack.Text = value_trackBar20.ToString();
-                         value_trackBar23 = ProfileLoad[numfp].Values_minimuminverH;
+                         value_trackBar23 = profile3.MinimuminverH;
                          trackBar23.Value = value_trackBar23;
                          l_minimuminverH.Text = value_trackBar23.ToString();
-                         value_trackBar24 = ProfileLoad[numfp].Values_minimuminvertW;
+                         value_trackBar24 = profile3.MinimuminvertW;
                          trackBar24.Value = value_trackBar24;
                          l_minimuminvertW.Text = value_trackBar24.ToString();
                          //Auto Crop
-                         chckbox15 = ProfileLoad[numfp].Values_autoCrop;
+                         chckbox15 = profile3.AutoCrop;
                          checkBox15.Checked = chckbox15;
-                         value_trackBar27 = ProfileLoad[numfp].Values_cropThreshold;
+                         value_trackBar27 = profile3.CropThreshold;
                          trackBar27.Value = value_trackBar27;
                          l_cropThreshold.Text = value_trackBar27.ToString();
                          //Boder Remove
-                         chckbox16 = ProfileLoad[numfp].Values_borderRemove;
+                         chckbox16 = profile3.BorderRemove;
                          checkBox16.Checked = chckbox16;
-                         value_trackBar25 = ProfileLoad[numfp].Values_percent;
+                         value_trackBar25 = profile3.Percent;
                          trackBar25.Value = value_trackBar25;
                          l_percent.Text = value_trackBar25.ToString();
-                         value_trackBar26 = ProfileLoad[numfp].Values_variance;
+                         value_trackBar26 = profile3.Variance;
                          trackBar26.Value = value_trackBar26;
                          l_variance.Text = value_trackBar26.ToString();
-                         value_trackBar28 = ProfileLoad[numfp].Values_whitenoiseL;
+                         value_trackBar28 = profile3.WhitenoiseL;
                          trackBar28.Value = value_trackBar28;
                          l_whitenoiseL.Text = value_trackBar28.ToString();
                          //Smooth
-                         chckbox17 = ProfileLoad[numfp].Values_smooth;
+                         chckbox17 = profile3.Smooth;
                          checkBox17.Checked = chckbox17;
-                         value_trackBar31 = ProfileLoad[numfp].Values_length;
+                         value_trackBar31 = profile3.Length;
                          trackBar31.Value = value_trackBar31;
                          l_length.Text = value_trackBar31.ToString();
                          //
-                         chckbox = ProfileLoad[numfp].Values_autoColorLevel;
+                         chckbox = profile3.AutoColorLevel;
                          checkBox1.Checked = chckbox;
-                         chckbox4 = ProfileLoad[numfp].Values_autoBinary;
+                         chckbox4 = profile3.AutoBinary;
                          checkBox4.Checked = chckbox4;
                          //Maximum
-                         chckbox5 = ProfileLoad[numfp].Values_maximum;
+                         chckbox5 = profile3.Maximum;
                          checkBox5.Checked = chckbox5;
-                         value_trbMaximum = ProfileLoad[numfp].Values_lmaximum;
+                         value_trbMaximum = profile3.Lmaximum;
                          trbMaximum.Value = value_trbMaximum;
                          l_maximum.Text = value_trbMaximum.ToString();
                          //Minimum
-                         chckbox6 = ProfileLoad[numfp].Values_minimum;
+                         chckbox6 = profile3.Minimum;
                          checkBox6.Checked = chckbox6;
-                         value_trbMinimum = ProfileLoad[numfp].Values_lminimum;
+                         value_trbMinimum = profile3.Lminimum;
                          trbMinimum.Value = value_trbMinimum;
                          l_minimum.Text = value_trbMinimum.ToString();
                          //Gamma
-                         chckbox8 = ProfileLoad[numfp].Values_gamma;
+                         chckbox8 = profile3.Gamma;
                          checkBox8.Checked = chckbox8;
-                         value_trbGamma = ProfileLoad[numfp].Values_lgamma;
+                         value_trbGamma = profile3.Lgamma;
                          trbGamma.Value = value_trbGamma;
                          l_gamma.Text = value_trbGamma.ToString();
 
-                         chckbox14 = ProfileLoad[numfp].Values_autoDeskew;
+                         chckbox14 = profile3.AutoDeskew;
                          checkBox14.Checked = chckbox14;
                          //Flip Rotate Image
-                         chckbox18 = ProfileLoad[numfp].Values_useFlipRotateImage;
+                         chckbox18 = profile3.UseFlipRotateImage;
                          checkBox18.Checked = chckbox18;
-                         value_trackBar29 = ProfileLoad[numfp].Values_RotateImage;
+                         value_trackBar29 = profile3.RotateImage;
                          trackBar29.Value = value_trackBar29;
                          l_RotateImage.Text = value_trackBar29.ToString();
                          //RakeRemove
-                         chckbox19 = ProfileLoad[numfp].Values_useRakeRemove;
+                         chckbox19 = profile3.UseRakeRemove;
                          checkBox19.Checked = chckbox19;
-                         value_numUpDown1 = ProfileLoad[numfp].Values_numUpDown1;
+                         value_numUpDown1 = profile3.NumUpDown1;
                          numUpDown1.Value = value_numUpDown1;
-                         value_numUpDown2 = ProfileLoad[numfp].Values_numUpDown2;
+                         value_numUpDown2 = profile3.NumUpDown2;
                          numUpDown2.Value = value_numUpDown2;
-                         value_numUpDown3 = ProfileLoad[numfp].Values_numUpDown3;
+                         value_numUpDown3 = profile3.NumUpDown3;
                          numUpDown3.Value = value_numUpDown3;
-                         value_numUpDown4 = ProfileLoad[numfp].Values_numUpDown4;
+                         value_numUpDown4 = profile3.NumUpDown4;
                          numUpDown4.Value = value_numUpDown4;
-                         value_numUpDown5 = ProfileLoad[numfp].Values_numUpDown5;
+                         value_numUpDown5 = profile3.NumUpDown5;
                          numUpDown5.Value = value_numUpDown5;
-                         value_numUpDown6 = ProfileLoad[numfp].Values_numUpDown6;
+                         value_numUpDown6 = profile3.NumUpDown6;
                          numUpDown6.Value = value_numUpDown6;
-                         value_numUpDown7 = ProfileLoad[numfp].Values_numUpDown7;
+                         value_numUpDown7 = profile3.NumUpDown7;
                          numUpDown7.Value = value_numUpDown7;
-                         value_numUpDown8 = ProfileLoad[numfp].Values_numUpDown8;
+                         value_numUpDown8 = profile3.NumUpDown8;
                          numUpDown8.Value = value_numUpDown8;
-                         value_numUpDown9 = ProfileLoad[numfp].Values_numUpDown9;
+                         value_numUpDown9 = profile3.NumUpDown9;
                          numUpDown9.Value = value_numUpDown9;
-                         chckbox20 = ProfileLoad[numfp].Values_autoFilter;
+                         chckbox20 = profile3.AutoFilter;
                          checkBox20.Checked = chckbox20;
                          //convetrt to 1 bit
-                         chckbox21 = ProfileLoad[numfp].Values_convert1bit;
+                         chckbox21 = profile3.Convert1bit;
                      checkBox21.Checked = chckbox21;
                         //Display();
                         l_saveprofile.Text = "usepf Success...";
                     }
                     list.Clear();
                  
-                }
-            }
+                
+           /* }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }*/
         }
 
         protected override void OnMouseWheel(MouseEventArgs e)
@@ -3075,6 +2961,36 @@ namespace project1
             var result = form1Export.ShowDialog(this);
             form1Export.Dispose();
             form1Export = null;
+        }
+        public List<profile2> Lprofile3 = new List<profile2>();
+        private void btnRemovepf_Click(object sender, EventArgs e)
+        {
+            
+            List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+            profile2 profile3 = ProfileLoad.Where(c => c.Profilename == cbboxUseProfile.SelectedItem.ToString()).FirstOrDefault();
+            Console.WriteLine(cbboxUseProfile.SelectedItem.ToString());
+            Lprofile3.Clear();
+            if (profile3 != null)
+            { //ถ้าเจอ
+              //เก็บค่าที่เจอ
+                //MessageBox.Show("f");
+                DialogResult dialogResult = MessageBox.Show("ยืนยันที่จะลบไฟล์!!!", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    
+                    for (int r = 0; r < ProfileLoad.Count; r++)
+                    {
+                        if (ProfileLoad[r].Profilename != cbboxUseProfile.SelectedItem.ToString())
+                        {
+                            Lprofile3.Add(ProfileLoad[r]);
+                        }
+                    }
+                    N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(Lprofile3, "testin.xml");
+                    ResetValue();
+                    cbBox2re();
+                }
+
+            }
         }
     }
 }
