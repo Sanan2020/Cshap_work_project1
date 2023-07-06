@@ -264,5 +264,15 @@ namespace project1
                 lprofileIm.Clear();
             }
         }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+         /*  foreach (var n in itemEx)
+                    {*/
+            List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+            profile2 profile2 = ProfileLoad.Where(c => c.Profilename == "test2").FirstOrDefault();
+                Console.WriteLine(profile2.Profilename);
+           // }
+        }
     }
 }

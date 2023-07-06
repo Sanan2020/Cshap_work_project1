@@ -139,19 +139,44 @@ namespace project1
             if (e.Percent == 50 && cancelAt50)
                 e.Cancel = true;
         }
+        public class pathLicense
+        {
+            String license;
+            String key;
+            public string License   // property
+            {
+                get { return license; }
+                set { license = value; }
+            }
 
+            public string Key   // property
+            {
+                get { return key; }
+                set { key = value; }
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
-                /*RasterSupport.SetLicense(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC",
-                    File.ReadAllText(@"C:\Users\Administrator\Downloads\licens\LEADTOOLS.LIC.KEY"));*/
-                bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
-                if (isLocked)
-                    Console.WriteLine("Document support is locked");
-                else
+                if (System.IO.File.Exists("pathLicense.xml"))//ถ้าเจอไฟล์
                 {
-                    Console.WriteLine("Document support is unlocked");
+                    List<pathLicense> LpfnameLoad = N2N.Data.Serialization.Serialize<List<pathLicense>>.DeserializeFromXmlFile("pathLicense.xml");
+                    RasterSupport.SetLicense(LpfnameLoad[0].License,File.ReadAllText(LpfnameLoad[0].Key));
+                    bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
+                    if (isLocked)
+                        Console.WriteLine("Document support is locked");
+                    else
+                    {
+                        Console.WriteLine("Document support is unlocked");
+                    }
+                }
+                else {
+                   
+                    Form3 f3 = new Form3();
+                    f3.FormClosed += f3_FormClosed;
+                    f3.ShowDialog();
+                    //MessageBox.Show("not found");   
                 }
 
                 flowLayoutPanel1.AutoScroll = true;
@@ -242,317 +267,19 @@ namespace project1
                 splitContainer1.SplitterWidth = 10; //ความกว้างของตัว split ค่าเดิม 4
                 splitContainer1.BorderStyle = BorderStyle.FixedSingle;
                 /**/
+                flowLayoutPanel1.Visible = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        public void Display()
+        private void f3_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                using (Image destImage1 = RasterImageConverter.ConvertToImage(ChangeCommand(), ConvertToImageOptions.None))
-                {
-                    //picOutput.Image = new Bitmap(destImage1);
-                    //MessageBox.Show(destImage1.ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            this.Close();
         }
-        public RasterImage ChangeCommand()
-        {
-            // Load an image 
-            codecs.ThrowExceptionsOnInvalidImages = true;
-            //RasterImage image = codecs.Load(Path.Combine(folderPath));
-            RasterImage image = codecs.Load(Path.Combine(folderPath), 24, CodecsLoadByteOrder.Bgr, 1, 1);
-            /*try
-            {*/
-            ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-            //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = value_trackBar1;   //484
-            command.Contrast = value_trackBar2;     //394
-            command.Intensity = value_trackBar3;    //118
-            command.Run(image);
-
-            UnsharpMaskCommand command2 = new UnsharpMaskCommand();
-            command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
-            command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
-            command2.Threshold = value_trackBar6;  //rate 0 - 255
-            command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-            command2.Run(image);
-
-            // Prepare the command 
-            //BinaryFilterCommand command = new BinaryFilterCommand(BinaryFilterCommandPredefined.DilationHorizontal);
-            if (selectCombobox == 0) { }
-            else
-            {
-                selectCombobox = selectCombobox - 1;
-                //MessageBox.Show(selectCombobox.ToString());
-                BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
-                command3.Run(image);
-            }
-
-            if (chckbox == true)
-            {
-                AutoColorLevelCommand command4 = new AutoColorLevelCommand();
-                command4.Run(image);
-            }
-
-            if (chckbox2 == true)
-            {
-                GrayScaleExtendedCommand command5 = new GrayScaleExtendedCommand();
-                command5.RedFactor = value_trackBar7;
-                command5.GreenFactor = value_trackBar8;
-                command5.BlueFactor = value_trackBar9;
-                command5.Run(image);
-            }
-
-            if (chckbox4 == true)
-            {
-                AutoBinaryCommand command7 = new AutoBinaryCommand();
-                //Apply Auto Binary Segment. 
-                command7.Run(image);
-            }
-
-            if (chckbox5 == true)
-            {
-                MaximumCommand command8 = new MaximumCommand();
-                //Apply Maximum filter. 
-                command8.Dimension = value_trbMaximum;
-                command8.Run(image);
-            }
-
-            if (chckbox6 == true)
-            {
-                MinimumCommand command9 = new MinimumCommand();
-                //Apply the Minimum filter. 
-                command9.Dimension = value_trbMinimum;
-                command9.Run(image);
-            }
-
-            if (chckbox7 == true)
-            {
-                AutoBinarizeCommand command10 = new AutoBinarizeCommand();
-                command10.Run(image);
-            }
-
-            if (chckbox8 == true)
-            {
-                GammaCorrectCommand command11 = new GammaCorrectCommand();
-                //Set a gamma value of 2.5. 
-                command11.Gamma = value_trbGamma;
-                command11.Run(image);
-            }
-            if (chckbox9 == true)
-            {
-                DynamicBinaryCommand command12 = new DynamicBinaryCommand();
-                command12.Dimension = value_trbDynBin1;
-                command12.LocalContrast = value_trbDynBin2;
-                // convert it into a black and white image without changing its bits per pixel. 
-                command12.Run(image);
-            }
-            if (chckbox14 == true)
-            {
-                DeskewCommand command16 = new DeskewCommand();
-                //Deskew the image. 
-                command16.Flags = DeskewCommandFlags.DeskewImage | DeskewCommandFlags.DoNotFillExposedArea;
-                command16.Run(image);
-            }
-            if (chckbox15 == true)
-            {
-                AutoCropCommand command17 = new AutoCropCommand();
-                //AutoCrop the image with 20 tolerance. 
-                command17.Threshold = value_trackBar27;
-                command17.Run(image);
-            }
-            if (chckbox3 == true)
-            {
-                DespeckleCommand command6 = new DespeckleCommand();
-                //Remove speckles from the image. 
-                command6.Run(image);
-            }
-            if (chckbox18 == true)
-            {
-                FlipCommand flip = new FlipCommand(false);
-                RunCommand(image, flip);
-                // rotate the image by 45 degrees 
-                RotateCommand rotate = new RotateCommand();
-                rotate.Angle = (value_trackBar29 * 100);
-                rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
-                rotate.Flags = RotateCommandFlags.Resize;
-                RunCommand(image, rotate);
-            }
-            //if (chckbox21 == true) {
-            //MessageBox.Show("jk");
-            RasterImage destImage = new RasterImage(
-            RasterMemoryFlags.Conventional,
-            image.Width,
-            image.Height,
-            1,
-            image.Order,
-            image.ViewPerspective,
-            image.GetPalette(),
-            IntPtr.Zero,
-            0);
-            int bufferSize = RasterBufferConverter.CalculateConvertSize(
-               image.Width,
-               image.BitsPerPixel,
-               destImage.Width,
-               destImage.BitsPerPixel);
-
-            // Allocate the buffer in unmanaged memory 
-            IntPtr buffer = Marshal.AllocHGlobal(bufferSize);
-            //Assert.IsFalse(buffer == IntPtr.Zero);
-
-            // Process each row from srcImage to destImage. 
-            image.Access();
-            destImage.Access();
-            for (int i = 0; i < image.Height; i++)
-            {
-                image.GetRow(i, buffer, image.BytesPerLine);
-                RasterBufferConverter.Convert(
-                   buffer,
-                   image.Width,
-                   image.BitsPerPixel,
-                   destImage.BitsPerPixel,
-                   image.Order,
-                   destImage.Order,
-                   null,
-                   null,
-                   0,
-                   8,
-                   0,
-                   RasterConvertBufferFlags.None);
-                destImage.SetRow(i, buffer, destImage.BytesPerLine);
-            }
-
-            destImage.Release();
-            image.Release();
-            // Clean up 
-            Marshal.FreeHGlobal(buffer);
-
-            if (chckbox11 == true)
-            {
-                LineRemoveCommand command13 = new LineRemoveCommand();
-                command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
-                command13.Type = LineRemoveCommandType.Horizontal;
-                //command13.Type = LineRemoveCommandType.Vertical;
-                command13.Flags = LineRemoveCommandFlags.UseGap;
-                command13.GapLength = value_trackBar14;
-                command13.MaximumLineWidth = value_trackBar15;
-                command13.MinimumLineLength = value_trackBar16;
-                command13.MaximumWallPercent = value_trackBar17;
-                command13.Wall = value_trackBar22;
-                command13.Run(destImage);
-
-                /*LineRemoveCommand commandc = new LineRemoveCommand();
-                commandc.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
-                commandc.Type = LineRemoveCommandType.Vertical;
-                //command13.Type = LineRemoveCommandType.Vertical;
-                commandc.Flags = LineRemoveCommandFlags.UseGap;
-                commandc.GapLength = value_trackBar14;
-                commandc.MaximumLineWidth = value_trackBar15;
-                commandc.MinimumLineLength = value_trackBar16;
-                commandc.MaximumWallPercent = value_trackBar17;
-                commandc.Wall = value_trackBar22;
-                commandc.Run(destImage);*/
-            }
-            if (chckbox10 == true)
-            {
-                DotRemoveCommand command13 = new DotRemoveCommand();
-                command13.DotRemove += new EventHandler<DotRemoveCommandEventArgs>(DotRemoveEvent_S1);
-                command13.Flags = DotRemoveCommandFlags.UseSize;
-                command13.MaximumDotHeight = value_trackBar10;
-                command13.MaximumDotWidth = value_trackBar11;
-                command13.MinimumDotHeight = value_trackBar12;
-                command13.MinimumDotWidth = value_trackBar13;
-                command13.Run(destImage);
-            }
-
-            if (chckbox12 == true)
-            {
-                HolePunchRemoveCommand command14 = new HolePunchRemoveCommand();
-                command14.HolePunchRemove += new EventHandler<HolePunchRemoveCommandEventArgs>(HolePunchRemoveEvent_S1);
-                command14.Flags = HolePunchRemoveCommandFlags.UseDpi | HolePunchRemoveCommandFlags.UseCount | HolePunchRemoveCommandFlags.UseLocation;
-                command14.Location = HolePunchRemoveCommandLocation.Left;
-                command14.MaximumHoleCount = value_trackBar18;
-                command14.MinimumHoleCount = value_trackBar21;
-                command14.Run(destImage);
-            }
-
-            if (chckbox13 == true)
-            {
-                InvertedTextCommand command15 = new InvertedTextCommand();
-                command15.InvertedText += new EventHandler<InvertedTextCommandEventArgs>(InvertedTextEvent_S1);
-                command15.Flags = InvertedTextCommandFlags.UseDpi;
-                command15.MaximumBlackPercent = value_trackBar19;
-                command15.MinimumBlackPercent = value_trackBar20;
-                command15.MinimumInvertHeight = value_trackBar23;
-                command15.MinimumInvertWidth = value_trackBar24;
-                command15.Run(destImage);
-            }
-
-            if (chckbox16 == true)
-            {
-                BorderRemoveCommand command18 = new BorderRemoveCommand();
-                command18.BorderRemove += new EventHandler<BorderRemoveCommandEventArgs>(command_BorderRemove_S1);
-                command18.Border = BorderRemoveBorderFlags.All;
-                command18.Flags = BorderRemoveCommandFlags.UseVariance;
-                command18.Percent = value_trackBar25;
-                command18.Variance = value_trackBar26;
-                command18.WhiteNoiseLength = value_trackBar28;
-                command18.Run(destImage);
-            }
-
-            if (chckbox17 == true)
-            {
-                SmoothCommand command19 = new SmoothCommand();
-                command19.Smooth += new EventHandler<SmoothCommandEventArgs>(SmoothEventExample_S1);
-                command19.Flags = SmoothCommandFlags.FavorLong;
-                command19.Length = value_trackBar31;
-                command19.Run(destImage);
-            }
-            //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
-            // Prepare the command 
-            if (chckbox19 == true)
-            {
-                RakeRemoveCommand command20 = new RakeRemoveCommand();
-                command20.RakeRemove += new EventHandler<RakeRemoveCommandEventArgs>(RakeRemoveEvent_S1);
-                command20.MinLength = value_numUpDown1;           //ความยาวขั้นต่ำ
-                command20.MinWallHeight = value_numUpDown2;       //ความสูงของกำแพงขั้นต่ำ
-                command20.MaxWidth = value_numUpDown3;             //ความกว้างสูงสุด
-                command20.MaxWallPercent = value_numUpDown4;      //เปอร์เซ็นต์กำแพงสูงสุด
-                command20.MaxSideteethLength = value_numUpDown5;  //ความยาวฟันข้างสูงสุด
-                command20.MaxMidteethLength = value_numUpDown6;   //ความยาวฟันกลางสูงสุด
-                command20.Gaps = value_numUpDown7;                 //ช่องว่าง
-                command20.Variance = value_numUpDown8;             //ความแปรปรวน
-                command20.TeethSpacing = value_numUpDown9;         //ระยะห่างระหว่างฟัน
-                command20.AutoFilter = chckbox20;       //ตัวกรองอัตโนมัติ
-                command20.Run(destImage);
-            }
-
-            //}
-            /* }
-             catch (Exception ex)
-             {
-                 MessageBox.Show(ex.Message);
-             }*/
-            if (chckbox21 == true)
-            {
-                l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " BitsPerPixel";
-                return destImage;
-            }
-            else
-            {
-                l_stateOutput.Text = "Image " + image.BitsPerPixel.ToString() + " BitsPerPixel";
-                return image;
-            }
-        }
+       
+        
         private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Rake length is " + "( " + e.Length.ToString() + " )");
@@ -647,40 +374,35 @@ namespace project1
 
         private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
             Image(); 
             ImageChange();
         }
 
         private void trackBar2_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
             Image();
             ImageChange();
         }
 
         private void trackBar3_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
             Image();
             ImageChange();
         }
 
         private void trackBar4_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
             Image();
         }
 
         private void trackBar5_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display();
             Image();
         }
 
         private void trackBar6_MouseCaptureChanged(object sender, EventArgs e)
-        {
-            Display(); Image();
+        { 
+            Image();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -689,7 +411,7 @@ namespace project1
             else
             {
                 selectCombobox = comboBox1.SelectedIndex;
-                Display(); Image();
+                 Image();
                 //MessageBox.Show(folderPath);
             }
         }
@@ -1088,12 +810,12 @@ namespace project1
             if (checkBox1.Checked == true)
             {
                 chckbox = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox = false;
-                Display(); Image();
+                Image();
             }
         }
 
@@ -1102,12 +824,12 @@ namespace project1
             if (checkBox2.Checked == true)
             {
                 chckbox2 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox2 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1131,17 +853,17 @@ namespace project1
 
         private void trackBar7_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar8_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar9_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
         private bool Expanded = false;
         private void btnConBrigtIntens_Click(object sender, EventArgs e)
@@ -1194,12 +916,12 @@ namespace project1
             if (checkBox3.Checked == true)
             {
                 chckbox3 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox3 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1208,12 +930,12 @@ namespace project1
             if (checkBox4.Checked == true)
             {
                 chckbox4 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox4 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1222,12 +944,12 @@ namespace project1
             if (checkBox5.Checked == true)
             {
                 chckbox5 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox5 = false;
-                Display(); Image();
+                Image();
             }
         }
 
@@ -1236,12 +958,12 @@ namespace project1
             if (checkBox6.Checked == true)
             {
                 chckbox6 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox6 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1250,12 +972,12 @@ namespace project1
             if (checkBox7.Checked == true)
             {
                 chckbox7 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox7 = false;
-                Display(); Image();
+               Image();
             }
         }
 
@@ -1264,12 +986,12 @@ namespace project1
             if (checkBox8.Checked == true)
             {
                 chckbox8 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox8 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1278,12 +1000,12 @@ namespace project1
             if (checkBox9.Checked == true)
             {
                 chckbox9 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox9 = false;
-                Display(); Image();
+                Image();
             }
         }
 
@@ -1301,12 +1023,12 @@ namespace project1
 
         private void trbDynBin1_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trbDynBin2_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trbMaximum_Scroll(object sender, EventArgs e)
@@ -1329,17 +1051,17 @@ namespace project1
 
         private void trbMaximum_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trbMinimum_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trbGamma_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
         private bool Expanded4 = false;
         private void btnDocImgClupFnct_Click(object sender, EventArgs e)
@@ -1362,12 +1084,12 @@ namespace project1
             if (checkBox10.Checked == true)
             {
                 chckbox10 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox10 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1376,12 +1098,12 @@ namespace project1
             if (checkBox11.Checked == true)
             {
                 chckbox11 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox11 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1390,12 +1112,12 @@ namespace project1
             if (checkBox12.Checked == true)
             {
                 chckbox12 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox12 = false;
-                Display(); Image();
+                Image();
             }
         }
         private void checkBox13_CheckedChanged(object sender, EventArgs e)
@@ -1403,12 +1125,12 @@ namespace project1
             if (checkBox13.Checked == true)
             {
                 chckbox13 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox13 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1417,12 +1139,12 @@ namespace project1
             if (checkBox14.Checked == true)
             {
                 chckbox14 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox14 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1431,12 +1153,12 @@ namespace project1
             if (checkBox15.Checked == true)
             {
                 chckbox15 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox15 = false;
-                Display(); Image();
+                 Image();
             }
         }
 
@@ -1445,12 +1167,12 @@ namespace project1
             if (checkBox16.Checked == true)
             {
                 chckbox16 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox16 = false;
-                Display(); Image();
+                Image();
             }
         }
 
@@ -1459,12 +1181,12 @@ namespace project1
             if (checkBox17.Checked == true)
             {
                 chckbox17 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox17 = false;
-                Display(); Image();
+                 Image();
             }
         }
         private bool Expanded5 = false;
@@ -1600,22 +1322,22 @@ namespace project1
 
         private void trackBar10_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar11_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar12_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar13_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar14_Scroll(object sender, EventArgs e)
@@ -1650,27 +1372,27 @@ namespace project1
 
         private void trackBar14_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar15_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar16_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar17_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar22_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar18_Scroll(object sender, EventArgs e)
@@ -1687,12 +1409,12 @@ namespace project1
 
         private void trackBar18_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar21_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar19_Scroll(object sender, EventArgs e)
@@ -1721,22 +1443,22 @@ namespace project1
 
         private void trackBar19_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar20_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar23_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar24_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar27_Scroll(object sender, EventArgs e)
@@ -1747,7 +1469,7 @@ namespace project1
 
         private void trackBar27_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar25_Scroll(object sender, EventArgs e)
@@ -1770,17 +1492,17 @@ namespace project1
 
         private void trackBar25_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void trackBar26_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar28_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void trackBar31_Scroll(object sender, EventArgs e)
@@ -1791,7 +1513,7 @@ namespace project1
 
         private void trackBar31_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+            Image();
         }
 
         private void checkBox18_CheckedChanged(object sender, EventArgs e)
@@ -1799,12 +1521,12 @@ namespace project1
             if (checkBox18.Checked == true)
             {
                 chckbox18 = true;
-                Display(); Image();
+                 Image();
             }
             else
             {
                 chckbox18 = false;
-                Display(); Image();
+               Image();
             }
         }
 
@@ -1816,7 +1538,7 @@ namespace project1
 
         private void trackBar29_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Display(); Image();
+             Image();
         }
 
         private void checkBox19_CheckedChanged(object sender, EventArgs e)
@@ -1824,12 +1546,12 @@ namespace project1
             if (checkBox19.Checked == true)
             {
                 chckbox19 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox19 = false;
-                Display(); Image();
+                Image();
             }
         }
         private bool Expanded12;
@@ -1867,67 +1589,67 @@ namespace project1
             if (checkBox20.Checked == true)
             {
                 chckbox20 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox20 = false;
-                Display(); Image();
+                Image();
             }
         }
 
         private void numUpDown1_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown1 = (int)numUpDown1.Value;
-            Display(); Image();
+           Image();
         }
 
         private void numUpDown2_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown2 = (int)numUpDown2.Value;
-            Display(); Image();
+             Image();
         }
 
         private void numUpDown3_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown3 = (int)numUpDown3.Value;
-            Display(); Image();
+             Image();
         }
 
         private void numUpDown4_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown4 = (int)numUpDown4.Value;
-            Display(); Image();
+             Image();
         }
 
         private void numUpDown5_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown5 = (int)numUpDown5.Value;
-            Display(); Image();
+            Image();
         }
 
         private void numUpDown6_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown6 = (int)numUpDown6.Value;
-            Display(); Image();
+             Image();
         }
 
         private void numUpDown7_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown7 = (int)numUpDown7.Value;
-            Display(); Image();
+            Image();
         }
 
         private void numUpDown8_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown8 = (int)numUpDown8.Value;
-            Display(); Image();
+             Image();
         }
 
         private void numUpDown9_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown9 = (int)numUpDown9.Value;
-            Display(); Image();
+             Image();
         }
 
         private void btnResetConBrigtIntens_Click(object sender, EventArgs e)
@@ -1941,7 +1663,7 @@ namespace project1
             value_trackBar3 = 0;
             trackBar3.Value = value_trackBar3;
             l_intensity.Text = value_trackBar3.ToString();
-            Display(); Image();
+             Image();
         }
 
         private void btnResetUnsharpMask_Click(object sender, EventArgs e)
@@ -1955,7 +1677,7 @@ namespace project1
             value_trackBar6 = 1;
             trackBar6.Value = value_trackBar6;
             l_threshold.Text = value_trackBar6.ToString();
-            Display(); Image();
+             Image();
         }
 
         private void btnResetGrayScale_Click(object sender, EventArgs e)
@@ -1971,7 +1693,7 @@ namespace project1
             value_trackBar9 = 250;
             trackBar9.Value = value_trackBar9;
             l_bluefactor.Text = value_trackBar9.ToString();
-            Display(); Image();
+             Image();
         }
 
         private void btnResetDocImgClupFnct_Click(object sender, EventArgs e)
@@ -1992,6 +1714,7 @@ namespace project1
             comboBox1.SelectedIndex = selectCombobox;
             chckbox14 = false;
             checkBox14.Checked = chckbox14;
+            Image();
         }
 
         private void btnResetDotRemove_Click(object sender, EventArgs e)
@@ -2010,7 +1733,7 @@ namespace project1
             value_trackBar13 = 1;
             trackBar13.Value = value_trackBar13;
             l_minimumdotW.Text = value_trackBar13.ToString();
-            Display(); Image();
+             Image();
         }
 
         private void btnResetLineRemove_Click(object sender, EventArgs e)
@@ -2032,6 +1755,7 @@ namespace project1
             value_trackBar22 = 7;
             trackBar22.Value = value_trackBar22;
             l_wall.Text = value_trackBar22.ToString();
+            Image();
         }
 
         private void btnResetHolePunchRemove_Click(object sender, EventArgs e)
@@ -2044,7 +1768,7 @@ namespace project1
             value_trackBar21 = 2;
             trackBar21.Value = value_trackBar21;
             l_minimumhole.Text = value_trackBar21.ToString();
-            Display(); Image();
+             Image();
         }
 
         private void btnResetInvertedText_Click(object sender, EventArgs e)
@@ -2063,7 +1787,7 @@ namespace project1
             value_trackBar24 = 5000;
             trackBar24.Value = value_trackBar24;
             l_minimuminvertW.Text = value_trackBar24.ToString();
-            Display(); Image();
+            Image();
         }
 
         private void btnResetAutoCrop_Click(object sender, EventArgs e)
@@ -2073,7 +1797,7 @@ namespace project1
             value_trackBar27 = 20;
             trackBar27.Value = value_trackBar27;
             l_cropThreshold.Text = value_trackBar27.ToString();
-            Display(); Image();
+            Image();
         }
 
         private void btnResetBorderRemove_Click(object sender, EventArgs e)
@@ -2089,7 +1813,7 @@ namespace project1
             value_trackBar28 = 9;
             trackBar28.Value = value_trackBar28;
             l_whitenoiseL.Text = value_trackBar28.ToString();
-            Display(); Image();
+             Image();
         }
 
         private void btnResetSmooth_Click(object sender, EventArgs e)
@@ -2099,7 +1823,7 @@ namespace project1
             value_trackBar31 = 2;
             trackBar31.Value = value_trackBar31;
             l_length.Text = value_trackBar31.ToString();
-            Display(); Image();
+             Image();
         }
 
         private void btnResetFlipRotate_Click(object sender, EventArgs e)
@@ -2109,7 +1833,7 @@ namespace project1
             value_trackBar29 = 0;
             trackBar29.Value = value_trackBar29;
             l_RotateImage.Text = value_trackBar29.ToString();
-            Display(); Image();
+             Image();
         }
 
         private void btnResetRakeRemove_Click(object sender, EventArgs e)
@@ -2136,7 +1860,7 @@ namespace project1
             numUpDown9.Value = value_numUpDown9;
             chckbox20 = false;
             checkBox20.Checked = chckbox20;
-            Display(); Image();
+            Image();
         }
         private bool Expanded14;
         private void btnMaxiMini_Click(object sender, EventArgs e)
@@ -2175,7 +1899,7 @@ namespace project1
             value_trbGamma = 310;
             trbGamma.Value = value_trbGamma;
             l_gamma.Text = value_trbGamma.ToString();
-            Display(); Image();
+            Image();
         }
 
         public void cbBox2re()
@@ -2927,12 +2651,12 @@ namespace project1
             if (checkBox21.Checked == true)
             {
                 chckbox21 = true;
-                Display(); Image();
+                Image();
             }
             else
             {
                 chckbox21 = false;
-                Display(); Image();
+                 Image();
             }
         }
         String value_tb_profile;

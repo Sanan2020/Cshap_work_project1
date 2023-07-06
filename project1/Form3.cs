@@ -1,4 +1,5 @@
-﻿using Leadtools;
+﻿using DevComponents.DotNetBar;
+using Leadtools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,10 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static project1.Form3;
 
 namespace project1
 {
-    public partial class Form3 : Form
+    public partial class Form3 : Office2007Form
     {
         public Form3()
         {
@@ -20,39 +22,6 @@ namespace project1
         }
         public String license;
         public String key;
-        public void SetLicenseFileExample()
-        {
-            try
-            {
-                /* string MY_LICENSE_FILE = @""+license+"";
-                 string MY_DEVELOPER_KEY = ""+key+"";
-                 RasterSupport.SetLicense(MY_LICENSE_FILE, MY_DEVELOPER_KEY);*/
-                RasterSupport.SetLicense(textBox1.Text, System.IO.File.ReadAllText(textBox2.Text));
-                bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
-                if (isLocked)
-                    Console.WriteLine("Document support is locked");
-                else
-                {
-                    Console.WriteLine("Document support is unlocked");
-                    StreamWriter streamwri = new StreamWriter("pathLicense.txt"); //bin/Debug
-                    streamwri.WriteLine(textBox1.Text);
-                    streamwri.WriteLine(textBox2.Text);
-                    streamwri.Close();
-                    Console.WriteLine("seve part seccess...");
-
-                    this.Hide();
-                    Form1 frm = new Form1();
-                    frm.FormClosed += Frm_FormClosed;
-                    frm.Show();
-                }
-            }
-            catch (Exception e)
-            {
-                //Console.WriteLine(e.Message);
-                MessageBox.Show(e.Message);
-
-            }
-        }
 
         private void Frm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -82,50 +51,68 @@ namespace project1
                 textBox2.Text = key;
             }
         }
+        public List<pathLicense> pthLicense = new List<pathLicense>();
+        public class pathLicense
+        {
+            String license;
+            String key;
+            public string License   // property
+            {
+                get { return license; }
+                set { license = value; }
+            }
 
+            public string Key   // property
+            {
+                get { return key; }
+                set { key = value; }
+            }
+        }
         private void btnok_Click(object sender, EventArgs e)
         {
-            SetLicenseFileExample();
+            try
+            {
+                /* string MY_LICENSE_FILE = @""+license+"";
+                 string MY_DEVELOPER_KEY = ""+key+"";
+                 RasterSupport.SetLicense(MY_LICENSE_FILE, MY_DEVELOPER_KEY);*/
+                RasterSupport.SetLicense(textBox1.Text, System.IO.File.ReadAllText(textBox2.Text));
+                bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
+                if (isLocked)
+                    Console.WriteLine("Document support is locked");
+                else
+                {
+                    Console.WriteLine("Document support is unlocked");
+
+                    pathLicense pathLicense = new pathLicense();
+                    pathLicense.License = textBox1.Text;
+                    pathLicense.Key = textBox2.Text;
+                    pthLicense.Add(pathLicense);
+                    N2N.Data.Serialization.Serialize<List<pathLicense>>.SerializeToXmlFile(pthLicense, "pathLicense.xml");
+                    Console.WriteLine("seve part seccess...");
+
+                    //this.Hide();
+                    /*  Form1 frm = new Form1();
+                      frm.FormClosed += Frm_FormClosed;
+                      frm.Show();*/
+                    this.Hide();
+                }
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(e.Message);
+                MessageBox.Show(ex.Message);
+
+            }
         }
         String rf;
         String rfile;
         List<String> list = new List<String>();
         private void Form3_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if (System.IO.File.Exists("pathLicense.txt"))//ถ้าเจอไฟล์
-                {
-                    //MessageBox.Show("yes");
-                    StreamReader streamread = new StreamReader("pathLicense.txt");//อ่านไฟล์
-                    while ((rfile = streamread.ReadLine()) != null)
-                    {
-                        rf = rfile;                         //text = อ่านข้อความทีละบรรทัด
-                        list.Add(rf);
-                    }
-                    streamread.Close();
-                    Console.WriteLine(list.Count());
-                    if (list.Count() >= 2)
-                    {
-                        textBox1.Text = list[0].ToString();
-                        textBox2.Text = list[1].ToString();
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void Form3_Shown(object sender, EventArgs e)
         {
-
-            if (System.IO.File.Exists("pathLicense.txt"))//ถ้าเจอไฟล์
-            {
-                btnok.PerformClick();
-            }
         }
     }
 }
