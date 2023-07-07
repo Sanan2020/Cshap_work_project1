@@ -33,7 +33,8 @@ namespace project1
             InitializeComponent();
         }
 
-        private async void Preview_Load(object sender, EventArgs e){
+        private async void Preview_Load(object sender, EventArgs e) {
+            try { 
             btnSave.Enabled = false;
             //progressBar1.Value = 0;
             panel1.AutoScroll = true;
@@ -48,8 +49,8 @@ namespace project1
 
             for (int i = 1; i <= Form1.form1.pageCount; i++)
             {
-                label1.Text = "Page "+i+" / " + Form1.form1.pageCount.ToString();
-               // progressBar1.Value += (Form1.form1.pageCount * 100) / 100;
+                label1.Text = "Page " + i + " / " + Form1.form1.pageCount.ToString();
+                // progressBar1.Value += (Form1.form1.pageCount * 100) / 100;
                 ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                 //Increase the brightness by 25 percent  of the possible range. 
                 command.Brightness = Form1.form1.value_trackBar1;   //484
@@ -209,7 +210,7 @@ namespace project1
 
                     destImage.Release();
                     Form1.form1.imagescol[i - 1].Release();
-                   
+
                     // Clean up 
                     Marshal.FreeHGlobal(buffer);
                     /**/
@@ -314,21 +315,21 @@ namespace project1
                         command20.AutoFilter = Form1.form1.chckbox20;       //ตัวกรองอัตโนมัติ
                         command20.Run(Form1.form1.imagescol[i - 1]);
                     }
-                   
-                  /*  using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
-                    {
-                        picReview2.Image = new Bitmap(destImage1);
-                    }*/
+
+                    /*  using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
+                      {
+                          picReview2.Image = new Bitmap(destImage1);
+                      }*/
                 }
                 else
                 {
 
-                   /* l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
-                    //picReview2.ImageLocation = null;
-                    using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                    {
-                        picReview2.Image = new Bitmap(destImage1);
-                    }*/
+                    /* l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                     //picReview2.ImageLocation = null;
+                     using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                     {
+                         picReview2.Image = new Bitmap(destImage1);
+                     }*/
                 }
                 /**/
                 PictureBox pic3 = new PictureBox();
@@ -357,6 +358,11 @@ namespace project1
             }
             //progressBar1.Value = 0;
             btnSave.Enabled = true;
+        }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         bool cancelAt50;
         void RunCommand(RasterImage image, RasterCommand command){

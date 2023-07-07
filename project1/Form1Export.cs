@@ -215,6 +215,7 @@ namespace project1
         List<String> name = new List<String>();
         String path;
         public List<profile2> lprofileIm = new List<profile2>();
+        public List<profile2> lprofileIm2 = new List<profile2>();
         List<String> listIm = new List<String>();
         private void btnImport_Click(object sender, EventArgs e)
         {
@@ -228,35 +229,50 @@ namespace project1
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 path = openFileDialog1.FileName;
-                
-                List<profile2> ImportLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile(path);
-                listBox2.Items.Add(ImportLoad);
-                List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                for (int r = 0; r < ImportLoad.Count; r++)
+                lprofileIm.Clear();
+                lprofileIm2.Clear();
+                listBox2.Items.Clear();
+                if (System.IO.File.Exists("testin.xml"))//ถ้าเจอไฟล์
                 {
-                    profile2 profile3 = ProfileLoad.Where(c => c.Profilename == ImportLoad[r].Profilename).FirstOrDefault();
-
-                    if (profile3 != null)
-                    { //ถ้าเจอ
-                      //เก็บค่าที่เจอ
-                       // MessageBox.Show("f");
-                        DialogResult dialogResult = MessageBox.Show("มีไฟล์ชื่อ "+ ImportLoad[r].Profilename + " มีอยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            lprofileIm.Add(ImportLoad[r]);
-                        }
-                        //lprofileIm.Add(ProfileLoad[r]);
-                        //lprofileIm.Add(ProfileLoad[r]);
-                        //save();
-                    }
-                    else//
+                    List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+                    List<profile2> ImportLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile(path);
+                    for (int i = 0; i < ProfileLoad.Count; i++)
                     {
-                        lprofileIm.Add(ProfileLoad[r]);
-                        lprofileIm.Add(ImportLoad[r]);
+                        lprofileIm.Add(ProfileLoad[i]);
+                    }
+
+                        for (int r = 0; r < ImportLoad.Count; r++)
+                        {
+                        profile2 profile3 = ProfileLoad.Where(c => c.Profilename == ImportLoad[r].Profilename).FirstOrDefault();
+                        if (profile3 != null)
+                        { //ถ้าเจอ
+                            DialogResult dialogResult = MessageBox.Show("มีไฟล์ชื่อ " + ImportLoad[r].Profilename + " มีอยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                //เก็บข้อมูลใหม่ ลบข้อมูลเก่า
+                                Console.WriteLine("ลบข้อมูลเก่า "+ profile3.Profilename + " แทนด้วยข้อมูลใหม่ "+ ImportLoad[r].Profilename);
+                                lprofileIm.Remove(profile3);
+                                lprofileIm.Add(ImportLoad[r]);
+                                listBox2.Items.Add(ImportLoad[r].Profilename);
+                            }
+                        }
+                        else {
+                            Console.WriteLine("เพิ่มข้อมูลใหม่ " + ImportLoad[r].Profilename);
+                            lprofileIm.Add(ImportLoad[r]);
+                            listBox2.Items.Add(ImportLoad[r].Profilename);
+                        }
+                    }
+
+                }
+                else {
+                    List<profile2> ImportLoad2 = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile(path);
+                    for (int r = 0; r < ImportLoad2.Count; r++)
+                    {
+                        lprofileIm.Add(ImportLoad2[r]);
+                        listBox2.Items.Add(ImportLoad2[r].Profilename);
                     }
                 }
-                    N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofileIm, "testin.xml");
-                    Form1.form1.cbBox2re();
+                N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofileIm, "testin.xml");
             }
         }
 
