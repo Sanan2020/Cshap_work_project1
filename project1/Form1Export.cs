@@ -230,7 +230,7 @@ namespace project1
                 path = openFileDialog1.FileName;
                 
                 List<profile2> ImportLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile(path);
-
+                listBox2.Items.Add(ImportLoad);
                 List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
                 for (int r = 0; r < ImportLoad.Count; r++)
                 {
@@ -240,12 +240,12 @@ namespace project1
                     { //ถ้าเจอ
                       //เก็บค่าที่เจอ
                        // MessageBox.Show("f");
-                        DialogResult dialogResult = MessageBox.Show("มีไฟล์ชื่อ"+ ImportLoad[r].Profilename + "มีอยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
+                        DialogResult dialogResult = MessageBox.Show("มีไฟล์ชื่อ "+ ImportLoad[r].Profilename + " มีอยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
                             lprofileIm.Add(ImportLoad[r]);
                         }
-                        lprofileIm.Add(ProfileLoad[r]);
+                        //lprofileIm.Add(ProfileLoad[r]);
                         //lprofileIm.Add(ProfileLoad[r]);
                         //save();
                     }

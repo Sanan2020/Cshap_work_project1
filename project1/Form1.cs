@@ -278,8 +278,6 @@ namespace project1
         {
             this.Close();
         }
-       
-        
         private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Rake length is " + "( " + e.Length.ToString() + " )");
@@ -375,19 +373,19 @@ namespace project1
         private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
             Image(); 
-            ImageChange();
+            
         }
 
         private void trackBar2_MouseCaptureChanged(object sender, EventArgs e)
         {
             Image();
-            ImageChange();
+            
         }
 
         private void trackBar3_MouseCaptureChanged(object sender, EventArgs e)
         {
             Image();
-            ImageChange();
+            
         }
 
         private void trackBar4_MouseCaptureChanged(object sender, EventArgs e)
@@ -1963,13 +1961,7 @@ namespace project1
                 //progressBar1.Value = 0;
                 splitContainer1.Panel1.Controls.Clear();
                 file = ofd.FileNames;
-                /* int x = 20;//ระวหว่าง panel
-                 int y = 20;//ระวหว่าง panel
-                 int maxWidth = -1;*/
-                /**/
-                //int w = 170 / 2;
-                // int w = 420 / 2;
-                //int x3 = (splitContainer1.Panel2.Width / 2) - w;
+             
                 int w2 = 160 / 2;
                 int x2 = (splitContainer1.Panel1.Width / 2) - w2;
                 //int x3 = 40;//ระวหว่าง panel
@@ -2030,13 +2022,7 @@ namespace project1
                         }
                         imagescol.Add(rasterImage);
 
-                        /* la.Width = 10;
-                         la.Height = 15;
-                         la.BackColor = Color.White;
-                         la.Location = new Point((splitContainer1.Panel1.Width / 2) - la.Width, y2+splitContainer1.Panel1.AutoScrollPosition.Y);
-                         la.Text = pageNumber.ToString();
-                         this.splitContainer1.Panel1.Controls.Add(la);*/
-                        //Console.WriteLine(pic2.Location.X.ToString() + pic2.Location.Y.ToString());
+                      
                         Console.WriteLine(pic2.Name);
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
                         await Task.Delay(1000);
@@ -2078,32 +2064,9 @@ namespace project1
             this.splitContainer1.Panel2.Controls.Add(picReview2);
             picReview2.ImageLocation = null;
         }
-        public void ImageChange() {
-            //รับไฟล์ที่กำลังแสดงผลลัพธ์การปรับแต่งในฟังก์ชัน Image();
-            //ทำงานเมื่อมีการปรับแต่ง
-           // rasterImage = _rasterCodecs.Load(img, pdname);
+      
+        public async void Image() { 
 
-           /* ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-            //Increase the brightness by 25 percent  of the possible range. 
-            command.Brightness = value_trackBar1;   //484
-            command.Contrast = value_trackBar2;     //394
-            command.Intensity = value_trackBar3;    //118
-            command.Run(rasterImage);
-
-            using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-            {
-                picReview2.Image = new Bitmap(destImage1);
-            }*/
-        }
-        public async void Image() { //***ส่งดึงไฟล์จากในนี้แล้วไปแสดงผลลัพธ์การปรับแต่ง (ไฟล์จะถูกเลือกในนี้ก่อน)
-                                    //ภาพเปลี่ยนเมื่อคลิก
-
-            //l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
-            /* picReview2.Height = 700; //ความกว้างหน้ากระดาษ
-             picReview2.Width = 520;  //ความสูงหน้ากระดาษ
-             picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
-             picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
-             this.splitContainer1.Panel2.Controls.Add(picReview2);*/
             _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
             foreach (string img in file){
                 Console.WriteLine("Page " + pageCount);
@@ -2396,51 +2359,14 @@ namespace project1
                 }
             }
            // await Task.Delay(1000);
-            picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
+           /* picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
             picReview2.MouseUp += new MouseEventHandler(picReview2_MouseUp);
-            picReview2.MouseMove += new MouseEventHandler(picReview2_MouseMove);
+            picReview2.MouseMove += new MouseEventHandler(picReview2_MouseMove);*/
         }
        
         private async void pic2_MouseClick(object sender, MouseEventArgs e)
         {
-            /******/
-           /* this.splitContainer1.Panel2.Controls.Clear();
-            PictureBox pb = (PictureBox)sender;
-            RasterCodecs _rasterCodecs = new RasterCodecs();
-            //Load documents at 300 DPI for better viewing
-            _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-            foreach (string img in file)
-            {
-                using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
-                {
-                    pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
-                }
-                Console.WriteLine("Page " + pageCount);
-                l_numberPages.Text = pageCount.ToString() + " Page";
-                // Loads all the pages into the viewer
-                PictureBox picReview2 = new PictureBox();
-
-                // Load it as a raster image and add it
-                var rasterImage = _rasterCodecs.Load(img, int.Parse(pb.Name));
-                l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
-
-                picReview2.Height = 600; //ความกว้างหน้ากระดาษ
-                picReview2.Width = 420;  //ความสูงหน้ากระดาษ
-                picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
-                picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
-                this.splitContainer1.Panel2.Controls.Add(picReview2);
-                ContrastBrightnessIntensityCommand command2 = new ContrastBrightnessIntensityCommand();
-                //Increase the brightness by 25 percent  of the possible range. 
-                command2.Brightness = 484;   //484
-                command2.Contrast = 394;     //394
-                command2.Intensity = 118;    //118
-                command2.Run(rasterImage);
-                using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                {
-                    picReview2.Image = new Bitmap(destImage1);
-                }
-            }
-            await Task.Delay(500);*/
+          
            PictureBox pb = (PictureBox)sender;
             pdname = int.Parse(pb.Name);
             Image();
@@ -2526,7 +2452,9 @@ namespace project1
 
         private async void btnOpen_Click(object sender, EventArgs e)
         {
-            RasterCodecs codecs = new RasterCodecs();
+            try
+            {
+                RasterCodecs codecs = new RasterCodecs();
             codecs.ThrowExceptionsOnInvalidImages = true;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "All File |*.*";
@@ -2537,16 +2465,10 @@ namespace project1
             {
                 imagescol.Clear();
                 crepic(); //สร้าง picReview
-                //progressBar1.Value = 0;
-                splitContainer1.Panel1.Controls.Clear();
+                              //progressBar1.Value = 0;
+                    splitContainer1.Panel1.Controls.Clear();
                 file = ofd.FileNames;
-                /* int x = 20;//ระวหว่าง panel
-                 int y = 20;//ระวหว่าง panel
-                 int maxWidth = -1;*/
-                /**/
-                //int w = 170 / 2;
-                // int w = 420 / 2;
-                //int x3 = (splitContainer1.Panel2.Width / 2) - w;
+                
                 int w2 = 150 / 2;
                 int x2 = (splitContainer1.Panel1.Width / 2) - w2;
                 //int x3 = 40;//ระวหว่าง panel
@@ -2555,12 +2477,14 @@ namespace project1
                 RasterCodecs _rasterCodecs = new RasterCodecs();
                 //Load documents at 300 DPI for better viewing
                 _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-                /**/
-                // int pageCount;
-                foreach (string img in file)
-                {
                     /**/
-                    using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
+                    // int pageCount;
+                   
+                    foreach (string img in file)
+                    {
+                        /**/
+                        
+                        using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
                     {
                         pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
                     }
@@ -2605,28 +2529,24 @@ namespace project1
                         {
                             pic2.Image = new Bitmap(destImage1);
                         }
+                            pdname = 1;
+                            Image();
+                            
                         imagescol.Add(rasterImage);
 
-                        /* la.Width = 10;
-                         la.Height = 15;
-                         la.BackColor = Color.White;
-                         la.Location = new Point((splitContainer1.Panel1.Width / 2) - la.Width, y2+splitContainer1.Panel1.AutoScrollPosition.Y);
-                         la.Text = pageNumber.ToString();
-                         this.splitContainer1.Panel1.Controls.Add(la);*/
-                        //Console.WriteLine(pic2.Location.X.ToString() + pic2.Location.Y.ToString());
                         Console.WriteLine(pic2.Name);
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
                         await Task.Delay(1000);
                     }
-                    // progressBar1.Value = 0;
-                    // chang();
-                    /*using (Image destImage1 = RasterImageConverter.ConvertToImage(imagescol[0], ConvertToImageOptions.None))
-                    {
-                        pic2.Image = new Bitmap(destImage1);
-                    }*/
+                  
                 }
             }
         }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+    }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -2675,8 +2595,8 @@ namespace project1
 
         private void cbboxUseProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
-           /* try
-            {*/
+            try
+            {
                 // selectCombobox2 = cbboxUseProfile.SelectedItem.ToString();
                 int numfp = cbboxUseProfile.SelectedIndex;
                // cbboxUseProfile.Items.Add("Configs");
@@ -2880,13 +2800,12 @@ namespace project1
                         l_saveprofile.Text = "usepf Success...";
                     }
                     list.Clear();
-                 
-                
-           /* }
+
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }*/
+            }
         }
 
         protected override void OnMouseWheel(MouseEventArgs e)
@@ -2914,7 +2833,7 @@ namespace project1
             }
             // l_zoom.Text = "w " + picReview2.Width.ToString() + " h" + picReview2.Height.ToString();
         }
-        int xPos2;
+       /* int xPos2;
         int yPos2;
         bool Dragging2;
         //private RasterImage destImage;
@@ -2953,7 +2872,7 @@ namespace project1
                 Console.WriteLine("c.Left " + c.Left.ToString());
             }
             //l_xy.Text = pictureBox1.Location.ToString();
-        }
+        }*/
 
         private void btnExportProfile_Click(object sender, EventArgs e)
         {
