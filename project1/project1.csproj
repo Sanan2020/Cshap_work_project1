@@ -93,11 +93,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dialogImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogImport.Designer.cs">
+      <DependentUpon>dialogImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="dialogSave.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dialogSave.Designer.cs">
       <DependentUpon>dialogSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogSaveAS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogSaveAS.Designer.cs">
+      <DependentUpon>dialogSaveAS.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -143,10 +155,17 @@
     <Compile Include="Preview.Designer.cs">
       <DependentUpon>Preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="dialogImport.resx">
+      <DependentUpon>dialogImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialogSave.resx">
       <DependentUpon>dialogSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogSaveAS.resx">
+      <DependentUpon>dialogSaveAS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

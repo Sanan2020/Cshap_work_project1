@@ -38,8 +38,6 @@
             this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar5 = new DevComponents.DotNetBar.RibbonBar();
             this.btnExportProfile = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar4 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnSaveProfile = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.cbboxUseProfile = new DevComponents.DotNetBar.ComboBoxItem();
             this.btnRemovepf = new DevComponents.DotNetBar.ButtonItem();
@@ -217,6 +215,8 @@
             this.ribbonClientPanel1 = new DevComponents.DotNetBar.Ribbon.RibbonClientPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSavepf = new DevComponents.DotNetBar.ButtonItem();
+            this.btnImportProfile = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -349,7 +349,6 @@
             // 
             this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ribbonPanel1.Controls.Add(this.ribbonBar5);
-            this.ribbonPanel1.Controls.Add(this.ribbonBar4);
             this.ribbonPanel1.Controls.Add(this.ribbonBar3);
             this.ribbonPanel1.Controls.Add(this.ribbonBar2);
             this.ribbonPanel1.Controls.Add(this.ribbonBar1);
@@ -365,11 +364,12 @@
             this.ribbonBar5.AutoOverflowEnabled = true;
             this.ribbonBar5.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar5.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnImportProfile,
             this.btnExportProfile});
-            this.ribbonBar5.Location = new System.Drawing.Point(495, 0);
+            this.ribbonBar5.Location = new System.Drawing.Point(449, 0);
             this.ribbonBar5.MinimumSize = new System.Drawing.Size(90, 0);
             this.ribbonBar5.Name = "ribbonBar5";
-            this.ribbonBar5.Size = new System.Drawing.Size(90, 67);
+            this.ribbonBar5.Size = new System.Drawing.Size(117, 67);
             this.ribbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ribbonBar5.TabIndex = 4;
             this.ribbonBar5.Text = "Import/Export";
@@ -383,30 +383,8 @@
             this.btnExportProfile.ImagePaddingHorizontal = 8;
             this.btnExportProfile.Name = "btnExportProfile";
             this.btnExportProfile.SubItemsExpandWidth = 14;
-            this.btnExportProfile.Text = "Browse";
+            this.btnExportProfile.Text = "Export";
             this.btnExportProfile.Click += new System.EventHandler(this.btnExportProfile_Click);
-            // 
-            // ribbonBar4
-            // 
-            this.ribbonBar4.AutoOverflowEnabled = true;
-            this.ribbonBar4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar4.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnSaveProfile});
-            this.ribbonBar4.Location = new System.Drawing.Point(410, 0);
-            this.ribbonBar4.Name = "ribbonBar4";
-            this.ribbonBar4.Size = new System.Drawing.Size(85, 67);
-            this.ribbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.ribbonBar4.TabIndex = 3;
-            this.ribbonBar4.Text = "Save Profile";
-            // 
-            // btnSaveProfile
-            // 
-            this.btnSaveProfile.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
-            this.btnSaveProfile.ImagePaddingHorizontal = 8;
-            this.btnSaveProfile.Name = "btnSaveProfile";
-            this.btnSaveProfile.SubItemsExpandWidth = 14;
-            this.btnSaveProfile.Text = "SaveProfile";
-            this.btnSaveProfile.Click += new System.EventHandler(this.btnSaveProfile_Click);
             // 
             // ribbonBar3
             // 
@@ -414,13 +392,14 @@
             this.ribbonBar3.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar3.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.cbboxUseProfile,
-            this.btnRemovepf});
+            this.btnRemovepf,
+            this.btnSavepf});
             this.ribbonBar3.Location = new System.Drawing.Point(229, 0);
             this.ribbonBar3.Name = "ribbonBar3";
-            this.ribbonBar3.Size = new System.Drawing.Size(181, 67);
+            this.ribbonBar3.Size = new System.Drawing.Size(220, 67);
             this.ribbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ribbonBar3.TabIndex = 2;
-            this.ribbonBar3.Text = "Use / Remove Profile";
+            this.ribbonBar3.Text = "Profile";
             // 
             // cbboxUseProfile
             // 
@@ -429,6 +408,7 @@
             this.cbboxUseProfile.Enabled = false;
             this.cbboxUseProfile.ItemHeight = 17;
             this.cbboxUseProfile.Name = "cbboxUseProfile";
+            this.cbboxUseProfile.Tooltip = "se";
             this.cbboxUseProfile.SelectedIndexChanged += new System.EventHandler(this.cbboxUseProfile_SelectedIndexChanged);
             // 
             // btnRemovepf
@@ -2425,6 +2405,25 @@
             this.panel2.Size = new System.Drawing.Size(1259, 24);
             this.panel2.TabIndex = 49;
             // 
+            // btnSavepf
+            // 
+            this.btnSavepf.BeginGroup = true;
+            this.btnSavepf.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
+            this.btnSavepf.ImagePaddingHorizontal = 8;
+            this.btnSavepf.Name = "btnSavepf";
+            this.btnSavepf.SubItemsExpandWidth = 14;
+            this.btnSavepf.Text = "Save";
+            this.btnSavepf.Click += new System.EventHandler(this.btnSavepf_Click);
+            // 
+            // btnImportProfile
+            // 
+            this.btnImportProfile.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
+            this.btnImportProfile.ImagePaddingHorizontal = 8;
+            this.btnImportProfile.Name = "btnImportProfile";
+            this.btnImportProfile.SubItemsExpandWidth = 14;
+            this.btnImportProfile.Text = "Import";
+            this.btnImportProfile.Click += new System.EventHandler(this.btnImportProfile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2543,8 +2542,6 @@
         private DevComponents.DotNetBar.CheckBoxItem checkBox21;
         private DevComponents.DotNetBar.RibbonBar ribbonBar3;
         private DevComponents.DotNetBar.ComboBoxItem cbboxUseProfile;
-        private DevComponents.DotNetBar.RibbonBar ribbonBar4;
-        private DevComponents.DotNetBar.ButtonItem btnSaveProfile;
         private DevComponents.DotNetBar.RibbonBar ribbonBar5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panDocImgClupFnct;
@@ -2715,6 +2712,8 @@
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.ButtonItem btnRemovepf;
         private System.Windows.Forms.Panel panel2;
+        private DevComponents.DotNetBar.ButtonItem btnSavepf;
+        private DevComponents.DotNetBar.ButtonItem btnImportProfile;
     }
 }
 
