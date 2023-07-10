@@ -37,10 +37,12 @@
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar5 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnImportProfile = new DevComponents.DotNetBar.ButtonItem();
             this.btnExportProfile = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.cbboxUseProfile = new DevComponents.DotNetBar.ComboBoxItem();
             this.btnRemovepf = new DevComponents.DotNetBar.ButtonItem();
+            this.btnSavepf = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.btnReset = new DevComponents.DotNetBar.ButtonItem();
             this.checkBox21 = new DevComponents.DotNetBar.CheckBoxItem();
@@ -215,8 +217,7 @@
             this.ribbonClientPanel1 = new DevComponents.DotNetBar.Ribbon.RibbonClientPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSavepf = new DevComponents.DotNetBar.ButtonItem();
-            this.btnImportProfile = new DevComponents.DotNetBar.ButtonItem();
+            this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -298,7 +299,7 @@
             // 
             this.l_stateInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.l_stateInput.AutoSize = true;
-            this.l_stateInput.Location = new System.Drawing.Point(87, 5);
+            this.l_stateInput.Location = new System.Drawing.Point(93, 5);
             this.l_stateInput.Name = "l_stateInput";
             this.l_stateInput.Size = new System.Drawing.Size(53, 13);
             this.l_stateInput.TabIndex = 43;
@@ -310,7 +311,7 @@
             this.l_stateOutput.AutoSize = true;
             this.l_stateOutput.BackColor = System.Drawing.Color.Transparent;
             this.l_stateOutput.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.l_stateOutput.Location = new System.Drawing.Point(280, 5);
+            this.l_stateOutput.Location = new System.Drawing.Point(255, 5);
             this.l_stateOutput.Name = "l_stateOutput";
             this.l_stateOutput.Size = new System.Drawing.Size(61, 13);
             this.l_stateOutput.TabIndex = 44;
@@ -320,7 +321,7 @@
             // 
             this.l_numberPages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.l_numberPages.AutoSize = true;
-            this.l_numberPages.Location = new System.Drawing.Point(6, 5);
+            this.l_numberPages.Location = new System.Drawing.Point(16, 5);
             this.l_numberPages.Name = "l_numberPages";
             this.l_numberPages.Size = new System.Drawing.Size(32, 13);
             this.l_numberPages.TabIndex = 46;
@@ -374,6 +375,15 @@
             this.ribbonBar5.TabIndex = 4;
             this.ribbonBar5.Text = "Import/Export";
             // 
+            // btnImportProfile
+            // 
+            this.btnImportProfile.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
+            this.btnImportProfile.ImagePaddingHorizontal = 8;
+            this.btnImportProfile.Name = "btnImportProfile";
+            this.btnImportProfile.SubItemsExpandWidth = 14;
+            this.btnImportProfile.Text = "Import";
+            this.btnImportProfile.Click += new System.EventHandler(this.btnImportProfile_Click);
+            // 
             // btnExportProfile
             // 
             this.btnExportProfile.BeginGroup = true;
@@ -421,6 +431,16 @@
             this.btnRemovepf.SubItemsExpandWidth = 14;
             this.btnRemovepf.Text = "Remove";
             this.btnRemovepf.Click += new System.EventHandler(this.btnRemovepf_Click);
+            // 
+            // btnSavepf
+            // 
+            this.btnSavepf.BeginGroup = true;
+            this.btnSavepf.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
+            this.btnSavepf.ImagePaddingHorizontal = 8;
+            this.btnSavepf.Name = "btnSavepf";
+            this.btnSavepf.SubItemsExpandWidth = 14;
+            this.btnSavepf.Text = "Save";
+            this.btnSavepf.Click += new System.EventHandler(this.btnSavepf_Click);
             // 
             // ribbonBar2
             // 
@@ -2365,8 +2385,9 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Size = new System.Drawing.Size(923, 529);
-            this.splitContainer1.SplitterDistance = 143;
+            this.splitContainer1.SplitterDistance = 117;
             this.splitContainer1.TabIndex = 45;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // ribbonClientPanel1
             // 
@@ -2396,6 +2417,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.progressBarX1);
             this.panel2.Controls.Add(this.l_stateOutput);
             this.panel2.Controls.Add(this.l_numberPages);
             this.panel2.Controls.Add(this.l_stateInput);
@@ -2405,24 +2427,15 @@
             this.panel2.Size = new System.Drawing.Size(1259, 24);
             this.panel2.TabIndex = 49;
             // 
-            // btnSavepf
+            // progressBarX1
             // 
-            this.btnSavepf.BeginGroup = true;
-            this.btnSavepf.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
-            this.btnSavepf.ImagePaddingHorizontal = 8;
-            this.btnSavepf.Name = "btnSavepf";
-            this.btnSavepf.SubItemsExpandWidth = 14;
-            this.btnSavepf.Text = "Save";
-            this.btnSavepf.Click += new System.EventHandler(this.btnSavepf_Click);
-            // 
-            // btnImportProfile
-            // 
-            this.btnImportProfile.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
-            this.btnImportProfile.ImagePaddingHorizontal = 8;
-            this.btnImportProfile.Name = "btnImportProfile";
-            this.btnImportProfile.SubItemsExpandWidth = 14;
-            this.btnImportProfile.Text = "Import";
-            this.btnImportProfile.Click += new System.EventHandler(this.btnImportProfile_Click);
+            this.progressBarX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarX1.Location = new System.Drawing.Point(1116, 1);
+            this.progressBarX1.Name = "progressBarX1";
+            this.progressBarX1.ProgressType = DevComponents.DotNetBar.eProgressItemType.Marquee;
+            this.progressBarX1.Size = new System.Drawing.Size(139, 19);
+            this.progressBarX1.TabIndex = 47;
+            this.progressBarX1.Text = "progressBarX1";
             // 
             // Form1
             // 
@@ -2714,6 +2727,7 @@
         private System.Windows.Forms.Panel panel2;
         private DevComponents.DotNetBar.ButtonItem btnSavepf;
         private DevComponents.DotNetBar.ButtonItem btnImportProfile;
+        private DevComponents.DotNetBar.Controls.ProgressBarX progressBarX1;
     }
 }
 

@@ -269,6 +269,8 @@ namespace project1
 
                 /*layout*/
                 splitContainer1.Panel1.AutoScroll = true;
+                //splitContainer1.Panel1.Width = 200;
+               // splitContainer1.Panel1.Dock = DockStyle.Right;
                 splitContainer1.Panel2.AutoScroll = true;
                 splitContainer1.Panel1.BackColor = Color.DarkGray;
                 splitContainer1.Panel2.BackColor = Color.DarkGray;
@@ -276,6 +278,7 @@ namespace project1
                 splitContainer1.BorderStyle = BorderStyle.FixedSingle;
                 /**/
                 flowLayoutPanel1.Visible = true;
+                this.progressBarX1.Visible = false;
             }
             catch (Exception ex)
             {
@@ -1978,7 +1981,7 @@ namespace project1
                 foreach (string img in file)
                 {
                     Console.WriteLine("Page " + pageCount);
-                    l_numberPages.Text = pageCount.ToString() + " Page";
+                    //l_numberPages.Text = pageCount.ToString() + " Page";
                     // Loads all the pages into the viewer
 
                     // Load it as a raster image and add it
@@ -1990,6 +1993,8 @@ namespace project1
                     _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
                     RasterImage rasterImage = _rasterCodecs.Load(img, pdname);
 
+                  
+                   
                     ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                     //Increase the brightness by 25 percent  of the possible range. 
                     command.Brightness = value_trackBar1;   //484
@@ -1997,12 +2002,20 @@ namespace project1
                     command.Intensity = value_trackBar3;    //118
                     command.Run(rasterImage);
 
+
+                    /* progressBar1.Value = 0;
+                     await Task.Run(() => {
+                     });
+                     progressBar1.Value = 100;*/
+                   // progressBar1.Value = 0;
                     UnsharpMaskCommand command2 = new UnsharpMaskCommand();
                     command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
                     command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
                     command2.Threshold = value_trackBar6;  //rate 0 - 255
                     command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                     command2.Run(rasterImage);
+                    //await Task.Delay(1000);
+                    //progressBar1.Value = 100;
 
                     if (selectCombobox == 0) { }
                     else
@@ -2252,15 +2265,16 @@ namespace project1
                             command20.AutoFilter = chckbox20;       //ตัวกรองอัตโนมัติ
                             command20.Run(destImage);
                         }
-                        l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                        l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " Bits";
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
                         {
                             picReview2.Image = new Bitmap(destImage1);
                         }
-                    }
+                       
+                }
                     else
                     {
-                        l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                        l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
                         //picReview2.ImageLocation = null;
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                         {
@@ -2308,7 +2322,7 @@ namespace project1
                     pageCount2 = imageInfo.TotalPages; //จำนวนเอกสาร
                 }
                 Console.WriteLine("Page " + pageCount2);
-                l_numberPages.Text = pageCount2.ToString() + " Page";
+                //l_numberPages.Text = pageCount2.ToString() + " Page";
                 // Loads all the pages into the viewer
                 for (var pageNumber = 1; pageNumber <= pageCount2; pageNumber++){
                     // Load it as a raster image and add it
@@ -2368,27 +2382,25 @@ namespace project1
         {
 
         }
-
+       
         private async void btnOpen_Click(object sender, EventArgs e)
         {
-            try
-            {
-              //  RasterCodecs codecs = new RasterCodecs();
-           // codecs.ThrowExceptionsOnInvalidImages = true;
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "All File |*.*";
-            DialogResult dr = ofd.ShowDialog();
-            int page = 0;
+            try{
+                //  RasterCodecs codecs = new RasterCodecs();
+                // codecs.ThrowExceptionsOnInvalidImages = true;
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "All File |*.*";
+                DialogResult dr = ofd.ShowDialog();
+                int page = 0;
 
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                    
+                this.progressBarX1.Visible = true;
                 imagescol.Clear();
                 crepic(); //สร้าง picReview
                               //progressBar1.Value = 0;
-                    splitContainer1.Panel1.Controls.Clear();
+                splitContainer1.Panel1.Controls.Clear();
                 file = ofd.FileNames;
-                
                 int w2 = 150 / 2;
                 int x2 = (splitContainer1.Panel1.Width / 2) - w2;
                 //int x3 = 40;//ระวหว่าง panel
@@ -2397,22 +2409,19 @@ namespace project1
                 RasterCodecs _rasterCodecs = new RasterCodecs();
                 //Load documents at 300 DPI for better viewing
                 _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-                    /**/
                     // int pageCount;
-                   
                     foreach (string img in file)
                     {
-                        /**/
-                        
                         using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
                     {
                         pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
                     }
                     Console.WriteLine("Page " + pageCount);
-
+                    
                     // Loads all the pages into the viewer
                     for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
                     {
+                        
                         //progressBar1.Value += (pageCount * 100) / 1000;
                         //await Task.Delay(1000);
                         // Load it as a raster image and add it
@@ -2422,8 +2431,12 @@ namespace project1
                         _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
                         _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
                         var rasterImage = _rasterCodecs.Load(img, pageNumber);
-                        l_numberPages.Text = "Page " + pageNumber + " / " + pageCount.ToString();
-                        l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " BitsPerPixel";
+                        l_numberPages.Text = $"Page {pageNumber} / { pageCount.ToString()}";
+                            //  this.progressBarX1.MarqueeAnimationSpeed = 30;
+                            //this.progressBarX1.Style = ProgressBarStyle.Marquee;
+                            this.progressBarX1.MarqueeAnimationSpeed = 20;
+
+                            l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
                             if (rasterImage.BitsPerPixel.ToString() == "1")
                             {
                                 chckbox21 = true;
@@ -2433,11 +2446,10 @@ namespace project1
                                 chckbox21 = false;
                                 checkBox21.Checked = chckbox21;
                             }
-                            
                         //this._imageViewer.Items.AddFromImage(rasterImage, 1);
                         //Label la = new Label();
                         PictureBox pic2 = new PictureBox();
-                        pic2.Height = 180;
+                        pic2.Height = 200;
                         pic2.Width = 160;
                         //selectImage = pageNumber.ToString();
                         //pic2.Location = new Point(x2, y2);
@@ -2467,15 +2479,16 @@ namespace project1
                         Console.WriteLine(pic2.Name);
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
                         await Task.Delay(1000);
-                    }
-                }
+                    }    
             }
-            }
+        }
+                this.progressBarX1.Visible = false;
+     }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-    }
+}
         public String savePath;
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -2851,6 +2864,13 @@ namespace project1
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            int w = splitContainer1.Panel1.Width;
+            Console.WriteLine(""+w);
+
         }
     }
 }

@@ -32,7 +32,7 @@ namespace project1
             try{
                 for (int i = 1; i <= Form1.form1.pageCount; i++)
                 {
-                    label2.Text = "Page " + i + " / " + Form1.form1.pageCount.ToString();
+                    label2.Text = $"Page {i} / {Form1.form1.pageCount.ToString()}";
                     // progressBar1.Value += (Form1.form1.pageCount * 100) / 100;
                     ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                     //Increase the brightness by 25 percent  of the possible range. 
