@@ -37,23 +37,26 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(55, 49);
+            this.textBox1.Location = new System.Drawing.Point(73, 60);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(269, 20);
+            this.textBox1.Size = new System.Drawing.Size(357, 22);
             this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(55, 92);
+            this.textBox2.Location = new System.Drawing.Point(73, 113);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(269, 20);
+            this.textBox2.Size = new System.Drawing.Size(357, 22);
             this.textBox2.TabIndex = 1;
             // 
             // btnlic
             // 
-            this.btnlic.Location = new System.Drawing.Point(330, 48);
+            this.btnlic.Location = new System.Drawing.Point(440, 59);
+            this.btnlic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnlic.Name = "btnlic";
-            this.btnlic.Size = new System.Drawing.Size(47, 20);
+            this.btnlic.Size = new System.Drawing.Size(63, 25);
             this.btnlic.TabIndex = 2;
             this.btnlic.Text = "...";
             this.btnlic.UseVisualStyleBackColor = true;
@@ -61,9 +64,10 @@
             // 
             // btnkey
             // 
-            this.btnkey.Location = new System.Drawing.Point(330, 92);
+            this.btnkey.Location = new System.Drawing.Point(440, 113);
+            this.btnkey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnkey.Name = "btnkey";
-            this.btnkey.Size = new System.Drawing.Size(47, 20);
+            this.btnkey.Size = new System.Drawing.Size(63, 25);
             this.btnkey.TabIndex = 3;
             this.btnkey.Text = "...";
             this.btnkey.UseVisualStyleBackColor = true;
@@ -71,9 +75,10 @@
             // 
             // btnok
             // 
-            this.btnok.Location = new System.Drawing.Point(308, 134);
+            this.btnok.Location = new System.Drawing.Point(411, 165);
+            this.btnok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnok.Name = "btnok";
-            this.btnok.Size = new System.Drawing.Size(69, 24);
+            this.btnok.Size = new System.Drawing.Size(92, 30);
             this.btnok.TabIndex = 4;
             this.btnok.Text = "OK";
             this.btnok.UseVisualStyleBackColor = true;
@@ -81,18 +86,19 @@
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 243);
+            this.ClientSize = new System.Drawing.Size(648, 299);
             this.Controls.Add(this.btnok);
             this.Controls.Add(this.btnkey);
             this.Controls.Add(this.btnlic);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form3";
+            this.Text = "Dialog License";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.Shown += new System.EventHandler(this.Form3_Shown);
             this.ResumeLayout(false);

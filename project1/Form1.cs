@@ -163,9 +163,16 @@ namespace project1
                 {
                     List<pathLicense> LpfnameLoad = N2N.Data.Serialization.Serialize<List<pathLicense>>.DeserializeFromXmlFile("pathLicense.xml");
                     RasterSupport.SetLicense(LpfnameLoad[0].License,File.ReadAllText(LpfnameLoad[0].Key));
+                    /*  RasterSupport.SetLicense(@"", 
+                    File.ReadAllText(@""));*/
                     bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
                     if (isLocked)
+                    {
                         Console.WriteLine("Document support is locked");
+                        Form3 f3 = new Form3();
+                        f3.FormClosed += f3_FormClosed;
+                        f3.ShowDialog();
+                    }
                     else
                     {
                         Console.WriteLine("Document support is unlocked");
