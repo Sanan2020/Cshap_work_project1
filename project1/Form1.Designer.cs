@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.l_saveprofile = new System.Windows.Forms.Label();
@@ -218,6 +219,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -373,11 +375,10 @@
             this.ribbonBar5.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnImportProfile,
             this.btnExportProfile});
-            this.ribbonBar5.Location = new System.Drawing.Point(598, 0);
-            this.ribbonBar5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ribbonBar5.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbonBar5.Location = new System.Drawing.Point(449, 0);
+            this.ribbonBar5.MinimumSize = new System.Drawing.Size(90, 0);
             this.ribbonBar5.Name = "ribbonBar5";
-            this.ribbonBar5.Size = new System.Drawing.Size(156, 95);
+            this.ribbonBar5.Size = new System.Drawing.Size(117, 67);
             this.ribbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ribbonBar5.TabIndex = 4;
             this.ribbonBar5.Text = "Import/Export";
@@ -414,7 +415,7 @@
             this.ribbonBar3.Location = new System.Drawing.Point(305, 0);
             this.ribbonBar3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ribbonBar3.Name = "ribbonBar3";
-            this.ribbonBar3.Size = new System.Drawing.Size(293, 95);
+            this.ribbonBar3.Size = new System.Drawing.Size(220, 67);
             this.ribbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ribbonBar3.TabIndex = 2;
             this.ribbonBar3.Text = "Profile";
@@ -1604,6 +1605,7 @@
             this.btnLineRemove.TabIndex = 70;
             this.btnLineRemove.Text = "LineRemove (only 1-bit black and white)";
             this.btnLineRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.btnLineRemove, "only 1-bit black and write");
             this.btnLineRemove.UseVisualStyleBackColor = true;
             this.btnLineRemove.Click += new System.EventHandler(this.btnLineRemove_Click);
             // 
@@ -2907,6 +2909,7 @@
         private DevComponents.DotNetBar.ButtonItem btnSavepf;
         private DevComponents.DotNetBar.ButtonItem btnImportProfile;
         private DevComponents.DotNetBar.Controls.ProgressBarX progressBarX1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

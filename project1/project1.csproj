@@ -141,6 +141,12 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageViewerItem.cs" />
     <Compile Include="Leadtools\Documents.cs" />
     <Compile Include="popProgress.cs">
@@ -157,6 +163,12 @@
     </Compile>
     <Compile Include="profile.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgressPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressPopup.Designer.cs">
+      <DependentUpon>ProgressPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="dialogImport.resx">
       <DependentUpon>dialogImport.cs</DependentUpon>
@@ -182,11 +194,17 @@
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="popProgress.resx">
       <DependentUpon>popProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preview.resx">
       <DependentUpon>Preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressPopup.resx">
+      <DependentUpon>ProgressPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

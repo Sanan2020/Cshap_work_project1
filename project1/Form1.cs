@@ -140,155 +140,6 @@ namespace project1
             if (e.Percent == 50 && cancelAt50)
                 e.Cancel = true;
         }
-        public class pathLicense
-        {
-            String license;
-            String key;
-            public string License   // property
-            {
-                get { return license; }
-                set { license = value; }
-            }
-
-            public string Key   // property
-            {
-                get { return key; }
-                set { key = value; }
-            }
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (System.IO.File.Exists("pathLicense.xml"))//ถ้าเจอไฟล์
-                {
-                    List<pathLicense> LpfnameLoad = N2N.Data.Serialization.Serialize<List<pathLicense>>.DeserializeFromXmlFile("pathLicense.xml");
-                    RasterSupport.SetLicense(LpfnameLoad[0].License,File.ReadAllText(LpfnameLoad[0].Key));
-                    /*  RasterSupport.SetLicense(@"", 
-                    File.ReadAllText(@""));*/
-                    bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
-                    if (isLocked)
-                    {
-                        Console.WriteLine("Document support is locked");
-                        Form3 f3 = new Form3();
-                        f3.FormClosed += f3_FormClosed;
-                        f3.ShowDialog();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Document support is unlocked");
-                    }
-                }
-                else {
-                   
-                    Form3 f3 = new Form3();
-                    f3.FormClosed += f3_FormClosed;
-                    f3.ShowDialog();
-                    //MessageBox.Show("not found");   
-                }
-
-                flowLayoutPanel1.AutoScroll = true;
-              
-                comboBox1.Items.Add("Default");
-                comboBox1.Items.Add("ErosionOmniDirectional");
-                comboBox1.Items.Add("ErosionHorizontal");
-                comboBox1.Items.Add("ErosionVertical");
-                comboBox1.Items.Add("ErosionDiagonal");
-                comboBox1.Items.Add("DilationOmniDirectional");
-                comboBox1.Items.Add("DilationHorizontal");
-                comboBox1.Items.Add("DilationVertical");
-                comboBox1.Items.Add("DilationDiagonal");
-                //comboBox1.SelectedIndex = 0;
-
-                cbBox2re();
-
-                trackBar7.Value = value_trackBar7;
-                l_redfactor.Text = value_trackBar7.ToString();
-                trackBar8.Value = value_trackBar8;
-                l_greenfactor.Text = value_trackBar8.ToString();
-                trackBar9.Value = value_trackBar9;
-                l_bluefactor.Text = value_trackBar9.ToString();
-
-                trackBar10.Value = value_trackBar10;
-                l_maximumdotH.Text = value_trackBar10.ToString();
-                trackBar11.Value = value_trackBar11;
-                l_maximumdotW.Text = value_trackBar11.ToString();
-                trackBar12.Value = value_trackBar12;
-                l_minimumdotH.Text = value_trackBar12.ToString();
-                trackBar13.Value = value_trackBar13;
-                l_minimumdotW.Text = value_trackBar13.ToString();
-
-                trackBar14.Value = value_trackBar14;
-                l_gaplength.Text = value_trackBar14.ToString();
-                trackBar15.Value = value_trackBar15;
-                l_maximumlineW.Text = value_trackBar15.ToString();
-                trackBar16.Value = value_trackBar16;
-                l_minimumlineL.Text = value_trackBar16.ToString();
-                trackBar17.Value = value_trackBar17;
-                l_maximumwall.Text = value_trackBar17.ToString();
-                trackBar22.Value = value_trackBar22;
-                l_wall.Text = value_trackBar22.ToString();
-                trackBar18.Value = value_trackBar18;
-                l_maximumhole.Text = value_trackBar18.ToString();
-                trackBar21.Value = value_trackBar21;
-                l_minimumhole.Text = value_trackBar21.ToString();
-
-                trackBar19.Value = value_trackBar19;
-                l_maximumblack.Text = value_trackBar19.ToString();
-                trackBar20.Value = value_trackBar20;
-                l_minimumBlack.Text = value_trackBar20.ToString();
-                trackBar23.Value = value_trackBar23;
-                l_minimuminverH.Text = value_trackBar23.ToString();
-                trackBar24.Value = value_trackBar24;
-                l_minimuminvertW.Text = value_trackBar24.ToString();
-                trackBar27.Value = value_trackBar27;
-                l_cropThreshold.Text = value_trackBar27.ToString();
-                trackBar25.Value = value_trackBar25;
-                l_percent.Text = value_trackBar25.ToString();
-                trackBar26.Value = value_trackBar26;
-                l_variance.Text = value_trackBar26.ToString();
-                trackBar28.Value = value_trackBar28;
-                l_whitenoiseL.Text = value_trackBar28.ToString();
-                trackBar31.Value = value_trackBar31;
-                l_length.Text = value_trackBar31.ToString();
-
-                trbDynBin1.Value = value_trbDynBin1;
-                l_dimension.Text = value_trbDynBin1.ToString();
-                trbDynBin2.Value = value_trbDynBin2;
-                l_localcontrast.Text = value_trbDynBin2.ToString();
-                //RasterCommandExample();
-                value_trbMaximum = 3;
-                trbMaximum.Value = value_trbMaximum;
-                l_maximum.Text = value_trbMaximum.ToString();
-                value_trbMinimum = 3;
-                trbMinimum.Value = value_trbMinimum;
-                l_minimum.Text = value_trbMinimum.ToString();
-                value_trbGamma = 310;
-                trbGamma.Value = value_trbGamma;
-                l_gamma.Text = value_trbGamma.ToString();
-
-                /*layout*/
-                splitContainer1.Panel1.AutoScroll = true;
-                //splitContainer1.Panel1.Width = 200;
-               // splitContainer1.Panel1.Dock = DockStyle.Right;
-                splitContainer1.Panel2.AutoScroll = true;
-                splitContainer1.Panel1.BackColor = Color.DarkGray;
-                splitContainer1.Panel2.BackColor = Color.DarkGray;
-                splitContainer1.SplitterWidth = 10; //ความกว้างของตัว split ค่าเดิม 4
-                splitContainer1.BorderStyle = BorderStyle.FixedSingle;
-                /**/
-                flowLayoutPanel1.Visible = true;
-                this.progressBarX1.Visible = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void f3_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
         private void RakeRemoveEvent_S1(object sender, RakeRemoveCommandEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Rake length is " + "( " + e.Length.ToString() + " )");
@@ -380,51 +231,248 @@ namespace project1
 
             e.Status = RemoveStatus.Remove;
         }
+        public class pathLicense
+        {
+            String license;
+            String key;
+            public string License   // property
+            {
+                get { return license; }
+                set { license = value; }
+            }
+
+            public string Key   // property
+            {
+                get { return key; }
+                set { key = value; }
+            }
+        }
+        void fncSetup() {
+            flowLayoutPanel1.AutoScroll = true;
+
+            comboBox1.Items.Add("--Select--");
+            comboBox1.Items.Add("ErosionOmniDirectional");
+            comboBox1.Items.Add("ErosionHorizontal");
+            comboBox1.Items.Add("ErosionVertical");
+            comboBox1.Items.Add("ErosionDiagonal");
+            comboBox1.Items.Add("DilationOmniDirectional");
+            comboBox1.Items.Add("DilationHorizontal");
+            comboBox1.Items.Add("DilationVertical");
+            comboBox1.Items.Add("DilationDiagonal");
+            comboBox1.SelectedIndex = 0;
+
+            cbBox2re();
+            trackBar4.Value = value_trackBar4;
+            l_amount.Text = value_trackBar4.ToString();
+            trackBar5.Value = value_trackBar5;
+            l_radius.Text = value_trackBar5.ToString();
+            trackBar6.Value = value_trackBar6;
+            l_threshold.Text = value_trackBar6.ToString();
+
+            trackBar7.Value = value_trackBar7;
+            l_redfactor.Text = value_trackBar7.ToString();
+            trackBar8.Value = value_trackBar8;
+            l_greenfactor.Text = value_trackBar8.ToString();
+            trackBar9.Value = value_trackBar9;
+            l_bluefactor.Text = value_trackBar9.ToString();
+
+            trackBar10.Value = value_trackBar10;
+            l_maximumdotH.Text = value_trackBar10.ToString();
+            trackBar11.Value = value_trackBar11;
+            l_maximumdotW.Text = value_trackBar11.ToString();
+            trackBar12.Value = value_trackBar12;
+            l_minimumdotH.Text = value_trackBar12.ToString();
+            trackBar13.Value = value_trackBar13;
+            l_minimumdotW.Text = value_trackBar13.ToString();
+
+            trackBar14.Value = value_trackBar14;
+            l_gaplength.Text = value_trackBar14.ToString();
+            trackBar15.Value = value_trackBar15;
+            l_maximumlineW.Text = value_trackBar15.ToString();
+            trackBar16.Value = value_trackBar16;
+            l_minimumlineL.Text = value_trackBar16.ToString();
+            trackBar17.Value = value_trackBar17;
+            l_maximumwall.Text = value_trackBar17.ToString();
+            trackBar22.Value = value_trackBar22;
+            l_wall.Text = value_trackBar22.ToString();
+            trackBar18.Value = value_trackBar18;
+            l_maximumhole.Text = value_trackBar18.ToString();
+            trackBar21.Value = value_trackBar21;
+            l_minimumhole.Text = value_trackBar21.ToString();
+
+            trackBar19.Value = value_trackBar19;
+            l_maximumblack.Text = value_trackBar19.ToString();
+            trackBar20.Value = value_trackBar20;
+            l_minimumBlack.Text = value_trackBar20.ToString();
+            trackBar23.Value = value_trackBar23;
+            l_minimuminverH.Text = value_trackBar23.ToString();
+            trackBar24.Value = value_trackBar24;
+            l_minimuminvertW.Text = value_trackBar24.ToString();
+            trackBar27.Value = value_trackBar27;
+            l_cropThreshold.Text = value_trackBar27.ToString();
+            trackBar25.Value = value_trackBar25;
+            l_percent.Text = value_trackBar25.ToString();
+            trackBar26.Value = value_trackBar26;
+            l_variance.Text = value_trackBar26.ToString();
+            trackBar28.Value = value_trackBar28;
+            l_whitenoiseL.Text = value_trackBar28.ToString();
+            trackBar31.Value = value_trackBar31;
+            l_length.Text = value_trackBar31.ToString();
+
+            trbDynBin1.Value = value_trbDynBin1;
+            l_dimension.Text = value_trbDynBin1.ToString();
+            trbDynBin2.Value = value_trbDynBin2;
+            l_localcontrast.Text = value_trbDynBin2.ToString();
+            //RasterCommandExample();
+            value_trbMaximum = 3;
+            trbMaximum.Value = value_trbMaximum;
+            l_maximum.Text = value_trbMaximum.ToString();
+            value_trbMinimum = 3;
+            trbMinimum.Value = value_trbMinimum;
+            l_minimum.Text = value_trbMinimum.ToString();
+            value_trbGamma = 310;
+            trbGamma.Value = value_trbGamma;
+            l_gamma.Text = value_trbGamma.ToString();
+
+            /*layout*/
+            splitContainer1.Panel1.AutoScroll = true;
+            //splitContainer1.Panel1.Width = 200;
+            // splitContainer1.Panel1.Dock = DockStyle.Right;
+            splitContainer1.Panel2.AutoScroll = true;
+            splitContainer1.Panel1.BackColor = Color.DarkGray;
+            splitContainer1.Panel2.BackColor = Color.DarkGray;
+            splitContainer1.SplitterWidth = 10; //ความกว้างของตัว split ค่าเดิม 4
+            splitContainer1.BorderStyle = BorderStyle.FixedSingle;
+            /**/
+            flowLayoutPanel1.Visible = true;
+            this.progressBarX1.Visible = false;
+
+            btnLineRemove.Enabled = false;
+            btnLineRemove.FlatStyle = FlatStyle.Standard;
+            btnDotRemove.Enabled = false;
+            btnDotRemove.FlatStyle = FlatStyle.Standard;
+            btnHolePunchRemove.Enabled = false;
+            btnHolePunchRemove.FlatStyle = FlatStyle.Standard;
+            btnInvertedText.Enabled = false;
+            btnInvertedText.FlatStyle = FlatStyle.Standard;
+            btnBorderRemove.Enabled = false;
+            btnBorderRemove.FlatStyle = FlatStyle.Standard;
+            btnSmooth.Enabled = false;
+            btnSmooth.FlatStyle = FlatStyle.Standard;
+            btnRakeRemove.Enabled = false;
+            btnRakeRemove.FlatStyle = FlatStyle.Standard;
+        }
+        void fncLicense() {
+            try
+            {
+                if (System.IO.File.Exists("pathLicense.xml"))//ถ้าเจอไฟล์
+                {
+                    List<pathLicense> LpfnameLoad = N2N.Data.Serialization.Serialize<List<pathLicense>>.DeserializeFromXmlFile("pathLicense.xml");
+                    RasterSupport.SetLicense(LpfnameLoad[0].License, File.ReadAllText(LpfnameLoad[0].Key));
+                    /*  RasterSupport.SetLicense(@"", 
+                    File.ReadAllText(@""));*/
+                    bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
+                    if (isLocked)
+                    {
+                        Console.WriteLine("Document support is locked");
+                        Form3 f3 = new Form3();
+                        f3.FormClosed += f3_FormClosed;
+                        f3.ShowDialog();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Document support is unlocked");
+                    }
+                }
+                else
+                {
+                    Form3 f3 = new Form3();
+                    f3.FormClosed += f3_FormClosed;
+                    f3.ShowDialog();
+                    //MessageBox.Show("not found");   
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           fncLicense();
+            fncSetup();
+        }
+        private void f3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+        
 
         private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image(); 
-            
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar2_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
-            
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar3_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
-            
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar4_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar5_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar6_MouseCaptureChanged(object sender, EventArgs e)
-        { 
-            Image();
+        {
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                /*if (folderPath == null) { }
+                selectCombobox = comboBox1.SelectedIndex;
+                if (folderPath != null || selectCombobox != 0) {
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
+                }
                 else
-                {*/
-                    selectCombobox = comboBox1.SelectedIndex;
-                    Image();
-                    //MessageBox.Show(folderPath);
-                //}
+                {
+                    
+                //MessageBox.Show(folderPath);
+                }
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -472,7 +520,214 @@ namespace project1
         {
             public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
         }
+        public void Default() {
+            //use profile
+            //จะเริ่มต้นค่า Default
+            try
+            {
+                value_trackBar1 = 0;
+                value_trackBar2 = 0;
+                value_trackBar3 = 0;
+                value_trackBar4 = 1;
+                value_trackBar5 = 1;
+                value_trackBar6 = 1;
+                value_trackBar10 = 10;
+                value_trackBar11 = 10;
+                value_trackBar12 = 1;
+                value_trackBar13 = 1;
+                value_trackBar14 = 2;
+                value_trackBar15 = 5;
+                value_trackBar16 = 200;
+                value_trackBar17 = 10;
+                value_trackBar22 = 7;
+                value_trackBar18 = 4;
 
+                trackBar1.Value = value_trackBar1;
+                l_brightness.Text = value_trackBar1.ToString();
+                trackBar2.Value = value_trackBar2;
+                l_contrast.Text = value_trackBar2.ToString();
+                trackBar3.Value = value_trackBar3;
+                l_intensity.Text = value_trackBar3.ToString();
+                trackBar4.Value = value_trackBar4;
+                l_amount.Text = value_trackBar4.ToString();
+                trackBar5.Value = value_trackBar5;
+                l_radius.Text = value_trackBar5.ToString();
+                trackBar6.Value = value_trackBar6;
+                l_threshold.Text = value_trackBar6.ToString();
+
+                
+                trackBar10.Value = value_trackBar10;
+                l_maximumdotH.Text = value_trackBar10.ToString();
+                
+                trackBar11.Value = value_trackBar11;
+                l_maximumdotW.Text = value_trackBar11.ToString();
+                
+                trackBar12.Value = value_trackBar12;
+                l_minimumdotH.Text = value_trackBar12.ToString();
+                
+                trackBar13.Value = value_trackBar13;
+                l_minimumdotW.Text = value_trackBar13.ToString();
+                
+                trackBar14.Value = value_trackBar14;
+                l_gaplength.Text = value_trackBar14.ToString();
+                
+                trackBar15.Value = value_trackBar15;
+                l_maximumlineW.Text = value_trackBar15.ToString();
+                
+                trackBar16.Value = value_trackBar16;
+                l_minimumlineL.Text = value_trackBar16.ToString();
+                
+                trackBar17.Value = value_trackBar17;
+                l_maximumwall.Text = value_trackBar17.ToString();
+                
+                trackBar22.Value = value_trackBar22;
+                l_wall.Text = value_trackBar22.ToString();
+                
+                trackBar18.Value = value_trackBar18;
+                l_maximumhole.Text = value_trackBar18.ToString();
+                value_trackBar21 = 2;
+                trackBar21.Value = value_trackBar21;
+                l_minimumhole.Text = value_trackBar21.ToString();
+                value_trackBar19 = 95;
+                trackBar19.Value = value_trackBar19;
+                l_maximumblack.Text = value_trackBar19.ToString();
+                value_trackBar20 = 70;
+                trackBar20.Value = value_trackBar20;
+                l_minimumBlack.Text = value_trackBar20.ToString();
+                value_trackBar23 = 500;
+                trackBar23.Value = value_trackBar23;
+                l_minimuminverH.Text = value_trackBar23.ToString();
+                value_trackBar24 = 5000;
+                trackBar24.Value = value_trackBar24;
+                l_minimuminvertW.Text = value_trackBar24.ToString();
+                value_trackBar27 = 20;
+                trackBar27.Value = value_trackBar27;
+                l_cropThreshold.Text = value_trackBar27.ToString();
+                value_trackBar25 = 20;
+                trackBar25.Value = value_trackBar25;
+                l_percent.Text = value_trackBar25.ToString();
+                value_trackBar26 = 3;
+                trackBar26.Value = value_trackBar26;
+                l_variance.Text = value_trackBar26.ToString();
+                value_trackBar28 = 9;
+                trackBar28.Value = value_trackBar28;
+                l_whitenoiseL.Text = value_trackBar28.ToString();
+                value_trackBar31 = 2;
+                trackBar31.Value = value_trackBar31;
+                l_length.Text = value_trackBar31.ToString();
+
+                chckbox2 = false;
+                checkBox2.Checked = chckbox2;
+                value_trackBar7 = 500;
+                trackBar7.Value = value_trackBar7;
+                l_redfactor.Text = value_trackBar7.ToString();
+                value_trackBar8 = 250;
+                trackBar8.Value = value_trackBar8;
+                l_greenfactor.Text = value_trackBar8.ToString();
+                value_trackBar9 = 250;
+                trackBar9.Value = value_trackBar9;
+                l_bluefactor.Text = value_trackBar9.ToString();
+
+                selectCombobox = 0;
+                comboBox1.SelectedIndex = selectCombobox;
+
+                chckbox = false;
+                checkBox1.Checked = chckbox;
+                chckbox3 = false;
+                checkBox3.Checked = chckbox3;
+                chckbox4 = false;
+                checkBox4.Checked = chckbox4;
+                chckbox5 = false;
+                checkBox5.Checked = chckbox5;
+                value_trbMaximum = 3;
+                trbMaximum.Value = value_trbMaximum;
+                l_maximum.Text = value_trbMaximum.ToString();
+                chckbox6 = false;
+                checkBox6.Checked = chckbox6;
+                value_trbMinimum = 3;
+                trbMinimum.Value = value_trbMinimum;
+                l_minimum.Text = value_trbMinimum.ToString();
+                chckbox7 = false;
+                checkBox7.Checked = chckbox7;
+                chckbox8 = false;
+                checkBox8.Checked = chckbox8;
+                value_trbGamma = 310;
+                trbGamma.Value = value_trbGamma;
+                l_gamma.Text = value_trbGamma.ToString();
+                chckbox9 = false;
+                checkBox9.Checked = chckbox9;
+                chckbox10 = false;
+                checkBox10.Checked = chckbox10;
+                chckbox11 = false;
+                checkBox11.Checked = chckbox11;
+                chckbox12 = false;
+                checkBox12.Checked = chckbox12;
+                chckbox13 = false;
+                checkBox13.Checked = chckbox13;
+                chckbox14 = false;
+                checkBox14.Checked = chckbox14;
+                chckbox15 = false;
+                checkBox15.Checked = chckbox15;
+                chckbox16 = false;
+                checkBox16.Checked = chckbox16;
+                chckbox17 = false;
+                checkBox17.Checked = chckbox17;
+
+                //tb_profile.Text = "";
+                cbboxUseProfile.SelectedIndex = 0;
+
+                value_trbDynBin1 = 8;
+                trbDynBin1.Value = value_trbDynBin1;
+                l_dimension.Text = value_trbDynBin1.ToString();
+                value_trbDynBin2 = 16;
+                trbDynBin2.Value = value_trbDynBin2;
+                l_localcontrast.Text = value_trbDynBin2.ToString();
+
+                chckbox18 = false;
+                checkBox18.Checked = chckbox18;
+                value_trackBar29 = 0;
+                trackBar29.Value = value_trackBar29;
+                l_RotateImage.Text = value_trackBar29.ToString();
+
+                chckbox19 = false;
+                checkBox19.Checked = chckbox19;
+                value_numUpDown1 = 50;
+                numUpDown1.Value = value_numUpDown1;
+                value_numUpDown2 = 10;
+                numUpDown2.Value = value_numUpDown2;
+                value_numUpDown3 = 3;
+                numUpDown3.Value = value_numUpDown3;
+                value_numUpDown4 = 25;
+                numUpDown4.Value = value_numUpDown4;
+                value_numUpDown5 = 60;
+                numUpDown5.Value = value_numUpDown5;
+                value_numUpDown6 = 50;
+                numUpDown6.Value = value_numUpDown6;
+                value_numUpDown7 = 1;
+                numUpDown7.Value = value_numUpDown7;
+                value_numUpDown8 = 1;
+                numUpDown8.Value = value_numUpDown8;
+                value_numUpDown9 = 5;
+                numUpDown9.Value = value_numUpDown9;
+                chckbox20 = false;
+                checkBox20.Checked = chckbox20;
+
+                chckbox21 = false;
+                checkBox21.Checked = chckbox21;
+
+                cbboxUseProfile.SelectedItem = "Default";
+                //Image();
+
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public void ResetValue()
         {
             try
@@ -656,7 +911,14 @@ namespace project1
 
                 chckbox21 = false;
                 checkBox21.Checked = chckbox21;
-                Image();
+
+                cbboxUseProfile.SelectedItem = "- Select Profile -";
+                //Image();
+
+               /* using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }*/
             }
             catch (Exception ex)
             {
@@ -730,17 +992,27 @@ namespace project1
 
         private void trackBar7_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
+            //Image();
         }
 
         private void trackBar8_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar9_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
         private bool Expanded = false;
         private void btnConBrigtIntens_Click(object sender, EventArgs e)
@@ -793,12 +1065,18 @@ namespace project1
             if (checkBox3.Checked == true)
             {
                 chckbox3 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox3 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -807,12 +1085,18 @@ namespace project1
             if (checkBox4.Checked == true)
             {
                 chckbox4 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox4 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -821,12 +1105,18 @@ namespace project1
             if (checkBox5.Checked == true)
             {
                 chckbox5 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox5 = false;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -835,12 +1125,18 @@ namespace project1
             if (checkBox6.Checked == true)
             {
                 chckbox6 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox6 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -849,12 +1145,18 @@ namespace project1
             if (checkBox7.Checked == true)
             {
                 chckbox7 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox7 = false;
-               Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -863,12 +1165,18 @@ namespace project1
             if (checkBox8.Checked == true)
             {
                 chckbox8 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox8 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -877,12 +1185,18 @@ namespace project1
             if (checkBox9.Checked == true)
             {
                 chckbox9 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox9 = false;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -900,12 +1214,18 @@ namespace project1
 
         private void trbDynBin1_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trbDynBin2_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trbMaximum_Scroll(object sender, EventArgs e)
@@ -928,17 +1248,26 @@ namespace project1
 
         private void trbMaximum_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trbMinimum_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trbGamma_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
         private bool Expanded4 = false;
         private void btnDocImgClupFnct_Click(object sender, EventArgs e)
@@ -961,12 +1290,18 @@ namespace project1
             if (checkBox10.Checked == true)
             {
                 chckbox10 = true;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox10 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -975,12 +1310,18 @@ namespace project1
             if (checkBox11.Checked == true)
             {
                 chckbox11 = true;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox11 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -989,12 +1330,18 @@ namespace project1
             if (checkBox12.Checked == true)
             {
                 chckbox12 = true;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox12 = false;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
         private void checkBox13_CheckedChanged(object sender, EventArgs e)
@@ -1002,12 +1349,18 @@ namespace project1
             if (checkBox13.Checked == true)
             {
                 chckbox13 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox13 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -1016,12 +1369,18 @@ namespace project1
             if (checkBox14.Checked == true)
             {
                 chckbox14 = true;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox14 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -1030,12 +1389,18 @@ namespace project1
             if (checkBox15.Checked == true)
             {
                 chckbox15 = true;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox15 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -1044,12 +1409,18 @@ namespace project1
             if (checkBox16.Checked == true)
             {
                 chckbox16 = true;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox16 = false;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
 
@@ -1058,12 +1429,18 @@ namespace project1
             if (checkBox17.Checked == true)
             {
                 chckbox17 = true;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             else
             {
                 chckbox17 = false;
-                 Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
         }
         private bool Expanded5 = false;
@@ -1199,22 +1576,34 @@ namespace project1
 
         private void trackBar10_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar11_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar12_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar13_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar14_Scroll(object sender, EventArgs e)
@@ -1249,27 +1638,42 @@ namespace project1
 
         private void trackBar14_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar15_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar16_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar17_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar22_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar18_Scroll(object sender, EventArgs e)
@@ -1286,12 +1690,18 @@ namespace project1
 
         private void trackBar18_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar21_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar19_Scroll(object sender, EventArgs e)
@@ -1320,22 +1730,34 @@ namespace project1
 
         private void trackBar19_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar20_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar23_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar24_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar27_Scroll(object sender, EventArgs e)
@@ -1346,7 +1768,10 @@ namespace project1
 
         private void trackBar27_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar25_Scroll(object sender, EventArgs e)
@@ -1369,17 +1794,26 @@ namespace project1
 
         private void trackBar25_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar26_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar28_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void trackBar31_Scroll(object sender, EventArgs e)
@@ -1390,7 +1824,10 @@ namespace project1
 
         private void trackBar31_MouseCaptureChanged(object sender, EventArgs e)
         {
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void checkBox18_CheckedChanged(object sender, EventArgs e)
@@ -1400,12 +1837,18 @@ namespace project1
                 if (checkBox18.Checked == true)
                 {
                     chckbox18 = true;
-                    Image();
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
                 }
                 else
                 {
                     chckbox18 = false;
-                    Image();
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
                 }
             }
             catch (Exception ex) {
@@ -1421,7 +1864,10 @@ namespace project1
 
         private void trackBar29_MouseCaptureChanged(object sender, EventArgs e)
         {
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void checkBox19_CheckedChanged(object sender, EventArgs e)
@@ -1431,12 +1877,18 @@ namespace project1
                 if (checkBox19.Checked == true)
                 {
                     chckbox19 = true;
-                    Image();
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
                 }
                 else
                 {
                     chckbox19 = false;
-                    Image();
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
                 }
             }
             catch (Exception ex) {
@@ -1478,12 +1930,20 @@ namespace project1
             if (checkBox20.Checked == true)
             {
                 chckbox20 = true;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+                //Image();
             }
             else
             {
                 chckbox20 = false;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+                //Image();
             }
         }
 
@@ -1492,7 +1952,10 @@ namespace project1
             try
             {
                 value_numUpDown1 = (int)numUpDown1.Value;
-                Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -1502,49 +1965,73 @@ namespace project1
         private void numUpDown2_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown2 = (int)numUpDown2.Value;
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void numUpDown3_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown3 = (int)numUpDown3.Value;
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void numUpDown4_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown4 = (int)numUpDown4.Value;
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void numUpDown5_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown5 = (int)numUpDown5.Value;
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void numUpDown6_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown6 = (int)numUpDown6.Value;
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void numUpDown7_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown7 = (int)numUpDown7.Value;
-            Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void numUpDown8_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown8 = (int)numUpDown8.Value;
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void numUpDown9_ValueChanged(object sender, EventArgs e)
         {
             value_numUpDown9 = (int)numUpDown9.Value;
-             Image();
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
         }
 
         private void btnResetConBrigtIntens_Click(object sender, EventArgs e)
@@ -1559,8 +2046,8 @@ namespace project1
             value_trackBar3 = 0;
             trackBar3.Value = value_trackBar3;
             l_intensity.Text = value_trackBar3.ToString();
-             Image();
-        }
+                Image();
+            }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
@@ -1578,8 +2065,8 @@ namespace project1
             value_trackBar6 = 1;
             trackBar6.Value = value_trackBar6;
             l_threshold.Text = value_trackBar6.ToString();
-             Image();
-        }
+                Image();
+            }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
@@ -1599,7 +2086,7 @@ namespace project1
             value_trackBar9 = 250;
             trackBar9.Value = value_trackBar9;
             l_bluefactor.Text = value_trackBar9.ToString();
-             Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1626,7 +2113,12 @@ namespace project1
             comboBox1.SelectedIndex = selectCombobox;
             chckbox14 = false;
             checkBox14.Checked = chckbox14;
-            Image();
+
+                /*using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }*/
+                Image();
             }
             catch (Exception ex)
             {
@@ -1651,7 +2143,7 @@ namespace project1
             value_trackBar13 = 1;
             trackBar13.Value = value_trackBar13;
             l_minimumdotW.Text = value_trackBar13.ToString();
-             Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1679,7 +2171,7 @@ namespace project1
             value_trackBar22 = 7;
             trackBar22.Value = value_trackBar22;
             l_wall.Text = value_trackBar22.ToString();
-            Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1698,7 +2190,7 @@ namespace project1
             value_trackBar21 = 2;
             trackBar21.Value = value_trackBar21;
             l_minimumhole.Text = value_trackBar21.ToString();
-             Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1723,7 +2215,7 @@ namespace project1
             value_trackBar24 = 5000;
             trackBar24.Value = value_trackBar24;
             l_minimuminvertW.Text = value_trackBar24.ToString();
-            Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1739,7 +2231,7 @@ namespace project1
             value_trackBar27 = 20;
             trackBar27.Value = value_trackBar27;
             l_cropThreshold.Text = value_trackBar27.ToString();
-            Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1761,7 +2253,7 @@ namespace project1
             value_trackBar28 = 9;
             trackBar28.Value = value_trackBar28;
             l_whitenoiseL.Text = value_trackBar28.ToString();
-             Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1777,7 +2269,7 @@ namespace project1
             value_trackBar31 = 2;
             trackBar31.Value = value_trackBar31;
             l_length.Text = value_trackBar31.ToString();
-             Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1793,7 +2285,7 @@ namespace project1
             value_trackBar29 = 0;
             trackBar29.Value = value_trackBar29;
             l_RotateImage.Text = value_trackBar29.ToString();
-             Image();
+                Image();
             }
             catch (Exception ex)
             {
@@ -1826,7 +2318,10 @@ namespace project1
             numUpDown9.Value = value_numUpDown9;
             chckbox20 = false;
             checkBox20.Checked = chckbox20;
-            Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             catch (Exception ex)
             {
@@ -1871,7 +2366,10 @@ namespace project1
             value_trbGamma = 310;
             trbGamma.Value = value_trbGamma;
             l_gamma.Text = value_trbGamma.ToString();
-            Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             catch (Exception ex)
             {
@@ -1891,7 +2389,7 @@ namespace project1
                 {
                     cbboxUseProfile.Items.Add(LpfnameLoad[i].Profilename);
                 }
-                    //cbboxUseProfile.SelectedItem = "Default";
+                    cbboxUseProfile.SelectedItem = "Default";
             }
             }catch (Exception ex){MessageBox.Show(ex.Message);}
         }
@@ -1963,21 +2461,22 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
         }
-      
-        public async void Image()
+        String bpp;
+        public void Image()
         {
             try
             {
                 _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-                if (file != null) { 
+                if (file != null)
+                {
                     cbboxUseProfile.Enabled = true;
                     checkBox21.Enabled = true;
                     btnReset.Enabled = true;
                     btnSave.Enabled = true;
-                   /* if (cbboxUseProfile.SelectedItem.ToString() != null) { 
-                    
-                    }*/
-                }
+                    /* if (cbboxUseProfile.SelectedItem.ToString() != null) { 
+
+                     }*/
+                
                 foreach (string img in file)
                 {
                     Console.WriteLine("Page " + pageCount);
@@ -1993,8 +2492,8 @@ namespace project1
                     _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
                     RasterImage rasterImage = _rasterCodecs.Load(img, pdname);
 
-                  
-                   
+
+
                     ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                     //Increase the brightness by 25 percent  of the possible range. 
                     command.Brightness = value_trackBar1;   //484
@@ -2007,7 +2506,7 @@ namespace project1
                      await Task.Run(() => {
                      });
                      progressBar1.Value = 100;*/
-                   // progressBar1.Value = 0;
+                    // progressBar1.Value = 0;
                     UnsharpMaskCommand command2 = new UnsharpMaskCommand();
                     command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
                     command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
@@ -2116,7 +2615,7 @@ namespace project1
                         rotate.Flags = RotateCommandFlags.Resize;
                         RunCommand(rasterImage, rotate);
                     }
-                    if (chckbox21 == true)
+                    if (checkBox21.Checked == true)
                     {
                         RasterImage destImage = new RasterImage(
                         RasterMemoryFlags.Conventional,
@@ -2265,31 +2764,41 @@ namespace project1
                             command20.AutoFilter = chckbox20;       //ตัวกรองอัตโนมัติ
                             command20.Run(destImage);
                         }
-                        l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " Bits";
+                            //l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " Bits";
+                            bpp = destImage.BitsPerPixel.ToString();
+                            l_stateOutput.Invoke((MethodInvoker)(() => { l_stateOutput.Text = bpp; }));
+                            
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
                         {
                             picReview2.Image = new Bitmap(destImage1);
                         }
-                       
-                }
+
+                    }
                     else
                     {
-                        l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
-                        //picReview2.ImageLocation = null;
-                        using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                            //l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
+                            bpp = rasterImage.BitsPerPixel.ToString();
+                            l_stateOutput.Invoke((MethodInvoker)(() => { l_stateOutput.Text = bpp; }));
+                            //picReview2.ImageLocation = null;
+                            using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                         {
                             picReview2.Image = new Bitmap(destImage1);
                         }
                     }
+                    
                 }
+                    
+                }
+
             }catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-           // await Task.Delay(1000);
-           /* picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
-            picReview2.MouseUp += new MouseEventHandler(picReview2_MouseUp);
-            picReview2.MouseMove += new MouseEventHandler(picReview2_MouseMove);*/
+            Thread.Sleep(10);
+            // await Task.Delay(1000);
+            /* picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
+             picReview2.MouseUp += new MouseEventHandler(picReview2_MouseUp);
+             picReview2.MouseMove += new MouseEventHandler(picReview2_MouseMove);*/
         }
        
         private async void pic2_MouseClick(object sender, MouseEventArgs e)
@@ -2298,8 +2807,11 @@ namespace project1
             {
                 PictureBox pb = (PictureBox)sender;
                 pdname = int.Parse(pb.Name);
-                Image();
-                // disp();
+               // pb.BackColor = Color.LightSteelBlue;
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -2358,29 +2870,6 @@ namespace project1
                     await Task.Delay(1000);
                 }
             }        
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            { 
-                Preview pv = new Preview();
-                pv.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void previewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
        
         private async void btnOpen_Click(object sender, EventArgs e)
@@ -2449,12 +2938,13 @@ namespace project1
                         //this._imageViewer.Items.AddFromImage(rasterImage, 1);
                         //Label la = new Label();
                         PictureBox pic2 = new PictureBox();
-                        pic2.Height = 200;
-                        pic2.Width = 160;
+                        
+                        pic2.Height = 140;
+                        pic2.Width = 120;
                         //selectImage = pageNumber.ToString();
                         //pic2.Location = new Point(x2, y2);
                         pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
-                        pic2.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pic2.SizeMode = PictureBoxSizeMode.Zoom;
                         pic2.BorderStyle = BorderStyle.FixedSingle;
                         pic2.Name = pageNumber.ToString();
                         y2 += pic2.Height + 10;
@@ -2466,14 +2956,15 @@ namespace project1
                         }
                         //this.panelImage.Controls.Add(pic2);
                         this.splitContainer1.Panel1.Controls.Add(pic2);
-
+                             //แก้
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                         {
                             pic2.Image = new Bitmap(destImage1);
                         }
                             pdname = 1;
                             Image();
-                            
+                        
+                            //แก้
                         imagescol.Add(rasterImage);
 
                         Console.WriteLine(pic2.Name);
@@ -2522,236 +3013,270 @@ namespace project1
 
         private void checkBox21_CheckedChanged(object sender, CheckBoxChangeEventArgs e)
         {
-            try
+            /* try
+             {
+                 if (checkBox21.Checked == true)
+                 {
+                     chckbox21 = true;
+                     using (ProgressPopup pp = new ProgressPopup(Image))
+                     {
+                         pp.ShowDialog();
+                     }
+                 }
+                 else
+                 {
+                     chckbox21 = false;
+                     using (ProgressPopup pp = new ProgressPopup(Image))
+                     {
+                         pp.ShowDialog();
+                     }
+                 }
+             }
+             catch (Exception ex) {
+                 MessageBox.Show(ex.Message);
+             }*/
+            chckbox21 = checkBox21.Checked;
+            if (chckbox21 == true)
             {
-                if (checkBox21.Checked == true)
-                {
-                    chckbox21 = true;
-                    Image();
-                }
-                else
-                {
-                    chckbox21 = false;
-                    Image();
-                }
+                btnLineRemove.Enabled = true;
+                btnDotRemove.Enabled = true;
+                btnHolePunchRemove.Enabled = true;
+                btnInvertedText.Enabled = true;
+                btnBorderRemove.Enabled = true;
+                btnSmooth.Enabled = true;
+                btnRakeRemove.Enabled = true;
             }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+            else {
+                btnLineRemove.Enabled = false;
+                //btnLineRemove
+                btnDotRemove.Enabled = false;
+                btnHolePunchRemove.Enabled = false;
+                btnInvertedText.Enabled = false;
+                btnBorderRemove.Enabled = false;
+                btnSmooth.Enabled = false;
+                btnRakeRemove.Enabled = false;
             }
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
+            // MessageBox.Show(checkBox21.Checked.ToString());
         }
         String value_tb_profile;
         List<String> Lpfname = new List<String>();
-
         private void cbboxUseProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
+                if (file != null) { 
                 // selectCombobox2 = cbboxUseProfile.SelectedItem.ToString();
                 int numfp = cbboxUseProfile.SelectedIndex;
-               // cbboxUseProfile.Items.Add("Configs");
-               
-                    List<String> list = new List<String>();
-                    if (cbboxUseProfile.SelectedItem.ToString() == "Default") {
-                        ResetValue();
-                        btnRemovepf.Enabled = false;
-                    }
-                    else
-                    {
-                        btnRemovepf.Enabled = true;
-                        List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                        profile2 profile3 = ProfileLoad.Where(c => c.Profilename == cbboxUseProfile.SelectedItem.ToString()).FirstOrDefault();
+                // cbboxUseProfile.Items.Add("Configs");
+
+                List<String> list = new List<String>();
+                if (cbboxUseProfile.SelectedItem.ToString() == "- Select Profile -")
+                {
+                   // ResetValue();
+                   //Defult();
+                    btnRemovepf.Enabled = false;
+                }
+                else
+                {
+                    btnRemovepf.Enabled = true;
+                    List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+                    profile2 profile3 = ProfileLoad.Where(c => c.Profilename == cbboxUseProfile.SelectedItem.ToString()).FirstOrDefault();
 
                     //ความสว่าง
-                        value_trackBar1 = profile3.Brightness;
-                         trackBar1.Value = value_trackBar1;
-                         l_brightness.Text = value_trackBar1.ToString();
-                         value_trackBar2 = profile3.Contrast;
-                         trackBar2.Value = value_trackBar2;
-                         l_contrast.Text = value_trackBar2.ToString();
-                         value_trackBar3 = profile3.Intensity;
-                         trackBar3.Value = value_trackBar3;
-                         l_intensity.Text = value_trackBar3.ToString();
-                         //ความคมชัด
-                         value_trackBar4 = profile3.Amount;
-                         trackBar4.Value = value_trackBar4;
-                         l_amount.Text = value_trackBar4.ToString();
-                         value_trackBar5 = profile3.Radius;
-                         trackBar5.Value = value_trackBar5;
-                         l_radius.Text = value_trackBar5.ToString();
-                         value_trackBar6 = profile3.Threshold;
-                         trackBar6.Value = value_trackBar6;
-                         l_threshold.Text = value_trackBar6.ToString();
-                         //Gray scale
-                         chckbox2 = profile3.UseGrayScale;
-                         checkBox2.Checked = chckbox2;
-                         value_trackBar7 = profile3.Redfactor;
-                         trackBar7.Value = value_trackBar7;
-                         l_redfactor.Text = value_trackBar7.ToString();
-                         value_trackBar8 = profile3.Greenfactor;
-                         trackBar8.Value = value_trackBar8;
-                         l_greenfactor.Text = value_trackBar8.ToString();
-                         value_trackBar9 = profile3.Bluefactor;
-                         trackBar9.Value = value_trackBar9;
-                         l_bluefactor.Text = value_trackBar9.ToString();
-                         //Document Image Cleanup Functions
-                         chckbox7 = profile3.AutoBinarize;
-                         checkBox7.Checked = chckbox7;
-                         chckbox3 = profile3.Despeckle;
-                         checkBox3.Checked = chckbox3;
-                         chckbox9 = profile3.DynamicBinary;
-                         checkBox9.Checked = chckbox9;
-                         value_trbDynBin1 = profile3.Dimension;
-                         trbDynBin1.Value = value_trbDynBin1;
-                         l_dimension.Text = value_trbDynBin1.ToString();
-                         value_trbDynBin2 = profile3.Localcontrast;
-                         trbDynBin2.Value = value_trbDynBin2;
-                         l_localcontrast.Text = value_trbDynBin2.ToString();
-                         selectCombobox = profile3.Binaryfilter;
-                         comboBox1.SelectedIndex = (selectCombobox + 1);
-                         //Dot Remove
-                         chckbox10 = profile3.Dotremove;
-                         checkBox10.Checked = chckbox10;
-                         value_trackBar10 = profile3.MaximumdotH;
-                         trackBar10.Value = value_trackBar10;
-                         l_maximumdotH.Text = value_trackBar10.ToString();
-                         value_trackBar11 = profile3.LmaximumdotW;
-                         trackBar11.Value = value_trackBar11;
-                         l_maximumdotW.Text = value_trackBar11.ToString();
-                         value_trackBar12 = profile3.LminimumdotH;
-                         trackBar12.Value = value_trackBar12;
-                         l_minimumdotH.Text = value_trackBar12.ToString();
-                         value_trackBar13 = profile3.MinimumdotW;
-                         trackBar13.Value = value_trackBar13;
-                         l_minimumdotW.Text = value_trackBar13.ToString();
-                         //Line Remove
-                         chckbox11 = profile3.LineRemove;
-                         checkBox11.Checked = chckbox11;
-                         value_trackBar14 = profile3.Gaplength;
-                         trackBar14.Value = value_trackBar14;
-                         l_gaplength.Text = value_trackBar14.ToString();
-                         value_trackBar15 = profile3.MaximumlineW;
-                         trackBar15.Value = value_trackBar15;
-                         l_maximumlineW.Text = value_trackBar15.ToString();
-                         value_trackBar16 = profile3.MinimumlineL;
-                         trackBar16.Value = value_trackBar16;
-                         l_minimumlineL.Text = value_trackBar16.ToString();
-                         value_trackBar17 = profile3.Maximumwall;
-                         trackBar17.Value = value_trackBar17;
-                         l_maximumwall.Text = value_trackBar17.ToString();
-                         value_trackBar22 = profile3.Wall;
-                         trackBar22.Value = value_trackBar22;
-                         l_wall.Text = value_trackBar22.ToString();
-                         //HolePunchRemove
-                         chckbox12 = profile3.HolePunchRemove;
-                         checkBox12.Checked = chckbox12;
-                         value_trackBar18 = profile3.Maximumhole;
-                         trackBar18.Value = value_trackBar18;
-                         l_maximumhole.Text = value_trackBar18.ToString();
-                         value_trackBar21 = profile3.Minimumhole;
-                         trackBar21.Value = value_trackBar21;
-                         l_minimumhole.Text = value_trackBar21.ToString();
-                         //InvertedText
-                         chckbox13 = profile3.InvertedText;
-                         checkBox13.Checked = chckbox13;
-                         value_trackBar19 = profile3.Maximumblack;
-                         trackBar19.Value = value_trackBar19;
-                         l_maximumblack.Text = value_trackBar19.ToString();
-                         value_trackBar20 = profile3.MinimumBlack;
-                         trackBar20.Value = value_trackBar20;
-                         l_minimumBlack.Text = value_trackBar20.ToString();
-                         value_trackBar23 = profile3.MinimuminverH;
-                         trackBar23.Value = value_trackBar23;
-                         l_minimuminverH.Text = value_trackBar23.ToString();
-                         value_trackBar24 = profile3.MinimuminvertW;
-                         trackBar24.Value = value_trackBar24;
-                         l_minimuminvertW.Text = value_trackBar24.ToString();
-                         //Auto Crop
-                         chckbox15 = profile3.AutoCrop;
-                         checkBox15.Checked = chckbox15;
-                         value_trackBar27 = profile3.CropThreshold;
-                         trackBar27.Value = value_trackBar27;
-                         l_cropThreshold.Text = value_trackBar27.ToString();
-                         //Boder Remove
-                         chckbox16 = profile3.BorderRemove;
-                         checkBox16.Checked = chckbox16;
-                         value_trackBar25 = profile3.Percent;
-                         trackBar25.Value = value_trackBar25;
-                         l_percent.Text = value_trackBar25.ToString();
-                         value_trackBar26 = profile3.Variance;
-                         trackBar26.Value = value_trackBar26;
-                         l_variance.Text = value_trackBar26.ToString();
-                         value_trackBar28 = profile3.WhitenoiseL;
-                         trackBar28.Value = value_trackBar28;
-                         l_whitenoiseL.Text = value_trackBar28.ToString();
-                         //Smooth
-                         chckbox17 = profile3.Smooth;
-                         checkBox17.Checked = chckbox17;
-                         value_trackBar31 = profile3.Length;
-                         trackBar31.Value = value_trackBar31;
-                         l_length.Text = value_trackBar31.ToString();
-                         //
-                         chckbox = profile3.AutoColorLevel;
-                         checkBox1.Checked = chckbox;
-                         chckbox4 = profile3.AutoBinary;
-                         checkBox4.Checked = chckbox4;
-                         //Maximum
-                         chckbox5 = profile3.Maximum;
-                         checkBox5.Checked = chckbox5;
-                         value_trbMaximum = profile3.Lmaximum;
-                         trbMaximum.Value = value_trbMaximum;
-                         l_maximum.Text = value_trbMaximum.ToString();
-                         //Minimum
-                         chckbox6 = profile3.Minimum;
-                         checkBox6.Checked = chckbox6;
-                         value_trbMinimum = profile3.Lminimum;
-                         trbMinimum.Value = value_trbMinimum;
-                         l_minimum.Text = value_trbMinimum.ToString();
-                         //Gamma
-                         chckbox8 = profile3.Gamma;
-                         checkBox8.Checked = chckbox8;
-                         value_trbGamma = profile3.Lgamma;
-                         trbGamma.Value = value_trbGamma;
-                         l_gamma.Text = value_trbGamma.ToString();
+                    value_trackBar1 = profile3.Brightness;
+                    trackBar1.Value = value_trackBar1;
+                    l_brightness.Text = value_trackBar1.ToString();
+                    value_trackBar2 = profile3.Contrast;
+                    trackBar2.Value = value_trackBar2;
+                    l_contrast.Text = value_trackBar2.ToString();
+                    value_trackBar3 = profile3.Intensity;
+                    trackBar3.Value = value_trackBar3;
+                    l_intensity.Text = value_trackBar3.ToString();
+                    //ความคมชัด
+                    value_trackBar4 = profile3.Amount;
+                    trackBar4.Value = value_trackBar4;
+                    l_amount.Text = value_trackBar4.ToString();
+                    value_trackBar5 = profile3.Radius;
+                    trackBar5.Value = value_trackBar5;
+                    l_radius.Text = value_trackBar5.ToString();
+                    value_trackBar6 = profile3.Threshold;
+                    trackBar6.Value = value_trackBar6;
+                    l_threshold.Text = value_trackBar6.ToString();
+                    //Gray scale
+                    chckbox2 = profile3.UseGrayScale;
+                    checkBox2.Checked = chckbox2;
+                    value_trackBar7 = profile3.Redfactor;
+                    trackBar7.Value = value_trackBar7;
+                    l_redfactor.Text = value_trackBar7.ToString();
+                    value_trackBar8 = profile3.Greenfactor;
+                    trackBar8.Value = value_trackBar8;
+                    l_greenfactor.Text = value_trackBar8.ToString();
+                    value_trackBar9 = profile3.Bluefactor;
+                    trackBar9.Value = value_trackBar9;
+                    l_bluefactor.Text = value_trackBar9.ToString();
+                    //Document Image Cleanup Functions
+                    chckbox7 = profile3.AutoBinarize;
+                    checkBox7.Checked = chckbox7;
+                    chckbox3 = profile3.Despeckle;
+                    checkBox3.Checked = chckbox3;
+                    chckbox9 = profile3.DynamicBinary;
+                    checkBox9.Checked = chckbox9;
+                    value_trbDynBin1 = profile3.Dimension;
+                    trbDynBin1.Value = value_trbDynBin1;
+                    l_dimension.Text = value_trbDynBin1.ToString();
+                    value_trbDynBin2 = profile3.Localcontrast;
+                    trbDynBin2.Value = value_trbDynBin2;
+                    l_localcontrast.Text = value_trbDynBin2.ToString();
+                    selectCombobox = profile3.Binaryfilter;
+                    comboBox1.SelectedIndex = (selectCombobox + 1);
+                    //Dot Remove
+                    chckbox10 = profile3.Dotremove;
+                    checkBox10.Checked = chckbox10;
+                    value_trackBar10 = profile3.MaximumdotH;
+                    trackBar10.Value = value_trackBar10;
+                    l_maximumdotH.Text = value_trackBar10.ToString();
+                    value_trackBar11 = profile3.LmaximumdotW;
+                    trackBar11.Value = value_trackBar11;
+                    l_maximumdotW.Text = value_trackBar11.ToString();
+                    value_trackBar12 = profile3.LminimumdotH;
+                    trackBar12.Value = value_trackBar12;
+                    l_minimumdotH.Text = value_trackBar12.ToString();
+                    value_trackBar13 = profile3.MinimumdotW;
+                    trackBar13.Value = value_trackBar13;
+                    l_minimumdotW.Text = value_trackBar13.ToString();
+                    //Line Remove
+                    chckbox11 = profile3.LineRemove;
+                    checkBox11.Checked = chckbox11;
+                    value_trackBar14 = profile3.Gaplength;
+                    trackBar14.Value = value_trackBar14;
+                    l_gaplength.Text = value_trackBar14.ToString();
+                    value_trackBar15 = profile3.MaximumlineW;
+                    trackBar15.Value = value_trackBar15;
+                    l_maximumlineW.Text = value_trackBar15.ToString();
+                    value_trackBar16 = profile3.MinimumlineL;
+                    trackBar16.Value = value_trackBar16;
+                    l_minimumlineL.Text = value_trackBar16.ToString();
+                    value_trackBar17 = profile3.Maximumwall;
+                    trackBar17.Value = value_trackBar17;
+                    l_maximumwall.Text = value_trackBar17.ToString();
+                    value_trackBar22 = profile3.Wall;
+                    trackBar22.Value = value_trackBar22;
+                    l_wall.Text = value_trackBar22.ToString();
+                    //HolePunchRemove
+                    chckbox12 = profile3.HolePunchRemove;
+                    checkBox12.Checked = chckbox12;
+                    value_trackBar18 = profile3.Maximumhole;
+                    trackBar18.Value = value_trackBar18;
+                    l_maximumhole.Text = value_trackBar18.ToString();
+                    value_trackBar21 = profile3.Minimumhole;
+                    trackBar21.Value = value_trackBar21;
+                    l_minimumhole.Text = value_trackBar21.ToString();
+                    //InvertedText
+                    chckbox13 = profile3.InvertedText;
+                    checkBox13.Checked = chckbox13;
+                    value_trackBar19 = profile3.Maximumblack;
+                    trackBar19.Value = value_trackBar19;
+                    l_maximumblack.Text = value_trackBar19.ToString();
+                    value_trackBar20 = profile3.MinimumBlack;
+                    trackBar20.Value = value_trackBar20;
+                    l_minimumBlack.Text = value_trackBar20.ToString();
+                    value_trackBar23 = profile3.MinimuminverH;
+                    trackBar23.Value = value_trackBar23;
+                    l_minimuminverH.Text = value_trackBar23.ToString();
+                    value_trackBar24 = profile3.MinimuminvertW;
+                    trackBar24.Value = value_trackBar24;
+                    l_minimuminvertW.Text = value_trackBar24.ToString();
+                    //Auto Crop
+                    chckbox15 = profile3.AutoCrop;
+                    checkBox15.Checked = chckbox15;
+                    value_trackBar27 = profile3.CropThreshold;
+                    trackBar27.Value = value_trackBar27;
+                    l_cropThreshold.Text = value_trackBar27.ToString();
+                    //Boder Remove
+                    chckbox16 = profile3.BorderRemove;
+                    checkBox16.Checked = chckbox16;
+                    value_trackBar25 = profile3.Percent;
+                    trackBar25.Value = value_trackBar25;
+                    l_percent.Text = value_trackBar25.ToString();
+                    value_trackBar26 = profile3.Variance;
+                    trackBar26.Value = value_trackBar26;
+                    l_variance.Text = value_trackBar26.ToString();
+                    value_trackBar28 = profile3.WhitenoiseL;
+                    trackBar28.Value = value_trackBar28;
+                    l_whitenoiseL.Text = value_trackBar28.ToString();
+                    //Smooth
+                    chckbox17 = profile3.Smooth;
+                    checkBox17.Checked = chckbox17;
+                    value_trackBar31 = profile3.Length;
+                    trackBar31.Value = value_trackBar31;
+                    l_length.Text = value_trackBar31.ToString();
+                    //
+                    chckbox = profile3.AutoColorLevel;
+                    checkBox1.Checked = chckbox;
+                    chckbox4 = profile3.AutoBinary;
+                    checkBox4.Checked = chckbox4;
+                    //Maximum
+                    chckbox5 = profile3.Maximum;
+                    checkBox5.Checked = chckbox5;
+                    value_trbMaximum = profile3.Lmaximum;
+                    trbMaximum.Value = value_trbMaximum;
+                    l_maximum.Text = value_trbMaximum.ToString();
+                    //Minimum
+                    chckbox6 = profile3.Minimum;
+                    checkBox6.Checked = chckbox6;
+                    value_trbMinimum = profile3.Lminimum;
+                    trbMinimum.Value = value_trbMinimum;
+                    l_minimum.Text = value_trbMinimum.ToString();
+                    //Gamma
+                    chckbox8 = profile3.Gamma;
+                    checkBox8.Checked = chckbox8;
+                    value_trbGamma = profile3.Lgamma;
+                    trbGamma.Value = value_trbGamma;
+                    l_gamma.Text = value_trbGamma.ToString();
 
-                         chckbox14 = profile3.AutoDeskew;
-                         checkBox14.Checked = chckbox14;
-                         //Flip Rotate Image
-                         chckbox18 = profile3.UseFlipRotateImage;
-                         checkBox18.Checked = chckbox18;
-                         value_trackBar29 = profile3.RotateImage;
-                         trackBar29.Value = value_trackBar29;
-                         l_RotateImage.Text = value_trackBar29.ToString();
-                         //RakeRemove
-                         chckbox19 = profile3.UseRakeRemove;
-                         checkBox19.Checked = chckbox19;
-                         value_numUpDown1 = profile3.NumUpDown1;
-                         numUpDown1.Value = value_numUpDown1;
-                         value_numUpDown2 = profile3.NumUpDown2;
-                         numUpDown2.Value = value_numUpDown2;
-                         value_numUpDown3 = profile3.NumUpDown3;
-                         numUpDown3.Value = value_numUpDown3;
-                         value_numUpDown4 = profile3.NumUpDown4;
-                         numUpDown4.Value = value_numUpDown4;
-                         value_numUpDown5 = profile3.NumUpDown5;
-                         numUpDown5.Value = value_numUpDown5;
-                         value_numUpDown6 = profile3.NumUpDown6;
-                         numUpDown6.Value = value_numUpDown6;
-                         value_numUpDown7 = profile3.NumUpDown7;
-                         numUpDown7.Value = value_numUpDown7;
-                         value_numUpDown8 = profile3.NumUpDown8;
-                         numUpDown8.Value = value_numUpDown8;
-                         value_numUpDown9 = profile3.NumUpDown9;
-                         numUpDown9.Value = value_numUpDown9;
-                         chckbox20 = profile3.AutoFilter;
-                         checkBox20.Checked = chckbox20;
-                         //convetrt to 1 bit
-                         chckbox21 = profile3.Convert1bit;
-                     checkBox21.Checked = chckbox21;
-                        //Display();
-                        l_saveprofile.Text = "usepf Success...";
-                    }
-                    list.Clear();
-
+                    chckbox14 = profile3.AutoDeskew;
+                    checkBox14.Checked = chckbox14;
+                    //Flip Rotate Image
+                    chckbox18 = profile3.UseFlipRotateImage;
+                    checkBox18.Checked = chckbox18;
+                    value_trackBar29 = profile3.RotateImage;
+                    trackBar29.Value = value_trackBar29;
+                    l_RotateImage.Text = value_trackBar29.ToString();
+                    //RakeRemove
+                    chckbox19 = profile3.UseRakeRemove;
+                    checkBox19.Checked = chckbox19;
+                    value_numUpDown1 = profile3.NumUpDown1;
+                    numUpDown1.Value = value_numUpDown1;
+                    value_numUpDown2 = profile3.NumUpDown2;
+                    numUpDown2.Value = value_numUpDown2;
+                    value_numUpDown3 = profile3.NumUpDown3;
+                    numUpDown3.Value = value_numUpDown3;
+                    value_numUpDown4 = profile3.NumUpDown4;
+                    numUpDown4.Value = value_numUpDown4;
+                    value_numUpDown5 = profile3.NumUpDown5;
+                    numUpDown5.Value = value_numUpDown5;
+                    value_numUpDown6 = profile3.NumUpDown6;
+                    numUpDown6.Value = value_numUpDown6;
+                    value_numUpDown7 = profile3.NumUpDown7;
+                    numUpDown7.Value = value_numUpDown7;
+                    value_numUpDown8 = profile3.NumUpDown8;
+                    numUpDown8.Value = value_numUpDown8;
+                    value_numUpDown9 = profile3.NumUpDown9;
+                    numUpDown9.Value = value_numUpDown9;
+                    chckbox20 = profile3.AutoFilter;
+                    checkBox20.Checked = chckbox20;
+                    //convetrt to 1 bit
+                    chckbox21 = profile3.Convert1bit;
+                    checkBox21.Checked = chckbox21;
+                    //Display();
+                    l_saveprofile.Text = "usepf Success...";
+                }
+                list.Clear();
+            }
             }
             catch (Exception ex)
             {
@@ -2870,6 +3395,11 @@ namespace project1
         {
             int w = splitContainer1.Panel1.Width;
             Console.WriteLine(""+w);
+
+        }
+
+        private void checkBox21_Click(object sender, EventArgs e)
+        {
 
         }
     }

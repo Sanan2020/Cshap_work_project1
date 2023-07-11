@@ -69,7 +69,7 @@ namespace project1
                     lprofile3.Add(profile2);
                     //N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofile3, savePath + ".xml");
                     }
-                    N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofile3, savePath + ".xml");
+                    N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofile3, savePath);
                     DialogResult res = MessageBox.Show("Export Profile Success", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (res == DialogResult.OK)
                     {
