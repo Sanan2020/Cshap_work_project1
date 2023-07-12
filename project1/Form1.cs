@@ -2956,7 +2956,7 @@ namespace project1
                         }
                         //this.panelImage.Controls.Add(pic2);
                         this.splitContainer1.Panel1.Controls.Add(pic2);
-                             //แก้
+                             //แก้*
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                         {
                             pic2.Image = new Bitmap(destImage1);
