@@ -531,6 +531,9 @@ namespace project1
                 value_trackBar4 = 1;
                 value_trackBar5 = 1;
                 value_trackBar6 = 1;
+                value_trackBar7 = 500;
+                value_trackBar8 = 250;
+                value_trackBar9 = 250;
                 value_trackBar10 = 10;
                 value_trackBar11 = 10;
                 value_trackBar12 = 1;
@@ -541,6 +544,16 @@ namespace project1
                 value_trackBar17 = 10;
                 value_trackBar22 = 7;
                 value_trackBar18 = 4;
+                value_trackBar19 = 95;
+                value_trackBar20 = 70;
+                value_trackBar21 = 2;
+                value_trackBar23 = 500;
+                value_trackBar24 = 5000;
+                value_trackBar27 = 20;
+                value_trackBar28 = 9;
+                value_trackBar25 = 20;
+                value_trackBar26 = 3;
+                value_trackBar31 = 2;
 
                 trackBar1.Value = value_trackBar1;
                 l_brightness.Text = value_trackBar1.ToString();
@@ -554,79 +567,55 @@ namespace project1
                 l_radius.Text = value_trackBar5.ToString();
                 trackBar6.Value = value_trackBar6;
                 l_threshold.Text = value_trackBar6.ToString();
-
-                
                 trackBar10.Value = value_trackBar10;
                 l_maximumdotH.Text = value_trackBar10.ToString();
-                
                 trackBar11.Value = value_trackBar11;
                 l_maximumdotW.Text = value_trackBar11.ToString();
-                
                 trackBar12.Value = value_trackBar12;
                 l_minimumdotH.Text = value_trackBar12.ToString();
-                
                 trackBar13.Value = value_trackBar13;
                 l_minimumdotW.Text = value_trackBar13.ToString();
-                
                 trackBar14.Value = value_trackBar14;
                 l_gaplength.Text = value_trackBar14.ToString();
-                
                 trackBar15.Value = value_trackBar15;
                 l_maximumlineW.Text = value_trackBar15.ToString();
-                
                 trackBar16.Value = value_trackBar16;
                 l_minimumlineL.Text = value_trackBar16.ToString();
-                
                 trackBar17.Value = value_trackBar17;
                 l_maximumwall.Text = value_trackBar17.ToString();
-                
                 trackBar22.Value = value_trackBar22;
                 l_wall.Text = value_trackBar22.ToString();
-                
                 trackBar18.Value = value_trackBar18;
                 l_maximumhole.Text = value_trackBar18.ToString();
-                value_trackBar21 = 2;
                 trackBar21.Value = value_trackBar21;
                 l_minimumhole.Text = value_trackBar21.ToString();
-                value_trackBar19 = 95;
                 trackBar19.Value = value_trackBar19;
                 l_maximumblack.Text = value_trackBar19.ToString();
-                value_trackBar20 = 70;
                 trackBar20.Value = value_trackBar20;
                 l_minimumBlack.Text = value_trackBar20.ToString();
-                value_trackBar23 = 500;
                 trackBar23.Value = value_trackBar23;
                 l_minimuminverH.Text = value_trackBar23.ToString();
-                value_trackBar24 = 5000;
                 trackBar24.Value = value_trackBar24;
                 l_minimuminvertW.Text = value_trackBar24.ToString();
-                value_trackBar27 = 20;
                 trackBar27.Value = value_trackBar27;
                 l_cropThreshold.Text = value_trackBar27.ToString();
-                value_trackBar25 = 20;
                 trackBar25.Value = value_trackBar25;
                 l_percent.Text = value_trackBar25.ToString();
-                value_trackBar26 = 3;
                 trackBar26.Value = value_trackBar26;
                 l_variance.Text = value_trackBar26.ToString();
-                value_trackBar28 = 9;
                 trackBar28.Value = value_trackBar28;
                 l_whitenoiseL.Text = value_trackBar28.ToString();
-                value_trackBar31 = 2;
                 trackBar31.Value = value_trackBar31;
                 l_length.Text = value_trackBar31.ToString();
+                trackBar7.Value = value_trackBar7;
+                l_redfactor.Text = value_trackBar7.ToString();
+                trackBar8.Value = value_trackBar8;
+                l_greenfactor.Text = value_trackBar8.ToString();
+                trackBar9.Value = value_trackBar9;
+                l_bluefactor.Text = value_trackBar9.ToString();
 
                 chckbox2 = false;
                 checkBox2.Checked = chckbox2;
-                value_trackBar7 = 500;
-                trackBar7.Value = value_trackBar7;
-                l_redfactor.Text = value_trackBar7.ToString();
-                value_trackBar8 = 250;
-                trackBar8.Value = value_trackBar8;
-                l_greenfactor.Text = value_trackBar8.ToString();
-                value_trackBar9 = 250;
-                trackBar9.Value = value_trackBar9;
-                l_bluefactor.Text = value_trackBar9.ToString();
 
                 selectCombobox = 0;
                 comboBox1.SelectedIndex = selectCombobox;
@@ -912,13 +901,13 @@ namespace project1
                 chckbox21 = false;
                 checkBox21.Checked = chckbox21;
 
-                cbboxUseProfile.SelectedItem = "- Select Profile -";
+                cbboxUseProfile.SelectedItem = "Default";
                 //Image();
 
-               /* using (ProgressPopup pp = new ProgressPopup(Image))
+                using (ProgressPopup pp = new ProgressPopup(Image))
                 {
                     pp.ShowDialog();
-                }*/
+                }
             }
             catch (Exception ex)
             {
@@ -1269,21 +1258,6 @@ namespace project1
                 pp.ShowDialog();
             }
         }
-        private bool Expanded4 = false;
-        private void btnDocImgClupFnct_Click(object sender, EventArgs e)
-        {
-            if (Expanded4)
-            {
-                // btnExpander.Image = Properties.Resources.collapse_arrow;    
-                panDocImgClupFnct.Height = 28;
-            }
-            else
-            {
-                //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panDocImgClupFnct.Height = 240;
-            }
-            Expanded4 = !Expanded4;
-        }
 
         private void checkBox10_CheckedChanged(object sender, EventArgs e)
         {
@@ -1499,7 +1473,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panInvertedText.Height = 309;
+                panInvertedText.Height = 272;
             }
             Expanded8 = !Expanded8;
         }
@@ -2094,38 +2068,6 @@ namespace project1
             }
         }
 
-        private void btnResetDocImgClupFnct_Click(object sender, EventArgs e)
-        {
-            try { 
-            chckbox7 = false;
-            checkBox7.Checked = chckbox7;
-            chckbox3 = false;
-            checkBox3.Checked = chckbox3;
-            chckbox9 = false;
-            checkBox9.Checked = chckbox9;
-            value_trbDynBin1 = 8;
-            trbDynBin1.Value = value_trbDynBin1;
-            l_dimension.Text = value_trbDynBin1.ToString();
-            value_trbDynBin2 = 16;
-            trbDynBin2.Value = value_trbDynBin2;
-            l_localcontrast.Text = value_trbDynBin2.ToString();
-            selectCombobox = 0;
-            comboBox1.SelectedIndex = selectCombobox;
-            chckbox14 = false;
-            checkBox14.Checked = chckbox14;
-
-                /*using (ProgressPopup pp = new ProgressPopup(Image))
-                {
-                    pp.ShowDialog();
-                }*/
-                Image();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void btnResetDotRemove_Click(object sender, EventArgs e)
         {
             try { 
@@ -2328,54 +2270,6 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
         }
-        private bool Expanded14;
-        private void btnMaxiMini_Click(object sender, EventArgs e)
-        {
-            if (Expanded14)
-            {
-                // btnExpander.Image = Properties.Resources.collapse_arrow;    
-                panMaxiMini.Height = 29;
-            }
-            else
-            {
-                //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panMaxiMini.Height = 323;
-            }
-            Expanded14 = !Expanded14;
-        }
-
-        private void btnResetMaxiMini_Click(object sender, EventArgs e)
-        {
-            try { 
-            chckbox = false;
-            checkBox1.Checked = chckbox;
-            chckbox4 = false;
-            checkBox4.Checked = chckbox4;
-            chckbox5 = false;
-            checkBox5.Checked = chckbox5;
-            value_trbMaximum = 3;
-            trbMaximum.Value = value_trbMaximum;
-            l_maximum.Text = value_trbMaximum.ToString();
-            chckbox6 = false;
-            checkBox6.Checked = chckbox6;
-            value_trbMinimum = 3;
-            trbMinimum.Value = value_trbMinimum;
-            l_minimum.Text = value_trbMinimum.ToString();
-            chckbox8 = false;
-            checkBox8.Checked = chckbox8;
-            value_trbGamma = 310;
-            trbGamma.Value = value_trbGamma;
-            l_gamma.Text = value_trbGamma.ToString();
-                using (ProgressPopup pp = new ProgressPopup(Image))
-                {
-                    pp.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         public void cbBox2re()
         {
@@ -2426,26 +2320,11 @@ namespace project1
 
         public List<RasterImage> imagescol = new List<RasterImage>();
         public int pageCount;
-        String[] file;
-       
+        public String[] file;
 
-        public void disp() {
-            PictureBox picReview2 = new PictureBox();
-            picReview2.Height = 600; //ความกว้างหน้ากระดาษ
-            picReview2.Width = 420;  //ความสูงหน้ากระดาษ
-            picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
-            picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.splitContainer1.Panel2.Controls.Add(picReview2);
-           /* using (Image destImage1 = RasterImageConverter.ConvertToImage(Image(), ConvertToImageOptions.None))
-            {
-                picReview2.Image = new Bitmap(destImage1);
-            }*/
-        }
         int pdname=1;
         RasterCodecs _rasterCodecs = new RasterCodecs();
         PictureBox picReview2 = new PictureBox();
-        //RasterImage rasterImage;
-       // RasterImage destImage;
         public void crepic() {
             try
             {
@@ -2492,29 +2371,19 @@ namespace project1
                     _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
                     RasterImage rasterImage = _rasterCodecs.Load(img, pdname);
 
-
-
                     ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                     //Increase the brightness by 25 percent  of the possible range. 
-                    command.Brightness = value_trackBar1;   //484
                     command.Contrast = value_trackBar2;     //394
+                    command.Brightness = value_trackBar1;   //484
                     command.Intensity = value_trackBar3;    //118
                     command.Run(rasterImage);
 
-
-                    /* progressBar1.Value = 0;
-                     await Task.Run(() => {
-                     });
-                     progressBar1.Value = 100;*/
-                    // progressBar1.Value = 0;
                     UnsharpMaskCommand command2 = new UnsharpMaskCommand();
                     command2.Amount = value_trackBar4;     //rate 0 - เกิน 1000
                     command2.Radius = value_trackBar5;     //rate 1 - เกิน 1000
                     command2.Threshold = value_trackBar6;  //rate 0 - 255
                     command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                     command2.Run(rasterImage);
-                    //await Task.Delay(1000);
-                    //progressBar1.Value = 100;
 
                     if (selectCombobox == 0) { }
                     else
@@ -2665,7 +2534,10 @@ namespace project1
                         // Clean up 
                         Marshal.FreeHGlobal(buffer);
 
-                        if (chckbox11 == true)
+                        rasterImage = null;
+                        rasterImage = destImage;
+
+                            if (chckbox11 == true)
                         {
                             LineRemoveCommand command13 = new LineRemoveCommand();
                             command13.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
@@ -2677,7 +2549,7 @@ namespace project1
                             command13.MinimumLineLength = value_trackBar16;
                             command13.MaximumWallPercent = value_trackBar17;
                             command13.Wall = value_trackBar22;
-                            command13.Run(destImage);
+                            command13.Run(rasterImage);
 
                             /*LineRemoveCommand commandc = new LineRemoveCommand();
                             commandc.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
@@ -2700,7 +2572,7 @@ namespace project1
                             command13.MaximumDotWidth = value_trackBar11;
                             command13.MinimumDotHeight = value_trackBar12;
                             command13.MinimumDotWidth = value_trackBar13;
-                            command13.Run(destImage);
+                            command13.Run(rasterImage);
                         }
 
                         if (chckbox12 == true)
@@ -2711,7 +2583,7 @@ namespace project1
                             command14.Location = HolePunchRemoveCommandLocation.Left;
                             command14.MaximumHoleCount = value_trackBar18;
                             command14.MinimumHoleCount = value_trackBar21;
-                            command14.Run(destImage);
+                            command14.Run(rasterImage);
                         }
 
                         if (chckbox13 == true)
@@ -2723,7 +2595,7 @@ namespace project1
                             command15.MinimumBlackPercent = value_trackBar20;
                             command15.MinimumInvertHeight = value_trackBar23;
                             command15.MinimumInvertWidth = value_trackBar24;
-                            command15.Run(destImage);
+                            command15.Run(rasterImage);
                         }
 
                         if (chckbox16 == true)
@@ -2735,7 +2607,7 @@ namespace project1
                             command18.Percent = value_trackBar25;
                             command18.Variance = value_trackBar26;
                             command18.WhiteNoiseLength = value_trackBar28;
-                            command18.Run(destImage);
+                            command18.Run(rasterImage);
                         }
 
                         if (chckbox17 == true)
@@ -2744,7 +2616,7 @@ namespace project1
                             command19.Smooth += new EventHandler<SmoothCommandEventArgs>(SmoothEventExample_S1);
                             command19.Flags = SmoothCommandFlags.FavorLong;
                             command19.Length = value_trackBar31;
-                            command19.Run(destImage);
+                            command19.Run(rasterImage);
                         }
                         //codecs.Save(image, Path.Combine(@"C:\Users\Administrator\Downloads\poc\image", "Result7.tif"), RasterImageFormat.Tif, 1);
                         // Prepare the command 
@@ -2762,157 +2634,68 @@ namespace project1
                             command20.Variance = value_numUpDown8;             //ความแปรปรวน
                             command20.TeethSpacing = value_numUpDown9;         //ระยะห่างระหว่างฟัน
                             command20.AutoFilter = chckbox20;       //ตัวกรองอัตโนมัติ
-                            command20.Run(destImage);
+                            command20.Run(rasterImage);
                         }
-                            //l_stateOutput.Text = "Image " + destImage.BitsPerPixel.ToString() + " Bits";
-                            bpp = destImage.BitsPerPixel.ToString();
-                            l_stateOutput.Invoke((MethodInvoker)(() => { l_stateOutput.Text = bpp; }));
-                            
-                        using (Image destImage1 = RasterImageConverter.ConvertToImage(destImage, ConvertToImageOptions.None))
-                        {
-                            picReview2.Image = new Bitmap(destImage1);
-                        }
-
                     }
-                    else
+                    bpp = rasterImage.BitsPerPixel.ToString();
+                    l_stateOutput.Invoke((MethodInvoker)(() => { l_stateOutput.Text = bpp; }));
+                    using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                     {
-                            //l_stateOutput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
-                            bpp = rasterImage.BitsPerPixel.ToString();
-                            l_stateOutput.Invoke((MethodInvoker)(() => { l_stateOutput.Text = bpp; }));
-                            //picReview2.ImageLocation = null;
-                            using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                        {
-                            picReview2.Image = new Bitmap(destImage1);
-                        }
+                        picReview2.Image = new Bitmap(destImage1);
                     }
-                    
                 }
-                    
-                }
-
-            }catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
-            Thread.Sleep(10);
-            // await Task.Delay(1000);
-            /* picReview2.MouseDown += new MouseEventHandler(picReview2_MouseDown);
-             picReview2.MouseUp += new MouseEventHandler(picReview2_MouseUp);
-             picReview2.MouseMove += new MouseEventHandler(picReview2_MouseMove);*/
+        }catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+        Thread.Sleep(10);
         }
        
         private async void pic2_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
-                PictureBox pb = (PictureBox)sender;
-                pdname = int.Parse(pb.Name);
-               // pb.BackColor = Color.LightSteelBlue;
-                using (ProgressPopup pp = new ProgressPopup(Image))
-                {
-                    pp.ShowDialog();
-                }
+                 PictureBox pb = (PictureBox)sender;
+                 pdname = int.Parse(pb.Name);
+                 using (ProgressPopup pp = new ProgressPopup(Image))
+                 {
+                     pp.ShowDialog();
+                 }
+                //Image();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
         }
-        public async void chang(){
-            splitContainer1.Panel2.Controls.Clear();
-            int w3 = 550 / 2;
-            int x3 = (splitContainer1.Panel2.Width / 2) - w3;
 
-            //int x3 = 40;//ระวหว่าง panel
-            int y3 = 20;//ระวหว่าง panel
-            int maxWidth3 = -1;
-            
-            //Load documents at 300 DPI for better viewing
-            _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-            int pageCount2;
-            foreach (string img in file){
-                using (var imageInfo = _rasterCodecs.GetInformation(img, true)){
-                    pageCount2 = imageInfo.TotalPages; //จำนวนเอกสาร
-                }
-                Console.WriteLine("Page " + pageCount2);
-                //l_numberPages.Text = pageCount2.ToString() + " Page";
-                // Loads all the pages into the viewer
-                for (var pageNumber = 1; pageNumber <= pageCount2; pageNumber++){
-                    // Load it as a raster image and add it
-                    var rasterImage = _rasterCodecs.Load(img, pageNumber);
-                    PictureBox pic3 = new PictureBox();
-                    ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
-                    //Increase the brightness by 25 percent  of the possible range. 
-                    command.Brightness = value_trackBar1;   //484
-                    command.Contrast = value_trackBar2;     //394
-                    command.Intensity = value_trackBar3;    //118
-                    command.Run(rasterImage);
-                    using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                    {
-                        // piccenter.Image = new Bitmap(destImage1);
-                        pic3.Image = new Bitmap(destImage1);
-                    }
-                    pic3.Height = 640; //ความสูงหน้ากระดาษ
-                    pic3.Width = 550;  //ความกว้างหน้ากระดาษ
-                    pic3.Location = new Point(x3, y3 + splitContainer1.Panel2.AutoScrollPosition.Y);
-                    //pic3.Location = new Point(x3, y3);
-                    pic3.SizeMode = PictureBoxSizeMode.StretchImage;
-                    pic3.BorderStyle = BorderStyle.FixedSingle;
-
-                    y3 += pic3.Height + 10; //ระยะห่างระหว่างหน้า
-                    maxWidth3 = Math.Max(pic3.Height, maxWidth3);
-                    if (x3 > this.ClientSize.Width - 100)
-                    {
-                        y3 = 20;
-                        x3 += maxWidth3 + 100;
-                    }
-                    //this.panelcenter.Controls.Add(pic3);
-                    this.splitContainer1.Panel2.Controls.Add(pic3);
-                    await Task.Delay(1000);
-                }
-            }        
-        }
-       
         private async void btnOpen_Click(object sender, EventArgs e)
         {
             try{
-                //  RasterCodecs codecs = new RasterCodecs();
-                // codecs.ThrowExceptionsOnInvalidImages = true;
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "All File |*.*";
                 DialogResult dr = ofd.ShowDialog();
-                int page = 0;
 
-            if (dr == System.Windows.Forms.DialogResult.OK)
-            {
-                this.progressBarX1.Visible = true;
-                imagescol.Clear();
-                crepic(); //สร้าง picReview
-                              //progressBar1.Value = 0;
-                splitContainer1.Panel1.Controls.Clear();
-                file = ofd.FileNames;
-                int w2 = 150 / 2;
-                int x2 = (splitContainer1.Panel1.Width / 2) - w2;
-                //int x3 = 40;//ระวหว่าง panel
-                int y2 = 20;//ระวหว่าง panel
-                int maxWidth2 = -1;
-                RasterCodecs _rasterCodecs = new RasterCodecs();
-                //Load documents at 300 DPI for better viewing
-                _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-                    // int pageCount;
-                    foreach (string img in file)
-                    {
-                        using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
-                    {
+                if (dr == System.Windows.Forms.DialogResult.OK){
+                    this.progressBarX1.Visible = true;
+                    crepic(); //สร้าง picReview         
+                    splitContainer1.Panel1.Controls.Clear();
+                    file = ofd.FileNames;
+                    int w2 = 150 / 2;
+                    int x2 = (splitContainer1.Panel1.Width / 2) - w2;
+                    //int x3 = 40;//ระวหว่าง panel
+                    int y2 = 20;//ระวหว่าง panel
+                    int maxWidth2 = -1;
+                    RasterCodecs _rasterCodecs = new RasterCodecs();
+                    //Load documents at 300 DPI for better viewing
+                    _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+                    foreach (string img in file){
+                        using (var imageInfo = _rasterCodecs.GetInformation(img, true)){ //นับจำนวนเอกสาร
                         pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
-                    }
-                    Console.WriteLine("Page " + pageCount);
-                    
-                    // Loads all the pages into the viewer
-                    for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
-                    {
-                        
-                        //progressBar1.Value += (pageCount * 100) / 1000;
-                        //await Task.Delay(1000);
+                        }
+                        Console.WriteLine("Page " + pageCount);
+                        // Loads all the pages into the viewer
+                        for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++){
                         // Load it as a raster image and add it
                         _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
                         _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
@@ -2921,32 +2704,17 @@ namespace project1
                         _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
                         var rasterImage = _rasterCodecs.Load(img, pageNumber);
                         l_numberPages.Text = $"Page {pageNumber} / { pageCount.ToString()}";
-                            //  this.progressBarX1.MarqueeAnimationSpeed = 30;
-                            //this.progressBarX1.Style = ProgressBarStyle.Marquee;
-                            this.progressBarX1.MarqueeAnimationSpeed = 20;
-
-                            l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
-                            if (rasterImage.BitsPerPixel.ToString() == "1")
-                            {
-                                chckbox21 = true;
-                                checkBox21.Checked = chckbox21;
-                            }
-                            else {
-                                chckbox21 = false;
-                                checkBox21.Checked = chckbox21;
-                            }
-                        //this._imageViewer.Items.AddFromImage(rasterImage, 1);
-                        //Label la = new Label();
+                        l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
+                            
+                        this.progressBarX1.MarqueeAnimationSpeed = 20;
                         PictureBox pic2 = new PictureBox();
-                        
                         pic2.Height = 140;
                         pic2.Width = 120;
-                        //selectImage = pageNumber.ToString();
-                        //pic2.Location = new Point(x2, y2);
                         pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
                         pic2.SizeMode = PictureBoxSizeMode.Zoom;
                         pic2.BorderStyle = BorderStyle.FixedSingle;
                         pic2.Name = pageNumber.ToString();
+                        
                         y2 += pic2.Height + 10;
                         maxWidth2 = Math.Max(pic2.Height, maxWidth2);
                         if (x2 > this.ClientSize.Width - 100)
@@ -2954,25 +2722,20 @@ namespace project1
                             y2 = 20;
                             x2 += maxWidth2 + 100;
                         }
-                        //this.panelImage.Controls.Add(pic2);
                         this.splitContainer1.Panel1.Controls.Add(pic2);
-                             //แก้*
+                        //แก้*
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                         {
                             pic2.Image = new Bitmap(destImage1);
                         }
-                            pdname = 1;
-                            Image();
-                        
-                            //แก้
-                        imagescol.Add(rasterImage);
-
+                        pdname = 1;
+                        Image();
                         Console.WriteLine(pic2.Name);
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
                         await Task.Delay(1000);
                     }    
             }
-        }
+                }
                 this.progressBarX1.Visible = false;
      }
             catch (Exception ex)
@@ -3013,53 +2776,59 @@ namespace project1
 
         private void checkBox21_CheckedChanged(object sender, CheckBoxChangeEventArgs e)
         {
-            /* try
-             {
-                 if (checkBox21.Checked == true)
-                 {
-                     chckbox21 = true;
-                     using (ProgressPopup pp = new ProgressPopup(Image))
-                     {
-                         pp.ShowDialog();
-                     }
-                 }
-                 else
-                 {
-                     chckbox21 = false;
-                     using (ProgressPopup pp = new ProgressPopup(Image))
-                     {
-                         pp.ShowDialog();
-                     }
-                 }
-             }
-             catch (Exception ex) {
-                 MessageBox.Show(ex.Message);
-             }*/
             chckbox21 = checkBox21.Checked;
             if (chckbox21 == true)
             {
                 btnLineRemove.Enabled = true;
+                btnLineRemove.FlatStyle = FlatStyle.Flat;
+                btnResetLineRemove.Enabled = true;
                 btnDotRemove.Enabled = true;
+                btnDotRemove.FlatStyle = FlatStyle.Flat;
+                btnResetDotRemove.Enabled = true;
                 btnHolePunchRemove.Enabled = true;
+                btnHolePunchRemove.FlatStyle = FlatStyle.Flat;
+                btnResetHolePunchRemove.Enabled = true;
                 btnInvertedText.Enabled = true;
+                btnInvertedText.FlatStyle = FlatStyle.Flat;
+                btnResetInvertedText.Enabled = true;
                 btnBorderRemove.Enabled = true;
+                btnBorderRemove.FlatStyle = FlatStyle.Flat;
+                btnResetBorderRemove.Enabled = true;
                 btnSmooth.Enabled = true;
+                btnSmooth.FlatStyle = FlatStyle.Flat;
+                btnResetSmooth.Enabled = true;
                 btnRakeRemove.Enabled = true;
+                btnRakeRemove.FlatStyle = FlatStyle.Flat;
+                btnResetRakeRemove.Enabled = true;
             }
             else {
                 btnLineRemove.Enabled = false;
-                //btnLineRemove
+                btnLineRemove.FlatStyle = FlatStyle.Standard;
+                btnResetLineRemove.Enabled = false;
                 btnDotRemove.Enabled = false;
+                btnDotRemove.FlatStyle = FlatStyle.Standard;
+                btnResetDotRemove.Enabled = false;
                 btnHolePunchRemove.Enabled = false;
+                btnHolePunchRemove.FlatStyle = FlatStyle.Standard;
+                btnResetHolePunchRemove.Enabled = false;
                 btnInvertedText.Enabled = false;
+                btnInvertedText.FlatStyle = FlatStyle.Standard;
+                btnResetInvertedText.Enabled= false;
                 btnBorderRemove.Enabled = false;
+                btnBorderRemove.FlatStyle = FlatStyle.Standard;
+                btnResetBorderRemove.Enabled =false;
                 btnSmooth.Enabled = false;
+                btnSmooth.FlatStyle = FlatStyle.Standard;
+                btnResetSmooth.Enabled = false;
                 btnRakeRemove.Enabled = false;
+                btnRakeRemove.FlatStyle = FlatStyle.Standard;
+                btnResetRakeRemove.Enabled=false;
             }
-            using (ProgressPopup pp = new ProgressPopup(Image))
+            Image();
+          /*  using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
-            }
+            }*/
             // MessageBox.Show(checkBox21.Checked.ToString());
         }
         String value_tb_profile;
@@ -3074,9 +2843,9 @@ namespace project1
                 // cbboxUseProfile.Items.Add("Configs");
 
                 List<String> list = new List<String>();
-                if (cbboxUseProfile.SelectedItem.ToString() == "- Select Profile -")
+                if (cbboxUseProfile.SelectedItem.ToString() == "Default")
                 {
-                   // ResetValue();
+                   ResetValue();
                    //Defult();
                     btnRemovepf.Enabled = false;
                 }
@@ -3395,10 +3164,163 @@ namespace project1
         {
             int w = splitContainer1.Panel1.Width;
             Console.WriteLine(""+w);
-
+           /* x2 = (splitContainer1.Panel1.Width / 2) - w2;
+            pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y);*/
         }
 
         private void checkBox21_Click(object sender, EventArgs e)
+        {
+
+        }
+        private bool Expanded15;
+        private void btnAutoFunction_Click(object sender, EventArgs e)
+        {
+            if (Expanded15)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panAutoFunction.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panAutoFunction.Height = 198;
+            }
+            Expanded15 = !Expanded15;
+        }
+
+        private void btnResetAutoFunction_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                selectCombobox = 0;
+                comboBox1.SelectedIndex = selectCombobox;
+                chckbox7 = false;
+                checkBox7.Checked = chckbox7;
+                chckbox3 = false;
+                checkBox3.Checked = chckbox3;
+                chckbox = false;
+                checkBox1.Checked = chckbox;
+                chckbox4 = false;
+                checkBox4.Checked = chckbox4;
+                chckbox14 = false;
+                checkBox14.Checked = chckbox14;
+                /*using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }*/
+                Image();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private bool Expanded16;
+        private void btnDynamicBinary_Click(object sender, EventArgs e)
+        {
+            if (Expanded16)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panDynamicBinary.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panDynamicBinary.Height = 206;
+            }
+            Expanded16 = !Expanded16;
+        }
+
+        private void btnResetDynamicBinary_Click(object sender, EventArgs e)
+        {
+            chckbox9 = false;
+            checkBox9.Checked = chckbox9;
+            value_trbDynBin1 = 8;
+            trbDynBin1.Value = value_trbDynBin1;
+            l_dimension.Text = value_trbDynBin1.ToString();
+            value_trbDynBin2 = 16;
+            trbDynBin2.Value = value_trbDynBin2;
+            l_localcontrast.Text = value_trbDynBin2.ToString();
+        }
+        private bool Expanded17;
+        private void btnGamma_Click(object sender, EventArgs e)
+        {
+            if (Expanded17)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panGamma.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panGamma.Height = 114;
+            }
+            Expanded17 = !Expanded17;
+        }
+
+        private void btnResetGamma_Click(object sender, EventArgs e)
+        {
+            chckbox8 = false;
+            checkBox8.Checked = chckbox8;
+            value_trbGamma = 310;
+            trbGamma.Value = value_trbGamma;
+            l_gamma.Text = value_trbGamma.ToString();
+        }
+        private bool Expanded18;
+        private void btnMaximum_Click(object sender, EventArgs e)
+        {
+            if (Expanded18)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panMaximum.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panMaximum.Height = 114;
+            }
+            Expanded18 = !Expanded18;
+        }
+
+        private void btnResetMaximum_Click(object sender, EventArgs e)
+        {
+            chckbox5 = false;
+            checkBox5.Checked = chckbox5;
+            value_trbMaximum = 3;
+            trbMaximum.Value = value_trbMaximum;
+            l_maximum.Text = value_trbMaximum.ToString();
+        }
+        private bool Expanded19;
+        private void btnMinimum_Click(object sender, EventArgs e)
+        {
+           if(Expanded19)
+            {
+                // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                panMinimum.Height = 29;
+            }
+            else
+            {
+                //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                panMinimum.Height = 111;
+            }
+            Expanded19 = !Expanded19;
+        }
+
+        private void btnResetMinimum_Click(object sender, EventArgs e)
+        {
+            chckbox6 = false;
+            checkBox6.Checked = chckbox6;
+            value_trbMinimum = 3;
+            trbMinimum.Value = value_trbMinimum;
+            l_minimum.Text = value_trbMinimum.ToString();
+        }
+
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ribbonBar3_ItemClick(object sender, EventArgs e)
         {
 
         }

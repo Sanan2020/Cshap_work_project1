@@ -33,7 +33,7 @@ namespace project1
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile("C:/Users/Administrator/Downloads/in/License_SAMPLE.png");
+            //pictureBox1.Image = Image.FromFile("C:/Users/Administrator/Downloads/in/License_SAMPLE.png");
         }
     }
 }

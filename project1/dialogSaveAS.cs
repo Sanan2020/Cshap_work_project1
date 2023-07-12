@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Leadtools.Document.Writer;
 using System.IO;
+using Leadtools.Codecs;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace project1
 {
@@ -26,57 +28,86 @@ namespace project1
         {
             InitializeComponent();
         }
-
+        int pageCount;
         private async void dialogSaveAS_Load(object sender, EventArgs e)
         {
-            try{
-                for (int i = 1; i <= Form1.form1.pageCount; i++)
+            try
+            {
+                var docWriter = new DocumentWriter();
+                // Begin the document 
+                var outputFileName = Path.Combine(Form1.form1.savePath, ".pdf");
+                docWriter.BeginDocument(Form1.form1.savePath, DocumentFormat.Pdf);
+                // Finally, add a third page as an image 
+                var rasterPage = new DocumentWriterRasterPage();
+
+                RasterCodecs _rasterCodecs = new RasterCodecs();
+                _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+                foreach (string img in Form1.form1.file)
                 {
-                    label2.Text = $"Page {i} / {Form1.form1.pageCount.ToString()}";
+                    using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
+                    {
+                        pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
+                    }
+                    for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
+                    {
+                        _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
+                        _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
+                        _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
+                        _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
+                        _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
+                        var rasterImage = _rasterCodecs.Load(img, pageNumber);
+
+                        label2.Text = $"Page {pageNumber} / {pageCount.ToString()}";
                     // progressBar1.Value += (Form1.form1.pageCount * 100) / 100;
                     ContrastBrightnessIntensityCommand command = new ContrastBrightnessIntensityCommand();
                     //Increase the brightness by 25 percent  of the possible range. 
                     command.Brightness = Form1.form1.value_trackBar1;   //484
                     command.Contrast = Form1.form1.value_trackBar2;     //394
                     command.Intensity = Form1.form1.value_trackBar3;    //118
-                    command.Run(Form1.form1.imagescol[i - 1]);
+                    command.Run(rasterImage);
 
                     UnsharpMaskCommand command2 = new UnsharpMaskCommand();
                     command2.Amount = Form1.form1.value_trackBar4;     //rate 0 - เกิน 1000
                     command2.Radius = Form1.form1.value_trackBar5;     //rate 1 - เกิน 1000
                     command2.Threshold = Form1.form1.value_trackBar6;  //rate 0 - 255
                     command2.ColorType = UnsharpMaskCommandColorType.Rgb;
-                    command2.Run(Form1.form1.imagescol[i - 1]);
+                    command2.Run(rasterImage);
 
-                    if (Form1.form1.selectCombobox == 0) { }
-                    else
+                    if (Form1.form1.selectCombobox > 0) 
+                    {
+                            Form1.form1.selectCombobox = Form1.form1.selectCombobox - 1;
+                            //MessageBox.Show(selectCombobox.ToString());
+                            BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)Form1.form1.selectCombobox);
+                            command3.Run(rasterImage);
+                    }
+                   /* else
                     {
                         Form1.form1.selectCombobox = Form1.form1.selectCombobox - 1;
                         //MessageBox.Show(selectCombobox.ToString());
                         BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)Form1.form1.selectCombobox);
-                        command3.Run(Form1.form1.imagescol[i - 1]);
-                    }
+                        command3.Run(rasterImage);
+                    }*/
 
                     if (Form1.form1.chckbox == true)
                     {
                         AutoColorLevelCommand command4 = new AutoColorLevelCommand();
-                        command4.Run(Form1.form1.imagescol[i - 1]);
+                        command4.Run(rasterImage);
                     }
 
-                    if (Form1.form1.chckbox2 == true)
+                    if (Form1.form1.chckbox2)
                     {
                         GrayScaleExtendedCommand command5 = new GrayScaleExtendedCommand();
                         command5.RedFactor = Form1.form1.value_trackBar7;
                         command5.GreenFactor = Form1.form1.value_trackBar8;
                         command5.BlueFactor = Form1.form1.value_trackBar9;
-                        command5.Run(Form1.form1.imagescol[i - 1]);
+                        command5.Run(rasterImage);
                     }
 
                     if (Form1.form1.chckbox4 == true)
                     {
                         AutoBinaryCommand command7 = new AutoBinaryCommand();
                         //Apply Auto Binary Segment. 
-                        command7.Run(Form1.form1.imagescol[i - 1]);
+                        command7.Run(rasterImage);
                     }
 
                     if (Form1.form1.chckbox5 == true)
@@ -84,7 +115,7 @@ namespace project1
                         MaximumCommand command8 = new MaximumCommand();
                         //Apply Maximum filter. 
                         command8.Dimension = Form1.form1.value_trbMaximum;
-                        command8.Run(Form1.form1.imagescol[i - 1]);
+                        command8.Run(rasterImage);
                     }
 
                     if (Form1.form1.chckbox6 == true)
@@ -92,13 +123,13 @@ namespace project1
                         MinimumCommand command9 = new MinimumCommand();
                         //Apply the Minimum filter. 
                         command9.Dimension = Form1.form1.value_trbMinimum;
-                        command9.Run(Form1.form1.imagescol[i - 1]);
+                        command9.Run(rasterImage);
                     }
 
                     if (Form1.form1.chckbox7 == true)
                     {
                         AutoBinarizeCommand command10 = new AutoBinarizeCommand();
-                        command10.Run(Form1.form1.imagescol[i - 1]);
+                        command10.Run(rasterImage);
                     }
 
                     if (Form1.form1.chckbox8 == true)
@@ -106,7 +137,7 @@ namespace project1
                         GammaCorrectCommand command11 = new GammaCorrectCommand();
                         //Set a gamma value of 2.5. 
                         command11.Gamma = Form1.form1.value_trbGamma;
-                        command11.Run(Form1.form1.imagescol[i - 1]);
+                        command11.Run(rasterImage);
                     }
                     if (Form1.form1.chckbox9 == true)
                     {
@@ -114,54 +145,54 @@ namespace project1
                         command12.Dimension = Form1.form1.value_trbDynBin1;
                         command12.LocalContrast = Form1.form1.value_trbDynBin2;
                         // convert it into a black and white image without changing its bits per pixel. 
-                        command12.Run(Form1.form1.imagescol[i - 1]);
+                        command12.Run(rasterImage);
                     }
                     if (Form1.form1.chckbox14 == true)
                     {
                         DeskewCommand command16 = new DeskewCommand();
                         //Deskew the image. 
                         command16.Flags = DeskewCommandFlags.DeskewImage | DeskewCommandFlags.DoNotFillExposedArea;
-                        command16.Run(Form1.form1.imagescol[i - 1]);
+                        command16.Run(rasterImage);
                     }
                     if (Form1.form1.chckbox15 == true)
                     {
                         AutoCropCommand command17 = new AutoCropCommand();
                         //AutoCrop the image with 20 tolerance. 
                         command17.Threshold = Form1.form1.value_trackBar27;
-                        command17.Run(Form1.form1.imagescol[i - 1]);
+                        command17.Run(rasterImage);
                     }
                     if (Form1.form1.chckbox3 == true)
                     {
                         DespeckleCommand command6 = new DespeckleCommand();
                         //Remove speckles from the image. 
-                        command6.Run(Form1.form1.imagescol[i - 1]);
+                        command6.Run(rasterImage);
                     }
                     if (Form1.form1.chckbox18 == true)
                     {
                         FlipCommand flip = new FlipCommand(false);
-                        RunCommand(Form1.form1.imagescol[i - 1], flip);
+                        RunCommand(rasterImage, flip);
                         // rotate the image by 45 degrees 
                         RotateCommand rotate = new RotateCommand();
                         rotate.Angle = (Form1.form1.value_trackBar29 * 100);
                         rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
                         rotate.Flags = RotateCommandFlags.Resize;
-                        RunCommand(Form1.form1.imagescol[i - 1], rotate);
+                        RunCommand(rasterImage, rotate);
                     }
                     if (Form1.form1.chckbox21 == true)
                     {
                         RasterImage destImage = new RasterImage(
                         RasterMemoryFlags.Conventional,
-                        Form1.form1.imagescol[i - 1].Width,
-                        Form1.form1.imagescol[i - 1].Height,
+                        rasterImage.Width,
+                        rasterImage.Height,
                          1,
-                        Form1.form1.imagescol[i - 1].Order,
-                        Form1.form1.imagescol[i - 1].ViewPerspective,
-                        Form1.form1.imagescol[i - 1].GetPalette(),
+                        rasterImage.Order,
+                        rasterImage.ViewPerspective,
+                        rasterImage.GetPalette(),
                         IntPtr.Zero,
                         0);
                         int bufferSize = RasterBufferConverter.CalculateConvertSize(
-                           Form1.form1.imagescol[i - 1].Width,
-                           Form1.form1.imagescol[i - 1].BitsPerPixel,
+                           rasterImage.Width,
+                           rasterImage.BitsPerPixel,
                            destImage.Width,
                            destImage.BitsPerPixel);
 
@@ -170,17 +201,17 @@ namespace project1
                         //Assert.IsFalse(buffer == IntPtr.Zero);
 
                         // Process each row from srcImage to destImage. 
-                        Form1.form1.imagescol[i - 1].Access();
+                        rasterImage.Access();
                         destImage.Access();
-                        for (int ii = 0; ii < Form1.form1.imagescol[i - 1].Height; ii++)
+                        for (int ii = 0; ii < rasterImage.Height; ii++)
                         {
-                            Form1.form1.imagescol[i - 1].GetRow(ii, buffer, Form1.form1.imagescol[i - 1].BytesPerLine);
+                            rasterImage.GetRow(ii, buffer, rasterImage.BytesPerLine);
                             RasterBufferConverter.Convert(
                             buffer,
-                               Form1.form1.imagescol[i - 1].Width,
-                               Form1.form1.imagescol[i - 1].BitsPerPixel,
+                               rasterImage.Width,
+                               rasterImage.BitsPerPixel,
                                destImage.BitsPerPixel,
-                               Form1.form1.imagescol[i - 1].Order,
+                               rasterImage.Order,
                                destImage.Order,
                                null,
                                null,
@@ -192,13 +223,13 @@ namespace project1
                         }
 
                         destImage.Release();
-                        Form1.form1.imagescol[i - 1].Release();
+                        rasterImage.Release();
 
                         // Clean up 
                         Marshal.FreeHGlobal(buffer);
-                        /**/
-                        Form1.form1.imagescol[i - 1] = null;
-                        Form1.form1.imagescol[i - 1] = destImage;
+                            /**/
+                        rasterImage = null;
+                        rasterImage = destImage;
                         /**/
                         if (Form1.form1.chckbox11 == true)
                         {
@@ -212,19 +243,20 @@ namespace project1
                             command13.MinimumLineLength = Form1.form1.value_trackBar16;
                             command13.MaximumWallPercent = Form1.form1.value_trackBar17;
                             command13.Wall = Form1.form1.value_trackBar22;
-                            command13.Run(Form1.form1.imagescol[i - 1]);
+                            command13.Run(rasterImage);
+           
 
-                            /*LineRemoveCommand commandc = new LineRemoveCommand();
-                            commandc.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
-                            commandc.Type = LineRemoveCommandType.Vertical;
-                            //command13.Type = LineRemoveCommandType.Vertical;
-                            commandc.Flags = LineRemoveCommandFlags.UseGap;
-                            commandc.GapLength = value_trackBar14;
-                            commandc.MaximumLineWidth = value_trackBar15;
-                            commandc.MinimumLineLength = value_trackBar16;
-                            commandc.MaximumWallPercent = value_trackBar17;
-                            commandc.Wall = value_trackBar22;
-                            commandc.Run(destImage);*/
+                                /*LineRemoveCommand commandc = new LineRemoveCommand();
+                                commandc.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+                                commandc.Type = LineRemoveCommandType.Vertical;
+                                //command13.Type = LineRemoveCommandType.Vertical;
+                                commandc.Flags = LineRemoveCommandFlags.UseGap;
+                                commandc.GapLength = value_trackBar14;
+                                commandc.MaximumLineWidth = value_trackBar15;
+                                commandc.MinimumLineLength = value_trackBar16;
+                                commandc.MaximumWallPercent = value_trackBar17;
+                                commandc.Wall = value_trackBar22;
+                                commandc.Run(destImage);*/
                         }
                         if (Form1.form1.chckbox10 == true)
                         {
@@ -235,7 +267,7 @@ namespace project1
                             command13.MaximumDotWidth = Form1.form1.value_trackBar11;
                             command13.MinimumDotHeight = Form1.form1.value_trackBar12;
                             command13.MinimumDotWidth = Form1.form1.value_trackBar13;
-                            command13.Run(Form1.form1.imagescol[i - 1]);
+                            command13.Run(rasterImage);
                         }
 
                         if (Form1.form1.chckbox12 == true)
@@ -246,7 +278,7 @@ namespace project1
                             command14.Location = HolePunchRemoveCommandLocation.Left;
                             command14.MaximumHoleCount = Form1.form1.value_trackBar18;
                             command14.MinimumHoleCount = Form1.form1.value_trackBar21;
-                            command14.Run(Form1.form1.imagescol[i - 1]);
+                            command14.Run(rasterImage);
                         }
 
                         if (Form1.form1.chckbox13 == true)
@@ -258,7 +290,7 @@ namespace project1
                             command15.MinimumBlackPercent = Form1.form1.value_trackBar20;
                             command15.MinimumInvertHeight = Form1.form1.value_trackBar23;
                             command15.MinimumInvertWidth = Form1.form1.value_trackBar24;
-                            command15.Run(Form1.form1.imagescol[i - 1]);
+                            command15.Run(rasterImage);
                         }
 
                         if (Form1.form1.chckbox16 == true)
@@ -270,7 +302,7 @@ namespace project1
                             command18.Percent = Form1.form1.value_trackBar25;
                             command18.Variance = Form1.form1.value_trackBar26;
                             command18.WhiteNoiseLength = Form1.form1.value_trackBar28;
-                            command18.Run(Form1.form1.imagescol[i - 1]);
+                            command18.Run(rasterImage);
                         }
 
                         if (Form1.form1.chckbox17 == true)
@@ -279,7 +311,7 @@ namespace project1
                             command19.Smooth += new EventHandler<SmoothCommandEventArgs>(SmoothEventExample_S1);
                             command19.Flags = SmoothCommandFlags.FavorLong;
                             command19.Length = Form1.form1.value_trackBar31;
-                            command19.Run(Form1.form1.imagescol[i - 1]);
+                            command19.Run(rasterImage);
                         }
                         // Prepare the command 
                         if (Form1.form1.chckbox19 == true)
@@ -296,36 +328,24 @@ namespace project1
                             command20.Variance = Form1.form1.value_numUpDown8;             //ความแปรปรวน
                             command20.TeethSpacing = Form1.form1.value_numUpDown9;         //ระยะห่างระหว่างฟัน
                             command20.AutoFilter = Form1.form1.chckbox20;       //ตัวกรองอัตโนมัติ
-                            command20.Run(Form1.form1.imagescol[i - 1]);
+                            command20.Run(rasterImage);
                         }
                     }
-                   
-                    await Task.Delay(2000);
-                }
-                //progressBar1.Value = 0;
 
-                //ทำการเซฟ
-                var docWriter = new DocumentWriter();
-                // Begin the document 
-                var outputFileName = Path.Combine(Form1.form1.savePath, ".pdf");
-                docWriter.BeginDocument(Form1.form1.savePath, DocumentFormat.Pdf);
-                // Finally, add a third page as an image 
-                var rasterPage = new DocumentWriterRasterPage();
-                // เพิ่มหน้าในเอกสาร PDF
-                foreach (RasterImage image in Form1.form1.imagescol)
-                {
-                    using (rasterPage.Image = image)
+                    await Task.Delay(2000);
+
+                        using (rasterPage.Image = rasterImage)
                     {
                         // Add it 
                         docWriter.AddPage(rasterPage);
                     }
                 }
+            }
                 // Finally finish writing the HTML file on disk 
                 docWriter.EndDocument();
                 DialogResult res = MessageBox.Show("Save successful", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (res == DialogResult.OK)
                 {
-                    //MessageBox.Show("You have clicked Ok Button");
                     //Some task…
                     this.Close();
                 }
