@@ -2325,13 +2325,15 @@ namespace project1
         int pdname=1;
         RasterCodecs _rasterCodecs = new RasterCodecs();
         PictureBox picReview2 = new PictureBox();
+        int xRev;
         public void crepic() {
             try
             {
                 this.splitContainer1.Panel2.Controls.Clear();
                 picReview2.Height = 700; //ความกว้างหน้ากระดาษ
                 picReview2.Width = 520;  //ความสูงหน้ากระดาษ
-                picReview2.Location = new Point((splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2), 20);
+                xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
+                picReview2.Location = new Point(xRev, 20);
                 picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.splitContainer1.Panel2.Controls.Add(picReview2);
                 picReview2.ImageLocation = null;
@@ -2668,7 +2670,7 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
         }
-
+       
         private async void btnOpen_Click(object sender, EventArgs e)
         {
             try{
@@ -2707,8 +2709,8 @@ namespace project1
                         l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
                             
                         this.progressBarX1.MarqueeAnimationSpeed = 20;
-                        PictureBox pic2 = new PictureBox();
-                        pic2.Height = 140;
+                            PictureBox pic2 = new PictureBox();
+                            pic2.Height = 140;
                         pic2.Width = 120;
                         pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
                         pic2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -2845,6 +2847,7 @@ namespace project1
                 List<String> list = new List<String>();
                 if (cbboxUseProfile.SelectedItem.ToString() == "Default")
                 {
+                       
                    ResetValue();
                    //Defult();
                     btnRemovepf.Enabled = false;
@@ -3162,10 +3165,10 @@ namespace project1
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            int w = splitContainer1.Panel1.Width;
-            Console.WriteLine(""+w);
-           /* x2 = (splitContainer1.Panel1.Width / 2) - w2;
-            pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y);*/
+            xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
+            picReview2.Location = new Point(xRev, 20);
+            /* x2 = (splitContainer1.Panel1.Width / 2) - w2;
+             pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y);*/
         }
 
         private void checkBox21_Click(object sender, EventArgs e)
@@ -3313,16 +3316,6 @@ namespace project1
             value_trbMinimum = 3;
             trbMinimum.Value = value_trbMinimum;
             l_minimum.Text = value_trbMinimum.ToString();
-        }
-
-        private void ribbonControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ribbonBar3_ItemClick(object sender, EventArgs e)
-        {
-
         }
     }
 }

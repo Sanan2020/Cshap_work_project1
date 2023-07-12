@@ -466,5 +466,10 @@ namespace project1
 
             e.Status = RemoveStatus.Remove;
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            //this.Dispose();
+        }
     }
 }
