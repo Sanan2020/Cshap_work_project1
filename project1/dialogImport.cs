@@ -23,6 +23,7 @@ namespace project1
         String path;
         private void btnImport_Click(object sender, EventArgs e)
         {
+            try { 
             lprofileIm.Clear();
             //listBox2.SelectionMode = SelectionMode.MultiSimple;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -86,6 +87,9 @@ namespace project1
                     this.Close();
                 }
             }
-        }
+        }catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
     }
 }

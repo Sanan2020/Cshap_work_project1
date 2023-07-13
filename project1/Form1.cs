@@ -70,7 +70,7 @@ namespace project1
         public int value_trbDynBin2 = 16;
         public int value_trbMaximum = 3;
         public int value_trbMinimum = 3;
-        public int value_trbGamma = 310;
+        public int value_trbGamma = 250;
         public bool chckbox10 = false;
         public bool chckbox11 = false;
         public bool chckbox12 = false;
@@ -248,8 +248,9 @@ namespace project1
             }
         }
         void fncSetup() {
+            try { 
             flowLayoutPanel1.AutoScroll = true;
-
+           
             comboBox1.Items.Add("--Select--");
             comboBox1.Items.Add("ErosionOmniDirectional");
             comboBox1.Items.Add("ErosionHorizontal");
@@ -318,6 +319,8 @@ namespace project1
             l_whitenoiseL.Text = value_trackBar28.ToString();
             trackBar31.Value = value_trackBar31;
             l_length.Text = value_trackBar31.ToString();
+            trackBar29.Value = value_trackBar29;
+            l_RotateImage.Text = value_trackBar29.ToString();
 
             trbDynBin1.Value = value_trbDynBin1;
             l_dimension.Text = value_trbDynBin1.ToString();
@@ -330,7 +333,7 @@ namespace project1
             value_trbMinimum = 3;
             trbMinimum.Value = value_trbMinimum;
             l_minimum.Text = value_trbMinimum.ToString();
-            value_trbGamma = 310;
+            value_trbGamma = 250;
             trbGamma.Value = value_trbGamma;
             l_gamma.Text = value_trbGamma.ToString();
 
@@ -361,6 +364,12 @@ namespace project1
             btnSmooth.FlatStyle = FlatStyle.Standard;
             btnRakeRemove.Enabled = false;
             btnRakeRemove.FlatStyle = FlatStyle.Standard;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         void fncLicense() {
             try
@@ -462,17 +471,7 @@ namespace project1
             try
             {
                 selectCombobox = comboBox1.SelectedIndex;
-                if (folderPath != null || selectCombobox != 0) {
-                    using (ProgressPopup pp = new ProgressPopup(Image))
-                    {
-                        pp.ShowDialog();
-                    }
-                }
-                else
-                {
-                    
-                //MessageBox.Show(folderPath);
-                }
+                Image();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -483,7 +482,7 @@ namespace project1
         {
             value_trackBar1 = trackBar1.Value;
             l_brightness.Text = value_trackBar1.ToString();
-            }
+        }
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
@@ -515,208 +514,6 @@ namespace project1
             l_threshold.Text = value_trackBar6.ToString();
         }
 
-        /*TEST*/
-        static class LEAD_VARS
-        {
-            public const string ImagesDir = @"C:\Users\Administrator\Downloads\poc\image";
-        }
-        public void Default() {
-            //use profile
-            //จะเริ่มต้นค่า Default
-            try
-            {
-                value_trackBar1 = 0;
-                value_trackBar2 = 0;
-                value_trackBar3 = 0;
-                value_trackBar4 = 1;
-                value_trackBar5 = 1;
-                value_trackBar6 = 1;
-                value_trackBar7 = 500;
-                value_trackBar8 = 250;
-                value_trackBar9 = 250;
-                value_trackBar10 = 10;
-                value_trackBar11 = 10;
-                value_trackBar12 = 1;
-                value_trackBar13 = 1;
-                value_trackBar14 = 2;
-                value_trackBar15 = 5;
-                value_trackBar16 = 200;
-                value_trackBar17 = 10;
-                value_trackBar22 = 7;
-                value_trackBar18 = 4;
-                value_trackBar19 = 95;
-                value_trackBar20 = 70;
-                value_trackBar21 = 2;
-                value_trackBar23 = 500;
-                value_trackBar24 = 5000;
-                value_trackBar27 = 20;
-                value_trackBar28 = 9;
-                value_trackBar25 = 20;
-                value_trackBar26 = 3;
-                value_trackBar31 = 2;
-
-                trackBar1.Value = value_trackBar1;
-                l_brightness.Text = value_trackBar1.ToString();
-                trackBar2.Value = value_trackBar2;
-                l_contrast.Text = value_trackBar2.ToString();
-                trackBar3.Value = value_trackBar3;
-                l_intensity.Text = value_trackBar3.ToString();
-                trackBar4.Value = value_trackBar4;
-                l_amount.Text = value_trackBar4.ToString();
-                trackBar5.Value = value_trackBar5;
-                l_radius.Text = value_trackBar5.ToString();
-                trackBar6.Value = value_trackBar6;
-                l_threshold.Text = value_trackBar6.ToString();
-                trackBar10.Value = value_trackBar10;
-                l_maximumdotH.Text = value_trackBar10.ToString();
-                trackBar11.Value = value_trackBar11;
-                l_maximumdotW.Text = value_trackBar11.ToString();
-                trackBar12.Value = value_trackBar12;
-                l_minimumdotH.Text = value_trackBar12.ToString();
-                trackBar13.Value = value_trackBar13;
-                l_minimumdotW.Text = value_trackBar13.ToString();
-                trackBar14.Value = value_trackBar14;
-                l_gaplength.Text = value_trackBar14.ToString();
-                trackBar15.Value = value_trackBar15;
-                l_maximumlineW.Text = value_trackBar15.ToString();
-                trackBar16.Value = value_trackBar16;
-                l_minimumlineL.Text = value_trackBar16.ToString();
-                trackBar17.Value = value_trackBar17;
-                l_maximumwall.Text = value_trackBar17.ToString();
-                trackBar22.Value = value_trackBar22;
-                l_wall.Text = value_trackBar22.ToString();
-                trackBar18.Value = value_trackBar18;
-                l_maximumhole.Text = value_trackBar18.ToString();
-                trackBar21.Value = value_trackBar21;
-                l_minimumhole.Text = value_trackBar21.ToString();
-                trackBar19.Value = value_trackBar19;
-                l_maximumblack.Text = value_trackBar19.ToString();
-                trackBar20.Value = value_trackBar20;
-                l_minimumBlack.Text = value_trackBar20.ToString();
-                trackBar23.Value = value_trackBar23;
-                l_minimuminverH.Text = value_trackBar23.ToString();
-                trackBar24.Value = value_trackBar24;
-                l_minimuminvertW.Text = value_trackBar24.ToString();
-                trackBar27.Value = value_trackBar27;
-                l_cropThreshold.Text = value_trackBar27.ToString();
-                trackBar25.Value = value_trackBar25;
-                l_percent.Text = value_trackBar25.ToString();
-                trackBar26.Value = value_trackBar26;
-                l_variance.Text = value_trackBar26.ToString();
-                trackBar28.Value = value_trackBar28;
-                l_whitenoiseL.Text = value_trackBar28.ToString();
-                trackBar31.Value = value_trackBar31;
-                l_length.Text = value_trackBar31.ToString();
-                trackBar7.Value = value_trackBar7;
-                l_redfactor.Text = value_trackBar7.ToString();
-                trackBar8.Value = value_trackBar8;
-                l_greenfactor.Text = value_trackBar8.ToString();
-                trackBar9.Value = value_trackBar9;
-                l_bluefactor.Text = value_trackBar9.ToString();
-
-                chckbox2 = false;
-                checkBox2.Checked = chckbox2;
-
-                selectCombobox = 0;
-                comboBox1.SelectedIndex = selectCombobox;
-
-                chckbox = false;
-                checkBox1.Checked = chckbox;
-                chckbox3 = false;
-                checkBox3.Checked = chckbox3;
-                chckbox4 = false;
-                checkBox4.Checked = chckbox4;
-                chckbox5 = false;
-                checkBox5.Checked = chckbox5;
-                value_trbMaximum = 3;
-                trbMaximum.Value = value_trbMaximum;
-                l_maximum.Text = value_trbMaximum.ToString();
-                chckbox6 = false;
-                checkBox6.Checked = chckbox6;
-                value_trbMinimum = 3;
-                trbMinimum.Value = value_trbMinimum;
-                l_minimum.Text = value_trbMinimum.ToString();
-                chckbox7 = false;
-                checkBox7.Checked = chckbox7;
-                chckbox8 = false;
-                checkBox8.Checked = chckbox8;
-                value_trbGamma = 310;
-                trbGamma.Value = value_trbGamma;
-                l_gamma.Text = value_trbGamma.ToString();
-                chckbox9 = false;
-                checkBox9.Checked = chckbox9;
-                chckbox10 = false;
-                checkBox10.Checked = chckbox10;
-                chckbox11 = false;
-                checkBox11.Checked = chckbox11;
-                chckbox12 = false;
-                checkBox12.Checked = chckbox12;
-                chckbox13 = false;
-                checkBox13.Checked = chckbox13;
-                chckbox14 = false;
-                checkBox14.Checked = chckbox14;
-                chckbox15 = false;
-                checkBox15.Checked = chckbox15;
-                chckbox16 = false;
-                checkBox16.Checked = chckbox16;
-                chckbox17 = false;
-                checkBox17.Checked = chckbox17;
-
-                //tb_profile.Text = "";
-                cbboxUseProfile.SelectedIndex = 0;
-
-                value_trbDynBin1 = 8;
-                trbDynBin1.Value = value_trbDynBin1;
-                l_dimension.Text = value_trbDynBin1.ToString();
-                value_trbDynBin2 = 16;
-                trbDynBin2.Value = value_trbDynBin2;
-                l_localcontrast.Text = value_trbDynBin2.ToString();
-
-                chckbox18 = false;
-                checkBox18.Checked = chckbox18;
-                value_trackBar29 = 0;
-                trackBar29.Value = value_trackBar29;
-                l_RotateImage.Text = value_trackBar29.ToString();
-
-                chckbox19 = false;
-                checkBox19.Checked = chckbox19;
-                value_numUpDown1 = 50;
-                numUpDown1.Value = value_numUpDown1;
-                value_numUpDown2 = 10;
-                numUpDown2.Value = value_numUpDown2;
-                value_numUpDown3 = 3;
-                numUpDown3.Value = value_numUpDown3;
-                value_numUpDown4 = 25;
-                numUpDown4.Value = value_numUpDown4;
-                value_numUpDown5 = 60;
-                numUpDown5.Value = value_numUpDown5;
-                value_numUpDown6 = 50;
-                numUpDown6.Value = value_numUpDown6;
-                value_numUpDown7 = 1;
-                numUpDown7.Value = value_numUpDown7;
-                value_numUpDown8 = 1;
-                numUpDown8.Value = value_numUpDown8;
-                value_numUpDown9 = 5;
-                numUpDown9.Value = value_numUpDown9;
-                chckbox20 = false;
-                checkBox20.Checked = chckbox20;
-
-                chckbox21 = false;
-                checkBox21.Checked = chckbox21;
-
-                cbboxUseProfile.SelectedItem = "Default";
-                //Image();
-
-                using (ProgressPopup pp = new ProgressPopup(Image))
-                {
-                    pp.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
         public void ResetValue()
         {
             try
@@ -776,7 +573,7 @@ namespace project1
                 checkBox7.Checked = chckbox7;
                 chckbox8 = false;
                 checkBox8.Checked = chckbox8;
-                value_trbGamma = 310;
+                value_trbGamma = 250;
                 trbGamma.Value = value_trbGamma;
                 l_gamma.Text = value_trbGamma.ToString();
                 chckbox9 = false;
@@ -871,7 +668,7 @@ namespace project1
 
                 chckbox18 = false;
                 checkBox18.Checked = chckbox18;
-                value_trackBar29 = 0;
+                value_trackBar29 = 45;
                 trackBar29.Value = value_trackBar29;
                 l_RotateImage.Text = value_trackBar29.ToString();
 
@@ -902,12 +699,12 @@ namespace project1
                 checkBox21.Checked = chckbox21;
 
                 cbboxUseProfile.SelectedItem = "Default";
-                //Image();
+                Image();
 
-                using (ProgressPopup pp = new ProgressPopup(Image))
+               /* using (ProgressPopup pp = new ProgressPopup(Image))
                 {
                     pp.ShowDialog();
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -935,6 +732,7 @@ namespace project1
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox1.Checked == true)
             {
                 chckbox = true;
@@ -945,10 +743,16 @@ namespace project1
                 chckbox = false;
                 Image();
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox2.Checked == true)
             {
                 chckbox2 = true;
@@ -959,7 +763,10 @@ namespace project1
                 chckbox2 = false;
                  Image();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void trackBar7_Scroll(object sender, EventArgs e)
         {
@@ -1006,6 +813,7 @@ namespace project1
         private bool Expanded = false;
         private void btnConBrigtIntens_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;
@@ -1017,10 +825,16 @@ namespace project1
                 panConBrigtIntens.Height = 230;
             }
             Expanded = !Expanded;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private bool Expanded2 = false;
         private void btnUnsharpMask_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded2)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1032,10 +846,16 @@ namespace project1
                 panUnsharpMask.Height = 230;
             }
             Expanded2 = !Expanded2;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private bool Expanded3 = false;
         private void btnGrayScale_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded3)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1047,10 +867,16 @@ namespace project1
                 panGrayScale.Height = 277;
             }
             Expanded3 = !Expanded3;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox3.Checked == true)
             {
                 chckbox3 = true;
@@ -1067,10 +893,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox4.Checked == true)
             {
                 chckbox4 = true;
@@ -1087,10 +917,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox5.Checked == true)
             {
                 chckbox5 = true;
@@ -1107,10 +941,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox6.Checked == true)
             {
                 chckbox6 = true;
@@ -1127,10 +965,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox7.Checked == true)
             {
                 chckbox7 = true;
@@ -1147,10 +989,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox8.Checked == true)
             {
                 chckbox8 = true;
@@ -1167,10 +1013,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox9.Checked == true)
             {
                 chckbox9 = true;
@@ -1187,7 +1037,10 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void trbDynBin1_Scroll(object sender, EventArgs e)
         {
@@ -1261,6 +1114,7 @@ namespace project1
 
         private void checkBox10_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox10.Checked == true)
             {
                 chckbox10 = true;
@@ -1277,10 +1131,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox11_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox11.Checked == true)
             {
                 chckbox11 = true;
@@ -1297,10 +1155,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox12_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox12.Checked == true)
             {
                 chckbox12 = true;
@@ -1317,9 +1179,13 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private void checkBox13_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox13.Checked == true)
             {
                 chckbox13 = true;
@@ -1336,10 +1202,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox14_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox14.Checked == true)
             {
                 chckbox14 = true;
@@ -1356,10 +1226,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox15_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox15.Checked == true)
             {
                 chckbox15 = true;
@@ -1376,10 +1250,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox16_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox16.Checked == true)
             {
                 chckbox16 = true;
@@ -1396,10 +1274,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void checkBox17_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox17.Checked == true)
             {
                 chckbox17 = true;
@@ -1416,10 +1298,14 @@ namespace project1
                     pp.ShowDialog();
                 }
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded5 = false;
         private void btnDotRemove_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded5)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1431,10 +1317,14 @@ namespace project1
                 panDotRemove.Height = 267;
             }
             Expanded5 = !Expanded5;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded6 = false;
         private void btnLineRemove_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded6)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1446,10 +1336,14 @@ namespace project1
                 panLineRemove.Height = 333;
             }
             Expanded6 = !Expanded6;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded7 = false;
         private void btnHolePunchRemove_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded7)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1461,10 +1355,14 @@ namespace project1
                 panHolePunchRemove.Height = 192;
             }
             Expanded7 = !Expanded7;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded8 = false;
         private void btnInvertedText_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded8)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1476,10 +1374,14 @@ namespace project1
                 panInvertedText.Height = 272;
             }
             Expanded8 = !Expanded8;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded9 = false;
         private void btnAutoCrop_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded9)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1491,10 +1393,14 @@ namespace project1
                 panAutoCrop.Height = 117;
             }
             Expanded9 = !Expanded9;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded10 = false;
         private void btnBorderRemove_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded10)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1506,10 +1412,14 @@ namespace project1
                 panBorderRemove.Height = 225;
             }
             Expanded10 = !Expanded10;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded11 = false;
         private void btnSmooth_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded11)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1521,7 +1431,10 @@ namespace project1
                 panSmooth.Height = 114;
             }
             Expanded11 = !Expanded11;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         //dotRemove
         private void trackBar10_Scroll(object sender, EventArgs e)
@@ -1872,6 +1785,7 @@ namespace project1
         private bool Expanded12;
         private void btnFlipRotate_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded12)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1883,10 +1797,14 @@ namespace project1
                 panFlipRotate.Height = 122;
             }
             Expanded12 = !Expanded12;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded13;
         private void btnRakeRemove_Click(object sender, EventArgs e)
         {
+            try { 
             if (Expanded13)
             {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
@@ -1898,9 +1816,13 @@ namespace project1
                 panRakeRemove.Height = 347;
             }
             Expanded13 = !Expanded13;
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private void checkBox20_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (checkBox20.Checked == true)
             {
                 chckbox20 = true;
@@ -1919,7 +1841,10 @@ namespace project1
                 }
                 //Image();
             }
-        }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void numUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -1938,75 +1863,107 @@ namespace project1
 
         private void numUpDown2_ValueChanged(object sender, EventArgs e)
         {
+            try { 
             value_numUpDown2 = (int)numUpDown2.Value;
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void numUpDown3_ValueChanged(object sender, EventArgs e)
         {
+            try { 
             value_numUpDown3 = (int)numUpDown3.Value;
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void numUpDown4_ValueChanged(object sender, EventArgs e)
         {
+            try { 
             value_numUpDown4 = (int)numUpDown4.Value;
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void numUpDown5_ValueChanged(object sender, EventArgs e)
         {
+            try { 
             value_numUpDown5 = (int)numUpDown5.Value;
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void numUpDown6_ValueChanged(object sender, EventArgs e)
         {
+            try { 
             value_numUpDown6 = (int)numUpDown6.Value;
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void numUpDown7_ValueChanged(object sender, EventArgs e)
         {
+            try { 
             value_numUpDown7 = (int)numUpDown7.Value;
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void numUpDown8_ValueChanged(object sender, EventArgs e)
         {
+            try { 
             value_numUpDown8 = (int)numUpDown8.Value;
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void numUpDown9_ValueChanged(object sender, EventArgs e)
         {
+            try { 
             value_numUpDown9 = (int)numUpDown9.Value;
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
-        }
+        } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void btnResetConBrigtIntens_Click(object sender, EventArgs e)
         {
@@ -2224,7 +2181,7 @@ namespace project1
             try { 
             chckbox18 = false;
             checkBox18.Checked = chckbox18;
-            value_trackBar29 = 0;
+            value_trackBar29 = 45;
             trackBar29.Value = value_trackBar29;
             l_RotateImage.Text = value_trackBar29.ToString();
                 Image();
@@ -2273,8 +2230,10 @@ namespace project1
 
         public void cbBox2re()
         {
-            try { 
-            if (System.IO.File.Exists("testin.xml"))//ถ้าเจอไฟล์
+            try {
+                cbboxUseProfile.Items.Clear();
+                cbboxUseProfile.Items.Add("Default");
+                if (System.IO.File.Exists("testin.xml"))//ถ้าเจอไฟล์
             {
                 cbboxUseProfile.Items.Clear();
                 cbboxUseProfile.Items.Add("Default");
@@ -2283,9 +2242,11 @@ namespace project1
                 {
                     cbboxUseProfile.Items.Add(LpfnameLoad[i].Profilename);
                 }
-                    cbboxUseProfile.SelectedItem = "Default";
+                    
             }
-            }catch (Exception ex){MessageBox.Show(ex.Message);}
+                cbboxUseProfile.SelectedItem = "Default";
+            }
+            catch (Exception ex){MessageBox.Show(ex.Message);}
         }
         int xPos;
         int yPos;
@@ -2330,10 +2291,11 @@ namespace project1
             try
             {
                 this.splitContainer1.Panel2.Controls.Clear();
-                picReview2.Height = 700; //ความกว้างหน้ากระดาษ
-                picReview2.Width = 520;  //ความสูงหน้ากระดาษ
+                picReview2.Height = 850; //ความกว้างหน้ากระดาษ
+                picReview2.Width = 620;  //ความสูงหน้ากระดาษ
                 xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
                 picReview2.Location = new Point(xRev, 20);
+                Console.WriteLine(picReview2.Location);
                 picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.splitContainer1.Panel2.Controls.Add(picReview2);
                 picReview2.ImageLocation = null;
@@ -2351,13 +2313,10 @@ namespace project1
                 if (file != null)
                 {
                     cbboxUseProfile.Enabled = true;
-                    checkBox21.Enabled = true;
+                    //checkBox21.Enabled = true;
                     btnReset.Enabled = true;
                     btnSave.Enabled = true;
-                    /* if (cbboxUseProfile.SelectedItem.ToString() != null) { 
-
-                     }*/
-                
+                    btnSavepf.Enabled = true;
                 foreach (string img in file)
                 {
                     Console.WriteLine("Page " + pageCount);
@@ -2387,14 +2346,12 @@ namespace project1
                     command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                     command2.Run(rasterImage);
 
-                    if (selectCombobox == 0) { }
-                    else
-                    {
+                    if (selectCombobox > 0) {
                         selectCombobox = selectCombobox - 1;
                         //MessageBox.Show(selectCombobox.ToString());
                         BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
                         command3.Run(rasterImage);
-                    }
+                        }
 
                     if (chckbox == true)
                     {
@@ -2675,13 +2632,14 @@ namespace project1
         {
             try{
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "All File |*.*";
+                ofd.Filter = "PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
                 DialogResult dr = ofd.ShowDialog();
 
                 if (dr == System.Windows.Forms.DialogResult.OK){
+                    splitContainer1.Panel1.Controls.Clear();
+                    ResetValue();
                     this.progressBarX1.Visible = true;
                     crepic(); //สร้าง picReview         
-                    splitContainer1.Panel1.Controls.Clear();
                     file = ofd.FileNames;
                     int w2 = 150 / 2;
                     int x2 = (splitContainer1.Panel1.Width / 2) - w2;
@@ -2693,24 +2651,32 @@ namespace project1
                     _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
                     foreach (string img in file){
                         using (var imageInfo = _rasterCodecs.GetInformation(img, true)){ //นับจำนวนเอกสาร
-                        pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
+                            pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
                         }
                         Console.WriteLine("Page " + pageCount);
-                        // Loads all the pages into the viewer
-                        for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++){
-                        // Load it as a raster image and add it
                         _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
                         _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
                         _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
                         _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
                         _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
+                        // Loads all the pages into the viewer
+                        for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++){
+                        // Load it as a raster image and add it
                         var rasterImage = _rasterCodecs.Load(img, pageNumber);
                         l_numberPages.Text = $"Page {pageNumber} / { pageCount.ToString()}";
                         l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
-                            
+                            if (rasterImage.BitsPerPixel == 1)
+                            {
+                                chckbox21 = true;
+                                checkBox21.Checked = chckbox21;
+                                checkBox21.Enabled = false;
+                            }
+                            else {
+                                checkBox21.Enabled = true;
+                            }
                         this.progressBarX1.MarqueeAnimationSpeed = 20;
-                            PictureBox pic2 = new PictureBox();
-                            pic2.Height = 140;
+                        PictureBox pic2 = new PictureBox();
+                        pic2.Height = 140;
                         pic2.Width = 120;
                         pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
                         pic2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -2732,11 +2698,16 @@ namespace project1
                         }
                         pdname = 1;
                         Image();
-                        Console.WriteLine(pic2.Name);
+                        //Console.WriteLine(pic2.Name);
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
                         await Task.Delay(1000);
-                    }    
-            }
+                        //Thread.Sleep(500);
+                            // Clean up 
+                            rasterImage.Dispose();
+                        }
+                        _rasterCodecs.Dispose();
+                    }
+                    
                 }
                 this.progressBarX1.Visible = false;
      }
@@ -2748,26 +2719,23 @@ namespace project1
         public String savePath;
         private void btnSave_Click(object sender, EventArgs e)
         {
-            RasterCodecs codecs = new RasterCodecs();
-            codecs.ThrowExceptionsOnInvalidImages = true;
-            // Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                savePath = saveFileDialog1.FileName;
-                try
-                {
+                RasterCodecs codecs = new RasterCodecs();
+                codecs.ThrowExceptionsOnInvalidImages = true;
+                // Stream myStream;
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf";
+                saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.RestoreDirectory = true;
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK){
+                    savePath = saveFileDialog1.FileName;
                     dialogSaveAS dialogSaveAS = new dialogSaveAS();
                     dialogSaveAS.ShowDialog();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+            }
+            catch (Exception ex){
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -2778,9 +2746,10 @@ namespace project1
 
         private void checkBox21_CheckedChanged(object sender, CheckBoxChangeEventArgs e)
         {
-            chckbox21 = checkBox21.Checked;
-            if (chckbox21 == true)
-            {
+            try { 
+                chckbox21 = checkBox21.Checked;
+                if (chckbox21 == true)
+                {
                 btnLineRemove.Enabled = true;
                 btnLineRemove.FlatStyle = FlatStyle.Flat;
                 btnResetLineRemove.Enabled = true;
@@ -2802,54 +2771,47 @@ namespace project1
                 btnRakeRemove.Enabled = true;
                 btnRakeRemove.FlatStyle = FlatStyle.Flat;
                 btnResetRakeRemove.Enabled = true;
+                }
+                else {
+                    btnLineRemove.Enabled = false;
+                    btnLineRemove.FlatStyle = FlatStyle.Standard;
+                    btnResetLineRemove.Enabled = false;
+                    btnDotRemove.Enabled = false;
+                    btnDotRemove.FlatStyle = FlatStyle.Standard;
+                    btnResetDotRemove.Enabled = false;
+                    btnHolePunchRemove.Enabled = false;
+                    btnHolePunchRemove.FlatStyle = FlatStyle.Standard;
+                    btnResetHolePunchRemove.Enabled = false;
+                    btnInvertedText.Enabled = false;
+                    btnInvertedText.FlatStyle = FlatStyle.Standard;
+                    btnResetInvertedText.Enabled= false;
+                    btnBorderRemove.Enabled = false;
+                    btnBorderRemove.FlatStyle = FlatStyle.Standard;
+                    btnResetBorderRemove.Enabled =false;
+                    btnSmooth.Enabled = false;
+                    btnSmooth.FlatStyle = FlatStyle.Standard;
+                    btnResetSmooth.Enabled = false;
+                    btnRakeRemove.Enabled = false;
+                    btnRakeRemove.FlatStyle = FlatStyle.Standard;
+                    btnResetRakeRemove.Enabled=false;
+                }
+                Image();
             }
-            else {
-                btnLineRemove.Enabled = false;
-                btnLineRemove.FlatStyle = FlatStyle.Standard;
-                btnResetLineRemove.Enabled = false;
-                btnDotRemove.Enabled = false;
-                btnDotRemove.FlatStyle = FlatStyle.Standard;
-                btnResetDotRemove.Enabled = false;
-                btnHolePunchRemove.Enabled = false;
-                btnHolePunchRemove.FlatStyle = FlatStyle.Standard;
-                btnResetHolePunchRemove.Enabled = false;
-                btnInvertedText.Enabled = false;
-                btnInvertedText.FlatStyle = FlatStyle.Standard;
-                btnResetInvertedText.Enabled= false;
-                btnBorderRemove.Enabled = false;
-                btnBorderRemove.FlatStyle = FlatStyle.Standard;
-                btnResetBorderRemove.Enabled =false;
-                btnSmooth.Enabled = false;
-                btnSmooth.FlatStyle = FlatStyle.Standard;
-                btnResetSmooth.Enabled = false;
-                btnRakeRemove.Enabled = false;
-                btnRakeRemove.FlatStyle = FlatStyle.Standard;
-                btnResetRakeRemove.Enabled=false;
-            }
-            Image();
-          /*  using (ProgressPopup pp = new ProgressPopup(Image))
+            catch (Exception ex)
             {
-                pp.ShowDialog();
-            }*/
-            // MessageBox.Show(checkBox21.Checked.ToString());
+                MessageBox.Show(ex.Message);
+            }
         }
-        String value_tb_profile;
-        List<String> Lpfname = new List<String>();
         private void cbboxUseProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 if (file != null) { 
-                // selectCombobox2 = cbboxUseProfile.SelectedItem.ToString();
                 int numfp = cbboxUseProfile.SelectedIndex;
-                // cbboxUseProfile.Items.Add("Configs");
-
-                List<String> list = new List<String>();
+               
                 if (cbboxUseProfile.SelectedItem.ToString() == "Default")
                 {
-                       
                    ResetValue();
-                   //Defult();
                     btnRemovepf.Enabled = false;
                 }
                 else
@@ -3044,10 +3006,7 @@ namespace project1
                     //convetrt to 1 bit
                     chckbox21 = profile3.Convert1bit;
                     checkBox21.Checked = chckbox21;
-                    //Display();
-                    l_saveprofile.Text = "usepf Success...";
                 }
-                list.Clear();
             }
             }
             catch (Exception ex)
@@ -3058,7 +3017,7 @@ namespace project1
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            if (e.Delta > 0)
+           /* if (e.Delta > 0)
             {
                 //pictureBox1.Image = null;
                 // ซูมอิน (เพิ่มขนาดภาพ)
@@ -3078,7 +3037,7 @@ namespace project1
                     picReview2.Height -= (int)(picReview2.Height * 0.1);
                 }
 
-            }
+            }*/
             // l_zoom.Text = "w " + picReview2.Width.ToString() + " h" + picReview2.Height.ToString();
         }
 
@@ -3109,7 +3068,6 @@ namespace project1
                         DialogResult dialogResult = MessageBox.Show("Confirm remove profile "+ cbboxUseProfile.SelectedItem.ToString(), "Some Title", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
-
                             for (int r = 0; r < ProfileLoad.Count; r++)
                             {
                                 if (ProfileLoad[r].Profilename != cbboxUseProfile.SelectedItem.ToString())
@@ -3121,9 +3079,7 @@ namespace project1
                             DialogResult res = MessageBox.Show("Remove profile "+ cbboxUseProfile.SelectedItem.ToString() + " successful", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (res == DialogResult.OK)
                             {
-                            //MessageBox.Show("You have clicked Ok Button");
                             //Some task…
-                            //this.Close();
                             }
                             ResetValue();
                             cbBox2re();
@@ -3165,32 +3121,35 @@ namespace project1
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
-            picReview2.Location = new Point(xRev, 20);
-            /* x2 = (splitContainer1.Panel1.Width / 2) - w2;
-             pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y);*/
+            try { 
+                xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
+                picReview2.Location = new Point(xRev, 20);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void checkBox21_Click(object sender, EventArgs e)
-        {
-
-        }
         private bool Expanded15;
         private void btnAutoFunction_Click(object sender, EventArgs e)
         {
-            if (Expanded15)
-            {
+            try { 
+                if (Expanded15)
+                {
                 // btnExpander.Image = Properties.Resources.collapse_arrow;    
                 panAutoFunction.Height = 29;
+                }
+                else
+                {
+                    //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                    panAutoFunction.Height = 198;
+                }
+                Expanded15 = !Expanded15;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
-            else
-            {
-                //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panAutoFunction.Height = 198;
-            }
-            Expanded15 = !Expanded15;
         }
-
         private void btnResetAutoFunction_Click(object sender, EventArgs e)
         {
             try
@@ -3207,10 +3166,6 @@ namespace project1
                 checkBox4.Checked = chckbox4;
                 chckbox14 = false;
                 checkBox14.Checked = chckbox14;
-                /*using (ProgressPopup pp = new ProgressPopup(Image))
-                {
-                    pp.ShowDialog();
-                }*/
                 Image();
             }
             catch (Exception ex)
@@ -3221,78 +3176,104 @@ namespace project1
         private bool Expanded16;
         private void btnDynamicBinary_Click(object sender, EventArgs e)
         {
-            if (Expanded16)
-            {
-                // btnExpander.Image = Properties.Resources.collapse_arrow;    
-                panDynamicBinary.Height = 29;
+            try { 
+                if (Expanded16)
+                {
+                    // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                    panDynamicBinary.Height = 29;
+                }
+                else
+                {
+                    //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                    panDynamicBinary.Height = 206;
+                }
+                Expanded16 = !Expanded16;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
-            else
-            {
-                //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panDynamicBinary.Height = 206;
-            }
-            Expanded16 = !Expanded16;
-        }
+}
 
         private void btnResetDynamicBinary_Click(object sender, EventArgs e)
         {
-            chckbox9 = false;
-            checkBox9.Checked = chckbox9;
-            value_trbDynBin1 = 8;
-            trbDynBin1.Value = value_trbDynBin1;
-            l_dimension.Text = value_trbDynBin1.ToString();
-            value_trbDynBin2 = 16;
-            trbDynBin2.Value = value_trbDynBin2;
-            l_localcontrast.Text = value_trbDynBin2.ToString();
-        }
+            try { 
+                chckbox9 = false;
+                checkBox9.Checked = chckbox9;
+                value_trbDynBin1 = 8;
+                trbDynBin1.Value = value_trbDynBin1;
+                l_dimension.Text = value_trbDynBin1.ToString();
+                value_trbDynBin2 = 16;
+                trbDynBin2.Value = value_trbDynBin2;
+                l_localcontrast.Text = value_trbDynBin2.ToString();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded17;
         private void btnGamma_Click(object sender, EventArgs e)
         {
-            if (Expanded17)
-            {
-                // btnExpander.Image = Properties.Resources.collapse_arrow;    
-                panGamma.Height = 29;
+            try { 
+                if (Expanded17)
+                {
+                    // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                    panGamma.Height = 29;
+                }
+                else
+                {
+                    //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                    panGamma.Height = 114;
+                }
+                Expanded17 = !Expanded17;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
-            else
-            {
-                //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panGamma.Height = 114;
-            }
-            Expanded17 = !Expanded17;
-        }
+}
 
         private void btnResetGamma_Click(object sender, EventArgs e)
         {
-            chckbox8 = false;
-            checkBox8.Checked = chckbox8;
-            value_trbGamma = 310;
-            trbGamma.Value = value_trbGamma;
-            l_gamma.Text = value_trbGamma.ToString();
+            try {
+                chckbox8 = false;
+                checkBox8.Checked = chckbox8;
+                value_trbGamma = 250;
+                trbGamma.Value = value_trbGamma;
+                l_gamma.Text = value_trbGamma.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private bool Expanded18;
         private void btnMaximum_Click(object sender, EventArgs e)
         {
-            if (Expanded18)
-            {
-                // btnExpander.Image = Properties.Resources.collapse_arrow;    
-                panMaximum.Height = 29;
+            try { 
+                if (Expanded18)
+                {
+                    // btnExpander.Image = Properties.Resources.collapse_arrow;    
+                    panMaximum.Height = 29;
+                }   
+                else
+                {
+                    //  btnExpander.Image = Properties.Resources.expand_arrow; 
+                    panMaximum.Height = 114;
+                }
+                Expanded18 = !Expanded18;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
-            else
-            {
-                //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panMaximum.Height = 114;
-            }
-            Expanded18 = !Expanded18;
-        }
+}
 
         private void btnResetMaximum_Click(object sender, EventArgs e)
         {
-            chckbox5 = false;
-            checkBox5.Checked = chckbox5;
-            value_trbMaximum = 3;
-            trbMaximum.Value = value_trbMaximum;
-            l_maximum.Text = value_trbMaximum.ToString();
-        }
+            try { 
+                chckbox5 = false;
+                checkBox5.Checked = chckbox5;
+                value_trbMaximum = 3;
+                trbMaximum.Value = value_trbMaximum;
+                l_maximum.Text = value_trbMaximum.ToString();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+}
         private bool Expanded19;
         private void btnMinimum_Click(object sender, EventArgs e)
         {
@@ -3316,6 +3297,56 @@ namespace project1
             value_trbMinimum = 3;
             trbMinimum.Value = value_trbMinimum;
             l_minimum.Text = value_trbMinimum.ToString();
+        }
+
+        private void btnZoomIn_Click(object sender, EventArgs e)
+        {
+            if (picReview2.Width < 1400 || picReview2.Height < 1400)
+            {
+                if (picReview2.Top > 5)
+                {
+                    picReview2.Top = (int)(picReview2.Top - (picReview2.Height * 0.025));
+                }
+                if (picReview2.Left > 5)
+                {
+                    picReview2.Left = (int)(picReview2.Left - (picReview2.Width * 0.025));
+                }
+                picReview2.Height = (int)(picReview2.Height + (picReview2.Height * 0.05));
+                picReview2.Width = (int)(picReview2.Width + (picReview2.Width * 0.05));
+            }
+            Console.WriteLine(picReview2.Width + " " + picReview2.Height);
+        }
+
+        private void btnZoomOut_Click(object sender, EventArgs e)
+        {
+            if (picReview2.Width > 100 || picReview2.Height > 100)
+            {
+                if (picReview2.Top < 5)
+                {
+                    picReview2.Top = (int)(picReview2.Top + (picReview2.Height * 0.025));
+                }
+                picReview2.Left = (int)(picReview2.Left + (picReview2.Width * 0.025));
+                picReview2.Height = (int)(picReview2.Height - (picReview2.Height * 0.05));
+                picReview2.Width = (int)(picReview2.Width - (picReview2.Width * 0.05));
+            }
+            
+        }
+
+        private void btnDefaultZoom_Click(object sender, EventArgs e)
+        {
+            picReview2.Height = 850; //ความกว้างหน้ากระดาษ
+            picReview2.Width = 620;  //ความสูงหน้ากระดาษ
+            xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
+            picReview2.Location = new Point(xRev, 20);
+        }
+
+        private void panAutoFunction_MouseEnter(object sender, EventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                MessageBox.Show("Enter key pressed");
+            }
+          
         }
     }
 }
