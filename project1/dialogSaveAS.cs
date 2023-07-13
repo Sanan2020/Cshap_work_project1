@@ -333,8 +333,7 @@ namespace project1
                     }
 
                     await Task.Delay(2000);
-
-                        using (rasterPage.Image = rasterImage)
+                    using (rasterPage.Image = rasterImage)
                     {
                         // Add it 
                         docWriter.AddPage(rasterPage);

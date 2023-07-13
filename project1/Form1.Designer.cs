@@ -37,6 +37,7 @@
             this.l_numberPages = new System.Windows.Forms.Label();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
+            this.btnResetAutoFunction = new System.Windows.Forms.Button();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.cbboxUseProfile = new DevComponents.DotNetBar.ComboBoxItem();
             this.btnRemovepf = new DevComponents.DotNetBar.ButtonItem();
@@ -44,6 +45,7 @@
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
             this.btnImportProfile = new DevComponents.DotNetBar.ButtonItem();
             this.btnExportProfile = new DevComponents.DotNetBar.ButtonItem();
+            this.btnAutoFunction = new System.Windows.Forms.Button();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.btnReset = new DevComponents.DotNetBar.ButtonItem();
             this.checkBox21 = new DevComponents.DotNetBar.CheckBoxItem();
@@ -61,8 +63,6 @@
             this.btnAutoCrop = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panAutoFunction = new System.Windows.Forms.Panel();
-            this.btnResetAutoFunction = new System.Windows.Forms.Button();
-            this.btnAutoFunction = new System.Windows.Forms.Button();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -241,6 +241,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnBinFilHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnBinarizeHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnDespeckleHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnColorlvHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnbinHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnDeskewHelp = new DevComponents.DotNetBar.ButtonX();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
@@ -338,7 +344,7 @@
             this.l_stateOutput.AutoSize = true;
             this.l_stateOutput.BackColor = System.Drawing.Color.Transparent;
             this.l_stateOutput.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.l_stateOutput.Location = new System.Drawing.Point(255, 10);
+            this.l_stateOutput.Location = new System.Drawing.Point(251, 8);
             this.l_stateOutput.Name = "l_stateOutput";
             this.l_stateOutput.Size = new System.Drawing.Size(61, 13);
             this.l_stateOutput.TabIndex = 44;
@@ -378,9 +384,7 @@
             // ribbonPanel1
             // 
             this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.ribbonPanel1.Controls.Add(this.btnResetAutoFunction);
             this.ribbonPanel1.Controls.Add(this.ribbonBar3);
-            this.ribbonPanel1.Controls.Add(this.btnAutoFunction);
             this.ribbonPanel1.Controls.Add(this.ribbonBar2);
             this.ribbonPanel1.Controls.Add(this.ribbonBar1);
             this.ribbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -389,6 +393,19 @@
             this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.ribbonPanel1.Size = new System.Drawing.Size(1199, 70);
             this.ribbonPanel1.TabIndex = 1;
+            // 
+            // btnResetAutoFunction
+            // 
+            this.btnResetAutoFunction.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnResetAutoFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetAutoFunction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnResetAutoFunction.Location = new System.Drawing.Point(240, 2);
+            this.btnResetAutoFunction.Name = "btnResetAutoFunction";
+            this.btnResetAutoFunction.Size = new System.Drawing.Size(65, 23);
+            this.btnResetAutoFunction.TabIndex = 74;
+            this.btnResetAutoFunction.Text = "Reset";
+            this.btnResetAutoFunction.UseVisualStyleBackColor = false;
+            this.btnResetAutoFunction.Click += new System.EventHandler(this.btnResetAutoFunction_Click);
             // 
             // ribbonBar3
             // 
@@ -467,6 +484,20 @@
             this.btnExportProfile.SubItemsExpandWidth = 14;
             this.btnExportProfile.Text = "Export";
             this.btnExportProfile.Click += new System.EventHandler(this.btnExportProfile_Click);
+            // 
+            // btnAutoFunction
+            // 
+            this.btnAutoFunction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAutoFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoFunction.Location = new System.Drawing.Point(0, 0);
+            this.btnAutoFunction.Name = "btnAutoFunction";
+            this.btnAutoFunction.Size = new System.Drawing.Size(307, 27);
+            this.btnAutoFunction.TabIndex = 73;
+            this.btnAutoFunction.Text = "Auto Functions";
+            this.btnAutoFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAutoFunction.UseVisualStyleBackColor = true;
+            this.btnAutoFunction.Click += new System.EventHandler(this.btnAutoFunction_Click);
+            this.btnAutoFunction.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAutoFunction_KeyDown);
             // 
             // ribbonBar2
             // 
@@ -633,6 +664,7 @@
             this.btnAutoCrop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAutoCrop.UseVisualStyleBackColor = true;
             this.btnAutoCrop.Click += new System.EventHandler(this.btnAutoCrop_Click);
+            this.btnAutoCrop.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAutoCrop_KeyDown);
             // 
             // flowLayoutPanel1
             // 
@@ -658,13 +690,22 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(336, 750);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(336, 418);
             this.flowLayoutPanel1.TabIndex = 36;
+            this.toolTip1.SetToolTip(this.flowLayoutPanel1, "Press F1 to References");
             this.flowLayoutPanel1.Visible = false;
             // 
             // panAutoFunction
             // 
             this.panAutoFunction.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panAutoFunction.Controls.Add(this.btnResetAutoFunction);
+            this.panAutoFunction.Controls.Add(this.btnDeskewHelp);
+            this.panAutoFunction.Controls.Add(this.btnbinHelp);
+            this.panAutoFunction.Controls.Add(this.btnColorlvHelp);
+            this.panAutoFunction.Controls.Add(this.btnDespeckleHelp);
+            this.panAutoFunction.Controls.Add(this.btnAutoFunction);
+            this.panAutoFunction.Controls.Add(this.btnBinarizeHelp);
+            this.panAutoFunction.Controls.Add(this.btnBinFilHelp);
             this.panAutoFunction.Controls.Add(this.checkBox7);
             this.panAutoFunction.Controls.Add(this.checkBox1);
             this.panAutoFunction.Controls.Add(this.comboBox1);
@@ -675,34 +716,8 @@
             this.panAutoFunction.Dock = System.Windows.Forms.DockStyle.Top;
             this.panAutoFunction.Location = new System.Drawing.Point(3, 3);
             this.panAutoFunction.Name = "panAutoFunction";
-            this.panAutoFunction.Size = new System.Drawing.Size(309, 203);
+            this.panAutoFunction.Size = new System.Drawing.Size(309, 29);
             this.panAutoFunction.TabIndex = 57;
-            this.panAutoFunction.MouseEnter += new System.EventHandler(this.panAutoFunction_MouseEnter);
-            // 
-            // btnResetAutoFunction
-            // 
-            this.btnResetAutoFunction.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnResetAutoFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetAutoFunction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnResetAutoFunction.Location = new System.Drawing.Point(1011, 5);
-            this.btnResetAutoFunction.Name = "btnResetAutoFunction";
-            this.btnResetAutoFunction.Size = new System.Drawing.Size(65, 23);
-            this.btnResetAutoFunction.TabIndex = 74;
-            this.btnResetAutoFunction.Text = "Reset";
-            this.btnResetAutoFunction.UseVisualStyleBackColor = false;
-            this.btnResetAutoFunction.Click += new System.EventHandler(this.btnResetAutoFunction_Click);
-            // 
-            // btnAutoFunction
-            // 
-            this.btnAutoFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutoFunction.Location = new System.Drawing.Point(771, 3);
-            this.btnAutoFunction.Name = "btnAutoFunction";
-            this.btnAutoFunction.Size = new System.Drawing.Size(307, 27);
-            this.btnAutoFunction.TabIndex = 73;
-            this.btnAutoFunction.Text = "Auto Functions";
-            this.btnAutoFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAutoFunction.UseVisualStyleBackColor = true;
-            this.btnAutoFunction.Click += new System.EventHandler(this.btnAutoFunction_Click);
             // 
             // checkBox7
             // 
@@ -771,7 +786,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(17, 100);
+            this.checkBox3.Location = new System.Drawing.Point(17, 101);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(77, 17);
             this.checkBox3.TabIndex = 39;
@@ -789,10 +804,11 @@
             this.panAutoCrop.Controls.Add(this.checkBox15);
             this.panAutoCrop.Controls.Add(this.btnAutoCrop);
             this.panAutoCrop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panAutoCrop.Location = new System.Drawing.Point(3, 212);
+            this.panAutoCrop.Location = new System.Drawing.Point(3, 38);
             this.panAutoCrop.Name = "panAutoCrop";
             this.panAutoCrop.Size = new System.Drawing.Size(309, 29);
             this.panAutoCrop.TabIndex = 74;
+            this.toolTip1.SetToolTip(this.panAutoCrop, "Press F1 to References");
             // 
             // label3
             // 
@@ -840,13 +856,14 @@
             this.panFlipRotate.Controls.Add(this.btnResetFlipRotate);
             this.panFlipRotate.Controls.Add(this.checkBox18);
             this.panFlipRotate.Controls.Add(this.trackBar29);
-            this.panFlipRotate.Controls.Add(this.btnFlipRotate);
             this.panFlipRotate.Controls.Add(this.l_RotateImage);
+            this.panFlipRotate.Controls.Add(this.btnFlipRotate);
             this.panFlipRotate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panFlipRotate.Location = new System.Drawing.Point(3, 247);
+            this.panFlipRotate.Location = new System.Drawing.Point(3, 73);
             this.panFlipRotate.Name = "panFlipRotate";
             this.panFlipRotate.Size = new System.Drawing.Size(309, 29);
             this.panFlipRotate.TabIndex = 90;
+            this.toolTip1.SetToolTip(this.panFlipRotate, "Press F1 to References");
             // 
             // btnResetFlipRotate
             // 
@@ -896,6 +913,7 @@
             this.btnFlipRotate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFlipRotate.UseVisualStyleBackColor = true;
             this.btnFlipRotate.Click += new System.EventHandler(this.btnFlipRotate_Click);
+            this.btnFlipRotate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnFlipRotate_KeyDown);
             // 
             // l_RotateImage
             // 
@@ -921,10 +939,11 @@
             this.panConBrigtIntens.Controls.Add(this.trackBar2);
             this.panConBrigtIntens.Controls.Add(this.trackBar3);
             this.panConBrigtIntens.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panConBrigtIntens.Location = new System.Drawing.Point(3, 282);
+            this.panConBrigtIntens.Location = new System.Drawing.Point(3, 108);
             this.panConBrigtIntens.Name = "panConBrigtIntens";
             this.panConBrigtIntens.Size = new System.Drawing.Size(309, 29);
             this.panConBrigtIntens.TabIndex = 33;
+            this.toolTip1.SetToolTip(this.panConBrigtIntens, "Press F1 to References");
             // 
             // trackBar1
             // 
@@ -990,6 +1009,7 @@
             this.btnConBrigtIntens.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConBrigtIntens.UseVisualStyleBackColor = true;
             this.btnConBrigtIntens.Click += new System.EventHandler(this.btnConBrigtIntens_Click);
+            this.btnConBrigtIntens.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnConBrigtIntens_KeyDown);
             // 
             // label7
             // 
@@ -1057,10 +1077,11 @@
             this.panUnsharpMask.Controls.Add(this.l_radius);
             this.panUnsharpMask.Controls.Add(this.trackBar4);
             this.panUnsharpMask.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panUnsharpMask.Location = new System.Drawing.Point(3, 317);
+            this.panUnsharpMask.Location = new System.Drawing.Point(3, 143);
             this.panUnsharpMask.Name = "panUnsharpMask";
             this.panUnsharpMask.Size = new System.Drawing.Size(309, 29);
             this.panUnsharpMask.TabIndex = 34;
+            this.toolTip1.SetToolTip(this.panUnsharpMask, "Press F1 to References");
             // 
             // btnResetUnsharpMask
             // 
@@ -1127,6 +1148,7 @@
             this.btnUnsharpMask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUnsharpMask.UseVisualStyleBackColor = true;
             this.btnUnsharpMask.Click += new System.EventHandler(this.btnUnsharpMask_Click);
+            this.btnUnsharpMask.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnUnsharpMask_KeyDown);
             // 
             // label10
             // 
@@ -1196,10 +1218,11 @@
             this.panGrayScale.Controls.Add(this.l_redfactor);
             this.panGrayScale.Controls.Add(this.l_bluefactor);
             this.panGrayScale.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panGrayScale.Location = new System.Drawing.Point(3, 352);
+            this.panGrayScale.Location = new System.Drawing.Point(3, 178);
             this.panGrayScale.Name = "panGrayScale";
             this.panGrayScale.Size = new System.Drawing.Size(309, 29);
             this.panGrayScale.TabIndex = 36;
+            this.toolTip1.SetToolTip(this.panGrayScale, "Press F1 to References");
             // 
             // btnResetGrayScale
             // 
@@ -1264,6 +1287,7 @@
             this.btnGrayScale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGrayScale.UseVisualStyleBackColor = true;
             this.btnGrayScale.Click += new System.EventHandler(this.btnGrayScale_Click);
+            this.btnGrayScale.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnGrayScale_KeyDown);
             // 
             // label
             // 
@@ -1341,10 +1365,11 @@
             this.panDynamicBinary.Controls.Add(this.trbDynBin2);
             this.panDynamicBinary.Controls.Add(this.l_localcontrast);
             this.panDynamicBinary.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panDynamicBinary.Location = new System.Drawing.Point(3, 387);
+            this.panDynamicBinary.Location = new System.Drawing.Point(3, 213);
             this.panDynamicBinary.Name = "panDynamicBinary";
             this.panDynamicBinary.Size = new System.Drawing.Size(309, 29);
             this.panDynamicBinary.TabIndex = 56;
+            this.toolTip1.SetToolTip(this.panDynamicBinary, "Press F1 to References");
             // 
             // label2
             // 
@@ -1413,6 +1438,7 @@
             this.btnDynamicBinary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDynamicBinary.UseVisualStyleBackColor = true;
             this.btnDynamicBinary.Click += new System.EventHandler(this.btnDynamicBinary_Click);
+            this.btnDynamicBinary.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnDynamicBinary_KeyDown);
             // 
             // l_dimension
             // 
@@ -1453,10 +1479,11 @@
             this.panGamma.Controls.Add(this.l_gamma);
             this.panGamma.Controls.Add(this.btnGamma);
             this.panGamma.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panGamma.Location = new System.Drawing.Point(3, 422);
+            this.panGamma.Location = new System.Drawing.Point(3, 248);
             this.panGamma.Name = "panGamma";
             this.panGamma.Size = new System.Drawing.Size(309, 29);
             this.panGamma.TabIndex = 58;
+            this.toolTip1.SetToolTip(this.panGamma, "Press F1 to References");
             // 
             // btnResetGamma
             // 
@@ -1516,6 +1543,7 @@
             this.btnGamma.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGamma.UseVisualStyleBackColor = true;
             this.btnGamma.Click += new System.EventHandler(this.btnGamma_Click);
+            this.btnGamma.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnGamma_KeyDown);
             // 
             // panMaximum
             // 
@@ -1525,10 +1553,11 @@
             this.panMaximum.Controls.Add(this.btnResetMaximum);
             this.panMaximum.Controls.Add(this.trbMaximum);
             this.panMaximum.Controls.Add(this.btnMaximum);
-            this.panMaximum.Location = new System.Drawing.Point(3, 457);
+            this.panMaximum.Location = new System.Drawing.Point(3, 283);
             this.panMaximum.Name = "panMaximum";
             this.panMaximum.Size = new System.Drawing.Size(309, 29);
             this.panMaximum.TabIndex = 57;
+            this.toolTip1.SetToolTip(this.panMaximum, "Press F1 to References");
             // 
             // checkBox5
             // 
@@ -1586,19 +1615,21 @@
             this.btnMaximum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMaximum.UseVisualStyleBackColor = true;
             this.btnMaximum.Click += new System.EventHandler(this.btnMaximum_Click);
+            this.btnMaximum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnMaximum_KeyDown);
             // 
             // panMinimum
             // 
             this.panMinimum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panMinimum.Controls.Add(this.btnResetMinimum);
             this.panMinimum.Controls.Add(this.checkBox6);
-            this.panMinimum.Controls.Add(this.btnMinimum);
             this.panMinimum.Controls.Add(this.trbMinimum);
             this.panMinimum.Controls.Add(this.l_minimum);
-            this.panMinimum.Location = new System.Drawing.Point(3, 492);
+            this.panMinimum.Controls.Add(this.btnMinimum);
+            this.panMinimum.Location = new System.Drawing.Point(3, 318);
             this.panMinimum.Name = "panMinimum";
             this.panMinimum.Size = new System.Drawing.Size(309, 29);
             this.panMinimum.TabIndex = 59;
+            this.toolTip1.SetToolTip(this.panMinimum, "Press F1 to References");
             // 
             // btnResetMinimum
             // 
@@ -1636,6 +1667,7 @@
             this.btnMinimum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMinimum.UseVisualStyleBackColor = true;
             this.btnMinimum.Click += new System.EventHandler(this.btnMinimum_Click);
+            this.btnMinimum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnMinimum_KeyDown);
             // 
             // trbMinimum
             // 
@@ -1674,17 +1706,18 @@
             this.panLineRemove.Controls.Add(this.trackBar17);
             this.panLineRemove.Controls.Add(this.checkBox11);
             this.panLineRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panLineRemove.Location = new System.Drawing.Point(3, 527);
+            this.panLineRemove.Location = new System.Drawing.Point(3, 353);
             this.panLineRemove.Name = "panLineRemove";
             this.panLineRemove.Size = new System.Drawing.Size(309, 29);
             this.panLineRemove.TabIndex = 71;
+            this.toolTip1.SetToolTip(this.panLineRemove, "Press F1 to References");
             // 
             // btnResetLineRemove
             // 
             this.btnResetLineRemove.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnResetLineRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetLineRemove.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnResetLineRemove.Location = new System.Drawing.Point(240, 3);
+            this.btnResetLineRemove.Location = new System.Drawing.Point(240, 2);
             this.btnResetLineRemove.Name = "btnResetLineRemove";
             this.btnResetLineRemove.Size = new System.Drawing.Size(65, 23);
             this.btnResetLineRemove.TabIndex = 70;
@@ -1711,9 +1744,9 @@
             this.btnLineRemove.TabIndex = 70;
             this.btnLineRemove.Text = "LineRemove (only 1-bit black and white)";
             this.btnLineRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip1.SetToolTip(this.btnLineRemove, "only 1-bit black and write");
             this.btnLineRemove.UseVisualStyleBackColor = true;
             this.btnLineRemove.Click += new System.EventHandler(this.btnLineRemove_Click);
+            this.btnLineRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnLineRemove_KeyDown);
             // 
             // l_maximumwall
             // 
@@ -1814,15 +1847,16 @@
             this.panHolePunchRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panHolePunchRemove.Controls.Add(this.btnResetHolePunchRemove);
             this.panHolePunchRemove.Controls.Add(this.l_maximumhole);
+            this.panHolePunchRemove.Controls.Add(this.btnHolePunchRemove);
             this.panHolePunchRemove.Controls.Add(this.l_minimumhole);
             this.panHolePunchRemove.Controls.Add(this.trackBar18);
-            this.panHolePunchRemove.Controls.Add(this.btnHolePunchRemove);
             this.panHolePunchRemove.Controls.Add(this.trackBar21);
             this.panHolePunchRemove.Controls.Add(this.checkBox12);
-            this.panHolePunchRemove.Location = new System.Drawing.Point(3, 562);
+            this.panHolePunchRemove.Location = new System.Drawing.Point(3, 388);
             this.panHolePunchRemove.Name = "panHolePunchRemove";
             this.panHolePunchRemove.Size = new System.Drawing.Size(309, 29);
             this.panHolePunchRemove.TabIndex = 72;
+            this.toolTip1.SetToolTip(this.panHolePunchRemove, "Press F1 to References");
             // 
             // btnResetHolePunchRemove
             // 
@@ -1876,6 +1910,7 @@
             this.btnHolePunchRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHolePunchRemove.UseVisualStyleBackColor = true;
             this.btnHolePunchRemove.Click += new System.EventHandler(this.btnHolePunchRemove_Click);
+            this.btnHolePunchRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnHolePunchRemove_KeyDown);
             // 
             // trackBar21
             // 
@@ -1902,19 +1937,20 @@
             this.panDotRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panDotRemove.Controls.Add(this.btnResetDotRemove);
             this.panDotRemove.Controls.Add(this.l_minimumdotW);
+            this.panDotRemove.Controls.Add(this.btnDotRemove);
             this.panDotRemove.Controls.Add(this.l_minimumdotH);
             this.panDotRemove.Controls.Add(this.l_maximumdotW);
             this.panDotRemove.Controls.Add(this.l_maximumdotH);
             this.panDotRemove.Controls.Add(this.checkBox10);
-            this.panDotRemove.Controls.Add(this.btnDotRemove);
             this.panDotRemove.Controls.Add(this.trackBar10);
             this.panDotRemove.Controls.Add(this.trackBar11);
             this.panDotRemove.Controls.Add(this.trackBar12);
             this.panDotRemove.Controls.Add(this.trackBar13);
-            this.panDotRemove.Location = new System.Drawing.Point(3, 597);
+            this.panDotRemove.Location = new System.Drawing.Point(3, 423);
             this.panDotRemove.Name = "panDotRemove";
             this.panDotRemove.Size = new System.Drawing.Size(309, 29);
             this.panDotRemove.TabIndex = 58;
+            this.toolTip1.SetToolTip(this.panDotRemove, "Press F1 to References");
             // 
             // btnResetDotRemove
             // 
@@ -1988,6 +2024,7 @@
             this.btnDotRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDotRemove.UseVisualStyleBackColor = true;
             this.btnDotRemove.Click += new System.EventHandler(this.btnDotRemove_Click);
+            this.btnDotRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnDotRemove_KeyDown);
             // 
             // trackBar10
             // 
@@ -2040,10 +2077,11 @@
             this.panInvertedText.Controls.Add(this.trackBar20);
             this.panInvertedText.Controls.Add(this.checkBox13);
             this.panInvertedText.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panInvertedText.Location = new System.Drawing.Point(3, 632);
+            this.panInvertedText.Location = new System.Drawing.Point(3, 458);
             this.panInvertedText.Name = "panInvertedText";
             this.panInvertedText.Size = new System.Drawing.Size(309, 29);
             this.panInvertedText.TabIndex = 73;
+            this.toolTip1.SetToolTip(this.panInvertedText, "Press F1 to References");
             // 
             // btnResetInvertedText
             // 
@@ -2079,6 +2117,7 @@
             this.btnInvertedText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInvertedText.UseVisualStyleBackColor = true;
             this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
+            this.btnInvertedText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnInvertedText_KeyDown);
             // 
             // l_minimuminverH
             // 
@@ -2178,10 +2217,11 @@
             this.panBorderRemove.Controls.Add(this.trackBar25);
             this.panBorderRemove.Controls.Add(this.checkBox16);
             this.panBorderRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panBorderRemove.Location = new System.Drawing.Point(3, 667);
+            this.panBorderRemove.Location = new System.Drawing.Point(3, 493);
             this.panBorderRemove.Name = "panBorderRemove";
             this.panBorderRemove.Size = new System.Drawing.Size(309, 29);
             this.panBorderRemove.TabIndex = 75;
+            this.toolTip1.SetToolTip(this.panBorderRemove, "Press F1 to References");
             // 
             // label12
             // 
@@ -2244,6 +2284,7 @@
             this.btnBorderRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBorderRemove.UseVisualStyleBackColor = true;
             this.btnBorderRemove.Click += new System.EventHandler(this.btnBorderRemove_Click);
+            this.btnBorderRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBorderRemove_KeyDown);
             // 
             // l_variance
             // 
@@ -2308,13 +2349,14 @@
             this.panSmooth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panSmooth.Controls.Add(this.btnResetSmooth);
             this.panSmooth.Controls.Add(this.l_length);
+            this.panSmooth.Controls.Add(this.btnSmooth);
             this.panSmooth.Controls.Add(this.trackBar31);
             this.panSmooth.Controls.Add(this.checkBox17);
-            this.panSmooth.Controls.Add(this.btnSmooth);
-            this.panSmooth.Location = new System.Drawing.Point(3, 702);
+            this.panSmooth.Location = new System.Drawing.Point(3, 528);
             this.panSmooth.Name = "panSmooth";
             this.panSmooth.Size = new System.Drawing.Size(309, 29);
             this.panSmooth.TabIndex = 76;
+            this.toolTip1.SetToolTip(this.panSmooth, "Press F1 to References");
             // 
             // btnResetSmooth
             // 
@@ -2370,6 +2412,7 @@
             this.btnSmooth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSmooth.UseVisualStyleBackColor = true;
             this.btnSmooth.Click += new System.EventHandler(this.btnSmooth_Click);
+            this.btnSmooth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSmooth_KeyDown);
             // 
             // panRakeRemove
             // 
@@ -2379,11 +2422,11 @@
             this.panRakeRemove.Controls.Add(this.l_numUpDown6);
             this.panRakeRemove.Controls.Add(this.l_numUpDown7);
             this.panRakeRemove.Controls.Add(this.l_numUpDown5);
+            this.panRakeRemove.Controls.Add(this.btnRakeRemove);
             this.panRakeRemove.Controls.Add(this.l_numUpDown8);
             this.panRakeRemove.Controls.Add(this.l_numUpDown9);
             this.panRakeRemove.Controls.Add(this.l_numUpDown4);
             this.panRakeRemove.Controls.Add(this.checkBox19);
-            this.panRakeRemove.Controls.Add(this.btnRakeRemove);
             this.panRakeRemove.Controls.Add(this.l_autofilter);
             this.panRakeRemove.Controls.Add(this.l_numUpDown3);
             this.panRakeRemove.Controls.Add(this.numUpDown9);
@@ -2397,10 +2440,11 @@
             this.panRakeRemove.Controls.Add(this.numUpDown3);
             this.panRakeRemove.Controls.Add(this.numUpDown4);
             this.panRakeRemove.Controls.Add(this.numUpDown5);
-            this.panRakeRemove.Location = new System.Drawing.Point(3, 737);
+            this.panRakeRemove.Location = new System.Drawing.Point(3, 563);
             this.panRakeRemove.Name = "panRakeRemove";
             this.panRakeRemove.Size = new System.Drawing.Size(309, 29);
             this.panRakeRemove.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.panRakeRemove, "Press F1 to References");
             // 
             // checkBox20
             // 
@@ -2502,6 +2546,7 @@
             this.btnRakeRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRakeRemove.UseVisualStyleBackColor = true;
             this.btnRakeRemove.Click += new System.EventHandler(this.btnRakeRemove_Click);
+            this.btnRakeRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnRakeRemove_KeyDown);
             // 
             // l_autofilter
             // 
@@ -2661,7 +2706,7 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Size = new System.Drawing.Size(863, 750);
+            this.splitContainer1.Size = new System.Drawing.Size(863, 418);
             this.splitContainer1.SplitterDistance = 108;
             this.splitContainer1.TabIndex = 45;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
@@ -2674,7 +2719,7 @@
             this.ribbonClientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ribbonClientPanel1.Location = new System.Drawing.Point(4, 128);
             this.ribbonClientPanel1.Name = "ribbonClientPanel1";
-            this.ribbonClientPanel1.Size = new System.Drawing.Size(1199, 750);
+            this.ribbonClientPanel1.Size = new System.Drawing.Size(1199, 418);
             // 
             // 
             // 
@@ -2689,7 +2734,7 @@
             this.panel1.Location = new System.Drawing.Point(863, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(336, 750);
+            this.panel1.Size = new System.Drawing.Size(336, 418);
             this.panel1.TabIndex = 46;
             // 
             // panel2
@@ -2699,7 +2744,7 @@
             this.panel2.Controls.Add(this.l_numberPages);
             this.panel2.Controls.Add(this.l_stateInput);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(4, 878);
+            this.panel2.Location = new System.Drawing.Point(4, 546);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1199, 29);
             this.panel2.TabIndex = 49;
@@ -2714,11 +2759,83 @@
             this.progressBarX1.TabIndex = 47;
             this.progressBarX1.Text = "progressBarX1";
             // 
+            // btnBinFilHelp
+            // 
+            this.btnBinFilHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnBinFilHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnBinFilHelp.Location = new System.Drawing.Point(262, 51);
+            this.btnBinFilHelp.Name = "btnBinFilHelp";
+            this.btnBinFilHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnBinFilHelp.TabIndex = 63;
+            this.btnBinFilHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnBinFilHelp, "Press to References");
+            this.btnBinFilHelp.Click += new System.EventHandler(this.btnBinFilHelp_Click);
+            // 
+            // btnBinarizeHelp
+            // 
+            this.btnBinarizeHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnBinarizeHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnBinarizeHelp.Location = new System.Drawing.Point(129, 80);
+            this.btnBinarizeHelp.Name = "btnBinarizeHelp";
+            this.btnBinarizeHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnBinarizeHelp.TabIndex = 64;
+            this.btnBinarizeHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnBinarizeHelp, "Press to References");
+            this.btnBinarizeHelp.Click += new System.EventHandler(this.btnBinarizeHelp_Click);
+            // 
+            // btnDespeckleHelp
+            // 
+            this.btnDespeckleHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDespeckleHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDespeckleHelp.Location = new System.Drawing.Point(129, 101);
+            this.btnDespeckleHelp.Name = "btnDespeckleHelp";
+            this.btnDespeckleHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnDespeckleHelp.TabIndex = 65;
+            this.btnDespeckleHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnDespeckleHelp, "Press to References");
+            this.btnDespeckleHelp.Click += new System.EventHandler(this.btnDespeckleHelp_Click);
+            // 
+            // btnColorlvHelp
+            // 
+            this.btnColorlvHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnColorlvHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnColorlvHelp.Location = new System.Drawing.Point(129, 123);
+            this.btnColorlvHelp.Name = "btnColorlvHelp";
+            this.btnColorlvHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnColorlvHelp.TabIndex = 66;
+            this.btnColorlvHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnColorlvHelp, "Press to References");
+            this.btnColorlvHelp.Click += new System.EventHandler(this.btnColorlvHelp_Click);
+            // 
+            // btnbinHelp
+            // 
+            this.btnbinHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnbinHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnbinHelp.Location = new System.Drawing.Point(129, 146);
+            this.btnbinHelp.Name = "btnbinHelp";
+            this.btnbinHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnbinHelp.TabIndex = 67;
+            this.btnbinHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnbinHelp, "Press to References");
+            this.btnbinHelp.Click += new System.EventHandler(this.btnbinHelp_Click);
+            // 
+            // btnDeskewHelp
+            // 
+            this.btnDeskewHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeskewHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDeskewHelp.Location = new System.Drawing.Point(129, 169);
+            this.btnDeskewHelp.Name = "btnDeskewHelp";
+            this.btnDeskewHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnDeskewHelp.TabIndex = 68;
+            this.btnDeskewHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnDeskewHelp, "Press to References");
+            this.btnDeskewHelp.Click += new System.EventHandler(this.btnDeskewHelp_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1207, 909);
+            this.ClientSize = new System.Drawing.Size(1207, 577);
             this.Controls.Add(this.ribbonClientPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.ribbonControl1);
@@ -3034,6 +3151,12 @@
         private DevComponents.DotNetBar.RibbonTabItem ribbonTabItem2;
         private DevComponents.DotNetBar.ButtonItem btnZoomOut;
         private DevComponents.DotNetBar.ButtonItem btnDefaultZoom;
+        private DevComponents.DotNetBar.ButtonX btnBinFilHelp;
+        private DevComponents.DotNetBar.ButtonX btnDeskewHelp;
+        private DevComponents.DotNetBar.ButtonX btnbinHelp;
+        private DevComponents.DotNetBar.ButtonX btnColorlvHelp;
+        private DevComponents.DotNetBar.ButtonX btnDespeckleHelp;
+        private DevComponents.DotNetBar.ButtonX btnBinarizeHelp;
     }
 }
 

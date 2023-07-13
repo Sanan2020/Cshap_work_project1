@@ -2596,7 +2596,7 @@ namespace project1
                             command20.Run(rasterImage);
                         }
                     }
-                    bpp = rasterImage.BitsPerPixel.ToString();
+                    bpp = "Output: "+rasterImage.BitsPerPixel+" Bits";
                     l_stateOutput.Invoke((MethodInvoker)(() => { l_stateOutput.Text = bpp; }));
                     using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                     {
@@ -2664,7 +2664,7 @@ namespace project1
                         // Load it as a raster image and add it
                         var rasterImage = _rasterCodecs.Load(img, pageNumber);
                         l_numberPages.Text = $"Page {pageNumber} / { pageCount.ToString()}";
-                        l_stateInput.Text = "Image " + rasterImage.BitsPerPixel.ToString() + " Bits";
+                        l_stateInput.Text = "Input: " + rasterImage.BitsPerPixel.ToString() + " Bits";
                             if (rasterImage.BitsPerPixel == 1)
                             {
                                 chckbox21 = true;
@@ -3340,13 +3340,183 @@ namespace project1
             picReview2.Location = new Point(xRev, 20);
         }
 
-        private void panAutoFunction_MouseEnter(object sender, EventArgs e)
+        private void btnAutoFunction_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            
+        }
+
+        private void btnAutoCrop_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
             {
-                MessageBox.Show("Enter key pressed");
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/autocropcommand-threshold.html");
             }
-          
+        }
+
+        private void btnFlipRotate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/l/imageprocessing-rastercommand.html");
+            }
+        }
+
+        private void btnConBrigtIntens_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/contrastbrightnessintensitycommand.html");
+            }
+        }
+
+        private void btnUnsharpMask_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pe/unsharpmaskcommand.html");
+            }
+        }
+
+        private void btnGrayScale_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/dh/pc/grayscaleextendedcommand.html");
+            }
+        }
+
+        private void btnDynamicBinary_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/dynamicbinarycommand.html");
+            }
+        }
+
+        private void btnGamma_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/gammacorrectcommand.html");
+            }
+        }
+
+        private void btnMaximum_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/dh/po/maximumcommand.html");
+            }
+        }
+
+        private void btnMinimum_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/dh/po/minimumcommand.html");
+            }
+        }
+
+        private void btnLineRemove_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/lineremovecommand.html");
+            }
+        }
+
+        private void btnHolePunchRemove_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/holepunchremovecommand.html");
+            }
+        }
+
+        private void btnDotRemove_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/image-processing-functions/dot-remove.html");
+            }
+        }
+
+        private void btnInvertedText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/invertedtextcommand.html");
+            }
+        }
+
+        private void btnBorderRemove_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/borderremovecommand.html");
+            }
+        }
+
+        private void btnSmooth_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/smoothcommand.html");
+            }
+        }
+
+        private void btnRakeRemove_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/rakeremovecommand.html");
+            }
+        }
+
+        private void btnBinFilHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pe/binaryfiltercommand.html");
+        }
+
+        private void btnBinarizeHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/autobinarizecommand.html");
+        }
+
+        private void btnDespeckleHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/despecklecommand.html");
+        }
+
+        private void btnColorlvHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/autocolorlevelcommand.html");
+        }
+
+        private void btnbinHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/autobinarycommand.html");
+        }
+
+        private void btnDeskewHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/deskewcommand.html");
         }
     }
 }
