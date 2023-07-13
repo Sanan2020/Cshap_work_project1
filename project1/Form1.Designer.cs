@@ -332,7 +332,7 @@
             // 
             this.l_stateInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.l_stateInput.AutoSize = true;
-            this.l_stateInput.Location = new System.Drawing.Point(86, 10);
+            this.l_stateInput.Location = new System.Drawing.Point(86, 8);
             this.l_stateInput.Name = "l_stateInput";
             this.l_stateInput.Size = new System.Drawing.Size(53, 13);
             this.l_stateInput.TabIndex = 43;
@@ -354,7 +354,7 @@
             // 
             this.l_numberPages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.l_numberPages.AutoSize = true;
-            this.l_numberPages.Location = new System.Drawing.Point(16, 10);
+            this.l_numberPages.Location = new System.Drawing.Point(16, 8);
             this.l_numberPages.Name = "l_numberPages";
             this.l_numberPages.Size = new System.Drawing.Size(32, 13);
             this.l_numberPages.TabIndex = 46;
