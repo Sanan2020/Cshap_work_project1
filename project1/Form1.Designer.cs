@@ -316,7 +316,7 @@
             // 
             this.l_stateInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.l_stateInput.AutoSize = true;
-            this.l_stateInput.Location = new System.Drawing.Point(64, 17);
+            this.l_stateInput.Location = new System.Drawing.Point(115, 12);
             this.l_stateInput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.l_stateInput.Name = "l_stateInput";
             this.l_stateInput.Size = new System.Drawing.Size(64, 16);
