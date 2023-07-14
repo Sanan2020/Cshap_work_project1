@@ -33,6 +33,7 @@ using static project1.Form1Export;
 using static project1.Form1;
 using System.Diagnostics.Contracts;
 using Leadtools.Document.Writer;
+using System.Reflection.Emit;
 
 namespace project1
 {
@@ -46,9 +47,9 @@ namespace project1
 
         public String folderPath;
         RasterCodecs codecs = new RasterCodecs();
-        public int value_trackBar1;
-        public int value_trackBar2;
-        public int value_trackBar3;
+        public int value_trackBar1=0;
+        public int value_trackBar2=0;
+        public int value_trackBar3=0;
         public int value_trackBar4 = 1;
         public int value_trackBar5 = 1;
         public int value_trackBar6 = 1;
@@ -695,9 +696,11 @@ namespace project1
                 chckbox20 = false;
                 checkBox20.Checked = chckbox20;
 
-                chckbox21 = false;
-                checkBox21.Checked = chckbox21;
-
+                if (stateBits != true)
+                {
+                    chckbox21 = false;
+                    checkBox21.Checked = chckbox21;
+                }
                 cbboxUseProfile.SelectedItem = "Default";
                 Image();
 
@@ -2305,10 +2308,23 @@ namespace project1
             }
         }
         String bpp;
+        enum Months
+        {
+            Default=-1,
+            ErosionOmniDirectional,   
+            ErosionHorizontal,  
+            ErosionVertical,      
+            ErosionDiagonal,     
+            DilationOmniDirectional,        
+            DilationHorizontal,       
+            DilationVertical,        
+            DilationDiagonal
+        }
+        
         public void Image()
         {
-            try
-            {
+           /* try
+            {*/
                 _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
                 if (file != null)
                 {
@@ -2346,12 +2362,22 @@ namespace project1
                     command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                     command2.Run(rasterImage);
 
+                    /**/
+                   // var level = (Months)selectCombobox;
+                   // MessageBox.Show(level.ToString());
+                   /* if (level.ToString() != "Default")
+                    {*/
+                        //MessageBox.Show(level.ToString());
+                      //   BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)7);
+                       //  command3.Run(rasterImage);
+                    //}
+                    /**/
                     if (selectCombobox > 0) {
-                        selectCombobox = selectCombobox - 1;
-                        //MessageBox.Show(selectCombobox.ToString());
-                        BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)selectCombobox);
-                        command3.Run(rasterImage);
-                        }
+                       int level = selectCombobox - 1;
+                       //MessageBox.Show(selectCombobox.ToString());
+                       BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)level);
+                       command3.Run(rasterImage);
+                    }
 
                     if (chckbox == true)
                     {
@@ -2604,10 +2630,10 @@ namespace project1
                     }
                 }
             }
-        }catch (Exception ex)
+       /* }catch (Exception ex)
         {
             MessageBox.Show(ex.Message);
-        }
+        }*/
         Thread.Sleep(10);
         }
        
@@ -2627,17 +2653,16 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
         }
-       
+        bool stateBits = false;
         private async void btnOpen_Click(object sender, EventArgs e)
         {
             try{
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
                 DialogResult dr = ofd.ShowDialog();
-
                 if (dr == System.Windows.Forms.DialogResult.OK){
                     splitContainer1.Panel1.Controls.Clear();
-                    ResetValue();
+                    
                     this.progressBarX1.Visible = true;
                     crepic(); //สร้าง picReview         
                     file = ofd.FileNames;
@@ -2667,13 +2692,16 @@ namespace project1
                         l_stateInput.Text = "Input: " + rasterImage.BitsPerPixel.ToString() + " Bits";
                             if (rasterImage.BitsPerPixel == 1)
                             {
+                                stateBits = true;
                                 chckbox21 = true;
                                 checkBox21.Checked = chckbox21;
                                 checkBox21.Enabled = false;
                             }
                             else {
+                                stateBits = false;
                                 checkBox21.Enabled = true;
                             }
+                        ResetValue();
                         this.progressBarX1.MarqueeAnimationSpeed = 20;
                         PictureBox pic2 = new PictureBox();
                         pic2.Height = 140;
@@ -2811,7 +2839,7 @@ namespace project1
                
                 if (cbboxUseProfile.SelectedItem.ToString() == "Default")
                 {
-                   ResetValue();
+                    ResetValue();
                     btnRemovepf.Enabled = false;
                 }
                 else
@@ -2866,7 +2894,10 @@ namespace project1
                     trbDynBin2.Value = value_trbDynBin2;
                     l_localcontrast.Text = value_trbDynBin2.ToString();
                     selectCombobox = profile3.Binaryfilter;
-                    comboBox1.SelectedIndex = (selectCombobox + 1);
+                    comboBox1.SelectedIndex = selectCombobox;
+                    /*if (selectCombobox > 0){
+                            comboBox1.SelectedIndex = (selectCombobox-1);
+                        }*/
                     //Dot Remove
                     chckbox10 = profile3.Dotremove;
                     checkBox10.Checked = chckbox10;
@@ -3006,6 +3037,12 @@ namespace project1
                     //convetrt to 1 bit
                     chckbox21 = profile3.Convert1bit;
                     checkBox21.Checked = chckbox21;
+
+                        /* using (ProgressPopup pp = new ProgressPopup(Image))
+                         {
+                                 pp.ShowDialog();
+                         }*/
+                     //  Image();
                 }
             }
             }

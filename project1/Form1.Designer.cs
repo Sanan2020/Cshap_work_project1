@@ -37,7 +37,6 @@
             this.l_numberPages = new System.Windows.Forms.Label();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
-            this.btnResetAutoFunction = new System.Windows.Forms.Button();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.cbboxUseProfile = new DevComponents.DotNetBar.ComboBoxItem();
             this.btnRemovepf = new DevComponents.DotNetBar.ButtonItem();
@@ -45,7 +44,6 @@
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
             this.btnImportProfile = new DevComponents.DotNetBar.ButtonItem();
             this.btnExportProfile = new DevComponents.DotNetBar.ButtonItem();
-            this.btnAutoFunction = new System.Windows.Forms.Button();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.btnReset = new DevComponents.DotNetBar.ButtonItem();
             this.checkBox21 = new DevComponents.DotNetBar.CheckBoxItem();
@@ -59,10 +57,18 @@
             this.btnDefaultZoom = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonTabItem1 = new DevComponents.DotNetBar.RibbonTabItem();
             this.ribbonTabItem2 = new DevComponents.DotNetBar.RibbonTabItem();
+            this.btnResetAutoFunction = new System.Windows.Forms.Button();
+            this.btnAutoFunction = new System.Windows.Forms.Button();
             this.btnResetAutoCrop = new System.Windows.Forms.Button();
             this.btnAutoCrop = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panAutoFunction = new System.Windows.Forms.Panel();
+            this.btnDeskewHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnbinHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnColorlvHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnDespeckleHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnBinarizeHelp = new DevComponents.DotNetBar.ButtonX();
+            this.btnBinFilHelp = new DevComponents.DotNetBar.ButtonX();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -79,8 +85,8 @@
             this.btnResetFlipRotate = new System.Windows.Forms.Button();
             this.checkBox18 = new System.Windows.Forms.CheckBox();
             this.trackBar29 = new System.Windows.Forms.TrackBar();
-            this.btnFlipRotate = new System.Windows.Forms.Button();
             this.l_RotateImage = new System.Windows.Forms.Label();
+            this.btnFlipRotate = new System.Windows.Forms.Button();
             this.panConBrigtIntens = new System.Windows.Forms.Panel();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.btnResetConBrigtIntens = new System.Windows.Forms.Button();
@@ -143,9 +149,9 @@
             this.panMinimum = new System.Windows.Forms.Panel();
             this.btnResetMinimum = new System.Windows.Forms.Button();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.btnMinimum = new System.Windows.Forms.Button();
             this.trbMinimum = new System.Windows.Forms.TrackBar();
             this.l_minimum = new System.Windows.Forms.Label();
+            this.btnMinimum = new System.Windows.Forms.Button();
             this.panLineRemove = new System.Windows.Forms.Panel();
             this.btnResetLineRemove = new System.Windows.Forms.Button();
             this.l_wall = new System.Windows.Forms.Label();
@@ -163,19 +169,19 @@
             this.panHolePunchRemove = new System.Windows.Forms.Panel();
             this.btnResetHolePunchRemove = new System.Windows.Forms.Button();
             this.l_maximumhole = new System.Windows.Forms.Label();
+            this.btnHolePunchRemove = new System.Windows.Forms.Button();
             this.l_minimumhole = new System.Windows.Forms.Label();
             this.trackBar18 = new System.Windows.Forms.TrackBar();
-            this.btnHolePunchRemove = new System.Windows.Forms.Button();
             this.trackBar21 = new System.Windows.Forms.TrackBar();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.panDotRemove = new System.Windows.Forms.Panel();
             this.btnResetDotRemove = new System.Windows.Forms.Button();
             this.l_minimumdotW = new System.Windows.Forms.Label();
+            this.btnDotRemove = new System.Windows.Forms.Button();
             this.l_minimumdotH = new System.Windows.Forms.Label();
             this.l_maximumdotW = new System.Windows.Forms.Label();
             this.l_maximumdotH = new System.Windows.Forms.Label();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.btnDotRemove = new System.Windows.Forms.Button();
             this.trackBar10 = new System.Windows.Forms.TrackBar();
             this.trackBar11 = new System.Windows.Forms.TrackBar();
             this.trackBar12 = new System.Windows.Forms.TrackBar();
@@ -208,20 +214,20 @@
             this.panSmooth = new System.Windows.Forms.Panel();
             this.btnResetSmooth = new System.Windows.Forms.Button();
             this.l_length = new System.Windows.Forms.Label();
+            this.btnSmooth = new System.Windows.Forms.Button();
             this.trackBar31 = new System.Windows.Forms.TrackBar();
             this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.btnSmooth = new System.Windows.Forms.Button();
             this.panRakeRemove = new System.Windows.Forms.Panel();
             this.checkBox20 = new System.Windows.Forms.CheckBox();
             this.btnResetRakeRemove = new System.Windows.Forms.Button();
             this.l_numUpDown6 = new System.Windows.Forms.Label();
             this.l_numUpDown7 = new System.Windows.Forms.Label();
             this.l_numUpDown5 = new System.Windows.Forms.Label();
+            this.btnRakeRemove = new System.Windows.Forms.Button();
             this.l_numUpDown8 = new System.Windows.Forms.Label();
             this.l_numUpDown9 = new System.Windows.Forms.Label();
             this.l_numUpDown4 = new System.Windows.Forms.Label();
             this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.btnRakeRemove = new System.Windows.Forms.Button();
             this.l_autofilter = new System.Windows.Forms.Label();
             this.l_numUpDown3 = new System.Windows.Forms.Label();
             this.numUpDown9 = new System.Windows.Forms.NumericUpDown();
@@ -241,12 +247,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnBinFilHelp = new DevComponents.DotNetBar.ButtonX();
-            this.btnBinarizeHelp = new DevComponents.DotNetBar.ButtonX();
-            this.btnDespeckleHelp = new DevComponents.DotNetBar.ButtonX();
-            this.btnColorlvHelp = new DevComponents.DotNetBar.ButtonX();
-            this.btnbinHelp = new DevComponents.DotNetBar.ButtonX();
-            this.btnDeskewHelp = new DevComponents.DotNetBar.ButtonX();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
@@ -394,19 +394,6 @@
             this.ribbonPanel1.Size = new System.Drawing.Size(1199, 70);
             this.ribbonPanel1.TabIndex = 1;
             // 
-            // btnResetAutoFunction
-            // 
-            this.btnResetAutoFunction.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnResetAutoFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetAutoFunction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnResetAutoFunction.Location = new System.Drawing.Point(240, 2);
-            this.btnResetAutoFunction.Name = "btnResetAutoFunction";
-            this.btnResetAutoFunction.Size = new System.Drawing.Size(65, 23);
-            this.btnResetAutoFunction.TabIndex = 74;
-            this.btnResetAutoFunction.Text = "Reset";
-            this.btnResetAutoFunction.UseVisualStyleBackColor = false;
-            this.btnResetAutoFunction.Click += new System.EventHandler(this.btnResetAutoFunction_Click);
-            // 
             // ribbonBar3
             // 
             this.ribbonBar3.AutoOverflowEnabled = true;
@@ -430,7 +417,7 @@
             this.cbboxUseProfile.Enabled = false;
             this.cbboxUseProfile.ItemHeight = 17;
             this.cbboxUseProfile.Name = "cbboxUseProfile";
-            this.cbboxUseProfile.Tooltip = "se";
+            this.cbboxUseProfile.Tooltip = "Use profile";
             this.cbboxUseProfile.SelectedIndexChanged += new System.EventHandler(this.cbboxUseProfile_SelectedIndexChanged);
             // 
             // btnRemovepf
@@ -484,20 +471,6 @@
             this.btnExportProfile.SubItemsExpandWidth = 14;
             this.btnExportProfile.Text = "Export";
             this.btnExportProfile.Click += new System.EventHandler(this.btnExportProfile_Click);
-            // 
-            // btnAutoFunction
-            // 
-            this.btnAutoFunction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAutoFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutoFunction.Location = new System.Drawing.Point(0, 0);
-            this.btnAutoFunction.Name = "btnAutoFunction";
-            this.btnAutoFunction.Size = new System.Drawing.Size(307, 27);
-            this.btnAutoFunction.TabIndex = 73;
-            this.btnAutoFunction.Text = "Auto Functions";
-            this.btnAutoFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAutoFunction.UseVisualStyleBackColor = true;
-            this.btnAutoFunction.Click += new System.EventHandler(this.btnAutoFunction_Click);
-            this.btnAutoFunction.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAutoFunction_KeyDown);
             // 
             // ribbonBar2
             // 
@@ -639,6 +612,33 @@
             this.ribbonTabItem2.Panel = this.ribbonPanel2;
             this.ribbonTabItem2.Text = "Image";
             // 
+            // btnResetAutoFunction
+            // 
+            this.btnResetAutoFunction.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnResetAutoFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetAutoFunction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnResetAutoFunction.Location = new System.Drawing.Point(240, 2);
+            this.btnResetAutoFunction.Name = "btnResetAutoFunction";
+            this.btnResetAutoFunction.Size = new System.Drawing.Size(65, 23);
+            this.btnResetAutoFunction.TabIndex = 74;
+            this.btnResetAutoFunction.Text = "Reset";
+            this.btnResetAutoFunction.UseVisualStyleBackColor = false;
+            this.btnResetAutoFunction.Click += new System.EventHandler(this.btnResetAutoFunction_Click);
+            // 
+            // btnAutoFunction
+            // 
+            this.btnAutoFunction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAutoFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoFunction.Location = new System.Drawing.Point(0, 0);
+            this.btnAutoFunction.Name = "btnAutoFunction";
+            this.btnAutoFunction.Size = new System.Drawing.Size(307, 27);
+            this.btnAutoFunction.TabIndex = 73;
+            this.btnAutoFunction.Text = "Auto Functions";
+            this.btnAutoFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAutoFunction.UseVisualStyleBackColor = true;
+            this.btnAutoFunction.Click += new System.EventHandler(this.btnAutoFunction_Click);
+            this.btnAutoFunction.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAutoFunction_KeyDown);
+            // 
             // btnResetAutoCrop
             // 
             this.btnResetAutoCrop.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -718,6 +718,78 @@
             this.panAutoFunction.Name = "panAutoFunction";
             this.panAutoFunction.Size = new System.Drawing.Size(309, 29);
             this.panAutoFunction.TabIndex = 57;
+            // 
+            // btnDeskewHelp
+            // 
+            this.btnDeskewHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeskewHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDeskewHelp.Location = new System.Drawing.Point(129, 169);
+            this.btnDeskewHelp.Name = "btnDeskewHelp";
+            this.btnDeskewHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnDeskewHelp.TabIndex = 68;
+            this.btnDeskewHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnDeskewHelp, "Press to References");
+            this.btnDeskewHelp.Click += new System.EventHandler(this.btnDeskewHelp_Click);
+            // 
+            // btnbinHelp
+            // 
+            this.btnbinHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnbinHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnbinHelp.Location = new System.Drawing.Point(129, 146);
+            this.btnbinHelp.Name = "btnbinHelp";
+            this.btnbinHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnbinHelp.TabIndex = 67;
+            this.btnbinHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnbinHelp, "Press to References");
+            this.btnbinHelp.Click += new System.EventHandler(this.btnbinHelp_Click);
+            // 
+            // btnColorlvHelp
+            // 
+            this.btnColorlvHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnColorlvHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnColorlvHelp.Location = new System.Drawing.Point(129, 123);
+            this.btnColorlvHelp.Name = "btnColorlvHelp";
+            this.btnColorlvHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnColorlvHelp.TabIndex = 66;
+            this.btnColorlvHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnColorlvHelp, "Press to References");
+            this.btnColorlvHelp.Click += new System.EventHandler(this.btnColorlvHelp_Click);
+            // 
+            // btnDespeckleHelp
+            // 
+            this.btnDespeckleHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDespeckleHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDespeckleHelp.Location = new System.Drawing.Point(129, 101);
+            this.btnDespeckleHelp.Name = "btnDespeckleHelp";
+            this.btnDespeckleHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnDespeckleHelp.TabIndex = 65;
+            this.btnDespeckleHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnDespeckleHelp, "Press to References");
+            this.btnDespeckleHelp.Click += new System.EventHandler(this.btnDespeckleHelp_Click);
+            // 
+            // btnBinarizeHelp
+            // 
+            this.btnBinarizeHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnBinarizeHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnBinarizeHelp.Location = new System.Drawing.Point(129, 80);
+            this.btnBinarizeHelp.Name = "btnBinarizeHelp";
+            this.btnBinarizeHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnBinarizeHelp.TabIndex = 64;
+            this.btnBinarizeHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnBinarizeHelp, "Press to References");
+            this.btnBinarizeHelp.Click += new System.EventHandler(this.btnBinarizeHelp_Click);
+            // 
+            // btnBinFilHelp
+            // 
+            this.btnBinFilHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnBinFilHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnBinFilHelp.Location = new System.Drawing.Point(262, 51);
+            this.btnBinFilHelp.Name = "btnBinFilHelp";
+            this.btnBinFilHelp.Size = new System.Drawing.Size(29, 17);
+            this.btnBinFilHelp.TabIndex = 63;
+            this.btnBinFilHelp.Text = "?";
+            this.toolTip1.SetToolTip(this.btnBinFilHelp, "Press to References");
+            this.btnBinFilHelp.Click += new System.EventHandler(this.btnBinFilHelp_Click);
             // 
             // checkBox7
             // 
@@ -901,6 +973,15 @@
             this.trackBar29.Scroll += new System.EventHandler(this.trackBar29_Scroll);
             this.trackBar29.MouseCaptureChanged += new System.EventHandler(this.trackBar29_MouseCaptureChanged);
             // 
+            // l_RotateImage
+            // 
+            this.l_RotateImage.AutoSize = true;
+            this.l_RotateImage.Location = new System.Drawing.Point(19, 74);
+            this.l_RotateImage.Name = "l_RotateImage";
+            this.l_RotateImage.Size = new System.Drawing.Size(13, 13);
+            this.l_RotateImage.TabIndex = 66;
+            this.l_RotateImage.Text = "0";
+            // 
             // btnFlipRotate
             // 
             this.btnFlipRotate.Dock = System.Windows.Forms.DockStyle.Top;
@@ -914,15 +995,6 @@
             this.btnFlipRotate.UseVisualStyleBackColor = true;
             this.btnFlipRotate.Click += new System.EventHandler(this.btnFlipRotate_Click);
             this.btnFlipRotate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnFlipRotate_KeyDown);
-            // 
-            // l_RotateImage
-            // 
-            this.l_RotateImage.AutoSize = true;
-            this.l_RotateImage.Location = new System.Drawing.Point(19, 74);
-            this.l_RotateImage.Name = "l_RotateImage";
-            this.l_RotateImage.Size = new System.Drawing.Size(13, 13);
-            this.l_RotateImage.TabIndex = 66;
-            this.l_RotateImage.Text = "0";
             // 
             // panConBrigtIntens
             // 
@@ -1655,20 +1727,6 @@
             this.checkBox6.UseVisualStyleBackColor = true;
             this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
-            // btnMinimum
-            // 
-            this.btnMinimum.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMinimum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimum.Location = new System.Drawing.Point(0, 0);
-            this.btnMinimum.Name = "btnMinimum";
-            this.btnMinimum.Size = new System.Drawing.Size(307, 27);
-            this.btnMinimum.TabIndex = 79;
-            this.btnMinimum.Text = "Minimum";
-            this.btnMinimum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMinimum.UseVisualStyleBackColor = true;
-            this.btnMinimum.Click += new System.EventHandler(this.btnMinimum_Click);
-            this.btnMinimum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnMinimum_KeyDown);
-            // 
             // trbMinimum
             // 
             this.trbMinimum.Location = new System.Drawing.Point(37, 61);
@@ -1688,6 +1746,20 @@
             this.l_minimum.Size = new System.Drawing.Size(13, 13);
             this.l_minimum.TabIndex = 54;
             this.l_minimum.Text = "0";
+            // 
+            // btnMinimum
+            // 
+            this.btnMinimum.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMinimum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimum.Location = new System.Drawing.Point(0, 0);
+            this.btnMinimum.Name = "btnMinimum";
+            this.btnMinimum.Size = new System.Drawing.Size(307, 27);
+            this.btnMinimum.TabIndex = 79;
+            this.btnMinimum.Text = "Minimum";
+            this.btnMinimum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMinimum.UseVisualStyleBackColor = true;
+            this.btnMinimum.Click += new System.EventHandler(this.btnMinimum_Click);
+            this.btnMinimum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnMinimum_KeyDown);
             // 
             // panLineRemove
             // 
@@ -1880,6 +1952,20 @@
             this.l_maximumhole.TabIndex = 77;
             this.l_maximumhole.Text = "0";
             // 
+            // btnHolePunchRemove
+            // 
+            this.btnHolePunchRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHolePunchRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHolePunchRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnHolePunchRemove.Name = "btnHolePunchRemove";
+            this.btnHolePunchRemove.Size = new System.Drawing.Size(307, 27);
+            this.btnHolePunchRemove.TabIndex = 70;
+            this.btnHolePunchRemove.Text = "HolePunchRemove (only 1-bit black and white)";
+            this.btnHolePunchRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHolePunchRemove.UseVisualStyleBackColor = true;
+            this.btnHolePunchRemove.Click += new System.EventHandler(this.btnHolePunchRemove_Click);
+            this.btnHolePunchRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnHolePunchRemove_KeyDown);
+            // 
             // l_minimumhole
             // 
             this.l_minimumhole.AutoSize = true;
@@ -1897,20 +1983,6 @@
             this.trackBar18.TabIndex = 66;
             this.trackBar18.Scroll += new System.EventHandler(this.trackBar18_Scroll);
             this.trackBar18.MouseCaptureChanged += new System.EventHandler(this.trackBar18_MouseCaptureChanged);
-            // 
-            // btnHolePunchRemove
-            // 
-            this.btnHolePunchRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHolePunchRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHolePunchRemove.Location = new System.Drawing.Point(0, 0);
-            this.btnHolePunchRemove.Name = "btnHolePunchRemove";
-            this.btnHolePunchRemove.Size = new System.Drawing.Size(307, 27);
-            this.btnHolePunchRemove.TabIndex = 70;
-            this.btnHolePunchRemove.Text = "HolePunchRemove (only 1-bit black and white)";
-            this.btnHolePunchRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHolePunchRemove.UseVisualStyleBackColor = true;
-            this.btnHolePunchRemove.Click += new System.EventHandler(this.btnHolePunchRemove_Click);
-            this.btnHolePunchRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnHolePunchRemove_KeyDown);
             // 
             // trackBar21
             // 
@@ -1974,6 +2046,20 @@
             this.l_minimumdotW.TabIndex = 77;
             this.l_minimumdotW.Text = "0";
             // 
+            // btnDotRemove
+            // 
+            this.btnDotRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDotRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDotRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnDotRemove.Name = "btnDotRemove";
+            this.btnDotRemove.Size = new System.Drawing.Size(307, 27);
+            this.btnDotRemove.TabIndex = 70;
+            this.btnDotRemove.Text = "DotRemove (only 1-bit black and white)";
+            this.btnDotRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDotRemove.UseVisualStyleBackColor = true;
+            this.btnDotRemove.Click += new System.EventHandler(this.btnDotRemove_Click);
+            this.btnDotRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnDotRemove_KeyDown);
+            // 
             // l_minimumdotH
             // 
             this.l_minimumdotH.AutoSize = true;
@@ -2011,20 +2097,6 @@
             this.checkBox10.Text = "DotRemove";
             this.checkBox10.UseVisualStyleBackColor = true;
             this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
-            // 
-            // btnDotRemove
-            // 
-            this.btnDotRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDotRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDotRemove.Location = new System.Drawing.Point(0, 0);
-            this.btnDotRemove.Name = "btnDotRemove";
-            this.btnDotRemove.Size = new System.Drawing.Size(307, 27);
-            this.btnDotRemove.TabIndex = 70;
-            this.btnDotRemove.Text = "DotRemove (only 1-bit black and white)";
-            this.btnDotRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDotRemove.UseVisualStyleBackColor = true;
-            this.btnDotRemove.Click += new System.EventHandler(this.btnDotRemove_Click);
-            this.btnDotRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnDotRemove_KeyDown);
             // 
             // trackBar10
             // 
@@ -2380,6 +2452,20 @@
             this.l_length.TabIndex = 71;
             this.l_length.Text = "0";
             // 
+            // btnSmooth
+            // 
+            this.btnSmooth.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSmooth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSmooth.Location = new System.Drawing.Point(0, 0);
+            this.btnSmooth.Name = "btnSmooth";
+            this.btnSmooth.Size = new System.Drawing.Size(307, 27);
+            this.btnSmooth.TabIndex = 70;
+            this.btnSmooth.Text = "Smooth (only 1-bit black and white)";
+            this.btnSmooth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSmooth.UseVisualStyleBackColor = true;
+            this.btnSmooth.Click += new System.EventHandler(this.btnSmooth_Click);
+            this.btnSmooth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSmooth_KeyDown);
+            // 
             // trackBar31
             // 
             this.trackBar31.Location = new System.Drawing.Point(28, 56);
@@ -2399,20 +2485,6 @@
             this.checkBox17.Text = "Smooth";
             this.checkBox17.UseVisualStyleBackColor = true;
             this.checkBox17.CheckedChanged += new System.EventHandler(this.checkBox17_CheckedChanged);
-            // 
-            // btnSmooth
-            // 
-            this.btnSmooth.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSmooth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSmooth.Location = new System.Drawing.Point(0, 0);
-            this.btnSmooth.Name = "btnSmooth";
-            this.btnSmooth.Size = new System.Drawing.Size(307, 27);
-            this.btnSmooth.TabIndex = 70;
-            this.btnSmooth.Text = "Smooth (only 1-bit black and white)";
-            this.btnSmooth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSmooth.UseVisualStyleBackColor = true;
-            this.btnSmooth.Click += new System.EventHandler(this.btnSmooth_Click);
-            this.btnSmooth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSmooth_KeyDown);
             // 
             // panRakeRemove
             // 
@@ -2496,6 +2568,20 @@
             this.l_numUpDown5.TabIndex = 88;
             this.l_numUpDown5.Text = "MaxSideteethLength";
             // 
+            // btnRakeRemove
+            // 
+            this.btnRakeRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRakeRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRakeRemove.Location = new System.Drawing.Point(0, 0);
+            this.btnRakeRemove.Name = "btnRakeRemove";
+            this.btnRakeRemove.Size = new System.Drawing.Size(307, 27);
+            this.btnRakeRemove.TabIndex = 70;
+            this.btnRakeRemove.Text = "RakeRemove (only 1-bit black and white)";
+            this.btnRakeRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRakeRemove.UseVisualStyleBackColor = true;
+            this.btnRakeRemove.Click += new System.EventHandler(this.btnRakeRemove_Click);
+            this.btnRakeRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnRakeRemove_KeyDown);
+            // 
             // l_numUpDown8
             // 
             this.l_numUpDown8.AutoSize = true;
@@ -2533,20 +2619,6 @@
             this.checkBox19.Text = "UseRakeRemove";
             this.checkBox19.UseVisualStyleBackColor = true;
             this.checkBox19.CheckedChanged += new System.EventHandler(this.checkBox19_CheckedChanged);
-            // 
-            // btnRakeRemove
-            // 
-            this.btnRakeRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRakeRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRakeRemove.Location = new System.Drawing.Point(0, 0);
-            this.btnRakeRemove.Name = "btnRakeRemove";
-            this.btnRakeRemove.Size = new System.Drawing.Size(307, 27);
-            this.btnRakeRemove.TabIndex = 70;
-            this.btnRakeRemove.Text = "RakeRemove (only 1-bit black and white)";
-            this.btnRakeRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRakeRemove.UseVisualStyleBackColor = true;
-            this.btnRakeRemove.Click += new System.EventHandler(this.btnRakeRemove_Click);
-            this.btnRakeRemove.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnRakeRemove_KeyDown);
             // 
             // l_autofilter
             // 
@@ -2758,78 +2830,6 @@
             this.progressBarX1.Size = new System.Drawing.Size(139, 19);
             this.progressBarX1.TabIndex = 47;
             this.progressBarX1.Text = "progressBarX1";
-            // 
-            // btnBinFilHelp
-            // 
-            this.btnBinFilHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnBinFilHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnBinFilHelp.Location = new System.Drawing.Point(262, 51);
-            this.btnBinFilHelp.Name = "btnBinFilHelp";
-            this.btnBinFilHelp.Size = new System.Drawing.Size(29, 17);
-            this.btnBinFilHelp.TabIndex = 63;
-            this.btnBinFilHelp.Text = "?";
-            this.toolTip1.SetToolTip(this.btnBinFilHelp, "Press to References");
-            this.btnBinFilHelp.Click += new System.EventHandler(this.btnBinFilHelp_Click);
-            // 
-            // btnBinarizeHelp
-            // 
-            this.btnBinarizeHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnBinarizeHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnBinarizeHelp.Location = new System.Drawing.Point(129, 80);
-            this.btnBinarizeHelp.Name = "btnBinarizeHelp";
-            this.btnBinarizeHelp.Size = new System.Drawing.Size(29, 17);
-            this.btnBinarizeHelp.TabIndex = 64;
-            this.btnBinarizeHelp.Text = "?";
-            this.toolTip1.SetToolTip(this.btnBinarizeHelp, "Press to References");
-            this.btnBinarizeHelp.Click += new System.EventHandler(this.btnBinarizeHelp_Click);
-            // 
-            // btnDespeckleHelp
-            // 
-            this.btnDespeckleHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDespeckleHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDespeckleHelp.Location = new System.Drawing.Point(129, 101);
-            this.btnDespeckleHelp.Name = "btnDespeckleHelp";
-            this.btnDespeckleHelp.Size = new System.Drawing.Size(29, 17);
-            this.btnDespeckleHelp.TabIndex = 65;
-            this.btnDespeckleHelp.Text = "?";
-            this.toolTip1.SetToolTip(this.btnDespeckleHelp, "Press to References");
-            this.btnDespeckleHelp.Click += new System.EventHandler(this.btnDespeckleHelp_Click);
-            // 
-            // btnColorlvHelp
-            // 
-            this.btnColorlvHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnColorlvHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnColorlvHelp.Location = new System.Drawing.Point(129, 123);
-            this.btnColorlvHelp.Name = "btnColorlvHelp";
-            this.btnColorlvHelp.Size = new System.Drawing.Size(29, 17);
-            this.btnColorlvHelp.TabIndex = 66;
-            this.btnColorlvHelp.Text = "?";
-            this.toolTip1.SetToolTip(this.btnColorlvHelp, "Press to References");
-            this.btnColorlvHelp.Click += new System.EventHandler(this.btnColorlvHelp_Click);
-            // 
-            // btnbinHelp
-            // 
-            this.btnbinHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnbinHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnbinHelp.Location = new System.Drawing.Point(129, 146);
-            this.btnbinHelp.Name = "btnbinHelp";
-            this.btnbinHelp.Size = new System.Drawing.Size(29, 17);
-            this.btnbinHelp.TabIndex = 67;
-            this.btnbinHelp.Text = "?";
-            this.toolTip1.SetToolTip(this.btnbinHelp, "Press to References");
-            this.btnbinHelp.Click += new System.EventHandler(this.btnbinHelp_Click);
-            // 
-            // btnDeskewHelp
-            // 
-            this.btnDeskewHelp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDeskewHelp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDeskewHelp.Location = new System.Drawing.Point(129, 169);
-            this.btnDeskewHelp.Name = "btnDeskewHelp";
-            this.btnDeskewHelp.Size = new System.Drawing.Size(29, 17);
-            this.btnDeskewHelp.TabIndex = 68;
-            this.btnDeskewHelp.Text = "?";
-            this.toolTip1.SetToolTip(this.btnDeskewHelp, "Press to References");
-            this.btnDeskewHelp.Click += new System.EventHandler(this.btnDeskewHelp_Click);
             // 
             // Form1
             // 
