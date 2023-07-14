@@ -111,6 +111,7 @@
     <Compile Include="dialogSaveAS.Designer.cs">
       <DependentUpon>dialogSaveAS.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocumentViewer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

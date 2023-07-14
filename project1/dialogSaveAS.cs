@@ -24,6 +24,8 @@ namespace project1
 {
     public partial class dialogSaveAS : Office2007Form
     {
+
+        private bool isCancel = false;
         public dialogSaveAS()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace project1
                 var rasterPage = new DocumentWriterRasterPage();
 
                 RasterCodecs _rasterCodecs = new RasterCodecs();
-                _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+               // _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
                 foreach (string img in Form1.form1.file)
                 {
                     using (var imageInfo = _rasterCodecs.GetInformation(img, true)) //นับจำนวนเอกสาร
@@ -50,6 +52,8 @@ namespace project1
                     }
                     for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
                     {
+                        if (this.isCancel)
+                            break;
                         _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
                         _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
                         _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
@@ -72,12 +76,12 @@ namespace project1
                     command2.Threshold = Form1.form1.value_trackBar6;  //rate 0 - 255
                     command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                     command2.Run(rasterImage);
-
+                              
                     if (Form1.form1.selectCombobox > 0) 
                     {
-                            Form1.form1.selectCombobox = Form1.form1.selectCombobox - 1;
+                            int level = Form1.form1.selectCombobox - 1;
                             //MessageBox.Show(selectCombobox.ToString());
-                            BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)Form1.form1.selectCombobox);
+                            BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)level);
                             command3.Run(rasterImage);
                     }
                    /* else
@@ -339,15 +343,28 @@ namespace project1
                         docWriter.AddPage(rasterPage);
                     }
                 }
+
+                if (this.isCancel)
+                    break;
             }
                 // Finally finish writing the HTML file on disk 
                 docWriter.EndDocument();
-                DialogResult res = MessageBox.Show("Save successful", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (res == DialogResult.OK)
+
+                if (!this.isCancel)
                 {
-                    //Some task…
+                    DialogResult res = MessageBox.Show("Save successful", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (res == DialogResult.OK)
+                    {
+                        //Some task…
+                        this.Close();
+                    }
+                }
+                else
+                {
+
                     this.Close();
                 }
+               
             }
             catch (Exception ex)
             {
@@ -469,6 +486,8 @@ namespace project1
         private void btnCancel_Click(object sender, EventArgs e)
         {
             //this.Dispose();
+            this.btnCancel.Enabled = false;
+            this.isCancel = true;
         }
     }
 }

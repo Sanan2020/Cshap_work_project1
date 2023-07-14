@@ -2776,10 +2776,13 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Panel1MinSize = 170;
             this.splitContainer1.Size = new System.Drawing.Size(863, 418);
-            this.splitContainer1.SplitterDistance = 108;
+            this.splitContainer1.SplitterDistance = 170;
+            this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 45;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 

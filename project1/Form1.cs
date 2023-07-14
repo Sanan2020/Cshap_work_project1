@@ -34,7 +34,7 @@ using static project1.Form1;
 using System.Diagnostics.Contracts;
 using Leadtools.Document.Writer;
 using System.Reflection.Emit;
-
+using System.Diagnostics;//
 namespace project1
 {
 
@@ -345,7 +345,6 @@ namespace project1
             splitContainer1.Panel2.AutoScroll = true;
             splitContainer1.Panel1.BackColor = Color.DarkGray;
             splitContainer1.Panel2.BackColor = Color.DarkGray;
-            splitContainer1.SplitterWidth = 10; //ความกว้างของตัว split ค่าเดิม 4
             splitContainer1.BorderStyle = BorderStyle.FixedSingle;
             /**/
             flowLayoutPanel1.Visible = true;
@@ -2308,23 +2307,11 @@ namespace project1
             }
         }
         String bpp;
-        enum Months
-        {
-            Default=-1,
-            ErosionOmniDirectional,   
-            ErosionHorizontal,  
-            ErosionVertical,      
-            ErosionDiagonal,     
-            DilationOmniDirectional,        
-            DilationHorizontal,       
-            DilationVertical,        
-            DilationDiagonal
-        }
         
         public void Image()
         {
-           /* try
-            {*/
+            try
+            {
                 _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
                 if (file != null)
                 {
@@ -2335,10 +2322,6 @@ namespace project1
                     btnSavepf.Enabled = true;
                 foreach (string img in file)
                 {
-                    Console.WriteLine("Page " + pageCount);
-                    //l_numberPages.Text = pageCount.ToString() + " Page";
-                    // Loads all the pages into the viewer
-
                     // Load it as a raster image and add it
                     // CodecsPdfOptions & CodecsPdfLoadOptions reference 
                     _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
@@ -2362,16 +2345,6 @@ namespace project1
                     command2.ColorType = UnsharpMaskCommandColorType.Rgb;
                     command2.Run(rasterImage);
 
-                    /**/
-                   // var level = (Months)selectCombobox;
-                   // MessageBox.Show(level.ToString());
-                   /* if (level.ToString() != "Default")
-                    {*/
-                        //MessageBox.Show(level.ToString());
-                      //   BinaryFilterCommand command3 = new BinaryFilterCommand((BinaryFilterCommandPredefined)7);
-                       //  command3.Run(rasterImage);
-                    //}
-                    /**/
                     if (selectCombobox > 0) {
                        int level = selectCombobox - 1;
                        //MessageBox.Show(selectCombobox.ToString());
@@ -2628,13 +2601,15 @@ namespace project1
                     {
                         picReview2.Image = new Bitmap(destImage1);
                     }
+                    rasterImage.Dispose();
                 }
+                
             }
-       /* }catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-        }*/
-        Thread.Sleep(10);
+             }catch (Exception ex)
+             {
+                 MessageBox.Show(ex.Message);
+             }
+            Thread.Sleep(10);
         }
        
         private async void pic2_MouseClick(object sender, MouseEventArgs e)
@@ -2673,7 +2648,7 @@ namespace project1
                     int maxWidth2 = -1;
                     RasterCodecs _rasterCodecs = new RasterCodecs();
                     //Load documents at 300 DPI for better viewing
-                    _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+                   // _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
                     foreach (string img in file){
                         using (var imageInfo = _rasterCodecs.GetInformation(img, true)){ //นับจำนวนเอกสาร
                             pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
@@ -2721,13 +2696,20 @@ namespace project1
                         this.splitContainer1.Panel1.Controls.Add(pic2);
                         //แก้*
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                        {
+                        {     
+                            //Console.WriteLine(pageNumber+"check " + destImage1.HorizontalResolution+" "+ destImage1.VerticalResolution);
+                           // destImage1.
                             pic2.Image = new Bitmap(destImage1);
                         }
                         pdname = 1;
                         Image();
                         //Console.WriteLine(pic2.Name);
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
+                      
+                        Process currentProcess = Process.GetCurrentProcess();
+                        long usedMemory = currentProcess.PrivateMemorySize64;
+                        Console.WriteLine(usedMemory);
+
                         await Task.Delay(1000);
                         //Thread.Sleep(500);
                             // Clean up 
@@ -2735,7 +2717,6 @@ namespace project1
                         }
                         _rasterCodecs.Dispose();
                     }
-                    
                 }
                 this.progressBarX1.Visible = false;
      }
@@ -3037,12 +3018,11 @@ namespace project1
                     //convetrt to 1 bit
                     chckbox21 = profile3.Convert1bit;
                     checkBox21.Checked = chckbox21;
-
-                        /* using (ProgressPopup pp = new ProgressPopup(Image))
+                         using (ProgressPopup pp = new ProgressPopup(Image))
                          {
                                  pp.ShowDialog();
-                         }*/
-                     //  Image();
+                         }
+                    //Image();
                 }
             }
             }
