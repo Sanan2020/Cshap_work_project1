@@ -2298,7 +2298,7 @@ namespace project1
                 xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
                 picReview2.Location = new Point(xRev, 20);
                 Console.WriteLine(picReview2.Location);
-                picReview2.SizeMode = PictureBoxSizeMode.StretchImage;
+                picReview2.SizeMode = PictureBoxSizeMode.Zoom;
                 this.splitContainer1.Panel2.Controls.Add(picReview2);
                 picReview2.ImageLocation = null;
             }catch(Exception ex)
@@ -2308,7 +2308,7 @@ namespace project1
         }
         String bpp;
         
-        public void Image()
+        public async void Image()
         {
             try
             {
@@ -2609,7 +2609,8 @@ namespace project1
              {
                  MessageBox.Show(ex.Message);
              }
-            Thread.Sleep(10);
+            //Thread.Sleep(10);
+            await Task.Delay(1000);
         }
        
         private async void pic2_MouseClick(object sender, MouseEventArgs e)
@@ -2633,8 +2634,9 @@ namespace project1
         {
             try{
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
+                ofd.Filter = "All File |*.pdf; *.png; *.jpg; *.bmp; *.tif;|PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
                 DialogResult dr = ofd.ShowDialog();
+                file = null;
                 if (dr == System.Windows.Forms.DialogResult.OK){
                     splitContainer1.Panel1.Controls.Clear();
                     
@@ -2648,17 +2650,19 @@ namespace project1
                     int maxWidth2 = -1;
                     RasterCodecs _rasterCodecs = new RasterCodecs();
                     //Load documents at 300 DPI for better viewing
-                   // _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+                    // _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+                    _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
+                    _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
+                    _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
+                    _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
+                    _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
+                    ResetValue();
                     foreach (string img in file){
                         using (var imageInfo = _rasterCodecs.GetInformation(img, true)){ //นับจำนวนเอกสาร
                             pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
                         }
                         Console.WriteLine("Page " + pageCount);
-                        _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
-                        _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
-                        _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
-                        _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
-                        _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
+                        
                         // Loads all the pages into the viewer
                         for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++){
                         // Load it as a raster image and add it
@@ -2674,9 +2678,11 @@ namespace project1
                             }
                             else {
                                 stateBits = false;
+                                chckbox21 = false;
+                                checkBox21.Checked = chckbox21;
                                 checkBox21.Enabled = true;
                             }
-                        ResetValue();
+                        
                         this.progressBarX1.MarqueeAnimationSpeed = 20;
                         PictureBox pic2 = new PictureBox();
                         pic2.Height = 140;
@@ -2693,17 +2699,20 @@ namespace project1
                             y2 = 20;
                             x2 += maxWidth2 + 100;
                         }
-                        this.splitContainer1.Panel1.Controls.Add(pic2);
+                        
                         //แก้*
                         using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                         {     
                             //Console.WriteLine(pageNumber+"check " + destImage1.HorizontalResolution+" "+ destImage1.VerticalResolution);
                            // destImage1.
                             pic2.Image = new Bitmap(destImage1);
+                            destImage1.Dispose();
                         }
                         pdname = 1;
-                        Image();
-                        //Console.WriteLine(pic2.Name);
+                        this.splitContainer1.Panel1.Controls.Add(pic2);
+                            //Image();
+
+                            //Console.WriteLine(pic2.Name);
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
                       
                         Process currentProcess = Process.GetCurrentProcess();
@@ -2716,6 +2725,8 @@ namespace project1
                             rasterImage.Dispose();
                         }
                         _rasterCodecs.Dispose();
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
                     }
                 }
                 this.progressBarX1.Visible = false;
@@ -3034,7 +3045,7 @@ namespace project1
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-           /* if (e.Delta > 0)
+            if (e.Delta > 0)
             {
                 //pictureBox1.Image = null;
                 // ซูมอิน (เพิ่มขนาดภาพ)
@@ -3054,7 +3065,7 @@ namespace project1
                     picReview2.Height -= (int)(picReview2.Height * 0.1);
                 }
 
-            }*/
+            }
             // l_zoom.Text = "w " + picReview2.Width.ToString() + " h" + picReview2.Height.ToString();
         }
 

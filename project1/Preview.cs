@@ -4,6 +4,7 @@ using System.Drawing;
 using Leadtools.Codecs;
 using Leadtools;
 using Leadtools.Drawing;
+using System.Collections.Generic;
 
 namespace project1
 {
@@ -14,73 +15,18 @@ namespace project1
         private ImageList thumbnailImageList;
         public Preview()
         {
-            Form3 f3 = new Form3();
-            f3.ShowDialog();
-
+            RasterSupport.SetLicense("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic", 
+                System.IO.File.ReadAllText("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic.key"));
+            bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
+            if (isLocked)
+                Console.WriteLine("Document support is locked");
+            else
+            {
+                Console.WriteLine("Document support is unlocked");
+            }
             InitializeComponent();
-            // สร้าง ListView
-            thumbnailListView = new ListView();
-            thumbnailListView.View = View.LargeIcon;
-            thumbnailListView.Dock = DockStyle.Fill;
-           
-            // สร้าง ImageList เพื่อเก็บภาพย่อ
-            thumbnailImageList = new ImageList();
-            thumbnailImageList.ImageSize = new Size(100, 100); // ขนาดของภาพย่อ
-            thumbnailImageList.ColorDepth = ColorDepth.Depth32Bit;
-
-            // กำหนด ImageList ให้กับ ListView
-            thumbnailListView.LargeImageList = thumbnailImageList;
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
-            DialogResult dr = ofd.ShowDialog();
-            if (dr == System.Windows.Forms.DialogResult.OK)
-            {
-                string[] file = ofd.FileNames;
-                AddThumbnail(file);
-            }
-            // เพิ่มภาพย่อลงใน ImageList
-           
-            //AddThumbnail(@"C:\Users\Administrator\Downloads\in\pdfsegmentation.pdf");
-            // เพิ่ม ListView เข้าไปใน Form
-            Controls.Add(thumbnailListView);
         }
-        int pageCount;
-        //string[] file;
-        private void AddThumbnail(string[] imagePath)
-        {
-            RasterCodecs _rasterCodecs = new RasterCodecs();
-            //_rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-
-            foreach (string img in imagePath)
-            {
-                using (var imageInfo = _rasterCodecs.GetInformation(img, true))
-                { //นับจำนวนเอกสาร
-                    pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
-                }
-            
-            _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
-            _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
-            _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
-            _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
-            _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
-            for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
-            {
-                // RasterImage rasterImage = _rasterCodecs.Load(imagePath);
-                var rasterImage = _rasterCodecs.Load(img, pageNumber);
-                using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                {
-                    // สร้างภาพย่อใหม่
-                    Image thumbnail = destImage1.GetThumbnailImage(100, 100, null, IntPtr.Zero);
-                    // เพิ่มภาพย่อลงใน ImageList
-                    thumbnailImageList.Images.Add(thumbnail);
-                    thumbnailListView.Items.Add("", thumbnailImageList.Images.Count - 1);
-                    }
-            }
-        }
-
-            // เพิ่มไอเท็มใน ListView โดยกำหนด index ของภาพย่อใน ImageList
-            
-        }
+        
 
         /*[STAThread]
         public static void Main()
@@ -94,8 +40,104 @@ namespace project1
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-           
+            
+            // สร้าง ListView
+            thumbnailListView = new ListView();
+            thumbnailListView.View = View.SmallIcon;
+            thumbnailListView.Dock = DockStyle.Fill;
+            thumbnailListView.BackColor = Color.Green;
+         
+            // สร้าง ImageList เพื่อเก็บภาพย่อ
+            thumbnailImageList = new ImageList();
+            thumbnailImageList.ImageSize = new Size(120, 140); // ขนาดของภาพย่อ
+            thumbnailImageList.ColorDepth = ColorDepth.Depth32Bit;
+
+            // กำหนด ImageList ให้กับ ListView
+            thumbnailListView.SmallImageList = thumbnailImageList;
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
+            DialogResult dr = ofd.ShowDialog();
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                string[] file = ofd.FileNames;
+                AddThumbnail(file);
+            }
+            // เพิ่มภาพย่อลงใน ImageList
+
+            //listView1.Items.Add(@"C:\Users\Administrator\Downloads\in\pdfsegmentation.pdf");
+
+            //AddThumbnail(@"C:\Users\Administrator\Downloads\in\pdfsegmentation.pdf");
+            // เพิ่ม ListView เข้าไปใน Form
+            // Controls.Add(thumbnailListView);
+            // เพิ่มเหตุการณ์ MouseClick หรือ MouseDoubleClick สำหรับการคลิกที่รูปภาพ
+            thumbnailListView.MouseClick += ThumbnailListView_MouseClick;
+
+            splitContainer1.Panel1.Controls.Add(thumbnailListView);
         }
-        
+
+        int pageCount;
+        private void AddThumbnail(string[] imagePath)
+        {
+            RasterCodecs _rasterCodecs = new RasterCodecs();
+            foreach (string img in imagePath)
+            {
+                using (var imageInfo = _rasterCodecs.GetInformation(img, true))
+                { //นับจำนวนเอกสาร
+                    pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
+                }
+                _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
+                _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
+                _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
+                _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
+                _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
+                for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
+                {
+                    // RasterImage rasterImage = _rasterCodecs.Load(imagePath);
+                    var rasterImage = _rasterCodecs.Load(img, pageNumber);
+                    using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                    {
+                        // สร้างภาพย่อใหม่
+                        Image thumbnail = destImage1.GetThumbnailImage(120, 140, null, IntPtr.Zero);
+                        // เพิ่มภาพย่อลงใน ImageList
+                        thumbnailImageList.Images.Add(thumbnail);
+                        // เพิ่มไอเท็มใน ListView โดยกำหนด index ของภาพย่อใน ImageList
+                        //thumbnailListView.Items.Add("", thumbnailImageList.Images.Count - 1);
+
+                        thumbnailListView.Items.Add("", thumbnailImageList.Images.Count - 1);
+                    }
+                }
+            }
+        }
+
+        private void ThumbnailListView_MouseClick(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีการคลิกที่รูปภาพ
+            ListViewItem clickedItem = thumbnailListView.GetItemAt(e.X, e.Y);
+            if (clickedItem != null)
+            {
+                // ดึงข้อมูลเกี่ยวกับรูปภาพที่ถูกคลิก
+                int imageIndex = clickedItem.ImageIndex;
+                string imageName = clickedItem.Text;
+
+                // ประมวลผลหรือดำเนินการที่คุณต้องการเมื่อคลิกที่รูปภาพ
+                MessageBox.Show("คุณคลิกที่รูปภาพที่ Index: " + imageIndex + ", ชื่อ: " + imageName);
+            }
+        }
+
+        private void ThumbnailListView_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            // วาดภาพย่อ
+            Image thumbnail = thumbnailImageList.Images[e.Item.ImageIndex];
+            Rectangle imageBounds = new Rectangle(e.Bounds.Location, thumbnail.Size);
+            e.Graphics.DrawImage(thumbnail, imageBounds);
+
+            // กำหนดตำแหน่งให้ภาพย่ออยู่ตรงกลาง
+            int x = e.Bounds.Left + (e.Bounds.Width - thumbnail.Width) / 2;
+            int y = e.Bounds.Top + (e.Bounds.Height - thumbnail.Height) / 2;
+            Rectangle centeredBounds = new Rectangle(x, y, thumbnail.Width, thumbnail.Height);
+
+            // วาดภาพย่อที่ตรงกลาง
+            e.Graphics.DrawImage(thumbnail, centeredBounds);
+        }
     }
 }
