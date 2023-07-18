@@ -27,7 +27,6 @@ namespace project1
         }
         private void Form1Export_Load(object sender, EventArgs e)
         {
-           
             listBox1.SelectionMode = SelectionMode.MultiSimple;
             listBox1.Items.Clear();
             List<profile2> LpfnameLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");

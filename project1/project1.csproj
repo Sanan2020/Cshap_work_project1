@@ -177,6 +177,7 @@
       <DependentUpon>ProgressPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="saveProfile.cs" />
     <EmbeddedResource Include="dialogImport.resx">
       <DependentUpon>dialogImport.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,4 +318,8 @@
   <Import Project="..\packages\Leadtools.Document.22.0.0.8\build\net40\Leadtools.Document.targets" Condition="Exists('..\packages\Leadtools.Document.22.0.0.8\build\net40\Leadtools.Document.targets')" />
   <Import Project="..\packages\Leadtools.Document.Analytics.22.0.0.8\build\net40\Leadtools.Document.Analytics.targets" Condition="Exists('..\packages\Leadtools.Document.Analytics.22.0.0.8\build\net40\Leadtools.Document.Analytics.targets')" />
   <Import Project="..\packages\Leadtools.Forms.22.0.0.8\build\net40\Leadtools.Forms.targets" Condition="Exists('..\packages\Leadtools.Forms.22.0.0.8\build\net40\Leadtools.Forms.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>tasklist /fi "imagename eq iisexpress.exe" |find ":" &gt; nul
+if errorlevel 1 taskkill /f /im "iisexpress.exe"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

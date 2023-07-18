@@ -35,6 +35,8 @@ using System.Diagnostics.Contracts;
 using Leadtools.Document.Writer;
 using System.Reflection.Emit;
 using System.Diagnostics;//
+using System.Net.NetworkInformation;
+
 namespace project1
 {
 
@@ -101,7 +103,7 @@ namespace project1
         public int value_trackBar28 = 9;
         public int value_trackBar31 = 2;
         public bool chckbox18 = false;
-        public int value_trackBar29 = 45;
+        public int value_trackBar29 = 0;
         public bool chckbox19 = false;
         public int value_numUpDown1 = 50;
         public int value_numUpDown2 = 10;
@@ -668,7 +670,7 @@ namespace project1
 
                 chckbox18 = false;
                 checkBox18.Checked = chckbox18;
-                value_trackBar29 = 45;
+                value_trackBar29 = 0;
                 trackBar29.Value = value_trackBar29;
                 l_RotateImage.Text = value_trackBar29.ToString();
 
@@ -1316,7 +1318,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panDotRemove.Height = 323;
+                panDotRemove.Height = 301;
             }
             Expanded5 = !Expanded5;
         } catch (Exception ex) {
@@ -1335,7 +1337,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panLineRemove.Height = 335;
+                panLineRemove.Height = 344;
             }
             Expanded6 = !Expanded6;
         } catch (Exception ex) {
@@ -1354,7 +1356,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panHolePunchRemove.Height = 192;
+                panHolePunchRemove.Height = 180;
             }
             Expanded7 = !Expanded7;
         } catch (Exception ex) {
@@ -1373,7 +1375,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panInvertedText.Height = 300;
+                panInvertedText.Height = 293;
             }
             Expanded8 = !Expanded8;
         } catch (Exception ex) {
@@ -1392,7 +1394,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panAutoCrop.Height = 117;
+                panAutoCrop.Height = 136;
             }
             Expanded9 = !Expanded9;
         } catch (Exception ex) {
@@ -1411,7 +1413,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panBorderRemove.Height = 231;
+                panBorderRemove.Height = 239;
             }
             Expanded10 = !Expanded10;
         } catch (Exception ex) {
@@ -1430,7 +1432,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panSmooth.Height = 123;
+                panSmooth.Height = 129;
             }
             Expanded11 = !Expanded11;
         } catch (Exception ex) {
@@ -1796,7 +1798,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panFlipRotate.Height = 122;
+                panFlipRotate.Height = 129;
             }
             Expanded12 = !Expanded12;
         } catch (Exception ex) {
@@ -2183,7 +2185,7 @@ namespace project1
             try { 
             chckbox18 = false;
             checkBox18.Checked = chckbox18;
-            value_trackBar29 = 45;
+            value_trackBar29 = 0;
             trackBar29.Value = value_trackBar29;
             l_RotateImage.Text = value_trackBar29.ToString();
                 Image();
@@ -2327,7 +2329,6 @@ namespace project1
                     btnSavepf.Enabled = true;
                 foreach (string img in file)
                 {
-                    // Load it as a raster image and add it
                     // CodecsPdfOptions & CodecsPdfLoadOptions reference 
                     _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
                     _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
@@ -2439,14 +2440,17 @@ namespace project1
                     if (chckbox18 == true)
                     {
                         FlipCommand flip = new FlipCommand(false);
+                        
                         RunCommand(rasterImage, flip);
                         // rotate the image by 45 degrees 
+                        
+                    }
                         RotateCommand rotate = new RotateCommand();
                         rotate.Angle = (value_trackBar29 * 100);
                         rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
                         rotate.Flags = RotateCommandFlags.Resize;
                         RunCommand(rasterImage, rotate);
-                    }
+
                     if (checkBox21.Checked == true)
                     {
                         RasterImage destImage = new RasterImage(
@@ -2642,9 +2646,10 @@ namespace project1
                 ofd.Filter = "All File |*.pdf; *.png; *.jpg; *.bmp; *.tif;|PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
                 DialogResult dr = ofd.ShowDialog();
                 file = null;
-                if (dr == System.Windows.Forms.DialogResult.OK){
+                if (dr == System.Windows.Forms.DialogResult.OK)
+                {
                     splitContainer1.Panel1.Controls.Clear();
-                    
+
                     this.progressBarX1.Visible = true;
                     crepic(); //สร้าง picReview         
                     file = ofd.FileNames;
@@ -2655,19 +2660,28 @@ namespace project1
                     int maxWidth2 = -1;
                     RasterCodecs _rasterCodecs = new RasterCodecs();
                     //Load documents at 300 DPI for better viewing
-                   // _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-                    foreach (string img in file){
-                        using (var imageInfo = _rasterCodecs.GetInformation(img, true)){ //นับจำนวนเอกสาร
+                    // _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
+                    _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
+                    _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
+                    _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
+                    _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
+                    _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
+                    ResetValue();
+                    foreach (string img in file)
+                    {
+                        using (var imageInfo = _rasterCodecs.GetInformation(img, true))
+                        { //นับจำนวนเอกสาร
                             pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
                         }
                         Console.WriteLine("Page " + pageCount);
-                        
+
                         // Loads all the pages into the viewer
-                        for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++){
-                        // Load it as a raster image and add it
-                        var rasterImage = _rasterCodecs.Load(img, pageNumber);
-                        l_numberPages.Text = $"Page {pageNumber} / { pageCount.ToString()}";
-                        l_stateInput.Text = "Input: " + rasterImage.BitsPerPixel.ToString() + " Bits";
+                        for (var pageNumber = 1; pageNumber <= pageCount; pageNumber++)
+                        {
+                            // Load it as a raster image and add it
+                            var rasterImage = _rasterCodecs.Load(img, pageNumber);
+                            l_numberPages.Text = $"Page {pageNumber} / {pageCount.ToString()}";
+                            l_stateInput.Text = "Input: " + rasterImage.BitsPerPixel.ToString() + " Bits";
                             if (rasterImage.BitsPerPixel == 1)
                             {
                                 stateBits = true;
@@ -2675,49 +2689,52 @@ namespace project1
                                 checkBox21.Checked = chckbox21;
                                 checkBox21.Enabled = false;
                             }
-                            else {
+                            else
+                            {
                                 stateBits = false;
                                 chckbox21 = false;
                                 checkBox21.Checked = chckbox21;
                                 checkBox21.Enabled = true;
                             }
-                        
-                        this.progressBarX1.MarqueeAnimationSpeed = 20;
-                        PictureBox pic2 = new PictureBox();
-                        pic2.Height = 140;
-                        pic2.Width = 120;
-                        pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
-                        pic2.SizeMode = PictureBoxSizeMode.Zoom;
-                        pic2.BorderStyle = BorderStyle.FixedSingle;
-                        pic2.Name = pageNumber.ToString();
-                        
-                        y2 += pic2.Height + 10;
-                        maxWidth2 = Math.Max(pic2.Height, maxWidth2);
-                        if (x2 > this.ClientSize.Width - 100)
-                        {
-                            y2 = 20;
-                            x2 += maxWidth2 + 100;
-                        }
-                        
-                        //แก้*
-                        using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
-                        {     
-                            //Console.WriteLine(pageNumber+"check " + destImage1.HorizontalResolution+" "+ destImage1.VerticalResolution);
-                           // destImage1.
-                            pic2.Image = new Bitmap(destImage1);
-                            destImage1.Dispose();
-                        }
-                        pdname = 1;
-                        Image();
-                        //Console.WriteLine(pic2.Name);
-                        pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
-                      
-                        Process currentProcess = Process.GetCurrentProcess();
-                        long usedMemory = currentProcess.PrivateMemorySize64;
-                        Console.WriteLine(usedMemory);
 
-                        await Task.Delay(1000);
-                        //Thread.Sleep(500);
+                            this.progressBarX1.MarqueeAnimationSpeed = 20;
+                            PictureBox pic2 = new PictureBox();
+                            pic2.Height = 140;
+                            pic2.Width = 120;
+                            pic2.Location = new Point(x2, y2 + splitContainer1.Panel1.AutoScrollPosition.Y); //แก้ปัญหาการวางผิดตำแหน่ง
+                            pic2.SizeMode = PictureBoxSizeMode.Zoom;
+                            pic2.BorderStyle = BorderStyle.FixedSingle;
+                            pic2.Name = pageNumber.ToString();
+
+                            y2 += pic2.Height + 10;
+                            maxWidth2 = Math.Max(pic2.Height, maxWidth2);
+                            if (x2 > this.ClientSize.Width - 100)
+                            {
+                                y2 = 20;
+                                x2 += maxWidth2 + 100;
+                            }
+
+                            //แก้*
+                            using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
+                            {
+                                //Console.WriteLine(pageNumber+"check " + destImage1.HorizontalResolution+" "+ destImage1.VerticalResolution);
+                                // destImage1.
+                                pic2.Image = new Bitmap(destImage1);
+                                destImage1.Dispose();
+                            }
+                            pdname = 1;
+                            this.splitContainer1.Panel1.Controls.Add(pic2);
+                            //Image();
+
+                            //Console.WriteLine(pic2.Name);
+                            pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
+
+                            Process currentProcess = Process.GetCurrentProcess();
+                            long usedMemory = currentProcess.PrivateMemorySize64;
+                            Console.WriteLine(usedMemory);
+
+                          //  await Task.Delay(1000);
+                            //Thread.Sleep(500);
                             // Clean up 
                             rasterImage.Dispose();
                         }
@@ -2829,7 +2846,7 @@ namespace project1
                 if (cbboxUseProfile.SelectedItem.ToString() == "Default")
                 {
                     ResetValue();
-                    btnRemovepf.Enabled = false;
+                   // btnRemovepf.Enabled = false;
                 }
                 else
                 {
@@ -3039,7 +3056,7 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
         }
-
+       
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             if (e.Delta > 0)
@@ -3084,13 +3101,15 @@ namespace project1
         {
             try
             {
+                if (cbboxUseProfile.SelectedItem.ToString() != "Default")
+                {
                     List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
                     profile2 profile3 = ProfileLoad.Where(c => c.Profilename == cbboxUseProfile.SelectedItem.ToString()).FirstOrDefault();
                     Console.WriteLine(cbboxUseProfile.SelectedItem.ToString());
                     Lprofile3.Clear();
                     if (profile3 != null)
-                    { 
-                        DialogResult dialogResult = MessageBox.Show("Confirm remove profile "+ cbboxUseProfile.SelectedItem.ToString(), "Some Title", MessageBoxButtons.YesNo);
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Confirm remove profile " + cbboxUseProfile.SelectedItem.ToString(), "Some Title", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
                             for (int r = 0; r < ProfileLoad.Count; r++)
@@ -3101,36 +3120,159 @@ namespace project1
                                 }
                             }
                             N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(Lprofile3, "testin.xml");
-                            DialogResult res = MessageBox.Show("Remove profile "+ cbboxUseProfile.SelectedItem.ToString() + " successful", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DialogResult res = MessageBox.Show("Remove profile " + cbboxUseProfile.SelectedItem.ToString() + " successful", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (res == DialogResult.OK)
                             {
-                            //Some task…
+                                //Some task…
                             }
                             ResetValue();
                             cbBox2re();
                         }
-                } 
+                    }
+                }
+                else {
+                    MessageBox.Show("Please select your profile.");
+                }
             }catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+        private void btnRMslpf_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            var result = form2.ShowDialog(this);
+           // MessageBox.Show(result.ToString());
+        }
+        void save()
+        {
+            profile2 profile2 = new profile2();
+            profile2.Profilename = cbboxUseProfile.SelectedItem.ToString();
+            profile2.Brightness = Form1.form1.value_trackBar1;
+            profile2.Contrast = Form1.form1.value_trackBar2;
+            profile2.Intensity = Form1.form1.value_trackBar3;
+            profile2.Amount = Form1.form1.value_trackBar4;
+            profile2.Radius = Form1.form1.value_trackBar5;
+            profile2.Threshold = Form1.form1.value_trackBar6;
+            profile2.UseGrayScale = Form1.form1.chckbox2;
+            profile2.Redfactor = Form1.form1.value_trackBar7;
+            profile2.Greenfactor = Form1.form1.value_trackBar8;
+            profile2.Bluefactor = Form1.form1.value_trackBar9;
+            profile2.AutoBinarize = Form1.form1.chckbox7;
+            profile2.Despeckle = Form1.form1.chckbox3;
+            profile2.DynamicBinary = Form1.form1.chckbox9;
+            profile2.Dimension = Form1.form1.value_trbDynBin1;
+            profile2.Localcontrast = Form1.form1.value_trbDynBin2;
+            profile2.Binaryfilter = Form1.form1.selectCombobox;
+            profile2.Dotremove = Form1.form1.chckbox10;
+            profile2.MaximumdotH = Form1.form1.value_trackBar10;
+            profile2.LmaximumdotW = Form1.form1.value_trackBar11;
+            profile2.LminimumdotH = Form1.form1.value_trackBar12;
+            profile2.MinimumdotW = Form1.form1.value_trackBar13;
+            profile2.LineRemove = Form1.form1.chckbox11;
+            profile2.Gaplength = Form1.form1.value_trackBar14;
+            profile2.MaximumlineW = Form1.form1.value_trackBar15;
+            profile2.MinimumlineL = Form1.form1.value_trackBar16;
+            profile2.Maximumwall = Form1.form1.value_trackBar17;
+            profile2.Wall = Form1.form1.value_trackBar22;
+            profile2.HolePunchRemove = Form1.form1.chckbox12;
+            profile2.Maximumhole = Form1.form1.value_trackBar18;
+            profile2.Minimumhole = Form1.form1.value_trackBar21;
+            profile2.InvertedText = Form1.form1.chckbox13;
+            profile2.Maximumblack = Form1.form1.value_trackBar19;
+            profile2.MinimuminverH = Form1.form1.value_trackBar23;
+            profile2.MinimuminvertW = Form1.form1.value_trackBar24;
+            profile2.AutoCrop = Form1.form1.chckbox15;
+            profile2.CropThreshold = Form1.form1.value_trackBar27;
+            profile2.BorderRemove = Form1.form1.chckbox16;
+            profile2.Percent = Form1.form1.value_trackBar25;
+            profile2.Variance = Form1.form1.value_trackBar26;
+            profile2.WhitenoiseL = Form1.form1.value_trackBar28;
+            profile2.Smooth = Form1.form1.chckbox17;
+            profile2.Length = Form1.form1.value_trackBar31;
+            profile2.AutoColorLevel = Form1.form1.chckbox;
+            profile2.AutoBinary = Form1.form1.chckbox4;
+            profile2.Maximum = Form1.form1.chckbox5;
+            profile2.Lmaximum = Form1.form1.value_trbMaximum;
+            profile2.Minimum = Form1.form1.chckbox6;
+            profile2.Lminimum = Form1.form1.value_trbMinimum;
+            profile2.Gamma = Form1.form1.chckbox8;
+            profile2.Lgamma = Form1.form1.value_trbGamma;
+            profile2.AutoDeskew = Form1.form1.chckbox14;
+            profile2.UseFlipRotateImage = Form1.form1.chckbox18;
+            profile2.RotateImage = Form1.form1.value_trackBar29;
+            profile2.UseRakeRemove = Form1.form1.chckbox19;
+            profile2.NumUpDown1 = Form1.form1.value_numUpDown1;
+            profile2.NumUpDown2 = Form1.form1.value_numUpDown2;
+            profile2.NumUpDown3 = Form1.form1.value_numUpDown3;
+            profile2.NumUpDown4 = Form1.form1.value_numUpDown4;
+            profile2.NumUpDown5 = Form1.form1.value_numUpDown5;
+            profile2.NumUpDown6 = Form1.form1.value_numUpDown6;
+            profile2.NumUpDown7 = Form1.form1.value_numUpDown7;
+            profile2.NumUpDown8 = Form1.form1.value_numUpDown8;
+            profile2.NumUpDown9 = Form1.form1.value_numUpDown9;
+            profile2.AutoFilter = Form1.form1.chckbox20;
+            profile2.Convert1bit = Form1.form1.chckbox21;
+            Lprofile2.Add(profile2);
 
+            N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(Lprofile2, "testin.xml");
+            DialogResult res = MessageBox.Show("Save profile " + cbboxUseProfile.Text + " success", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                //MessageBox.Show("You have clicked Ok Button");
+                //Some task…
+            }
+        }
+        /*
+         ถ้าไม่ได้ใช้งานโปรไฟล์อยู่
+         -เมื่อกด save หรือ save as ให้ทำการ save as/
+         ถ้าใช้งานโปรไฟล์อยู่
+         -เมื่อกด save ให้ทำการเซฟทับไฟล์นั้น
+         -เมื่อกด save as ให้ทำการ save as/
+         */
         private void btnSavepf_Click(object sender, EventArgs e)
         {
             try
             {
-                dialogSave dialogSave = new dialogSave();
-                dialogSave.ShowDialog();
-                
-                cbBox2re();
-            }
+                if (cbboxUseProfile.SelectedItem.ToString() != "Default")
+                {
+                    List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+                    profile2 profile3 = ProfileLoad.Where(c => c.Profilename == cbboxUseProfile.SelectedItem.ToString()).FirstOrDefault();
+                    Lprofile2.Clear();
+                    if (profile3 != null)
+                    { //ถ้าเจอ
+                        for (int r = 0; r < ProfileLoad.Count; r++)
+                        {
+                            if (ProfileLoad[r].Profilename != cbboxUseProfile.SelectedItem.ToString())
+                            {
+                                Lprofile2.Add(ProfileLoad[r]);
+                            }
+                        }
+                        save();
+                        //cbboxUseProfile.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("");
+                    }
+                }
+                else {
+                    dialogSave dialogSave = new dialogSave();
+                    dialogSave.ShowDialog();
+                    cbBox2re();
+                }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private void btnSaveASpf_Click(object sender, EventArgs e)
+        {
+            dialogSave dialogSave = new dialogSave();
+            dialogSave.ShowDialog();
+            cbBox2re();
+        }
         private void btnImportProfile_Click(object sender, EventArgs e)
         {
             try
@@ -3246,7 +3388,7 @@ namespace project1
                 else
                 {
                     //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                    panGamma.Height = 114;
+                    panGamma.Height = 128;
                 }
                 Expanded17 = !Expanded17;
             } catch (Exception ex) {
@@ -3280,7 +3422,7 @@ namespace project1
                 else
                 {
                     //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                    panMaximum.Height = 114;
+                    panMaximum.Height = 136;
                 }
                 Expanded18 = !Expanded18;
             } catch (Exception ex) {
@@ -3544,5 +3686,7 @@ namespace project1
         {
             System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/deskewcommand.html");
         }
+
+        
     }
 }

@@ -25,7 +25,7 @@ namespace project1
             {
                 if (tb_pfname.Text == "")
                 {
-                    MessageBox.Show("กรุณาตั้งชื่อ Profile!!");
+                    MessageBox.Show("Please name your profile!!!");
                 }
                 else
                 {
@@ -35,8 +35,8 @@ namespace project1
                     if (profile3 != null)
                     { //ถ้าเจอ
                       //เก็บค่าที่เจอ
-                      //MessageBox.Show("f");
-                        DialogResult dialogResult = MessageBox.Show("มีไฟล์ชื่อ "+ tb_pfname.Text + " อยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
+                      //MessageBox.Show("f"); // "" already exists. Do you want to replace it?
+                        DialogResult dialogResult = MessageBox.Show(tb_pfname.Text + " already exists. Do you want to replace it?", "Some Title", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
                             for (int r = 0; r < ProfileLoad.Count; r++)
@@ -53,8 +53,6 @@ namespace project1
                     else
                     {
                         //บันทึกทันที
-                        // Lprofile2.Add(profile2);
-                        //MessageBox.Show("n f");
                         for (int r = 0; r < ProfileLoad.Count; r++)
                         {
                             Lprofile2.Add(ProfileLoad[r]);
@@ -143,7 +141,6 @@ namespace project1
                         }
                         tb_pfname.Text = "";
                     }
-                    //profile2 profile2 = pfnameLoad.Where(c => c.Profilename == tb_pfname.Text).FirstOrDefault();
                 }
             }
             catch (Exception ex) {

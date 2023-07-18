@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
+using N2N.Data.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static project1.Form1;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace project1
@@ -23,74 +25,38 @@ namespace project1
         {
             InitializeComponent();
         }
-        String[] ls;
-        String lscol;
-        String rf;
-        String rfile;
-        List<String> list = new List<String>();
-        List<String> itemre = new List<String>();//ที่จะลบ
+        List<String> itemRe = new List<String>();
         List<String> item = new List<String>();
+        List<profile2> Lprofile3 = new List<profile2>();
         private void Remove2_Click(object sender, EventArgs e)
         {
             try
             {
-                for (int i = listBox1.SelectedItems.Count - 1; i >= 0; i--)
+                List<profile2> ProfileLoad_ = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+                DialogResult dialogResult = MessageBox.Show("Confirm remove profiles ", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    //Console.WriteLine(listBox1.SelectedItems[i]);
-                    itemre.Add(listBox1.SelectedItems[i].ToString());
-                    //listBox1.Items.Remove(listBox1.SelectedItems[i]);
-                    //Console.WriteLine(item[i].ToString());
-                }
-
-                if (itemre.Count > 0)
-                {
-                    //MessageBox.Show("0");
-                    DialogResult dialogResult = MessageBox.Show("Your Sure", "Some Title", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
+                    for (int i = listBox1.SelectedItems.Count - 1; i >= 0; i--)
                     {
-                        foreach (string z in itemre)
-                        {
-                            Console.WriteLine("itemre " + z);
-                            item.Remove(z);
-                        }
-                        N2N.Data.Serialization.Serialize<List<String>>.SerializeToXmlFile(item, "Lpfname.xml");
-
-                        foreach (string n in itemre)
-                        {
-                            //Console.WriteLine(n);
-                            String path = @"" + n + ".xml";
-                            File.Delete(path);
-                            listBox1.Items.Remove(itemre);
-                            //listBox1.Refresh();
-                        }
+                        var proRemove = ProfileLoad_.Where(c => c.Profilename == listBox1.SelectedItems[i].ToString()).FirstOrDefault();
+                        if (proRemove != null)
+                            ProfileLoad_.Remove(proRemove);
+                    }
+                    N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(ProfileLoad_, "testin.xml");
+                    DialogResult res = MessageBox.Show("Remove profiles success", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (res == DialogResult.OK)
+                    {
+                        //MessageBox.Show("You have clicked Ok Button");
+                        //Some task…
+                        this.Close();
+                    }
+                    listBox1.Items.Clear();
+                    List<profile2> ProfileLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+                    for (int i = 0; i < ProfileLoad.Count; i++)
+                    {
+                        listBox1.Items.Add(ProfileLoad[i].Profilename);
                     }
                 }
-
-                //listBox1.Items.Clear();
-                item.Clear();
-                listBox1.Items.Clear();
-                List<String> LpfnameLoad = N2N.Data.Serialization.Serialize<List<String>>.DeserializeFromXmlFile("Lpfname.xml");
-                foreach (String list in LpfnameLoad)
-                {
-                    listBox1.Items.Add(list);
-                    item.Add(list);
-                }
-                /*String rfile;
-                StreamReader streamread = new StreamReader(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile\listname.txt");
-                while ((rfile = streamread.ReadLine()) != null)
-                {
-                    listBox1.Items.Add(rfile);
-                }
-                streamread.Close();*/
-                /* DirectoryInfo di = new DirectoryInfo(@"C:\Users\Administrator\source\repos\project1\project1\bin\profile");
-                 foreach (var fi in di.GetFiles("*.txt"))
-                 {
-                     //Console.WriteLine(fi.Name);
-                     string[] nm = fi.Name.Split('.');
-                     Console.WriteLine(nm[0]);
-                     listBox1.Items.Add(nm[0]);
-                     item.Add(nm[0]);
-                 }*/
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -103,11 +69,11 @@ namespace project1
             {
                 listBox1.SelectionMode = SelectionMode.MultiSimple;
                 listBox1.Items.Clear();
-                List<String> LpfnameLoad = N2N.Data.Serialization.Serialize<List<String>>.DeserializeFromXmlFile("Lpfname.xml");
-                foreach (String list in LpfnameLoad)
+                List<profile2> LpfnameLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+                for (int i = 0; i < LpfnameLoad.Count; i++)
                 {
-                    listBox1.Items.Add(list);
-                    item.Add(list);
+                    listBox1.Items.Add(LpfnameLoad[i].Profilename);
+                    //item.Add(LpfnameLoad[i].Profilename);
                 }
             }
             catch (Exception ex)

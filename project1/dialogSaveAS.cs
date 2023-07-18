@@ -19,6 +19,7 @@ using Leadtools.Document.Writer;
 using System.IO;
 using Leadtools.Codecs;
 using static System.Net.Mime.MediaTypeNames;
+using static project1.Form1;
 
 namespace project1
 {
@@ -361,8 +362,20 @@ namespace project1
                 }
                 else
                 {
-
-                    this.Close();
+                    if (File.Exists(Form1.form1.savePath))
+                    {
+                        File.Delete(Form1.form1.savePath);
+                        DialogResult res = MessageBox.Show("Cacel successful", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (res == DialogResult.OK)
+                        {
+                            //Some task…
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Specified file does not " + "exist in the current directory.");
+                    }
                 }
                
             }
@@ -485,9 +498,12 @@ namespace project1
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //this.Dispose();
-            this.btnCancel.Enabled = false;
-            this.isCancel = true;
+            DialogResult dialogResult = MessageBox.Show("Your Sure Cancel!!!", "Some Title", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.btnCancel.Enabled = false;
+                this.isCancel = true;
+            }
         }
     }
 }
