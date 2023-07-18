@@ -1316,7 +1316,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panDotRemove.Height = 267;
+                panDotRemove.Height = 323;
             }
             Expanded5 = !Expanded5;
         } catch (Exception ex) {
@@ -1335,7 +1335,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panLineRemove.Height = 333;
+                panLineRemove.Height = 335;
             }
             Expanded6 = !Expanded6;
         } catch (Exception ex) {
@@ -1373,7 +1373,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panInvertedText.Height = 272;
+                panInvertedText.Height = 300;
             }
             Expanded8 = !Expanded8;
         } catch (Exception ex) {
@@ -1411,7 +1411,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panBorderRemove.Height = 225;
+                panBorderRemove.Height = 231;
             }
             Expanded10 = !Expanded10;
         } catch (Exception ex) {
@@ -1430,7 +1430,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panSmooth.Height = 114;
+                panSmooth.Height = 123;
             }
             Expanded11 = !Expanded11;
         } catch (Exception ex) {
@@ -2294,9 +2294,14 @@ namespace project1
             {
                 this.splitContainer1.Panel2.Controls.Clear();
                 picReview2.Height = 850; //ความกว้างหน้ากระดาษ
-                picReview2.Width = 620;  //ความสูงหน้ากระดาษ
+                picReview2.Width = 850;  //ความสูงหน้ากระดาษ
                 xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
-                picReview2.Location = new Point(xRev, 20);
+                if (xRev < 0)
+                    xRev = 0;
+                var yRev = (splitContainer1.Panel2.Height / 2) - (picReview2.Height / 2);
+                if (yRev < 0)
+                    yRev = 0;
+                picReview2.Location = new Point(xRev, yRev);
                 Console.WriteLine(picReview2.Location);
                 picReview2.SizeMode = PictureBoxSizeMode.Zoom;
                 this.splitContainer1.Panel2.Controls.Add(picReview2);
@@ -2650,13 +2655,7 @@ namespace project1
                     int maxWidth2 = -1;
                     RasterCodecs _rasterCodecs = new RasterCodecs();
                     //Load documents at 300 DPI for better viewing
-                    // _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
-                    _rasterCodecs.Options.Pdf.Load.DisplayDepth = 24;
-                    _rasterCodecs.Options.Pdf.Load.GraphicsAlpha = 4;
-                    _rasterCodecs.Options.Pdf.Load.DisableCieColors = false;
-                    _rasterCodecs.Options.Pdf.Load.DisableCropping = false;
-                    _rasterCodecs.Options.Pdf.Load.EnableInterpolate = false;
-                    ResetValue();
+                   // _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
                     foreach (string img in file){
                         using (var imageInfo = _rasterCodecs.GetInformation(img, true)){ //นับจำนวนเอกสาร
                             pageCount = imageInfo.TotalPages; //จำนวนเอกสาร
@@ -2709,10 +2708,8 @@ namespace project1
                             destImage1.Dispose();
                         }
                         pdname = 1;
-                        this.splitContainer1.Panel1.Controls.Add(pic2);
-                            //Image();
-
-                            //Console.WriteLine(pic2.Name);
+                        Image();
+                        //Console.WriteLine(pic2.Name);
                         pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
                       
                         Process currentProcess = Process.GetCurrentProcess();
@@ -3125,6 +3122,7 @@ namespace project1
             {
                 dialogSave dialogSave = new dialogSave();
                 dialogSave.ShowDialog();
+                
                 cbBox2re();
             }
             catch (Exception ex)
