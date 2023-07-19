@@ -25,9 +25,6 @@ namespace project1
         {
             InitializeComponent();
         }
-        List<String> itemRe = new List<String>();
-        List<String> item = new List<String>();
-        List<profile2> Lprofile3 = new List<profile2>();
         private void Remove2_Click(object sender, EventArgs e)
         {
             try
@@ -48,6 +45,7 @@ namespace project1
                     {
                         //MessageBox.Show("You have clicked Ok Button");
                         //Some task…
+                        Form1.form1.cbBox2re();
                         this.Close();
                     }
                     listBox1.Items.Clear();
@@ -88,7 +86,7 @@ namespace project1
         }
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Form1.form1.cbBox2re();
+           // Form1.form1.cbBox2re();
         }
     }
 }

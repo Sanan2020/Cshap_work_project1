@@ -38,6 +38,7 @@
             // 
             this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnImport.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnImport.Location = new System.Drawing.Point(228, 35);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 23);

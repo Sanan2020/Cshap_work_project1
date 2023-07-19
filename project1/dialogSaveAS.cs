@@ -174,15 +174,14 @@ namespace project1
                     }
                     if (Form1.form1.chckbox18 == true)
                     {
-                        FlipCommand flip = new FlipCommand(false);
+                        FlipCommand flip = new FlipCommand(Form1.form1.value_cbbPerProp);
                         RunCommand(rasterImage, flip);
-                        // rotate the image by 45 degrees 
-                        RotateCommand rotate = new RotateCommand();
-                        rotate.Angle = (Form1.form1.value_trackBar29 * 100);
-                        rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
-                        rotate.Flags = RotateCommandFlags.Resize;
-                        RunCommand(rasterImage, rotate);
                     }
+                    RotateCommand rotate = new RotateCommand();
+                    rotate.Angle = (Form1.form1.value_trackBar29 * 100);
+                    rotate.FillColor = RasterColor.FromKnownColor(RasterKnownColor.White);
+                    rotate.Flags = RotateCommandFlags.Resize;
+                    RunCommand(rasterImage, rotate);
                     if (Form1.form1.chckbox21 == true)
                     {
                         RasterImage destImage = new RasterImage(
@@ -249,19 +248,19 @@ namespace project1
                             command13.MaximumWallPercent = Form1.form1.value_trackBar17;
                             command13.Wall = Form1.form1.value_trackBar22;
                             command13.Run(rasterImage);
-           
-
-                                /*LineRemoveCommand commandc = new LineRemoveCommand();
-                                commandc.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
-                                commandc.Type = LineRemoveCommandType.Vertical;
-                                //command13.Type = LineRemoveCommandType.Vertical;
-                                commandc.Flags = LineRemoveCommandFlags.UseGap;
-                                commandc.GapLength = value_trackBar14;
-                                commandc.MaximumLineWidth = value_trackBar15;
-                                commandc.MinimumLineLength = value_trackBar16;
-                                commandc.MaximumWallPercent = value_trackBar17;
-                                commandc.Wall = value_trackBar22;
-                                commandc.Run(destImage);*/
+                        }
+                        if (Form1.form1.chckbox_LRV == true)
+                        {
+                            LineRemoveCommand commandv = new LineRemoveCommand();
+                            commandv.LineRemove += new EventHandler<LineRemoveCommandEventArgs>(LineRemoveEvent_S1);
+                            commandv.Type = LineRemoveCommandType.Vertical;
+                            commandv.Flags = LineRemoveCommandFlags.UseGap;
+                            commandv.GapLength = Form1.form1.value_tbLRV1;
+                            commandv.MaximumLineWidth = Form1.form1.value_tbLRV2;
+                            commandv.MinimumLineLength = Form1.form1.value_tbLRV3;
+                            commandv.MaximumWallPercent = Form1.form1.value_tbLRV4;
+                            commandv.Wall = Form1.form1.value_tbLRV5;
+                            commandv.Run(rasterImage);
                         }
                         if (Form1.form1.chckbox10 == true)
                         {
@@ -336,18 +335,17 @@ namespace project1
                             command20.Run(rasterImage);
                         }
                     }
-
                     await Task.Delay(2000);
                     using (rasterPage.Image = rasterImage)
                     {
                         // Add it 
                         docWriter.AddPage(rasterPage);
                     }
-                }
+                }//loop
 
                 if (this.isCancel)
                     break;
-            }
+            }//loop
                 // Finally finish writing the HTML file on disk 
                 docWriter.EndDocument();
 
@@ -377,14 +375,12 @@ namespace project1
                         MessageBox.Show("Specified file does not " + "exist in the current directory.");
                     }
                 }
-               
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
         bool cancelAt50;
         void RunCommand(RasterImage image, RasterCommand command)
         {

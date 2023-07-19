@@ -67,6 +67,7 @@ namespace project1
         int lgamma;
         bool autoDeskew;
         bool useFlipRotateImage;
+        bool cbbPerProp;
         int rotateImage;
         bool useRakeRemove;
         int numUpDown1;
@@ -80,6 +81,12 @@ namespace project1
         int numUpDown9;
         bool autoFilter;
         bool convert1bit;
+        int tbLRV1 = 2;
+        int tbLRV2 = 5;
+        int tbLRV3 = 200;
+        int tbLRV4 = 10;
+        int tbLRV5 = 7;
+        bool use_lrv = false;
         public string Profilename { get { return profilename; } set { profilename = value; } }
         public int Brightness { get { return brightness; } set { brightness = value; } }
         public int Contrast { get { return contrast; } set { contrast = value; } }
@@ -108,6 +115,12 @@ namespace project1
         public int MinimumlineL { get { return minimumlineL; } set { minimumlineL = value; } }
         public int Maximumwall { get { return maximumwall; } set { maximumwall = value; } }
         public int Wall { get { return wall; } set { wall = value; } }
+        public bool Use_lrv { get { return use_lrv; } set { use_lrv = value; } }
+        public int TbLRV1 { get { return tbLRV1; } set { tbLRV1 = value; } }
+        public int TbLRV2 { get { return tbLRV2; } set { tbLRV2 = value; } }
+        public int TbLRV3 { get { return tbLRV3; } set { tbLRV3 = value; } }
+        public int TbLRV4 { get { return tbLRV4; } set { tbLRV4 = value; } }
+        public int TbLRV5 { get { return tbLRV5; } set { tbLRV5 = value; } }
         public bool HolePunchRemove { get { return holePunchRemove; } set { holePunchRemove = value; } }
         public int Maximumhole { get { return maximumhole; } set { maximumhole = value; } }
         public int Minimumhole { get { return minimumhole; } set { minimumhole = value; } }
@@ -134,6 +147,7 @@ namespace project1
         public int Lgamma { get { return lgamma; } set { lgamma = value; } }
         public bool AutoDeskew { get { return autoDeskew; } set { autoDeskew = value; } }
         public bool UseFlipRotateImage { get { return useFlipRotateImage; } set { useFlipRotateImage = value; } }
+        public bool CbbPerProp { get { return cbbPerProp; }set{ cbbPerProp = value; } }
         public int RotateImage { get { return rotateImage; } set { rotateImage = value; } }
         public bool UseRakeRemove { get { return useRakeRemove; } set { useRakeRemove = value; } }
         public int NumUpDown1 { get { return numUpDown1; } set { numUpDown1 = value; } }

@@ -40,6 +40,7 @@
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.cbboxUseProfile = new DevComponents.DotNetBar.ComboBoxItem();
             this.btnRemovepf = new DevComponents.DotNetBar.ButtonItem();
+            this.btnRMslpf = new DevComponents.DotNetBar.ButtonItem();
             this.btnSavepf = new DevComponents.DotNetBar.ButtonItem();
             this.btnSaveASpf = new DevComponents.DotNetBar.ButtonItem();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
@@ -268,7 +269,27 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnRMslpf = new DevComponents.DotNetBar.ButtonItem();
+            this.cbbPerProp = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.label35 = new System.Windows.Forms.Label();
+            this.panLRV = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.l_tbLRV5 = new System.Windows.Forms.Label();
+            this.l_tbLRV4 = new System.Windows.Forms.Label();
+            this.l_tbLRV3 = new System.Windows.Forms.Label();
+            this.l_tbLRV2 = new System.Windows.Forms.Label();
+            this.l_tbLRV1 = new System.Windows.Forms.Label();
+            this.tbLRV5 = new System.Windows.Forms.TrackBar();
+            this.tbLRV1 = new System.Windows.Forms.TrackBar();
+            this.tbLRV2 = new System.Windows.Forms.TrackBar();
+            this.tbLRV3 = new System.Windows.Forms.TrackBar();
+            this.tbLRV4 = new System.Windows.Forms.TrackBar();
+            this.chbox_LRV = new System.Windows.Forms.CheckBox();
+            this.btnResetLineRemoveV = new System.Windows.Forms.Button();
+            this.btnLineRemoveV = new System.Windows.Forms.Button();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
@@ -339,6 +360,12 @@
             this.ribbonClientPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panLRV.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV4)).BeginInit();
             this.SuspendLayout();
             // 
             // l_saveprofile
@@ -453,6 +480,14 @@
             this.btnRemovepf.SubItemsExpandWidth = 14;
             this.btnRemovepf.Text = "Remove";
             this.btnRemovepf.Click += new System.EventHandler(this.btnRemovepf_Click);
+            // 
+            // btnRMslpf
+            // 
+            this.btnRMslpf.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
+            this.btnRMslpf.ImagePaddingHorizontal = 8;
+            this.btnRMslpf.Name = "btnRMslpf";
+            this.btnRMslpf.Text = "Remove Select";
+            this.btnRMslpf.Click += new System.EventHandler(this.btnRMslpf_Click);
             // 
             // btnSavepf
             // 
@@ -579,7 +614,7 @@
             this.ribbonPanel2.Location = new System.Drawing.Point(0, 55);
             this.ribbonPanel2.Name = "ribbonPanel2";
             this.ribbonPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel2.Size = new System.Drawing.Size(1199, 70);
+            this.ribbonPanel2.Size = new System.Drawing.Size(1169, 70);
             this.ribbonPanel2.TabIndex = 2;
             this.ribbonPanel2.Visible = false;
             // 
@@ -664,7 +699,7 @@
             this.btnLineRemove.Name = "btnLineRemove";
             this.btnLineRemove.Size = new System.Drawing.Size(307, 29);
             this.btnLineRemove.TabIndex = 70;
-            this.btnLineRemove.Text = "Line Remove (only 1-bit black and white)";
+            this.btnLineRemove.Text = "Line Remove Horizontal ( only 1-bit )";
             this.btnLineRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLineRemove.UseVisualStyleBackColor = true;
             this.btnLineRemove.Click += new System.EventHandler(this.btnLineRemove_Click);
@@ -743,10 +778,11 @@
             this.flowLayoutPanel1.Controls.Add(this.panBorderRemove);
             this.flowLayoutPanel1.Controls.Add(this.panSmooth);
             this.flowLayoutPanel1.Controls.Add(this.panRakeRemove);
+            this.flowLayoutPanel1.Controls.Add(this.panLRV);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(336, 788);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(336, 941);
             this.flowLayoutPanel1.TabIndex = 36;
             this.toolTip1.SetToolTip(this.flowLayoutPanel1, "Press F1 to References");
             this.flowLayoutPanel1.Visible = false;
@@ -852,9 +888,9 @@
             this.checkBox7.AutoSize = true;
             this.checkBox7.Location = new System.Drawing.Point(17, 80);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(85, 17);
+            this.checkBox7.Size = new System.Drawing.Size(88, 17);
             this.checkBox7.TabIndex = 43;
-            this.checkBox7.Text = "AutoBinarize";
+            this.checkBox7.Text = "Auto Binarize";
             this.checkBox7.UseVisualStyleBackColor = true;
             this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
@@ -863,9 +899,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(17, 123);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(98, 17);
+            this.checkBox1.Size = new System.Drawing.Size(101, 17);
             this.checkBox1.TabIndex = 29;
-            this.checkBox1.Text = "AutoColorLevel";
+            this.checkBox1.Text = "Auto ColorLevel";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -885,9 +921,9 @@
             this.checkBox14.AutoSize = true;
             this.checkBox14.Location = new System.Drawing.Point(17, 169);
             this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(87, 17);
+            this.checkBox14.Size = new System.Drawing.Size(90, 17);
             this.checkBox14.TabIndex = 62;
-            this.checkBox14.Text = "AutoDeskew";
+            this.checkBox14.Text = "Auto Deskew";
             this.checkBox14.UseVisualStyleBackColor = true;
             this.checkBox14.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
             // 
@@ -905,9 +941,9 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(17, 146);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(77, 17);
+            this.checkBox4.Size = new System.Drawing.Size(80, 17);
             this.checkBox4.TabIndex = 40;
-            this.checkBox4.Text = "AutoBinary";
+            this.checkBox4.Text = "Auto Binary";
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
@@ -982,11 +1018,13 @@
             // 
             this.panFlipRotate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panFlipRotate.Controls.Add(this.btnResetFlipRotate);
+            this.panFlipRotate.Controls.Add(this.label35);
+            this.panFlipRotate.Controls.Add(this.cbbPerProp);
+            this.panFlipRotate.Controls.Add(this.btnFlipRotate);
             this.panFlipRotate.Controls.Add(this.label34);
             this.panFlipRotate.Controls.Add(this.checkBox18);
             this.panFlipRotate.Controls.Add(this.trackBar29);
             this.panFlipRotate.Controls.Add(this.l_RotateImage);
-            this.panFlipRotate.Controls.Add(this.btnFlipRotate);
             this.panFlipRotate.Dock = System.Windows.Forms.DockStyle.Top;
             this.panFlipRotate.Location = new System.Drawing.Point(3, 73);
             this.panFlipRotate.Name = "panFlipRotate";
@@ -1010,7 +1048,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(36, 57);
+            this.label34.Location = new System.Drawing.Point(33, 104);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(71, 13);
             this.label34.TabIndex = 68;
@@ -1029,7 +1067,7 @@
             // 
             // trackBar29
             // 
-            this.trackBar29.Location = new System.Drawing.Point(33, 75);
+            this.trackBar29.Location = new System.Drawing.Point(30, 122);
             this.trackBar29.Maximum = 360;
             this.trackBar29.Name = "trackBar29";
             this.trackBar29.Size = new System.Drawing.Size(241, 45);
@@ -1041,7 +1079,7 @@
             // l_RotateImage
             // 
             this.l_RotateImage.AutoSize = true;
-            this.l_RotateImage.Location = new System.Drawing.Point(256, 59);
+            this.l_RotateImage.Location = new System.Drawing.Point(253, 106);
             this.l_RotateImage.Name = "l_RotateImage";
             this.l_RotateImage.Size = new System.Drawing.Size(13, 13);
             this.l_RotateImage.TabIndex = 66;
@@ -1049,7 +1087,6 @@
             // 
             // btnFlipRotate
             // 
-            this.btnFlipRotate.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFlipRotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFlipRotate.Location = new System.Drawing.Point(0, 0);
             this.btnFlipRotate.Name = "btnFlipRotate";
@@ -1110,7 +1147,7 @@
             // l_brightness
             // 
             this.l_brightness.AutoSize = true;
-            this.l_brightness.Location = new System.Drawing.Point(259, 103);
+            this.l_brightness.Location = new System.Drawing.Point(259, 101);
             this.l_brightness.Name = "l_brightness";
             this.l_brightness.Size = new System.Drawing.Size(13, 13);
             this.l_brightness.TabIndex = 8;
@@ -1128,7 +1165,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 103);
+            this.label4.Location = new System.Drawing.Point(24, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 9;
@@ -1345,9 +1382,9 @@
             this.panGrayScale.Controls.Add(this.label15);
             this.panGrayScale.Controls.Add(this.l_greenfactor);
             this.panGrayScale.Controls.Add(this.checkBox2);
+            this.panGrayScale.Controls.Add(this.btnGrayScale);
             this.panGrayScale.Controls.Add(this.label);
             this.panGrayScale.Controls.Add(this.trackBar9);
-            this.panGrayScale.Controls.Add(this.btnGrayScale);
             this.panGrayScale.Controls.Add(this.trackBar7);
             this.panGrayScale.Controls.Add(this.trackBar8);
             this.panGrayScale.Controls.Add(this.l_redfactor);
@@ -1377,18 +1414,18 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(26, 136);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.Size = new System.Drawing.Size(69, 13);
             this.label8.TabIndex = 21;
-            this.label8.Text = "GreenFactor";
+            this.label8.Text = "Green Factor";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(25, 71);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 13);
+            this.label15.Size = new System.Drawing.Size(60, 13);
             this.label15.TabIndex = 18;
-            this.label15.Text = "RedFactor";
+            this.label15.Text = "Red Factor";
             // 
             // l_greenfactor
             // 
@@ -1404,9 +1441,9 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(6, 38);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(97, 17);
+            this.checkBox2.Size = new System.Drawing.Size(100, 17);
             this.checkBox2.TabIndex = 31;
-            this.checkBox2.Text = "Use GrayScale";
+            this.checkBox2.Text = "Use Gray Scale";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
@@ -1415,9 +1452,9 @@
             this.label.AutoSize = true;
             this.label.Location = new System.Drawing.Point(27, 200);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(58, 13);
+            this.label.Size = new System.Drawing.Size(61, 13);
             this.label.TabIndex = 24;
-            this.label.Text = "BlueFactor";
+            this.label.Text = "Blue Factor";
             // 
             // trackBar9
             // 
@@ -1494,9 +1531,9 @@
             this.panDynamicBinary.Controls.Add(this.btnResetDynamicBinary);
             this.panDynamicBinary.Controls.Add(this.checkBox9);
             this.panDynamicBinary.Controls.Add(this.trbDynBin1);
+            this.panDynamicBinary.Controls.Add(this.btnDynamicBinary);
             this.panDynamicBinary.Controls.Add(this.l_dimension);
             this.panDynamicBinary.Controls.Add(this.trbDynBin2);
-            this.panDynamicBinary.Controls.Add(this.btnDynamicBinary);
             this.panDynamicBinary.Controls.Add(this.l_localcontrast);
             this.panDynamicBinary.Dock = System.Windows.Forms.DockStyle.Top;
             this.panDynamicBinary.Location = new System.Drawing.Point(3, 213);
@@ -1510,9 +1547,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(40, 133);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 78;
-            this.label2.Text = "LocalContrast ";
+            this.label2.Text = "Local Contrast ";
             // 
             // label1
             // 
@@ -1854,14 +1891,14 @@
             // panLineRemove
             // 
             this.panLineRemove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panLineRemove.Controls.Add(this.btnResetLineRemove);
             this.panLineRemove.Controls.Add(this.label22);
             this.panLineRemove.Controls.Add(this.label21);
+            this.panLineRemove.Controls.Add(this.btnResetLineRemove);
             this.panLineRemove.Controls.Add(this.label20);
             this.panLineRemove.Controls.Add(this.label19);
+            this.panLineRemove.Controls.Add(this.btnLineRemove);
             this.panLineRemove.Controls.Add(this.label18);
             this.panLineRemove.Controls.Add(this.l_wall);
-            this.panLineRemove.Controls.Add(this.btnLineRemove);
             this.panLineRemove.Controls.Add(this.l_maximumwall);
             this.panLineRemove.Controls.Add(this.l_minimumlineL);
             this.panLineRemove.Controls.Add(this.l_maximumlineW);
@@ -1893,36 +1930,36 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(37, 225);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(112, 13);
+            this.label21.Size = new System.Drawing.Size(118, 13);
             this.label21.TabIndex = 80;
-            this.label21.Text = "MaximumWallPercent ";
+            this.label21.Text = "Maximum Wall Percent ";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(37, 171);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(104, 13);
+            this.label20.Size = new System.Drawing.Size(110, 13);
             this.label20.TabIndex = 79;
-            this.label20.Text = "MinimumLineLength ";
+            this.label20.Text = "Minimum Line Length ";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(37, 116);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(102, 13);
+            this.label19.Size = new System.Drawing.Size(108, 13);
             this.label19.TabIndex = 78;
-            this.label19.Text = "MaximumLineWidth ";
+            this.label19.Text = "Maximum Line Width ";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(37, 59);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(63, 13);
+            this.label18.Size = new System.Drawing.Size(66, 13);
             this.label18.TabIndex = 77;
-            this.label18.Text = "GapLength ";
+            this.label18.Text = "Gap Length ";
             // 
             // l_wall
             // 
@@ -1990,9 +2027,11 @@
             // trackBar15
             // 
             this.trackBar15.Location = new System.Drawing.Point(31, 132);
+            this.trackBar15.Minimum = 1;
             this.trackBar15.Name = "trackBar15";
             this.trackBar15.Size = new System.Drawing.Size(241, 45);
             this.trackBar15.TabIndex = 67;
+            this.trackBar15.Value = 1;
             this.trackBar15.Scroll += new System.EventHandler(this.trackBar15_Scroll);
             this.trackBar15.MouseCaptureChanged += new System.EventHandler(this.trackBar15_MouseCaptureChanged);
             // 
@@ -2000,10 +2039,12 @@
             // 
             this.trackBar16.Location = new System.Drawing.Point(31, 187);
             this.trackBar16.Maximum = 200;
+            this.trackBar16.Minimum = 1;
             this.trackBar16.Name = "trackBar16";
             this.trackBar16.Size = new System.Drawing.Size(241, 45);
             this.trackBar16.TabIndex = 68;
             this.trackBar16.TickFrequency = 10;
+            this.trackBar16.Value = 1;
             this.trackBar16.Scroll += new System.EventHandler(this.trackBar16_Scroll);
             this.trackBar16.MouseCaptureChanged += new System.EventHandler(this.trackBar16_MouseCaptureChanged);
             // 
@@ -2021,9 +2062,9 @@
             this.checkBox11.AutoSize = true;
             this.checkBox11.Location = new System.Drawing.Point(3, 33);
             this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(111, 17);
+            this.checkBox11.Size = new System.Drawing.Size(114, 17);
             this.checkBox11.TabIndex = 59;
-            this.checkBox11.Text = "Use Line Remove";
+            this.checkBox11.Text = "Use Line Remove ";
             this.checkBox11.UseVisualStyleBackColor = true;
             this.checkBox11.CheckedChanged += new System.EventHandler(this.checkBox11_CheckedChanged);
             // 
@@ -2035,9 +2076,9 @@
             this.panHolePunchRemove.Controls.Add(this.label23);
             this.panHolePunchRemove.Controls.Add(this.l_maximumhole);
             this.panHolePunchRemove.Controls.Add(this.l_minimumhole);
+            this.panHolePunchRemove.Controls.Add(this.btnHolePunchRemove);
             this.panHolePunchRemove.Controls.Add(this.trackBar18);
             this.panHolePunchRemove.Controls.Add(this.trackBar21);
-            this.panHolePunchRemove.Controls.Add(this.btnHolePunchRemove);
             this.panHolePunchRemove.Controls.Add(this.checkBox12);
             this.panHolePunchRemove.Dock = System.Windows.Forms.DockStyle.Top;
             this.panHolePunchRemove.Location = new System.Drawing.Point(3, 390);
@@ -2064,18 +2105,18 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(35, 59);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(104, 13);
+            this.label24.Size = new System.Drawing.Size(110, 13);
             this.label24.TabIndex = 80;
-            this.label24.Text = "MaximumHoleCount ";
+            this.label24.Text = "Maximum Hole Count ";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(35, 112);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(101, 13);
+            this.label23.Size = new System.Drawing.Size(107, 13);
             this.label23.TabIndex = 79;
-            this.label23.Text = "MinimumHoleCount ";
+            this.label23.Text = "Minimum Hole Count ";
             // 
             // l_maximumhole
             // 
@@ -2120,7 +2161,7 @@
             this.btnHolePunchRemove.Name = "btnHolePunchRemove";
             this.btnHolePunchRemove.Size = new System.Drawing.Size(307, 27);
             this.btnHolePunchRemove.TabIndex = 70;
-            this.btnHolePunchRemove.Text = "Hole Punch Remove (only 1-bit black and white)";
+            this.btnHolePunchRemove.Text = "Hole Punch Remove ( only 1-bit )";
             this.btnHolePunchRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHolePunchRemove.UseVisualStyleBackColor = true;
             this.btnHolePunchRemove.Click += new System.EventHandler(this.btnHolePunchRemove_Click);
@@ -2145,9 +2186,9 @@
             this.panDotRemove.Controls.Add(this.label27);
             this.panDotRemove.Controls.Add(this.label26);
             this.panDotRemove.Controls.Add(this.label25);
+            this.panDotRemove.Controls.Add(this.btnDotRemove);
             this.panDotRemove.Controls.Add(this.l_minimumdotW);
             this.panDotRemove.Controls.Add(this.l_minimumdotH);
-            this.panDotRemove.Controls.Add(this.btnDotRemove);
             this.panDotRemove.Controls.Add(this.l_maximumdotW);
             this.panDotRemove.Controls.Add(this.l_maximumdotH);
             this.panDotRemove.Controls.Add(this.checkBox10);
@@ -2180,36 +2221,36 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(35, 233);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(96, 13);
+            this.label28.Size = new System.Drawing.Size(102, 13);
             this.label28.TabIndex = 81;
-            this.label28.Text = "MinimumDotWidth ";
+            this.label28.Text = "Minimum Dot Width ";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(35, 173);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(99, 13);
+            this.label27.Size = new System.Drawing.Size(105, 13);
             this.label27.TabIndex = 80;
-            this.label27.Text = "MinimumDotHeight ";
+            this.label27.Text = "Minimum Dot Height ";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(35, 122);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(99, 13);
+            this.label26.Size = new System.Drawing.Size(105, 13);
             this.label26.TabIndex = 79;
-            this.label26.Text = "MaximumDotWidth ";
+            this.label26.Text = "Maximum Dot Width ";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(35, 67);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(102, 13);
+            this.label25.Size = new System.Drawing.Size(108, 13);
             this.label25.TabIndex = 78;
-            this.label25.Text = "MaximumDotHeight ";
+            this.label25.Text = "Maximum Dot Height ";
             // 
             // l_minimumdotW
             // 
@@ -2236,7 +2277,7 @@
             this.btnDotRemove.Name = "btnDotRemove";
             this.btnDotRemove.Size = new System.Drawing.Size(307, 27);
             this.btnDotRemove.TabIndex = 70;
-            this.btnDotRemove.Text = "Dot Remove (only 1-bit black and white)";
+            this.btnDotRemove.Text = "Dot Remove ( only 1-bit )";
             this.btnDotRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDotRemove.UseVisualStyleBackColor = true;
             this.btnDotRemove.Click += new System.EventHandler(this.btnDotRemove_Click);
@@ -2315,8 +2356,8 @@
             this.panInvertedText.Controls.Add(this.label31);
             this.panInvertedText.Controls.Add(this.label30);
             this.panInvertedText.Controls.Add(this.label29);
-            this.panInvertedText.Controls.Add(this.l_minimuminvertW);
             this.panInvertedText.Controls.Add(this.btnInvertedText);
+            this.panInvertedText.Controls.Add(this.l_minimuminvertW);
             this.panInvertedText.Controls.Add(this.l_minimuminverH);
             this.panInvertedText.Controls.Add(this.l_minimumBlack);
             this.panInvertedText.Controls.Add(this.l_maximumblack);
@@ -2350,36 +2391,36 @@
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(38, 224);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(106, 13);
+            this.label32.Size = new System.Drawing.Size(112, 13);
             this.label32.TabIndex = 84;
-            this.label32.Text = "MinimumInvertWidth ";
+            this.label32.Text = "Minimum Invert Width ";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(39, 172);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(109, 13);
+            this.label31.Size = new System.Drawing.Size(115, 13);
             this.label31.TabIndex = 83;
-            this.label31.Text = "MinimumInvertHeight ";
+            this.label31.Text = "Minimum Invert Height ";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(39, 120);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(115, 13);
+            this.label30.Size = new System.Drawing.Size(121, 13);
             this.label30.TabIndex = 82;
-            this.label30.Text = "MinimumBlackPercent ";
+            this.label30.Text = "Minimum Black Percent ";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(38, 63);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(118, 13);
+            this.label29.Size = new System.Drawing.Size(124, 13);
             this.label29.TabIndex = 81;
-            this.label29.Text = "MaximumBlackPercent ";
+            this.label29.Text = "Maximum Black Percent ";
             // 
             // l_minimuminvertW
             // 
@@ -2397,7 +2438,7 @@
             this.btnInvertedText.Name = "btnInvertedText";
             this.btnInvertedText.Size = new System.Drawing.Size(307, 27);
             this.btnInvertedText.TabIndex = 70;
-            this.btnInvertedText.Text = "Inverted Text (only 1-bit black and white)";
+            this.btnInvertedText.Text = "Inverted Text ( only 1-bit )";
             this.btnInvertedText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInvertedText.UseVisualStyleBackColor = true;
             this.btnInvertedText.Click += new System.EventHandler(this.btnInvertedText_Click);
@@ -2493,9 +2534,9 @@
             this.panBorderRemove.Controls.Add(this.label5);
             this.panBorderRemove.Controls.Add(this.btnResetBorderRemove);
             this.panBorderRemove.Controls.Add(this.l_whitenoiseL);
+            this.panBorderRemove.Controls.Add(this.btnBorderRemove);
             this.panBorderRemove.Controls.Add(this.l_variance);
             this.panBorderRemove.Controls.Add(this.l_percent);
-            this.panBorderRemove.Controls.Add(this.btnBorderRemove);
             this.panBorderRemove.Controls.Add(this.trackBar28);
             this.panBorderRemove.Controls.Add(this.trackBar26);
             this.panBorderRemove.Controls.Add(this.trackBar25);
@@ -2512,9 +2553,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(31, 166);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(95, 13);
+            this.label12.Size = new System.Drawing.Size(101, 13);
             this.label12.TabIndex = 85;
-            this.label12.Text = "WhiteNoiseLength";
+            this.label12.Text = "White Noise Length";
             // 
             // label11
             // 
@@ -2581,7 +2622,7 @@
             this.btnBorderRemove.Name = "btnBorderRemove";
             this.btnBorderRemove.Size = new System.Drawing.Size(307, 27);
             this.btnBorderRemove.TabIndex = 70;
-            this.btnBorderRemove.Text = "Border Remove (only 1-bit black and white)";
+            this.btnBorderRemove.Text = "Border Remove ( only 1-bit )";
             this.btnBorderRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBorderRemove.UseVisualStyleBackColor = true;
             this.btnBorderRemove.Click += new System.EventHandler(this.btnBorderRemove_Click);
@@ -2700,7 +2741,7 @@
             this.btnSmooth.Name = "btnSmooth";
             this.btnSmooth.Size = new System.Drawing.Size(307, 27);
             this.btnSmooth.TabIndex = 70;
-            this.btnSmooth.Text = "Smooth (only 1-bit black and white)";
+            this.btnSmooth.Text = "Smooth ( only 1-bit )";
             this.btnSmooth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSmooth.UseVisualStyleBackColor = true;
             this.btnSmooth.Click += new System.EventHandler(this.btnSmooth_Click);
@@ -2714,9 +2755,9 @@
             this.panRakeRemove.Controls.Add(this.l_numUpDown6);
             this.panRakeRemove.Controls.Add(this.l_numUpDown7);
             this.panRakeRemove.Controls.Add(this.l_numUpDown5);
+            this.panRakeRemove.Controls.Add(this.btnRakeRemove);
             this.panRakeRemove.Controls.Add(this.l_numUpDown8);
             this.panRakeRemove.Controls.Add(this.l_numUpDown9);
-            this.panRakeRemove.Controls.Add(this.btnRakeRemove);
             this.panRakeRemove.Controls.Add(this.l_numUpDown4);
             this.panRakeRemove.Controls.Add(this.checkBox19);
             this.panRakeRemove.Controls.Add(this.l_autofilter);
@@ -2741,7 +2782,7 @@
             // checkBox20
             // 
             this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(130, 313);
+            this.checkBox20.Location = new System.Drawing.Point(141, 313);
             this.checkBox20.Name = "checkBox20";
             this.checkBox20.Size = new System.Drawing.Size(15, 14);
             this.checkBox20.TabIndex = 89;
@@ -2764,16 +2805,16 @@
             // l_numUpDown6
             // 
             this.l_numUpDown6.AutoSize = true;
-            this.l_numUpDown6.Location = new System.Drawing.Point(20, 207);
+            this.l_numUpDown6.Location = new System.Drawing.Point(26, 207);
             this.l_numUpDown6.Name = "l_numUpDown6";
-            this.l_numUpDown6.Size = new System.Drawing.Size(101, 13);
+            this.l_numUpDown6.Size = new System.Drawing.Size(107, 13);
             this.l_numUpDown6.TabIndex = 83;
-            this.l_numUpDown6.Text = "MaxMidteethLength";
+            this.l_numUpDown6.Text = "Max Midteeth Length";
             // 
             // l_numUpDown7
             // 
             this.l_numUpDown7.AutoSize = true;
-            this.l_numUpDown7.Location = new System.Drawing.Point(20, 233);
+            this.l_numUpDown7.Location = new System.Drawing.Point(26, 233);
             this.l_numUpDown7.Name = "l_numUpDown7";
             this.l_numUpDown7.Size = new System.Drawing.Size(32, 13);
             this.l_numUpDown7.TabIndex = 82;
@@ -2782,16 +2823,16 @@
             // l_numUpDown5
             // 
             this.l_numUpDown5.AutoSize = true;
-            this.l_numUpDown5.Location = new System.Drawing.Point(20, 176);
+            this.l_numUpDown5.Location = new System.Drawing.Point(26, 176);
             this.l_numUpDown5.Name = "l_numUpDown5";
-            this.l_numUpDown5.Size = new System.Drawing.Size(105, 13);
+            this.l_numUpDown5.Size = new System.Drawing.Size(111, 13);
             this.l_numUpDown5.TabIndex = 88;
-            this.l_numUpDown5.Text = "MaxSideteethLength";
+            this.l_numUpDown5.Text = "Max Sideteeth Length";
             // 
             // l_numUpDown8
             // 
             this.l_numUpDown8.AutoSize = true;
-            this.l_numUpDown8.Location = new System.Drawing.Point(20, 259);
+            this.l_numUpDown8.Location = new System.Drawing.Point(26, 259);
             this.l_numUpDown8.Name = "l_numUpDown8";
             this.l_numUpDown8.Size = new System.Drawing.Size(49, 13);
             this.l_numUpDown8.TabIndex = 81;
@@ -2800,11 +2841,11 @@
             // l_numUpDown9
             // 
             this.l_numUpDown9.AutoSize = true;
-            this.l_numUpDown9.Location = new System.Drawing.Point(20, 286);
+            this.l_numUpDown9.Location = new System.Drawing.Point(26, 286);
             this.l_numUpDown9.Name = "l_numUpDown9";
-            this.l_numUpDown9.Size = new System.Drawing.Size(74, 13);
+            this.l_numUpDown9.Size = new System.Drawing.Size(77, 13);
             this.l_numUpDown9.TabIndex = 80;
-            this.l_numUpDown9.Text = "TeethSpacing";
+            this.l_numUpDown9.Text = "Teeth Spacing";
             // 
             // btnRakeRemove
             // 
@@ -2813,7 +2854,7 @@
             this.btnRakeRemove.Name = "btnRakeRemove";
             this.btnRakeRemove.Size = new System.Drawing.Size(307, 27);
             this.btnRakeRemove.TabIndex = 70;
-            this.btnRakeRemove.Text = "Rake Remove (only 1-bit black and white)";
+            this.btnRakeRemove.Text = "Rake Remove ( only 1-bit )";
             this.btnRakeRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRakeRemove.UseVisualStyleBackColor = true;
             this.btnRakeRemove.Click += new System.EventHandler(this.btnRakeRemove_Click);
@@ -2822,11 +2863,11 @@
             // l_numUpDown4
             // 
             this.l_numUpDown4.AutoSize = true;
-            this.l_numUpDown4.Location = new System.Drawing.Point(20, 148);
+            this.l_numUpDown4.Location = new System.Drawing.Point(26, 148);
             this.l_numUpDown4.Name = "l_numUpDown4";
-            this.l_numUpDown4.Size = new System.Drawing.Size(85, 13);
+            this.l_numUpDown4.Size = new System.Drawing.Size(91, 13);
             this.l_numUpDown4.TabIndex = 87;
-            this.l_numUpDown4.Text = "MaxWallPercent";
+            this.l_numUpDown4.Text = "Max Wall Percent";
             // 
             // checkBox19
             // 
@@ -2842,24 +2883,24 @@
             // l_autofilter
             // 
             this.l_autofilter.AutoSize = true;
-            this.l_autofilter.Location = new System.Drawing.Point(20, 314);
+            this.l_autofilter.Location = new System.Drawing.Point(26, 314);
             this.l_autofilter.Name = "l_autofilter";
-            this.l_autofilter.Size = new System.Drawing.Size(51, 13);
+            this.l_autofilter.Size = new System.Drawing.Size(54, 13);
             this.l_autofilter.TabIndex = 78;
-            this.l_autofilter.Text = "AutoFilter";
+            this.l_autofilter.Text = "Auto Filter";
             // 
             // l_numUpDown3
             // 
             this.l_numUpDown3.AutoSize = true;
-            this.l_numUpDown3.Location = new System.Drawing.Point(20, 121);
+            this.l_numUpDown3.Location = new System.Drawing.Point(26, 121);
             this.l_numUpDown3.Name = "l_numUpDown3";
-            this.l_numUpDown3.Size = new System.Drawing.Size(55, 13);
+            this.l_numUpDown3.Size = new System.Drawing.Size(58, 13);
             this.l_numUpDown3.TabIndex = 86;
-            this.l_numUpDown3.Text = "MaxWidth";
+            this.l_numUpDown3.Text = "Max Width";
             // 
             // numUpDown9
             // 
-            this.numUpDown9.Location = new System.Drawing.Point(130, 284);
+            this.numUpDown9.Location = new System.Drawing.Point(141, 284);
             this.numUpDown9.Name = "numUpDown9";
             this.numUpDown9.Size = new System.Drawing.Size(80, 20);
             this.numUpDown9.TabIndex = 77;
@@ -2872,7 +2913,7 @@
             // 
             // numUpDown1
             // 
-            this.numUpDown1.Location = new System.Drawing.Point(130, 67);
+            this.numUpDown1.Location = new System.Drawing.Point(141, 67);
             this.numUpDown1.Name = "numUpDown1";
             this.numUpDown1.Size = new System.Drawing.Size(80, 20);
             this.numUpDown1.TabIndex = 69;
@@ -2885,7 +2926,7 @@
             // 
             // numUpDown8
             // 
-            this.numUpDown8.Location = new System.Drawing.Point(130, 257);
+            this.numUpDown8.Location = new System.Drawing.Point(141, 257);
             this.numUpDown8.Name = "numUpDown8";
             this.numUpDown8.Size = new System.Drawing.Size(80, 20);
             this.numUpDown8.TabIndex = 76;
@@ -2899,15 +2940,15 @@
             // l_numUpDown2
             // 
             this.l_numUpDown2.AutoSize = true;
-            this.l_numUpDown2.Location = new System.Drawing.Point(20, 96);
+            this.l_numUpDown2.Location = new System.Drawing.Point(26, 96);
             this.l_numUpDown2.Name = "l_numUpDown2";
-            this.l_numUpDown2.Size = new System.Drawing.Size(76, 13);
+            this.l_numUpDown2.Size = new System.Drawing.Size(82, 13);
             this.l_numUpDown2.TabIndex = 85;
-            this.l_numUpDown2.Text = "MinWallHeight";
+            this.l_numUpDown2.Text = "Min Wall Height";
             // 
             // numUpDown7
             // 
-            this.numUpDown7.Location = new System.Drawing.Point(130, 231);
+            this.numUpDown7.Location = new System.Drawing.Point(141, 231);
             this.numUpDown7.Name = "numUpDown7";
             this.numUpDown7.Size = new System.Drawing.Size(80, 20);
             this.numUpDown7.TabIndex = 75;
@@ -2920,7 +2961,7 @@
             // 
             // numUpDown2
             // 
-            this.numUpDown2.Location = new System.Drawing.Point(130, 93);
+            this.numUpDown2.Location = new System.Drawing.Point(141, 93);
             this.numUpDown2.Name = "numUpDown2";
             this.numUpDown2.Size = new System.Drawing.Size(80, 20);
             this.numUpDown2.TabIndex = 70;
@@ -2933,7 +2974,7 @@
             // 
             // numUpDown6
             // 
-            this.numUpDown6.Location = new System.Drawing.Point(130, 204);
+            this.numUpDown6.Location = new System.Drawing.Point(141, 204);
             this.numUpDown6.Name = "numUpDown6";
             this.numUpDown6.Size = new System.Drawing.Size(80, 20);
             this.numUpDown6.TabIndex = 74;
@@ -2947,15 +2988,15 @@
             // l_numUpDown1
             // 
             this.l_numUpDown1.AutoSize = true;
-            this.l_numUpDown1.Location = new System.Drawing.Point(20, 69);
+            this.l_numUpDown1.Location = new System.Drawing.Point(26, 69);
             this.l_numUpDown1.Name = "l_numUpDown1";
-            this.l_numUpDown1.Size = new System.Drawing.Size(57, 13);
+            this.l_numUpDown1.Size = new System.Drawing.Size(60, 13);
             this.l_numUpDown1.TabIndex = 84;
-            this.l_numUpDown1.Text = "MinLength";
+            this.l_numUpDown1.Text = "Min Length";
             // 
             // numUpDown3
             // 
-            this.numUpDown3.Location = new System.Drawing.Point(130, 119);
+            this.numUpDown3.Location = new System.Drawing.Point(141, 119);
             this.numUpDown3.Name = "numUpDown3";
             this.numUpDown3.Size = new System.Drawing.Size(80, 20);
             this.numUpDown3.TabIndex = 71;
@@ -2968,7 +3009,7 @@
             // 
             // numUpDown4
             // 
-            this.numUpDown4.Location = new System.Drawing.Point(130, 146);
+            this.numUpDown4.Location = new System.Drawing.Point(141, 146);
             this.numUpDown4.Name = "numUpDown4";
             this.numUpDown4.Size = new System.Drawing.Size(80, 20);
             this.numUpDown4.TabIndex = 72;
@@ -2981,7 +3022,7 @@
             // 
             // numUpDown5
             // 
-            this.numUpDown5.Location = new System.Drawing.Point(130, 174);
+            this.numUpDown5.Location = new System.Drawing.Point(141, 174);
             this.numUpDown5.Name = "numUpDown5";
             this.numUpDown5.Size = new System.Drawing.Size(80, 20);
             this.numUpDown5.TabIndex = 73;
@@ -2999,7 +3040,7 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Panel1MinSize = 170;
-            this.splitContainer1.Size = new System.Drawing.Size(833, 788);
+            this.splitContainer1.Size = new System.Drawing.Size(833, 941);
             this.splitContainer1.SplitterDistance = 170;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 45;
@@ -3013,7 +3054,7 @@
             this.ribbonClientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ribbonClientPanel1.Location = new System.Drawing.Point(4, 128);
             this.ribbonClientPanel1.Name = "ribbonClientPanel1";
-            this.ribbonClientPanel1.Size = new System.Drawing.Size(1169, 788);
+            this.ribbonClientPanel1.Size = new System.Drawing.Size(1169, 941);
             // 
             // 
             // 
@@ -3028,7 +3069,7 @@
             this.panel1.Location = new System.Drawing.Point(833, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(336, 788);
+            this.panel1.Size = new System.Drawing.Size(336, 941);
             this.panel1.TabIndex = 46;
             // 
             // panel2
@@ -3038,7 +3079,7 @@
             this.panel2.Controls.Add(this.l_numberPages);
             this.panel2.Controls.Add(this.l_stateInput);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(4, 916);
+            this.panel2.Location = new System.Drawing.Point(4, 1069);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1169, 29);
             this.panel2.TabIndex = 49;
@@ -3053,19 +3094,237 @@
             this.progressBarX1.TabIndex = 47;
             this.progressBarX1.Text = "progressBarX1";
             // 
-            // btnRMslpf
+            // cbbPerProp
             // 
-            this.btnRMslpf.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
-            this.btnRMslpf.ImagePaddingHorizontal = 8;
-            this.btnRMslpf.Name = "btnRMslpf";
-            this.btnRMslpf.Text = "Remove Select";
-            this.btnRMslpf.Click += new System.EventHandler(this.btnRMslpf_Click);
+            this.cbbPerProp.DisplayMember = "Text";
+            this.cbbPerProp.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbPerProp.FormattingEnabled = true;
+            this.cbbPerProp.ItemHeight = 14;
+            this.cbbPerProp.Location = new System.Drawing.Point(57, 54);
+            this.cbbPerProp.Name = "cbbPerProp";
+            this.cbbPerProp.Size = new System.Drawing.Size(100, 20);
+            this.cbbPerProp.TabIndex = 69;
+            this.cbbPerProp.SelectedIndexChanged += new System.EventHandler(this.cbbPerProp_SelectedIndexChanged);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(163, 57);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(86, 13);
+            this.label35.TabIndex = 70;
+            this.label35.Text = "Percent Property";
+            // 
+            // panLRV
+            // 
+            this.panLRV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panLRV.Controls.Add(this.btnResetLineRemoveV);
+            this.panLRV.Controls.Add(this.label36);
+            this.panLRV.Controls.Add(this.label37);
+            this.panLRV.Controls.Add(this.label38);
+            this.panLRV.Controls.Add(this.btnLineRemoveV);
+            this.panLRV.Controls.Add(this.label39);
+            this.panLRV.Controls.Add(this.label40);
+            this.panLRV.Controls.Add(this.l_tbLRV5);
+            this.panLRV.Controls.Add(this.l_tbLRV4);
+            this.panLRV.Controls.Add(this.l_tbLRV3);
+            this.panLRV.Controls.Add(this.l_tbLRV2);
+            this.panLRV.Controls.Add(this.l_tbLRV1);
+            this.panLRV.Controls.Add(this.tbLRV5);
+            this.panLRV.Controls.Add(this.tbLRV1);
+            this.panLRV.Controls.Add(this.tbLRV2);
+            this.panLRV.Controls.Add(this.tbLRV3);
+            this.panLRV.Controls.Add(this.tbLRV4);
+            this.panLRV.Controls.Add(this.chbox_LRV);
+            this.panLRV.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panLRV.Location = new System.Drawing.Point(3, 600);
+            this.panLRV.Name = "panLRV";
+            this.panLRV.Size = new System.Drawing.Size(309, 31);
+            this.panLRV.TabIndex = 91;
+            this.toolTip1.SetToolTip(this.panLRV, "Press F1 to References");
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(37, 277);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(31, 13);
+            this.label36.TabIndex = 81;
+            this.label36.Text = "Wall ";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(37, 225);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(118, 13);
+            this.label37.TabIndex = 80;
+            this.label37.Text = "Maximum Wall Percent ";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(37, 171);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(110, 13);
+            this.label38.TabIndex = 79;
+            this.label38.Text = "Minimum Line Length ";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(37, 116);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(108, 13);
+            this.label39.TabIndex = 78;
+            this.label39.Text = "Maximum Line Width ";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(37, 59);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(66, 13);
+            this.label40.TabIndex = 77;
+            this.label40.Text = "Gap Length ";
+            // 
+            // l_tbLRV5
+            // 
+            this.l_tbLRV5.AutoSize = true;
+            this.l_tbLRV5.Location = new System.Drawing.Point(252, 277);
+            this.l_tbLRV5.Name = "l_tbLRV5";
+            this.l_tbLRV5.Size = new System.Drawing.Size(13, 13);
+            this.l_tbLRV5.TabIndex = 76;
+            this.l_tbLRV5.Text = "0";
+            // 
+            // l_tbLRV4
+            // 
+            this.l_tbLRV4.AutoSize = true;
+            this.l_tbLRV4.Location = new System.Drawing.Point(251, 225);
+            this.l_tbLRV4.Name = "l_tbLRV4";
+            this.l_tbLRV4.Size = new System.Drawing.Size(13, 13);
+            this.l_tbLRV4.TabIndex = 75;
+            this.l_tbLRV4.Text = "0";
+            // 
+            // l_tbLRV3
+            // 
+            this.l_tbLRV3.AutoSize = true;
+            this.l_tbLRV3.Location = new System.Drawing.Point(252, 171);
+            this.l_tbLRV3.Name = "l_tbLRV3";
+            this.l_tbLRV3.Size = new System.Drawing.Size(13, 13);
+            this.l_tbLRV3.TabIndex = 74;
+            this.l_tbLRV3.Text = "0";
+            // 
+            // l_tbLRV2
+            // 
+            this.l_tbLRV2.AutoSize = true;
+            this.l_tbLRV2.Location = new System.Drawing.Point(251, 116);
+            this.l_tbLRV2.Name = "l_tbLRV2";
+            this.l_tbLRV2.Size = new System.Drawing.Size(13, 13);
+            this.l_tbLRV2.TabIndex = 73;
+            this.l_tbLRV2.Text = "0";
+            // 
+            // l_tbLRV1
+            // 
+            this.l_tbLRV1.AutoSize = true;
+            this.l_tbLRV1.Location = new System.Drawing.Point(251, 59);
+            this.l_tbLRV1.Name = "l_tbLRV1";
+            this.l_tbLRV1.Size = new System.Drawing.Size(13, 13);
+            this.l_tbLRV1.TabIndex = 72;
+            this.l_tbLRV1.Text = "0";
+            // 
+            // tbLRV5
+            // 
+            this.tbLRV5.Location = new System.Drawing.Point(31, 293);
+            this.tbLRV5.Name = "tbLRV5";
+            this.tbLRV5.Size = new System.Drawing.Size(241, 45);
+            this.tbLRV5.TabIndex = 71;
+            this.tbLRV5.Scroll += new System.EventHandler(this.tbLRV5_Scroll);
+            this.tbLRV5.MouseCaptureChanged += new System.EventHandler(this.tbLRV5_MouseCaptureChanged);
+            // 
+            // tbLRV1
+            // 
+            this.tbLRV1.Location = new System.Drawing.Point(31, 75);
+            this.tbLRV1.Name = "tbLRV1";
+            this.tbLRV1.Size = new System.Drawing.Size(241, 45);
+            this.tbLRV1.TabIndex = 66;
+            this.tbLRV1.Scroll += new System.EventHandler(this.tbLRV1_Scroll);
+            this.tbLRV1.MouseCaptureChanged += new System.EventHandler(this.tbLRV1_MouseCaptureChanged);
+            // 
+            // tbLRV2
+            // 
+            this.tbLRV2.Location = new System.Drawing.Point(31, 132);
+            this.tbLRV2.Minimum = 1;
+            this.tbLRV2.Name = "tbLRV2";
+            this.tbLRV2.Size = new System.Drawing.Size(241, 45);
+            this.tbLRV2.TabIndex = 67;
+            this.tbLRV2.Value = 1;
+            this.tbLRV2.Scroll += new System.EventHandler(this.tbLRV2_Scroll);
+            this.tbLRV2.MouseCaptureChanged += new System.EventHandler(this.tbLRV2_MouseCaptureChanged);
+            // 
+            // tbLRV3
+            // 
+            this.tbLRV3.Location = new System.Drawing.Point(31, 187);
+            this.tbLRV3.Maximum = 200;
+            this.tbLRV3.Minimum = 1;
+            this.tbLRV3.Name = "tbLRV3";
+            this.tbLRV3.Size = new System.Drawing.Size(241, 45);
+            this.tbLRV3.TabIndex = 68;
+            this.tbLRV3.TickFrequency = 10;
+            this.tbLRV3.Value = 1;
+            this.tbLRV3.Scroll += new System.EventHandler(this.tbLRV3_Scroll);
+            this.tbLRV3.MouseCaptureChanged += new System.EventHandler(this.tbLRV3_MouseCaptureChanged);
+            // 
+            // tbLRV4
+            // 
+            this.tbLRV4.Location = new System.Drawing.Point(31, 241);
+            this.tbLRV4.Name = "tbLRV4";
+            this.tbLRV4.Size = new System.Drawing.Size(241, 45);
+            this.tbLRV4.TabIndex = 69;
+            this.tbLRV4.Scroll += new System.EventHandler(this.tbLRV4_Scroll);
+            this.tbLRV4.MouseCaptureChanged += new System.EventHandler(this.tbLRV4_MouseCaptureChanged);
+            // 
+            // chbox_LRV
+            // 
+            this.chbox_LRV.AutoSize = true;
+            this.chbox_LRV.Location = new System.Drawing.Point(3, 33);
+            this.chbox_LRV.Name = "chbox_LRV";
+            this.chbox_LRV.Size = new System.Drawing.Size(114, 17);
+            this.chbox_LRV.TabIndex = 59;
+            this.chbox_LRV.Text = "Use Line Remove ";
+            this.chbox_LRV.UseVisualStyleBackColor = true;
+            this.chbox_LRV.CheckedChanged += new System.EventHandler(this.chbox_LRV_CheckedChanged);
+            // 
+            // btnResetLineRemoveV
+            // 
+            this.btnResetLineRemoveV.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnResetLineRemoveV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetLineRemoveV.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnResetLineRemoveV.Location = new System.Drawing.Point(240, 3);
+            this.btnResetLineRemoveV.Name = "btnResetLineRemoveV";
+            this.btnResetLineRemoveV.Size = new System.Drawing.Size(65, 23);
+            this.btnResetLineRemoveV.TabIndex = 71;
+            this.btnResetLineRemoveV.Text = "Reset";
+            this.btnResetLineRemoveV.UseVisualStyleBackColor = false;
+            this.btnResetLineRemoveV.Click += new System.EventHandler(this.btnResetLineRemoveV_Click);
+            // 
+            // btnLineRemoveV
+            // 
+            this.btnLineRemoveV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLineRemoveV.Location = new System.Drawing.Point(0, 0);
+            this.btnLineRemoveV.Name = "btnLineRemoveV";
+            this.btnLineRemoveV.Size = new System.Drawing.Size(307, 29);
+            this.btnLineRemoveV.TabIndex = 72;
+            this.btnLineRemoveV.Text = "Line Remove Vertical ( only 1-bit )";
+            this.btnLineRemoveV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLineRemoveV.UseVisualStyleBackColor = true;
+            this.btnLineRemoveV.Click += new System.EventHandler(this.btnLineRemoveV_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 947);
+            this.ClientSize = new System.Drawing.Size(1177, 1100);
             this.Controls.Add(this.ribbonClientPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.ribbonControl1);
@@ -3164,6 +3423,13 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panLRV.ResumeLayout(false);
+            this.panLRV.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLRV4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3409,6 +3675,27 @@
         private System.Windows.Forms.Label label34;
         private DevComponents.DotNetBar.ButtonItem btnSaveASpf;
         private DevComponents.DotNetBar.ButtonItem btnRMslpf;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbPerProp;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Button btnResetLineRemoveV;
+        private System.Windows.Forms.Button btnLineRemoveV;
+        private System.Windows.Forms.Panel panLRV;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label l_tbLRV5;
+        private System.Windows.Forms.Label l_tbLRV4;
+        private System.Windows.Forms.Label l_tbLRV3;
+        private System.Windows.Forms.Label l_tbLRV2;
+        private System.Windows.Forms.Label l_tbLRV1;
+        private System.Windows.Forms.TrackBar tbLRV5;
+        private System.Windows.Forms.TrackBar tbLRV1;
+        private System.Windows.Forms.TrackBar tbLRV2;
+        private System.Windows.Forms.TrackBar tbLRV3;
+        private System.Windows.Forms.TrackBar tbLRV4;
+        private System.Windows.Forms.CheckBox chbox_LRV;
     }
 }
 

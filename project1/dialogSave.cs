@@ -60,7 +60,7 @@ namespace project1
                         save();
                     }
                     // }
-                    void save()
+                    async void save()
                     {
                         profile2 profile2 = new profile2();
                         profile2.Profilename = tb_pfname.Text;
@@ -91,6 +91,12 @@ namespace project1
                         profile2.MinimumlineL = Form1.form1.value_trackBar16;
                         profile2.Maximumwall = Form1.form1.value_trackBar17;
                         profile2.Wall = Form1.form1.value_trackBar22;
+                        profile2.Use_lrv = Form1.form1.chckbox_LRV;
+                        profile2.TbLRV1 = Form1.form1.value_tbLRV1;
+                        profile2.TbLRV2 = Form1.form1.value_tbLRV2;
+                        profile2.TbLRV3 = Form1.form1.value_tbLRV3;
+                        profile2.TbLRV4 = Form1.form1.value_tbLRV4;
+                        profile2.TbLRV5 = Form1.form1.value_tbLRV5;
                         profile2.HolePunchRemove = Form1.form1.chckbox12;
                         profile2.Maximumhole = Form1.form1.value_trackBar18;
                         profile2.Minimumhole = Form1.form1.value_trackBar21;
@@ -116,6 +122,7 @@ namespace project1
                         profile2.Lgamma = Form1.form1.value_trbGamma;
                         profile2.AutoDeskew = Form1.form1.chckbox14;
                         profile2.UseFlipRotateImage = Form1.form1.chckbox18;
+                        profile2.CbbPerProp = Form1.form1.value_cbbPerProp;
                         profile2.RotateImage = Form1.form1.value_trackBar29;
                         profile2.UseRakeRemove = Form1.form1.chckbox19;
                         profile2.NumUpDown1 = Form1.form1.value_numUpDown1;
@@ -132,6 +139,7 @@ namespace project1
                         Lprofile2.Add(profile2);
                         
                         N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(Lprofile2, "testin.xml");
+                        
                         DialogResult res = MessageBox.Show("Save profile "+ tb_pfname.Text + " success", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (res == DialogResult.OK)
                         {
@@ -139,6 +147,8 @@ namespace project1
                             //Some task…
                             this.Close();
                         }
+                        await Task.Delay(1000);
+                        Form1.form1.ResetValue();
                         tb_pfname.Text = "";
                     }
                 }

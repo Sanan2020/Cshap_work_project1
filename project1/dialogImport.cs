@@ -51,7 +51,7 @@ namespace project1
                         profile2 profile3 = ProfileLoad.Where(c => c.Profilename == ImportLoad[r].Profilename).FirstOrDefault();
                         if (profile3 != null)
                         { //ถ้าเจอ
-                            DialogResult dialogResult = MessageBox.Show("มีไฟล์ชื่อ " + ImportLoad[r].Profilename + " มีอยู่แล้ว!!! ต้องการทับไฟล์เดิมหรือไม่", "Some Title", MessageBoxButtons.YesNo);
+                            DialogResult dialogResult = MessageBox.Show(ImportLoad[r].Profilename + " already exists. Do you want to replace it?", "Some Title", MessageBoxButtons.YesNo);
                             if (dialogResult == DialogResult.Yes)
                             {
                                 //เก็บข้อมูลใหม่ ลบข้อมูลเก่า
@@ -78,14 +78,18 @@ namespace project1
                         listBox1.Items.Add(ImportLoad2[r].Profilename);
                     }
                 }
-                N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofileIm, "testin.xml");
-                DialogResult res = MessageBox.Show("Import Profile Success", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (res == DialogResult.OK)
-                {
-                    //MessageBox.Show("You have clicked Ok Button");
-                    //Some task…
-                    this.Close();
-                }
+                    if (listBox1.Items.Count > 0)
+                    {
+                        N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(lprofileIm, "testin.xml");
+                        Form1.form1.ResetValue();
+                        DialogResult res = MessageBox.Show("Import Profile Success", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (res == DialogResult.OK)
+                        {
+                            //MessageBox.Show("You have clicked Ok Button");
+                            //Some task…
+                            this.Close();
+                        }
+                    }
             }
         }catch(Exception ex) {
                 MessageBox.Show(ex.Message);

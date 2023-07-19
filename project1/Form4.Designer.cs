@@ -28,18 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.controlContainerItem1 = new DevComponents.DotNetBar.ControlContainerItem();
             this.ribbonTabItem2 = new DevComponents.DotNetBar.RibbonTabItem();
             this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
-            this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
-            this.itemContainer5 = new DevComponents.DotNetBar.ItemContainer();
-            this.buttonItem14 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem15 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem16 = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonTabItem1 = new DevComponents.DotNetBar.RibbonTabItem();
             this.ribbonTabItem3 = new DevComponents.DotNetBar.RibbonTabItem();
             this.office2007StartButton1 = new DevComponents.DotNetBar.Office2007StartButton();
@@ -64,6 +60,10 @@
             this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.qatCustomizeItem1 = new DevComponents.DotNetBar.QatCustomizeItem();
             this.ribbonClientPanel1 = new DevComponents.DotNetBar.Ribbon.RibbonClientPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
             this.slider3 = new DevComponents.DotNetBar.Controls.Slider();
@@ -72,10 +72,16 @@
             this.expandablePanel2 = new DevComponents.DotNetBar.ExpandablePanel();
             this.expandablePanel3 = new DevComponents.DotNetBar.ExpandablePanel();
             this.progressBarX2 = new DevComponents.DotNetBar.Controls.ProgressBarX();
-            this.buttonItem17 = new DevComponents.DotNetBar.ButtonItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.expandablePanel4 = new DevComponents.DotNetBar.ExpandablePanel();
             this.ribbonControl1.SuspendLayout();
-            this.ribbonPanel1.SuspendLayout();
+            this.ribbonPanel2.SuspendLayout();
             this.ribbonClientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.expandablePanel1.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +90,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 444);
+            this.label1.Location = new System.Drawing.Point(20, 467);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -106,7 +112,7 @@
             // 
             // progressBarX1
             // 
-            this.progressBarX1.Location = new System.Drawing.Point(731, 434);
+            this.progressBarX1.Location = new System.Drawing.Point(525, 34);
             this.progressBarX1.Name = "progressBarX1";
             this.progressBarX1.Size = new System.Drawing.Size(180, 23);
             this.progressBarX1.TabIndex = 1;
@@ -115,8 +121,8 @@
             // ribbonControl1
             // 
             this.ribbonControl1.CaptionVisible = true;
-            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel2);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.ribbonTabItem1,
@@ -130,87 +136,40 @@
             this.office2007StartButton1,
             this.buttonItem1,
             this.qatCustomizeItem1});
-            this.ribbonControl1.Size = new System.Drawing.Size(914, 135);
+            this.ribbonControl1.Size = new System.Drawing.Size(881, 135);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ribbonControl1.TabGroupHeight = 14;
             this.ribbonControl1.TabIndex = 2;
             this.ribbonControl1.Text = "ribbonControl1";
+            // 
+            // ribbonPanel2
+            // 
+            this.ribbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.ribbonPanel2.Controls.Add(this.progressBarX1);
+            this.ribbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel2.Location = new System.Drawing.Point(0, 55);
+            this.ribbonPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.ribbonPanel2.Name = "ribbonPanel2";
+            this.ribbonPanel2.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
+            this.ribbonPanel2.Size = new System.Drawing.Size(881, 78);
+            this.ribbonPanel2.TabIndex = 2;
             // 
             // ribbonPanel1
             // 
             this.ribbonPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ribbonPanel1.CanvasColor = System.Drawing.Color.Transparent;
             this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.ribbonPanel1.Controls.Add(this.ribbonBar1);
             this.ribbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ribbonPanel1.Location = new System.Drawing.Point(0, 55);
             this.ribbonPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.ribbonPanel1.Name = "ribbonPanel1";
             this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.ribbonPanel1.Size = new System.Drawing.Size(914, 78);
+            this.ribbonPanel1.Size = new System.Drawing.Size(1301, 78);
             this.ribbonPanel1.TabIndex = 1;
-            // 
-            // ribbonBar1
-            // 
-            this.ribbonBar1.AutoOverflowEnabled = true;
-            this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.itemContainer5,
-            this.buttonItem16});
-            this.ribbonBar1.Location = new System.Drawing.Point(2, 0);
-            this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(279, 76);
-            this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.ribbonBar1.TabIndex = 0;
-            this.ribbonBar1.Text = "ribbonBar1";
-            // 
-            // itemContainer5
-            // 
-            this.itemContainer5.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer5.Name = "itemContainer5";
-            this.itemContainer5.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem14,
-            this.buttonItem15});
-            // 
-            // buttonItem14
-            // 
-            this.buttonItem14.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
-            this.buttonItem14.ImagePaddingHorizontal = 8;
-            this.buttonItem14.Name = "buttonItem14";
-            this.buttonItem14.Text = "buttonItem14";
-            // 
-            // buttonItem15
-            // 
-            this.buttonItem15.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
-            this.buttonItem15.ImagePaddingHorizontal = 8;
-            this.buttonItem15.Name = "buttonItem15";
-            this.buttonItem15.Text = "buttonItem15";
-            // 
-            // buttonItem16
-            // 
-            this.buttonItem16.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
-            this.buttonItem16.ImagePaddingHorizontal = 8;
-            this.buttonItem16.Name = "buttonItem16";
-            this.buttonItem16.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem17});
-            this.buttonItem16.SubItemsExpandWidth = 14;
-            this.buttonItem16.Text = "buttonItem16";
-            // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.ribbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel2.Location = new System.Drawing.Point(0, 55);
-            this.ribbonPanel2.Margin = new System.Windows.Forms.Padding(2);
-            this.ribbonPanel2.Name = "ribbonPanel2";
-            this.ribbonPanel2.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.ribbonPanel2.Size = new System.Drawing.Size(914, 78);
-            this.ribbonPanel2.TabIndex = 2;
-            this.ribbonPanel2.Visible = false;
+            this.ribbonPanel1.Visible = false;
             // 
             // ribbonTabItem1
             // 
-            this.ribbonTabItem1.Checked = true;
             this.ribbonTabItem1.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
             this.ribbonTabItem1.ImagePaddingHorizontal = 8;
             this.ribbonTabItem1.Name = "ribbonTabItem1";
@@ -219,6 +178,7 @@
             // 
             // ribbonTabItem3
             // 
+            this.ribbonTabItem3.Checked = true;
             this.ribbonTabItem3.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
             this.ribbonTabItem3.ImagePaddingHorizontal = 8;
             this.ribbonTabItem3.Name = "ribbonTabItem3";
@@ -445,12 +405,16 @@
             this.ribbonClientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ribbonClientPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.ribbonClientPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.ribbonClientPanel1.Controls.Add(this.expandablePanel4);
+            this.ribbonClientPanel1.Controls.Add(this.button1);
+            this.ribbonClientPanel1.Controls.Add(this.label2);
+            this.ribbonClientPanel1.Controls.Add(this.panel1);
+            this.ribbonClientPanel1.Controls.Add(this.splitContainer1);
             this.ribbonClientPanel1.Controls.Add(this.flowLayoutPanel1);
             this.ribbonClientPanel1.Controls.Add(this.ribbonControl1);
-            this.ribbonClientPanel1.Controls.Add(this.progressBarX1);
             this.ribbonClientPanel1.Location = new System.Drawing.Point(0, 0);
             this.ribbonClientPanel1.Name = "ribbonClientPanel1";
-            this.ribbonClientPanel1.Size = new System.Drawing.Size(914, 428);
+            this.ribbonClientPanel1.Size = new System.Drawing.Size(881, 451);
             // 
             // 
             // 
@@ -471,15 +435,66 @@
             this.ribbonClientPanel1.TabIndex = 2;
             this.ribbonClientPanel1.Text = "ribbonClientPanel1";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(809, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "label2";
+            this.toolTip1.SetToolTip(this.label2, "Pleas F1");
+            this.label2.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.label2_HelpRequested);
+            this.label2.MouseEnter += new System.EventHandler(this.label2_MouseEnter);
+            this.label2.MouseHover += new System.EventHandler(this.label2_MouseHover);
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(610, 200);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 8;
+            this.panel1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(12, 142);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.MouseEnter += new System.EventHandler(this.splitContainer1_Panel1_MouseEnter);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(54, 309);
+            this.splitContainer1.SplitterDistance = 25;
+            this.splitContainer1.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(271, 537);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Controls.Add(this.expandablePanel1);
             this.flowLayoutPanel1.Controls.Add(this.expandablePanel2);
             this.flowLayoutPanel1.Controls.Add(this.expandablePanel3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(654, 140);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1005, 26);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(257, 151);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(257, 102);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // expandablePanel1
@@ -595,26 +610,54 @@
             // progressBarX2
             // 
             this.progressBarX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarX2.Location = new System.Drawing.Point(786, 434);
+            this.progressBarX2.Location = new System.Drawing.Point(753, 457);
             this.progressBarX2.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarX2.Name = "progressBarX2";
             this.progressBarX2.Size = new System.Drawing.Size(119, 19);
             this.progressBarX2.TabIndex = 7;
             this.progressBarX2.Text = "progressBarX2";
             // 
-            // buttonItem17
+            // button1
             // 
-            this.buttonItem17.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.NotSet;
-            this.buttonItem17.ImagePaddingHorizontal = 8;
-            this.buttonItem17.Name = "buttonItem17";
-            this.buttonItem17.Text = "Sava AS";
-            this.buttonItem17.Click += new System.EventHandler(this.buttonItem17_Click);
+            this.button1.Location = new System.Drawing.Point(381, 180);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // expandablePanel4
+            // 
+            this.expandablePanel4.CanvasColor = System.Drawing.SystemColors.Control;
+            this.expandablePanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.expandablePanel4.Location = new System.Drawing.Point(390, 327);
+            this.expandablePanel4.Name = "expandablePanel4";
+            this.expandablePanel4.Size = new System.Drawing.Size(200, 100);
+            this.expandablePanel4.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel4.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel4.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.expandablePanel4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.expandablePanel4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.expandablePanel4.Style.GradientAngle = 90;
+            this.expandablePanel4.TabIndex = 11;
+            this.expandablePanel4.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel4.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel4.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel4.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
+            this.expandablePanel4.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.expandablePanel4.TitleStyle.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.expandablePanel4.TitleStyle.GradientAngle = 90;
+            this.expandablePanel4.TitleText = "Title Bar";
+            this.expandablePanel4.MouseEnter += new System.EventHandler(this.expandablePanel4_MouseEnter);
+            this.expandablePanel4.MouseHover += new System.EventHandler(this.expandablePanel4_MouseHover);
+            this.expandablePanel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.expandablePanel4_MouseMove);
             // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 467);
+            this.ClientSize = new System.Drawing.Size(881, 490);
             this.Controls.Add(this.progressBarX2);
             this.Controls.Add(this.ribbonClientPanel1);
             this.Controls.Add(this.label1);
@@ -626,8 +669,13 @@
             this.Load += new System.EventHandler(this.Form4_Load);
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
-            this.ribbonPanel1.ResumeLayout(false);
+            this.ribbonPanel2.ResumeLayout(false);
             this.ribbonClientPanel1.ResumeLayout(false);
+            this.ribbonClientPanel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.expandablePanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -675,11 +723,12 @@
         private DevComponents.DotNetBar.ExpandablePanel expandablePanel2;
         private DevComponents.DotNetBar.ExpandablePanel expandablePanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private DevComponents.DotNetBar.RibbonBar ribbonBar1;
-        private DevComponents.DotNetBar.ItemContainer itemContainer5;
-        private DevComponents.DotNetBar.ButtonItem buttonItem14;
-        private DevComponents.DotNetBar.ButtonItem buttonItem15;
-        private DevComponents.DotNetBar.ButtonItem buttonItem16;
-        private DevComponents.DotNetBar.ButtonItem buttonItem17;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button button1;
+        private DevComponents.DotNetBar.ExpandablePanel expandablePanel4;
     }
 }
