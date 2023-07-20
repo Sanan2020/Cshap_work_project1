@@ -21,21 +21,21 @@ namespace project1
         private Label imageLabel;
         public Form6()
         {
-            RasterSupport.SetLicense("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic",
-                System.IO.File.ReadAllText("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic.key"));
-            bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
+           /* RasterSupport.SetLicense("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic",
+                System.IO.File.ReadAllText("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic.key"));*/
+          /*  bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
             if (isLocked)
                 Console.WriteLine("Document support is locked");
             else
             {
                 Console.WriteLine("Document support is unlocked");
-            }
+            }*/
             // InitializeComponent();
             // กำหนดขนาด UserControl
-            Size = new Size(400, 300);
+          //  Size = new Size(400, 300);
 
             // สร้าง ListView
-            thumbnailListView = new ListView();
+         /*   thumbnailListView = new ListView();
             thumbnailListView.View = View.LargeIcon;
             thumbnailListView.Dock = DockStyle.Left;
             thumbnailListView.Width = 170;
@@ -61,9 +61,9 @@ namespace project1
             // เพิ่มควบคุมลงใน UserControl
             Controls.Add(thumbnailListView);
             Controls.Add(pictureBox);
-            Controls.Add(imageLabel);
+            Controls.Add(imageLabel);*/
 
-            OpenFileDialog ofd = new OpenFileDialog();
+          /*  OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
             ofd.Multiselect = true;
             DialogResult dr = ofd.ShowDialog();
@@ -71,7 +71,7 @@ namespace project1
             {
                 String[] path = ofd.FileNames;
                 LoadImages(path);
-            }
+            }*/
              
             
         }
@@ -149,6 +149,22 @@ namespace project1
             }
         }
 
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private bool state = false;
+        private void tabControl1_DoubleClick(object sender, EventArgs e)
+        {
+            if (state)
+            {
+                tabControl1.Width = 28;
+            }
+            else {
+                tabControl1.Width = 168;
+            }
+            state = !state;
+        }
     }
 
 }

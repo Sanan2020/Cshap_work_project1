@@ -36,6 +36,8 @@ using Leadtools.Document.Writer;
 using System.Reflection.Emit;
 using System.Diagnostics;//
 using System.Net.NetworkInformation;
+using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.AxHost;
 
 namespace project1
 {
@@ -273,11 +275,11 @@ namespace project1
 
             cbBox2re();
             trackBar4.Value = value_trackBar4;
-            l_amount.Text = value_trackBar4.ToString();
+            //l_amount.Text = value_trackBar4.ToString();
             trackBar5.Value = value_trackBar5;
-            l_radius.Text = value_trackBar5.ToString();
+            //l_radius.Text = value_trackBar5.ToString();
             trackBar6.Value = value_trackBar6;
-            l_threshold.Text = value_trackBar6.ToString();
+           // l_threshold.Text = value_trackBar6.ToString();
 
             trackBar7.Value = value_trackBar7;
             l_redfactor.Text = value_trackBar7.ToString();
@@ -495,37 +497,43 @@ namespace project1
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             value_trackBar1 = trackBar1.Value;
-            l_brightness.Text = value_trackBar1.ToString();
+            numeric_brightness.Value = value_trackBar1;
+           // l_brightness.Text = value_trackBar1.ToString();
         }
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
             value_trackBar2 = trackBar2.Value;
-            l_contrast.Text = value_trackBar2.ToString();
+            numeric_contrast.Value = value_trackBar2;
+           // l_contrast.Text = value_trackBar2.ToString();
         }
 
         private void trackBar3_Scroll(object sender, EventArgs e)
         {
             value_trackBar3 = trackBar3.Value;
-            l_intensity.Text = value_trackBar3.ToString();
+            numeric_intensity.Value = value_trackBar3;
+           // l_intensity.Text = value_trackBar3.ToString();
         }
 
         private void trackBar4_Scroll(object sender, EventArgs e)
         {
             value_trackBar4 = trackBar4.Value;
-            l_amount.Text = value_trackBar4.ToString();
+            numeric_amount.Value = value_trackBar4;
+           // l_amount.Text = value_trackBar4.ToString();
         }
 
         private void trackBar5_Scroll(object sender, EventArgs e)
         {
             value_trackBar5 = trackBar5.Value;
-            l_radius.Text = value_trackBar5.ToString();
+            numeric_radius.Value = value_trackBar5;
+            //l_radius.Text = value_trackBar5.ToString();
         }
 
         private void trackBar6_Scroll(object sender, EventArgs e)
         {
             value_trackBar6 = trackBar6.Value;
-            l_threshold.Text = value_trackBar6.ToString();
+            numeric_threshold.Value = value_trackBar6;
+            //l_threshold.Text = value_trackBar6.ToString();
         }
 
         public void ResetValue()
@@ -534,23 +542,29 @@ namespace project1
             {
                 value_trackBar1 = 0;
                 trackBar1.Value = value_trackBar1;
-                l_brightness.Text = value_trackBar1.ToString();
+                //l_brightness.Text = value_trackBar1.ToString();
                 value_trackBar2 = 0;
                 trackBar2.Value = value_trackBar2;
-                l_contrast.Text = value_trackBar2.ToString();
+               // l_contrast.Text = value_trackBar2.ToString();
                 value_trackBar3 = 0;
                 trackBar3.Value = value_trackBar3;
-                l_intensity.Text = value_trackBar3.ToString();
+               // l_intensity.Text = value_trackBar3.ToString();
+                numeric_brightness.Value = value_trackBar1;
+                numeric_contrast.Value = value_trackBar2;
+                numeric_intensity.Value = value_trackBar3;
 
                 value_trackBar4 = 1;
                 trackBar4.Value = value_trackBar4;
-                l_amount.Text = value_trackBar4.ToString();
+                //l_amount.Text = value_trackBar4.ToString();
                 value_trackBar5 = 1;
                 trackBar5.Value = value_trackBar5;
-                l_radius.Text = value_trackBar5.ToString();
+               //l_radius.Text = value_trackBar5.ToString();
                 value_trackBar6 = 1;
                 trackBar6.Value = value_trackBar6;
-                l_threshold.Text = value_trackBar6.ToString();
+                //l_threshold.Text = value_trackBar6.ToString();
+                numeric_amount.Value = value_trackBar4;
+                numeric_radius.Value = value_trackBar5;
+                numeric_threshold.Value = value_trackBar6;
 
                 chckbox2 = false;
                 checkBox2.Checked = chckbox2;
@@ -881,7 +895,7 @@ namespace project1
             else
             {
                 //  btnExpander.Image = Properties.Resources.expand_arrow; 
-                panUnsharpMask.Height = 230;
+                panUnsharpMask.Height = 237;
             }
             Expanded2 = !Expanded2;
             }
@@ -2002,19 +2016,22 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
 }
-
+       
         private void btnResetConBrigtIntens_Click(object sender, EventArgs e)
         {
             try { 
             value_trackBar1 = 0;
             trackBar1.Value = value_trackBar1;
-            l_brightness.Text = value_trackBar1.ToString();
+            numeric_brightness.Value = value_trackBar1;
+           // l_brightness.Text = value_trackBar1.ToString();
             value_trackBar2 = 0;
             trackBar2.Value = value_trackBar2;
-            l_contrast.Text = value_trackBar2.ToString();
+            numeric_contrast.Value = value_trackBar2;
+           // l_contrast.Text = value_trackBar2.ToString();
             value_trackBar3 = 0;
             trackBar3.Value = value_trackBar3;
-            l_intensity.Text = value_trackBar3.ToString();
+            numeric_intensity.Value = value_trackBar3;
+           // l_intensity.Text = value_trackBar3.ToString();
                 Image();
             }
             catch (Exception ex) {
@@ -2027,14 +2044,17 @@ namespace project1
             try { 
             value_trackBar4 = 1;
             trackBar4.Value = value_trackBar4;
-            l_amount.Text = value_trackBar4.ToString();
+            //l_amount.Text = value_trackBar4.ToString();
             value_trackBar5 = 1;
             trackBar5.Value = value_trackBar5;
-            l_radius.Text = value_trackBar5.ToString();
+           // l_radius.Text = value_trackBar5.ToString();
             value_trackBar6 = 1;
             trackBar6.Value = value_trackBar6;
-            l_threshold.Text = value_trackBar6.ToString();
-                Image();
+            //l_threshold.Text = value_trackBar6.ToString();
+            numeric_amount.Value = value_trackBar4;
+            numeric_radius.Value = value_trackBar5;
+            numeric_threshold.Value = value_trackBar6;
+            Image();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -2817,6 +2837,7 @@ namespace project1
             }
 }
         public String savePath;
+        public String fill;
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -2825,11 +2846,17 @@ namespace project1
                 codecs.ThrowExceptionsOnInvalidImages = true;
                 // Stream myStream;
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "pdf (*.pdf)|*.pdf";
+                saveFileDialog1.Filter = "PDF (*.pdf)|*.pdf|JPEG (*.jpg)|*.jpg|BMP (*.bmp)|*.bmp|GIF (*.gif)|*.gif|PNG (*.png)|*.png";
                 saveFileDialog1.FilterIndex = 2;
                 saveFileDialog1.RestoreDirectory = true;
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK){
                     savePath = saveFileDialog1.FileName;
+                    //String P = saveFileDialog1.FileName.LastIndexOf;
+                   // MessageBox.Show(P);
+                    fill  = saveFileDialog1.FileName;
+                    string[] array = fill.Split('.');
+                    fill = array[1];
+                    //MessageBox.Show(fill);
                     dialogSaveAS dialogSaveAS = new dialogSaveAS();
                     dialogSaveAS.ShowDialog();
                 }
@@ -2927,23 +2954,29 @@ namespace project1
                     //ความสว่าง
                     value_trackBar1 = profile3.Brightness;
                     trackBar1.Value = value_trackBar1;
-                    l_brightness.Text = value_trackBar1.ToString();
+                    //l_brightness.Text = value_trackBar1.ToString();
                     value_trackBar2 = profile3.Contrast;
                     trackBar2.Value = value_trackBar2;
-                    l_contrast.Text = value_trackBar2.ToString();
+                    //l_contrast.Text = value_trackBar2.ToString();
                     value_trackBar3 = profile3.Intensity;
                     trackBar3.Value = value_trackBar3;
-                    l_intensity.Text = value_trackBar3.ToString();
-                    //ความคมชัด
+                    //l_intensity.Text = value_trackBar3.ToString();
+                    numeric_brightness.Value = value_trackBar1;
+                    numeric_contrast.Value = value_trackBar2;
+                    numeric_intensity.Value = value_trackBar3;
+                        //ความคมชัด
                     value_trackBar4 = profile3.Amount;
                     trackBar4.Value = value_trackBar4;
-                    l_amount.Text = value_trackBar4.ToString();
+                   // l_amount.Text = value_trackBar4.ToString();
                     value_trackBar5 = profile3.Radius;
                     trackBar5.Value = value_trackBar5;
-                    l_radius.Text = value_trackBar5.ToString();
+                  //  l_radius.Text = value_trackBar5.ToString();
                     value_trackBar6 = profile3.Threshold;
                     trackBar6.Value = value_trackBar6;
-                    l_threshold.Text = value_trackBar6.ToString();
+                   // l_threshold.Text = value_trackBar6.ToString();
+                    numeric_amount.Value = value_trackBar4;
+                    numeric_radius.Value = value_trackBar5;
+                    numeric_threshold.Value = value_trackBar6;
                     //Gray scale
                     chckbox2 = profile3.UseGrayScale;
                     checkBox2.Checked = chckbox2;
@@ -3953,6 +3986,68 @@ namespace project1
         {
             value_tbLRV5 = tbLRV5.Value;
             l_tbLRV5.Text = value_tbLRV5.ToString();
+        }
+
+        private void numeric_contrast_ValueChanged(object sender, EventArgs e)
+        {
+            value_trackBar2 = (int)numeric_contrast.Value;
+            trackBar2.Value = value_trackBar2;
+            //l_contrast.Text = value_trackBar2.ToString();
+        }
+
+        private void numeric_brightness_ValueChanged(object sender, EventArgs e)
+        {
+            value_trackBar1 = (int)numeric_brightness.Value;
+            trackBar1.Value = value_trackBar1;
+           // l_brightness.Text = value_trackBar1.ToString();
+        }
+
+        private void numeric_intensity_ValueChanged(object sender, EventArgs e)
+        {
+            value_trackBar3 = (int)numeric_intensity.Value;
+            trackBar3.Value = value_trackBar3;
+           // l_intensity.Text = value_trackBar3.ToString();
+        }
+
+        private void numeric_amount_ValueChanged(object sender, EventArgs e)
+        {
+            value_trackBar4 = (int)numeric_amount.Value;
+            trackBar4.Value = value_trackBar4;
+        }
+
+        private void numeric_radius_ValueChanged(object sender, EventArgs e)
+        {
+            value_trackBar5 = (int)numeric_radius.Value;
+            trackBar5.Value = value_trackBar5;
+        }
+
+        private void numeric_threshold_ValueChanged(object sender, EventArgs e)
+        {
+            value_trackBar6 = (int)numeric_threshold.Value;
+            trackBar6.Value = value_trackBar6;
+        }
+        private bool state;
+        private void tabControl1_DoubleClick(object sender, EventArgs e)
+        {
+            if (state)
+            {
+                panel1.Width = 28;
+            }
+            else
+            {
+                panel1.Width = 367;
+            }
+            state = !state;
+
+            try
+            {
+                xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
+                picReview2.Location = new Point(xRev, 20);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
