@@ -117,9 +117,7 @@ namespace project1
     SendMessage(this.Handle, WM_SYSCOMMAND, SC_CONTEXTHELP, 0);
 }*/
         /*
-         ใส่ NumericUpdown Contrast Brightness Intensity ,Unshap Mask/
-สามารถ Save ไฟล์ที่ปรับแต่งแล้วออกเป็นไฟล์ภาพได้/
-แถบฟังก์ชันปรับแต่ง ให้สามารถซ่อนได้/
+        
 
 ปรับปรุงปุ่มซูมเข้า-ออก ให้เรียบร้อย**
 การซูมเข้า-ออก สามารถทำได้โดย กด Ctrl+เลื่อนเมาส์**
@@ -129,6 +127,7 @@ namespace project1
 
 ทำการปรับภาพให้แสดงตามขนาดจริง
 วิธีการ Build Application
-ทำอย่างไรให้ฟังก์ชัน Gray Scale สามารถใช้ค่า Red+Green+Blue รวมกันโดยไม่เกิน 1,000 ได้*/
+ทำอย่างไรให้ฟังก์ชัน Gray Scale สามารถใช้ค่า Red+Green+Blue รวมกันโดยไม่เกิน 1,000 ได้ ****top
+        */
     }
 }

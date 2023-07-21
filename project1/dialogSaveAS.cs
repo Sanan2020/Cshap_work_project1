@@ -842,13 +842,14 @@ namespace project1
         void SaveImage(RasterImage img, int number, String type) {
             RasterCodecs codecs = new RasterCodecs();
             if (Form1.form1.fill == "bmp") {
-                codecs.Save(img, @"C:\Users\Administrator\Downloads\in\SaveImage\image" + number + ".bmp", RasterImageFormat.Bmp, 4);
+                codecs.Save(img, Form1.form1.fill2 + number + ".bmp", RasterImageFormat.Bmp, 4);
             } else if (Form1.form1.fill == "jpg") {
-                codecs.Save(img, @"C:\Users\Administrator\Downloads\in\SaveImage\image" + number + ".jpg", RasterImageFormat.Jpeg, 24);
+                //codecs.Save(img, @"C:\Users\Public\Documents\c" + number + ".jpg", RasterImageFormat.Jpeg, 24);
+                codecs.Save(img, Form1.form1.fill2 + number + ".jpg", RasterImageFormat.Jpeg, 24);
             } else if (Form1.form1.fill == "gif") {
-                codecs.Save(img, @"C:\Users\Administrator\Downloads\in\SaveImage\image" + number + ".gif", RasterImageFormat.Gif, 1);
+                codecs.Save(img, Form1.form1.fill2 + number + ".gif", RasterImageFormat.Gif, 1);
             } else if (Form1.form1.fill == "png") {
-                codecs.Save(img, @"C:\Users\Administrator\Downloads\in\SaveImage\image" + number + ".gif", RasterImageFormat.Png, 8);
+                codecs.Save(img, Form1.form1.fill2 + number + ".png", RasterImageFormat.Png, 8);
             }
         }
     }

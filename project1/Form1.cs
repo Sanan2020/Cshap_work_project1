@@ -819,25 +819,47 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
 }
-
+        int sum;
+        //+ trackBar7.Value + trackBar7.Value;
         private void trackBar7_Scroll(object sender, EventArgs e)
         {
-            value_trackBar7 = trackBar7.Value;
-            l_redfactor.Text = value_trackBar7.ToString();
+            sum = value_trackBar7 + value_trackBar8 + value_trackBar9;
+            if (sum <= 1000)
+            {
+                value_trackBar7 = trackBar7.Value;
+                l_redfactor.Text = value_trackBar7.ToString();
+            }
+            else {
+                MessageBox.Show("เกิน 1,000");
+            }
         }
 
         private void trackBar8_Scroll(object sender, EventArgs e)
         {
-            value_trackBar8 = trackBar8.Value;
-            l_greenfactor.Text = value_trackBar8.ToString();
+            sum = value_trackBar7 + value_trackBar8 + value_trackBar9;
+            if (sum <= 1000)
+            {
+                value_trackBar8 = trackBar8.Value;
+                l_greenfactor.Text = value_trackBar8.ToString();
+            }
+            else
+            {
+                MessageBox.Show("เกิน 1,000");
+            }
         }
 
         private void trackBar9_Scroll(object sender, EventArgs e)
         {
-            value_trackBar9 = trackBar9.Value;
-            l_bluefactor.Text = value_trackBar9.ToString();
+            sum = value_trackBar7 + value_trackBar8 + value_trackBar9;
+            if (sum <= 1000)
+            {
+                value_trackBar9 = trackBar9.Value;
+                l_bluefactor.Text = value_trackBar9.ToString();
+            }
+            else {
+                MessageBox.Show("เกิน 1,000");
+            }
         }
-
         private void trackBar7_MouseCaptureChanged(object sender, EventArgs e)
         {
             using (ProgressPopup pp = new ProgressPopup(Image))
@@ -2838,25 +2860,23 @@ namespace project1
 }
         public String savePath;
         public String fill;
+        public String fill2;
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
                 RasterCodecs codecs = new RasterCodecs();
                 codecs.ThrowExceptionsOnInvalidImages = true;
-                // Stream myStream;
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "PDF (*.pdf)|*.pdf|JPEG (*.jpg)|*.jpg|BMP (*.bmp)|*.bmp|GIF (*.gif)|*.gif|PNG (*.png)|*.png";
-                saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.Filter = "PDF |*.pdf|JPEG |*.jpg|BMP |*.bmp|GIF |*.gif|PNG |*.png";
+                saveFileDialog1.FilterIndex = 1;
                 saveFileDialog1.RestoreDirectory = true;
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK){
                     savePath = saveFileDialog1.FileName;
-                    //String P = saveFileDialog1.FileName.LastIndexOf;
-                   // MessageBox.Show(P);
                     fill  = saveFileDialog1.FileName;
                     string[] array = fill.Split('.');
                     fill = array[1];
-                    //MessageBox.Show(fill);
+                    fill2 = array[0];
                     dialogSaveAS dialogSaveAS = new dialogSaveAS();
                     dialogSaveAS.ShowDialog();
                 }
