@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using static project1.Form1;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace project1
 {
@@ -25,7 +26,36 @@ namespace project1
         {
             InitializeComponent();
         }
-        private void Remove2_Click(object sender, EventArgs e)
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                listBox1.SelectionMode = SelectionMode.MultiSimple;
+                listBox1.Items.Clear();
+                List<profile2> LpfnameLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
+                for (int i = 0; i < LpfnameLoad.Count; i++)
+                {
+                    listBox1.Items.Add(LpfnameLoad[i].Profilename);
+                    //item.Add(LpfnameLoad[i].Profilename);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+          
+        }
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           // Form1.form1.cbBox2re();
+        }
+
+        private void btnRemovepf2_Click(object sender, EventArgs e)
         {
             try
             {
@@ -56,37 +86,10 @@ namespace project1
                     }
                 }
             }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                listBox1.SelectionMode = SelectionMode.MultiSimple;
-                listBox1.Items.Clear();
-                List<profile2> LpfnameLoad = N2N.Data.Serialization.Serialize<List<profile2>>.DeserializeFromXmlFile("testin.xml");
-                for (int i = 0; i < LpfnameLoad.Count; i++)
-                {
-                    listBox1.Items.Add(LpfnameLoad[i].Profilename);
-                    //item.Add(LpfnameLoad[i].Profilename);
-                }
-            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-        
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-          
-        }
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-           // Form1.form1.cbBox2re();
         }
     }
 }

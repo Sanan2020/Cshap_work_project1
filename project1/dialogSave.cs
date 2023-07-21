@@ -141,6 +141,8 @@ namespace project1
                         N2N.Data.Serialization.Serialize<List<profile2>>.SerializeToXmlFile(Lprofile2, "testin.xml");
                         
                         DialogResult res = MessageBox.Show("Save profile "+ tb_pfname.Text + " success", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Form1.form1.ResetValue();
+                        Form1.form1.cbBox2re();
                         if (res == DialogResult.OK)
                         {
                             //MessageBox.Show("You have clicked Ok Button");
@@ -148,7 +150,6 @@ namespace project1
                             this.Close();
                         }
                         await Task.Delay(1000);
-                        Form1.form1.ResetValue();
                         tb_pfname.Text = "";
                     }
                 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,21 +22,21 @@ namespace project1
         private Label imageLabel;
         public Form6()
         {
-           /* RasterSupport.SetLicense("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic",
-                System.IO.File.ReadAllText("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic.key"));*/
-          /*  bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
+            RasterSupport.SetLicense("C:\\Users\\Administrator\\Downloads\\New folder (2)\\LEADTOOLS.lic",
+                System.IO.File.ReadAllText("C:\\Users\\Administrator\\Downloads\\New folder (2)\\LEADTOOLS.lic.key"));
+            bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
             if (isLocked)
                 Console.WriteLine("Document support is locked");
             else
             {
                 Console.WriteLine("Document support is unlocked");
-            }*/
+            }
             // InitializeComponent();
             // กำหนดขนาด UserControl
           //  Size = new Size(400, 300);
 
             // สร้าง ListView
-         /*   thumbnailListView = new ListView();
+            thumbnailListView = new ListView();
             thumbnailListView.View = View.LargeIcon;
             thumbnailListView.Dock = DockStyle.Left;
             thumbnailListView.Width = 170;
@@ -61,17 +62,9 @@ namespace project1
             // เพิ่มควบคุมลงใน UserControl
             Controls.Add(thumbnailListView);
             Controls.Add(pictureBox);
-            Controls.Add(imageLabel);*/
+            Controls.Add(imageLabel);
 
-          /*  OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
-            ofd.Multiselect = true;
-            DialogResult dr = ofd.ShowDialog();
-            if (dr == System.Windows.Forms.DialogResult.OK)
-            {
-                String[] path = ofd.FileNames;
-                LoadImages(path);
-            }*/
+            
              
             
         }
@@ -114,6 +107,10 @@ namespace project1
                         item.Text = System.IO.Path.GetFileName(imagePath);
                         item.Tag = imagePath;
                         thumbnailListView.Items.Add(item);
+
+                        Process currentProcess = Process.GetCurrentProcess();
+                        long usedMemory = currentProcess.PrivateMemorySize64;
+                        Console.WriteLine(usedMemory);
                     }
                 }
 
@@ -164,6 +161,24 @@ namespace project1
                 tabControl1.Width = 168;
             }
             state = !state;
+        }
+
+        private void Form6_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "PDF File (*.pdf)|*.pdf|Image File (*.png *.jpg *.bmp *.tif)|*.png; *.jpg; *.bmp; *.tif;";
+            ofd.Multiselect = true;
+            DialogResult dr = ofd.ShowDialog();
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                String[] path = ofd.FileNames;
+                LoadImages(path);
+            }
         }
     }
 

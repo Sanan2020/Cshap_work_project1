@@ -27,30 +27,6 @@ namespace project1
         {
             this.Close();
         }
-
-        private void btnlic_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofile = new OpenFileDialog();
-            ofile.Filter = "File (*.LIC)|*.LIC;";
-            if (DialogResult.OK == ofile.ShowDialog())
-            {
-                license = ofile.FileName;
-                Console.WriteLine(license);
-                textBox1.Text = license;
-            }
-        }
-
-        private void btnkey_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofile = new OpenFileDialog();
-            ofile.Filter = "File (*.KEY)|*.KEY;";
-            if (DialogResult.OK == ofile.ShowDialog())
-            {
-                key = ofile.FileName;
-                Console.WriteLine(key);
-                textBox2.Text = key;
-            }
-        }
         public List<pathLicense> pthLicense = new List<pathLicense>();
         public class pathLicense
         {
@@ -68,7 +44,42 @@ namespace project1
                 set { key = value; }
             }
         }
-        private void btnok_Click(object sender, EventArgs e)
+        String rf;
+        String rfile;
+        List<String> list = new List<String>();
+        private void Form3_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void Form3_Shown(object sender, EventArgs e)
+        {
+        }
+
+        private void btnPathLic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofile = new OpenFileDialog();
+            ofile.Filter = "File (*.LIC)|*.LIC;";
+            if (DialogResult.OK == ofile.ShowDialog())
+            {
+                license = ofile.FileName;
+                Console.WriteLine(license);
+                textBox1.Text = license;
+            }
+        }
+
+        private void btnPathKey_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofile = new OpenFileDialog();
+            ofile.Filter = "File (*.KEY)|*.KEY;";
+            if (DialogResult.OK == ofile.ShowDialog())
+            {
+                key = ofile.FileName;
+                Console.WriteLine(key);
+                textBox2.Text = key;
+            }
+        }
+
+        private void btnPathOk_Click(object sender, EventArgs e)
         {
             try
             {
@@ -103,16 +114,6 @@ namespace project1
                 MessageBox.Show(ex.Message);
 
             }
-        }
-        String rf;
-        String rfile;
-        List<String> list = new List<String>();
-        private void Form3_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void Form3_Shown(object sender, EventArgs e)
-        {
         }
     }
 }

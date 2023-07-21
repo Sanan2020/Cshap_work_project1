@@ -5,6 +5,8 @@ using Leadtools.Codecs;
 using Leadtools;
 using Leadtools.Drawing;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace project1
 {
@@ -13,10 +15,11 @@ namespace project1
     {
         private ListView thumbnailListView;
         private ImageList thumbnailImageList;
+        private Label imageLabel;
         public Preview()
         {
-            RasterSupport.SetLicense("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic", 
-                System.IO.File.ReadAllText("C:\\Users\\wollo\\Downloads\\LEADTOOLSEvaluationLicense1\\LEADTOOLS.lic.key"));
+            RasterSupport.SetLicense("C:\\Users\\Administrator\\Downloads\\New folder (2)\\LEADTOOLS.lic", 
+                System.IO.File.ReadAllText("C:\\Users\\Administrator\\Downloads\\New folder (2)\\LEADTOOLS.lic.key"));
             bool isLocked = RasterSupport.IsLocked(RasterSupportType.Document);
             if (isLocked)
                 Console.WriteLine("Document support is locked");
@@ -44,13 +47,18 @@ namespace project1
             // สร้าง ListView
             thumbnailListView = new ListView();
             thumbnailListView.View = View.SmallIcon;
+            thumbnailListView.OwnerDraw = true; // เปิดใช้งาน OwnerDraw
+            thumbnailListView.DrawItem += ThumbnailListView_DrawItem;
             thumbnailListView.Dock = DockStyle.Fill;
             thumbnailListView.BackColor = Color.Green;
-         
+           
+
             // สร้าง ImageList เพื่อเก็บภาพย่อ
             thumbnailImageList = new ImageList();
             thumbnailImageList.ImageSize = new Size(120, 140); // ขนาดของภาพย่อ
             thumbnailImageList.ColorDepth = ColorDepth.Depth32Bit;
+           
+
 
             // กำหนด ImageList ให้กับ ListView
             thumbnailListView.SmallImageList = thumbnailImageList;
@@ -71,12 +79,14 @@ namespace project1
             // Controls.Add(thumbnailListView);
             // เพิ่มเหตุการณ์ MouseClick หรือ MouseDoubleClick สำหรับการคลิกที่รูปภาพ
             thumbnailListView.MouseClick += ThumbnailListView_MouseClick;
+            
 
             splitContainer1.Panel1.Controls.Add(thumbnailListView);
+            
         }
 
-        int pageCount;
-        private void AddThumbnail(string[] imagePath)
+        int pageCount; Image thumbnail;
+        private async void AddThumbnail(string[] imagePath)
         {
             RasterCodecs _rasterCodecs = new RasterCodecs();
             foreach (string img in imagePath)
@@ -97,14 +107,19 @@ namespace project1
                     using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                     {
                         // สร้างภาพย่อใหม่
-                        Image thumbnail = destImage1.GetThumbnailImage(120, 140, null, IntPtr.Zero);
+                         thumbnail = destImage1.GetThumbnailImage(120, 140, null, IntPtr.Zero);
                         // เพิ่มภาพย่อลงใน ImageList
-                        thumbnailImageList.Images.Add(thumbnail);
+                        //thumbnailImageList.Images.Add(thumbnail);
                         // เพิ่มไอเท็มใน ListView โดยกำหนด index ของภาพย่อใน ImageList
                         //thumbnailListView.Items.Add("", thumbnailImageList.Images.Count - 1);
 
-                        thumbnailListView.Items.Add("", thumbnailImageList.Images.Count - 1);
+                        
                     }
+                    await Task.Delay(1000);
+
+                    Process currentProcess = Process.GetCurrentProcess();
+                    long usedMemory = currentProcess.PrivateMemorySize64;
+                    Console.WriteLine(usedMemory);
                 }
             }
         }
@@ -127,7 +142,8 @@ namespace project1
         private void ThumbnailListView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             // วาดภาพย่อ
-            Image thumbnail = thumbnailImageList.Images[e.Item.ImageIndex];
+           // Image thumbnail = thumbnailImageList.Images[e.Item.ImageIndex];
+
             Rectangle imageBounds = new Rectangle(e.Bounds.Location, thumbnail.Size);
             e.Graphics.DrawImage(thumbnail, imageBounds);
 
@@ -138,6 +154,7 @@ namespace project1
 
             // วาดภาพย่อที่ตรงกลาง
             e.Graphics.DrawImage(thumbnail, centeredBounds);
+
         }
     }
 }

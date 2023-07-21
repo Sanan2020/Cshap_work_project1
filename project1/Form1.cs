@@ -819,54 +819,69 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
 }
-        int sum;
-        //+ trackBar7.Value + trackBar7.Value;
+        private void UpdateTrackBarValues()
+        {
+            int totalValue = value_trackBar7 + value_trackBar8 + value_trackBar9;
+
+            // ตรวจสอบว่าค่ารวมของ trackBar ทั้ง 3 ตัวไม่เกิน 1000
+            if (totalValue <= 1000)
+            {
+               // labelTotal.Text = $"Total: {totalValue} / 1000";
+            }
+            else
+            {
+                // หากค่ารวมเกิน 1000 ให้คืนค่า trackBar ที่เปลี่ยนค่าล่าสุดให้กลับไปที่ค่าก่อนหน้า
+                if (value_trackBar7 + value_trackBar8 > 1000)
+                {
+                    value_trackBar7 = trackBar7.Value;
+                }
+                if (value_trackBar7 + value_trackBar9 > 1000)
+                {
+                    value_trackBar8 = trackBar8.Value;
+                }
+                if (value_trackBar8 + value_trackBar9 > 1000)
+                {
+                    value_trackBar9 = trackBar9.Value;
+                }
+
+                trackBar7.Value = value_trackBar7;
+                trackBar8.Value = value_trackBar8;
+                trackBar9.Value = value_trackBar9;
+            }
+        }
+
+        /**
+         
+         **/
         private void trackBar7_Scroll(object sender, EventArgs e)
         {
-            sum = value_trackBar7 + value_trackBar8 + value_trackBar9;
-            if (sum <= 1000)
-            {
-                value_trackBar7 = trackBar7.Value;
-                l_redfactor.Text = value_trackBar7.ToString();
-            }
-            else {
-                MessageBox.Show("เกิน 1,000");
-            }
+            value_trackBar7 = trackBar7.Value;
+            l_redfactor.Text = value_trackBar7.ToString();
+            
         }
 
         private void trackBar8_Scroll(object sender, EventArgs e)
         {
-            sum = value_trackBar7 + value_trackBar8 + value_trackBar9;
-            if (sum <= 1000)
-            {
-                value_trackBar8 = trackBar8.Value;
-                l_greenfactor.Text = value_trackBar8.ToString();
-            }
-            else
-            {
-                MessageBox.Show("เกิน 1,000");
-            }
+            value_trackBar8 = trackBar8.Value;
+            l_greenfactor.Text = value_trackBar8.ToString();
+           
         }
 
         private void trackBar9_Scroll(object sender, EventArgs e)
         {
-            sum = value_trackBar7 + value_trackBar8 + value_trackBar9;
-            if (sum <= 1000)
-            {
-                value_trackBar9 = trackBar9.Value;
-                l_bluefactor.Text = value_trackBar9.ToString();
-            }
-            else {
-                MessageBox.Show("เกิน 1,000");
-            }
+            value_trackBar9 = trackBar9.Value;
+            l_bluefactor.Text = value_trackBar9.ToString();
+           
         }
+
         private void trackBar7_MouseCaptureChanged(object sender, EventArgs e)
         {
-            using (ProgressPopup pp = new ProgressPopup(Image))
-            {
-                pp.ShowDialog();
-            }
+              using (ProgressPopup pp = new ProgressPopup(Image))
+              {
+                  pp.ShowDialog();
+              }
             //Image();
+           
         }
 
         private void trackBar8_MouseCaptureChanged(object sender, EventArgs e)
@@ -2369,6 +2384,7 @@ namespace project1
         RasterCodecs _rasterCodecs = new RasterCodecs();
         PictureBox picReview2 = new PictureBox();
         int xRev;
+        int yRev;
         public void crepic() {
             try
             {
@@ -2378,7 +2394,7 @@ namespace project1
                 xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
                 if (xRev < 0)
                     xRev = 0;
-                var yRev = (splitContainer1.Panel2.Height / 2) - (picReview2.Height / 2);
+                yRev = (splitContainer1.Panel2.Height / 2) - (picReview2.Height / 2);
                 if (yRev < 0)
                     yRev = 0;
                 picReview2.Location = new Point(xRev, yRev);
@@ -2387,15 +2403,16 @@ namespace project1
                 this.splitContainer1.Panel2.Controls.Add(picReview2);
                 picReview2.ImageLocation = null;
 
-               /* this.splitContainer1.Panel2.Controls.Clear();
-              //  picReview2.Height = 850; //ความกว้างหน้ากระดาษ
-              //  picReview2.Width = 850;  //ความสูงหน้ากระดาษ
-                splitContainer1.Panel2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
-                //pictureBox1.MouseWheel += new MouseEventHandler(pictureBox1_MouseEnter);
-                picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
-                picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
-                picReview2.SizeMode = PictureBoxSizeMode.Zoom;
-                this.splitContainer1.Panel2.Controls.Add(picReview2);*/
+                /* this.splitContainer1.Panel2.Controls.Clear();
+               //  picReview2.Height = 850; //ความกว้างหน้ากระดาษ
+               //  picReview2.Width = 850;  //ความสูงหน้ากระดาษ
+                 splitContainer1.Panel2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
+                 pictureBox1.MouseWheel += new MouseEventHandler(pictureBox1_MouseEnter);
+                 picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
+                 picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                 picReview2.SizeMode = PictureBoxSizeMode.Zoom;
+                 this.splitContainer1.Panel2.Controls.Add(picReview2);*/
+                picReview2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
             }
             catch(Exception ex)
             {
@@ -2404,24 +2421,56 @@ namespace project1
         }
         private void picReview2_MouseEnter(object sender, MouseEventArgs e)
         {
-           
             if (Control.ModifierKeys == Keys.Control)
             {
+                
                 picReview2.Focus();
                 if (e.Delta > 0)
                 {
-                    picReview2.Size = new Size((int)(picReview2.Width + 10), (int)(picReview2.Height + 10));
+                    /*picReview2.Size = new Size((int)(picReview2.Width + 10), (int)(picReview2.Height + 10));
                     picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
-                    picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                    picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;*/
+                    if (picReview2.Height > splitContainer1.Panel2.Height)
+                    {
+                        //splitContainer1.Panel2.VerticalScroll.Value = splitContainer1.Panel2.Height/2;
+                        //splitContainer1.Panel2.VerticalScroll.Value = picReview2.Height/2;
+                       // splitContainer1.Panel2.AutoScroll = false;
+                    }
+                       
+                    picReview2.Size = new Size((int)(picReview2.Width + 50), (int)(picReview2.Height + 50));
+
+                    picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
+
+                    if (picReview2.Top > 5)
+                    {
+                        picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                    }
                 }
                 else if (e.Delta < 0)
                 {
-                    splitContainer1.Panel1.VerticalScroll.Value = 100;
-                    picReview2.Size = new Size((int)(picReview2.Width - 10), (int)(picReview2.Height - 10));
+                    
+                    // splitContainer1.Panel1.VerticalScroll.Value = 100;
+                    // System.Windows.Forms.AutoSizeMode.GrowOnly;AutoScroll = false;
+                    /*picReview2.Size = new Size((int)(picReview2.Width - 10), (int)(picReview2.Height - 10));
                     picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
-                    picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                    picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;*/
+                    splitContainer1.Panel2.VerticalScroll.Value = 0;
+                    //splitContainer1.Panel2.VerticalScroll.Value = picReview2.Height / 2;
+                    picReview2.Size = new Size((int)(picReview2.Width - 50), (int)(picReview2.Height - 50));
+                    picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
+
+                    if (picReview2.Top > 5)
+                    {
+                        picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                    }
+                    if (picReview2.Height < splitContainer1.Panel2.Height)
+                    {
+                        picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                    }
                 }
+               // splitContainer1.Panel2.AutoScroll = true;
             }
+          
         }
         String bpp;
         
@@ -2821,19 +2870,26 @@ namespace project1
                                 y2 = 20;
                                 x2 += maxWidth2 + 100;
                             }
-
+                            //rasterImage.XResolution = rasterImage.XResolution / 2;
                             //แก้*
                             using (Image destImage1 = RasterImageConverter.ConvertToImage(rasterImage, ConvertToImageOptions.None))
                             {
-                                //Console.WriteLine(pageNumber+"check " + destImage1.HorizontalResolution+" "+ destImage1.VerticalResolution);
-                                // destImage1.
-                                pic2.Image = new Bitmap(destImage1);
+                                if (destImage1.Width > destImage1.Height)
+                                {
+                                    Image thumb = destImage1.GetThumbnailImage(140, 120, null, IntPtr.Zero);
+                                    pic2.Image = new Bitmap(thumb);
+                                    //Console.WriteLine(thumb.HorizontalResolution);
+                                }
+                                else {
+                                    Image thumb = destImage1.GetThumbnailImage(120, 140, null, IntPtr.Zero);
+                                    pic2.Image = new Bitmap(thumb);
+                                    //Console.WriteLine(thumb.HorizontalResolution);
+                                }
                                 destImage1.Dispose();
                             }
                             pdname = 1;
                             this.splitContainer1.Panel1.Controls.Add(pic2);
                             //Image();
-
                             //Console.WriteLine(pic2.Name);
                             pic2.MouseClick += new MouseEventHandler(pic2_MouseClick);
 
@@ -2841,7 +2897,7 @@ namespace project1
                             long usedMemory = currentProcess.PrivateMemorySize64;
                             Console.WriteLine(usedMemory);
 
-                          //  await Task.Delay(1000);
+                            await Task.Delay(1000);
                             //Thread.Sleep(500);
                             // Clean up 
                             rasterImage.Dispose();
@@ -2858,6 +2914,7 @@ namespace project1
                 MessageBox.Show(ex.Message);
             }
 }
+
         public String savePath;
         public String fill;
         public String fill2;
@@ -2867,16 +2924,20 @@ namespace project1
             {
                 RasterCodecs codecs = new RasterCodecs();
                 codecs.ThrowExceptionsOnInvalidImages = true;
+                // Stream myStream;
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "PDF |*.pdf|JPEG |*.jpg|BMP |*.bmp|GIF |*.gif|PNG |*.png";
-                saveFileDialog1.FilterIndex = 1;
+                saveFileDialog1.Filter = "PDF (*.pdf)|*.pdf|JPEG (*.jpg)|*.jpg|BMP (*.bmp)|*.bmp|GIF (*.gif)|*.gif|PNG (*.png)|*.png";
+                saveFileDialog1.FilterIndex = 2;
                 saveFileDialog1.RestoreDirectory = true;
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK){
                     savePath = saveFileDialog1.FileName;
+                    //String P = saveFileDialog1.FileName.LastIndexOf;
+                   // MessageBox.Show(P);
                     fill  = saveFileDialog1.FileName;
                     string[] array = fill.Split('.');
                     fill = array[1];
                     fill2 = array[0];
+                    //MessageBox.Show(fill);
                     dialogSaveAS dialogSaveAS = new dialogSaveAS();
                     dialogSaveAS.ShowDialog();
                 }
@@ -3648,26 +3709,42 @@ namespace project1
                  picReview2.Width = (int)(picReview2.Width + (picReview2.Width * 0.05));
              }
              Console.WriteLine(picReview2.Width + " " + picReview2.Height);*/
+
                 picReview2.Size = new Size((int)(picReview2.Width + 50), (int)(picReview2.Height + 50));
-                picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
-                picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2; 
+           
+               picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
+            
+            if (picReview2.Top > 5)
+            {
+                picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+            }
         }
 
         private void btnZoomOut_Click(object sender, EventArgs e)
         {
-          /*  if (picReview2.Width > 100 || picReview2.Height > 100)
-            {
-                if (picReview2.Top < 5)
-                {
-                    picReview2.Top = (int)(picReview2.Top + (picReview2.Height * 0.025));
-                }
-                picReview2.Left = (int)(picReview2.Left + (picReview2.Width * 0.025));
-                picReview2.Height = (int)(picReview2.Height - (picReview2.Height * 0.05));
-                picReview2.Width = (int)(picReview2.Width - (picReview2.Width * 0.05));
-            }*/
-                picReview2.Size = new Size((int)(picReview2.Width - 50), (int)(picReview2.Height - 50));
+
+            /* if (picReview2.Width > 100 || picReview2.Height > 100)
+             {
+                 if (picReview2.Top < 5)
+                 {
+                     picReview2.Top = (int)(picReview2.Top + (picReview2.Height * 0.025));
+                 }
+                 picReview2.Left = (int)(picReview2.Left + (picReview2.Width * 0.025));
+                 picReview2.Height = (int)(picReview2.Height - (picReview2.Height * 0.05));
+                 picReview2.Width = (int)(picReview2.Width - (picReview2.Width * 0.05));
+             }*/
+            splitContainer1.Panel2.VerticalScroll.Value = 0;
+            picReview2.Size = new Size((int)(picReview2.Width - 50), (int)(picReview2.Height - 50));
                 picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
+          
+                if (picReview2.Top > 5)
+                {
+                    picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                }
+            if (picReview2.Height < splitContainer1.Panel2.Height)
+            {
                 picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+            }
         }
 
         private void btnDefaultZoom_Click(object sender, EventArgs e)
@@ -4013,38 +4090,44 @@ namespace project1
             value_trackBar2 = (int)numeric_contrast.Value;
             trackBar2.Value = value_trackBar2;
             //l_contrast.Text = value_trackBar2.ToString();
+            Image();
         }
 
         private void numeric_brightness_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar1 = (int)numeric_brightness.Value;
             trackBar1.Value = value_trackBar1;
-           // l_brightness.Text = value_trackBar1.ToString();
+            // l_brightness.Text = value_trackBar1.ToString();
+            Image();
         }
 
         private void numeric_intensity_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar3 = (int)numeric_intensity.Value;
             trackBar3.Value = value_trackBar3;
-           // l_intensity.Text = value_trackBar3.ToString();
+            // l_intensity.Text = value_trackBar3.ToString();
+            Image();
         }
 
         private void numeric_amount_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar4 = (int)numeric_amount.Value;
             trackBar4.Value = value_trackBar4;
+            Image();
         }
 
         private void numeric_radius_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar5 = (int)numeric_radius.Value;
             trackBar5.Value = value_trackBar5;
+            Image();
         }
 
         private void numeric_threshold_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar6 = (int)numeric_threshold.Value;
             trackBar6.Value = value_trackBar6;
+            Image();
         }
         private bool state;
         private void tabControl1_DoubleClick(object sender, EventArgs e)
@@ -4059,6 +4142,19 @@ namespace project1
             }
             state = !state;
 
+            try
+            {
+                xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);
+                picReview2.Location = new Point(xRev, 20);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
             try
             {
                 xRev = (splitContainer1.Panel2.Width / 2) - (picReview2.Width / 2);

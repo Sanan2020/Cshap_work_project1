@@ -109,12 +109,17 @@ namespace project1
             /* if (Control.ModifierKeys == Keys.F1)
              {*/
                 //MessageBox.Show("Label");
-                Console.WriteLine("label2_MouseHover");
+               // Console.WriteLine("label2_MouseHover");
             //}
         }
 
         private void label2_MouseHover(object sender, EventArgs e)
         {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/gammacorrectcommand.html");
+            }
             Console.WriteLine("label2_MouseHover");
         }
 
