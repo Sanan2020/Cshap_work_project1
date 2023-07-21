@@ -1554,7 +1554,7 @@
             this.panGrayScale.Location = new System.Drawing.Point(4, 219);
             this.panGrayScale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panGrayScale.Name = "panGrayScale";
-            this.panGrayScale.Size = new System.Drawing.Size(411, 294);
+            this.panGrayScale.Size = new System.Drawing.Size(411, 318);
             this.panGrayScale.TabIndex = 36;
             this.toolTip1.SetToolTip(this.panGrayScale, "Press F1 to References");
             // 
@@ -1707,7 +1707,7 @@
             this.panDynamicBinary.Controls.Add(this.btnDynamicBinary);
             this.panDynamicBinary.Controls.Add(this.l_localcontrast);
             this.panDynamicBinary.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panDynamicBinary.Location = new System.Drawing.Point(4, 521);
+            this.panDynamicBinary.Location = new System.Drawing.Point(4, 545);
             this.panDynamicBinary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panDynamicBinary.Name = "panDynamicBinary";
             this.panDynamicBinary.Size = new System.Drawing.Size(411, 35);
@@ -1831,7 +1831,7 @@
             this.panGamma.Controls.Add(this.l_gamma);
             this.panGamma.Controls.Add(this.btnGamma);
             this.panGamma.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panGamma.Location = new System.Drawing.Point(4, 564);
+            this.panGamma.Location = new System.Drawing.Point(4, 588);
             this.panGamma.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panGamma.Name = "panGamma";
             this.panGamma.Size = new System.Drawing.Size(411, 35);
@@ -1922,7 +1922,7 @@
             this.panMaximum.Controls.Add(this.trbMaximum);
             this.panMaximum.Controls.Add(this.btnMaximum);
             this.panMaximum.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panMaximum.Location = new System.Drawing.Point(4, 607);
+            this.panMaximum.Location = new System.Drawing.Point(4, 631);
             this.panMaximum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panMaximum.Name = "panMaximum";
             this.panMaximum.Size = new System.Drawing.Size(411, 35);
@@ -2011,7 +2011,7 @@
             this.panMinimum.Controls.Add(this.l_minimum);
             this.panMinimum.Controls.Add(this.btnMinimum);
             this.panMinimum.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panMinimum.Location = new System.Drawing.Point(4, 650);
+            this.panMinimum.Location = new System.Drawing.Point(4, 674);
             this.panMinimum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panMinimum.Name = "panMinimum";
             this.panMinimum.Size = new System.Drawing.Size(411, 35);
@@ -2112,7 +2112,7 @@
             this.panLineRemove.Controls.Add(this.trackBar17);
             this.panLineRemove.Controls.Add(this.checkBox11);
             this.panLineRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panLineRemove.Location = new System.Drawing.Point(4, 693);
+            this.panLineRemove.Location = new System.Drawing.Point(4, 717);
             this.panLineRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panLineRemove.Name = "panLineRemove";
             this.panLineRemove.Size = new System.Drawing.Size(411, 38);
@@ -2309,7 +2309,7 @@
             this.panLRV.Controls.Add(this.tbLRV4);
             this.panLRV.Controls.Add(this.chbox_LRV);
             this.panLRV.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panLRV.Location = new System.Drawing.Point(4, 739);
+            this.panLRV.Location = new System.Drawing.Point(4, 763);
             this.panLRV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panLRV.Name = "panLRV";
             this.panLRV.Size = new System.Drawing.Size(411, 38);
@@ -2523,7 +2523,7 @@
             this.panHolePunchRemove.Controls.Add(this.trackBar18);
             this.panHolePunchRemove.Controls.Add(this.trackBar21);
             this.panHolePunchRemove.Controls.Add(this.checkBox12);
-            this.panHolePunchRemove.Location = new System.Drawing.Point(4, 785);
+            this.panHolePunchRemove.Location = new System.Drawing.Point(4, 809);
             this.panHolePunchRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panHolePunchRemove.Name = "panHolePunchRemove";
             this.panHolePunchRemove.Size = new System.Drawing.Size(411, 35);
@@ -2648,7 +2648,7 @@
             this.panDotRemove.Controls.Add(this.trackBar11);
             this.panDotRemove.Controls.Add(this.trackBar12);
             this.panDotRemove.Controls.Add(this.trackBar13);
-            this.panDotRemove.Location = new System.Drawing.Point(4, 828);
+            this.panDotRemove.Location = new System.Drawing.Point(4, 852);
             this.panDotRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panDotRemove.Name = "panDotRemove";
             this.panDotRemove.Size = new System.Drawing.Size(411, 35);
@@ -2833,7 +2833,7 @@
             this.panInvertedText.Controls.Add(this.trackBar19);
             this.panInvertedText.Controls.Add(this.trackBar20);
             this.panInvertedText.Controls.Add(this.checkBox13);
-            this.panInvertedText.Location = new System.Drawing.Point(4, 871);
+            this.panInvertedText.Location = new System.Drawing.Point(4, 895);
             this.panInvertedText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panInvertedText.Name = "panInvertedText";
             this.panInvertedText.Size = new System.Drawing.Size(411, 35);
@@ -3023,7 +3023,7 @@
             this.panBorderRemove.Controls.Add(this.trackBar26);
             this.panBorderRemove.Controls.Add(this.trackBar25);
             this.panBorderRemove.Controls.Add(this.checkBox16);
-            this.panBorderRemove.Location = new System.Drawing.Point(4, 914);
+            this.panBorderRemove.Location = new System.Drawing.Point(4, 938);
             this.panBorderRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panBorderRemove.Name = "panBorderRemove";
             this.panBorderRemove.Size = new System.Drawing.Size(411, 35);
@@ -3171,7 +3171,7 @@
             this.panSmooth.Controls.Add(this.l_length);
             this.panSmooth.Controls.Add(this.trackBar31);
             this.panSmooth.Controls.Add(this.checkBox17);
-            this.panSmooth.Location = new System.Drawing.Point(4, 957);
+            this.panSmooth.Location = new System.Drawing.Point(4, 981);
             this.panSmooth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panSmooth.Name = "panSmooth";
             this.panSmooth.Size = new System.Drawing.Size(411, 35);
@@ -3274,7 +3274,7 @@
             this.panRakeRemove.Controls.Add(this.numUpDown3);
             this.panRakeRemove.Controls.Add(this.numUpDown4);
             this.panRakeRemove.Controls.Add(this.numUpDown5);
-            this.panRakeRemove.Location = new System.Drawing.Point(4, 1000);
+            this.panRakeRemove.Location = new System.Drawing.Point(4, 1024);
             this.panRakeRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panRakeRemove.Name = "panRakeRemove";
             this.panRakeRemove.Size = new System.Drawing.Size(411, 35);
