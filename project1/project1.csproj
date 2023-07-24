@@ -271,6 +271,7 @@
     <Content Include="19611_composer_folder_magic_quartz_icon.ico" />
     <Content Include="doc.ico" />
     <Content Include="OcrLEADRuntime\US_Cities.txt" />
+    <None Include="Resources\ugb7b.png" />
     <None Include="Resources\download %281%29.png" />
     <None Include="Resources\images.jpg" />
   </ItemGroup>

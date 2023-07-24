@@ -436,6 +436,10 @@ namespace project1
 
         private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
+            if (scolling_brightness)
+            {
+                scolling_brightness = false;
+            }
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
@@ -444,6 +448,10 @@ namespace project1
 
         private void trackBar2_MouseCaptureChanged(object sender, EventArgs e)
         {
+            if (scolling_contrast)
+            {
+                scolling_contrast = false;
+            }
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
@@ -452,6 +460,10 @@ namespace project1
 
         private void trackBar3_MouseCaptureChanged(object sender, EventArgs e)
         {
+            if (scolling_intensity)
+            {
+                scolling_intensity = false;
+            }
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
@@ -460,6 +472,10 @@ namespace project1
 
         private void trackBar4_MouseCaptureChanged(object sender, EventArgs e)
         {
+            if (scolling_amount)
+            {
+                scolling_amount = false;
+            }
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
@@ -468,7 +484,11 @@ namespace project1
 
         private void trackBar5_MouseCaptureChanged(object sender, EventArgs e)
         {
-            using (ProgressPopup pp = new ProgressPopup(Image))
+            if (scolling_radius)
+            {
+                scolling_radius = false;
+            }
+           using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
             }
@@ -476,6 +496,10 @@ namespace project1
 
         private void trackBar6_MouseCaptureChanged(object sender, EventArgs e)
         {
+            if (scolling_threshold)
+            {
+                scolling_threshold = false;
+            }
             using (ProgressPopup pp = new ProgressPopup(Image))
             {
                 pp.ShowDialog();
@@ -496,6 +520,7 @@ namespace project1
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
+            scolling_brightness = true;
             value_trackBar1 = trackBar1.Value;
             numeric_brightness.Value = value_trackBar1;
            // l_brightness.Text = value_trackBar1.ToString();
@@ -503,6 +528,7 @@ namespace project1
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
+            scolling_contrast = true;
             value_trackBar2 = trackBar2.Value;
             numeric_contrast.Value = value_trackBar2;
            // l_contrast.Text = value_trackBar2.ToString();
@@ -510,6 +536,7 @@ namespace project1
 
         private void trackBar3_Scroll(object sender, EventArgs e)
         {
+            scolling_intensity = true;
             value_trackBar3 = trackBar3.Value;
             numeric_intensity.Value = value_trackBar3;
            // l_intensity.Text = value_trackBar3.ToString();
@@ -517,6 +544,7 @@ namespace project1
 
         private void trackBar4_Scroll(object sender, EventArgs e)
         {
+            scolling_amount = true;
             value_trackBar4 = trackBar4.Value;
             numeric_amount.Value = value_trackBar4;
            // l_amount.Text = value_trackBar4.ToString();
@@ -524,6 +552,7 @@ namespace project1
 
         private void trackBar5_Scroll(object sender, EventArgs e)
         {
+            scolling_radius = true;
             value_trackBar5 = trackBar5.Value;
             numeric_radius.Value = value_trackBar5;
             //l_radius.Text = value_trackBar5.ToString();
@@ -531,6 +560,7 @@ namespace project1
 
         private void trackBar6_Scroll(object sender, EventArgs e)
         {
+            scolling_threshold = true;
             value_trackBar6 = trackBar6.Value;
             numeric_threshold.Value = value_trackBar6;
             //l_threshold.Text = value_trackBar6.ToString();
@@ -553,7 +583,7 @@ namespace project1
                 numeric_contrast.Value = value_trackBar2;
                 numeric_intensity.Value = value_trackBar3;
 
-                value_trackBar4 = 1;
+                value_trackBar4 = 0;
                 trackBar4.Value = value_trackBar4;
                 //l_amount.Text = value_trackBar4.ToString();
                 value_trackBar5 = 1;
@@ -850,28 +880,72 @@ namespace project1
             }
         }
 
-        /**
-         
-         **/
+        /*
+        value_trackBar7 = 500
+        value_trackBar8 = 250
+        value_trackBar9 = 500
+
+        total = value_trackBar7 + value_trackBar8 + value_trackBar9
+        rate = 1000 / total
+        value_trackBar7 = rate * value_trackBar7 400
+        value_trackBar8 = rate * value_trackBar8 200
+        value_trackBar9 = rate * value_trackBar9 400
+         */
+       // int rate;
         private void trackBar7_Scroll(object sender, EventArgs e)
         {
-            value_trackBar7 = trackBar7.Value;
-            l_redfactor.Text = value_trackBar7.ToString();
-            
-        }
+           /* value_trackBar7 = trackBar7.Value;
+            int total = value_trackBar7 + trackBar8.Value + trackBar9.Value;
+            if (total > 1000)
+            {
+                int rate = 1000 / total;
+                value_trackBar7 = rate * value_trackBar7;
+                value_trackBar8 = rate * value_trackBar8;
+                value_trackBar9 = rate * value_trackBar9;
+                l_redfactor.Text = value_trackBar7.ToString();
+            }
+              else {*/
 
+                  value_trackBar7 = trackBar7.Value;
+                  l_redfactor.Text = value_trackBar7.ToString();
+           // }
+        }
         private void trackBar8_Scroll(object sender, EventArgs e)
         {
-            value_trackBar8 = trackBar8.Value;
-            l_greenfactor.Text = value_trackBar8.ToString();
-           
+           /* value_trackBar8 = trackBar8.Value;
+            int total = trackBar7.Value + value_trackBar8 + trackBar9.Value;
+            if (total > 1000)
+            {
+                int rate = 1000 / total;
+                value_trackBar7 = rate * value_trackBar7;
+                value_trackBar8 = rate * value_trackBar8;
+                value_trackBar9 = rate * value_trackBar9;
+                l_greenfactor.Text = value_trackBar8.ToString();
+            }
+            else
+            {*/
+                value_trackBar8 = trackBar8.Value;
+                l_greenfactor.Text = value_trackBar8.ToString();
+            //}
         }
 
         private void trackBar9_Scroll(object sender, EventArgs e)
         {
-            value_trackBar9 = trackBar9.Value;
-            l_bluefactor.Text = value_trackBar9.ToString();
-           
+           /* value_trackBar9 = trackBar9.Value;
+            int total = trackBar7.Value + trackBar8.Value + value_trackBar9;
+            if (total > 1000)
+            {
+                int rate = 1000 / total;
+                value_trackBar7 = rate * value_trackBar7;
+                value_trackBar8 = rate * value_trackBar8;
+                value_trackBar9 = rate * value_trackBar9;
+                l_bluefactor.Text = value_trackBar9.ToString();
+            }
+            else
+            {*/
+                value_trackBar9 = trackBar9.Value;
+                l_bluefactor.Text = value_trackBar9.ToString();
+            //}
         }
 
         private void trackBar7_MouseCaptureChanged(object sender, EventArgs e)
@@ -880,8 +954,6 @@ namespace project1
               {
                   pp.ShowDialog();
               }
-            //Image();
-           
         }
 
         private void trackBar8_MouseCaptureChanged(object sender, EventArgs e)
@@ -2079,7 +2151,7 @@ namespace project1
         private void btnResetUnsharpMask_Click(object sender, EventArgs e)
         {
             try { 
-            value_trackBar4 = 1;
+            value_trackBar4 = 0;
             trackBar4.Value = value_trackBar4;
             //l_amount.Text = value_trackBar4.ToString();
             value_trackBar5 = 1;
@@ -2412,7 +2484,7 @@ namespace project1
                  picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
                  picReview2.SizeMode = PictureBoxSizeMode.Zoom;
                  this.splitContainer1.Panel2.Controls.Add(picReview2);*/
-                picReview2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
+        picReview2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
             }
             catch(Exception ex)
             {
@@ -2423,7 +2495,7 @@ namespace project1
         {
             if (Control.ModifierKeys == Keys.Control)
             {
-                
+                //splitContainer1.Panel2.UseWaitCursor = false;
                 picReview2.Focus();
                 if (e.Delta > 0)
                 {
@@ -2432,15 +2504,15 @@ namespace project1
                     picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;*/
                     if (picReview2.Height > splitContainer1.Panel2.Height)
                     {
+                        
                         //splitContainer1.Panel2.VerticalScroll.Value = splitContainer1.Panel2.Height/2;
                         //splitContainer1.Panel2.VerticalScroll.Value = picReview2.Height/2;
                        // splitContainer1.Panel2.AutoScroll = false;
                     }
                        
                     picReview2.Size = new Size((int)(picReview2.Width + 50), (int)(picReview2.Height + 50));
-
-                    picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
-
+                   
+                    picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;           
                     if (picReview2.Top > 5)
                     {
                         picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
@@ -2448,13 +2520,15 @@ namespace project1
                 }
                 else if (e.Delta < 0)
                 {
-                    
+
                     // splitContainer1.Panel1.VerticalScroll.Value = 100;
                     // System.Windows.Forms.AutoSizeMode.GrowOnly;AutoScroll = false;
                     /*picReview2.Size = new Size((int)(picReview2.Width - 10), (int)(picReview2.Height - 10));
                     picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
                     picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;*/
+                   // splitContainer1.Panel2
                     splitContainer1.Panel2.VerticalScroll.Value = 0;
+                    //splitContainer1.Panel2.VerticalScroll.Enabled = false;
                     //splitContainer1.Panel2.VerticalScroll.Value = picReview2.Height / 2;
                     picReview2.Size = new Size((int)(picReview2.Width - 50), (int)(picReview2.Height - 50));
                     picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
@@ -2470,7 +2544,7 @@ namespace project1
                 }
                // splitContainer1.Panel2.AutoScroll = true;
             }
-          
+            
         }
         String bpp;
         
@@ -2525,10 +2599,25 @@ namespace project1
 
                     if (chckbox2 == true)
                     {
+                            /**/
+                            int new_trackBar7 =  value_trackBar7;
+                            int new_trackBar8 =  value_trackBar8;
+                            int new_trackBar9 =  value_trackBar9;
+
+                            int total = value_trackBar7 + value_trackBar8 + value_trackBar9;
+                            if (total > 1000)
+                            {
+                                double rate = 1000 / Convert.ToDouble(total);
+                                new_trackBar7 = (int)Math.Floor(rate * Convert.ToDouble(value_trackBar7));
+                                new_trackBar8 = (int)Math.Floor(rate * Convert.ToDouble(value_trackBar8));
+                                new_trackBar9 = (int)Math.Floor(rate * Convert.ToDouble(value_trackBar9));
+                            }
+                            /**/
+
                         GrayScaleExtendedCommand command5 = new GrayScaleExtendedCommand();
-                        command5.RedFactor = value_trackBar7;
-                        command5.GreenFactor = value_trackBar8;
-                        command5.BlueFactor = value_trackBar9;
+                        command5.RedFactor = new_trackBar7;
+                        command5.GreenFactor = new_trackBar8;
+                        command5.BlueFactor = new_trackBar9;
                         command5.Run(rasterImage);
                     }
 
@@ -3903,36 +3992,6 @@ namespace project1
                 System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/rakeremovecommand.html");
             }
         }
-
-        private void btnBinFilHelp_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pe/binaryfiltercommand.html");
-        }
-
-        private void btnBinarizeHelp_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/autobinarizecommand.html");
-        }
-
-        private void btnDespeckleHelp_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/despecklecommand.html");
-        }
-
-        private void btnColorlvHelp_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/autocolorlevelcommand.html");
-        }
-
-        private void btnbinHelp_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/autobinarycommand.html");
-        }
-
-        private void btnDeskewHelp_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/deskewcommand.html");
-        }
         
         private void cbbPerProp_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -4084,50 +4143,91 @@ namespace project1
             value_tbLRV5 = tbLRV5.Value;
             l_tbLRV5.Text = value_tbLRV5.ToString();
         }
-
+        bool scolling_contrast = false;
         private void numeric_contrast_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar2 = (int)numeric_contrast.Value;
             trackBar2.Value = value_trackBar2;
+            if (scolling_contrast == false) {
+               // Image();
+               using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
             //l_contrast.Text = value_trackBar2.ToString();
-            Image();
         }
-
+        bool scolling_brightness = false;
         private void numeric_brightness_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar1 = (int)numeric_brightness.Value;
             trackBar1.Value = value_trackBar1;
             // l_brightness.Text = value_trackBar1.ToString();
-            Image();
+            if (scolling_brightness == false)
+            {
+                // Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
         }
-
+        bool scolling_intensity = false;
         private void numeric_intensity_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar3 = (int)numeric_intensity.Value;
             trackBar3.Value = value_trackBar3;
             // l_intensity.Text = value_trackBar3.ToString();
-            Image();
+            if (scolling_intensity == false)
+            {
+                // Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
         }
-
+        bool scolling_amount = false;
         private void numeric_amount_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar4 = (int)numeric_amount.Value;
             trackBar4.Value = value_trackBar4;
-            Image();
+            if (scolling_amount == false)
+            {
+                // Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
         }
-
+        bool scolling_radius = false;
         private void numeric_radius_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar5 = (int)numeric_radius.Value;
             trackBar5.Value = value_trackBar5;
-            Image();
+            if (scolling_radius == false)
+            {
+                // Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
         }
-
+        bool scolling_threshold = false;
         private void numeric_threshold_ValueChanged(object sender, EventArgs e)
         {
             value_trackBar6 = (int)numeric_threshold.Value;
             trackBar6.Value = value_trackBar6;
-            Image();
+            if (scolling_threshold == false)
+            {
+                // Image();
+               using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
         }
         private bool state;
         private void tabControl1_DoubleClick(object sender, EventArgs e)
@@ -4163,6 +4263,184 @@ namespace project1
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void checkBox7_MouseHover(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void checkBox7_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                //MessageBox.Show("F1 pressed");
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/autocropcommand-threshold.html");
+            }
+        }
+
+        private void checkBox7_DragEnter(object sender, DragEventArgs e)
+        {
+            // See if this is a copy and the data includes text.
+            if (e.Data.GetDataPresent(DataFormats.Text) &&
+                (e.AllowedEffect & DragDropEffects.Copy) != 0)
+            {
+                // Allow this.
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                // Don't allow any other drop.
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void checkBox7_DragDrop(object sender, DragEventArgs e)
+        {
+            String txt = (string)e.Data.GetData(DataFormats.Text);
+            if (txt == "Help") {
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/autobinarizecommand.html");
+                //MessageBox.Show(txt);
+            }
+        }
+
+        private void label41_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Start the drag if it's the right mouse button.
+            if (e.Button == MouseButtons.Left)
+            {
+                label41.DoDragDrop("Help",DragDropEffects.Copy);
+            }
+        }
+
+        private void checkBox3_DragDrop(object sender, DragEventArgs e)
+        {
+            String txt = (string)e.Data.GetData(DataFormats.Text);
+            if (txt == "Help")
+            {
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/despecklecommand.html");
+                //MessageBox.Show(txt);
+            }
+        }
+
+        private void checkBox3_DragEnter(object sender, DragEventArgs e)
+        {
+            // See if this is a copy and the data includes text.
+            if (e.Data.GetDataPresent(DataFormats.Text) &&
+                (e.AllowedEffect & DragDropEffects.Copy) != 0)
+            {
+                // Allow this.
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                // Don't allow any other drop.
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void l_binaryfilter_DragDrop(object sender, DragEventArgs e)
+        {
+            String txt = (string)e.Data.GetData(DataFormats.Text);
+            if (txt == "Help")
+            {
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pe/binaryfiltercommand.html");
+                //MessageBox.Show(txt);
+            }
+        }
+
+        private void l_binaryfilter_DragEnter(object sender, DragEventArgs e)
+        {
+            // See if this is a copy and the data includes text.
+            if (e.Data.GetDataPresent(DataFormats.Text) &&
+                (e.AllowedEffect & DragDropEffects.Copy) != 0)
+            {
+                // Allow this.
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                // Don't allow any other drop.
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void checkBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            String txt = (string)e.Data.GetData(DataFormats.Text);
+            if (txt == "Help")
+            {
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/autocolorlevelcommand.html");
+                //MessageBox.Show(txt);
+            }
+        }
+
+        private void checkBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            // See if this is a copy and the data includes text.
+            if (e.Data.GetDataPresent(DataFormats.Text) &&
+                (e.AllowedEffect & DragDropEffects.Copy) != 0)
+            {
+                // Allow this.
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                // Don't allow any other drop.
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void checkBox4_DragDrop(object sender, DragEventArgs e)
+        {
+            String txt = (string)e.Data.GetData(DataFormats.Text);
+            if (txt == "Help")
+            {
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/pc/autobinarycommand.html");
+                //MessageBox.Show(txt);
+            }
+        }
+
+        private void checkBox4_DragEnter(object sender, DragEventArgs e)
+        {
+            // See if this is a copy and the data includes text.
+            if (e.Data.GetDataPresent(DataFormats.Text) &&
+                (e.AllowedEffect & DragDropEffects.Copy) != 0)
+            {
+                // Allow this.
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                // Don't allow any other drop.
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void checkBox14_DragDrop(object sender, DragEventArgs e)
+        {
+            String txt = (string)e.Data.GetData(DataFormats.Text);
+            if (txt == "Help")
+            {
+                System.Diagnostics.Process.Start("https://www.leadtools.com/help/sdk/v22/dh/po/deskewcommand.html");
+                //MessageBox.Show(txt);
+            }
+        }
+
+        private void checkBox14_DragEnter(object sender, DragEventArgs e)
+        {
+            // See if this is a copy and the data includes text.
+            if (e.Data.GetDataPresent(DataFormats.Text) &&
+                (e.AllowedEffect & DragDropEffects.Copy) != 0)
+            {
+                // Allow this.
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                // Don't allow any other drop.
+                e.Effect = DragDropEffects.None;
             }
         }
     }
