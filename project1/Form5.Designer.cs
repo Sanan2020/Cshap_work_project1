@@ -36,11 +36,15 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+<<<<<<< Updated upstream
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+=======
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -54,9 +58,14 @@
             // 
             // btnProcess
             // 
+<<<<<<< Updated upstream
             this.btnProcess.Location = new System.Drawing.Point(203, 43);
+=======
+            this.btnProcess.Location = new System.Drawing.Point(269, 14);
+            this.btnProcess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.btnProcess.Name = "btnProcess";
-            this.btnProcess.Size = new System.Drawing.Size(67, 29);
+            this.btnProcess.Size = new System.Drawing.Size(89, 36);
             this.btnProcess.TabIndex = 0;
             this.btnProcess.TabStop = false;
             this.btnProcess.Text = "button1";
@@ -69,9 +78,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(126, 69);
+            this.pictureBox1.Size = new System.Drawing.Size(169, 84);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -86,28 +96,42 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+<<<<<<< Updated upstream
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+>>>>>>> Stashed changes
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(145, 245);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(194, 302);
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.WrapContents = false;
             // 
             // pictureBox2
             // 
+<<<<<<< Updated upstream
             this.pictureBox2.Location = new System.Drawing.Point(2, 77);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.pictureBox2.Location = new System.Drawing.Point(3, 94);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+>>>>>>> Stashed changes
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(128, 78);
+            this.pictureBox2.Size = new System.Drawing.Size(171, 96);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
+<<<<<<< Updated upstream
             this.pictureBox3.Location = new System.Drawing.Point(2, 159);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.pictureBox3.Location = new System.Drawing.Point(3, 194);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+>>>>>>> Stashed changes
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(128, 79);
+            this.pictureBox3.Size = new System.Drawing.Size(171, 97);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
@@ -115,8 +139,13 @@
             // splitContainer1
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+<<<<<<< Updated upstream
             this.splitContainer1.Location = new System.Drawing.Point(32, 77);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.splitContainer1.Location = new System.Drawing.Point(43, 66);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+>>>>>>> Stashed changes
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -126,9 +155,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Size = new System.Drawing.Size(444, 247);
-            this.splitContainer1.SplitterDistance = 147;
-            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.Size = new System.Drawing.Size(592, 304);
+            this.splitContainer1.SplitterDistance = 196;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
@@ -136,12 +164,18 @@
             // 
             this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+<<<<<<< Updated upstream
             this.flowLayoutPanel2.Location = new System.Drawing.Point(97, 347);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(129, 399);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+>>>>>>> Stashed changes
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(145, 88);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(193, 108);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
+<<<<<<< Updated upstream
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -185,11 +219,20 @@
             this.toolStripButton1.Size = new System.Drawing.Size(114, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+=======
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(807, 44);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(42, 389);
+            this.vScrollBar1.TabIndex = 4;
+>>>>>>> Stashed changes
             // 
             // Form5
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(868, 438);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.toolStrip1);
@@ -198,6 +241,14 @@
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+=======
+            this.ClientSize = new System.Drawing.Size(1157, 539);
+            this.Controls.Add(this.vScrollBar1);
+            this.Controls.Add(this.flowLayoutPanel2);
+            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.btnProcess);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.Name = "Form5";
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.Form5_Load);
@@ -227,10 +278,14 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+<<<<<<< Updated upstream
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+=======
+        private System.Windows.Forms.VScrollBar vScrollBar1;
+>>>>>>> Stashed changes
     }
 }

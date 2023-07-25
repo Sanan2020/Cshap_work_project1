@@ -2485,25 +2485,39 @@ namespace project1
                 picReview2.SizeMode = PictureBoxSizeMode.Zoom;
                 this.splitContainer1.Panel2.Controls.Add(picReview2);
                 picReview2.ImageLocation = null;
+<<<<<<< Updated upstream
 
+=======
+                //splitContainer1.Panel2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
+                //picReview2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
+                this.picReview2.MouseWheel += new MouseEventHandler(picReview2_MouseWheel);
+>>>>>>> Stashed changes
                 /* this.splitContainer1.Panel2.Controls.Clear();
                //  picReview2.Height = 850; //ความกว้างหน้ากระดาษ
                //  picReview2.Width = 850;  //ความสูงหน้ากระดาษ
                  splitContainer1.Panel2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
+<<<<<<< Updated upstream
                  pictureBox1.MouseWheel += new MouseEventHandler(pictureBox1_MouseEnter);
+=======
+                 //pictureBox1.MouseWheel += new MouseEventHandler(pictureBox1_MouseEnter);
+>>>>>>> Stashed changes
                  picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
                  picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
                  picReview2.SizeMode = PictureBoxSizeMode.Zoom;
                  this.splitContainer1.Panel2.Controls.Add(picReview2);*/
+<<<<<<< Updated upstream
                 picReview2.MouseWheel += new MouseEventHandler(picReview2_MouseWheel);
                 //splitContainer1.Panel2.VerticalScroll.SmallChange += ScrollBar_ValueChanged;
                 //ScrollBar LargeChange += ScrollBar_ValueChanged;
+=======
+>>>>>>> Stashed changes
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+<<<<<<< Updated upstream
         private void ScrollBar_ValueChanged(object sender, EventArgs e)
         {
             // Update the position of the PictureBox based on ScrollBar values
@@ -2511,6 +2525,11 @@ namespace project1
         }
         private void picReview2_MouseWheel(object sender, MouseEventArgs e)
         {
+=======
+        private void picReview2_MouseWheel(object sender, MouseEventArgs e)
+        {
+            picReview2.Focus();
+>>>>>>> Stashed changes
             if (Control.ModifierKeys == Keys.Control)
             {
                 //splitContainer1.Panel2.UseWaitCursor = false;
@@ -2523,6 +2542,7 @@ namespace project1
 
                     /*picReview2.Size = new Size((int)(picReview2.Width + 10), (int)(picReview2.Height + 10));
                     picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
+<<<<<<< Updated upstream
                     picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;*/
                     if (picReview2.Height > splitContainer1.Panel2.Height)
                     {
@@ -2549,6 +2569,69 @@ namespace project1
                     // splitContainer1.Panel1.VerticalScroll.Value = 100;
                     // System.Windows.Forms.AutoSizeMode.GrowOnly;AutoScroll = false;
                     /*picReview2.Size = new Size((int)(picReview2.Width - 10), (int)(picReview2.Height - 10));
+=======
+                    
+                        picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                }
+                else if (e.Delta < 0)
+                {
+                   // splitContainer1.Panel2.AutoScroll = false;
+                    //splitContainer1.Panel2.VerticalScroll =AutoScrollPosition.X;
+                    splitContainer1.Panel2.ScrollControlIntoView(picReview2);
+                    picReview2.Size = new Size((int)(picReview2.Width - 10), (int)(picReview2.Height - 10));
+                    picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
+                  //  if (picReview2.Top < 5)
+                   // {
+                        picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                   // }
+                }
+              //  splitContainer1.Panel2.AutoScroll = true;
+                //picReview2.Focus();
+            }
+           // picReview2.Focus();
+        }
+        protected void picReview2_OnMouseWheel(object sender, MouseEventArgs e)
+        {
+            /*  if (e.Delta > 0)
+              {
+                  //pictureBox1.Image = null;
+                  // ซูมอิน (เพิ่มขนาดภาพ)
+                  if (picReview2.Width < 4500 || picReview2.Width < 4500)
+                  { //กำหนดขอบเขตการขยายภาพ
+                      picReview2.Width += (int)(picReview2.Width * 0.1);
+                      picReview2.Height += (int)(picReview2.Height * 0.1);
+                  }
+              }
+              else if (e.Delta < 0)
+              {
+                  //pictureBox1.Image = null;
+                  // ซูมเอาท์ (ลดขนาดภาพ)
+                  if (picReview2.Width > 400 || picReview2.Width > 400)
+                  { //กำหนดขอบเขตการลดภาพ
+                      picReview2.Width -= (int)(picReview2.Width * 0.1);
+                      picReview2.Height -= (int)(picReview2.Height * 0.1);
+                  }
+
+              }*/
+            // l_zoom.Text = "w " + picReview2.Width.ToString() + " h" + picReview2.Height.ToString();
+
+            //picReview2.Focus();
+           /* if (Control.ModifierKeys == Keys.Control)
+            {
+               // picReview2.Focus();
+                if (e.Delta > 0)
+                {
+                    picReview2.Size = new Size((int)(picReview2.Width + 10), (int)(picReview2.Height + 10));
+                    picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
+                    picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
+                }
+                else if (e.Delta < 0)
+                {
+                    picReview2.Focus();
+                    splitContainer1.Panel1.VerticalScroll.Enabled = false;
+                    //splitContainer1.Panel1.VerticalScroll.;
+                    picReview2.Size = new Size((int)(picReview2.Width - 10), (int)(picReview2.Height - 10));
+>>>>>>> Stashed changes
                     picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
                     picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;*/
                    // splitContainer1.Panel2
@@ -2567,9 +2650,15 @@ namespace project1
                         picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
                     }
                 }
+<<<<<<< Updated upstream
                 splitContainer1.Panel2.AutoScroll = true;
             }
             
+=======
+               // picReview2.Focus();
+            }
+            picReview2.Focus();*/
+>>>>>>> Stashed changes
         }
         String bpp;
         
@@ -3388,31 +3477,7 @@ namespace project1
             }
         }
        
-        protected override void OnMouseWheel(MouseEventArgs e)
-        {
-          /*  if (e.Delta > 0)
-            {
-                //pictureBox1.Image = null;
-                // ซูมอิน (เพิ่มขนาดภาพ)
-                if (picReview2.Width < 4500 || picReview2.Width < 4500)
-                { //กำหนดขอบเขตการขยายภาพ
-                    picReview2.Width += (int)(picReview2.Width * 0.1);
-                    picReview2.Height += (int)(picReview2.Height * 0.1);
-                }
-            }
-            else if (e.Delta < 0)
-            {
-                //pictureBox1.Image = null;
-                // ซูมเอาท์ (ลดขนาดภาพ)
-                if (picReview2.Width > 400 || picReview2.Width > 400)
-                { //กำหนดขอบเขตการลดภาพ
-                    picReview2.Width -= (int)(picReview2.Width * 0.1);
-                    picReview2.Height -= (int)(picReview2.Height * 0.1);
-                }
-
-            }*/
-            // l_zoom.Text = "w " + picReview2.Width.ToString() + " h" + picReview2.Height.ToString();
-        }
+        
 
         private void btnExportProfile_Click(object sender, EventArgs e)
         {

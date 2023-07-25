@@ -40,6 +40,7 @@
             // 
             // splitContainer1
             // 
+<<<<<<< Updated upstream
             this.splitContainer1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.splitContainer1.Location = new System.Drawing.Point(11, 11);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
@@ -47,6 +48,13 @@
             this.splitContainer1.Size = new System.Drawing.Size(432, 239);
             this.splitContainer1.SplitterDistance = 56;
             this.splitContainer1.SplitterWidth = 3;
+=======
+            this.splitContainer1.Location = new System.Drawing.Point(461, 12);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Size = new System.Drawing.Size(325, 182);
+            this.splitContainer1.SplitterDistance = 38;
+>>>>>>> Stashed changes
             this.splitContainer1.TabIndex = 0;
             // 
             // tabControl1
@@ -97,13 +105,17 @@
             // 
             // Form6
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(918, 254);
             this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.tabControl1);
+=======
+            this.ClientSize = new System.Drawing.Size(915, 363);
+>>>>>>> Stashed changes
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form6";
             this.Text = "Form6";
             this.Load += new System.EventHandler(this.Form6_Load);
