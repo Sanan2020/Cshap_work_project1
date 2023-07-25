@@ -123,6 +123,9 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>153, 17</value>
   </metadata>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Delta value for detecting blank space. Starting at each edge of the image and evaluating toward the center, any change in intensity that is less than or equal to this property is considered blank space. Valid values are 0 to 255.</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>

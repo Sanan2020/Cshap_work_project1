@@ -552,10 +552,23 @@ namespace project1
 
                     if (Form1.form1.chckbox2)
                     {
+                        int new_trackBar7 = Form1.form1.value_trackBar7;
+                        int new_trackBar8 = Form1.form1.value_trackBar8;
+                        int new_trackBar9 = Form1.form1.value_trackBar9;
+
+                        int total = Form1.form1.value_trackBar7 + Form1.form1.value_trackBar8 + Form1.form1.value_trackBar9;
+                        if (total > 1000)
+                        {
+                            double rate = 1000 / Convert.ToDouble(total);
+                            new_trackBar7 = (int)Math.Floor(rate * Convert.ToDouble(Form1.form1.value_trackBar7));
+                            new_trackBar8 = (int)Math.Floor(rate * Convert.ToDouble(Form1.form1.value_trackBar8));
+                            new_trackBar9 = (int)Math.Floor(rate * Convert.ToDouble(Form1.form1.value_trackBar9));
+                        }
+
                         GrayScaleExtendedCommand command5 = new GrayScaleExtendedCommand();
-                        command5.RedFactor = Form1.form1.value_trackBar7;
-                        command5.GreenFactor = Form1.form1.value_trackBar8;
-                        command5.BlueFactor = Form1.form1.value_trackBar9;
+                        command5.RedFactor = new_trackBar7;
+                        command5.GreenFactor = new_trackBar8;
+                        command5.BlueFactor = new_trackBar9;
                         command5.Run(rasterImage);
                     }
 

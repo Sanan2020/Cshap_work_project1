@@ -38,6 +38,7 @@ using System.Diagnostics;//
 using System.Net.NetworkInformation;
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.AxHost;
+using Button = System.Windows.Forms.Button;
 
 namespace project1
 {
@@ -125,6 +126,13 @@ namespace project1
         public int value_tbLRV4 = 10;
         public int value_tbLRV5 = 7;
         public bool chckbox_LRV = false;
+        public bool stateUseMedian = false;
+        public int value_tbMedian = 9;
+        /**/
+        public int value_BlackClip = 50;
+        public int value_WhiteClip = 500;
+        public int value_ObType = 0;
+        public int value_ObjFlags;
         public Form1()
         {
             InitializeComponent();
@@ -380,6 +388,9 @@ namespace project1
             cbbPerProp.Items.Add("False");
             cbbPerProp.Items.Add("True");
             cbbPerProp.SelectedIndex = 0;
+
+            cbbColorLevel1.SelectedIndex = 0;
+            cbbColorLevel2.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -2484,14 +2495,21 @@ namespace project1
                  picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
                  picReview2.SizeMode = PictureBoxSizeMode.Zoom;
                  this.splitContainer1.Panel2.Controls.Add(picReview2);*/
-        picReview2.MouseWheel += new MouseEventHandler(picReview2_MouseEnter);
+                picReview2.MouseWheel += new MouseEventHandler(picReview2_MouseWheel);
+                //splitContainer1.Panel2.VerticalScroll.SmallChange += ScrollBar_ValueChanged;
+                //ScrollBar LargeChange += ScrollBar_ValueChanged;
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        private void picReview2_MouseEnter(object sender, MouseEventArgs e)
+        private void ScrollBar_ValueChanged(object sender, EventArgs e)
+        {
+            // Update the position of the PictureBox based on ScrollBar values
+            picReview2.Location = new Point(-splitContainer1.Panel2.HorizontalScroll.Value, -splitContainer1.Panel2.VerticalScroll.Value);
+        }
+        private void picReview2_MouseWheel(object sender, MouseEventArgs e)
         {
             if (Control.ModifierKeys == Keys.Control)
             {
@@ -2499,6 +2517,10 @@ namespace project1
                 picReview2.Focus();
                 if (e.Delta > 0)
                 {
+                    splitContainer1.Panel2.AutoScroll = false;
+                    // ทำให้ ScrollBar หยุดเคลื่อนไหวและไม่สามารถแตะใด ๆ ได้
+                    //splitContainer1.Panel2.HorizontalScroll.Maximum = splitContainer1.Panel2.HorizontalScroll.Minimum;
+
                     /*picReview2.Size = new Size((int)(picReview2.Width + 10), (int)(picReview2.Height + 10));
                     picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;
                     picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;*/
@@ -2509,10 +2531,13 @@ namespace project1
                         //splitContainer1.Panel2.VerticalScroll.Value = picReview2.Height/2;
                        // splitContainer1.Panel2.AutoScroll = false;
                     }
-                       
-                    picReview2.Size = new Size((int)(picReview2.Width + 50), (int)(picReview2.Height + 50));
-                   
-                    picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;           
+                        
+                   picReview2.Size = new Size((int)(picReview2.Width + 50), (int)(picReview2.Height + 50));
+
+                    //int po = splitContainer1.Panel2.Width - picReview2.Width;
+                   // int posi = po / 2;
+                   // if (picReview2.Left< posi)
+                        picReview2.Left = (splitContainer1.Panel2.Width - picReview2.Width) / 2;           
                     if (picReview2.Top > 5)
                     {
                         picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
@@ -2542,7 +2567,7 @@ namespace project1
                         picReview2.Top = (splitContainer1.Panel2.Height - picReview2.Height) / 2;
                     }
                 }
-               // splitContainer1.Panel2.AutoScroll = true;
+                splitContainer1.Panel2.AutoScroll = true;
             }
             
         }
@@ -2555,6 +2580,7 @@ namespace project1
                 _rasterCodecs.Options.RasterizeDocument.Load.Resolution = 300;
                 if (file != null)
                 {
+                    //splitContainer1.Visible = true;
                     cbboxUseProfile.Enabled = true;
                     //checkBox21.Enabled = true;
                     btnReset.Enabled = true;
@@ -2591,15 +2617,21 @@ namespace project1
                        command3.Run(rasterImage);
                     }
 
-                    if (chckbox == true)
+                        
+                        if (chckbox == true)
                     {
-                        AutoColorLevelCommand command4 = new AutoColorLevelCommand();
-                        command4.Run(rasterImage);
+                            /*new*/
+                            if (value_ObType > 0)
+                            {
+                                int levType = value_ObType;
+                                AutoColorLevelCommand command4 = new AutoColorLevelCommand(value_BlackClip, value_WhiteClip, (AutoColorLevelCommandType)levType, AutoColorLevelCommandFlags.None);
+                                //AutoColorLevelCommand command4 = new AutoColorLevelCommand();
+                                command4.Run(rasterImage);
+                            }
                     }
 
                     if (chckbox2 == true)
                     {
-                            /**/
                             int new_trackBar7 =  value_trackBar7;
                             int new_trackBar8 =  value_trackBar8;
                             int new_trackBar9 =  value_trackBar9;
@@ -2612,8 +2644,6 @@ namespace project1
                                 new_trackBar8 = (int)Math.Floor(rate * Convert.ToDouble(value_trackBar8));
                                 new_trackBar9 = (int)Math.Floor(rate * Convert.ToDouble(value_trackBar9));
                             }
-                            /**/
-
                         GrayScaleExtendedCommand command5 = new GrayScaleExtendedCommand();
                         command5.RedFactor = new_trackBar7;
                         command5.GreenFactor = new_trackBar8;
@@ -2635,8 +2665,13 @@ namespace project1
                         command8.Dimension = value_trbMaximum;
                         command8.Run(rasterImage);
                     }
-
-                    if (chckbox6 == true)
+                    if (stateUseMedian) {
+                        /* MedianCommand */
+                        MedianCommand commandMedian = new MedianCommand();
+                        commandMedian.Dimension = value_tbMedian;
+                        commandMedian.Run(rasterImage);
+                    }
+                     if (chckbox6 == true)
                     {
                         MinimumCommand command9 = new MinimumCommand();
                         //Apply the Minimum filter. 
@@ -2669,8 +2704,11 @@ namespace project1
                     {
                         DeskewCommand command16 = new DeskewCommand();
                         //Deskew the image. 
-                        command16.Flags = DeskewCommandFlags.DeskewImage | DeskewCommandFlags.DoNotFillExposedArea;
-                        command16.Run(rasterImage);
+                        //command16.Flags = DeskewCommandFlags.DeskewImage | DeskewCommandFlags.DoNotFillExposedArea;
+                            command16.Flags = DeskewCommandFlags.DeskewImage | DeskewCommandFlags.FillExposedArea;
+                            command16.FillColor = new RasterColor(255, 255, 0);
+                            //command16.AngleRange
+                            command16.Run(rasterImage);
                     }
                     if (chckbox15 == true)
                     {
@@ -4352,6 +4390,7 @@ namespace project1
 
         private void l_binaryfilter_DragEnter(object sender, DragEventArgs e)
         {
+           
             // See if this is a copy and the data includes text.
             if (e.Data.GetDataPresent(DataFormats.Text) &&
                 (e.AllowedEffect & DragDropEffects.Copy) != 0)
@@ -4442,6 +4481,235 @@ namespace project1
                 // Don't allow any other drop.
                 e.Effect = DragDropEffects.None;
             }
+        }
+
+        private void ribbonTabItem3_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void ribbonControl1_ItemClick(object sender, EventArgs e)
+        {
+            RibbonTabItem btnSender = (RibbonTabItem)sender;
+            if (btnSender == ribbonTabItem3)
+            {
+                //some code here
+                //MessageBox.Show("1");
+                splitContainer1.Enabled = false;
+                splitContainer1.Visible = false;
+                tabControl1.Enabled = false;
+                tabControl1.Visible = false;
+                panel2.Visible = false;
+
+                ribbonClientPanel1.Enabled = false;
+                ribbonClientPanel1.Visible = false;
+                //panel3.Visible = true;
+            }
+            else {
+                //MessageBox.Show("0");
+                //panel3.Visible = false;
+                splitContainer1.Enabled = true;
+                splitContainer1.Visible = true;
+                tabControl1.Enabled = true;
+                tabControl1.Visible = true;
+                panel2.Visible = true;
+
+                ribbonClientPanel1.Enabled = true;
+                ribbonClientPanel1.Visible = true;
+            }
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (checkBox1.Checked == true)
+                {
+                    chckbox = true;
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
+                }
+                else
+                {
+                    chckbox = false;
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbbColorLevel1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                value_ObType = cbbColorLevel1.SelectedIndex;
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbbColorLevel2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                value_ObjFlags = cbbColorLevel2.SelectedIndex;
+                Image();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void value_tbBlackClip_Scroll(object sender, EventArgs e)
+        {
+            scolling_BlackClip = true;
+            value_BlackClip = value_tbBlackClip.Value;
+            numeric_BlackClip.Value = value_BlackClip;
+            //numeric_BlackClip = 
+        }
+
+        private void value_tbWhiteClip_Scroll(object sender, EventArgs e)
+        {
+            scolling_WhiteClip = true;
+            value_WhiteClip = value_tbWhiteClip.Value;
+            numeric_WhiteClip.Value = value_WhiteClip;
+            //numeric_WhiteClip.Value = ;
+        }
+
+        private void value_tbBlackClip_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            if (scolling_BlackClip) { 
+                scolling_BlackClip = false;
+            }
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
+        }
+       
+        private void value_tbWhiteClip_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            if (scolling_WhiteClip)
+            {
+                scolling_WhiteClip = false;
+            }
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
+        }
+
+        private void btnFunHelp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F1")
+            {
+                var btn = (Button)sender;
+                var url = btn.Tag.ToString();
+                System.Diagnostics.Process.Start(url);
+            }
+        }
+        bool scolling_BlackClip = false;
+        private void numeric_BlackClip_ValueChanged(object sender, EventArgs e)
+        {
+            value_BlackClip = (int)numeric_BlackClip.Value;
+            value_tbBlackClip.Value = value_BlackClip;
+            if (scolling_BlackClip == false)
+            {
+                // Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
+        }
+        bool scolling_WhiteClip = false;
+        private void numeric_WhiteClip_ValueChanged(object sender, EventArgs e)
+        {
+            value_WhiteClip = (int)numeric_WhiteClip.Value;
+            value_tbWhiteClip.Value = value_WhiteClip;
+            if (scolling_WhiteClip == false)
+            {
+                // Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
+        }
+
+        private void UseMedian_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (UseMedian.Checked == true)
+                {
+                    stateUseMedian = true;
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
+                }
+                else
+                {
+                    stateUseMedian = false;
+                    using (ProgressPopup pp = new ProgressPopup(Image))
+                    {
+                        pp.ShowDialog();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        bool scolling_tbMedian =false;
+        private void numeric_Dimension_ValueChanged(object sender, EventArgs e)
+        {
+            value_tbMedian = (int)numeric_Dimension.Value;
+            tbMedian.Value = value_tbMedian;
+            if (scolling_tbMedian == false)
+            {
+                // Image();
+                using (ProgressPopup pp = new ProgressPopup(Image))
+                {
+                    pp.ShowDialog();
+                }
+            }
+        }
+
+        private void tbMedian_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            if (scolling_tbMedian)
+            {
+                scolling_tbMedian = false;
+            }
+            using (ProgressPopup pp = new ProgressPopup(Image))
+            {
+                pp.ShowDialog();
+            }
+        }
+
+        private void tbMedian_Scroll(object sender, EventArgs e)
+        {
+            scolling_tbMedian = true;
+            value_tbMedian = tbMedian.Value;
+            numeric_Dimension.Value = value_tbMedian;
         }
     }
 }
